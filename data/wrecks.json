@@ -35,8 +35,9 @@
   "lat": -68.733,
   "lon": -52.333,
   "d": 3008,
-  "st": "next",
-  "f": "La nave di Ernest Shackleton, ritrovata nel 2022 nel Mare di Weddell sotto la banchisa antartica."
+  "st": "ready",
+  "href": "endurance.html",
+  "f": "La nave di Ernest Shackleton, stritolata dai ghiacci nel 1915: tutti e 28 gli uomini si salvarono. Ritrovata intatta a 3.008 m nel Mare di Weddell nel 2022."
  },
  {
   "n": "Mary Rose",
@@ -72,7 +73,7 @@
   "lat": 10.0,
   "lon": -75.9,
   "d": 600,
-  "st": "planned",
+  "st": "next",
   "f": "Galeone spagnolo al largo di Cartagena, al centro di una disputa internazionale ancora aperta sulla proprietà."
  },
  {

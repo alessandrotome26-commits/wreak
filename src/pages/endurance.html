@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Endurance — 1915</title>
+<meta name="description" content="La nave con cui Ernest Shackleton tentò la traversata dell'Antartide, stritolata dalla banchisa del Mare di Weddell nel 1915 e ritrovata intatta a 3.008 metri nel 2022. Tutti e 28 gli uomini sopravvissero.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Endurance — 1915">
+<meta property="og:description" content="Stritolata dai ghiacci nel 1915. Ventotto uomini, nessun morto. Ritrovata intatta, in piedi nel buio, a 3.008 metri, nel 2022.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#E9F0F4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1B2A31; --slate:#3E5A66; --faint:rgba(27,42,49,.62);
+  --glacier:#2F7690; --amber:#BE6A2A; --line:rgba(27,42,49,.16);
+  --panel:rgba(255,255,255,.5);
+  --display:"Zilla Slab",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+body.deep{
+  --ink:#EAF1F5; --slate:#A9C1CB; --faint:rgba(234,241,245,.68);
+  --glacier:#7BB6C9; --amber:#E0864A; --line:rgba(234,241,245,.16);
+  --panel:rgba(9,30,42,.5);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#E9F0F4;color:var(--ink);font-family:var(--body);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:color .8s ease}
+
+#sky{position:fixed;inset:0;z-index:-4;background:#E9F0F4;transition:background 1.4s ease}
+#floes{position:fixed;inset:-10%;z-index:-3;pointer-events:none;opacity:1;transition:opacity 1s linear;
+  background:radial-gradient(circle at 22% 30%,rgba(255,255,255,.75),transparent 26%),
+             radial-gradient(circle at 68% 22%,rgba(255,255,255,.6),transparent 22%),
+             radial-gradient(circle at 82% 64%,rgba(255,255,255,.66),transparent 24%),
+             radial-gradient(circle at 38% 74%,rgba(255,255,255,.55),transparent 22%);
+  filter:blur(6px);animation:floe 46s ease-in-out infinite alternate}
+@keyframes floe{0%{transform:translate3d(-2%,-1%,0)}100%{transform:translate3d(3%,2%,0)}}
+#spindrift{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:1;transition:opacity 1s linear}
+#glow{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.7;transition:opacity 1s linear;
+  background:radial-gradient(ellipse at 50% 8%,rgba(255,255,255,.55),transparent 42%)}
+body.deep #floes{opacity:0}
+body.deep #spindrift{opacity:.35}
+body.deep #glow{opacity:0}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--slate);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--line)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--glacier)}
+.rail-num{font-size:19px;color:var(--ink);font-weight:600;letter-spacing:0;font-variant-numeric:tabular-nums;transition:color .8s ease}
+.rail-lab{font-size:9px;opacity:.55;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(233,240,244,.72);transition:background .8s ease}
+body.deep .rail-block{background:rgba(7,23,34,.72)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--glacier);margin-bottom:20px;transition:color .8s ease}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(50px,11vw,116px);line-height:.96;letter-spacing:-.01em;color:var(--ink);transition:color .8s ease}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,4.6vw,46px);line-height:1.1;margin-bottom:22px;color:var(--ink);transition:color .8s ease}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:var(--slate);transition:color .8s ease}
+.lede{font-size:20px;color:var(--ink)}
+em{font-style:italic;color:var(--faint)}
+strong{font-weight:600;color:var(--ink)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--slate);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--line);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--slate)}
+.coord b{display:block;color:var(--ink);font-size:15px;font-weight:600;margin-top:3px}
+.conf{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  color:var(--glacier);border:1px solid rgba(47,118,144,.4);padding:5px 10px;margin-top:28px;align-self:flex-start;max-width:62ch;line-height:1.5}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--glacier);flex:none}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--faint);text-transform:uppercase;animation:bob 3.2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0);opacity:.55}50%{transform:translateY(6px);opacity:.95}}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--line)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid var(--line)}
+.stat .v{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.8vw,46px);line-height:1;color:var(--amber);font-variant-numeric:tabular-nums}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--amber);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-weight:600;font-size:clamp(26px,4.6vw,42px);line-height:1.16;quotes:"\201C" "\201D";color:var(--ink)}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--slate);margin-top:18px}
+
+.tl{border-left:1px solid var(--line);margin-top:8px}
+.tl-item{padding:0 0 34px 28px;position:relative}
+.tl-item::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:#E9F0F4;border:1px solid var(--slate)}
+body.deep .tl-item::before{background:#0A1E2A}
+.tl-item.key::before{background:var(--amber);border-color:var(--amber);box-shadow:0 0 0 5px rgba(190,106,42,.15)}
+.tl-y{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--glacier);margin-bottom:5px}
+.tl-item.key .tl-y{color:var(--amber)}
+.tl-t{font-size:17px;color:var(--ink);margin-bottom:4px;transition:color .8s ease}
+.tl-d{font-size:14.5px;color:var(--faint);max-width:52ch}
+
+.widget{border:1px solid var(--line);background:var(--panel);padding:20px;margin-top:10px;transition:background .8s ease}
+.widget svg{width:100%;height:auto;display:block}
+.wctrl{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:11px;color:var(--slate)}
+.wctrl button{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;background:transparent;
+  color:var(--slate);border:1px solid var(--line);padding:8px 13px;cursor:pointer;transition:border-color .25s,color .25s}
+.wctrl button:hover{border-color:var(--glacier);color:var(--glacier)}
+.wctrl button[aria-pressed="true"]{border-color:var(--amber);color:var(--amber)}
+#routeinfo{font-family:var(--mono);font-size:12px;color:var(--slate);margin-top:16px;min-height:52px;
+  border-top:1px solid var(--line);padding-top:14px;line-height:1.7}
+#routeinfo b{color:var(--amber);font-weight:600}
+
+.sitewrap{margin-top:14px;border:1px solid var(--line);background:var(--panel);padding:20px;transition:background .8s ease}
+.sitewrap svg{width:100%;height:auto;display:block}
+.zone{cursor:pointer}
+.zone rect,.zone ellipse,.zone path,.zone circle{transition:opacity .25s}
+.zone .hot{opacity:0}
+.zone:hover .hot,.zone:focus .hot{opacity:.5}
+#wreckinfo{font-family:var(--mono);font-size:12px;color:var(--slate);margin-top:16px;min-height:44px;border-top:1px solid var(--line);padding-top:14px;line-height:1.6}
+#wreckinfo b{color:var(--glacier);font-weight:600}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--line)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--slate)}
+td.n{color:var(--ink);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:var(--faint);line-height:1.7;margin-top:22px;max-width:60ch}
+
+.arclinks{display:grid;gap:2px;margin-top:24px;border-top:1px solid var(--line)}
+.arclinks a{display:flex;gap:20px;align-items:baseline;padding:20px 0;text-decoration:none;color:inherit;
+  border-bottom:1px solid var(--line);transition:padding-left .3s ease,border-color .3s ease}
+.arclinks a:hover,.arclinks a:focus-visible{padding-left:14px;border-bottom-color:var(--amber)}
+.arclinks .arch{font-family:var(--mono);font-size:11px;color:var(--glacier);min-width:150px}
+.arclinks .ttl{font-size:16px;color:var(--ink)}
+.arclinks .meta{font-size:13px;color:var(--faint);margin-top:3px;max-width:46ch}
+.arclinks .go{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--slate);opacity:0;transition:opacity .3s}
+.arclinks a:hover .go,.arclinks a:focus-visible .go{opacity:1}
+
+.closing{border-top:1px solid var(--amber);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:transparent;border:1px solid var(--line);color:var(--ink);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--slate);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--amber);color:#FFF6EE;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.85}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--glacier)}
+.signup .msg.err{color:#C0532A}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--slate);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--amber);border-color:var(--amber)}
+.src{font-family:var(--mono);font-size:11.5px;color:var(--faint);line-height:1.9}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:15px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+  .arclinks a{flex-wrap:wrap;gap:8px} .arclinks .go{display:none} .arclinks .arch{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #sky,#floes,#glow,#spindrift{transition:none}
+  #floes{animation:none}
+  .scrollcue{animation:none}
+  #spindrift{display:none}
+}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="sky"></div>
+<div id="floes"></div>
+<canvas id="spindrift"></canvas>
+<div id="glow"></div>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Anno</div><div class="rail-num" id="railYear">1915</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">sul ghiaccio</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1915" data-depth="0">
+  <div class="eyebrow">Tre alberi · Spedizione Imperiale Transantartica</div>
+  <h1>Endurance</h1>
+  <div class="sub">STRITOLATA DAL GHIACCIO 21 NOVEMBRE 1915 · RITROVATA 5 MARZO 2022</div>
+  <div class="coordbox">
+    <div class="coord">Dove giace<b>3.008 m · Mare di Weddell</b></div>
+    <div class="coord">Equipaggio salvato<b>28 su 28</b></div>
+    <div class="coord">Alla deriva nel ghiaccio<b>~10 mesi</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>SITO STORICO PROTETTO · MONUMENTO N.93 DEL TRATTATO ANTARTICO — SOLO RILIEVO, NESSUN PRELIEVO</div>
+  <div class="scrollcue">↓ scorri — qui non morì nessuno</div>
+</section>
+
+<section class="reveal" data-year="2022" data-depth="0">
+  <div class="eyebrow">Perché questo relitto</div>
+  <h2>Il naufragio in cui vissero tutti</h2>
+  <p class="lede">In un atlante di navi perdute, l'Endurance è l'eccezione luminosa: la storia non è di quanti morirono, ma di come <strong>ventotto uomini su ventotto</strong> tornarono a casa dopo che il mare aveva preso la loro nave.</p>
+  <p>Poi c'è la seconda vita, altrettanto improbabile. Stritolata dai ghiacci nel 1915, la nave sprofondò a tremila metri in uno dei mari più remoti del pianeta, e lì rimase invisibile per centosette anni. Quando nel 2022 i robot l'hanno finalmente illuminata, non era uno scheletro corroso: era una nave, in piedi sul fondo, con il nome ancora leggibile a poppa. Lo stesso mare che l'aveva uccisa l'aveva anche conservata — per la stessa ragione del Vasa, all'altro capo del mondo.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">28</div><div class="k">uomini a bordo</div></div>
+    <div class="stat"><div class="v">0</div><div class="k">morti</div></div>
+    <div class="stat"><div class="v">107</div><div class="k">anni invisibile sul fondo</div></div>
+    <div class="stat"><div class="v">3.008</div><div class="k">metri di profondità</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1914" data-depth="0">
+  <div class="eyebrow">1914 · l'ambizione</div>
+  <h2>Attraversare l'Antartide a piedi</h2>
+  <p>Raggiunto il Polo Sud da Amundsen nel 1911, restava un'ultima impresa: attraversare l'intero continente antartico via terra, da mare a mare, passando per il Polo. Ernest Shackleton la fece sua. La nave scelta per portare la squadra fino al bordo del Mare di Weddell era un tre alberi in quercia costruito in Norvegia, varato come <em>Polaris</em> e ribattezzato <strong>Endurance</strong> dal motto di famiglia di Shackleton: <em>Fortitudine vincimus</em>, "con la tenacia vinciamo".</p>
+  <p>A bordo, ventotto uomini e quasi settanta cani da slitta. Il continente, però, non lo raggiunsero mai: il ghiaccio li fermò prima ancora di poter sbarcare.</p>
+</section>
+
+<section class="reveal" data-year="1915" data-depth="0">
+  <div class="eyebrow">Gennaio–novembre 1915 · Mare di Weddell</div>
+  <h2>Presa, portata, schiacciata</h2>
+  <p>Nel gennaio 1915, a un giorno di navigazione dalla costa, la banchisa si chiude intorno allo scafo e lo blocca. L'Endurance smette di essere una nave e diventa un relitto galleggiante: prigioniera del ghiaccio, va alla deriva con esso per mesi, trascinata lentamente verso nord-ovest.</p>
+  <div class="moment">
+    <q>Quello che il ghiaccio prende, il ghiaccio se lo tiene.</q>
+    <cite>UNA FRASE ATTRIBUITA A ERNEST SHACKLETON, DAVANTI ALLA MORSA DELLA BANCHISA</cite>
+  </div>
+  <p>In ottobre la pressione dei ghiacci comincia a spezzare lo scafo; l'acqua entra. Il 21 novembre 1915 la nave scivola sotto la superficie. Prima di lasciarla, il capitano Frank Worsley — navigatore straordinario — annota la posizione dell'affondamento. Sarà quel numero, un secolo dopo, a guidare chi la cerca.</p>
+</section>
+
+<section class="reveal" data-year="1916" data-depth="0">
+  <div class="eyebrow">1915–1916 · la fuga</div>
+  <h2>Ottocento miglia per non morire</h2>
+  <p>Senza nave, senza radio, su una banchisa che deriva, ventotto uomini iniziano una ritirata che è diventata leggenda. Segui le tappe.</p>
+  <div class="widget">
+    <svg id="map" viewBox="0 0 640 400" role="img" aria-label="Mappa schematica della deriva e della fuga dell'equipaggio dell'Endurance">
+      <title>La deriva dell'Endurance e la fuga verso il salvataggio</title>
+      <!-- masse di terra schematiche -->
+      <path d="M40 372 L120 366 L260 372 L300 388 L120 392 L40 388 Z" fill="rgba(47,118,144,.12)" stroke="rgba(47,118,144,.4)" stroke-width="1"/>
+      <text x="150" y="386" fill="var(--slate)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">ANTARTIDE · MARE DI WEDDELL</text>
+      <path d="M250 150 l24 -8 l14 12 l-10 16 l-22 4 l-10 -14 Z" fill="rgba(47,118,144,.14)" stroke="rgba(47,118,144,.45)" stroke-width="1"/>
+      <text x="262" y="140" fill="var(--slate)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">ELEPHANT I.</text>
+      <path d="M545 96 l40 -6 l14 14 l-18 16 l-34 -4 l-6 -12 Z" fill="rgba(47,118,144,.14)" stroke="rgba(47,118,144,.45)" stroke-width="1"/>
+      <text x="572" y="86" fill="var(--slate)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">GEORGIA DEL SUD</text>
+
+      <!-- 1. deriva nel ghiaccio -->
+      <path id="legDrift" d="M300 350 C 296 320, 288 300, 292 270 C 296 244, 286 224, 296 206" fill="none" stroke="var(--glacier)" stroke-width="2" stroke-dasharray="5 6"/>
+      <circle cx="300" cy="350" r="5" fill="var(--glacier)"/>
+      <text x="312" y="352" fill="var(--slate)" font-family="IBM Plex Mono, monospace" font-size="9">gen 1915 · presa dal ghiaccio</text>
+      <g id="sinkMark" opacity="0">
+        <circle cx="296" cy="206" r="9" fill="none" stroke="var(--amber)" stroke-width="1.2"/>
+        <path d="M296 199 l2.2 5 h5.2 l-4.2 3.4 l1.6 5.4 l-4.4 -3.4 l-4.4 3.4 l1.6 -5.4 l-4.2 -3.4 h5.2 Z" fill="var(--amber)"/>
+        <text x="308" y="200" fill="var(--amber)" font-family="IBM Plex Mono, monospace" font-size="9">21 nov 1915 · affonda</text>
+      </g>
+
+      <!-- 2. scialuppe a Elephant Island -->
+      <path id="legBoats" d="M296 206 C 290 196, 278 176, 268 162" fill="none" stroke="var(--amber)" stroke-width="2.4" stroke-linecap="round" opacity="0"/>
+      <!-- 3. James Caird -->
+      <path id="legCaird" d="M268 162 C 360 150, 470 128, 556 112" fill="none" stroke="var(--amber)" stroke-width="2.4" stroke-linecap="round" opacity="0" stroke-dasharray="1400" stroke-dashoffset="1400"/>
+      <!-- 4. ritorno per tutti -->
+      <path id="legRescue" d="M556 112 C 470 150, 360 162, 274 158" fill="none" stroke="var(--glacier)" stroke-width="1.6" stroke-linecap="round" opacity="0" stroke-dasharray="4 5"/>
+
+      <circle id="expShip" cx="300" cy="350" r="4.5" fill="var(--ink)"/>
+      <text x="20" y="26" fill="var(--faint)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">MAPPA SCHEMATICA — GEOGRAFIA SEMPLIFICATA, NON IN SCALA</text>
+    </svg>
+    <div class="wctrl">
+      <button id="btnDrift" aria-pressed="true">1 · La deriva</button>
+      <button id="btnBoats" aria-pressed="false">2 · Alle scialuppe</button>
+      <button id="btnCaird" aria-pressed="false">3 · La James Caird</button>
+      <button id="btnRescue" aria-pressed="false">4 · Il ritorno</button>
+    </div>
+    <div id="routeinfo"><b>1 · La deriva nel ghiaccio</b><br>Dal gennaio 1915 la banchisa imprigiona l'Endurance e la trascina verso nord-ovest per dieci mesi, fino all'affondamento del 21 novembre. L'equipaggio si accampa sul ghiaccio e attende che si rompa.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1916" data-depth="0">
+  <div class="eyebrow">Le tappe della fuga</div>
+  <h2>Come si torna dal nulla</h2>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-y">aprile 1916</div>
+      <div class="tl-t">Elephant Island, su tre scialuppe</div>
+      <div class="tl-d">Quando la banchisa si sfalda, i ventotto si stipano nelle tre lance salvate dalla nave — la James Caird, la Dudley Docker, la Stancomb Wills — e dopo giorni in mare aperto raggiungono un'isola disabitata e spazzata dal vento. È terra ferma, la prima dopo sedici mesi. Ma nessuno passerà mai di lì.</div>
+    </div>
+    <div class="tl-item key">
+      <div class="tl-y">aprile–maggio 1916</div>
+      <div class="tl-t">La James Caird, 800 miglia di oceano</div>
+      <div class="tl-d">Shackleton sceglie cinque uomini e la migliore delle lance, lunga sette metri. Attraversano circa 800 miglia nautiche del mare più tempestoso del mondo, guidati solo dai rari calcoli di Worsley al sestante, fino alla Georgia del Sud. Quindici, sedici giorni. Una delle più grandi imprese marinare della storia.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-y">maggio 1916</div>
+      <div class="tl-t">A piedi sopra le montagne</div>
+      <div class="tl-d">Sbarcati sul lato sbagliato dell'isola, Shackleton, Worsley e Crean attraversano a piedi le montagne mai valicate della Georgia del Sud — trentasei ore senza sosta — e raggiungono la stazione baleniera di Stromness.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-y">30 agosto 1916</div>
+      <div class="tl-t">Nessuno lasciato indietro</div>
+      <div class="tl-d">Dopo quattro tentativi respinti dai ghiacci, Shackleton torna a Elephant Island sul rimorchiatore cileno <em>Yelcho</em> e recupera i ventidue uomini rimasti. Erano vivi tutti. In due anni di disastro, non una vittima.</div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1915" data-depth="0">
+  <div class="eyebrow">Le immagini</div>
+  <h2>L'uomo che salvò le fotografie dal ghiaccio</h2>
+  <p>Che di questa storia esistano immagini è merito di un solo uomo: Frank Hurley, il fotografo della spedizione. Quando la nave fu abbandonata, si tuffò nell'acqua gelata della stiva allagata per recuperare le lastre fotografiche di vetro. Poi, dovendo alleggerire il carico, lui e Shackleton ne selezionarono un centinaio da tenere e fracassarono le altre sul ghiaccio, perché nessuno fosse tentato di tornare a prenderle.</p>
+  <p class="lede">Quelle lastre sopravvissute sono tra le fotografie più straordinarie mai scattate: la nave illuminata di notte, imprigionata e già condannata, in mezzo al bianco.</p>
+</section>
+
+<section class="reveal" data-year="2022" data-depth="3008">
+  <div class="eyebrow">5 marzo 2022 · sotto il ghiaccio</div>
+  <h2>Tremila metri più giù, cento anni dopo</h2>
+  <p>Ritrovarla sembrava impossibile: il Mare di Weddell è coperto dalla banchisa più ostile del pianeta, quella che aveva fermato l'Endurance stessa. La spedizione <em>Endurance22</em>, partita da Città del Capo sulla rompighiaccio sudafricana <strong>S.A. Agulhas II</strong>, calò sotto i ghiacci dei robot autonomi — i <em>Sabertooth</em> — con la sola posizione annotata da Worsley nel 1915 come punto di partenza.</p>
+  <p>La trovarono il 5 marzo 2022, a circa quattro miglia da quel punto, a <strong>3.008 metri</strong>. E qui la pagina scende con lei: dal bianco della banchisa al buio assoluto del fondo, dove la nave riposa in piedi.</p>
+  <div class="moment">
+    <q>Di gran lunga il più bel relitto di legno che io abbia mai visto. È in piedi, ben staccato dal fondale, intatto.</q>
+    <cite>MENSUN BOUND, DIRETTORE DELL'ESPLORAZIONE DI ENDURANCE22</cite>
+  </div>
+</section>
+
+<section class="reveal" data-year="2022" data-depth="3008">
+  <div class="eyebrow">Il relitto</div>
+  <h2>Intatta, e intoccabile</h2>
+  <p>I robot non hanno prelevato nulla: hanno solo fotografato e scansionato. L'Endurance è un <strong>Monumento Storico protetto dal Trattato Antartico</strong>, e resterà dov'è. Clicca per leggere cosa hanno visto le telecamere.</p>
+  <div class="sitewrap">
+    <svg viewBox="0 0 640 300" role="img" aria-label="Modello stilizzato del relitto dell'Endurance sul fondale" class="fielded">
+      <title>Schema del relitto dell'Endurance a 3.008 metri</title>
+      <line x1="20" y1="248" x2="620" y2="248" stroke="var(--line)" stroke-width="1"/>
+      <text x="20" y="268" fill="var(--faint)" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.5">FONDALE · 3.008 m · MARE DI WEDDELL</text>
+
+      <!-- scafo stilizzato -->
+      <path d="M120 248 L150 210 L470 210 L508 224 L500 248 Z" fill="rgba(190,106,42,.14)" stroke="var(--amber)" stroke-width="1.4"/>
+      <path d="M150 210 L150 196 L470 196 L470 210 Z" fill="rgba(190,106,42,.10)" stroke="var(--amber)" stroke-width="1"/>
+      <!-- alberi -->
+      <line x1="210" y1="196" x2="210" y2="70" stroke="var(--slate)" stroke-width="2"/>
+      <line x1="300" y1="196" x2="300" y2="56" stroke="var(--slate)" stroke-width="2.2"/>
+      <line x1="390" y1="196" x2="390" y2="76" stroke="var(--slate)" stroke-width="2"/>
+      <line x1="176" y1="96" x2="244" y2="96" stroke="var(--slate)" stroke-width="1.2"/>
+      <line x1="264" y1="84" x2="336" y2="84" stroke="var(--slate)" stroke-width="1.2"/>
+
+      <g class="zone" tabindex="0" data-t="La targa del nome" data-d="A poppa, sotto la balaustra, l'arco di lettere: ENDURANCE, con la stella polare che ricorda il primo nome della nave, Polaris. È l'immagine che ha fatto il giro del mondo nel 2022: il nome ancora perfettamente leggibile dopo 107 anni.">
+        <rect class="hot" x="440" y="196" width="80" height="52"/>
+        <path d="M452 236 a34 20 0 0 1 60 0" fill="none" stroke="var(--amber)" stroke-width="1.4"/>
+        <path d="M480 214 l1.8 4 h4.4 l-3.6 2.8 l1.4 4.4 l-3.6 -2.8 l-3.6 2.8 l1.4 -4.4 l-3.6 -2.8 h4.4 Z" fill="var(--amber)"/>
+        <text x="482" y="196" fill="var(--amber)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">IL NOME</text>
+      </g>
+      <g class="zone" tabindex="0" data-t="Il timone e la ruota" data-d="La ruota del timone è ancora al suo posto, insieme a molte attrezzature di coperta. Nulla è stato spostato dalla corrente: la nave si è posata quasi in assetto di navigazione, come se avesse solo smesso di galleggiare.">
+        <circle class="hot" cx="300" cy="200" r="24"/>
+        <circle cx="300" cy="200" r="14" fill="none" stroke="var(--glacier)" stroke-width="1.4"/>
+        <line x1="300" y1="186" x2="300" y2="214" stroke="var(--glacier)" stroke-width="1"/>
+        <line x1="286" y1="200" x2="314" y2="200" stroke="var(--glacier)" stroke-width="1"/>
+        <text x="300" y="176" fill="var(--glacier)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">TIMONE</text>
+      </g>
+      <g class="zone" tabindex="0" data-t="Perché è così conservata" data-d="Il Mare di Weddell è troppo freddo, e privo dei molluschi che divorano il legno in quasi tutti gli altri mari — la stessa fortuna biologica che ha salvato il Vasa nel Baltico. Per questo, a tremila metri, la nave non è uno scheletro ma una nave.">
+        <rect class="hot" x="150" y="196" width="120" height="52"/>
+        <circle cx="180" cy="224" r="3" fill="var(--slate)" opacity=".7"/>
+        <circle cx="205" cy="230" r="2.6" fill="var(--slate)" opacity=".6"/>
+        <circle cx="230" cy="226" r="3" fill="var(--slate)" opacity=".7"/>
+        <text x="200" y="196" fill="var(--slate)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">IL LEGNO INTATTO</text>
+      </g>
+      <text x="20" y="30" fill="var(--faint)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">SCHEMA STILIZZATO — NON IN SCALA · CLICCA UNA PARTE</text>
+    </svg>
+    <div id="wreckinfo">Seleziona una parte del relitto per leggerne la descrizione.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1915" data-depth="0">
+  <div class="eyebrow">I numeri</div>
+  <h2>La nave e l'impresa, misurate</h2>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Valore</th></tr></thead>
+    <tbody>
+      <tr><td>Varo (come <em>Polaris</em>, Norvegia)</td><td class="n">1912</td></tr>
+      <tr><td>Lunghezza</td><td class="n">~44 m</td></tr>
+      <tr><td>Uomini a bordo</td><td class="n">28</td></tr>
+      <tr><td>Cani da slitta</td><td class="n">~69</td></tr>
+      <tr><td>Presa dal ghiaccio → affondamento</td><td class="n">~10 mesi</td></tr>
+      <tr><td>Traversata della James Caird</td><td class="n">~800 miglia · ~16 giorni</td></tr>
+      <tr><td>Vittime</td><td class="n">0</td></tr>
+      <tr><td>Profondità del relitto</td><td class="n">3.008 m</td></tr>
+      <tr><td>Anni prima del ritrovamento</td><td class="n">107</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Dati della nave e dell'impresa dalle cronache della spedizione e dai resoconti di Endurance22; la posizione del relitto è quella diffusa dalla spedizione del 2022, a circa quattro miglia dal punto annotato da Worsley nel 1915. Le distanze in mare aperto sono quelle comunemente riportate ("circa 800 miglia") e restano approssimate.</p>
+</section>
+
+<section class="reveal" data-year="2022" data-depth="0">
+  <div class="eyebrow">Archivio</div>
+  <h2>Vederla, sopra e sotto il ghiaccio</h2>
+  <p>Nessuna immagine è ospitata qui: si linka a chi le custodisce. Il primo archivio è la spedizione che l'ha ritrovata; il secondo conserva le lastre originali di Frank Hurley; il terzo è il registro del Trattato Antartico che ne dichiara la protezione.</p>
+  <div class="arclinks">
+    <a href="https://endurance22.org/" target="_blank" rel="noopener">
+      <span class="arch">ENDURANCE22</span>
+      <span><span class="ttl">Il ritrovamento del 2022</span><span class="meta">Il sito ufficiale della spedizione: immagini e scansioni del relitto a 3.008 metri, e il diario della ricerca sotto la banchisa.</span></span>
+      <span class="go">endurance22.org ↗</span>
+    </a>
+    <a href="https://www.sl.nsw.gov.au/collection-items/photographs-hurley-endurance" target="_blank" rel="noopener">
+      <span class="arch">STATE LIBRARY NSW</span>
+      <span><span class="ttl">Le fotografie di Frank Hurley</span><span class="meta">Le lastre salvate dalla stiva allagata, digitalizzate: la nave nel ghiaccio, l'accampamento, la fuga.</span></span>
+      <span class="go">sl.nsw.gov.au ↗</span>
+    </a>
+    <a href="https://www.ats.aq/devph/en/apa-database/187" target="_blank" rel="noopener">
+      <span class="arch">TRATTATO ANTARTICO</span>
+      <span><span class="ttl">Monumento Storico n.93</span><span class="meta">La scheda ufficiale che tutela il relitto dell'Endurance: si può rilevare, non toccare.</span></span>
+      <span class="go">ats.aq ↗</span>
+    </a>
+  </div>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">Nota metodologica</div>
+  <h2>Cosa questa pagina non fa</h2>
+  <p>Non gonfia i numeri di un'epopea già straordinaria di suo. Le "circa 800 miglia" della James Caird e i "circa dieci mesi" di deriva restano approssimazioni, come le fonti le riportano. La posizione del relitto è quella dichiarata dalla spedizione del 2022, non una coordinata al metro: il sito è protetto e la sua integrità viene prima della curiosità.</p>
+  <p>Non riduce la sopravvivenza a fortuna né a puro eroismo. Fu una combinazione di disciplina, navigazione eccezionale e decisioni giuste prese al momento giusto — e anche, va detto, di un margine che avrebbe potuto rompersi in mille punti. Che sia finita senza morti non era affatto scritto.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 005 di 20</div>
+    <h2 style="margin-bottom:14px">La prossima è il tesoro conteso: il San José</h2>
+    <p>Dall'impresa senza morti né oro al suo contrario esatto: un galeone spagnolo affondato dagli inglesi nel 1708 al largo di Cartagena, con quasi seicento uomini e un carico d'oro e argento oggi stimato in miliardi. Giace a seicento metri — e su chi ne sia il padrone si combatte ancora, tra Stati, imprese di recupero e popoli indigeni.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce la prossima scheda</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="anticitera.html">← Scheda 004: Anticitera</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">Tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · Endurance22 Expedition / Falklands Maritime Heritage Trust (ritrovamento 5 marzo 2022, profondità 3.008 m, S.A. Agulhas II, veicoli Sabertooth, stato di conservazione; M. Bound) · Segretariato del Trattato Antartico (Monumento Storico n.93, tutela del relitto) · cronache della Spedizione Imperiale Transantartica 1914–1917 (deriva, affondamento 21 novembre 1915, posizione di F. Worsley, traversata della James Caird, salvataggio del 30 agosto 1916) · fotografie di Frank Hurley, State Library of New South Wales<br><br>
+      Wreck Atlas · Scheda 005 · Prototipo
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), sky=document.getElementById('sky');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- rivelazione delle sezioni ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- spindrift: neve al vento ---------- */
+  var cv=document.getElementById('spindrift'), ctx=cv&&cv.getContext?cv.getContext('2d'):null, parts=[], W=0,H=0;
+  function size(){ if(!ctx)return; W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    parts=[]; var n=Math.round(W*H/16000);
+    for(var i=0;i<n;i++) parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.3,v:.6+Math.random()*1.8,o:.12+Math.random()*.4,s:Math.random()*.4-.2}); }
+  function draw(){ if(!ctx)return; ctx.clearRect(0,0,W,H);
+    var dark=document.body.classList.contains('deep');
+    for(var i=0;i<parts.length;i++){ var p=parts[i];
+      p.x+=p.v; p.y+=p.s+Math.sin(p.x*.01)*.15;
+      if(p.x>W+4){ p.x=-4; p.y=Math.random()*H; }
+      if(p.y>H+4){ p.y=-4; } if(p.y<-4){ p.y=H+4; }
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fillStyle=(dark?'rgba(180,205,215,':'rgba(255,255,255,')+p.o+')'; ctx.fill(); }
+    requestAnimationFrame(draw); }
+  if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  /* ---------- fondo: dal bianco della banchisa al buio del fondo ---------- */
+  var lightShades=['#E9F0F4','#E4EDF1','#DDE9EF','#CFE0E8','#B7D0DC','#8FB0BF','#284C5C','#0C2333'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    var deep=active.dataset.depth!=='0';
+    document.getElementById('railDLab').textContent = deep ? 'Profondità' : 'sul ghiaccio';
+    document.body.classList.toggle('deep',deep);
+    if(!reduce){
+      sky.style.background=lightShades[Math.min(Math.floor(p*lightShades.length),lightShades.length-1)];
+    }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- mappa della fuga ---------- */
+  var legDrift=document.getElementById('legDrift'), legBoats=document.getElementById('legBoats');
+  var legCaird=document.getElementById('legCaird'), legRescue=document.getElementById('legRescue');
+  var sinkMark=document.getElementById('sinkMark'), expShip=document.getElementById('expShip');
+  var rinfo=document.getElementById('routeinfo'), mapAnim=null;
+  var btns={drift:document.getElementById('btnDrift'),boats:document.getElementById('btnBoats'),caird:document.getElementById('btnCaird'),rescue:document.getElementById('btnRescue')};
+  var INFO={
+    drift:'<b>1 · La deriva nel ghiaccio</b><br>Dal gennaio 1915 la banchisa imprigiona l’Endurance e la trascina verso nord-ovest per dieci mesi, fino all’affondamento del 21 novembre. L’equipaggio si accampa sul ghiaccio e attende che si rompa.',
+    boats:'<b>2 · Alle scialuppe → Elephant Island</b><br>Rotta la banchisa, i 28 uomini si stipano in tre lance e raggiungono Elephant Island: terra ferma, ma disabitata e fuori da ogni rotta. Da soli, nessuno li troverebbe.',
+    caird:'<b>3 · La James Caird → Georgia del Sud</b><br>Shackleton e cinque uomini attraversano ~800 miglia nautiche di oceano tempestoso su una lancia di sette metri, in una quindicina di giorni, guidati dal sestante di Worsley.',
+    rescue:'<b>4 · Il ritorno per tutti</b><br>Dopo la traversata a piedi della Georgia del Sud e quattro tentativi respinti dai ghiacci, Shackleton torna a Elephant Island sulla Yelcho il 30 agosto 1916. Salva tutti: nessuna vittima.'
+  };
+  function press(k){ for(var b in btns){ btns[b].setAttribute('aria-pressed', String(b===k)); } }
+  function moveShip(path,dur,then){
+    if(!path||!path.getTotalLength){ if(then)then(); return; }
+    if(reduce){ var e=path.getPointAtLength(path.getTotalLength()); expShip.setAttribute('cx',e.x); expShip.setAttribute('cy',e.y); if(then)then(); return; }
+    if(mapAnim) cancelAnimationFrame(mapAnim);
+    var len=path.getTotalLength(), t0=null;
+    (function step(ts){ if(!t0)t0=ts; var k=Math.min((ts-t0)/dur,1);
+      var pt=path.getPointAtLength(len*k); expShip.setAttribute('cx',pt.x); expShip.setAttribute('cy',pt.y);
+      if(k<1) mapAnim=requestAnimationFrame(step); else if(then) then();
+    })(performance.now());
+  }
+  function stage(k){
+    press(k); rinfo.innerHTML=INFO[k];
+    legBoats.setAttribute('opacity', (k==='boats'||k==='caird'||k==='rescue')?'1':'0');
+    legCaird.setAttribute('opacity', (k==='caird'||k==='rescue')?'1':'0');
+    legRescue.setAttribute('opacity', (k==='rescue')?'1':'0');
+    legCaird.classList.toggle('run', k==='caird'||k==='rescue');
+    if(k==='drift'){ sinkMark.setAttribute('opacity','0'); moveShip(legDrift,2600,function(){ sinkMark.setAttribute('opacity','1'); }); }
+    else if(k==='boats'){ sinkMark.setAttribute('opacity','1'); moveShip(legBoats,1500); }
+    else if(k==='caird'){ sinkMark.setAttribute('opacity','1'); moveShip(legCaird,2600); }
+    else { sinkMark.setAttribute('opacity','1'); moveShip(legRescue,2200); }
+  }
+  if(legCaird){ legCaird.style.transition='stroke-dashoffset 2.6s ease-out'; }
+  var css=document.createElement('style'); css.textContent='#legCaird.run{stroke-dashoffset:0}'; document.head.appendChild(css);
+  if(btns.drift){
+    btns.drift.addEventListener('click',function(){stage('drift');});
+    btns.boats.addEventListener('click',function(){stage('boats');});
+    btns.caird.addEventListener('click',function(){stage('caird');});
+    btns.rescue.addEventListener('click',function(){stage('rescue');});
+  }
+
+  /* ---------- zone del relitto ---------- */
+  var winfo=document.getElementById('wreckinfo');
+  if(winfo){
+    document.querySelectorAll('.zone').forEach(function(z){
+      function show(){ winfo.innerHTML='<b>'+z.dataset.t+'</b><br>'+z.dataset.d; }
+      z.addEventListener('click',show); z.addEventListener('focus',show);
+      z.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} });
+    });
+  }
+
+  /* ---------- metriche di scroll ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'005-endurance',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] scheda 005 · '+m+'% a '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] sessione: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- iscrizione ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla — collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>
