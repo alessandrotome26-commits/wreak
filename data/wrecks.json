@@ -25,8 +25,9 @@
   "lat": 41.726,
   "lon": -49.948,
   "d": 3800,
-  "st": "next",
-  "f": "Individuato nel 1985 da Robert Ballard e Jean-Louis Michel, a circa 3.800 metri nell'Atlantico settentrionale."
+  "st": "ready",
+  "href": "titanic.html",
+  "f": "Individuato nel 1985 da Robert Ballard e Jean-Louis Michel, a circa 3.800 metri nell'Atlantico settentrionale. Irrecuperabile, e in lento disfacimento."
  },
  {
   "n": "Endurance",
@@ -52,7 +53,7 @@
   "lat": 35.887,
   "lon": 23.31,
   "d": 50,
-  "st": "planned",
+  "st": "next",
   "f": "Nave romana con a bordo il meccanismo di Anticitera, trovata dai pescatori di spugne nel 1900."
  },
  {

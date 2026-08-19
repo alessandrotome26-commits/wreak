@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RMS Titanic — 1912</title>
+<meta name="description" content="Il transatlantico più celebre della storia, affondato nel 1912 nell'Atlantico del Nord e individuato nel 1985 a 3.800 metri. Perché è irrecuperabile, come la sta consumando il mare, e perché è una tomba.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RMS Titanic — 1912">
+<meta property="og:description" content="Il Vasa è risalito nella luce di un museo. Il Titanic è sceso a 3.800 metri e non tornerà mai su. Lo sta mangiando un batterio, e possiamo solo guardare.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#04070A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#04070A; --deep:#070C12; --iron:#0C141C; --hull:#131C25;
+  --steel:#5E7789; --rust:#B0623A; --ember:#C9743F;
+  --ash:#C9CDD0; --fog:#89929A;
+  --rule:rgba(201,205,208,.15);
+  --display:"Cinzel",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--void);color:var(--ash);font-family:var(--body);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#deepwater{position:fixed;inset:0;z-index:-4;background:var(--void);transition:background 1.6s ease}
+#surface{position:fixed;inset:0;z-index:-3;pointer-events:none;opacity:1;transition:opacity .8s linear;
+  background:linear-gradient(to bottom,rgba(120,150,168,.16),rgba(120,150,168,.03) 22%,transparent 40%)}
+#motes{position:fixed;inset:0;z-index:-2;pointer-events:none}
+#pressure{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .8s linear;
+  background:radial-gradient(ellipse at 50% 42%,transparent 26%,rgba(1,2,4,.9) 100%)}
+#ember{position:fixed;left:0;right:0;bottom:0;height:42vh;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1s linear;
+  background:radial-gradient(ellipse at 50% 120%,rgba(176,98,58,.20),transparent 60%)}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--fog);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--rust)}
+.rail-num{font-size:22px;color:var(--ash);font-weight:500;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.5;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(4,7,10,.8)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--steel);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(52px,12vw,120px);line-height:.96;letter-spacing:.04em;text-transform:uppercase}
+h2{font-family:var(--display);font-weight:500;font-size:clamp(27px,4.3vw,44px);line-height:1.14;margin-bottom:22px;letter-spacing:.015em}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(201,205,208,.85)}
+.lede{font-size:20px;color:var(--ash)}
+em{font-style:italic;color:var(--fog)}
+strong{font-weight:500;color:var(--ash)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--fog);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--fog)}
+.coord b{display:block;color:var(--ash);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  color:var(--rust);border:1px solid rgba(176,98,58,.4);padding:5px 10px;margin-top:28px;align-self:flex-start;max-width:60ch;line-height:1.5}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--rust);flex:none}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(137,146,154,.55);text-transform:uppercase;animation:sink 3.4s ease-in-out infinite}
+@keyframes sink{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(7px);opacity:.9}}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(201,205,208,.08)}
+.stat .v{font-family:var(--display);font-weight:500;font-size:clamp(30px,4.6vw,44px);line-height:1;color:var(--rust);font-variant-numeric:tabular-nums}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--rust);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-weight:500;font-size:clamp(26px,4.6vw,42px);line-height:1.18;quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--fog);margin-top:18px}
+
+.tl{border-left:1px solid var(--rule);margin-top:8px}
+.tl-item{padding:0 0 34px 28px;position:relative}
+.tl-item::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--void);border:1px solid var(--fog)}
+.tl-item.key::before{background:var(--rust);border-color:var(--rust);box-shadow:0 0 0 5px rgba(176,98,58,.15)}
+.tl-y{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--steel);margin-bottom:5px}
+.tl-item.key .tl-y{color:var(--rust)}
+.tl-t{font-size:17px;color:var(--ash);margin-bottom:4px}
+.tl-d{font-size:14.5px;color:rgba(201,205,208,.6);max-width:52ch}
+
+.widget{border:1px solid var(--rule);background:rgba(12,20,28,.5);padding:20px;margin-top:10px}
+.widget svg{width:100%;height:auto;display:block}
+.wctrl{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);
+  font-family:var(--mono);font-size:11px;color:var(--fog)}
+.wctrl input[type=range]{flex:1;min-width:150px;accent-color:#B0623A}
+.wctrl button{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;background:transparent;
+  color:var(--fog);border:1px solid var(--rule);padding:8px 14px;cursor:pointer;transition:border-color .25s,color .25s}
+.wctrl button:hover{border-color:var(--rust);color:var(--rust)}
+#dmsg{font-family:var(--mono);font-size:12px;color:var(--fog);margin-top:14px;min-height:44px;line-height:1.6}
+#dmsg b{color:var(--rust);font-weight:500}
+
+.sitewrap{margin-top:14px;border:1px solid var(--rule);background:rgba(12,20,28,.5);padding:20px}
+.sitewrap svg{width:100%;height:auto;display:block}
+.zone{cursor:pointer}
+.zone rect,.zone ellipse,.zone path,.zone circle{transition:opacity .25s}
+.zone .hot{opacity:0}
+.zone:hover .hot,.zone:focus .hot{opacity:.5}
+#zoneinfo{font-family:var(--mono);font-size:12px;color:var(--fog);margin-top:16px;min-height:44px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.6}
+#zoneinfo b{color:var(--rust);font-weight:500}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(201,205,208,.08);vertical-align:top}
+td.n{color:var(--ash);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:rgba(137,146,154,.7);line-height:1.7;margin-top:22px;max-width:60ch}
+
+.arclinks{display:grid;gap:2px;margin-top:24px;border-top:1px solid var(--rule)}
+.arclinks a{display:flex;gap:20px;align-items:baseline;padding:20px 0;text-decoration:none;color:inherit;
+  border-bottom:1px solid rgba(201,205,208,.08);transition:padding-left .3s ease,border-color .3s ease}
+.arclinks a:hover,.arclinks a:focus-visible{padding-left:14px;border-bottom-color:var(--rust)}
+.arclinks .arch{font-family:var(--mono);font-size:11px;color:var(--steel);min-width:128px}
+.arclinks .ttl{font-size:16px;color:var(--ash)}
+.arclinks .meta{font-size:13px;color:rgba(201,205,208,.5);margin-top:3px;max-width:46ch}
+.arclinks .go{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--fog);opacity:0;transition:opacity .3s}
+.arclinks a:hover .go,.arclinks a:focus-visible .go{opacity:1}
+
+.closing{border-top:1px solid var(--rust);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--fog);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:transparent;border:1px solid var(--rule);color:var(--ash);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--fog);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--rust);color:#0B0603;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.85}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--steel)}
+.signup .msg.err{color:#E08A63}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--rust);border-color:var(--rust)}
+.src{font-family:var(--mono);font-size:11.5px;color:rgba(137,146,154,.62);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:16px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+  .arclinks a{flex-wrap:wrap;gap:8px} .arclinks .go{display:none} .arclinks .arch{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #deepwater,#pressure,#surface,#ember{transition:none}
+  .scrollcue{animation:none}
+  #motes{display:none}
+}
+:focus-visible{outline:2px solid var(--rust);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="deepwater"></div>
+<div id="surface"></div>
+<canvas id="motes"></canvas>
+<div id="pressure"></div>
+<div id="ember"></div>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Anno</div><div class="rail-num" id="railYear">1912</div></div>
+  <div class="rail-block"><div class="rail-lab">Profondità</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1912" data-depth="0">
+  <div class="eyebrow">Transatlantico · White Star Line</div>
+  <h1>Titanic</h1>
+  <div class="sub">AFFONDATA 15 APRILE 1912 · INDIVIDUATA 1 SETTEMBRE 1985</div>
+  <div class="coordbox">
+    <div class="coord">Dove giace<b>3.800 m · Atlantico del Nord</b></div>
+    <div class="coord">Distanza da terra<b>~600 km a SSE di Terranova</b></div>
+    <div class="coord">Possibilità di recupero<b>nessuna</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>TOMBA MARITTIMA · SITO TUTELATO DA ACCORDO INTERNAZIONALE — POSIZIONE STORICAMENTE NOTA, INTEGRITÀ PROTETTA</div>
+  <div class="scrollcue">↓ scorri — questa storia non risale</div>
+</section>
+
+<section class="reveal" data-year="1985" data-depth="0">
+  <div class="eyebrow">Perché questo relitto</div>
+  <h2>L'esatto contrario del Vasa</h2>
+  <p class="lede">Il Vasa è stato tirato su da trentadue metri e messo in piedi dentro un museo. Il Titanic giace a tremilaottocento, e non salirà mai. Non è una scelta: è fisica.</p>
+  <p>È la nave più raccontata della storia — e per questo la più difficile da raccontare bene. Tutti sanno che affondò. Quasi nessuno sa <em>dove</em> sia oggi, cosa le stia succedendo, e perché sia il caso limite di questo atlante: il relitto che non torna. Il Vasa lo irrorano di cera, notte e giorno, per fermarlo nel tempo. Il Titanic lo consuma un batterio, un grammo di ferro alla volta, e a quattro chilometri di profondità possiamo soltanto guardare.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">3.800</div><div class="k">metri di profondità</div></div>
+    <div class="stat"><div class="v">~1.500</div><div class="k">morti su ~2.224 a bordo</div></div>
+    <div class="stat"><div class="v">73</div><div class="k">anni prima che qualcuno la rivedesse</div></div>
+    <div class="stat"><div class="v">2</div><div class="k">tronconi, a 600 m l'uno dall'altro</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1912" data-depth="0">
+  <div class="eyebrow">1911–1912 · Belfast</div>
+  <h2>La nave che non poteva affondare</h2>
+  <p>Costruita dai cantieri Harland &amp; Wolff per la White Star Line, la Titanic era lunga circa 269 metri e stazzava 46.328 tonnellate lorde: il più grande oggetto mobile mai realizzato dall'uomo fino a quel momento. Sedici compartimenti stagni, chiudibili con un interruttore dal ponte di comando. Da qui la frase che la stampa le cucì addosso — <em>praticamente inaffondabile</em> — e che nessuno ai cantieri aveva mai pronunciato in quella forma assoluta.</p>
+  <p class="lede">Portava scialuppe per circa 1.178 persone. A bordo, per il viaggio inaugurale, ce n'erano più di duemila.</p>
+  <p>Non era un errore di calcolo: era conforme ai regolamenti dell'epoca, tarati sul tonnellaggio della nave e non sul numero dei passeggeri. La legge chiedeva meno scialuppe di quante ne servissero. La Titanic ne rispettava la lettera.</p>
+</section>
+
+<section class="reveal" data-year="1912" data-depth="0">
+  <div class="eyebrow">10 aprile 1912 · Southampton</div>
+  <h2>Quattro giorni verso New York</h2>
+  <p>Salpa da Southampton il 10 aprile, fa scalo a Cherbourg e a Queenstown, in Irlanda, e punta la prua sull'Atlantico. A bordo il fiore dell'età edoardiana e centinaia di emigranti in terza classe diretti a una vita nuova. Il comandante è Edward Smith, il più esperto della compagnia, al suo ultimo viaggio prima della pensione.</p>
+  <p>Per quattro giorni fila liscia, veloce, a circa ventidue nodi. Nella giornata del 14 aprile la sala radio riceve una serie di avvisi di ghiaccio dalle navi vicine. Alcuni arrivano sul ponte. Altri restano tra le mani degli operatori, sommersi dai telegrammi personali dei passeggeri di prima classe da smaltire. La velocità non cala.</p>
+</section>
+
+<section class="reveal" data-year="1912" data-depth="3800">
+  <div class="eyebrow">Domenica 14 aprile · ore 23:40</div>
+  <h2>Due ore e quaranta minuti</h2>
+  <div class="moment">
+    <q>Iceberg, dritto a prua</q>
+    <cite>FREDERICK FLEET, VEDETTA IN COFFA — AL TELEFONO CON IL PONTE</cite>
+  </div>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-y">23:40</div>
+      <div class="tl-t">L'urto che nessuno sentì davvero</div>
+      <div class="tl-d">Timone tutto a sinistra e macchine indietro: la nave sfiora l'iceberg invece di prenderlo di petto. È proprio la manovra d'emergenza a condannarla. Lungo il fianco destro, sotto la linea di galleggiamento, il ghiaccio apre una serie di falle in almeno cinque dei sedici compartimenti.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-y">Mezzanotte</div>
+      <div class="tl-t">Il calcolo di Thomas Andrews</div>
+      <div class="tl-d">Il progettista della nave, a bordo, fa il conto in pochi minuti: i compartimenti stagni non arrivano fino in cima. Riempiendosene cinque, la prua si abbassa e l'acqua scavalca le paratie una dopo l'altra, come acqua in una vaschetta del ghiaccio. Non è un'ipotesi: è una certezza matematica. La nave ha meno di due ore.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-y">00:45–02:05</div>
+      <div class="tl-t">Scialuppe calate a metà</div>
+      <div class="tl-d">Le prime scialuppe scendono semivuote: pochi credono che la nave inaffondabile stia davvero affondando, e l'equipaggio teme che i paranchi non reggano il peso pieno. Posti per 1.178, e non tutti vengono usati. Nel frattempo la sala radio martella la richiesta di soccorso, ma la nave più vicina che la riceve, la Carpathia, è a quattro ore di distanza.</div>
+    </div>
+    <div class="tl-item key">
+      <div class="tl-y">02:20</div>
+      <div class="tl-t">La spezzatura</div>
+      <div class="tl-d">Con la prua ormai sott'acqua, la poppa si solleva verso il cielo. Lo scafo non regge lo sforzo e si spezza in due tra il terzo e il quarto fumaiolo. La prua parte per il fondo; la poppa ricade, si riempie e la segue. In acqua restano oltre millecinquecento persone, con i giubbotti di salvataggio, in un mare a meno di zero gradi. Non è l'annegamento a ucciderle: è il freddo, in pochi minuti.</div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1912" data-depth="3800">
+  <div class="eyebrow">Il punto sbagliato</div>
+  <h2>Perché sparì per settantatré anni</h2>
+  <p>Mentre la nave affondava, il quarto ufficiale Joseph Boxhall calcolò in fretta la posizione da trasmettere via radio. Era sbagliata di circa tredici miglia nautiche. Le navi accorse la mattina dopo cercarono i superstiti nel punto indicato — e in parte li trovarono, perché le scialuppe erano andate alla deriva — ma il relitto vero era altrove, adagiato su un fondale che nessuno, nel 1912, poteva nemmeno immaginare di raggiungere.</p>
+  <p class="lede">Per generazioni si è saputo tutto di questa nave tranne l'unica cosa che conta per un atlante di relitti: dove fosse.</p>
+  <p>Non era un problema di volontà. Era un problema di profondità. Nel 1912, e per decenni ancora, tremilaottocento metri erano semplicemente fuori portata: né uomini né macchine potevano scendere così a fondo. La Titanic non era nascosta. Era irraggiungibile.</p>
+</section>
+
+<section class="reveal" data-year="1985" data-depth="3800">
+  <div class="eyebrow">Il meccanismo · la profondità</div>
+  <h2>Quanto è lontano il fondo — scendi tu</h2>
+  <p>L'Atocha era a diciassette metri, il Vasa a trentadue: un tuffo, quasi. Trascina l'indicatore verso il basso e guarda dove finiscono, sulla stessa scala, gli altri due relitti di questo atlante — e quanto ancora manca al Titanic. Nota dove muore la luce, dove verrebbe schiacciato un sommergibile militare, e dove arriva l'unico mammifero che ci si spinge.</p>
+  <div class="widget">
+    <svg id="col" viewBox="0 0 340 640" role="img" aria-label="Colonna di profondità dell'oceano, dalla superficie ai 3.800 metri del Titanic">
+      <title>Colonna di profondità: dove si trovano i relitti dell'atlante</title>
+      <defs>
+        <linearGradient id="colgrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#25333f"/>
+          <stop offset="0.14" stop-color="#16222c"/>
+          <stop offset="0.45" stop-color="#0a121a"/>
+          <stop offset="0.82" stop-color="#05090e"/>
+          <stop offset="1" stop-color="#1a0f08"/>
+        </linearGradient>
+      </defs>
+      <rect x="52" y="40" width="36" height="560" fill="url(#colgrad)" stroke="rgba(201,205,208,.14)" stroke-width="1"/>
+      <text x="52" y="30" fill="rgba(201,205,208,.5)" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1">SUPERFICIE · 0 m</text>
+
+      <!-- riferimenti (y precalcolate su scala a radice, non lineare) -->
+      <g font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing=".5">
+        <line x1="52" y1="78" x2="96" y2="78" stroke="#5E7789" stroke-width="1"/>
+        <text x="100" y="75" fill="#5E7789">17 m — Atocha</text>
+        <line x1="52" y1="91" x2="112" y2="91" stroke="#5E7789" stroke-width="1"/>
+        <text x="116" y="99" fill="#5E7789">32 m — Vasa</text>
+        <line x1="52" y1="98" x2="140" y2="112" stroke="rgba(137,146,154,.5)" stroke-width="1"/>
+        <text x="144" y="116" fill="rgba(137,146,154,.85)">~40 m — limite subacqueo ricreativo</text>
+        <line x1="52" y1="169" x2="96" y2="169" stroke="rgba(137,146,154,.5)" stroke-width="1"/>
+        <text x="100" y="166" fill="rgba(137,146,154,.85)">~200 m — l'ultima luce</text>
+        <line x1="52" y1="243" x2="96" y2="243" stroke="rgba(137,146,154,.5)" stroke-width="1"/>
+        <text x="100" y="240" fill="rgba(137,146,154,.85)">~500 m — oltre qui un sommergibile cede</text>
+        <line x1="52" y1="327" x2="96" y2="327" stroke="rgba(137,146,154,.5)" stroke-width="1"/>
+        <text x="100" y="324" fill="rgba(137,146,154,.85)">~1.000 m — buio totale</text>
+        <line x1="52" y1="446" x2="96" y2="446" stroke="rgba(137,146,154,.5)" stroke-width="1"/>
+        <text x="100" y="443" fill="rgba(137,146,154,.85)">~2.000 m — il capodoglio si ferma qui</text>
+        <line x1="52" y1="600" x2="112" y2="600" stroke="#B0623A" stroke-width="1.4"/>
+        <text x="116" y="597" fill="#B0623A">3.800 m — TITANIC</text>
+      </g>
+
+      <!-- indicatore mobile -->
+      <g id="diver">
+        <circle cx="70" cy="40" r="7" fill="none" stroke="#C9CDD0" stroke-width="1.4"/>
+        <circle cx="70" cy="40" r="2.5" fill="#C9CDD0"/>
+        <text id="diverLab" x="34" y="44" fill="#C9CDD0" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="end">0 m</text>
+      </g>
+      <text x="52" y="624" fill="rgba(201,205,208,.4)" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="1">ASSE COMPRESSO — PROFONDITÀ NON IN SCALA LINEARE</text>
+    </svg>
+    <div class="wctrl">
+      <span>SCENDI</span>
+      <input type="range" id="depthSlider" min="0" max="3800" value="0" step="10" aria-label="Profondità in metri">
+      <button id="plunge">Fino al relitto ↓</button>
+    </div>
+    <div id="dmsg">Sei in superficie. Trascina verso il basso: i primi due relitti dell'atlante sono appena sotto il pelo dell'acqua.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1985" data-depth="3800">
+  <div class="eyebrow">1 settembre 1985 · 01:05</div>
+  <h2>Trovata seguendo i rottami</h2>
+  <p>A cercarla, alla fine, non fu un cacciatore di tesori ma uno scienziato con una copertura. Robert Ballard, dei Woods Hole Oceanographic Institution, e Jean-Louis Michel, dell'IFREMER francese, avevano poche settimane e una telecamera trainata di nome <em>Argo</em>. Quello che il mondo non sapeva è che la spedizione era anche il paravento di una missione segreta della Marina statunitense: ispezionare i relitti di due sottomarini nucleari, il <em>Thresher</em> e lo <em>Scorpion</em>, affondati negli anni Sessanta. Il permesso di cercare il Titanic era la ricompensa per quel lavoro.</p>
+  <p>Da quelle immersioni militari Ballard aveva imparato una cosa: sul fondo, un relitto lascia una scia di detriti lunga chilometri, molto più facile da intercettare dello scafo. Così non cercò la nave. Cercò la spazzatura che le era caduta intorno mentre affondava.</p>
+  <div class="moment">
+    <q>È un luogo silenzioso e sereno, il posto giusto perché questo grande dramma del mare riposi. Che rimanga così per sempre.</q>
+    <cite>ROBERT BALLARD, SUL RELITTO APPENA RITROVATO</cite>
+  </div>
+  <p>All'una di notte del 1º settembre 1985, sui monitor comparve una caldaia circolare, inconfondibile. Poi lo scafo. Dopo settantatré anni, il Titanic era di nuovo sotto lo sguardo di qualcuno — non di un uomo in immersione, ma di un occhio meccanico calato dalla superficie. È la soglia esatta in cui questo atlante cambia epoca: il relitto smette di essere un luogo dove si scende e diventa un luogo che si osserva.</p>
+</section>
+
+<section class="reveal" data-year="1985" data-depth="3800">
+  <div class="eyebrow">Il sito</div>
+  <h2>Non un relitto. Due.</h2>
+  <p>La spezzatura in superficie ha mandato al fondo due navi separate. La prua, riempitasi lentamente, è planata in avanti e si è conficcata nel fango come una lama, restando riconoscibile. La poppa, precipitata piena d'aria intrappolata, è implosa e si è avvitata: è un ammasso di lamiere contorte. Tra le due, e tutto intorno, il campo di detriti — migliaia di oggetti che raccontano più dello scafo stesso. Clicca le parti.</p>
+  <div class="sitewrap">
+    <svg viewBox="0 0 640 300" role="img" aria-label="Schema del sito: prua e poppa separate sul fondale con il campo di detriti" class="fielded">
+      <title>Schema del sito del relitto del Titanic</title>
+      <line x1="20" y1="238" x2="620" y2="238" stroke="rgba(201,205,208,.2)" stroke-width="1"/>
+      <text x="20" y="258" fill="rgba(201,205,208,.5)" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.5">FONDALE · 3.800 m · BUIO ASSOLUTO</text>
+      <text x="320" y="284" fill="rgba(137,146,154,.7)" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="middle" letter-spacing="1">← circa 600 metri di detriti tra i due tronconi →</text>
+      <line x1="150" y1="270" x2="470" y2="270" stroke="rgba(137,146,154,.35)" stroke-width="1" stroke-dasharray="3 5"/>
+
+      <g class="zone" tabindex="0" data-t="La prua" data-d="Il troncone anteriore, lungo e ancora leggibile. Riempiendosi d'acqua è sceso quasi in assetto e si è piantato nel sedimento fino alle ancore. È la parte che nelle fotografie ha reso il Titanic riconoscibile a tutto il mondo.">
+        <rect class="hot" x="70" y="196" width="150" height="44"/>
+        <path d="M72 238 L96 214 L210 214 L226 226 L220 238 Z" fill="rgba(94,119,137,.28)" stroke="#5E7789" stroke-width="1.3"/>
+        <line x1="120" y1="214" x2="120" y2="188" stroke="#5E7789" stroke-width="1.6"/>
+        <line x1="160" y1="214" x2="160" y2="192" stroke="#5E7789" stroke-width="1.6"/>
+        <text x="86" y="180" fill="#5E7789" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1">PRUA</text>
+      </g>
+
+      <g class="zone" tabindex="0" data-t="Il campo di detriti" data-d="La striscia di fondale tra i due tronconi: stoviglie intatte, bottiglie, scarpe accoppiate, pezzi di scafo, oggetti personali. Qui — e mai dallo scafo — sono stati prelevati gli oltre 5.500 reperti recuperati nel corso degli anni. È anche il luogo in cui, nel 2024, è stata deposta una targa in memoria dell'esploratore P.-H. Nargeolet.">
+        <rect class="hot" x="238" y="206" width="164" height="34"/>
+        <circle cx="262" cy="232" r="3" fill="#89929A" opacity=".7"/>
+        <circle cx="288" cy="234" r="2.5" fill="#89929A" opacity=".6"/>
+        <circle cx="312" cy="230" r="3" fill="#89929A" opacity=".7"/>
+        <circle cx="340" cy="234" r="2.5" fill="#89929A" opacity=".6"/>
+        <circle cx="366" cy="231" r="3" fill="#89929A" opacity=".7"/>
+        <circle cx="392" cy="234" r="2.5" fill="#89929A" opacity=".6"/>
+        <text x="256" y="196" fill="#89929A" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1">CAMPO DI DETRITI</text>
+      </g>
+
+      <g class="zone" tabindex="0" data-t="Le caldaie" data-d="Alcune delle enormi caldaie a carbone, cadute quando lo scafo si è aperto. Fu proprio una caldaia circolare, con i suoi portelli, il primo oggetto identificato sui monitor nel 1985: la prova che quella scia di rottami portava alla nave giusta.">
+        <ellipse class="hot" cx="322" cy="224" rx="20" ry="14"/>
+        <circle cx="316" cy="224" r="8" fill="none" stroke="#B0623A" stroke-width="1.4"/>
+        <circle cx="332" cy="226" r="7" fill="none" stroke="#B0623A" stroke-width="1.4"/>
+      </g>
+
+      <g class="zone" tabindex="0" data-t="La poppa" data-d="Il troncone posteriore, precipitato pieno d'aria: la pressione lo ha fatto implodere e ruotare su sé stesso. È un groviglio di lamiere quasi illeggibile — l'immagine di cosa fa, davvero, la profondità a un oggetto d'acciaio.">
+        <rect class="hot" x="430" y="200" width="150" height="40"/>
+        <path d="M436 238 L448 216 L556 220 L574 232 L560 238 Z" fill="rgba(176,98,58,.22)" stroke="#B0623A" stroke-width="1.3"/>
+        <path d="M470 220 L486 208 L500 222 M516 222 L532 210 L546 224" fill="none" stroke="#B0623A" stroke-width="1.1" opacity=".8"/>
+        <text x="512" y="192" fill="#B0623A" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1">POPPA</text>
+      </g>
+
+      <text x="20" y="30" fill="rgba(201,205,208,.45)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">SCHEMA — NON IN SCALA · CLICCA UNA PARTE</text>
+    </svg>
+    <div id="zoneinfo">Seleziona una parte del sito per leggerne la descrizione.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="2024" data-depth="3800">
+  <div class="eyebrow">Adesso · sul fondo</div>
+  <h2>La sta mangiando il mare</h2>
+  <p class="lede">Il Vasa è sopravvissuto perché nel Baltico non vivono gli organismi che divorano i relitti. Il Titanic non ha avuto quella fortuna: sul suo acciaio prospera un batterio che di quel ferro si nutre.</p>
+  <p>Si chiama <em>Halomonas titanicae</em>, isolato proprio qui e battezzato con il nome della nave. Genera le <em>rusticles</em>, le stalattiti di ruggine che colano dallo scafo come ghiaccioli color mattone. Non sono un difetto estetico: sono la nave che diventa sedimento. Ogni anno la struttura perde massa, e quello che il batterio consuma non torna.</p>
+  <p>Le immersioni più recenti misurano il conto. Nel 2019, dopo quattordici anni senza visite umane, gli esploratori la trovarono in uno stato definito <em>shocking</em>: la coffa da cui gridò Frederick Fleet non c'era più, la vasca del comandante era scomparsa, intere paratie erano collassate. Nel 2024 un tratto di ringhiera di prua, quasi cinque metri, è stato ritrovato steso sul fondo. Le stime di chi ha isolato il batterio parlano di decenni, non di secoli: parti riconoscibili della nave potrebbero cedere entro gli anni Trenta di questo secolo.</p>
+  <p class="lede">È la differenza che questa scheda esiste per dire. Il Vasa lo salviamo dal tempo. Il Titanic lo stiamo perdendo in diretta, e non c'è cera, non c'è museo, non c'è recupero che possa fermarlo.</p>
+</section>
+
+<section class="reveal" data-year="1912" data-depth="3800">
+  <div class="eyebrow">Le persone</div>
+  <h2>Una tomba, e basta</h2>
+  <p>Salirono a bordo più di duemiladuecento persone. Ne morirono circa millecinquecento. Non è un numero che si conosce al singolo: gli elenchi di equipaggio, passeggeri e vittime sono ancora oggetto di ricerca, e le cifre esatte variano di qualche decina a seconda della fonte. Restano una stima, e come stima vanno lette.</p>
+  <p>Per questo il sito non è un giacimento: è un cimitero. La distinzione ha conseguenze concrete. Gli oltre cinquemilacinquecento reperti risaliti negli anni provengono <strong>tutti dal campo di detriti</strong>, mai dallo scafo — la differenza tra raccogliere ciò che è caduto e violare una tomba. Dal 2019 il sito è tutelato da un accordo internazionale tra Stati Uniti e Regno Unito, negoziato anche con Canada e Francia, che lo riconosce come memoriale marittimo e sottopone a licenza ogni ingresso nel relitto. E dal 2012, compiuti cent'anni dall'affondamento, ricade sotto la Convenzione UNESCO sul patrimonio culturale subacqueo.</p>
+  <p>Che il fondo pretenda ancora un prezzo, chi va laggiù lo sa. Nel 2023 un piccolo sommergibile turistico, il <em>Titan</em>, è imploso durante la discesa verso questo relitto: cinque morti, tra cui Paul-Henri Nargeolet, che al Titanic aveva dedicato la vita. La stessa profondità che ha reso la nave irraggiungibile per settantatré anni non è diventata meno letale. È solo diventata raggiungibile — a un prezzo.</p>
+  <p class="note">Questa pagina non pubblica una localizzazione di dettaglio del relitto e non ne incoraggia la visita. La posizione dell'affondamento è un fatto storico documentato; l'integrità del sito è protetta per legge e, prima ancora, dal rispetto dovuto a un luogo dove riposano più di millecinquecento persone.</p>
+</section>
+
+<section class="reveal" data-year="1912" data-depth="3800">
+  <div class="eyebrow">I numeri</div>
+  <h2>La nave, misurata</h2>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Valore</th></tr></thead>
+    <tbody>
+      <tr><td>Lunghezza fuori tutto</td><td class="n">~269 m</td></tr>
+      <tr><td>Stazza lorda</td><td class="n">46.328 GRT</td></tr>
+      <tr><td>Persone a bordo (viaggio inaugurale)</td><td class="n">~2.224</td></tr>
+      <tr><td>Posti in scialuppa</td><td class="n">~1.178</td></tr>
+      <tr><td>Vittime (stima)</td><td class="n">~1.500</td></tr>
+      <tr><td>Profondità del relitto</td><td class="n">3.800 m</td></tr>
+      <tr><td>Distanza da terra (Terranova)</td><td class="n">~600 km · SSE</td></tr>
+      <tr><td>Tronconi principali</td><td class="n">2 · a ~600 m</td></tr>
+      <tr><td>Anni prima del ritrovamento</td><td class="n">73</td></tr>
+      <tr><td>Reperti recuperati (dal campo di detriti)</td><td class="n">oltre 5.500</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Dimensioni e stazza come da documentazione dei cantieri Harland &amp; Wolff e della White Star Line. Il numero delle persone a bordo e delle vittime è una stima ricostruita dalle inchieste del 1912 e dalla ricerca successiva: "circa 2.224" e "circa 1.500" restano tali. Registrato, recuperato e stimato sono tre cose diverse, e su questa pagina restano separate.</p>
+</section>
+
+<section class="reveal" data-year="1985" data-depth="3800">
+  <div class="eyebrow">Archivio</div>
+  <h2>Vederla dov'è</h2>
+  <p>Nessuna fotografia è ospitata qui: si linka agli archivi che ne hanno il diritto e la competenza. Il primo è la fonte diretta del ritrovamento; gli altri due tengono insieme la parte che a un atlante interessa davvero — chi c'era a bordo, e come è protetto oggi il sito.</p>
+  <div class="arclinks">
+    <a href="https://www.whoi.edu/press-room/news-release/woods-hole-oceanographic-institution-releases-rare-video-footage-from-the-first-submersible-dives-to-rms-titanic/" target="_blank" rel="noopener">
+      <span class="arch">WOODS HOLE (WHOI)</span>
+      <span><span class="ttl">Il filmato raro delle prime immersioni</span><span class="meta">Ottanta minuti di ripresa quasi grezza dalla spedizione del 1986: il sommergibile Alvin e il robot Jason Jr. sullo scafo.</span></span>
+      <span class="go">whoi.edu ↗</span>
+    </a>
+    <a href="https://www.encyclopedia-titanica.org/" target="_blank" rel="noopener">
+      <span class="arch">ENCYCLOPEDIA TITANICA</span>
+      <span><span class="ttl">Le persone, una per una</span><span class="meta">Il database di riferimento su passeggeri, equipaggio e vittime, con le biografie ricostruite dalla ricerca.</span></span>
+      <span class="go">archivio ↗</span>
+    </a>
+    <a href="https://www.noaa.gov/office-of-general-counsel/gc-international-section/rms-titanic-international-agreement" target="_blank" rel="noopener">
+      <span class="arch">NOAA</span>
+      <span><span class="ttl">L'accordo internazionale sul relitto</span><span class="meta">Il testo e il quadro giuridico della tutela USA–Regno Unito del sito come memoriale marittimo.</span></span>
+      <span class="go">noaa.gov ↗</span>
+    </a>
+  </div>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="3800">
+  <div class="eyebrow">Nota metodologica</div>
+  <h2>Cosa questa pagina non fa</h2>
+  <p>Non tratta la strage come spettacolo. I numeri delle vittime sono dichiarati come stime, non come conteggi, e la parola "tomba" è usata alla lettera, non come figura retorica. Non pubblica coordinate di dettaglio né inviti alla visita: il sito è protetto per legge ed è un luogo di sepoltura.</p>
+  <p>Non confonde ciò che è registrato con ciò che è recuperato: i reperti vengono dal campo di detriti, non dallo scafo, e la distinzione è scritta perché è la differenza tra archeologia e saccheggio. E dove le fonti divergono — sul numero esatto dei morti, sull'ampiezza delle falle, sull'anno in cui la nave sparirà — il dubbio resta visibile, invece di sciogliersi in una cifra sola.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 003 di 20</div>
+    <h2 style="margin-bottom:14px">La prossima scende di duemila anni: Anticitera</h2>
+    <p>Dal relitto più moderno e più profondo al più antico e sorprendente. Un mercantile romano affondato intorno al 70 a.C. al largo di un'isola greca, tirato su dai pescatori di spugne nel 1900. Nella stiva, corroso dal mare, il più antico calcolatore meccanico conosciuto: il meccanismo di Anticitera. Se il Titanic è ciò che la profondità distrugge, Anticitera è ciò che il mare, ogni tanto, restituisce.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce la prossima scheda</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="vasa.html">← Scheda 002: il Vasa</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">Tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · Woods Hole Oceanographic Institution — WHOI (scoperta del 1° settembre 1985, spedizione 1986 con Alvin e Jason Jr., filmato d'archivio) · IFREMER (spedizione congiunta, telecamera trainata Argo) · NOAA, Office of General Counsel (Accordo internazionale USA–Regno Unito sul relitto, in vigore dal 2019; incertezza posizionale) · UNESCO (Convenzione 2001 sul patrimonio culturale subacqueo, applicabile dal 2012) · British Wreck Commissioner's Inquiry e US Senate Inquiry, 1912 (dinamica dell'affondamento, scialuppe, stima delle vittime) · Encyclopedia Titanica (persone a bordo ed elenchi) · ricerche sul degrado e su <em>Halomonas titanicae</em> (H. Mann e al.; spedizioni 2019, 2022 e 2024)<br><br>
+      Wreck Atlas · Scheda 003 · Prototipo
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill');
+  var deepwater=document.getElementById('deepwater'), surface=document.getElementById('surface');
+  var pressure=document.getElementById('pressure'), ember=document.getElementById('ember');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- rivelazione delle sezioni ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- detriti che affondano lenti ---------- */
+  var cv=document.getElementById('motes'), ctx=cv.getContext('2d'), parts=[], W=0,H=0;
+  function size(){ W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    parts=[]; var n=Math.round(W*H/34000);
+    for(var i=0;i<n;i++) parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.3+.3,v:.05+Math.random()*.14,o:.06+Math.random()*.22}); }
+  function draw(){ ctx.clearRect(0,0,W,H);
+    for(var i=0;i<parts.length;i++){ var p=parts[i];
+      p.y+=p.v; p.x+=Math.sin(p.y*.012)*.05;
+      if(p.y>H+4){ p.y=-4; p.x=Math.random()*W; }
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fillStyle='rgba(150,168,180,'+p.o+')'; ctx.fill(); }
+    requestAnimationFrame(draw); }
+  if(!reduce){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  /* ---------- fondo che scende nel buio ---------- */
+  var shades=['#04070A','#060A10','#080E15','#070C12','#05090E','#04070A','#020406'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year; railDepth.textContent=active.dataset.depth;
+    if(!reduce){
+      deepwater.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)];
+      surface.style.opacity=Math.max(0,1-p*2.4);
+      pressure.style.opacity=Math.min(p*1.2,.92);
+      ember.style.opacity=Math.max(0,(p-0.72)/0.28);
+    }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- colonna di profondità ---------- */
+  var slider=document.getElementById('depthSlider'), diver=document.getElementById('diver');
+  var diverLab=document.getElementById('diverLab'), dmsg=document.getElementById('dmsg');
+  var plunge=document.getElementById('plunge'), plungeAnim=null;
+  var TOP=40, SPAN=560, MAXD=3800;
+  function depthToY(d){ return TOP + SPAN*Math.sqrt(Math.max(0,d)/MAXD); }
+  function depthMsg(d){
+    if(d<10) return 'Sei in superficie. Trascina verso il basso: i primi due relitti dell’atlante sono appena sotto il pelo dell’acqua.';
+    if(d<40) return 'Qui riposano <b>Atocha</b> (17 m) e <b>Vasa</b> (32 m). Un sommozzatore ci arriva. Il Titanic è novanta volte più in fondo.';
+    if(d<200) return 'Oltre il limite dell’immersione ricreativa. Ancora molta luce, ancora molta strada.';
+    if(d<500) return '<b>~200 m: l’ultima luce.</b> Sotto, il blu diventa nero. Da qui in giù nessun occhio umano vede più nulla senza un faro.';
+    if(d<1000) return 'Oltre i ~500 m un moderno sommergibile militare verrebbe schiacciato dalla pressione. Il Titanic è sette volte più giù.';
+    if(d<2000) return '<b>Buio totale.</b> Zona batiale: temperatura vicina allo zero, pressione enorme. Mancano ancora quasi tremila metri.';
+    if(d<3800) return 'Il capodoglio, il mammifero che scende più di tutti, si ferma intorno ai 2.000 m. Il Titanic è ancora più in basso.';
+    return '<b>3.800 metri. Il Titanic.</b> Circa 380 atmosfere di pressione: quasi quattrocento chili su ogni centimetro quadrato. Nessun essere umano scese fin qui per 73 anni — e nessuno riporterà mai su questa nave.';
+  }
+  function setDepth(d){
+    d=Math.max(0,Math.min(MAXD,d));
+    var yv=depthToY(d);
+    diver.setAttribute('transform','translate(0 '+(yv-TOP)+')');
+    diverLab.textContent=d.toLocaleString('it-IT')+' m';
+    dmsg.innerHTML=depthMsg(d);
+  }
+  if(slider){
+    slider.addEventListener('input',function(){ if(plungeAnim){cancelAnimationFrame(plungeAnim);plungeAnim=null;} setDepth(+slider.value); });
+    setDepth(0);
+  }
+  if(plunge){
+    plunge.addEventListener('click',function(){
+      if(reduce){ slider.value=MAXD; setDepth(MAXD); return; }
+      if(plungeAnim) cancelAnimationFrame(plungeAnim);
+      var start=+slider.value, t0=null, dur=3200;
+      (function step(ts){
+        if(!t0) t0=ts;
+        var k=Math.min((ts-t0)/dur,1);
+        var e=1-Math.pow(1-k,2);
+        var d=Math.round(start+(MAXD-start)*e);
+        slider.value=d; setDepth(d);
+        if(k<1) plungeAnim=requestAnimationFrame(step); else plungeAnim=null;
+      })(performance.now());
+    });
+  }
+
+  /* ---------- zone del sito (prua/poppa/detriti/caldaie) ---------- */
+  var info=document.getElementById('zoneinfo');
+  if(info){
+    document.querySelectorAll('.zone').forEach(function(z){
+      function show(){ info.innerHTML='<b>'+z.dataset.t+'</b><br>'+z.dataset.d; }
+      z.addEventListener('click',show); z.addEventListener('focus',show);
+      z.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} });
+    });
+  }
+
+  /* ---------- metriche di scroll ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'003-titanic',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] scheda 003 · '+m+'% a '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] sessione: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- iscrizione ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla — collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>
