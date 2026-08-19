@@ -29,13 +29,22 @@ html{scroll-behavior:smooth}
 body{background:var(--void);color:var(--ash);font-family:var(--body);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
 #deepwater{position:fixed;inset:0;z-index:-4;background:var(--void);transition:background 1.6s ease}
-#surface{position:fixed;inset:0;z-index:-3;pointer-events:none;opacity:1;transition:opacity .8s linear;
-  background:linear-gradient(to bottom,rgba(120,150,168,.16),rgba(120,150,168,.03) 22%,transparent 40%)}
+#drift{position:fixed;inset:-15%;z-index:-4;pointer-events:none;
+  background:radial-gradient(circle at 28% 22%,rgba(94,119,137,.10),transparent 42%),
+             radial-gradient(circle at 72% 68%,rgba(94,119,137,.07),transparent 40%);
+  animation:drift 38s ease-in-out infinite alternate}
+@keyframes drift{0%{transform:translate3d(-2%,-1.5%,0) scale(1.04)}100%{transform:translate3d(3%,2%,0) scale(1.12)}}
+#surface{position:fixed;inset:-8%;z-index:-3;pointer-events:none;opacity:1;transition:opacity .8s linear;
+  background:linear-gradient(to bottom,rgba(120,150,168,.16),rgba(120,150,168,.03) 22%,transparent 40%);
+  animation:sway 19s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:translate3d(-1.6%,0,0)}50%{transform:translate3d(1.6%,1%,0)}}
 #motes{position:fixed;inset:0;z-index:-2;pointer-events:none}
 #pressure{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .8s linear;
   background:radial-gradient(ellipse at 50% 42%,transparent 26%,rgba(1,2,4,.9) 100%)}
 #ember{position:fixed;left:0;right:0;bottom:0;height:42vh;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1s linear;
-  background:radial-gradient(ellipse at 50% 120%,rgba(176,98,58,.20),transparent 60%)}
+  background:radial-gradient(ellipse at 50% 120%,rgba(176,98,58,.20),transparent 60%);
+  animation:emberbreath 10s ease-in-out infinite}
+@keyframes emberbreath{0%,100%{transform:scale(1);filter:brightness(.9)}50%{transform:scale(1.09);filter:brightness(1.15)}}
 
 #rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
   justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
@@ -151,7 +160,8 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
-  #deepwater,#pressure,#surface,#ember{transition:none}
+  #deepwater,#pressure,#surface,#ember{transition:none;animation:none}
+  #drift{display:none}
   .scrollcue{animation:none}
   #motes{display:none}
 }
@@ -161,6 +171,7 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
 <body>
 
 <div id="deepwater"></div>
+<div id="drift"></div>
 <div id="surface"></div>
 <canvas id="motes"></canvas>
 <div id="pressure"></div>
@@ -257,7 +268,7 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
 <section class="reveal" data-year="1985" data-depth="3800">
   <div class="eyebrow">Il meccanismo · la profondità</div>
   <h2>Quanto è lontano il fondo — scendi tu</h2>
-  <p>L'Atocha era a diciassette metri, il Vasa a trentadue: un tuffo, quasi. Trascina l'indicatore verso il basso e guarda dove finiscono, sulla stessa scala, gli altri due relitti di questo atlante — e quanto ancora manca al Titanic. Nota dove muore la luce, dove verrebbe schiacciato un sommergibile militare, e dove arriva l'unico mammifero che ci si spinge.</p>
+  <p>L'Atocha giace a diciassette metri, il Vasa a trentadue: profondità entro la portata di un subacqueo con attrezzatura ordinaria. Trascina l'indicatore verso il basso e osserva dove si collocano, sulla medesima scala, gli altri due relitti di questo atlante — e quanta colonna d'acqua resti fino al Titanic. Sono segnate la soglia oltre cui si estingue la luce, la quota a cui uno scafo militare cede alla pressione, e il limite raggiunto dall'unico mammifero che si spinge fin laggiù.</p>
   <div class="widget">
     <svg id="col" viewBox="0 0 340 640" role="img" aria-label="Colonna di profondità dell'oceano, dalla superficie ai 3.800 metri del Titanic">
       <title>Colonna di profondità: dove si trovano i relitti dell'atlante</title>
@@ -306,7 +317,7 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
       <input type="range" id="depthSlider" min="0" max="3800" value="0" step="10" aria-label="Profondità in metri">
       <button id="plunge">Fino al relitto ↓</button>
     </div>
-    <div id="dmsg">Sei in superficie. Trascina verso il basso: i primi due relitti dell'atlante sono appena sotto il pelo dell'acqua.</div>
+    <div id="dmsg">Superficie, 0 metri. Trascina verso il basso: i primi due relitti dell'atlante si trovano appena sotto il pelo dell'acqua.</div>
   </div>
 </section>
 
@@ -314,7 +325,7 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
   <div class="eyebrow">1 settembre 1985 · 01:05</div>
   <h2>Trovata seguendo i rottami</h2>
   <p>A cercarla, alla fine, non fu un cacciatore di tesori ma uno scienziato con una copertura. Robert Ballard, dei Woods Hole Oceanographic Institution, e Jean-Louis Michel, dell'IFREMER francese, avevano poche settimane e una telecamera trainata di nome <em>Argo</em>. Quello che il mondo non sapeva è che la spedizione era anche il paravento di una missione segreta della Marina statunitense: ispezionare i relitti di due sottomarini nucleari, il <em>Thresher</em> e lo <em>Scorpion</em>, affondati negli anni Sessanta. Il permesso di cercare il Titanic era la ricompensa per quel lavoro.</p>
-  <p>Da quelle immersioni militari Ballard aveva imparato una cosa: sul fondo, un relitto lascia una scia di detriti lunga chilometri, molto più facile da intercettare dello scafo. Così non cercò la nave. Cercò la spazzatura che le era caduta intorno mentre affondava.</p>
+  <p>Da quelle immersioni militari Ballard aveva ricavato un principio operativo: sul fondo, un relitto lascia una scia di detriti lunga chilometri, molto più ampia — e quindi più facile da intercettare — dello scafo stesso. Non cercò dunque la nave, ma il materiale disperso intorno ad essa durante l'affondamento.</p>
   <div class="moment">
     <q>È un luogo silenzioso e sereno, il posto giusto perché questo grande dramma del mare riposi. Che rimanga così per sempre.</q>
     <cite>ROBERT BALLARD, SUL RELITTO APPENA RITROVATO</cite>
@@ -485,11 +496,11 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
   /* ---------- detriti che affondano lenti ---------- */
   var cv=document.getElementById('motes'), ctx=cv.getContext('2d'), parts=[], W=0,H=0;
   function size(){ W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
-    parts=[]; var n=Math.round(W*H/34000);
-    for(var i=0;i<n;i++) parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.3+.3,v:.05+Math.random()*.14,o:.06+Math.random()*.22}); }
+    parts=[]; var n=Math.round(W*H/19000);
+    for(var i=0;i<n;i++) parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.35,v:.05+Math.random()*.16,o:.08+Math.random()*.3,s:.06+Math.random()*.12}); }
   function draw(){ ctx.clearRect(0,0,W,H);
     for(var i=0;i<parts.length;i++){ var p=parts[i];
-      p.y+=p.v; p.x+=Math.sin(p.y*.012)*.05;
+      p.y+=p.v; p.x+=Math.sin(p.y*.011)*p.s;
       if(p.y>H+4){ p.y=-4; p.x=Math.random()*W; }
       ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832);
       ctx.fillStyle='rgba(150,168,180,'+p.o+')'; ctx.fill(); }
@@ -523,13 +534,13 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
   var TOP=40, SPAN=560, MAXD=3800;
   function depthToY(d){ return TOP + SPAN*Math.sqrt(Math.max(0,d)/MAXD); }
   function depthMsg(d){
-    if(d<10) return 'Sei in superficie. Trascina verso il basso: i primi due relitti dell’atlante sono appena sotto il pelo dell’acqua.';
-    if(d<40) return 'Qui riposano <b>Atocha</b> (17 m) e <b>Vasa</b> (32 m). Un sommozzatore ci arriva. Il Titanic è novanta volte più in fondo.';
-    if(d<200) return 'Oltre il limite dell’immersione ricreativa. Ancora molta luce, ancora molta strada.';
-    if(d<500) return '<b>~200 m: l’ultima luce.</b> Sotto, il blu diventa nero. Da qui in giù nessun occhio umano vede più nulla senza un faro.';
-    if(d<1000) return 'Oltre i ~500 m un moderno sommergibile militare verrebbe schiacciato dalla pressione. Il Titanic è sette volte più giù.';
-    if(d<2000) return '<b>Buio totale.</b> Zona batiale: temperatura vicina allo zero, pressione enorme. Mancano ancora quasi tremila metri.';
-    if(d<3800) return 'Il capodoglio, il mammifero che scende più di tutti, si ferma intorno ai 2.000 m. Il Titanic è ancora più in basso.';
+    if(d<10) return 'Superficie, 0 metri. Trascina verso il basso: i primi due relitti dell’atlante si trovano appena sotto il pelo dell’acqua.';
+    if(d<40) return 'A questa quota giacciono <b>Atocha</b> (17 m) e <b>Vasa</b> (32 m), entro il raggio d’azione di un subacqueo. Il Titanic è oltre novanta volte più profondo.';
+    if(d<200) return 'Oltre il limite dell’immersione ricreativa. La luce è ancora abbondante; la strada, ancora lunga.';
+    if(d<500) return '<b>~200 m: la zona eufotica finisce.</b> Sotto, il blu vira al nero: nessuna visione umana è più possibile senza illuminazione artificiale.';
+    if(d<1000) return 'Oltre i ~500 m la pressione supera la resistenza strutturale di un moderno sommergibile militare. Il Titanic è sette volte più in basso.';
+    if(d<2000) return '<b>Oscurità totale — zona batipelagica.</b> Temperatura prossima allo zero, pressione crescente. Mancano ancora quasi tremila metri.';
+    if(d<3800) return 'Il capodoglio, il vertebrato che si spinge più in profondità, si arresta intorno ai 2.000 m. Il relitto è ancora più giù.';
     return '<b>3.800 metri. Il Titanic.</b> Circa 380 atmosfere di pressione: quasi quattrocento chili su ogni centimetro quadrato. Nessun essere umano scese fin qui per 73 anni — e nessuno riporterà mai su questa nave.';
   }
   function setDepth(d){
