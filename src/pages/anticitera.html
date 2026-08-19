@@ -28,7 +28,7 @@ html{scroll-behavior:smooth}
 body{background:var(--night);color:var(--marble);font-family:var(--body);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
 #sky{position:fixed;inset:0;z-index:-4;background:var(--night);transition:background 1.6s ease}
-#orrery{position:fixed;left:50%;top:44%;width:150vmax;height:150vmax;transform:translate(-50%,-50%);z-index:-3;pointer-events:none;opacity:.5}
+#orrery{position:fixed;left:50%;top:44%;width:150vmax;height:150vmax;transform:translate(-50%,-50%);z-index:-3;pointer-events:none;opacity:.78}
 #orrery i{position:absolute;inset:0;border:1px solid rgba(190,140,60,.10);border-radius:50%}
 #orrery i:nth-child(1){inset:12%;border-color:rgba(190,140,60,.12)}
 #orrery i:nth-child(2){inset:26%;border-color:rgba(87,163,146,.10);border-style:dashed}
@@ -473,7 +473,7 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
   /* ---------- cielo stellato che ruota lento ---------- */
   var cv=document.getElementById('stars'), ctx=cv&&cv.getContext?cv.getContext('2d'):null, stars=[], W=0,H=0, rot=0;
   function size(){ if(!ctx)return; W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
-    stars=[]; var n=Math.round(W*H/9000);
+    stars=[]; var n=Math.round(W*H/6500);
     for(var i=0;i<n;i++) stars.push({a:Math.random()*6.2832,d:Math.random()*Math.max(W,H)*.62,r:Math.random()*1.2+.2,o:.15+Math.random()*.6,tw:Math.random()*6.28}); }
   function draw(){ if(!ctx)return; ctx.clearRect(0,0,W,H);
     var ccx=W*.5, ccy=H*.44;
@@ -488,7 +488,7 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
   if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
 
   /* ---------- fondo: notte che vira al bronzo verso la fine ---------- */
-  var shades=['#0A1420','#0B1826','#0C1E2E','#0B1B29','#12181C','#1A1A18','#201C12'];
+  var shades=['#0E2033','#123048','#163850','#123048','#1C2636','#2A2418','#332813'];
   function tick(){
     var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
     var p=h>0?Math.min(y/h,1):0;

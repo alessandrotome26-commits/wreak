@@ -28,9 +28,11 @@ html{scroll-behavior:smooth}
 body{background:var(--abyss);color:var(--paper);font-family:var(--body);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
 #seawater{position:fixed;inset:0;z-index:-4;background:var(--abyss);transition:background 1.4s ease}
-#shafts{position:fixed;inset:0;z-index:-3;pointer-events:none;opacity:1;transition:opacity .6s linear;overflow:hidden}
+#shafts{position:fixed;inset:0;z-index:-3;pointer-events:none;opacity:1;transition:opacity .6s linear;overflow:hidden;
+  animation:caustics 15s ease-in-out infinite}
+@keyframes caustics{0%,100%{transform:translate3d(-2.5%,0,0) scaleX(1)}50%{transform:translate3d(2.5%,0,0) scaleX(1.05)}}
 #shafts i{position:absolute;top:-30%;height:160%;display:block;
-  background:linear-gradient(to bottom,rgba(140,190,200,.14),rgba(140,190,200,0) 70%);
+  background:linear-gradient(to bottom,rgba(170,215,225,.22),rgba(170,215,225,0) 72%);
   filter:blur(14px);transform-origin:top center}
 #snow{position:fixed;inset:0;z-index:-2;pointer-events:none}
 #pressure{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .8s linear;
@@ -176,7 +178,7 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
   #seawater,#pressure,#shafts{transition:none}
-  .scrollcue,.conf .dot{animation:none}
+  .scrollcue,.conf .dot,#shafts{animation:none}
   #snow{display:none}
   #pile b{transform:scaleY(1)}
 }
@@ -585,7 +587,7 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
     drift*=.92; requestAnimationFrame(draw); }
   if(!reduce){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
 
-  var shades=['#050D14','#071522','#0A2030','#0C2130','#0E2A3A','#123243'];
+  var shades=['#1A5568','#134758','#0F3547','#0C2838','#081C29','#06121C','#040C13'];
   function tick(){
     var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
     var p=h>0?Math.min(y/h,1):0;

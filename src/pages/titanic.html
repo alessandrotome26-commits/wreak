@@ -521,7 +521,7 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
       deepwater.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)];
       surface.style.opacity=Math.max(0,1-p*2.4);
       pressure.style.opacity=Math.min(p*1.2,.92);
-      ember.style.opacity=Math.max(0,(p-0.72)/0.28);
+      ember.style.opacity=Math.max(0,(p-0.6)/0.4)*1.15;
     }
   }
   var ticking=false;

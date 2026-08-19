@@ -134,6 +134,26 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
   #silt{display:none}
 }
 :focus-visible{outline:2px solid var(--oak);outline-offset:3px}
+
+/* --- risalita nella luce del museo: inversione scuro→chiaro --- */
+body,#rail,.rail-num,p,h1,h2,.lede,.tl-t,.moment q,.eyebrow,.rail-block{transition:color .9s ease,background-color .9s ease,border-color .9s ease}
+body.lit{color:#2A1E0C;--rule:rgba(42,30,12,.2)}
+body.lit p{color:rgba(42,30,12,.82)}
+body.lit h1,body.lit h2,body.lit .lede,body.lit .tl-t,body.lit td.n,body.lit .moment q{color:#2A1E0C}
+body.lit .eyebrow{color:#7C5A1E}
+body.lit em,body.lit .tl-d,body.lit td,body.lit .note,body.lit .src,body.lit .coord,body.lit .stat .k,body.lit .moment cite,body.lit th{color:rgba(42,30,12,.62)}
+body.lit .stat .v{color:#8A5A1E}
+body.lit #rail{color:#6B5836}
+body.lit .rail-num{color:#2A1E0C}
+body.lit .rail-block{background:rgba(233,224,203,.74)}
+body.lit .conf{color:#7C5A1E;border-color:rgba(124,90,30,.5)}
+body.lit .signup input{color:#2A1E0C}
+body.lit .signup label{color:#6B5836}
+body.lit .globelink{color:#6B5836}
+body.lit .film .tt{color:#2A1E0C}
+body.lit .film .dd{color:rgba(42,30,12,.58)}
+body.lit .film .go{color:#6B5836}
+body.lit .film .yr{color:#8A5A1E}
 </style>
 </head>
 <body>
@@ -425,7 +445,7 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
     requestAnimationFrame(drawSilt); }
   if(!reduce){ size(); window.addEventListener('resize',size); requestAnimationFrame(drawSilt); }
 
-  var shades=['#0C1114','#0C1518','#0B1613','#0A1512','#101410','#181207','#221607'];
+  var shades=['#0C1114','#0C1518','#0B1613','#0A1512','#101410','#141309','#181207'];
   function tick(){
     var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
     var p=h>0?Math.min(y/h,1):0;
@@ -436,9 +456,15 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
     railDepth.textContent=active.dataset.depth;
     document.getElementById('railDLab').textContent = active.dataset.note ? 'oggi' : 'Profondità';
     warm = Math.max(0,(p-0.62)/0.38);
-    if(!reduce){
+    var inMuseum = !!active.dataset.note;
+    document.body.classList.toggle('lit', inMuseum);
+    if(inMuseum){
+      water.style.background='#C9BC8A';   /* la luce del museo */
+    } else {
       water.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)];
-      warmth.style.opacity=warm;
+    }
+    if(!reduce){
+      warmth.style.opacity = inMuseum ? 0 : warm;
     }
   }
   var ticking=false;
