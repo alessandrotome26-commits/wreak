@@ -32,7 +32,7 @@ body.deep{
 html{scroll-behavior:smooth}
 body{background:#E9F0F4;color:var(--ink);font-family:var(--body);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:color .8s ease}
 
-#sky{position:fixed;inset:0;z-index:-4;background:#E9F0F4;transition:background 1.4s ease}
+#sky{position:fixed;inset:0;z-index:-4;background:#E9F0F4;transition:background .8s ease}
 #floes{position:fixed;inset:-10%;z-index:-3;pointer-events:none;opacity:1;transition:opacity 1s linear;
   background:radial-gradient(circle at 22% 30%,rgba(255,255,255,.75),transparent 26%),
              radial-gradient(circle at 68% 22%,rgba(255,255,255,.6),transparent 22%),
@@ -121,6 +121,16 @@ body.deep .tl-item::before{background:#0A1E2A}
 #wreckinfo{font-family:var(--mono);font-size:12px;color:var(--slate);margin-top:16px;min-height:44px;border-top:1px solid var(--line);padding-top:14px;line-height:1.6}
 #wreckinfo b{color:var(--glacier);font-weight:600}
 
+.shipart{margin-top:22px;border:1px solid var(--line);background:var(--panel);padding:18px 18px 12px;transition:background .8s ease}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.05em;margin-top:10px}
+.shipwrap{transform-box:fill-box;transform-origin:50% 92%;animation:sailbob 6.5s ease-in-out infinite}
+@keyframes sailbob{0%,100%{transform:rotate(-.7deg) translateY(0)}50%{transform:rotate(.7deg) translateY(-3px)}}
+.flag{transform-box:fill-box;transform-origin:0 50%;animation:flutter 1.7s ease-in-out infinite}
+@keyframes flutter{0%,100%{transform:scaleX(1) skewX(0deg)}50%{transform:scaleX(.78) skewX(-12deg)}}
+.wave{animation:wavemove 5s ease-in-out infinite}
+@keyframes wavemove{0%,100%{transform:translateX(0)}50%{transform:translateX(-8px)}}
+
 table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
 th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--line)}
 th.n,td.n{text-align:right;font-family:var(--mono)}
@@ -165,7 +175,7 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding:40px 0 90px}
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
   #sky,#floes,#glow,#spindrift{transition:none}
-  #floes{animation:none}
+  #floes,.shipwrap,.flag,.wave{animation:none}
   .scrollcue{animation:none}
   #spindrift{display:none}
 }
@@ -218,6 +228,58 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding:40px 0 90px}
   <h2>Attraversare l'Antartide a piedi</h2>
   <p>Raggiunto il Polo Sud da Amundsen nel 1911, restava un'ultima impresa: attraversare l'intero continente antartico via terra, da mare a mare, passando per il Polo. Ernest Shackleton la fece sua. La nave scelta per portare la squadra fino al bordo del Mare di Weddell era un tre alberi in quercia costruito in Norvegia, varato come <em>Polaris</em> e ribattezzato <strong>Endurance</strong> dal motto di famiglia di Shackleton: <em>Fortitudine vincimus</em>, "con la tenacia vinciamo".</p>
   <p>A bordo, ventotto uomini e quasi settanta cani da slitta. Il continente, però, non lo raggiunsero mai: il ghiaccio li fermò prima ancora di poter sbarcare.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 640 320" role="img" aria-label="Illustrazione stilizzata dell'Endurance sotto vela nel 1914">
+      <title>L'Endurance sotto vela, 1914</title>
+      <rect x="0" y="258" width="640" height="62" fill="rgba(47,118,144,.10)"/>
+      <g class="wave">
+        <path d="M-20 266 q 45 -8 90 0 t 90 0 t 90 0 t 90 0 t 90 0 t 90 0 t 90 0 t 90 0" fill="none" stroke="rgba(47,118,144,.38)" stroke-width="1.4"/>
+        <path d="M-20 280 q 55 -7 110 0 t 110 0 t 110 0 t 110 0 t 110 0 t 110 0 t 110 0" fill="none" stroke="rgba(47,118,144,.22)" stroke-width="1.2"/>
+      </g>
+      <path d="M64 270 l20 -7 l16 7 l-9 8 l-22 0 Z" fill="rgba(255,255,255,.82)" stroke="rgba(47,118,144,.32)" stroke-width="1"/>
+      <path d="M528 274 l24 -6 l18 8 l-11 7 l-26 -1 Z" fill="rgba(255,255,255,.78)" stroke="rgba(47,118,144,.32)" stroke-width="1"/>
+
+      <g class="shipwrap">
+        <!-- sartie principali -->
+        <line x1="320" y1="76" x2="506" y2="230" stroke="rgba(58,44,28,.45)" stroke-width="1"/>
+        <line x1="320" y1="76" x2="196" y2="246" stroke="rgba(58,44,28,.45)" stroke-width="1"/>
+        <!-- alberi -->
+        <line x1="246" y1="246" x2="246" y2="98" stroke="#3A2C1C" stroke-width="3"/>
+        <line x1="320" y1="246" x2="320" y2="74" stroke="#3A2C1C" stroke-width="3.4"/>
+        <line x1="396" y1="246" x2="396" y2="106" stroke="#3A2C1C" stroke-width="3"/>
+        <!-- bompresso -->
+        <line x1="452" y1="248" x2="516" y2="230" stroke="#2A2016" stroke-width="2.6"/>
+        <!-- vele di trinchetto -->
+        <path d="M212 120 L280 120 L277 156 Q246 165 215 156 Z" fill="#ECE5D3" stroke="#C7B98A" stroke-width="1"/>
+        <path d="M206 160 L286 160 L282 200 Q246 210 210 200 Z" fill="#EAE2CF" stroke="#C7B98A" stroke-width="1"/>
+        <path d="M200 204 L292 204 L288 240 Q246 250 204 240 Z" fill="#E7DEC9" stroke="#C7B98A" stroke-width="1"/>
+        <!-- vele di maestra -->
+        <path d="M282 100 L358 100 L355 142 Q320 152 285 142 Z" fill="#ECE5D3" stroke="#C7B98A" stroke-width="1"/>
+        <path d="M274 146 L366 146 L362 190 Q320 201 278 190 Z" fill="#EAE2CF" stroke="#C7B98A" stroke-width="1"/>
+        <path d="M266 194 L374 194 L370 240 Q320 251 270 240 Z" fill="#E7DEC9" stroke="#C7B98A" stroke-width="1"/>
+        <!-- randa di mezzana (aurica) -->
+        <path d="M396 128 L396 242 L352 236 L364 140 Z" fill="#E7DEC9" stroke="#C7B98A" stroke-width="1"/>
+        <path d="M372 130 L430 132 L426 168 L376 164 Z" fill="#ECE5D3" stroke="#C7B98A" stroke-width="1"/>
+        <!-- fiocchi -->
+        <path d="M462 138 L512 230 L456 242 Z" fill="#EAE2CF" stroke="#C7B98A" stroke-width="1"/>
+        <path d="M446 120 L470 234 L440 240 Z" fill="#ECE5D3" stroke="#C7B98A" stroke-width="1"/>
+        <!-- pennoni -->
+        <line x1="210" y1="120" x2="282" y2="120" stroke="#3A2C1C" stroke-width="2"/>
+        <line x1="204" y1="160" x2="288" y2="160" stroke="#3A2C1C" stroke-width="2"/>
+        <line x1="198" y1="204" x2="294" y2="204" stroke="#3A2C1C" stroke-width="2"/>
+        <line x1="280" y1="100" x2="360" y2="100" stroke="#3A2C1C" stroke-width="2"/>
+        <line x1="272" y1="146" x2="368" y2="146" stroke="#3A2C1C" stroke-width="2"/>
+        <line x1="264" y1="194" x2="376" y2="194" stroke="#3A2C1C" stroke-width="2"/>
+        <!-- scafo -->
+        <path d="M182 246 L462 246 L444 268 Q320 286 200 268 Z" fill="#2A2016" stroke="#4A3826" stroke-width="1.2"/>
+        <line x1="194" y1="252" x2="452" y2="252" stroke="#B98A55" stroke-width="1.4"/>
+        <!-- bandiera -->
+        <path class="flag" d="M320 66 L356 70 L351 78 L356 86 L320 84 Z" fill="#BE6A2A"/>
+      </g>
+      <text x="20" y="30" fill="var(--faint)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">L'ENDURANCE COM'ERA — SOTTO VELA, 1914</text>
+    </svg>
+    <figcaption>Ricostruzione stilizzata, non un rilievo. Le fotografie vere della nave — scattate da Frank Hurley — sono nell'archivio in fondo alla pagina.</figcaption>
+  </figure>
 </section>
 
 <section class="reveal" data-year="1915" data-depth="0">
@@ -473,7 +535,7 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding:40px 0 90px}
   if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
 
   /* ---------- fondo: dal bianco della banchisa al buio del fondo ---------- */
-  var lightShades=['#E9F0F4','#E4EDF1','#DDE9EF','#CFE0E8','#B7D0DC','#8FB0BF','#284C5C','#0C2333'];
+  var iceShades=['#E9F0F4','#E5EEF2','#DEEAF0','#D6E5EC','#CBDFE8'];
   function tick(){
     var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
     var p=h>0?Math.min(y/h,1):0;
@@ -485,8 +547,11 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding:40px 0 90px}
     var deep=active.dataset.depth!=='0';
     document.getElementById('railDLab').textContent = deep ? 'Profondità' : 'sul ghiaccio';
     document.body.classList.toggle('deep',deep);
-    if(!reduce){
-      sky.style.background=lightShades[Math.min(Math.floor(p*lightShades.length),lightShades.length-1)];
+    /* fondo e testo cambiano INSIEME: chiaro sul ghiaccio, buio sul relitto */
+    if(deep){
+      sky.style.background='#0C2333';
+    } else {
+      sky.style.background=iceShades[Math.min(Math.floor(p*iceShades.length),iceShades.length-1)];
     }
   }
   var ticking=false;
