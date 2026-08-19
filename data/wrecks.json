@@ -1,0 +1,112 @@
+[
+ {
+  "n": "Nuestra Señora de Atocha",
+  "y": 1622,
+  "lat": 24.5,
+  "lon": -82.0,
+  "d": 17,
+  "st": "ready",
+  "f": "Galeone spagnolo affondato in un uragano due giorni dopo la partenza da L'Avana. Ritrovato nel 1985 dopo sedici anni di ricerca.",
+  "href": "atocha.html"
+ },
+ {
+  "n": "Vasa",
+  "y": 1628,
+  "lat": 59.325,
+  "lon": 18.09,
+  "d": 32,
+  "st": "ready",
+  "href": "vasa.html",
+  "f": "Affondò dopo poco più di un chilometro di navigazione nel porto di Stoccolma, davanti alla folla. Recuperata quasi intera nel 1961."
+ },
+ {
+  "n": "RMS Titanic",
+  "y": 1912,
+  "lat": 41.726,
+  "lon": -49.948,
+  "d": 3800,
+  "st": "next",
+  "f": "Individuato nel 1985 da Robert Ballard e Jean-Louis Michel, a circa 3.800 metri nell'Atlantico settentrionale."
+ },
+ {
+  "n": "Endurance",
+  "y": 1915,
+  "lat": -68.733,
+  "lon": -52.333,
+  "d": 3008,
+  "st": "planned",
+  "f": "La nave di Ernest Shackleton, ritrovata nel 2022 nel Mare di Weddell sotto la banchisa antartica."
+ },
+ {
+  "n": "Mary Rose",
+  "y": 1545,
+  "lat": 50.79,
+  "lon": -1.1,
+  "d": 14,
+  "st": "planned",
+  "f": "Ammiraglia di Enrico VIII, affondata nel Solent durante una battaglia e recuperata nel 1982."
+ },
+ {
+  "n": "Relitto di Anticitera",
+  "y": -70,
+  "lat": 35.887,
+  "lon": 23.31,
+  "d": 50,
+  "st": "planned",
+  "f": "Nave romana con a bordo il meccanismo di Anticitera, trovata dai pescatori di spugne nel 1900."
+ },
+ {
+  "n": "Uluburun",
+  "y": -1300,
+  "lat": 36.126,
+  "lon": 29.685,
+  "d": 50,
+  "st": "planned",
+  "f": "Relitto dell'età del bronzo al largo della Turchia, tra i più antichi mai scavati sistematicamente."
+ },
+ {
+  "n": "San José",
+  "y": 1708,
+  "lat": 10.0,
+  "lon": -75.9,
+  "d": 600,
+  "st": "planned",
+  "f": "Galeone spagnolo al largo di Cartagena, al centro di una disputa internazionale ancora aperta sulla proprietà."
+ },
+ {
+  "n": "SS Andrea Doria",
+  "y": 1956,
+  "lat": 40.487,
+  "lon": -69.85,
+  "d": 76,
+  "st": "planned",
+  "f": "Transatlantico italiano affondato al largo di Nantucket dopo la collisione con la Stockholm."
+ },
+ {
+  "n": "USS Arizona",
+  "y": 1941,
+  "lat": 21.365,
+  "lon": -157.95,
+  "d": 12,
+  "st": "planned",
+  "f": "Affondata a Pearl Harbor. È un cimitero di guerra e un memoriale nazionale: nessuna localizzazione di dettaglio."
+ },
+ {
+  "n": "Bismarck",
+  "y": 1941,
+  "lat": 48.167,
+  "lon": -16.2,
+  "d": 4791,
+  "st": "planned",
+  "f": "Corazzata tedesca individuata nel 1989 a quasi 4.800 metri di profondità nell'Atlantico."
+ },
+ {
+  "n": "Batavia",
+  "y": 1629,
+  "lat": -28.49,
+  "lon": 113.79,
+  "d": 5,
+  "st": "planned",
+  "f": "Nave della Compagnia olandese delle Indie Orientali, naufragata al largo dell'Australia occidentale."
+ }
+]

@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nuestra Señora de Atocha — 1622</title>
+<meta name="description" content="Il galeone spagnolo affondato nel 1622 al largo della Florida e ritrovato nel 1985 dopo sedici anni di ricerca. Rotta, carico, sito del relitto e fonti.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nuestra Señora de Atocha — 1622">
+<meta property="og:description" content="Partì da L'Avana il 4 settembre 1622. Affondò due giorni dopo, al due per cento del viaggio. Fu ritrovata 363 anni più tardi.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#050D14">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --abyss:#050D14; --water:#0C2130; --shelf:#123243;
+  --silver:#AEB6BA; --verdigris:#4F9080; --gold:#BE9247; --paper:#DED8C8;
+  --rule:rgba(174,182,186,.18);
+  --display:"Bodoni Moda",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--abyss);color:var(--paper);font-family:var(--body);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#seawater{position:fixed;inset:0;z-index:-4;background:var(--abyss);transition:background 1.4s ease}
+#shafts{position:fixed;inset:0;z-index:-3;pointer-events:none;opacity:1;transition:opacity .6s linear;overflow:hidden}
+#shafts i{position:absolute;top:-30%;height:160%;display:block;
+  background:linear-gradient(to bottom,rgba(140,190,200,.14),rgba(140,190,200,0) 70%);
+  filter:blur(14px);transform-origin:top center}
+#snow{position:fixed;inset:0;z-index:-2;pointer-events:none}
+#pressure{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .8s linear;
+  background:radial-gradient(ellipse at 50% 45%,transparent 30%,rgba(2,6,10,.85) 100%)}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--silver);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--verdigris)}
+.rail-num{font-size:22px;color:var(--paper);font-weight:500;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.5;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(5,13,20,.75)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--verdigris);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(42px,8vw,86px);line-height:1.02;letter-spacing:-.015em}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(28px,4.4vw,44px);line-height:1.12;margin-bottom:22px;letter-spacing:-.01em}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(222,216,200,.86)}
+.lede{font-size:20px;color:var(--paper)}
+em{font-style:italic;color:var(--silver)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--silver);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--silver)}
+.coord b{display:block;color:var(--paper);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid rgba(190,146,71,.4);padding:5px 10px;margin-top:28px;align-self:flex-start}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(174,182,186,.5);text-transform:uppercase;animation:bob 3s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(6px);opacity:.9}}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(174,182,186,.08)}
+.stat .v{font-family:var(--display);font-size:clamp(32px,5vw,46px);line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--silver);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--gold);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-size:clamp(26px,4.6vw,42px);line-height:1.2;quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--silver);margin-top:18px}
+
+#pile{margin:6px 0 30px;height:74px;display:flex;align-items:flex-end;gap:3px}
+#pile b{display:block;width:26px;background:var(--silver);opacity:.85;transform:scaleY(0);transform-origin:bottom;
+  transition:transform .55s cubic-bezier(.2,.8,.3,1)}
+.in #pile b{transform:scaleY(1)}
+
+.tl{border-left:1px solid var(--rule);margin-top:8px}
+.tl-item{padding:0 0 34px 28px;position:relative}
+.tl-item::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--abyss);border:1px solid var(--silver)}
+.tl-item.key::before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 5px rgba(190,146,71,.15)}
+.tl-y{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--verdigris);margin-bottom:5px}
+.tl-item.key .tl-y{color:var(--gold)}
+.tl-t{font-size:17px;color:var(--paper);margin-bottom:4px}
+.tl-d{font-size:14.5px;color:rgba(222,216,200,.6);max-width:52ch}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--silver);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(174,182,186,.08);vertical-align:top}
+td.n{color:var(--paper);white-space:nowrap}
+.bar{height:3px;background:rgba(174,182,186,.14);margin-top:9px;position:relative;max-width:230px}
+.bar span{position:absolute;left:0;top:0;bottom:0;background:var(--verdigris);width:0;transition:width 1.3s cubic-bezier(.2,.7,.3,1)}
+.note{font-family:var(--mono);font-size:11.5px;color:rgba(174,182,186,.65);line-height:1.7;margin-top:22px;max-width:60ch}
+
+.films{display:grid;gap:2px;margin-top:24px;border-top:1px solid var(--rule)}
+.film{display:flex;gap:22px;align-items:baseline;padding:20px 0;border-bottom:1px solid rgba(174,182,186,.08);
+  text-decoration:none;color:inherit;transition:padding-left .3s ease,border-color .3s ease}
+.film:hover,.film:focus-visible{padding-left:14px;border-bottom-color:var(--gold)}
+.film .yr{font-family:var(--mono);font-size:12px;color:var(--gold);min-width:52px}
+.film .tt{font-size:16.5px;color:var(--paper)}
+.film .dd{font-size:13.5px;color:rgba(222,216,200,.55);margin-top:3px;max-width:48ch}
+.film .go{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--silver);opacity:0;transition:opacity .3s}
+.film:hover .go,.film:focus-visible .go{opacity:1}
+
+.recon{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  color:var(--silver);border:1px dashed rgba(174,182,186,.4);padding:6px 11px;margin-bottom:22px;align-self:flex-start}
+
+.hull .part{cursor:pointer}
+.hull .part *{transition:opacity .25s,fill .25s}
+.hull .part:hover .hot,.hull .part:focus .hot{opacity:.55}
+.hot{opacity:0;fill:var(--gold)}
+
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.ctrl button{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  background:transparent;color:var(--silver);border:1px solid var(--rule);padding:9px 16px;cursor:pointer;
+  transition:border-color .25s,color .25s}
+.ctrl button:hover{border-color:var(--silver);color:var(--paper)}
+.ctrl button[aria-pressed="true"]{border-color:var(--gold);color:var(--gold)}
+#legPlan,#legReal{transition:opacity .5s}
+#legReal{stroke-dasharray:1400;stroke-dashoffset:1400;transition:stroke-dashoffset 2.6s ease-out}
+#legReal.run{stroke-dashoffset:0}
+#routeinfo{font-family:var(--mono);font-size:12px;color:var(--silver);margin-top:16px;min-height:52px;
+  border-top:1px solid var(--rule);padding-top:14px;line-height:1.7}
+#routeinfo b{color:var(--gold);font-weight:500}
+
+.photolinks{display:grid;gap:2px;margin-top:22px;border-top:1px solid var(--rule)}
+.photolinks a{display:flex;gap:20px;align-items:baseline;padding:18px 0;text-decoration:none;color:inherit;
+  border-bottom:1px solid rgba(174,182,186,.08);transition:padding-left .3s ease,border-color .3s ease}
+.photolinks a:hover,.photolinks a:focus-visible{padding-left:14px;border-bottom-color:var(--verdigris)}
+.photolinks .arch{font-family:var(--mono);font-size:11px;color:var(--verdigris);min-width:120px}
+.photolinks .ttl{font-size:16px;color:var(--paper)}
+.photolinks .meta{font-size:13px;color:rgba(222,216,200,.5);margin-top:3px}
+
+.closing{border-top:1px solid var(--gold);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--silver);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:transparent;border:1px solid var(--rule);color:var(--paper);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--silver);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--gold);color:#1B1206;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.85}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--verdigris)}
+.signup .msg.err{color:#E0846A}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--silver);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--gold);border-color:var(--gold)}
+
+.sitewrap{margin-top:14px;border:1px solid var(--rule);background:rgba(18,50,67,.35);padding:20px}
+.sitewrap svg{width:100%;height:auto;display:block}
+.zone{cursor:pointer}
+.zone circle,.zone ellipse,.zone rect{transition:opacity .25s}
+.zone:hover circle,.zone:hover ellipse,.zone:focus circle{opacity:1}
+#zoneinfo{font-family:var(--mono);font-size:12px;color:var(--silver);margin-top:16px;min-height:44px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.6}
+#zoneinfo b{color:var(--gold);font-weight:500}
+
+.src{font-family:var(--mono);font-size:11.5px;color:rgba(174,182,186,.6);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:16px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+  .film{flex-wrap:wrap;gap:10px} .film .go{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #seawater,#pressure,#shafts{transition:none}
+  .scrollcue,.conf .dot{animation:none}
+  #snow{display:none}
+  #pile b{transform:scaleY(1)}
+}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="seawater"></div>
+<div id="shafts"></div>
+<canvas id="snow"></canvas>
+<div id="pressure"></div>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Anno</div><div class="rail-num" id="railYear">1622</div></div>
+  <div class="rail-block"><div class="rail-lab">Profondità</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1622" data-depth="0">
+  <div class="eyebrow">Galeone spagnolo · Flotta di Tierra Firme</div>
+  <h1>Nuestra Señora<br>de Atocha</h1>
+  <div class="sub">AFFONDATA 6 SETTEMBRE 1622 · RITROVATA 20 LUGLIO 1985</div>
+  <div class="coordbox">
+    <div class="coord">Posizione approssimativa<b>24,5° N · 82,0° O</b></div>
+    <div class="coord">Profondità<b>~17 m</b></div>
+    <div class="coord">Anni di ricerca<b>16</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>POSIZIONE APPROSSIMATA — AREA DEL SITO, NON PUNTO ESATTO</div>
+  <div class="scrollcue">↓ scorri per scendere</div>
+</section>
+
+<section class="reveal" data-year="1985" data-depth="0">
+  <div class="eyebrow">Perché questo relitto</div>
+  <h2>Il naufragio del secolo</h2>
+  <p class="lede">Di relitti conosciuti ce ne sono più di duecentomila. L'Atocha è quello che ha cambiato il modo in cui il mondo guarda al fondo del mare.</p>
+  <p>È regolarmente citata come il recupero di relitto più prezioso mai realizzato. Ha prodotto una sentenza della Corte Suprema degli Stati Uniti sulla proprietà dei tesori sommersi. Ha spinto per la prima volta un'operazione di caccia al tesoro ad assumere un archeologo capo e a documentare il sito con metodo scientifico. E ha generato il dibattito — ancora aperto — su chi debba possedere il patrimonio culturale subacqueo.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">363</div><div class="k">anni sul fondo</div></div>
+    <div class="stat"><div class="v">16</div><div class="k">anni di ricerca</div></div>
+    <div class="stat"><div class="v">265</div><div class="k">persone a bordo</div></div>
+    <div class="stat"><div class="v">5</div><div class="k">sopravvissuti</div></div>
+  </div>
+  <p class="note">Le valutazioni economiche del recupero variano molto a seconda della fonte e dell'anno di stima: la cifra più ricorrente è di circa 450 milioni di dollari. Su questa pagina resta un ordine di grandezza, non un dato.</p>
+</section>
+
+<section class="reveal" data-year="1622" data-depth="0">
+  <div class="eyebrow">4 settembre 1622 · L'Avana</div>
+  <h2>Ventotto navi lasciano Cuba</h2>
+  <p class="lede">La flotta di Tierra Firme salpa per la Spagna carica della ricchezza di un impero: argento dal Perù e dal Messico, oro e smeraldi dalla Colombia, perle dal Venezuela.</p>
+  <p>L'Atocha viaggia come <em>almirante</em>, la retroguardia: la nave più armata, quella che protegge le altre da un attacco. A bordo ci sono 265 persone. È partita in ritardo — un ritardo che deciderà tutto.</p>
+</section>
+
+<section class="reveal" data-year="1622" data-depth="2">
+  <div class="eyebrow">La nave</div>
+  <h2>Che aspetto aveva</h2>
+  <div class="recon">RICOSTRUZIONE — NESSUNA IMMAGINE CONTEMPORANEA DELL'ATOCHA È SOPRAVVISSUTA</div>
+  <p>Non esiste un dipinto, un disegno o un piano costruttivo dell'Atocha. Quello che segue è lo schema di un galeone spagnolo da guerra e trasporto del primo Seicento, costruito all'Avana, delle dimensioni indicate dalle fonti d'archivio. Non è la nave: è la classe di nave.</p>
+  <div class="sitewrap">
+    <svg viewBox="0 0 640 320" role="img" aria-label="Schema di un galeone spagnolo del 1622" class="hull">
+      <title>Schema ricostruttivo di un galeone spagnolo</title>
+      <line x1="30" y1="214" x2="610" y2="214" stroke="rgba(140,190,200,.35)" stroke-width="1"/>
+      <text x="614" y="218" fill="rgba(140,190,200,.5)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="end" dy="-6">LINEA DI GALLEGGIAMENTO</text>
+
+      <path d="M118 214 L150 176 L470 176 L505 186 L520 214 Z" fill="rgba(174,182,186,.1)" stroke="#AEB6BA" stroke-width="1.2"/>
+      <path d="M118 214 Q 150 250, 300 254 Q 460 252, 520 214 Z" fill="rgba(18,50,67,.7)" stroke="#AEB6BA" stroke-width="1.2"/>
+
+      <g class="part" tabindex="0" data-t="Castello di poppa" data-d="La sovrastruttura alta a poppa ospitava gli alloggi degli ufficiali e dei passeggeri facoltosi. Sull'Atocha è la parte che non è mai stata ritrovata: il sterncastle risulta ancora mancante.">
+        <rect class="hot" x="440" y="126" width="88" height="52"/>
+        <path d="M446 176 L446 138 L520 138 L524 176 Z" fill="rgba(174,182,186,.16)" stroke="#AEB6BA" stroke-width="1.2"/>
+        <path d="M456 138 L456 122 L512 122 L514 138 Z" fill="rgba(174,182,186,.1)" stroke="#AEB6BA" stroke-width="1"/>
+        <text x="484" y="108" fill="#AEB6BA" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">CASTELLO DI POPPA</text>
+      </g>
+
+      <g class="part" tabindex="0" data-t="Ponte di batteria" data-d="Venti cannoni di bronzo secondo il manifesto. L'Atocha viaggiava come almirante: era la nave armata che chiudeva la flotta e la difendeva da corsari e navi nemiche.">
+        <rect class="hot" x="160" y="180" width="280" height="30"/>
+        <circle cx="188" cy="196" r="5" fill="none" stroke="#4F9080" stroke-width="1.2"/>
+        <circle cx="228" cy="196" r="5" fill="none" stroke="#4F9080" stroke-width="1.2"/>
+        <circle cx="268" cy="196" r="5" fill="none" stroke="#4F9080" stroke-width="1.2"/>
+        <circle cx="308" cy="196" r="5" fill="none" stroke="#4F9080" stroke-width="1.2"/>
+        <circle cx="348" cy="196" r="5" fill="none" stroke="#4F9080" stroke-width="1.2"/>
+        <circle cx="388" cy="196" r="5" fill="none" stroke="#4F9080" stroke-width="1.2"/>
+        <text x="288" y="240" fill="#4F9080" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">20 CANNONI DI BRONZO</text>
+      </g>
+
+      <g class="part" tabindex="0" data-t="Stiva" data-d="Qui stavano ventiquattro tonnellate di lingotti d'argento, le casse di monete, i lingotti di rame, l'indaco e il tabacco. È il peso di questa stiva che ha determinato dove il relitto si è fermato sul fondale.">
+        <rect class="hot" x="150" y="214" width="330" height="36"/>
+        <rect x="200" y="222" width="26" height="7" fill="#BE9247" opacity=".8"/>
+        <rect x="236" y="222" width="26" height="7" fill="#BE9247" opacity=".8"/>
+        <rect x="272" y="222" width="26" height="7" fill="#BE9247" opacity=".8"/>
+        <rect x="218" y="233" width="26" height="7" fill="#BE9247" opacity=".8"/>
+        <rect x="254" y="233" width="26" height="7" fill="#BE9247" opacity=".8"/>
+        <text x="352" y="234" fill="#BE9247" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">STIVA — IL CARICO</text>
+      </g>
+
+      <g class="part" tabindex="0" data-t="Alberatura" data-d="Tre alberi a vele quadre più la mezzana. Fu proprio all'albero di mezzana che si aggrapparono i cinque sopravvissuti mentre la nave affondava.">
+        <rect class="hot" x="180" y="30" width="300" height="150"/>
+        <line x1="212" y1="176" x2="212" y2="52" stroke="#AEB6BA" stroke-width="2"/>
+        <line x1="176" y1="76" x2="248" y2="76" stroke="#AEB6BA" stroke-width="1.2"/>
+        <line x1="316" y1="176" x2="316" y2="34" stroke="#AEB6BA" stroke-width="2.4"/>
+        <line x1="272" y1="60" x2="360" y2="60" stroke="#AEB6BA" stroke-width="1.2"/>
+        <line x1="286" y1="102" x2="346" y2="102" stroke="#AEB6BA" stroke-width="1.2"/>
+        <line x1="430" y1="138" x2="430" y2="66" stroke="#AEB6BA" stroke-width="1.8"/>
+        <line x1="402" y1="86" x2="458" y2="86" stroke="#AEB6BA" stroke-width="1.2"/>
+        <line x1="118" y1="214" x2="66" y2="188" stroke="#AEB6BA" stroke-width="1.8"/>
+      </g>
+
+      <text x="30" y="28" fill="rgba(174,182,186,.45)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">CIRCA 550 TONNELLATE · COSTRUITA ALL'AVANA · CLICCA UNA PARTE</text>
+    </svg>
+    <div id="zoneinfo2">Seleziona una parte della nave per leggerne la descrizione.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1622" data-depth="3">
+  <div class="eyebrow">La rotta</div>
+  <h2>Dove doveva arrivare</h2>
+  <p>La Carrera de Indias era una rotta fissa, ripetuta ogni anno per due secoli: risalire lo stretto della Florida sfruttando la Corrente del Golfo, prendere gli alisei verso le Azzorre, scendere su Siviglia. L'Atocha ne percorse una frazione minima.</p>
+  <div class="sitewrap">
+    <svg viewBox="0 0 640 330" role="img" aria-label="Mappa schematica della rotta prevista da L'Avana a Siviglia">
+      <title>Rotta prevista e rotta effettiva</title>
+      <path d="M40 250 L120 244 L210 250 L232 262 L150 268 L60 262 Z" fill="rgba(174,182,186,.13)" stroke="rgba(174,182,186,.35)" stroke-width="1"/>
+      <text x="108" y="286" fill="rgba(174,182,186,.55)" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1">CUBA</text>
+      <path d="M96 196 L112 150 L132 148 L142 190 L128 226 L108 224 Z" fill="rgba(174,182,186,.13)" stroke="rgba(174,182,186,.35)" stroke-width="1"/>
+      <text x="118" y="138" fill="rgba(174,182,186,.55)" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="middle" letter-spacing="1">FLORIDA</text>
+      <circle cx="452" cy="150" r="4" fill="rgba(174,182,186,.4)"/>
+      <text x="452" y="136" fill="rgba(174,182,186,.55)" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="middle" letter-spacing="1">AZZORRE</text>
+      <path d="M560 116 L600 110 L610 146 L578 168 L556 150 Z" fill="rgba(174,182,186,.13)" stroke="rgba(174,182,186,.35)" stroke-width="1"/>
+      <text x="584" y="188" fill="rgba(174,182,186,.55)" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="middle" letter-spacing="1">SIVIGLIA</text>
+
+      <path id="legPlan" d="M104 244 C 108 224, 118 208, 140 196 C 200 168, 300 156, 380 152 C 420 150, 440 150, 452 150 C 500 152, 540 148, 574 142"
+            fill="none" stroke="rgba(79,144,128,.5)" stroke-width="1.4" stroke-dasharray="5 6"/>
+      <path id="legReal" d="M104 244 C 108 224, 118 208, 140 196 C 150 191, 158 188, 166 186"
+            fill="none" stroke="#BE9247" stroke-width="2.4" stroke-linecap="round"/>
+
+      <circle cx="104" cy="244" r="5" fill="#4F9080"/>
+      <text x="104" y="230" fill="#4F9080" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="middle" letter-spacing="1">L'AVANA</text>
+      <circle id="ship" cx="104" cy="244" r="4.5" fill="#DED8C8"/>
+      <g id="sinkMark" opacity="0">
+        <circle cx="166" cy="186" r="10" fill="none" stroke="#BE9247" stroke-width="1"/>
+        <circle cx="166" cy="186" r="4" fill="#BE9247"/>
+        <text x="182" y="178" fill="#BE9247" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1">6 SETT. 1622</text>
+      </g>
+      <text x="30" y="28" fill="rgba(174,182,186,.45)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">MAPPA SCHEMATICA — GEOGRAFIA SEMPLIFICATA, NON IN SCALA</text>
+    </svg>
+    <div class="ctrl">
+      <button id="btnPlan" aria-pressed="true">Rotta prevista</button>
+      <button id="btnReal" aria-pressed="false">Dove è arrivata</button>
+    </div>
+    <div id="routeinfo"><b>Rotta prevista · L'Avana → Siviglia</b><br>Circa 4.500 miglia nautiche: stretto della Florida, Corrente del Golfo, traversata atlantica, scalo alle Azzorre, arrivo in Andalusia. Tempo previsto: due mesi abbondanti.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1622" data-depth="4">
+  <div class="eyebrow">6 settembre 1622 · Stretto della Florida</div>
+  <h2>L'uragano</h2>
+  <p>Il giorno dopo la partenza la flotta viene raggiunta da un uragano mentre entra nello stretto della Florida. Al mattino del 6 settembre otto navi giacciono sul fondo, disperse dalle Marquesas Keys alle Dry Tortugas.</p>
+  <p class="lede">L'Atocha colpisce una barriera corallina e affonda. Sopravvivono in cinque, aggrappati all'albero di mezzana.</p>
+  <p>Gli spagnoli segnano il punto della perdita e si spostano a soccorrere le altre navi. Non lo ritroveranno mai più: il 5 ottobre un secondo uragano colpisce il relitto e lo disperde per miglia. Per sessant'anni i recuperatori spagnoli cercheranno l'Atocha senza trovarne traccia.</p>
+</section>
+
+<section class="reveal" data-year="1969" data-depth="8">
+  <div class="eyebrow">1969 · Key West</div>
+  <h2>«Today's the day»</h2>
+  <p>Mel Fisher, ex allevatore di polli diventato cacciatore di tesori, inizia con la sua Treasure Salvors una ricerca che durerà sedici anni. Ogni mattina ripete alla squadra la stessa frase, che finirà stampata sulle magliette di mezza Key West.</p>
+  <p>La svolta non arriva dal mare ma da un archivio: lo storico Eugene Lyon, lavorando all'Archivo General de Indias di Siviglia, ricostruisce i documenti che spostano la ricerca nell'area giusta.</p>
+</section>
+
+<section class="reveal" data-year="1975" data-depth="12">
+  <div class="eyebrow">La scia</div>
+  <h2>Sedici anni di briciole</h2>
+  <p>Il relitto non si trova tutto insieme. Si trova un pezzo alla volta, seguendo una scia dispersa dalle tempeste — mesi di nulla, poi un frammento che dice soltanto: siete vicini.</p>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-y">1973</div>
+      <div class="tl-t">Tre lingotti d'argento</div>
+      <div class="tl-d">I pesi e i numeri di conto corrispondono a quelli registrati nel manifesto di carico dell'Atocha, conservato a Siviglia. È la prima prova documentale che si tratta della nave giusta.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-y">1975</div>
+      <div class="tl-t">Cinque cannoni di bronzo — e il prezzo</div>
+      <div class="tl-d">I cannoni confermano l'identificazione. Nello stesso anno il ribaltamento della barca di recupero Northwind uccide Dirk Fisher, figlio di Mel, sua moglie Angel e il sommozzatore Rick Gage.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-y">1° luglio 1982</div>
+      <div class="tl-t">La Corte Suprema</div>
+      <div class="tl-d">Dopo otto anni di causa, la Corte Suprema degli Stati Uniti dà ragione a Fisher contro lo Stato della Florida sulla proprietà del recuperato. È una sentenza che segna il diritto marittimo.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-y">18 luglio 1985</div>
+      <div class="tl-t">Hawks Channel</div>
+      <div class="tl-d">Kane Fisher, al comando della Dauntless, recupera una pietra di zavorra, cerchi di botte, lingotti di rame e quasi mille monete d'argento.</div>
+    </div>
+    <div class="tl-item key">
+      <div class="tl-y">20 luglio 1985</div>
+      <div class="tl-t">Il main pile</div>
+      <div class="tl-d">Due sommozzatori scendono su un'anomalia del fondale. Davanti a loro c'è quella che sembra una scogliera di pietre. È una scogliera di lingotti d'argento. Sono passati esattamente dieci anni dal giorno in cui è affondata la Northwind.</div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1985" data-depth="17">
+  <div class="eyebrow">20 luglio 1985 · 17 metri</div>
+  <div id="pile" aria-hidden="true"></div>
+  <div class="moment">
+    <q>Put away the charts; we've found the main pile</q>
+    <cite>KANE FISHER — VIA RADIO ALLA BASE DI TREASURE SALVORS, ORE 13:05</cite>
+  </div>
+  <p>Nel giro di pochi giorni i marchi degli spedizionieri impressi sui lingotti vengono confrontati con il manifesto dell'Archivo de Indias. Corrispondono. Dopo 363 anni il deposito principale dell'Atocha è tornato alla luce.</p>
+</section>
+
+<section class="reveal" data-year="1985" data-depth="17">
+  <div class="eyebrow">Archivio filmato</div>
+  <h2>Guardarlo accadere</h2>
+  <p>Tre filmati, tre momenti diversi della stessa storia. Il primo è girato mentre la ricerca sta ancora fallendo: nessuno sa che mancano nove anni.</p>
+  <div class="films">
+    <a class="film" href="https://www.youtube.com/watch?v=B-mSwf_wMNI" target="_blank" rel="noopener">
+      <span class="yr">1976</span>
+      <span><span class="tt">National Geographic — Treasure!</span><span class="dd">La caccia è in corso e il main pile non è ancora stato trovato. Fisher è già una celebrità, ma non ha ancora niente in mano.</span></span>
+      <span class="go">YouTube ↗</span>
+    </a>
+    <a class="film" href="https://www.youtube.com/watch?v=PL7ByrkNigA" target="_blank" rel="noopener">
+      <span class="yr">1985</span>
+      <span><span class="tt">Il tesoro arriva al molo</span><span class="dd">Filmato d'archivio: la Dauntless rientra a Key West dopo la scoperta del 20 luglio. È il momento esatto in cui la storia cambia.</span></span>
+      <span class="go">YouTube ↗</span>
+    </a>
+    <a class="film" href="https://www.youtube.com/watch?v=g7jey7YKYp0" target="_blank" rel="noopener">
+      <span class="yr">1986</span>
+      <span><span class="tt">National Geographic — Quest for the Atocha</span><span class="dd">Il documentario girato subito dopo, narrato da Martin Sheen. Il recupero, il laboratorio di conservazione, i reperti.</span></span>
+      <span class="go">YouTube ↗</span>
+    </a>
+  </div>
+</section>
+
+<section class="reveal" data-year="1985" data-depth="17">
+  <div class="eyebrow">Archivio fotografico</div>
+  <h2>Vedere i reperti</h2>
+  <p>Qui c'è un problema che vale la pena dire ad alta voce: quasi tutte le fotografie del tesoro dell'Atocha appartengono all'organizzazione che lo ha recuperato, e non si possono ripubblicare. Le immagini che circolano liberamente in rete, nella maggior parte dei casi, circolano senza averne il diritto.</p>
+  <p>Gli Archivi di Stato della Florida fanno eccezione: hanno fotografato il tesoro in esposizione e rendono le immagini utilizzabili con la sola attribuzione. Sono queste le fonti giuste da cui partire.</p>
+  <div class="photolinks">
+    <a href="https://www.floridamemory.com/items/show/98072" target="_blank" rel="noopener">
+      <span class="arch">FLORIDA MEMORY</span>
+      <span><span class="ttl">Il tesoro dell'Atocha in esposizione</span><span class="meta">Fotografia di Dale M. McDonald, febbraio 1982 · State Archives of Florida</span></span>
+    </a>
+    <a href="https://www.floridamemory.com/items/show/335786" target="_blank" rel="noopener">
+      <span class="arch">FLORIDA MEMORY</span>
+      <span><span class="ttl">Oro dell'Atocha al Mel Fisher Maritime Museum</span><span class="meta">Florida Division of Tourism, febbraio 1992 · State Archives of Florida</span></span>
+    </a>
+    <a href="https://www.floridamemory.com/items/show/295222" target="_blank" rel="noopener">
+      <span class="arch">FLORIDA MEMORY</span>
+      <span><span class="ttl">Shipwreck of the Atocha — dossier d'archivio</span><span class="meta">Include la catena d'oro di otto piedi trovata da Don Kincaid il 13 giugno 1971</span></span>
+    </a>
+  </div>
+  <p class="note">Le immagini restano sui siti d'archivio: questa pagina non le ospita. È la scelta corretta finché non c'è una licenza esplicita, ed è anche quella che ti tiene fuori dai guai il giorno in cui il progetto diventa pubblico.</p>
+</section>
+
+<section class="reveal" data-year="1622" data-depth="17">
+  <div class="eyebrow">Le persone</div>
+  <h2>Duecentosessantacinque</h2>
+  <p class="lede">Tanti salirono a bordo all'Avana il 4 settembre. Due giorni dopo ne erano rimasti cinque, aggrappati all'albero di mezzana: secondo i resoconti tre marinai e due schiavi.</p>
+  <p>A bordo di un galeone della Carrera de Indias non c'era solo un equipaggio. C'erano soldati, mercanti, religiosi diretti in Spagna, famiglie nobiliari che viaggiavano con i propri gioielli addosso — ed è per questo che tra i reperti compaiono anelli, croci e catene d'oro personali, non solo lingotti di Stato. Gli elenchi dei passeggeri sono conservati nello stesso archivio di Siviglia dove Eugene Lyon trovò il manifesto di carico.</p>
+  <h2 style="margin-top:46px">Da dove veniva quell'argento</h2>
+  <p>Le ventiquattro tonnellate nella stiva erano argento boliviano, coniato nelle zecche di Potosí, Lima e Città del Messico. Potosí era la miniera più produttiva del mondo, e funzionava con il lavoro forzato indigeno. Il carico dell'Atocha non era ricchezza generata: era ricchezza estratta.</p>
+  <p>Quando gli spagnoli tentarono il recupero, negli anni immediatamente successivi al naufragio, calarono sul fondo schiavi indigeni con l'aiuto di una campana subacquea. Sulla Santa Margarita recuperarono circa metà del carico. L'Atocha era troppo profonda e la abbandonarono.</p>
+  <p>E c'è una coincidenza che chiude il cerchio meglio di qualsiasi commento. Nel 1972, cercando l'Atocha, la squadra di Mel Fisher trovò un altro relitto. Non lingotti: ceppi di ferro. Era la <em>Henrietta Marie</em>, una nave negriera inglese. Cercando il tesoro avevano trovato il meccanismo che lo produceva.</p>
+  <p class="note">Questa scheda racconta un recupero eccezionale. Racconta anche che l'oggetto recuperato è il prodotto di un sistema coloniale fondato sul lavoro forzato, e che la questione di chi debba possedere il patrimonio culturale subacqueo — Stati, comunità d'origine, imprese di recupero — resta aperta.</p>
+</section>
+
+<section class="reveal" data-year="1985" data-depth="17">
+  <div class="eyebrow">Il carico</div>
+  <h2>Cosa dice il manifesto</h2>
+  <p>Questi non sono i numeri di quello che è stato trovato. Sono i numeri di quello che era <em>registrato a bordo</em> per il viaggio di ritorno del 1622 — e la differenza è il cuore della storia.</p>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Registrato nel manifesto</th></tr></thead>
+    <tbody>
+      <tr><td>Argento in lingotti<div class="bar"><span data-w="72"></span></div></td><td class="n">24 t · 1.038 lingotti</td></tr>
+      <tr><td>Monete d'argento<div class="bar"><span data-w="60"></span></div></td><td class="n">180.000 pesos</td></tr>
+      <tr><td>Lingotti di rame<div class="bar"><span data-w="40"></span></div></td><td class="n">582</td></tr>
+      <tr><td>Barre e dischi d'oro<div class="bar"><span data-w="24"></span></div></td><td class="n">125</td></tr>
+      <tr><td>Argenteria lavorata<div class="bar"><span data-w="18"></span></div></td><td class="n">1.200 libbre</td></tr>
+      <tr><td>Indaco<div class="bar"><span data-w="30"></span></div></td><td class="n">350 casse</td></tr>
+      <tr><td>Tabacco<div class="bar"><span data-w="34"></span></div></td><td class="n">525 balle</td></tr>
+      <tr><td>Cannoni di bronzo<div class="bar"><span data-w="12"></span></div></td><td class="n">20</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Fonte delle quantità: manifesto di carico del 1622, come riportato dalla Mel Fisher Maritime Heritage Society. Il recupero non ha esaurito il manifesto: secondo la stessa fonte circa 400 lingotti d'argento e oltre 100.000 monete potrebbero trovarsi ancora sul fondo. Registrato, recuperato e mancante sono tre cose diverse e su questa pagina restano separate.</p>
+</section>
+
+<section class="reveal" data-year="1985" data-depth="17">
+  <div class="eyebrow">Il sito</div>
+  <h2>Non un punto. Una scia.</h2>
+  <p>Il secondo uragano dell'ottobre 1622 ha smontato il relitto e lo ha sparso sul fondale. Per questo l'Atocha non si segna con uno spillo sulla mappa: si segna con un'area di dispersione, e il deposito principale è solo il punto in cui il materiale pesante si è fermato.</p>
+  <div class="sitewrap">
+    <svg viewBox="0 0 640 300" role="img" aria-label="Schema della dispersione del relitto">
+      <title>Schema della dispersione del sito Atocha</title>
+      <line x1="40" y1="266" x2="600" y2="266" stroke="rgba(174,182,186,.2)" stroke-width="1"/>
+      <text x="40" y="286" fill="rgba(174,182,186,.5)" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.5">NORDOVEST</text>
+      <text x="600" y="286" fill="rgba(174,182,186,.5)" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.5" text-anchor="end">SUDEST</text>
+      <path d="M70 70 C 200 90, 300 150, 420 190 S 540 215, 570 220" fill="none" stroke="rgba(79,144,128,.45)" stroke-width="1" stroke-dasharray="4 5"/>
+      <g class="zone" tabindex="0" data-t="Scia leggera" data-d="Frammenti dispersi dalla tempesta: cerchi di botte, ceramica, oggetti personali. È la parte che si trova per prima e che indica solo una direzione.">
+        <circle cx="92" cy="76" r="4" fill="#AEB6BA" opacity=".45"/>
+        <circle cx="130" cy="84" r="3" fill="#AEB6BA" opacity=".35"/>
+        <circle cx="168" cy="96" r="3.5" fill="#AEB6BA" opacity=".4"/>
+        <text x="92" y="52" fill="#AEB6BA" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1">SCIA LEGGERA</text>
+      </g>
+      <g class="zone" tabindex="0" data-t="Cannoni di bronzo" data-d="Cinque cannoni recuperati nel 1975. Pesanti, quindi vicini alla traiettoria della nave: sono stati un indicatore direzionale decisivo e hanno confermato l'identificazione.">
+        <ellipse cx="252" cy="126" rx="26" ry="9" fill="rgba(79,144,128,.3)"/>
+        <circle cx="243" cy="126" r="4" fill="#4F9080"/>
+        <circle cx="258" cy="124" r="4" fill="#4F9080"/>
+        <text x="226" y="106" fill="#4F9080" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1">CANNONI</text>
+      </g>
+      <g class="zone" tabindex="0" data-t="Zavorra e struttura" data-d="Pietre di zavorra e resti dello scafo. Dove si ferma la zavorra, di solito, il materiale pesante non è lontano.">
+        <ellipse cx="352" cy="164" rx="32" ry="12" fill="rgba(174,182,186,.16)"/>
+        <circle cx="342" cy="164" r="3" fill="#AEB6BA" opacity=".7"/>
+        <circle cx="356" cy="167" r="3" fill="#AEB6BA" opacity=".7"/>
+        <circle cx="364" cy="160" r="3" fill="#AEB6BA" opacity=".7"/>
+        <text x="320" y="142" fill="#AEB6BA" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1">ZAVORRA</text>
+      </g>
+      <g class="zone" tabindex="0" data-t="Deposito principale — 20 luglio 1985" data-d="Il primary cultural deposit. I lingotti d'argento accatastati che i sommozzatori hanno scambiato per una scogliera di pietre. È il punto in cui la scia finisce.">
+        <ellipse cx="486" cy="200" rx="46" ry="20" fill="rgba(190,146,71,.18)" stroke="#BE9247" stroke-width="1"/>
+        <rect x="466" y="194" width="16" height="4" fill="#BE9247"/>
+        <rect x="470" y="200" width="16" height="4" fill="#BE9247"/>
+        <rect x="486" y="196" width="16" height="4" fill="#BE9247"/>
+        <rect x="490" y="202" width="16" height="4" fill="#BE9247"/>
+        <text x="440" y="168" fill="#BE9247" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1">MAIN PILE</text>
+      </g>
+      <text x="40" y="30" fill="rgba(174,182,186,.45)" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1">SCHEMA — NON IN SCALA · CLICCA UNA ZONA</text>
+    </svg>
+    <div id="zoneinfo">Seleziona una zona dello schema per leggerne la descrizione.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1985" data-depth="17">
+  <div class="eyebrow">Nota metodologica</div>
+  <h2>Cosa questa pagina non fa</h2>
+  <p>Non pubblica coordinate precise. La posizione mostrata indica un'area, non un punto: è una scelta, non un limite tecnico. I siti archeologici subacquei si saccheggiano, e una mappa che li localizza al metro è uno strumento per farlo.</p>
+  <p>Non mescola quantità registrate e quantità recuperate. Non stima un valore complessivo del carico come se fosse un fatto. Dove una fonte dice una cosa e un'altra ne dice un'altra, il conflitto resta visibile invece di sparire dentro un numero unico.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 001 di 20</div>
+    <h2 style="margin-bottom:14px">La scheda 002 è pronta: il Vasa</h2>
+    <p>Affondò nel 1628 dopo poco più di un chilometro di navigazione, nel porto di Stoccolma, davanti alla folla venuta a vederla partire. Oggi è conservata quasi intera dentro un museo. È l'opposto esatto dell'Atocha, ed è per questo che viene subito dopo.</p>
+    <a class="globelink" style="margin-top:6px" href="vasa.html">Apri la scheda del Vasa →</a>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="globo.html">Vedi tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · Mel Fisher Maritime Heritage Society (manifesto di carico, cronologia) · Treasure Salvors / Mel Fisher's Treasures (deposito principale, 20 luglio 1985) · State Archives of Florida, Florida Memory (fotografie, recupero spagnolo del XVII secolo) · NOAA Office of Coast Survey (incertezza posizionale dei relitti) · Archivio General de Indias, Siviglia (manifesto originale, ricerca di Eugene Lyon) · National Geographic Society (documentari 1976 e 1986)<br><br>
+      Wreck Atlas · Prototipo
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), sea=document.getElementById('seawater');
+  var shafts=document.getElementById('shafts'), pressure=document.getElementById('pressure');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  var pile=document.getElementById('pile');
+  if(pile){ for(var i=0;i<14;i++){ var b=document.createElement('b');
+      b.style.height=(28+Math.random()*44)+'px';
+      b.style.transitionDelay=(i*55)+'ms'; pile.appendChild(b); } }
+
+  for(var s=0;s<5;s++){ var el=document.createElement('i');
+    el.style.left=(6+s*21)+'%'; el.style.width=(40+Math.random()*80)+'px';
+    el.style.transform='rotate('+(-9+Math.random()*18)+'deg)';
+    el.style.opacity=(.4+Math.random()*.6); shafts.appendChild(el); }
+
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in');
+        e.target.querySelectorAll('.bar span').forEach(function(b){ b.style.width=b.dataset.w+'%'; }); } });
+    },{threshold:.18});
+    sections.forEach(function(sec){ if(sec.classList.contains('reveal')) io.observe(sec); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(s){
+      s.classList.add('in');
+      s.querySelectorAll('.bar span').forEach(function(b){ b.style.width=b.dataset.w+'%'; });
+    });
+  }
+
+  var cv=document.getElementById('snow'), ctx=cv.getContext('2d'), parts=[], W=0,H=0, drift=0, lastY=0;
+  function size(){ W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    parts=[]; var n=Math.round(W*H/16000);
+    for(var i=0;i<n;i++) parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.3,v:.12+Math.random()*.35,o:.1+Math.random()*.45}); }
+  function draw(){ ctx.clearRect(0,0,W,H);
+    for(var i=0;i<parts.length;i++){ var p=parts[i];
+      p.y-=p.v+drift*p.r*1.6;
+      if(p.y<-4){ p.y=H+4; p.x=Math.random()*W; }
+      if(p.y>H+8){ p.y=-4; p.x=Math.random()*W; }
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fillStyle='rgba(206,216,220,'+p.o+')'; ctx.fill(); }
+    drift*=.92; requestAnimationFrame(draw); }
+  if(!reduce){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  var shades=['#050D14','#071522','#0A2030','#0C2130','#0E2A3A','#123243'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    drift=Math.min(Math.abs(y-lastY)/26,2.4); lastY=y;
+    var active=sections[0];
+    sections.forEach(function(sec){ if(sec.getBoundingClientRect().top<=window.innerHeight*0.55) active=sec; });
+    railYear.textContent=active.dataset.year; railDepth.textContent=active.dataset.depth;
+    if(!reduce){
+      sea.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)];
+      shafts.style.opacity=Math.max(0,1-p*2.6);
+      pressure.style.opacity=Math.min(p*1.15,.9);
+    }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  function wire(sel,target){
+    var info=document.getElementById(target); if(!info) return;
+    document.querySelectorAll(sel).forEach(function(z){
+      function show(){ info.innerHTML='<b>'+z.dataset.t+'</b><br>'+z.dataset.d; }
+      z.addEventListener('click',show); z.addEventListener('focus',show);
+      z.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} });
+    });
+  }
+  wire('.zone','zoneinfo');
+  wire('.part','zoneinfo2');
+
+  var plan=document.getElementById('legPlan'), real=document.getElementById('legReal');
+  var ship=document.getElementById('ship'), mark=document.getElementById('sinkMark');
+  var bPlan=document.getElementById('btnPlan'), bReal=document.getElementById('btnReal');
+  var rinfo=document.getElementById('routeinfo'), anim=null;
+
+  function sail(path,dur,then){
+    if(anim) cancelAnimationFrame(anim);
+    var len=path.getTotalLength(), t0=null;
+    (function step(ts){
+      if(!t0) t0=ts;
+      var k=Math.min((ts-t0)/dur,1);
+      var pt=path.getPointAtLength(len*k);
+      ship.setAttribute('cx',pt.x); ship.setAttribute('cy',pt.y);
+      if(k<1){ anim=requestAnimationFrame(step); } else if(then){ then(); }
+    })(performance.now());
+  }
+
+  if(bPlan&&bReal){
+    bPlan.addEventListener('click',function(){
+      bPlan.setAttribute('aria-pressed','true'); bReal.setAttribute('aria-pressed','false');
+      plan.style.opacity='1'; real.classList.remove('run'); mark.setAttribute('opacity','0');
+      rinfo.innerHTML='<b>Rotta prevista · L\'Avana → Siviglia</b><br>Circa 4.500 miglia nautiche: stretto della Florida, Corrente del Golfo, traversata atlantica, scalo alle Azzorre, arrivo in Andalusia. Tempo previsto: due mesi abbondanti.';
+      if(!reduce) sail(plan,5200);
+    });
+    bReal.addEventListener('click',function(){
+      bReal.setAttribute('aria-pressed','true'); bPlan.setAttribute('aria-pressed','false');
+      plan.style.opacity='.28'; real.classList.add('run');
+      rinfo.innerHTML='<b>Rotta effettiva · due giorni di navigazione</b><br>Partenza il 4 settembre 1622, affondamento il 6. Circa 100 miglia nautiche percorse su 4.500: poco più del 2 per cento del viaggio. La flotta non aveva ancora lasciato le acque della Florida.';
+      if(!reduce){ sail(real,1900,function(){ mark.setAttribute('opacity','1'); }); }
+      else { mark.setAttribute('opacity','1'); }
+    });
+  }
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={depth:0,seconds:0,events:[]};
+  function track(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        var ev={mark:m,sec:Math.round((Date.now()-t0)/1000)};
+        WRECK_METRICS.events.push(ev);
+        console.log('[wreck-atlas] scheda 001 · '+m+'% raggiunto a '+ev.sec+'s');
+      }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  }
+  window.addEventListener('scroll',track,{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] sessione: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla — collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>

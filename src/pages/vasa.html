@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vasa — 1628</title>
+<meta name="description" content="Il vascello di guerra svedese affondato dopo 1.300 metri di navigazione nel 1628, riportato in superficie intero nel 1961. La storia, il perché, il recupero.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vasa — 1628">
+<meta property="og:description" content="Navigò venti minuti. Restò sul fondo 333 anni. Oggi si visita a piedi.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0C1114">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tar:#0C1114; --baltic:#0B1613; --museum:#221607;
+  --oak:#C08A4E; --bronze:#7FA08F; --linen:#E7E0D1; --smoke:#A8AFA9;
+  --rule:rgba(168,175,169,.18);
+  --display:"Cormorant Garamond",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--tar);color:var(--linen);font-family:var(--body);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+#water{position:fixed;inset:0;z-index:-3;background:var(--tar);transition:background 1.4s ease}
+#warmth{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:0;transition:opacity 1s linear;
+  background:radial-gradient(ellipse at 50% 30%,rgba(192,138,78,.20),transparent 62%)}
+#silt{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;color:var(--smoke);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--bronze)}
+.rail-num{font-size:22px;color:var(--linen);font-weight:500;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.5;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(12,17,20,.78)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--bronze);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:500;font-size:clamp(46px,9vw,96px);line-height:.98;letter-spacing:.01em}
+h2{font-family:var(--display);font-weight:500;font-size:clamp(30px,4.8vw,48px);line-height:1.08;margin-bottom:22px}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(231,224,209,.86)}
+.lede{font-size:20px;color:var(--linen)}
+em{font-style:italic;color:var(--smoke)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--smoke);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--smoke)}
+.coord b{display:block;color:var(--linen);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  color:var(--bronze);border:1px solid rgba(127,160,143,.45);padding:5px 10px;margin-top:28px;align-self:flex-start}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--bronze)}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(168,175,169,.5);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(168,175,169,.08)}
+.stat .v{font-family:var(--display);font-size:clamp(34px,5vw,48px);line-height:1;color:var(--oak);font-variant-numeric:tabular-nums}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--smoke);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--oak);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-size:clamp(28px,5vw,46px);line-height:1.15;quotes:"\u201C" "\u201D"}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--smoke);margin-top:18px}
+
+.tl{border-left:1px solid var(--rule);margin-top:8px}
+.tl-item{padding:0 0 34px 28px;position:relative}
+.tl-item::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--tar);border:1px solid var(--smoke)}
+.tl-item.key::before{background:var(--oak);border-color:var(--oak);box-shadow:0 0 0 5px rgba(192,138,78,.15)}
+.tl-y{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--bronze);margin-bottom:5px}
+.tl-item.key .tl-y{color:var(--oak)}
+.tl-t{font-size:17px;color:var(--linen);margin-bottom:4px}
+.tl-d{font-size:14.5px;color:rgba(231,224,209,.6);max-width:52ch}
+
+.widget{border:1px solid var(--rule);background:rgba(11,22,19,.45);padding:20px;margin-top:10px}
+.widget svg{width:100%;height:auto;display:block}
+.wctrl{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);
+  font-family:var(--mono);font-size:11px;color:var(--smoke)}
+.wctrl input[type=range]{flex:1;min-width:140px;accent-color:#C08A4E}
+.wctrl button{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;background:transparent;
+  color:var(--smoke);border:1px solid var(--rule);padding:8px 14px;cursor:pointer;transition:border-color .25s,color .25s}
+.wctrl button[aria-pressed="true"]{border-color:var(--oak);color:var(--oak)}
+#wmsg{font-family:var(--mono);font-size:12px;color:var(--smoke);margin-top:14px;min-height:40px;line-height:1.6}
+#wmsg b{color:var(--oak);font-weight:500}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--smoke);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(168,175,169,.08);vertical-align:top}
+td.n{color:var(--linen);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:rgba(168,175,169,.68);line-height:1.7;margin-top:22px;max-width:60ch}
+
+.films{display:grid;gap:2px;margin-top:24px;border-top:1px solid var(--rule)}
+.film{display:flex;gap:22px;align-items:baseline;padding:20px 0;border-bottom:1px solid rgba(168,175,169,.08);
+  text-decoration:none;color:inherit;transition:padding-left .3s ease,border-color .3s ease}
+.film:hover,.film:focus-visible{padding-left:14px;border-bottom-color:var(--oak)}
+.film .yr{font-family:var(--mono);font-size:12px;color:var(--oak);min-width:52px}
+.film .tt{font-size:16.5px;color:var(--linen)}
+.film .dd{font-size:13.5px;color:rgba(231,224,209,.55);margin-top:3px;max-width:48ch}
+.film .go{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--smoke);opacity:0;transition:opacity .3s}
+.film:hover .go{opacity:1}
+
+.closing{border-top:1px solid var(--oak);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--smoke);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:transparent;border:1px solid var(--rule);color:var(--linen);font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--smoke);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:var(--oak);color:#20130A;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.85}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--bronze)}
+.signup .msg.err{color:#D98B6A}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--smoke);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--oak);border-color:var(--oak)}
+.src{font-family:var(--mono);font-size:11.5px;color:rgba(168,175,169,.6);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:16px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+  .film{flex-wrap:wrap;gap:10px} .film .go{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #water,#warmth{transition:none}
+  #silt{display:none}
+}
+:focus-visible{outline:2px solid var(--oak);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="water"></div>
+<canvas id="silt"></canvas>
+<div id="warmth"></div>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Anno</div><div class="rail-num" id="railYear">1628</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Profondità</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1628" data-depth="0">
+  <div class="eyebrow">Vascello di guerra svedese · Regno di Gustavo II Adolfo</div>
+  <h1>Vasa</h1>
+  <div class="sub">AFFONDATA 10 AGOSTO 1628 · RIEMERSA 24 APRILE 1961</div>
+  <div class="coordbox">
+    <div class="coord">Dove si trova oggi<b>Vasamuseet, Stoccolma</b></div>
+    <div class="coord">Profondità di allora<b>32 m</b></div>
+    <div class="coord">Viaggio compiuto<b>~1.300 m</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>POSIZIONE ESATTA — LA NAVE NON È PIÙ SUL FONDO: SI VISITA A PIEDI</div>
+  <div class="scrollcue">↓ scorri — questa storia risale</div>
+</section>
+
+<section class="reveal" data-year="1961" data-depth="0">
+  <div class="eyebrow">Perché questo relitto</div>
+  <h2>L'unico che si attraversa camminando</h2>
+  <p class="lede">L'Atocha si racconta. Il Vasa si va a vedere: è l'unica nave del Seicento al mondo conservata quasi intera, in piedi dentro un museo costruito attorno a lei.</p>
+  <p>Dal recupero del 1961 all'inizio del 2025 l'hanno vista oltre 45 milioni di persone. Ma il motivo per cui questa scheda viene subito dopo l'Atocha è un altro: è il suo esatto contrario. L'Atocha portava un tesoro e fece 100 miglia; il Vasa non portava niente e ne fece meno di uno. L'Atocha è ancora dispersa sul fondale; il Vasa è tornato su, intero. Una storia scende. L'altra risale.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">20</div><div class="k">minuti di navigazione</div></div>
+    <div class="stat"><div class="v">333</div><div class="k">anni sul fondo</div></div>
+    <div class="stat"><div class="v">~30</div><div class="k">morti su 150–250 a bordo</div></div>
+    <div class="stat"><div class="v">45M</div><div class="k">visitatori dal 1961</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1626" data-depth="0">
+  <div class="eyebrow">1626 · Skeppsgården, Stoccolma</div>
+  <h2>La nave del re</h2>
+  <p>La Svezia è in guerra e Gustavo II Adolfo vuole la nave più potente del Baltico: due ponti di batteria, 64 cannoni, oltre settecento sculture dorate a raccontare la gloria della dinastia Vasa. Il maestro d'ascia olandese Henrik Hybertsson muore durante la costruzione. Le specifiche cambiano in corsa, sotto la pressione di un re che ha fretta e che è al fronte, lontano.</p>
+  <p class="lede">Il risultato è splendido, altissimo — e con tutto il peso nel posto sbagliato: in alto.</p>
+</section>
+
+<section class="reveal" data-year="1628" data-depth="0">
+  <div class="eyebrow">Estate 1628 · La prova che nessuno volle vedere</div>
+  <h2>Trenta uomini di corsa</h2>
+  <p>Prima della partenza il capitano Söfring Hansson fa eseguire una prova di stabilità: trenta uomini corrono da un lato all'altro del ponte. Dopo tre passaggi la nave oscilla così tanto che l'ammiraglia presente fa interrompere il test, per paura che si rovesci lì, all'ormeggio.</p>
+  <p>Gli ufficiali vorrebbero avvertire il re. Il re non è a Stoccolma. Il problema viene ignorato e la partenza confermata.</p>
+</section>
+
+<section class="reveal" data-year="1628" data-depth="32">
+  <div class="eyebrow">Domenica 10 agosto 1628 · Tardo pomeriggio</div>
+  <h2>Venti minuti</h2>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-y">La partenza</div>
+      <div class="tl-t">Quattro vele su dieci</div>
+      <div class="tl-d">Il Vasa lascia l'ormeggio sotto il castello Tre Kronor, spara il saluto, e la folla sulle banchine applaude. A bordo, insieme all'equipaggio, ci sono donne e bambini: le famiglie sono state invitate per il primo tratto.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-y">La prima raffica</div>
+      <div class="tl-t">La nave si piega</div>
+      <div class="tl-d">Un colpo di vento leggero la inclina sul lato sinistro. Si raddrizza a fatica. La folla ammutolisce.</div>
+    </div>
+    <div class="tl-item key">
+      <div class="tl-y">La seconda raffica</div>
+      <div class="tl-t">L'acqua entra dai portelli aperti</div>
+      <div class="tl-d">I portelli dei cannoni del ponte inferiore sono spalancati per il saluto. La nave si inclina oltre il limite, il Baltico entra dai portelli, e in pochi minuti il Vasa affonda a Tegelviken, davanti a tutta Stoccolma. Ha percorso circa 1.300 metri.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-y">32 metri</div>
+      <div class="tl-t">Gli alberi restano fuori dall'acqua</div>
+      <div class="tl-d">Muoiono circa trenta persone, intrappolate dentro lo scafo. Il fondale è così basso che le cime degli alberi spuntano dalla superficie: verranno segate.</div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1628" data-depth="32">
+  <div class="eyebrow">L'inchiesta</div>
+  <div class="moment">
+    <q>Solo Dio lo sa</q>
+    <cite>LA RISPOSTA DATA ALL'INCHIESTA SULLA CAUSA DELL'AFFONDAMENTO</cite>
+  </div>
+  <p>Il capitano viene arrestato e poi rilasciato: la nave era stata costruita secondo le specifiche approvate — e chi le aveva approvate era il re. Il costruttore era morto due anni prima. Alla fine non viene punito nessuno. È uno dei più antichi casi documentati di un disastro ingegneristico in cui la colpa, risalendo la catena, arriva troppo in alto per fermarsi su qualcuno.</p>
+</section>
+
+<section class="reveal" data-year="1628" data-depth="32">
+  <div class="eyebrow">Il meccanismo</div>
+  <h2>Perché è affondata — provaci tu</h2>
+  <p>Due ponti di cannoni e settecento sculture sopra, poca zavorra sotto: il baricentro è troppo alto. Muovi il vento e guarda cosa succede. Poi prova ad aggiungere zavorra — la soluzione che sembra ovvia — e scopri perché non bastava.</p>
+  <div class="widget">
+    <svg viewBox="0 0 640 300" role="img" aria-label="Sezione della nave che si inclina col vento">
+      <title>Simulatore di stabilità del Vasa</title>
+      <rect x="0" y="196" width="640" height="104" fill="rgba(127,160,143,.14)"/>
+      <line x1="0" y1="196" x2="640" y2="196" stroke="rgba(127,160,143,.5)" stroke-width="1"/>
+      <g id="ship" transform="rotate(0 320 196)">
+        <path d="M240 196 L252 236 Q320 252 388 236 L400 196 Z" fill="rgba(192,138,78,.25)" stroke="#C08A4E" stroke-width="1.4"/>
+        <rect x="248" y="168" width="144" height="28" fill="rgba(192,138,78,.14)" stroke="#C08A4E" stroke-width="1.2"/>
+        <circle cx="268" cy="182" r="4.5" fill="none" stroke="#7FA08F" stroke-width="1.4"/>
+        <circle cx="298" cy="182" r="4.5" fill="none" stroke="#7FA08F" stroke-width="1.4"/>
+        <circle cx="328" cy="182" r="4.5" fill="none" stroke="#7FA08F" stroke-width="1.4"/>
+        <circle cx="358" cy="182" r="4.5" fill="none" stroke="#7FA08F" stroke-width="1.4"/>
+        <rect x="256" y="142" width="128" height="26" fill="rgba(192,138,78,.10)" stroke="#C08A4E" stroke-width="1.2"/>
+        <circle cx="280" cy="155" r="4.5" fill="none" stroke="#7FA08F" stroke-width="1.4"/>
+        <circle cx="312" cy="155" r="4.5" fill="none" stroke="#7FA08F" stroke-width="1.4"/>
+        <circle cx="344" cy="155" r="4.5" fill="none" stroke="#7FA08F" stroke-width="1.4"/>
+        <line x1="320" y1="142" x2="320" y2="52" stroke="#C08A4E" stroke-width="2.4"/>
+        <line x1="284" y1="76" x2="356" y2="76" stroke="#C08A4E" stroke-width="1.4"/>
+        <circle id="cg" cx="320" cy="150" r="6" fill="#C08A4E"/>
+        <rect id="ballast" x="292" y="226" width="56" height="10" fill="#7FA08F" opacity="0"/>
+      </g>
+      <g id="windArrow" opacity="0">
+        <line x1="60" y1="96" x2="150" y2="96" stroke="#7FA08F" stroke-width="2"/>
+        <path d="M150 96 L138 89 L138 103 Z" fill="#7FA08F"/>
+      </g>
+      <text id="cgLabel" x="340" y="132" fill="#C08A4E" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1">BARICENTRO</text>
+      <text x="14" y="216" fill="rgba(127,160,143,.8)" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1">BALTICO</text>
+    </svg>
+    <div class="wctrl">
+      <span>VENTO</span>
+      <input type="range" id="wind" min="0" max="100" value="0" aria-label="Intensità del vento">
+      <button id="ballastBtn" aria-pressed="false">+ Zavorra</button>
+      <button id="resetBtn">Da capo</button>
+    </div>
+    <div id="wmsg">Muovi il cursore del vento. Il pallino pieno è il baricentro: guarda quanto sta in alto.</div>
+  </div>
+  <p class="note">Modello volutamente semplificato, a scopo illustrativo: niente idrodinamica reale, solo il principio. La sostanza però è quella emersa dagli studi sul relitto: lo scafo era troppo stretto e alto per il peso che portava sopra la linea di galleggiamento, e più zavorra avrebbe solo avvicinato all'acqua i portelli aperti.</p>
+</section>
+
+<section class="reveal" data-year="1665" data-depth="32">
+  <div class="eyebrow">1663–1665 · Trentacinque anni dopo</div>
+  <h2>La campana</h2>
+  <p>Il primo capitolo del recupero è del Seicento, ed è quasi incredibile: dei recuperatori, respirando nell'aria intrappolata di una campana subacquea, scendono a 32 metri al buio e al gelo, e riportano in superficie la maggior parte dei cannoni di bronzo — il vero valore economico della nave. È una delle prime operazioni di salvataggio in immersione documentate della storia.</p>
+  <p>Poi, spogliato del bronzo, il Vasa smette di interessare. La posizione si perde. La nave diventa una leggenda.</p>
+</section>
+
+<section class="reveal" data-year="1900" data-depth="32">
+  <div class="eyebrow">333 anni</div>
+  <h2>Il mare sbagliato per affondare, quello giusto per durare</h2>
+  <p class="lede">Il Vasa è sopravvissuto per un dettaglio di biologia: la <em>Teredo navalis</em>, il mollusco che divora i relitti in legno di tutti i mari, nel Baltico non vive.</p>
+  <p>Acqua fredda, poco salata, fondale di fango povero di ossigeno: la combinazione che in qualunque oceano avrebbe lasciato uno scheletro di ordinate, qui ha conservato uno scafo. Se l'Atocha fosse affondata a Stoccolma e il Vasa in Florida, oggi questa scheda non esisterebbe e quella dell'Atocha mostrerebbe una nave intera.</p>
+</section>
+
+<section class="reveal" data-year="1956" data-depth="32">
+  <div class="eyebrow">25 agosto 1956</div>
+  <h2>Un pezzo di quercia nera</h2>
+  <p>Anders Franzén, ingegnere della marina e archeologo dilettante, cerca il Vasa da anni con un carotiere costruito da sé, tirando su — parole sue — stufe arrugginite, biciclette da donna, alberi di Natale e gatti morti. L'indizio decisivo arriva dai rilievi per un ponte: un'elevazione anomala del fondale al largo dell'isola di Beckholmen.</p>
+  <p class="lede">Il 25 agosto 1956 il carotiere risale con un tappo di quercia annerita. A settembre i sommozzatori confermano: è lei.</p>
+</section>
+
+<section class="reveal" data-year="1961" data-depth="16">
+  <div class="eyebrow">1957–1961 · La risalita</div>
+  <h2>Diciotto sollevamenti</h2>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-y">1957–1959</div>
+      <div class="tl-t">Sei tunnel sotto lo scafo</div>
+      <div class="tl-d">I sommozzatori della marina svedese scavano con getti d'acqua sei gallerie nell'argilla sotto la nave, a 32 metri, con visibilità zero, per far passare i cavi d'acciaio collegati ai pontoni.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-y">Agosto 1959</div>
+      <div class="tl-t">Il primo strappo</div>
+      <div class="tl-d">Nessuno sa se lo scafo reggerà. Regge. In diciotto sollevamenti successivi il Vasa viene spostato in acque più basse, dove viene rattoppato e sigillato per il balzo finale.</div>
+    </div>
+    <div class="tl-item key">
+      <div class="tl-y">24 aprile 1961 · ore 9:03</div>
+      <div class="tl-t">Il Seicento riemerge</div>
+      <div class="tl-d">In diretta televisiva, davanti al mondo, il fasciame rompe la superficie con il fango che cola dai portelli. Una volta sigillati i portelli e pompata fuori l'acqua, il Vasa galleggia: entra in bacino sulla propria chiglia, 333 anni dopo.</div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1990" data-depth="0" data-note="in museo">
+  <div class="eyebrow">La seconda vita</div>
+  <h2>Tenerla all'asciutto è più difficile che tirarla su</h2>
+  <p>Il legno impregnato d'acqua per tre secoli, all'aria, collassa. Per impedirlo la nave viene irrorata per anni, giorno e notte, con glicole polietilenico — una cera che prende il posto dell'acqua nelle fibre. Prima un museo provvisorio, il Wasavarvet; poi, alla fine degli anni Ottanta, il trasferimento nell'edificio costruito su misura: il Vasamuseet.</p>
+  <p>La conservazione non è finita: è un lavoro permanente, e il Vasa è oggi uno dei laboratori più importanti al mondo su come si mantiene il legno archeologico. Anche da ferma, questa nave continua a insegnare.</p>
+</section>
+
+<section class="reveal" data-year="1628" data-depth="0" data-note="in museo">
+  <div class="eyebrow">Le persone</div>
+  <h2>Quelli che erano a bordo</h2>
+  <p>Tra le 150 e le 250 persone, compresi i familiari invitati per il primo tratto di navigazione. Circa trenta non uscirono dallo scafo, e i loro resti sono riemersi con la nave: gli studi sul DNA del 2004 hanno identificato almeno quindici adulti, e il museo ha ricostruito alcuni volti.</p>
+  <p class="lede">Uno di quei resti, catalogato per decenni con il nome di comodo "Gustav", si è rivelato all'analisi genetica una donna.</p>
+  <p>È il tipo di correzione che solo un relitto conservato permette: qui l'archeologia non ricostruisce una storia — la incontra, persona per persona. Nessun'altra scheda di questo atlante potrà dire lo stesso.</p>
+</section>
+
+<section class="reveal" data-year="1628" data-depth="0" data-note="in museo">
+  <div class="eyebrow">I numeri</div>
+  <h2>La nave, misurata</h2>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Valore</th></tr></thead>
+    <tbody>
+      <tr><td>Lunghezza fuori tutto</td><td class="n">~69 m</td></tr>
+      <tr><td>Altezza, chiglia–maestra</td><td class="n">~52,5 m</td></tr>
+      <tr><td>Dislocamento</td><td class="n">1.210 t</td></tr>
+      <tr><td>Cannoni</td><td class="n">64</td></tr>
+      <tr><td>Sculture e ornamenti lignei</td><td class="n">oltre 700</td></tr>
+      <tr><td>Viaggio compiuto</td><td class="n">~1.300 m</td></tr>
+      <tr><td>Anni sul fondale</td><td class="n">333</td></tr>
+      <tr><td>Visitatori, 1961–2025</td><td class="n">oltre 45 milioni</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Dimensioni e dislocamento come riportati dalla documentazione del museo e dalla letteratura sulla nave; il numero esatto delle vittime resta una stima ("circa trenta"), come il totale delle persone a bordo.</p>
+</section>
+
+<section class="reveal" data-year="1961" data-depth="0" data-note="in museo">
+  <div class="eyebrow">Archivio filmato</div>
+  <h2>Guardarla risalire</h2>
+  <p>Il 24 aprile 1961 le telecamere c'erano. Questi filmati mostrano quello che nessuna foto rende: la lentezza, il fango, e il momento in cui una sagoma del Seicento torna a pelo d'acqua.</p>
+  <div class="films">
+    <a class="film" href="https://www.youtube.com/watch?v=0n3PPWAkVy8" target="_blank" rel="noopener">
+      <span class="yr">1961</span>
+      <span><span class="tt">Saving the Swedish warship Vasa</span><span class="dd">Il documentario del recupero: i tunnel, i pontoni, la risalita e l'ingresso in bacino.</span></span>
+      <span class="go">YouTube ↗</span>
+    </a>
+    <a class="film" href="https://www.youtube.com/watch?v=thBk4EcQCR0" target="_blank" rel="noopener">
+      <span class="yr">1962</span>
+      <span><span class="tt">Preserving the Vasa — Shell Historical Film Archive</span><span class="dd">Il dopo: la lotta per impedire al legno di sgretolarsi all'aria, filmata mentre accadeva.</span></span>
+      <span class="go">YouTube ↗</span>
+    </a>
+  </div>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0" data-note="in museo">
+  <div class="eyebrow">Nota metodologica</div>
+  <h2>Cosa questa pagina non fa</h2>
+  <p>Non nasconde la posizione: qui non c'è niente da proteggere, la nave è in un museo pubblico e il punto dell'affondamento è storia nota. La regola dell'atlante resta però la stessa dell'Atocha — la riservatezza sulle coordinate vale per i siti ancora sul fondo, e ogni scheda dichiara quale caso è.</p>
+  <p>Non spaccia le stime per conteggi: le vittime sono "circa trenta", le persone a bordo "tra 150 e 250", e così restano scritte. E il simulatore di stabilità è dichiaratamente un modello semplificato, non ingegneria navale.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 002 di 20</div>
+    <h2 style="margin-bottom:14px">La prossima è il Titanic</h2>
+    <p>La nave più raccontata della storia — e per questo la più difficile da raccontare bene. Individuata nel 1985 a 3.800 metri: cento volte più in fondo del Vasa, e per sempre irrecuperabile. Il contrario di tutto quello che hai appena letto.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="atocha.html">← Scheda 001: l'Atocha</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">Tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · Vasamuseet / Vrak – Museum of Wrecks, Stoccolma (cronologia, persone a bordo, sculture) · Encyclopaedia Britannica (recupero cannoni 1663–65, ritrovamento 1956, PEG) · documentazione tecnica della nave (dimensioni, armamento, dislocamento) · resoconti del sollevamento 1959–1961 (sei tunnel, diciotto stadi, 24 aprile 1961 ore 9:03) · studi sul DNA dei resti (2004; identificazione di "Gustav" come donna, dir. F. Hocker)<br><br>
+      Wreck Atlas · Scheda 002 · Prototipo
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), water=document.getElementById('water');
+  var warmth=document.getElementById('warmth');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  var cv=document.getElementById('silt'), ctx=cv.getContext('2d'), parts=[], W=0,H=0, warm=0;
+  function size(){ W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    parts=[]; var n=Math.round(W*H/22000);
+    for(var i=0;i<n;i++) parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.4+.3,v:.06+Math.random()*.18,o:.08+Math.random()*.3}); }
+  function drawSilt(){ ctx.clearRect(0,0,W,H);
+    for(var i=0;i<parts.length;i++){ var p=parts[i];
+      p.x+=p.v; p.y+=Math.sin(p.x*.01)*.08;
+      if(p.x>W+4){ p.x=-4; p.y=Math.random()*H; }
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fillStyle = warm>0.5 ? 'rgba(210,170,120,'+(p.o*(1.4-warm))+')' : 'rgba(150,170,160,'+p.o+')';
+      ctx.fill(); }
+    requestAnimationFrame(drawSilt); }
+  if(!reduce){ size(); window.addEventListener('resize',size); requestAnimationFrame(drawSilt); }
+
+  var shades=['#0C1114','#0C1518','#0B1613','#0A1512','#101410','#181207','#221607'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    document.getElementById('railDLab').textContent = active.dataset.note ? 'oggi' : 'Profondità';
+    warm = Math.max(0,(p-0.62)/0.38);
+    if(!reduce){
+      water.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)];
+      warmth.style.opacity=warm;
+    }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- simulatore di stabilità ---------- */
+  var wind=document.getElementById('wind'), ship=document.getElementById('ship');
+  var ballastBtn=document.getElementById('ballastBtn'), resetBtn=document.getElementById('resetBtn');
+  var ballastRect=document.getElementById('ballast'), cg=document.getElementById('cg');
+  var windArrow=document.getElementById('windArrow'), wmsg=document.getElementById('wmsg');
+  var ballast=false, sunk=false;
+
+  function update(){
+    if(sunk) return;
+    var w=+wind.value;
+    windArrow.setAttribute('opacity', w>2 ? String(Math.min(1,w/40)) : '0');
+    var stab = ballast ? 1.35 : 1.0;
+    var heel = w*0.16/stab;
+    var portLimit = ballast ? 9 : 12;
+    ship.setAttribute('transform','rotate('+heel.toFixed(1)+' 320 196)');
+    if(heel>=portLimit){
+      sunk=true;
+      ship.setAttribute('transform','rotate(24 320 196) translate(0 34)');
+      wmsg.innerHTML='<b>Affondata.</b> '+(ballast
+        ? 'La zavorra ha abbassato il baricentro, ma ha anche abbassato i portelli: sono finiti sott\u2019acqua ancora prima. \u00c8 il vicolo cieco in cui era chiusa la nave vera.'
+        : 'Oltre i '+portLimit+' gradi l\u2019acqua entra dai portelli aperti del ponte inferiore \u2014 esattamente quello che accadde il 10 agosto 1628, con una raffica leggera.');
+    } else if(w>46){
+      wmsg.innerHTML='La nave \u00e8 a '+heel.toFixed(0)+'\u00b0. I portelli inferiori si stanno avvicinando all\u2019acqua.';
+    } else if(w>8){
+      wmsg.innerHTML='Inclinazione: '+heel.toFixed(0)+'\u00b0. Nota quanto basta poco: il baricentro alto amplifica ogni raffica.';
+    } else {
+      wmsg.innerHTML='Muovi il cursore del vento. Il pallino pieno \u00e8 il baricentro: guarda quanto sta in alto.';
+    }
+  }
+  function reset(){
+    sunk=false; wind.value=0;
+    ship.setAttribute('transform','rotate(0 320 196)');
+    update();
+  }
+  wind.addEventListener('input',update);
+  ballastBtn.addEventListener('click',function(){
+    ballast=!ballast;
+    this.setAttribute('aria-pressed',String(ballast));
+    ballastRect.setAttribute('opacity',ballast?'1':'0');
+    cg.setAttribute('cy',ballast?'160':'150');
+    reset();
+    wmsg.innerHTML=ballast
+      ? 'Zavorra aggiunta: il baricentro scende un po\u2019 \u2014 ma anche il bordo libero. I portelli ora sono pi\u00f9 vicini all\u2019acqua. Riprova col vento.'
+      : 'Zavorra rimossa: configurazione storica del Vasa.';
+  });
+  resetBtn.addEventListener('click',reset);
+
+  /* ---------- metriche di scroll ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'002-vasa',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] scheda 002 \u00b7 '+m+'% a '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+
+  /* ---------- iscrizione ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla \u2014 collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v);
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>

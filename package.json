@@ -1,0 +1,14 @@
+{
+  "name": "wreck-atlas",
+  "version": "0.2.0",
+  "description": "Atlante narrativo dei relitti marittimi",
+  "private": true,
+  "scripts": {
+    "build": "python3 build.py",
+    "check": "python3 build.py --check",
+    "test": "node tests/run.js",
+    "serve": "python3 -m http.server 8000 --directory dist",
+    "all": "python3 build.py && node tests/run.js"
+  },
+  "devDependencies": { "jsdom": "^24.0.0" }
+}

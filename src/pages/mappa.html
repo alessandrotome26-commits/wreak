@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wreck Atlas — la mappa</title>
+<meta name="description" content="Mappa dei relitti marittimi su batimetria GEBCO. Zoom a tile: carica solo quello che vedi.">
+<meta name="theme-color" content="#050D14">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/maplibre-gl@6.4.1/dist/maplibre-gl.css" rel="stylesheet" onerror="this.href='https://cdn.jsdelivr.net/npm/maplibre-gl@6.4.1/dist/maplibre-gl.min.css'">
+<style>
+:root{--abyss:#050D14;--silver:#AEB6BA;--verdigris:#4F9080;--gold:#BE9247;--paper:#DED8C8;--rule:rgba(174,182,186,.18);
+ --display:"Bodoni Moda",Georgia,serif;--body:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--abyss);color:var(--paper);font-family:var(--body);font-weight:300;-webkit-font-smoothing:antialiased}
+header{padding:30px 30px 0;max-width:1340px;margin:0 auto}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--verdigris)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(28px,4.6vw,46px);margin-top:10px}
+.sub{font-family:var(--mono);font-size:12px;color:var(--silver);margin-top:12px;letter-spacing:.05em}
+.wrap{max-width:1340px;margin:0 auto;padding:24px 30px 40px;display:grid;grid-template-columns:1fr 320px;gap:28px;align-items:start}
+#map{height:620px;border:1px solid var(--rule)}
+.panel{position:sticky;top:24px}
+.bar{display:flex;gap:0;border:1px solid var(--rule);margin-bottom:18px}
+.bar button{flex:1;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;background:transparent;
+ color:var(--silver);border:none;border-right:1px solid var(--rule);padding:12px 6px;cursor:pointer;transition:color .25s,background .25s}
+.bar button:last-child{border-right:none}
+.bar button[aria-pressed="true"]{color:var(--gold);background:rgba(190,146,71,.08)}
+#detail{border:1px solid var(--rule);padding:20px;background:rgba(12,33,48,.4);min-height:160px}
+#detail .dy{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--gold)}
+#detail .dn{font-family:var(--display);font-size:23px;line-height:1.15;margin:9px 0 11px}
+#detail .df{font-size:14.5px;color:rgba(222,216,200,.78);line-height:1.6}
+#detail .dm{display:flex;gap:24px;margin-top:15px;padding-top:13px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:11px;color:var(--silver)}
+#detail .dm b{display:block;color:var(--paper);font-size:14px;font-weight:500;margin-top:3px}
+#detail a.go{display:inline-block;margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+ background:var(--gold);color:#1B1206;text-decoration:none;padding:11px 18px}
+#detail .soon{display:inline-block;margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+ color:var(--silver);border:1px dashed var(--rule);padding:10px 16px}
+.list{margin-top:18px;max-height:290px;overflow-y:auto}
+.list button{display:block;width:100%;text-align:left;background:transparent;border:none;border-bottom:1px solid rgba(174,182,186,.08);
+ color:var(--paper);font-family:var(--body);font-size:14.5px;font-weight:300;padding:11px 4px;cursor:pointer;transition:padding-left .25s,color .25s}
+.list button:hover{padding-left:10px;color:var(--gold)}
+.list button span{font-family:var(--mono);font-size:11px;color:var(--silver);margin-right:10px}
+.list::-webkit-scrollbar{width:4px}.list::-webkit-scrollbar-thumb{background:var(--rule)}
+.foot{max-width:1340px;margin:0 auto;padding:0 30px 60px;font-family:var(--mono);font-size:11px;color:rgba(174,182,186,.55);line-height:1.9}
+#net{font-family:var(--mono);font-size:11px;color:var(--verdigris);margin-top:14px;padding-top:12px;border-top:1px solid var(--rule)}
+.maplibregl-ctrl-attrib{font-size:10px !important}
+@media (max-width:920px){.wrap{grid-template-columns:1fr;padding:18px 16px 40px}header{padding:24px 16px 0}#map{height:440px}.panel{position:static}.list{max-height:none}}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">Wreck Atlas · Prototipo</div>
+  <h1>La mappa</h1>
+  <div class="sub">TILE STREAMING · CARICA SOLO CIÒ CHE VEDI · NESSUNA CHIAVE API</div>
+</header>
+
+<div class="wrap">
+  <div><div id="map"></div></div>
+  <div class="panel">
+    <div class="bar">
+      <button id="bRelief" aria-pressed="true">Rilievo</button>
+      <button id="bFlat" aria-pressed="false">Profondità</button>
+      <button id="bEmod" aria-pressed="false">Europa HD</button>
+    </div>
+    <div id="detail">
+      <div class="dy">SELEZIONA UN RELITTO</div>
+      <div class="dn">Dodici punti</div>
+      <div class="df">Clicca un punto sulla mappa o scegli dall'elenco. Zooma: arrivano solo i riquadri che ti servono.</div>
+    </div>
+    <div class="list" id="list"></div>
+    <div id="net">tile scaricati in questa sessione: <b id="tiles">0</b></div>
+  </div>
+</div>
+
+<div class="foot">
+  Batimetria: GEBCO_2026 Grid via wms.gebco.net — GEBCO opera sotto l'egida congiunta di IHO e IOC-UNESCO.<br>
+  Alta risoluzione europea: EMODnet Bathymetry (ows.emodnet-bathymetry.eu).<br>
+  Motore: MapLibre GL JS 6.4.1, licenza BSD, nessun token. Dati relitti: relitti.geojson, caricato a parte dal codice.<br>
+  Posizioni approssimate, arrotondate. Non utilizzabili per la navigazione né per localizzare i siti.
+</div>
+
+<script>
+function loadScript(urls, done, i){
+  i=i||0;
+  if(i>=urls.length){ done(false); return; }
+  var s=document.createElement('script');
+  s.src=urls[i];
+  s.onload=function(){ done(true); };
+  s.onerror=function(){ loadScript(urls,done,i+1); };
+  document.head.appendChild(s);
+}
+</script>
+<script>
+function startApp(){
+var WRECKS=[{"n": "Nuestra Señora de Atocha", "y": 1622, "lat": 24.5, "lon": -82.0, "d": 17, "st": "ready", "f": "Galeone spagnolo affondato in un uragano due giorni dopo la partenza da L'Avana. Ritrovato nel 1985 dopo sedici anni di ricerca.", "href": "atocha.html"}, {"n": "Vasa", "y": 1628, "lat": 59.325, "lon": 18.09, "d": 32, "st": "ready", "href": "vasa.html", "f": "Affondò dopo poco più di un chilometro di navigazione nel porto di Stoccolma, davanti alla folla. Recuperata quasi intera nel 1961."}, {"n": "RMS Titanic", "y": 1912, "lat": 41.726, "lon": -49.948, "d": 3800, "st": "next", "f": "Individuato nel 1985 da Robert Ballard e Jean-Louis Michel, a circa 3.800 metri nell'Atlantico settentrionale."}, {"n": "Endurance", "y": 1915, "lat": -68.733, "lon": -52.333, "d": 3008, "st": "planned", "f": "La nave di Ernest Shackleton, ritrovata nel 2022 nel Mare di Weddell sotto la banchisa antartica."}, {"n": "Mary Rose", "y": 1545, "lat": 50.79, "lon": -1.1, "d": 14, "st": "planned", "f": "Ammiraglia di Enrico VIII, affondata nel Solent durante una battaglia e recuperata nel 1982."}, {"n": "Relitto di Anticitera", "y": -70, "lat": 35.887, "lon": 23.31, "d": 50, "st": "planned", "f": "Nave romana con a bordo il meccanismo di Anticitera, trovata dai pescatori di spugne nel 1900."}, {"n": "Uluburun", "y": -1300, "lat": 36.126, "lon": 29.685, "d": 50, "st": "planned", "f": "Relitto dell'età del bronzo al largo della Turchia, tra i più antichi mai scavati sistematicamente."}, {"n": "San José", "y": 1708, "lat": 10.0, "lon": -75.9, "d": 600, "st": "planned", "f": "Galeone spagnolo al largo di Cartagena, al centro di una disputa internazionale ancora aperta sulla proprietà."}, {"n": "SS Andrea Doria", "y": 1956, "lat": 40.487, "lon": -69.85, "d": 76, "st": "planned", "f": "Transatlantico italiano affondato al largo di Nantucket dopo la collisione con la Stockholm."}, {"n": "USS Arizona", "y": 1941, "lat": 21.365, "lon": -157.95, "d": 12, "st": "planned", "f": "Affondata a Pearl Harbor. È un cimitero di guerra e un memoriale nazionale: nessuna localizzazione di dettaglio."}, {"n": "Bismarck", "y": 1941, "lat": 48.167, "lon": -16.2, "d": 4791, "st": "planned", "f": "Corazzata tedesca individuata nel 1989 a quasi 4.800 metri di profondità nell'Atlantico."}, {"n": "Batavia", "y": 1629, "lat": -28.49, "lon": 113.79, "d": 5, "st": "planned", "f": "Nave della Compagnia olandese delle Indie Orientali, naufragata al largo dell'Australia occidentale."}];
+
+var tiles=0;
+function wms(url,layer,attr){
+  return {type:'raster',tiles:[url+'?service=WMS&version=1.1.1&request=GetMap&layers='+layer+
+    '&styles=&format=image/jpeg&transparent=false&srs=EPSG:3857&bbox={bbox-epsg-3857}&width=512&height=512'],
+    tileSize:512, attribution:attr};
+}
+var GEB='https://wms.gebco.net/2026/mapserv';
+var BASES={
+  relief:wms(GEB,'gebco_2026','GEBCO_2026 Grid (IHO/IOC-UNESCO)'),
+  flat:  wms(GEB,'gebco_2026_2','GEBCO_2026 Grid (IHO/IOC-UNESCO)'),
+  emod:  wms('https://ows.emodnet-bathymetry.eu/wms','emodnet:mean_multicolour','EMODnet Bathymetry')
+};
+
+var fc={type:'FeatureCollection',features:WRECKS.map(function(w,i){
+  return {type:'Feature',id:i,geometry:{type:'Point',coordinates:[w.lon,w.lat]},properties:{i:i,st:w.st,n:w.n}};})};
+
+var map=new maplibregl.Map({
+  container:'map', attributionControl:{compact:true},
+  style:{version:8, sources:{base:BASES.relief},
+    layers:[{id:'bg',type:'background',paint:{'background-color':'#050D14'}},
+            {id:'base',type:'raster',source:'base'}]},
+  center:[-82,24.5], zoom:3, minZoom:1, maxZoom:11, renderWorldCopies:true
+});
+map.addControl(new maplibregl.NavigationControl({showCompass:false}),'top-right');
+map.addControl(new maplibregl.ScaleControl({unit:'metric'}),'bottom-left');
+
+map.on('dataloading',function(e){ if(e.tile){ tiles++; document.getElementById('tiles').textContent=tiles; } });
+map.on('error',function(e){
+  var m=document.getElementById('net');
+  if(e && e.error && /tile|source|raster/i.test(String(e.error.message||''))){
+    m.innerHTML='<span style="color:#E0846A">Un riquadro non è arrivato dal server. Prova un\'altra base o ricarica.</span>';
+  }
+});
+
+map.on('load',function(){
+  map.addSource('wrecks',{type:'geojson',data:fc});
+  map.addLayer({id:'halo',type:'circle',source:'wrecks',
+    paint:{'circle-radius':16,'circle-color':'#BE9247','circle-opacity':0.10,
+      'circle-stroke-width':1,'circle-stroke-color':'#BE9247','circle-stroke-opacity':0.35},
+    filter:['==',['get','st'],'ready']});
+  map.addLayer({id:'pts',type:'circle',source:'wrecks',
+    paint:{'circle-radius':6,
+      'circle-color':['match',['get','st'],'ready','#BE9247','next','#4F9080','#AEB6BA'],
+      'circle-stroke-width':1.5,'circle-stroke-color':'#050D14'}});
+  map.addLayer({id:'lbl',type:'symbol',source:'wrecks',
+    layout:{'text-field':['get','n'],'text-size':12,'text-offset':[0,1.5],'text-anchor':'top',
+      'text-font':[],'text-allow-overlap':false},
+    paint:{'text-color':'#DED8C8','text-halo-color':'#050D14','text-halo-width':1.6}});
+  map.on('click','pts',function(e){ pick(e.features[0].properties.i); });
+  map.on('mouseenter','pts',function(){ map.getCanvas().style.cursor='pointer'; });
+  map.on('mouseleave','pts',function(){ map.getCanvas().style.cursor=''; });
+});
+
+function setBase(key,btn){
+  ['bRelief','bFlat','bEmod'].forEach(function(id){ document.getElementById(id).setAttribute('aria-pressed','false'); });
+  btn.setAttribute('aria-pressed','true');
+  var src=map.getSource('base');
+  if(src && src.setTiles) src.setTiles(BASES[key].tiles);
+  map.setPaintProperty('base','raster-opacity',1);
+}
+document.getElementById('bRelief').onclick=function(){ setBase('relief',this); };
+document.getElementById('bFlat').onclick=function(){ setBase('flat',this); };
+document.getElementById('bEmod').onclick=function(){ setBase('emod',this); map.flyTo({center:[-1.1,50.79],zoom:7}); };
+
+function pick(i){
+  var k=WRECKS[i], d=document.getElementById('detail');
+  var lat=Math.abs(k.lat).toFixed(1)+'° '+(k.lat>=0?'N':'S'), lon=Math.abs(k.lon).toFixed(1)+'° '+(k.lon>=0?'E':'O');
+  var yr=k.y<0?Math.abs(k.y)+' a.C.':String(k.y);
+  var cta=k.href?'<a class="go" href="'+k.href+'">Apri la scheda →</a>'
+    :'<span class="soon">'+(k.st==='next'?'Prossima scheda':'In programma')+'</span>';
+  d.innerHTML='<div class="dy">'+yr+'</div><div class="dn">'+k.n+'</div><div class="df">'+k.f+'</div>'+
+    '<div class="dm"><div>Posizione<b>'+lat+' · '+lon+'</b></div><div>Profondità<b>'+k.d+' m</b></div></div>'+cta;
+  map.flyTo({center:[k.lon,k.lat],zoom:Math.max(map.getZoom(),6),duration:1400});
+}
+
+var list=document.getElementById('list');
+WRECKS.map(function(w,i){return {w:w,i:i};}).sort(function(a,b){return a.w.y-b.w.y;}).forEach(function(o){
+  var b=document.createElement('button');
+  b.innerHTML='<span>'+(o.w.y<0?Math.abs(o.w.y)+' a.C.':o.w.y)+'</span>'+o.w.n;
+  b.onclick=function(){ pick(o.i); };
+  list.appendChild(b);
+});
+pick(0);
+}
+loadScript([
+  'https://unpkg.com/maplibre-gl@6.4.1/dist/maplibre-gl.js',
+  'https://cdn.jsdelivr.net/npm/maplibre-gl@6.4.1/dist/maplibre-gl.min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/6.4.1/maplibre-gl.min.js'
+], function(ok){
+  if(ok){ startApp(); return; }
+  var rows='';
+  WRECKS.slice().sort(function(a,b){return a.y-b.y;}).forEach(function(k){
+    var yr=k.y<0?Math.abs(k.y)+' a.C.':k.y;
+    rows+='<div style="display:flex;gap:18px;align-items:baseline;padding:12px 0;border-bottom:1px solid rgba(174,182,186,.08)">'+
+      '<span style="font-family:var(--mono);font-size:11px;color:#4F9080;min-width:70px">'+yr+'</span>'+
+      '<span>'+(k.href?'<a href="'+k.href+'" style="color:#BE9247;text-decoration:none">'+k.n+' →</a>':k.n)+
+      '<div style="font-size:12.5px;color:rgba(222,216,200,.55);margin-top:2px">'+k.f+'</div></span></div>';
+  });
+  document.getElementById('map').style.height='auto';
+  document.getElementById('map').innerHTML=
+    '<div style="padding:26px 26px 34px;font-family:var(--body);font-size:14px;line-height:1.7">'+
+    '<div style="font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:#E0846A;text-transform:uppercase;margin-bottom:10px">Mappa interattiva non disponibile qui</div>'+
+    '<div style="color:rgba(222,216,200,.8);max-width:60ch">Questa anteprima blocca le richieste verso internet, quindi niente motore né batimetria. '+
+    '<b style="color:#DED8C8">Scarica il file e aprilo con doppio click in Chrome o Firefox</b> — l\u00ec la mappa carica il fondale reale.'+
+    ' Nel frattempo, ecco l\u2019archivio:</div><div style="margin-top:18px">'+rows+'</div></div>';
+});
+</script>
+</body>
+</html>
