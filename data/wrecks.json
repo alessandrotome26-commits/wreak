@@ -111,5 +111,50 @@
   "d": 5,
   "st": "planned",
   "f": "Nave della Compagnia olandese delle Indie Orientali, naufragata al largo dell'Australia occidentale."
+ },
+ {
+  "n": "Santa Margarita",
+  "y": 1622,
+  "lat": 24.52,
+  "lon": -82.25,
+  "d": 6,
+  "st": "planned",
+  "f": "Galeone della flotta del 1622, affondato nello stesso uragano dell'Atocha al largo delle Florida Keys. Recuperi ingenti dagli anni '80; parte del carico è ancora dispersa."
+ },
+ {
+  "n": "Nuestra Señora de las Mercedes",
+  "y": 1804,
+  "lat": 36.4,
+  "lon": -7.9,
+  "d": 1138,
+  "st": "planned",
+  "f": "Fregata spagnola affondata dagli inglesi nel 1804 al largo del Portogallo. Nel 2007 la Odyssey ne recuperò circa 500.000 monete; dopo una causa il tesoro tornò alla Spagna."
+ },
+ {
+  "n": "Nuestra Señora de las Maravillas",
+  "y": 1656,
+  "lat": 27.0,
+  "lon": -79.0,
+  "d": 12,
+  "st": "planned",
+  "f": "Almiranta spagnola naufragata nel 1656 sul Little Bahama Bank. Saccheggiata e recuperata per secoli; ancora oggi affiorano reperti dalla sabbia."
+ },
+ {
+  "n": "Flotta spagnola del 1715",
+  "y": 1715,
+  "lat": 27.7,
+  "lon": -80.4,
+  "d": 6,
+  "st": "planned",
+  "f": "Undici navi perdute in un uragano sulla costa atlantica della Florida. Recuperi fin dal 1715; i reperti continuano ad affiorare sulla 'Treasure Coast'."
+ },
+ {
+  "n": "Flotta spagnola del 1733",
+  "y": 1733,
+  "lat": 24.85,
+  "lon": -80.68,
+  "d": 6,
+  "st": "planned",
+  "f": "Flotta spagnola dispersa da un uragano sulle Florida Keys. Molti relitti, in parte recuperati; il San Pedro è oggi un parco archeologico subacqueo."
  }
 ]
