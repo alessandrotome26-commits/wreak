@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relitto di Anticitera — 70 a.C.</title>
+<meta name="description" content="Il relitto romano affondato intorno al 70 a.C. al largo dell'isola di Anticitera, ritrovato dai pescatori di spugne nel 1900. Nella stiva, il più antico calcolatore meccanico conosciuto: il meccanismo di Anticitera.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Relitto di Anticitera — 70 a.C.">
+<meta property="og:description" content="Il Titanic è ciò che la profondità distrugge. Anticitera è ciò che il mare, ogni tanto, restituisce: una macchina che calcolava il cielo, duemila anni prima del tempo.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0A1420">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#0A1420; --sea:#0C1E2E; --deep:#09161F; --dawn:#1A1C20;
+  --bronze:#BE8C3C; --bronze2:#D8A24A; --verdigris:#57A392; --marble:#EAE4D5; --fog:#93A0A3;
+  --rule:rgba(234,228,213,.15);
+  --display:"Cardo",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--marble);font-family:var(--body);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#sky{position:fixed;inset:0;z-index:-4;background:var(--night);transition:background 1.6s ease}
+#orrery{position:fixed;left:50%;top:44%;width:150vmax;height:150vmax;transform:translate(-50%,-50%);z-index:-3;pointer-events:none;opacity:.5}
+#orrery i{position:absolute;inset:0;border:1px solid rgba(190,140,60,.10);border-radius:50%}
+#orrery i:nth-child(1){inset:12%;border-color:rgba(190,140,60,.12)}
+#orrery i:nth-child(2){inset:26%;border-color:rgba(87,163,146,.10);border-style:dashed}
+#orrery i:nth-child(3){inset:38%;border-color:rgba(190,140,60,.09)}
+#orrery i:nth-child(4){inset:47%;border-color:rgba(87,163,146,.08);border-style:dashed}
+#orreryspin{position:absolute;inset:0;animation:spin 240s linear infinite}
+#stars{position:fixed;inset:0;z-index:-2;pointer-events:none}
+#verd{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1s linear;
+  background:radial-gradient(ellipse at 50% 60%,rgba(87,163,146,.12),transparent 62%)}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--fog);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--bronze)}
+.rail-num{font-size:20px;color:var(--marble);font-weight:400;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.5;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(10,20,32,.8)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--verdigris);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(48px,10vw,104px);line-height:1;letter-spacing:.01em}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(28px,4.5vw,46px);line-height:1.12;margin-bottom:22px}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(234,228,213,.85)}
+.lede{font-size:20px;color:var(--marble)}
+em{font-style:italic;color:var(--fog)}
+strong{font-weight:500;color:var(--marble)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--fog);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--fog)}
+.coord b{display:block;color:var(--marble);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  color:var(--bronze2);border:1px solid rgba(190,140,60,.4);padding:5px 10px;margin-top:28px;align-self:flex-start;max-width:60ch;line-height:1.5}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--bronze2);flex:none}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(147,160,163,.55);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(234,228,213,.08)}
+.stat .v{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.8vw,46px);line-height:1;color:var(--bronze2);font-variant-numeric:tabular-nums}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--bronze);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-weight:700;font-size:clamp(26px,4.6vw,42px);line-height:1.18;quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--fog);margin-top:18px}
+
+.tl{border-left:1px solid var(--rule);margin-top:8px}
+.tl-item{padding:0 0 34px 28px;position:relative}
+.tl-item::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--night);border:1px solid var(--fog)}
+.tl-item.key::before{background:var(--bronze);border-color:var(--bronze);box-shadow:0 0 0 5px rgba(190,140,60,.15)}
+.tl-y{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--verdigris);margin-bottom:5px}
+.tl-item.key .tl-y{color:var(--bronze2)}
+.tl-t{font-size:17px;color:var(--marble);margin-bottom:4px}
+.tl-d{font-size:14.5px;color:rgba(234,228,213,.6);max-width:52ch}
+
+.widget{border:1px solid var(--rule);background:rgba(12,30,46,.5);padding:20px;margin-top:10px}
+.widget svg{width:100%;height:auto;display:block}
+.wctrl{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);
+  font-family:var(--mono);font-size:11px;color:var(--fog)}
+.wctrl input[type=range]{flex:1;min-width:150px;accent-color:#BE8C3C}
+.wctrl button{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;background:transparent;
+  color:var(--fog);border:1px solid var(--rule);padding:8px 14px;cursor:pointer;transition:border-color .25s,color .25s}
+.wctrl button:hover{border-color:var(--bronze);color:var(--bronze2)}
+#mmsg{font-family:var(--mono);font-size:12px;color:var(--fog);margin-top:14px;min-height:44px;line-height:1.6}
+#mmsg b{color:var(--bronze2);font-weight:500}
+
+.sitewrap{margin-top:14px;border:1px solid var(--rule);background:rgba(12,30,46,.5);padding:20px}
+.sitewrap svg{width:100%;height:auto;display:block}
+.zone{cursor:pointer}
+.zone rect,.zone ellipse,.zone path,.zone circle{transition:opacity .25s}
+.zone .hot{opacity:0}
+.zone:hover .hot,.zone:focus .hot{opacity:.5}
+#dialinfo{font-family:var(--mono);font-size:12px;color:var(--fog);margin-top:16px;min-height:44px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.6}
+#dialinfo b{color:var(--bronze2);font-weight:500}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(234,228,213,.08);vertical-align:top}
+td.n{color:var(--marble);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:rgba(147,160,163,.7);line-height:1.7;margin-top:22px;max-width:60ch}
+
+.arclinks{display:grid;gap:2px;margin-top:24px;border-top:1px solid var(--rule)}
+.arclinks a{display:flex;gap:20px;align-items:baseline;padding:20px 0;text-decoration:none;color:inherit;
+  border-bottom:1px solid rgba(234,228,213,.08);transition:padding-left .3s ease,border-color .3s ease}
+.arclinks a:hover,.arclinks a:focus-visible{padding-left:14px;border-bottom-color:var(--bronze)}
+.arclinks .arch{font-family:var(--mono);font-size:11px;color:var(--verdigris);min-width:150px}
+.arclinks .ttl{font-size:16px;color:var(--marble)}
+.arclinks .meta{font-size:13px;color:rgba(234,228,213,.5);margin-top:3px;max-width:46ch}
+.arclinks .go{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--fog);opacity:0;transition:opacity .3s}
+.arclinks a:hover .go,.arclinks a:focus-visible .go{opacity:1}
+
+.closing{border-top:1px solid var(--bronze);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--fog);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:transparent;border:1px solid var(--rule);color:var(--marble);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--fog);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--bronze);color:#150E03;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.85}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--verdigris)}
+.signup .msg.err{color:#E0A063}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--bronze2);border-color:var(--bronze)}
+.src{font-family:var(--mono);font-size:11.5px;color:rgba(147,160,163,.62);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:15px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+  .arclinks a{flex-wrap:wrap;gap:8px} .arclinks .go{display:none} .arclinks .arch{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #sky,#verd{transition:none}
+  #orreryspin{animation:none}
+  #stars{display:none}
+}
+:focus-visible{outline:2px solid var(--bronze);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="sky"></div>
+<div id="orrery"><div id="orreryspin"><i></i><i></i><i></i><i></i></div></div>
+<canvas id="stars"></canvas>
+<div id="verd"></div>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Epoca</div><div class="rail-num" id="railYear">70 a.C.</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Profondità</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="70 a.C." data-depth="0">
+  <div class="eyebrow">Relitto romano · Mar Egeo</div>
+  <h1>Anticitera</h1>
+  <div class="sub">AFFONDATA c. 70–60 a.C. · RITROVATA 1900 · RICONOSCIUTA 1902</div>
+  <div class="coordbox">
+    <div class="coord">Il relitto<b>~50 m · isola di Anticitera</b></div>
+    <div class="coord">Il meccanismo, oggi<b>Museo Archeologico Nazionale, Atene</b></div>
+    <div class="coord">Anni avanti sul suo tempo<b>~1.400</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>POSIZIONE DEL RELITTO NOTA · SITO ARCHEOLOGICO TUTELATO, SCAVO TUTTORA IN CORSO</div>
+  <div class="scrollcue">↓ scorri — qui il tempo è un cerchio</div>
+</section>
+
+<section class="reveal" data-year="1900" data-depth="0">
+  <div class="eyebrow">Perché questo relitto</div>
+  <h2>Ciò che il mare restituisce</h2>
+  <p class="lede">Il Titanic è la prova di ciò che la profondità distrugge. Anticitera è la prova del contrario: ogni tanto, il mare restituisce — e una volta ha restituito l'oggetto più improbabile dell'antichità.</p>
+  <p>In una stiva romana affondata mentre Roma ancora si contendeva il Mediterraneo, insieme a statue di bronzo e anfore c'era una scatola di legno grande come un dizionario. Dentro, decine di ingranaggi di precisione. Era una macchina che calcolava il cielo: le posizioni del Sole e della Luna, le fasi lunari, le eclissi, persino il calendario delle Olimpiadi. Nulla di paragonabile sarebbe ricomparso al mondo per <strong>quattordici secoli</strong>. Non è il relitto più profondo di questo atlante, né il più ricco. È quello che ha riscritto la storia della tecnologia.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">82</div><div class="k">frammenti superstiti</div></div>
+    <div class="stat"><div class="v">~30</div><div class="k">ingranaggi di bronzo</div></div>
+    <div class="stat"><div class="v">19</div><div class="k">anni su un solo quadrante</div></div>
+    <div class="stat"><div class="v">~1.400</div><div class="k">anni prima di qualcosa di simile</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1900" data-depth="50">
+  <div class="eyebrow">Primavera 1900 · in rotta verso l'Africa</div>
+  <h2>I palombari e i cadaveri di bronzo</h2>
+  <p>Un equipaggio di pescatori di spugne dell'isola di Symi, sorpreso da una tempesta, getta l'ancora al riparo dell'isolotto di Anticitera. In attesa che il mare si calmi, il capitano Dimitrios Kontos manda giù un sommozzatore, Elias Stadiatis, con lo scafandro di tela e il casco di rame.</p>
+  <p class="lede">Stadiatis risale terrorizzato: sul fondo, dice, c'è un cumulo di cadaveri e di cavalli in putrefazione.</p>
+  <p>Non erano cadaveri. Erano statue di bronzo e di marmo, verdi e corrose da venti secoli di mare, a quarantacinque-cinquanta metri di profondità. I palombari avevano trovato il carico di una grande nave romana. Ne nacque, tra il 1900 e il 1901, la prima grande campagna di archeologia subacquea della storia, condotta con la marina greca.</p>
+</section>
+
+<section class="reveal" data-year="1901" data-depth="50">
+  <div class="eyebrow">1900–1901 · il prezzo</div>
+  <h2>Recuperare a cinquanta metri, senza saperlo</h2>
+  <p>Nessuno, all'epoca, conosceva la fisiologia della decompressione. Gli uomini scendevano a cinquanta metri, riempivano le reti di statue e risalivano di colpo. Il conto fu spietato: un sommozzatore morì di malattia da decompressione e due rimasero paralizzati. Nell'estate del 1901 il lavoro si fermò.</p>
+  <p>Dal fondo erano intanto emersi capolavori: l'<em>Efebo di Anticitera</em>, una statua di bronzo di un giovane alta quasi due metri, fusa intorno al 340 a.C.; teste di filosofi; frammenti di cavalli; vetri, gioielli, monete. E, quasi ignorato in mezzo al resto, un grumo di bronzo e legno incrostato, delle dimensioni di un libro.</p>
+</section>
+
+<section class="reveal" data-year="1902" data-depth="0">
+  <div class="eyebrow">17 maggio 1902 · Atene</div>
+  <h2>Un ingranaggio nella pietra</h2>
+  <div class="moment">
+    <q>C'era una ruota dentata dentro la roccia.</q>
+    <cite>DALLA RICOSTRUZIONE DEL RITROVAMENTO DI VALERIOS STAIS</cite>
+  </div>
+  <p>Il grumo, lasciato ad asciugare in un magazzino del Museo Archeologico Nazionale, si era spaccato. L'archeologo Valerios Stais, esaminandolo, notò una cosa che a rigore non poteva esistere: nel bronzo corroso era incastonata una <strong>ruota dentata</strong>, di fattura fine, con iscrizioni greche tutt'intorno.</p>
+  <p>Era impensabile. Un ingranaggio di precisione in un relitto di età romana anticipava di oltre mille anni tutto ciò che si credeva sulla meccanica antica. Per decenni fu liquidato come un enigma, forse un intruso più recente finito lì per caso. Ci vollero altre due generazioni di studiosi per dimostrare che no: era proprio del 70 a.C., ed era una macchina.</p>
+</section>
+
+<section class="reveal" data-year="70 a.C." data-depth="0">
+  <div class="eyebrow">Il meccanismo · giralo tu</div>
+  <h2>Una manovella, e il cielo si muove</h2>
+  <p>Il funzionamento è questo: giri una manovella laterale — che rappresenta lo scorrere del tempo — e un treno di ingranaggi muove i puntatori del Sole e della Luna lungo l'anello dello zodiaco, a velocità diverse. Trascina il cursore e guarda il rapporto: il Sole avanza con calma lungo l'anno, la Luna corre e cambia fase. La pallina in alto, metà chiara e metà scura, è il display delle fasi lunari.</p>
+  <div class="widget">
+    <svg id="mech" viewBox="0 0 560 470" role="img" aria-label="Modello interattivo del meccanismo: puntatori del Sole e della Luna sullo zodiaco">
+      <title>Modello semplificato del meccanismo di Anticitera</title>
+      <!-- gruppo orologeria decorativa -->
+      <g id="gearA" transform="rotate(0 452 342)">
+        <circle cx="452" cy="342" r="54" fill="none" stroke="rgba(190,140,60,.5)" stroke-width="2" stroke-dasharray="5 7"/>
+        <circle cx="452" cy="342" r="42" fill="none" stroke="rgba(190,140,60,.22)" stroke-width="1"/>
+        <circle cx="452" cy="342" r="5" fill="#BE8C3C"/>
+      </g>
+      <g id="gearB" transform="rotate(0 508 268)">
+        <circle cx="508" cy="268" r="34" fill="none" stroke="rgba(87,163,146,.5)" stroke-width="2" stroke-dasharray="4 6"/>
+        <circle cx="508" cy="268" r="4" fill="#57A392"/>
+      </g>
+
+      <!-- quadrante zodiacale -->
+      <circle cx="210" cy="235" r="168" fill="rgba(10,20,32,.6)" stroke="rgba(190,140,60,.35)" stroke-width="1.5"/>
+      <circle cx="210" cy="235" r="150" fill="none" stroke="rgba(234,228,213,.14)" stroke-width="1"/>
+      <g id="zticks" stroke="rgba(190,140,60,.5)" stroke-width="1.2"></g>
+      <text x="210" y="52" fill="rgba(147,160,163,.7)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">ZODIACO · 360°</text>
+
+      <!-- puntatore Sole -->
+      <g id="sunHand" transform="rotate(0 210 235)">
+        <line x1="210" y1="235" x2="210" y2="97" stroke="#D8A24A" stroke-width="2.4"/>
+        <circle cx="210" cy="97" r="9" fill="#D8A24A"/>
+        <circle cx="210" cy="97" r="15" fill="none" stroke="rgba(216,162,74,.5)" stroke-width="1"/>
+      </g>
+      <!-- puntatore Luna -->
+      <g id="moonHand" transform="rotate(0 210 235)">
+        <line x1="210" y1="235" x2="210" y2="127" stroke="#EAE4D5" stroke-width="1.8"/>
+        <circle cx="210" cy="127" r="6" fill="#EAE4D5"/>
+      </g>
+      <circle cx="210" cy="235" r="7" fill="#BE8C3C"/>
+
+      <!-- display fasi lunari -->
+      <text x="470" y="86" fill="rgba(147,160,163,.7)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">FASE</text>
+      <clipPath id="ballClip"><circle cx="470" cy="128" r="26"/></clipPath>
+      <g clip-path="url(#ballClip)">
+        <circle cx="470" cy="128" r="26" fill="#EAE4D5"/>
+        <circle id="phaseDark" cx="470" cy="128" r="26" fill="#0A1420"/>
+      </g>
+      <circle cx="470" cy="128" r="26" fill="none" stroke="rgba(234,228,213,.3)" stroke-width="1"/>
+    </svg>
+    <div class="wctrl">
+      <span>TEMPO</span>
+      <input type="range" id="crank" min="0" max="730" value="0" step="1" aria-label="Giorni trascorsi">
+      <button id="yearBtn">+ un anno</button>
+      <button id="crankReset">Da capo</button>
+    </div>
+    <div id="mmsg">Giorno 0. Trascina la manovella: il Sole partirà lento lungo lo zodiaco, la Luna gli girerà intorno quasi tredici volte più veloce.</div>
+    <p class="note">Modello volutamente semplificato, a scopo illustrativo: rapporti di velocità realistici tra Sole e Luna, ma non l'esatta rubinetteria di ruote dell'originale né l'irregolarità del moto lunare. Serve a far vedere il principio, non a sostituire il meccanismo.</p>
+  </div>
+</section>
+
+<section class="reveal" data-year="70 a.C." data-depth="0">
+  <div class="eyebrow">Cosa calcolava</div>
+  <h2>Quattro quadranti, tutto il cielo conosciuto</h2>
+  <p>Sul davanti, un grande quadrante con lo zodiaco e il calendario egizio; dietro, due quadranti a spirale e alcuni ausiliari. Ogni parte rispondeva a una domanda diversa che un greco del I secolo a.C. poteva porsi sul cielo. Clicca per leggerle.</p>
+  <div class="sitewrap">
+    <svg viewBox="0 0 640 300" role="img" aria-label="Schema dei quadranti del meccanismo: fronte e retro" class="fielded">
+      <title>Schema dei quadranti del meccanismo di Anticitera</title>
+      <text x="150" y="28" fill="rgba(147,160,163,.7)" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="middle" letter-spacing="1">FRONTE</text>
+      <text x="470" y="28" fill="rgba(147,160,163,.7)" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="middle" letter-spacing="1">RETRO</text>
+
+      <g class="zone" tabindex="0" data-t="Quadrante frontale — il cosmo" data-d="Un anello con lo zodiaco (360°) e un anello con il calendario egizio (365 giorni). Su di esso i puntatori di Sole e Luna, la pallina delle fasi, e — secondo il modello del 2021 — i cinque pianeti allora conosciuti: Mercurio, Venere, Marte, Giove, Saturno.">
+        <circle class="hot" cx="150" cy="165" r="82"/>
+        <circle cx="150" cy="165" r="80" fill="rgba(190,140,60,.10)" stroke="#BE8C3C" stroke-width="1.3"/>
+        <circle cx="150" cy="165" r="58" fill="none" stroke="rgba(234,228,213,.2)" stroke-width="1"/>
+        <line x1="150" y1="165" x2="150" y2="95" stroke="#D8A24A" stroke-width="2"/>
+        <line x1="150" y1="165" x2="196" y2="128" stroke="#EAE4D5" stroke-width="1.4"/>
+        <circle cx="150" cy="165" r="4" fill="#BE8C3C"/>
+        <text x="150" y="262" fill="#BE8C3C" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">SOLE · LUNA · PIANETI</text>
+      </g>
+
+      <g class="zone" tabindex="0" data-t="Spirale metonica — il calendario" data-d="La spirale superiore, cinque giri: 235 mesi lunari in esattamente 19 anni solari. È il ciclo di Metone, dopo il quale le fasi della Luna ricadono sulle stesse date. Un ausiliario segnava il ciclo di Callippo, quattro Metoni più raffinati.">
+        <path class="hot" d="M470 70 a58 58 0 1 1 -1 0" fill="none" stroke="#57A392" stroke-width="16" opacity="0"/>
+        <path d="M470 92 a46 46 0 1 1 -1 0 M470 108 a30 30 0 1 1 -1 0" fill="none" stroke="#57A392" stroke-width="1.6"/>
+        <text x="470" y="150" fill="#57A392" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">19 ANNI</text>
+      </g>
+
+      <g class="zone" tabindex="0" data-t="Spirale del Saros — le eclissi" data-d="La spirale inferiore, quattro giri: 223 mesi lunari, circa 18 anni e 11 giorni. È il Saros: passato quell'intervallo, le eclissi di Sole e di Luna si ripetono quasi identiche. Nelle celle, glifi indicavano quando aspettarsene una. Un ausiliario, l'Exeligmos, correggeva le ore.">
+        <path class="hot" d="M470 196 a54 54 0 1 1 -1 0" fill="none" stroke="#BE8C3C" stroke-width="16" opacity="0"/>
+        <path d="M470 210 a40 40 0 1 1 -1 0 M470 224 a26 26 0 1 1 -1 0" fill="none" stroke="#BE8C3C" stroke-width="1.6"/>
+        <text x="470" y="262" fill="#BE8C3C" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">ECLISSI</text>
+      </g>
+
+      <g class="zone" tabindex="0" data-t="Quadrante delle Olimpiadi" data-d="Un piccolo quadrante ausiliario contava il ciclo di quattro anni dei giochi panellenici, nominando le singole feste: Olympia, Pythia, Isthmia, Nemea — e persino le minori, i Naa di Dodona e gli Halieia di Rodi. Una macchina astronomica che sapeva anche quando si correva allo stadio.">
+        <circle class="hot" cx="322" cy="150" r="30"/>
+        <circle cx="322" cy="150" r="28" fill="rgba(87,163,146,.12)" stroke="#57A392" stroke-width="1.2"/>
+        <line x1="322" y1="150" x2="322" y2="128" stroke="#EAE4D5" stroke-width="1.4"/>
+        <text x="322" y="196" fill="#57A392" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">OLIMPIADI</text>
+      </g>
+
+      <text x="20" y="290" fill="rgba(234,228,213,.4)" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="1">SCHEMA — NON IN SCALA · CLICCA UN QUADRANTE</text>
+    </svg>
+    <div id="dialinfo">Seleziona un quadrante per leggerne la funzione.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="2021" data-depth="0">
+  <div class="eyebrow">Come lo sappiamo</div>
+  <h2>Leggere una macchina di duemila anni con i raggi X</h2>
+  <p>Per mezzo secolo il meccanismo restò illeggibile: un blocco corroso che non si poteva aprire senza distruggerlo. La svolta non venne dal cacciavite ma dalla fisica. Negli anni Settanta lo storico della scienza Derek de Solla Price ne intuì il funzionamento a ingranaggi; poi l'ingegnere Michael Wright costruì modelli funzionanti.</p>
+  <p>Dal 2005 l'<em>Antikythera Mechanism Research Project</em>, guidato da Tony Freeth, ha usato la tomografia computerizzata a raggi X ad alta risoluzione per guardare <em>dentro</em> i frammenti: contare i denti di ogni ruota e leggere migliaia di lettere greche nascoste nella corrosione — un vero libretto di istruzioni inciso. Nel 2021 il gruppo ha pubblicato su <em>Scientific Reports</em> un modello completo del quadrante frontale, il "cosmo": Sole, Luna e i cinque pianeti su anelli concentrici. Duemila anni dopo, stiamo ancora imparando a leggerlo.</p>
+</section>
+
+<section class="reveal" data-year="70 a.C." data-depth="0">
+  <div class="eyebrow">La vertigine</div>
+  <h2>Il buco di quattordici secoli</h2>
+  <p class="lede">Il problema del meccanismo non è che sia antico. È che è <em>solo</em>: non ha antenati né eredi.</p>
+  <p>Un oggetto di questa precisione non nasce dal nulla: presuppone una tradizione di officine, di astronomi, di artigiani del bronzo che non conosciamo, perché il bronzo si rifonde e il legno marcisce. E dopo di lui, il vuoto: nulla di paragonabile per complessità meccanica riappare fino agli orologi astronomici dell'Europa medievale, quattordici secoli più tardi. Se il mare non avesse conservato per caso questo unico esemplare in fondo a cinquanta metri d'acqua, non sapremmo nemmeno che una cosa simile fosse possibile. È il promemoria più netto di quanto poco, del passato, ci sia rimasto.</p>
+</section>
+
+<section class="reveal" data-year="1976" data-depth="50">
+  <div class="eyebrow">Il relitto che continua a dare</div>
+  <h2>Cent'anni di ritorni</h2>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-y">1953 · 1976</div>
+      <div class="tl-t">Cousteau sul relitto</div>
+      <div class="tl-d">Jacques-Yves Cousteau visita il sito con la Calypso, la prima volta nel 1953 e poi nel 1976 con l'autorizzazione greca. Recupera monete che aiutano a datare il naufragio al 70–60 a.C., e altri reperti. Anche qui, un sommozzatore paga con i dolori della decompressione.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-y">2012 →</div>
+      <div class="tl-t">Return to Antikythera</div>
+      <div class="tl-d">Una missione greco-internazionale torna sul relitto con tecnologie moderne — sommozzatori tecnici, robot, persino uno scafandro corazzato "exosuit". Il fondale non è affatto esaurito.</div>
+    </div>
+    <div class="tl-item key">
+      <div class="tl-y">2016 · 2022</div>
+      <div class="tl-t">Uno scheletro, e altre statue</div>
+      <div class="tl-d">Nel 2016 emerge lo scheletro di una delle vittime del naufragio, soprannominato Pamphilos, con DNA potenzialmente analizzabile. Nel 2022 nuovi frammenti di statue. A oltre un secolo dalla scoperta, la nave di Anticitera restituisce ancora.</div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal" data-year="70 a.C." data-depth="0">
+  <div class="eyebrow">I numeri</div>
+  <h2>Il meccanismo, misurato</h2>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Valore</th></tr></thead>
+    <tbody>
+      <tr><td>Datazione del relitto</td><td class="n">c. 70–60 a.C.</td></tr>
+      <tr><td>Profondità del sito</td><td class="n">~45–50 m</td></tr>
+      <tr><td>Frammenti del meccanismo</td><td class="n">82</td></tr>
+      <tr><td>Ingranaggi superstiti</td><td class="n">~30</td></tr>
+      <tr><td>Ingranaggi nel solo Frammento A</td><td class="n">27</td></tr>
+      <tr><td>Metone, su un quadrante</td><td class="n">235 mesi · 19 anni</td></tr>
+      <tr><td>Saros, per le eclissi</td><td class="n">223 mesi · ~18 anni</td></tr>
+      <tr><td>Anno del riconoscimento (Stais)</td><td class="n">1902</td></tr>
+      <tr><td>Anni prima di una macchina simile</td><td class="n">~1.400</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Il numero degli ingranaggi è quello dei pezzi <em>superstiti</em>: l'originale ne aveva di più, forse una quarantina, oggi perduti. La datazione deriva dalle monete del carico e dallo stile dei reperti; le funzioni sono ricostruite dagli studi a raggi X, e alcune restano ipotesi dichiarate — dove le fonti divergono, il dubbio resta scritto.</p>
+</section>
+
+<section class="reveal" data-year="2024" data-depth="0">
+  <div class="eyebrow">Archivio</div>
+  <h2>Vederlo dov'è</h2>
+  <p>Nessuna immagine è ospitata qui: si linka a chi custodisce l'oggetto e a chi lo studia. Il primo archivio conserva il meccanismo e l'Efebo; il secondo è il gruppo che l'ha decifrato ai raggi X; il terzo è lo scavo che continua sul fondo.</p>
+  <div class="arclinks">
+    <a href="https://www.namuseum.gr/en/" target="_blank" rel="noopener">
+      <span class="arch">MUSEO NAZIONALE, ATENE</span>
+      <span><span class="ttl">L'oggetto e il suo relitto</span><span class="meta">Il Museo Archeologico Nazionale custodisce gli 82 frammenti, l'Efebo di Anticitera e le statue del carico.</span></span>
+      <span class="go">namuseum.gr ↗</span>
+    </a>
+    <a href="http://www.antikythera-mechanism.gr/" target="_blank" rel="noopener">
+      <span class="arch">RESEARCH PROJECT</span>
+      <span><span class="ttl">Come è stato decifrato</span><span class="meta">L'Antikythera Mechanism Research Project: tomografie, iscrizioni lette e ricostruzioni del funzionamento.</span></span>
+      <span class="go">antikythera-mechanism.gr ↗</span>
+    </a>
+    <a href="https://www.nature.com/articles/s41598-021-84310-w" target="_blank" rel="noopener">
+      <span class="arch">SCIENTIFIC REPORTS 2021</span>
+      <span><span class="ttl">Il modello del cosmo</span><span class="meta">Freeth e al., "A Model of the Cosmos in the ancient Greek Antikythera Mechanism": il quadrante frontale coi cinque pianeti.</span></span>
+      <span class="go">nature.com ↗</span>
+    </a>
+  </div>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">Nota metodologica</div>
+  <h2>Cosa questa pagina non fa</h2>
+  <p>Non spaccia le ipotesi per certezze. Che il meccanismo mostrasse tutti e cinque i pianeti è la ricostruzione più accreditata, ma è una ricostruzione: qui è dichiarata come tale. Il numero degli ingranaggi è quello superstite, non quello originale. La datazione è "circa 70–60 a.C.", e così resta.</p>
+  <p>Non tratta il meccanismo come una magia o come una prova di visite aliene — le sciocchezze che gli si affastellano intorno. È il prodotto, straordinario ma umano, di una tradizione tecnica greca di cui abbiamo perso quasi tutto. E il simulatore in questa pagina è dichiaratamente un modello del principio, non una replica dell'orologeria reale.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 004 di 20</div>
+    <h2 style="margin-bottom:14px">La prossima cambia mare e millennio: l'Endurance</h2>
+    <p>Dall'Egeo che restituisce conoscenza al Mare di Weddell che l'ha nascosta per un secolo. La nave con cui Ernest Shackleton tentò l'Antartide, stritolata dalla banchisa nel 1915 — e ritrovata intatta, in piedi nel buio, a 3.008 metri, soltanto nel 2022. Il naufragio come epica di sopravvivenza.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce la prossima scheda</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="titanic.html">← Scheda 003: il Titanic</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">Tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · Museo Archeologico Nazionale di Atene (frammenti, Efebo, carico) · Antikythera Mechanism Research Project — T. Freeth e al. (tomografia a raggi X, conteggio degli ingranaggi, iscrizioni) · Nature, Scientific Reports 2021, "A Model of the Cosmos in the ancient Greek Antikythera Mechanism" (quadrante frontale, cinque pianeti) · D. de Solla Price, "Gears from the Greeks" (1974) · cronaca del ritrovamento 1900–1902 (palombari di Symi, D. Kontos, E. Stadiatis; riconoscimento di V. Stais nel 1902) · spedizioni J.-Y. Cousteau (1953, 1976) e progetto "Return to Antikythera" (dal 2012; scheletro 2016, reperti 2022)<br><br>
+      Wreck Atlas · Scheda 004 · Prototipo
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), sky=document.getElementById('sky'), verd=document.getElementById('verd');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- tacche dello zodiaco ---------- */
+  var zt=document.getElementById('zticks');
+  if(zt){
+    var cx=210, cy=235, r1=150, r2=168, svgns='http://www.w3.org/2000/svg';
+    for(var t=0;t<12;t++){
+      var a=(t/12)*2*Math.PI - Math.PI/2;
+      var ln=document.createElementNS(svgns,'line');
+      ln.setAttribute('x1',(cx+Math.cos(a)*r1).toFixed(1));
+      ln.setAttribute('y1',(cy+Math.sin(a)*r1).toFixed(1));
+      ln.setAttribute('x2',(cx+Math.cos(a)*r2).toFixed(1));
+      ln.setAttribute('y2',(cy+Math.sin(a)*r2).toFixed(1));
+      zt.appendChild(ln);
+    }
+  }
+
+  /* ---------- rivelazione delle sezioni ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- cielo stellato che ruota lento ---------- */
+  var cv=document.getElementById('stars'), ctx=cv&&cv.getContext?cv.getContext('2d'):null, stars=[], W=0,H=0, rot=0;
+  function size(){ if(!ctx)return; W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    stars=[]; var n=Math.round(W*H/9000);
+    for(var i=0;i<n;i++) stars.push({a:Math.random()*6.2832,d:Math.random()*Math.max(W,H)*.62,r:Math.random()*1.2+.2,o:.15+Math.random()*.6,tw:Math.random()*6.28}); }
+  function draw(){ if(!ctx)return; ctx.clearRect(0,0,W,H);
+    var ccx=W*.5, ccy=H*.44;
+    rot+=0.00016;
+    for(var i=0;i<stars.length;i++){ var s=stars[i]; s.tw+=0.03;
+      var a=s.a+rot, x=ccx+Math.cos(a)*s.d, y=ccy+Math.sin(a)*s.d;
+      if(x<-4||x>W+4||y<-4||y>H+4) continue;
+      var o=s.o*(0.6+0.4*Math.sin(s.tw));
+      ctx.beginPath(); ctx.arc(x,y,s.r,0,6.2832);
+      ctx.fillStyle='rgba(234,228,213,'+o.toFixed(3)+')'; ctx.fill(); }
+    requestAnimationFrame(draw); }
+  if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  /* ---------- fondo: notte che vira al bronzo verso la fine ---------- */
+  var shades=['#0A1420','#0B1826','#0C1E2E','#0B1B29','#12181C','#1A1A18','#201C12'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    document.getElementById('railDLab').textContent = (active.dataset.depth==='0') ? 'in museo' : 'Profondità';
+    if(!reduce){
+      sky.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)];
+      verd.style.opacity=Math.max(0,(p-0.5)/0.5)*0.8;
+    }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- il meccanismo interattivo ---------- */
+  var crank=document.getElementById('crank'), yearBtn=document.getElementById('yearBtn'), crankReset=document.getElementById('crankReset');
+  var sunHand=document.getElementById('sunHand'), moonHand=document.getElementById('moonHand');
+  var gearA=document.getElementById('gearA'), gearB=document.getElementById('gearB');
+  var phaseDark=document.getElementById('phaseDark'), mmsg=document.getElementById('mmsg');
+  var SIGNS=['Ariete','Toro','Gemelli','Cancro','Leone','Vergine','Bilancia','Scorpione','Sagittario','Capricorno','Acquario','Pesci'];
+  var crankAnim=null;
+
+  function phaseName(f,waxing){
+    if(f<0.04) return 'novilunio';
+    if(f>0.96) return 'plenilunio';
+    if(f<0.46) return waxing?'falce crescente':'falce calante';
+    if(f<0.54) return waxing?'primo quarto':'ultimo quarto';
+    return waxing?'gibbosa crescente':'gibbosa calante';
+  }
+  function setDay(day){
+    day=Math.max(0,Math.min(730,day));
+    var sun=(day/365.25*360)%360;
+    var moon=(day/27.322*360)%360;
+    var elong=((day/29.531*360)%360);
+    var er=elong*Math.PI/180;
+    var f=(1-Math.cos(er))/2;              /* frazione illuminata */
+    var waxing=elong<180;
+    sunHand.setAttribute('transform','rotate('+sun.toFixed(2)+' 210 235)');
+    moonHand.setAttribute('transform','rotate('+moon.toFixed(2)+' 210 235)');
+    gearA.setAttribute('transform','rotate('+(day*3.1).toFixed(2)+' 452 342)');
+    gearB.setAttribute('transform','rotate('+(-day*4.7).toFixed(2)+' 508 268)');
+    if(phaseDark){ var dx=(waxing?1:-1)*f*52; phaseDark.setAttribute('cx',(470+dx).toFixed(1)); }
+    var sign=SIGNS[Math.floor(sun/30)%12];
+    mmsg.innerHTML='<b>Giorno '+day+'.</b> Sole nel segno: '+sign+'. Luna: '+phaseName(f,waxing)+' ('+Math.round(f*100)+'% illuminata). Nota il rapporto: in un anno il Sole fa un giro, la Luna quasi tredici.';
+  }
+  if(crank){
+    crank.addEventListener('input',function(){ if(crankAnim){cancelAnimationFrame(crankAnim);crankAnim=null;} setDay(+crank.value); });
+    setDay(0);
+  }
+  if(yearBtn){
+    yearBtn.addEventListener('click',function(){
+      var target=Math.min(730,(+crank.value)+365);
+      if(reduce){ crank.value=target; setDay(target); return; }
+      if(crankAnim) cancelAnimationFrame(crankAnim);
+      var start=+crank.value, t0=null, dur=1600;
+      (function step(ts){
+        if(!t0)t0=ts;
+        var k=Math.min((ts-t0)/dur,1), e=1-Math.pow(1-k,2);
+        var d=Math.round(start+(target-start)*e);
+        crank.value=d; setDay(d);
+        if(k<1) crankAnim=requestAnimationFrame(step); else crankAnim=null;
+      })(performance.now());
+    });
+  }
+  if(crankReset){ crankReset.addEventListener('click',function(){ if(crankAnim){cancelAnimationFrame(crankAnim);crankAnim=null;} crank.value=0; setDay(0); }); }
+
+  /* ---------- quadranti (fronte/retro) ---------- */
+  var dinfo=document.getElementById('dialinfo');
+  if(dinfo){
+    document.querySelectorAll('.zone').forEach(function(z){
+      function show(){ dinfo.innerHTML='<b>'+z.dataset.t+'</b><br>'+z.dataset.d; }
+      z.addEventListener('click',show); z.addEventListener('focus',show);
+      z.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} });
+    });
+  }
+
+  /* ---------- metriche di scroll ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'004-anticitera',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] scheda 004 · '+m+'% a '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] sessione: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- iscrizione ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla — collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>

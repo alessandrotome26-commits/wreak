@@ -35,7 +35,7 @@
   "lat": -68.733,
   "lon": -52.333,
   "d": 3008,
-  "st": "planned",
+  "st": "next",
   "f": "La nave di Ernest Shackleton, ritrovata nel 2022 nel Mare di Weddell sotto la banchisa antartica."
  },
  {
@@ -53,8 +53,9 @@
   "lat": 35.887,
   "lon": 23.31,
   "d": 50,
-  "st": "next",
-  "f": "Nave romana con a bordo il meccanismo di Anticitera, trovata dai pescatori di spugne nel 1900."
+  "st": "ready",
+  "href": "anticitera.html",
+  "f": "Nave romana con a bordo il meccanismo di Anticitera, il più antico calcolatore meccanico conosciuto. Trovata dai pescatori di spugne nel 1900."
  },
  {
   "n": "Uluburun",
