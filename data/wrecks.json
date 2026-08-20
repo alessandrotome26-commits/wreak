@@ -64,7 +64,7 @@
   "lat": 36.126,
   "lon": 29.685,
   "d": 50,
-  "st": "planned",
+  "st": "next",
   "f": "Relitto dell'età del bronzo al largo della Turchia, tra i più antichi mai scavati sistematicamente."
  },
  {
@@ -73,8 +73,9 @@
   "lat": 10.0,
   "lon": -75.9,
   "d": 600,
-  "st": "next",
-  "f": "Galeone spagnolo al largo di Cartagena, al centro di una disputa internazionale ancora aperta sulla proprietà."
+  "st": "ready",
+  "href": "sanjose.html",
+  "f": "Capitana della flotta spagnola del tesoro, esplosa in battaglia nel 1708 al largo di Cartagena con ~600 uomini e ~200 t di oro, argento e smeraldi. Individuata nel 2015 a 600 m; ancora contesa da quattro parti."
  },
  {
   "n": "SS Andrea Doria",

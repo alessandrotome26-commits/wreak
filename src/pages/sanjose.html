@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>San José — 1708</title>
+<meta name="description" content="Il galeone spagnolo San José, capitana della Flotta di Tierra Firme, esploso nel 1708 al largo di Cartagena con circa 600 uomini e un tesoro di ~200 tonnellate. Individuato nel 2015 a 600 metri, è ancora conteso da quattro parti.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="San José — 1708">
+<meta property="og:description" content="Atocha è il grande tesoro recuperato. Il San José è il grande tesoro ancora sul fondo — e conteso da quattro parti insieme.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#07120E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --deep:#07120E; --sea:#0A1A15; --brine:#0C231C; --smoke:#132420;
+  --emerald:#3AA37E; --emerald2:#54C29B; --gold:#C9A24A; --gold2:#E2BB5E; --ember:#C4562A;
+  --parch:#EAE1CC; --fog:#8D9C92;
+  --rule:rgba(234,225,204,.15);
+  --display:"Fraunces",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--deep);color:var(--parch);font-family:var(--body);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#sea{position:fixed;inset:0;z-index:-4;background:var(--deep);transition:background 1.6s ease}
+#smoke{position:fixed;inset:-12%;z-index:-3;pointer-events:none;opacity:1;transition:opacity .9s linear;
+  background:radial-gradient(circle at 26% 24%,rgba(120,130,120,.10),transparent 34%),
+             radial-gradient(circle at 70% 30%,rgba(120,130,120,.07),transparent 32%);
+  filter:blur(8px);animation:smoke 44s ease-in-out infinite alternate}
+@keyframes smoke{0%{transform:translate3d(-2%,-1%,0) scale(1.03)}100%{transform:translate3d(3%,2%,0) scale(1.1)}}
+#glints{position:fixed;inset:0;z-index:-2;pointer-events:none}
+#flash{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1s linear;
+  background:radial-gradient(ellipse at 50% 34%,rgba(196,86,42,.16),transparent 52%);animation:flashpulse 7s ease-in-out infinite}
+@keyframes flashpulse{0%,100%{filter:brightness(.85)}50%{filter:brightness(1.2)}}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--fog);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--gold)}
+.rail-num{font-size:20px;color:var(--parch);font-weight:600;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.5;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(7,18,14,.8)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--emerald);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(52px,11vw,112px);line-height:.96;letter-spacing:-.01em}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,4.5vw,46px);line-height:1.12;margin-bottom:22px}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(234,225,204,.85)}
+.lede{font-size:20px;color:var(--parch)}
+em{font-style:italic;color:var(--fog)}
+strong{font-weight:500;color:var(--parch)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--fog);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--fog)}
+.coord b{display:block;color:var(--parch);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  color:var(--gold2);border:1px solid rgba(201,162,74,.4);padding:5px 10px;margin-top:28px;align-self:flex-start;max-width:62ch;line-height:1.5}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--gold2);flex:none}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(141,156,146,.55);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(234,225,204,.08)}
+.stat .v{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.8vw,46px);line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--ember);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-weight:600;font-size:clamp(26px,4.6vw,42px);line-height:1.16;quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--fog);margin-top:18px}
+
+.tl{border-left:1px solid var(--rule);margin-top:8px}
+.tl-item{padding:0 0 34px 28px;position:relative}
+.tl-item::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--deep);border:1px solid var(--fog)}
+.tl-item.key::before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 5px rgba(201,162,74,.15)}
+.tl-y{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--emerald);margin-bottom:5px}
+.tl-item.key .tl-y{color:var(--gold)}
+.tl-t{font-size:17px;color:var(--parch);margin-bottom:4px}
+.tl-d{font-size:14.5px;color:rgba(234,225,204,.6);max-width:52ch}
+
+.widget{border:1px solid var(--rule);background:rgba(10,26,21,.5);padding:20px;margin-top:10px}
+.widget svg{width:100%;height:auto;display:block}
+.wctrl{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);
+  font-family:var(--mono);font-size:11px;color:var(--fog)}
+.wctrl button{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;background:transparent;
+  color:var(--fog);border:1px solid var(--rule);padding:8px 13px;cursor:pointer;transition:border-color .25s,color .25s}
+.wctrl button:hover{border-color:var(--emerald);color:var(--emerald2)}
+.wctrl button[aria-pressed="true"]{border-color:var(--gold);color:var(--gold2)}
+#routeinfo{font-family:var(--mono);font-size:12px;color:var(--fog);margin-top:16px;min-height:56px;
+  border-top:1px solid var(--rule);padding-top:14px;line-height:1.7}
+#routeinfo b{color:var(--gold2);font-weight:500}
+
+.sitewrap{margin-top:14px;border:1px solid var(--rule);background:rgba(10,26,21,.5);padding:20px}
+.sitewrap svg{width:100%;height:auto;display:block}
+.claim{cursor:pointer}
+.claim circle,.claim rect,.claim path{transition:opacity .25s,stroke-width .2s}
+.claim .hot{opacity:0}
+.claim:hover .hot,.claim:focus .hot{opacity:.5}
+#claiminfo{font-family:var(--mono);font-size:12px;color:var(--fog);margin-top:16px;min-height:56px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.7}
+#claiminfo b{color:var(--gold2);font-weight:500}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(234,225,204,.08);vertical-align:top}
+td.n{color:var(--parch);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:rgba(141,156,146,.72);line-height:1.7;margin-top:22px;max-width:60ch}
+
+.realimg{margin-top:22px;border:1px solid rgba(201,162,74,.35);background:rgba(201,162,74,.06);padding:22px}
+.realimg .badge{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);margin-bottom:14px}
+.realimg p{margin-bottom:14px}
+.realimg .rilink{display:inline-block;margin:0 18px 8px 0;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--emerald2);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:4px;transition:color .25s,border-color .25s}
+.realimg .rilink:hover{color:var(--gold2);border-color:var(--gold)}
+.realimg .cite{font-family:var(--mono);font-size:11px;color:rgba(141,156,146,.72);line-height:1.6;margin-top:8px}
+
+.shipart{margin-top:22px;border:1px solid var(--rule);background:rgba(10,26,21,.5);padding:18px 18px 12px}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:rgba(141,156,146,.72);letter-spacing:.05em;margin-top:10px}
+.galleon{transform-box:fill-box;transform-origin:50% 92%;animation:galleonbob 7s ease-in-out infinite}
+@keyframes galleonbob{0%,100%{transform:rotate(-.7deg) translateY(0)}50%{transform:rotate(.7deg) translateY(-3px)}}
+.gflag{transform-box:fill-box;transform-origin:0 50%;animation:gflutter 1.8s ease-in-out infinite}
+@keyframes gflutter{0%,100%{transform:scaleX(1) skewX(0deg)}50%{transform:scaleX(.8) skewX(-11deg)}}
+.gwave{animation:gwavemove 5s ease-in-out infinite}
+@keyframes gwavemove{0%,100%{transform:translateX(0)}50%{transform:translateX(-8px)}}
+
+.arclinks{display:grid;gap:2px;margin-top:24px;border-top:1px solid var(--rule)}
+.arclinks a{display:flex;gap:20px;align-items:baseline;padding:20px 0;text-decoration:none;color:inherit;
+  border-bottom:1px solid rgba(234,225,204,.08);transition:padding-left .3s ease,border-color .3s ease}
+.arclinks a:hover,.arclinks a:focus-visible{padding-left:14px;border-bottom-color:var(--gold)}
+.arclinks .arch{font-family:var(--mono);font-size:11px;color:var(--emerald);min-width:158px}
+.arclinks .ttl{font-size:16px;color:var(--parch)}
+.arclinks .meta{font-size:13px;color:rgba(234,225,204,.5);margin-top:3px;max-width:46ch}
+.arclinks .go{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--fog);opacity:0;transition:opacity .3s}
+.arclinks a:hover .go,.arclinks a:focus-visible .go{opacity:1}
+
+.closing{border-top:1px solid var(--gold);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--fog);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:transparent;border:1px solid var(--rule);color:var(--parch);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--fog);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--gold);color:#1B1206;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.85}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--emerald2)}
+.signup .msg.err{color:#E0846A}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--gold2);border-color:var(--gold)}
+.src{font-family:var(--mono);font-size:11.5px;color:rgba(141,156,146,.62);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:15px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+  .arclinks a{flex-wrap:wrap;gap:8px} .arclinks .go{display:none} .arclinks .arch{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #sea,#smoke,#flash{transition:none;animation:none}
+  .galleon,.gflag,.gwave{animation:none}
+  #glints{display:none}
+}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="sea"></div>
+<div id="smoke"></div>
+<canvas id="glints"></canvas>
+<div id="flash"></div>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Anno</div><div class="rail-num" id="railYear">1708</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Profondità</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1708" data-depth="0">
+  <div class="eyebrow">Galeone spagnolo · Capitana della Flotta di Tierra Firme</div>
+  <h1>San José</h1>
+  <div class="sub">ESPLOSA 8 GIUGNO 1708 · INDIVIDUATA 27 NOVEMBRE 2015</div>
+  <div class="coordbox">
+    <div class="coord">Dove giace<b>~600 m · al largo di Barú, Cartagena</b></div>
+    <div class="coord">Posizione esatta<b>segreto di Stato</b></div>
+    <div class="coord">Il tesoro<b>~200 t, ancora sul fondo</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>POSIZIONE PRECISA SEGRETA (SEGRETO DI STATO COLOMBIANO) · SITO ARCHEOLOGICO, RECUPERO SCIENTIFICO IN CORSO</div>
+  <div class="scrollcue">↓ scorri — il tesoro è ancora laggiù</div>
+</section>
+
+<section class="reveal" data-year="2015" data-depth="0">
+  <div class="eyebrow">Perché questo relitto</div>
+  <h2>Il grande tesoro ancora sul fondo</h2>
+  <p class="lede">L'Atocha è il grande tesoro <em>recuperato</em>. Il San José è il suo opposto: il grande tesoro ancora <strong>là sotto</strong> — e conteso, oggi, da quattro parti diverse insieme.</p>
+  <p>Non è una caccia con montagne di monete già tirate su. È un enorme relitto archeologico a seicento metri, con circa duecento tonnellate di oro, argento e smeraldi ancora nella stiva. Per questo lo chiamano il "santo graal dei relitti". Ma la storia più affascinante non è quanto vale: è come è finito laggiù, da dove veniva quel tesoro, e perché ancora nessuno sa con certezza di chi sia.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">~600</div><div class="k">uomini a bordo</div></div>
+    <div class="stat"><div class="v">~11</div><div class="k">superstiti</div></div>
+    <div class="stat"><div class="v">~600</div><div class="k">metri di profondità</div></div>
+    <div class="stat"><div class="v">4</div><div class="k">rivendicazioni aperte</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1708" data-depth="0">
+  <div class="eyebrow">1706–1708 · una nave per pagare una guerra</div>
+  <h2>La cassaforte dell'impero</h2>
+  <p>Il San José era la <em>capitana</em> — la nave ammiraglia — della Flotta di Tierra Firme, il convoglio che ogni anno portava in Spagna la ricchezza delle Americhe. Un galeone a tre alberi, circa sessanta cannoni, di proprietà del re Filippo V. In un momento pessimo per essere una nave del tesoro: l'Europa era in fiamme per la Guerra di successione spagnola, e quell'oro serviva a finanziare l'esercito borbonico.</p>
+  <p class="lede">Trasportare quel carico significava attraversare un mare pieno di navi inglesi che lo cercavano.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 640 320" role="img" aria-label="Illustrazione stilizzata del galeone San José">
+      <title>Il galeone San José</title>
+      <rect x="0" y="258" width="640" height="62" fill="rgba(58,163,126,.08)"/>
+      <g class="gwave">
+        <path d="M-20 266 q 45 -8 90 0 t 90 0 t 90 0 t 90 0 t 90 0 t 90 0 t 90 0 t 90 0" fill="none" stroke="rgba(58,163,126,.32)" stroke-width="1.4"/>
+        <path d="M-20 280 q 55 -7 110 0 t 110 0 t 110 0 t 110 0 t 110 0 t 110 0 t 110 0" fill="none" stroke="rgba(58,163,126,.2)" stroke-width="1.2"/>
+      </g>
+      <g class="galleon">
+        <line x1="318" y1="74" x2="500" y2="232" stroke="rgba(201,162,74,.35)" stroke-width="1"/>
+        <line x1="318" y1="74" x2="182" y2="244" stroke="rgba(201,162,74,.35)" stroke-width="1"/>
+        <!-- alberi -->
+        <line x1="240" y1="244" x2="240" y2="98" stroke="#3A2C1C" stroke-width="3"/>
+        <line x1="318" y1="244" x2="318" y2="72" stroke="#3A2C1C" stroke-width="3.4"/>
+        <line x1="398" y1="244" x2="398" y2="108" stroke="#3A2C1C" stroke-width="3"/>
+        <line x1="452" y1="248" x2="520" y2="232" stroke="#2A2016" stroke-width="2.6"/>
+        <!-- vele -->
+        <path d="M206 118 L274 118 L271 156 Q240 165 209 156 Z" fill="#EDE6D2" stroke="#C7B98A" stroke-width="1"/>
+        <path d="M200 160 L280 160 L276 202 Q240 212 204 202 Z" fill="#E7DEC9" stroke="#C7B98A" stroke-width="1"/>
+        <path d="M280 98 L356 98 L353 140 Q318 150 283 140 Z" fill="#EDE6D2" stroke="#C7B98A" stroke-width="1"/>
+        <path d="M272 144 L364 144 L360 190 Q318 201 276 190 Z" fill="#E7DEC9" stroke="#C7B98A" stroke-width="1"/>
+        <path d="M264 194 L372 194 L368 240 Q318 251 268 240 Z" fill="#E3D8BF" stroke="#C7B98A" stroke-width="1"/>
+        <path d="M398 130 L398 242 L356 236 L366 142 Z" fill="#E7DEC9" stroke="#C7B98A" stroke-width="1"/>
+        <path d="M462 140 L512 232 L456 244 Z" fill="#E7DEC9" stroke="#C7B98A" stroke-width="1"/>
+        <path d="M446 122 L470 236 L440 242 Z" fill="#EDE6D2" stroke="#C7B98A" stroke-width="1"/>
+        <line x1="204" y1="118" x2="276" y2="118" stroke="#3A2C1C" stroke-width="2"/>
+        <line x1="198" y1="160" x2="282" y2="160" stroke="#3A2C1C" stroke-width="2"/>
+        <line x1="278" y1="98" x2="358" y2="98" stroke="#3A2C1C" stroke-width="2"/>
+        <line x1="270" y1="144" x2="366" y2="144" stroke="#3A2C1C" stroke-width="2"/>
+        <line x1="262" y1="194" x2="374" y2="194" stroke="#3A2C1C" stroke-width="2"/>
+        <!-- scafo con castello di poppa alto -->
+        <path d="M170 244 L150 214 L182 214 L188 244 Z" fill="#241A10" stroke="#4A3826" stroke-width="1.1"/>
+        <path d="M182 246 L462 246 L444 270 Q318 288 200 270 Z" fill="#2A2016" stroke="#4A3826" stroke-width="1.2"/>
+        <line x1="194" y1="252" x2="452" y2="252" stroke="#C9A24A" stroke-width="1.4"/>
+        <!-- bandiera -->
+        <path class="gflag" d="M318 64 L354 68 L349 76 L354 84 L318 82 Z" fill="#C4562A"/>
+      </g>
+      <text x="20" y="30" fill="rgba(141,156,146,.6)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">IL SAN JOSÉ — RICOSTRUZIONE STILIZZATA DI UN GALEONE DEL 1708</text>
+    </svg>
+    <figcaption>Non esiste un ritratto d'epoca certo della nave: questa è la classe di galeone, non il suo esatto profilo. L'unica immagine storica che la mostra è il dipinto qui sotto.</figcaption>
+  </figure>
+</section>
+
+<section class="reveal" data-year="1708" data-depth="600">
+  <div class="eyebrow">8 giugno 1708 · al largo di Barú</div>
+  <h2>Un'ora di battaglia, poi il lampo</h2>
+  <p>Nel pomeriggio dell'8 giugno 1708 (il 28 maggio del calendario giuliano inglese), una squadra della Royal Navy comandata dal commodoro Charles Wager intercetta la flotta spagnola vicino a Cartagena. La nave di Wager, la <em>Expedition</em> da 70 cannoni, affianca il San José e apre il fuoco. Dopo circa un'ora e mezza di duello, accade l'imprevisto che decide tutto: la <strong>santabarbara</strong> del San José — il deposito della polvere da sparo — esplode.</p>
+  <div class="moment">
+    <q>La nave più ricca del mondo si inabissò in pochi minuti, portando con sé quasi tutti i suoi uomini e il tesoro che Wager era venuto a prendere.</q>
+    <cite>DALLA RICOSTRUZIONE DELL'AZIONE DI WAGER, 8 GIUGNO 1708</cite>
+  </div>
+  <p>Dei circa seicento uomini a bordo se ne salvano una decina. E il paradosso è che l'esplosione fu, per la Spagna, l'unica magra consolazione: se gli inglesi avessero catturato il San José intatto, il tesoro sarebbe finito a Londra. Così invece finì sul fondo — dove è rimasto per tre secoli.</p>
+  <div class="realimg">
+    <div class="badge">Immagine storica reale</div>
+    <p>L'esplosione fu dipinta a olio dall'inglese <strong>Samuel Scott</strong> intorno al 1747: al centro la <em>Expedition</em> di Wager, sulla destra la capitana spagnola che salta in aria. È l'unica raffigurazione storica nota della fine del San José.</p>
+    <a class="rilink" href="https://www.rmg.co.uk/collections/objects/rmgc-object-11840" target="_blank" rel="noopener">Vedi il dipinto · Royal Museums Greenwich ↗</a>
+    <a class="rilink" href="https://commons.wikimedia.org/wiki/File:Wager's_Action_off_Cartagena,_28_May_1708.jpg" target="_blank" rel="noopener">Immagine ad alta risoluzione · Wikimedia Commons ↗</a>
+    <p class="cite">Samuel Scott, «Wager's Action off Cartagena, 28 May 1708», olio su tela, c. 1747. National Maritime Museum, Greenwich (Royal Museums Greenwich). Opera di pubblico dominio — riprodotta con attribuzione, non ospitata su questo sito.</p>
+  </div>
+</section>
+
+<section class="reveal" data-year="1708" data-depth="0">
+  <div class="eyebrow">Da dove veniva · e dove andava</div>
+  <h2>La rotta del tesoro</h2>
+  <p>Quel carico non nasceva a Cartagena: ci arrivava dopo un viaggio lungo mezzo continente. Segui le tappe e guarda cosa portava.</p>
+  <div class="widget">
+    <svg id="routemap" viewBox="0 0 640 380" role="img" aria-label="Mappa schematica della rotta del tesoro dal Potosí alla Spagna">
+      <title>La rotta del tesoro del San José</title>
+      <!-- terre schematiche -->
+      <path d="M40 300 L150 280 L230 300 L250 356 L120 360 L40 344 Z" fill="rgba(58,163,126,.10)" stroke="rgba(58,163,126,.3)" stroke-width="1"/>
+      <text x="120" y="336" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">SUD AMERICA</text>
+      <path d="M300 130 l30 -10 l40 8 l-6 20 l-40 6 l-28 -8 Z" fill="rgba(58,163,126,.10)" stroke="rgba(58,163,126,.3)" stroke-width="1"/>
+      <text x="332" y="124" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">CUBA</text>
+      <path d="M556 96 l44 -8 l16 16 l-18 18 l-40 -4 l-6 -12 Z" fill="rgba(58,163,126,.10)" stroke="rgba(58,163,126,.3)" stroke-width="1"/>
+      <text x="586" y="86" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">SPAGNA</text>
+
+      <!-- 1 origine -->
+      <path id="legOrigin" d="M96 320 C 150 300, 176 270, 210 250 C 232 236, 244 236, 250 236" fill="none" stroke="var(--emerald)" stroke-width="2" stroke-dasharray="5 6"/>
+      <circle cx="96" cy="320" r="5" fill="var(--emerald)"/>
+      <text x="104" y="322" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9">POTOSÍ · argento</text>
+      <!-- 2 portobelo -> cartagena -->
+      <path id="legFair" d="M250 236 C 268 224, 286 200, 300 178" fill="none" stroke="var(--gold)" stroke-width="2.4" stroke-linecap="round" opacity="0"/>
+      <circle cx="250" cy="236" r="4.5" fill="var(--gold)"/>
+      <text x="196" y="250" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9">PORTOBELO</text>
+      <circle cx="300" cy="176" r="4.5" fill="var(--gold)"/>
+      <text x="308" y="172" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9">CARTAGENA</text>
+      <!-- 3 l'agguato -->
+      <g id="sinkMark" opacity="0">
+        <circle cx="316" cy="196" r="9" fill="none" stroke="var(--ember)" stroke-width="1.3"/>
+        <path d="M316 189 l2 5 h5 l-4 3.4 l1.6 5.2 l-4.6 -3.2 l-4.6 3.2 l1.6 -5.2 l-4 -3.4 h5 Z" fill="var(--ember)"/>
+        <text x="326" y="204" fill="var(--ember)" font-family="IBM Plex Mono, monospace" font-size="9">8 giu 1708 · esplode</text>
+      </g>
+      <path id="legSink" d="M300 178 C 306 184, 312 190, 316 196" fill="none" stroke="var(--ember)" stroke-width="2.4" stroke-linecap="round" opacity="0"/>
+      <!-- 4 dove andava (mai percorsa) -->
+      <path id="legHome" d="M300 176 C 300 150, 320 132, 340 130 C 420 120, 520 112, 574 108" fill="none" stroke="var(--fog)" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="4 6" opacity="0"/>
+
+      <circle id="galleon" cx="96" cy="320" r="4.5" fill="var(--parch)"/>
+      <text x="20" y="26" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">MAPPA SCHEMATICA — GEOGRAFIA SEMPLIFICATA, NON IN SCALA</text>
+    </svg>
+    <div class="wctrl">
+      <button id="btnOrigin" aria-pressed="true">1 · L'origine</button>
+      <button id="btnFair" aria-pressed="false">2 · Alla flotta</button>
+      <button id="btnSink" aria-pressed="false">3 · L'agguato</button>
+      <button id="btnHome" aria-pressed="false">4 · Dove andava</button>
+    </div>
+    <div id="routeinfo"><b>1 · L'origine del carico</b><br>Argento estratto dal Cerro Rico di Potosí (oggi Bolivia) con il lavoro forzato indigeno, e smeraldi di Muzo dalla Nueva Granada. Il metallo risaliva il Pacifico fino a Panamá e attraversava l'istmo a dorso di mulo.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1708" data-depth="600">
+  <div class="eyebrow">Il carico</div>
+  <h2>Cosa c'era nella stiva</h2>
+  <p>Le fonti d'epoca e i primi reperti fotografati dai robot danno un quadro coerente: non "oro" soltanto, ma soprattutto argento, monete, smeraldi e merci di lusso arrivate da mezzo mondo.</p>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Note</th></tr></thead>
+    <tbody>
+      <tr><td>Monete d'oro e d'argento</td><td class="n">~11 milioni (fonti d'epoca)</td></tr>
+      <tr><td>Argento (lingotti e monete)</td><td class="n">la parte maggiore del carico</td></tr>
+      <tr><td>Smeraldi (Muzo, Nueva Granada)</td><td class="n">sì</td></tr>
+      <tr><td>Perle e gioielli</td><td class="n">sì</td></tr>
+      <tr><td>Porcellana cinese (epoca Kangxi)</td><td class="n">sì</td></tr>
+      <tr><td>Peso stimato del tesoro</td><td class="n">~200 t</td></tr>
+      <tr><td>Monete fotografate sul fondo</td><td class="n">zecca di Lima, datate 1707</td></tr>
+    </tbody>
+  </table>
+  <p class="lede">Ma dietro quei numeri c'è una verità meno luccicante.</p>
+  <p>Gran parte di quell'argento veniva da Potosí, la montagna che per due secoli inghiottì centinaia di migliaia di lavoratori indigeni e africani ridotti in schiavitù. Il carico del San José non era ricchezza prodotta: era ricchezza <em>estratta</em> — ed è proprio questo che, tre secoli dopo, sta al centro di una delle rivendicazioni sul relitto.</p>
+  <p class="note">Il valore complessivo circola sui media come "17–20 miliardi di dollari", ma è una stima non verificabile: dipende da cosa c'è davvero, dal prezzo dei metalli e dal valore storico dei pezzi. Su questa pagina resta un dato dichiaratamente incerto, non un fatto.</p>
+</section>
+
+<section class="reveal" data-year="2018" data-depth="600">
+  <div class="eyebrow">Il nodo</div>
+  <h2>Di chi è il San José?</h2>
+  <p>È la domanda che rende questo relitto unico. Non c'è un proprietario: ci sono quattro parti che lo reclamano insieme, ciascuna con un argomento serio. Clicca ognuna.</p>
+  <div class="sitewrap">
+    <svg viewBox="0 0 640 300" role="img" aria-label="Schema delle quattro rivendicazioni sul relitto del San José" class="fielded">
+      <title>Le quattro rivendicazioni sul San José</title>
+      <!-- linee verso il centro -->
+      <line x1="150" y1="86" x2="320" y2="150" stroke="var(--rule)" stroke-width="1"/>
+      <line x1="490" y1="86" x2="320" y2="150" stroke="var(--rule)" stroke-width="1"/>
+      <line x1="150" y1="222" x2="320" y2="150" stroke="var(--rule)" stroke-width="1"/>
+      <line x1="490" y1="222" x2="320" y2="150" stroke="var(--rule)" stroke-width="1"/>
+      <!-- centro: il relitto -->
+      <circle cx="320" cy="150" r="30" fill="rgba(201,162,74,.14)" stroke="var(--gold)" stroke-width="1.4"/>
+      <text x="320" y="154" fill="var(--gold2)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">SAN JOSÉ</text>
+
+      <g class="claim" tabindex="0" data-t="Colombia" data-d="Lo tratta come patrimonio culturale della nazione, non come bottino da vendere. Conduce il recupero scientifico e ne tiene segreta la posizione. Non ha ratificato la Convenzione UNESCO del 2001.">
+        <circle class="hot" cx="150" cy="86" r="40"/>
+        <circle cx="150" cy="86" r="34" fill="rgba(58,163,126,.12)" stroke="var(--emerald)" stroke-width="1.4"/>
+        <text x="150" y="90" fill="var(--emerald2)" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="middle" letter-spacing="1">COLOMBIA</text>
+      </g>
+      <g class="claim" tabindex="0" data-t="Spagna" data-d="Il San José era un vascello da guerra della Corona: per la Spagna una nave di Stato resta sua ovunque affondi. Si appella alla Convenzione UNESCO 2001 sul patrimonio culturale subacqueo.">
+        <circle class="hot" cx="490" cy="86" r="40"/>
+        <circle cx="490" cy="86" r="34" fill="rgba(58,163,126,.12)" stroke="var(--emerald)" stroke-width="1.4"/>
+        <text x="490" y="90" fill="var(--emerald2)" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="middle" letter-spacing="1">SPAGNA</text>
+      </g>
+      <g class="claim" tabindex="0" data-t="Sea Search Armada" data-d="Società di recupero statunitense: sostiene di aver localizzato il relitto già nel 1981–82 e reclama fino alla metà del tesoro. La controversia è arrivata alla Corte permanente di arbitrato dell'Aia.">
+        <circle class="hot" cx="150" cy="222" r="42"/>
+        <circle cx="150" cy="222" r="36" fill="rgba(196,86,42,.12)" stroke="var(--ember)" stroke-width="1.4"/>
+        <text x="150" y="219" fill="#D98A5E" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">SEA SEARCH</text>
+        <text x="150" y="231" fill="#D98A5E" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">ARMADA</text>
+      </g>
+      <g class="claim" tabindex="0" data-t="Nazione Qhara Qhara (Bolivia)" data-d="Nazione indigena dell'altopiano boliviano: l'argento fu estratto dai loro antenati ridotti in schiavitù a Potosí. Rivendicazione depositata nel 2018 su base storica e morale — non era ricchezza spagnola, ma il frutto del loro lavoro forzato.">
+        <circle class="hot" cx="490" cy="222" r="42"/>
+        <circle cx="490" cy="222" r="36" fill="rgba(201,162,74,.12)" stroke="var(--gold)" stroke-width="1.4"/>
+        <text x="490" y="219" fill="var(--gold2)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">QHARA QHARA</text>
+        <text x="490" y="231" fill="var(--gold2)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">BOLIVIA</text>
+      </g>
+    </svg>
+    <div id="claiminfo">Seleziona una delle quattro parti per leggerne la rivendicazione.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="2015" data-depth="600">
+  <div class="eyebrow">27 novembre 2015 · a 600 metri</div>
+  <h2>Trovata dai delfini di bronzo</h2>
+  <p>Per decenni la posizione fu un mistero — e oggetto di cause. La svolta arriva il 27 novembre 2015: la Marina colombiana, con un team internazionale e il veicolo autonomo <em>REMUS 6000</em> dei Woods Hole Oceanographic Institution, individua il relitto al largo della penisola di Barú, a più di seicento metri.</p>
+  <p class="lede">A confermare che era proprio lei furono i suoi cannoni: bronzi decorati con <strong>delfini</strong> in rilievo, un dettaglio che nessun altro relitto poteva avere.</p>
+  <p>Il robot scese fino a una decina di metri sopra il fondo per fotografarli. La posizione esatta, però, è rimasta un segreto di Stato colombiano: la prima difesa contro i saccheggiatori è non dire a nessuno dove guardare.</p>
+</section>
+
+<section class="reveal" data-year="2025" data-depth="600">
+  <div class="eyebrow">Novembre 2025 · i primi pezzi in superficie</div>
+  <h2>Trecento anni dopo, il primo reperto</h2>
+  <p>Tra il 16 e il 18 novembre 2025, per la prima volta, la Colombia riporta in superficie alcuni oggetti dal relitto: un <strong>cannone di bronzo</strong>, <strong>tre monete d'oro</strong> battute a mano e una <strong>tazza di porcellana</strong>. Vengono presentati a Cartagena il 19 novembre.</p>
+  <p>La scelta delle parole è precisa: non "recupero del tesoro", ma <em>missione scientifica</em>. La Colombia vuole studiare il sito con metodo archeologico, non svuotarlo — anche perché ogni oggetto tirato su, mentre le cause sono ancora aperte, è politicamente esplosivo quanto la santabarbara del 1708.</p>
+</section>
+
+<section class="reveal" data-year="1708" data-depth="600">
+  <div class="eyebrow">I numeri</div>
+  <h2>La nave, misurata</h2>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Valore</th></tr></thead>
+    <tbody>
+      <tr><td>Tipo</td><td class="n">galeone · capitana di flotta</td></tr>
+      <tr><td>Cannoni</td><td class="n">~60–64</td></tr>
+      <tr><td>Uomini a bordo</td><td class="n">~600</td></tr>
+      <tr><td>Superstiti</td><td class="n">~11</td></tr>
+      <tr><td>Affondamento</td><td class="n">8 giugno 1708</td></tr>
+      <tr><td>Profondità del relitto</td><td class="n">~600 m</td></tr>
+      <tr><td>Individuata</td><td class="n">27 novembre 2015</td></tr>
+      <tr><td>Peso stimato del tesoro</td><td class="n">~200 t</td></tr>
+      <tr><td>Rivendicazioni aperte</td><td class="n">4</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Il numero dei cannoni varia tra le fonti (60, 62 o 64); la data segue il calendario gregoriano (8 giugno; nelle fonti inglesi dell'epoca, 28 maggio). Vittime e superstiti sono stime storiche. Il valore del carico non è incluso perché non è un dato accertato.</p>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">Archivio</div>
+  <h2>Vederla, e seguirne la storia</h2>
+  <p>Nessuna immagine è ospitata qui: si linka a chi la custodisce, con la citazione. Il primo è l'unica raffigurazione storica; il secondo è chi l'ha ritrovata; il terzo tiene il filo della vicenda che continua.</p>
+  <div class="arclinks">
+    <a href="https://www.rmg.co.uk/collections/objects/rmgc-object-11840" target="_blank" rel="noopener">
+      <span class="arch">ROYAL MUSEUMS GREENWICH</span>
+      <span><span class="ttl">Il dipinto dell'esplosione</span><span class="meta">Samuel Scott, «Wager's Action off Cartagena, 28 May 1708» (c. 1747), National Maritime Museum. Pubblico dominio.</span></span>
+      <span class="go">rmg.co.uk ↗</span>
+    </a>
+    <a href="https://www.whoi.edu/press-room/news-release/new-details-on-discovery-of-the-san-jose-shipwreck/" target="_blank" rel="noopener">
+      <span class="arch">WOODS HOLE (WHOI)</span>
+      <span><span class="ttl">La scoperta del 2015</span><span class="meta">Come il veicolo autonomo REMUS 6000 individuò il relitto e ne fotografò i cannoni coi delfini a 600 metri.</span></span>
+      <span class="go">whoi.edu ↗</span>
+    </a>
+    <a href="https://en.wikipedia.org/wiki/Spanish_galleon_San_Jos%C3%A9" target="_blank" rel="noopener">
+      <span class="arch">SCHEDA STORICA</span>
+      <span><span class="ttl">La nave, la battaglia, le cause</span><span class="meta">Sintesi documentata con i rimandi alle fonti primarie sull'azione di Wager e sulle rivendicazioni in corso.</span></span>
+      <span class="go">wikipedia ↗</span>
+    </a>
+  </div>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">Nota metodologica</div>
+  <h2>Cosa questa pagina non fa</h2>
+  <p>Non mette un cartellino del prezzo sul relitto. Le cifre da "20 miliardi" fanno titolo, ma nessuno può conoscere il valore reale finché il carico non è recuperato e catalogato: qui resta una stima dichiarata, non un fatto.</p>
+  <p>Non prende parte alla contesa. Le quattro rivendicazioni sono esposte per quello che sono, con l'argomento di ciascuna, senza decidere chi ha ragione — perché non è deciso. E non pubblica la posizione: è un segreto di Stato che protegge il sito, e va rispettato.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 006 di 20</div>
+    <h2 style="margin-bottom:14px">La prossima torna all'origine di tutto: Uluburun</h2>
+    <p>Dal relitto più ricco al più antico. Dopo il tesoro conteso del San José, un mercantile dell'età del bronzo affondato al largo della Turchia intorno al 1300 a.C. — con un carico che, da solo, disegna la mappa dei commerci di tutto il mondo antico. Non oro da spartirsi: conoscenza da leggere.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce la prossima scheda</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="endurance.html">← Scheda 005: l'Endurance</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">Tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · Woods Hole Oceanographic Institution — WHOI (individuazione 2015, veicolo REMUS 6000, cannoni coi delfini) · Governo della Colombia — Ministerio de las Culturas / Marina (individuazione 2015; recupero dei primi reperti, 16–19 novembre 2025) · Royal Museums Greenwich, National Maritime Museum (dipinto di Samuel Scott dell'azione di Wager) · fonti storiche sull'azione di Wager e la Guerra di successione spagnola (8 giugno 1708; capitana di José Fernández de Santillán) · rivendicazioni: Corte permanente di arbitrato dell'Aia (Sea Search Armada), Convenzione UNESCO 2001 (Spagna), Nazione Qhara Qhara — Bolivia (deposito 2018) · resoconti verificati (CNN, CBS News, National Geographic, The Art Newspaper)<br><br>
+      Wreck Atlas · Scheda 006 · Prototipo
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), sea=document.getElementById('sea');
+  var smoke=document.getElementById('smoke'), flash=document.getElementById('flash');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- rivelazione delle sezioni ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- bagliori d'oro nel buio (monete) ---------- */
+  var cv=document.getElementById('glints'), ctx=cv&&cv.getContext?cv.getContext('2d'):null, parts=[], W=0,H=0;
+  function size(){ if(!ctx)return; W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    parts=[]; var n=Math.round(W*H/26000);
+    for(var i=0;i<n;i++) parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.4,v:.05+Math.random()*.14,o:.1+Math.random()*.4,tw:Math.random()*6.28}); }
+  function draw(){ if(!ctx)return; ctx.clearRect(0,0,W,H);
+    for(var i=0;i<parts.length;i++){ var p=parts[i]; p.tw+=0.04;
+      p.y+=p.v; p.x+=Math.sin(p.y*.012)*.05;
+      if(p.y>H+4){ p.y=-4; p.x=Math.random()*W; }
+      var o=p.o*(0.55+0.45*Math.sin(p.tw));
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fillStyle='rgba(226,187,94,'+o.toFixed(3)+')'; ctx.fill(); }
+    requestAnimationFrame(draw); }
+  if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  /* ---------- fondo: fumo di polvere -> verde profondo ---------- */
+  var shades=['#07120E','#08150F','#0A1A15','#0B2018','#09170F','#0A150E','#08110C'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    document.getElementById('railDLab').textContent = (active.dataset.depth==='0') ? 'in superficie' : 'Profondità';
+    if(!reduce){
+      sea.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)];
+      smoke.style.opacity=Math.max(0,1-p*1.8);
+      flash.style.opacity=Math.max(0,.6-Math.abs(p-0.32)*3);
+    }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- la rotta del tesoro ---------- */
+  var legOrigin=document.getElementById('legOrigin'), legFair=document.getElementById('legFair');
+  var legSink=document.getElementById('legSink'), legHome=document.getElementById('legHome');
+  var sinkMark=document.getElementById('sinkMark'), galleon=document.getElementById('galleon');
+  var rinfo=document.getElementById('routeinfo'), routeAnim=null;
+  var rbtn={origin:document.getElementById('btnOrigin'),fair:document.getElementById('btnFair'),sink:document.getElementById('btnSink'),home:document.getElementById('btnHome')};
+  var RINFO={
+    origin:'<b>1 · L’origine del carico</b><br>Argento estratto dal Cerro Rico di Potosí (oggi Bolivia) con il lavoro forzato indigeno, e smeraldi di Muzo dalla Nueva Granada. Il metallo risaliva il Pacifico fino a Panamá e attraversava l’istmo a dorso di mulo.',
+    fair:'<b>2 · Alla flotta: Portobelo → Cartagena</b><br>Alla fiera di Portobelo il tesoro veniva caricato sui galeoni. Il San José, come capitana, lo portava a Cartagena de Indias, dove la Flotta di Tierra Firme si radunava per la traversata.',
+    sink:'<b>3 · L’agguato al largo di Barú</b><br>Prima di partire per l’Avana, l’8 giugno 1708 la squadra di Wager intercetta la flotta. Dopo un’ora e mezza di battaglia la santabarbara del San José esplode: la nave e il tesoro colano a picco.',
+    home:'<b>4 · Dove doveva andare (e non andò mai)</b><br>La rotta prevista proseguiva verso L’Avana e poi la Spagna (Cadice/Siviglia), per finanziare la guerra borbonica. Il San José non lasciò mai le acque colombiane.'
+  };
+  function rpress(k){ for(var b in rbtn){ rbtn[b].setAttribute('aria-pressed',String(b===k)); } }
+  function moveGalleon(path,dur,then){
+    if(!path||!path.getTotalLength){ if(then)then(); return; }
+    if(reduce){ var e=path.getPointAtLength(path.getTotalLength()); galleon.setAttribute('cx',e.x); galleon.setAttribute('cy',e.y); if(then)then(); return; }
+    if(routeAnim) cancelAnimationFrame(routeAnim);
+    var len=path.getTotalLength(), t0=null;
+    (function step(ts){ if(!t0)t0=ts; var k=Math.min((ts-t0)/dur,1);
+      var pt=path.getPointAtLength(len*k); galleon.setAttribute('cx',pt.x); galleon.setAttribute('cy',pt.y);
+      if(k<1) routeAnim=requestAnimationFrame(step); else if(then) then();
+    })(performance.now());
+  }
+  function rstage(k){
+    rpress(k); rinfo.innerHTML=RINFO[k];
+    legFair.setAttribute('opacity',(k==='fair'||k==='sink'||k==='home')?'1':'0');
+    legSink.setAttribute('opacity',(k==='sink'||k==='home')?'1':'0');
+    legHome.setAttribute('opacity',(k==='home')?'1':'0');
+    sinkMark.setAttribute('opacity',(k==='sink'||k==='home')?'1':'0');
+    if(k==='origin'){ sinkMark.setAttribute('opacity','0'); moveGalleon(legOrigin,2400); }
+    else if(k==='fair'){ moveGalleon(legFair,1600); }
+    else if(k==='sink'){ moveGalleon(legSink,1400,function(){ sinkMark.setAttribute('opacity','1'); }); }
+    else { moveGalleon(legHome,2600); }
+  }
+  if(rbtn.origin){
+    rbtn.origin.addEventListener('click',function(){rstage('origin');});
+    rbtn.fair.addEventListener('click',function(){rstage('fair');});
+    rbtn.sink.addEventListener('click',function(){rstage('sink');});
+    rbtn.home.addEventListener('click',function(){rstage('home');});
+  }
+
+  /* ---------- le quattro rivendicazioni ---------- */
+  var cinfo=document.getElementById('claiminfo');
+  if(cinfo){
+    document.querySelectorAll('.claim').forEach(function(z){
+      function show(){ cinfo.innerHTML='<b>'+z.dataset.t+'</b><br>'+z.dataset.d; }
+      z.addEventListener('click',show); z.addEventListener('focus',show);
+      z.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} });
+    });
+  }
+
+  /* ---------- metriche di scroll ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'006-sanjose',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] scheda 006 · '+m+'% a '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] sessione: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- iscrizione ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla — collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>
