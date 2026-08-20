@@ -45,7 +45,7 @@
   "lat": 50.79,
   "lon": -1.1,
   "d": 14,
-  "st": "planned",
+  "st": "next",
   "f": "Ammiraglia di Enrico VIII, affondata nel Solent durante una battaglia e recuperata nel 1982."
  },
  {
@@ -93,8 +93,9 @@
   "lat": 21.365,
   "lon": -157.95,
   "d": 12,
-  "st": "next",
-  "f": "Affondata a Pearl Harbor. È un cimitero di guerra e un memoriale nazionale: nessuna localizzazione di dettaglio."
+  "st": "ready",
+  "href": "arizona.html",
+  "f": "Corazzata affondata in nove minuti a Pearl Harbor il 7 dicembre 1941 con 1.177 uomini. Mai recuperata: è un cimitero di guerra e un memoriale nazionale, e perde ancora nafta dal fondo."
  },
  {
   "n": "Bismarck",

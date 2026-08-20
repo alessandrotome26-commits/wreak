@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>USS Arizona — 1941</title>
+<meta name="description" content="La corazzata statunitense USS Arizona, affondata in nove minuti a Pearl Harbor il 7 dicembre 1941 con 1.177 uomini. Mai recuperata: è una tomba di guerra e un memoriale nazionale, e ancora oggi perde nafta dal fondo.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="USS Arizona — 1941">
+<meta property="og:description" content="Affondò in nove minuti con 1.177 uomini. Non è mai stata recuperata: 1.102 di loro riposano ancora a bordo, e la nave piange nafta da oltre ottant'anni.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0A141B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --harbor:#0A141B; --sea:#0C1A22; --deep:#0B171E; --steel:#13242E;
+  --marble:#EDEBE3; --honor:#C2A24E; --honor2:#D9BE6E; --sheenA:#2E9088; --sheenB:#8C7CB2; --flag:#9E3E38;
+  --fog:#8F9BA1;
+  --rule:rgba(237,235,227,.15);
+  --display:"EB Garamond",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--harbor);color:var(--marble);font-family:var(--body);font-weight:300;line-height:1.66;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#water{position:fixed;inset:0;z-index:-4;background:var(--harbor);transition:background 1.6s ease}
+#daylight{position:fixed;inset:0;z-index:-3;pointer-events:none;opacity:1;transition:opacity .8s linear;
+  background:radial-gradient(ellipse at 50% -6%,rgba(237,235,227,.14),transparent 42%)}
+#sheen{position:fixed;inset:-10%;z-index:-3;pointer-events:none;opacity:.5;
+  background:radial-gradient(circle at 32% 82%,rgba(46,144,136,.10),transparent 30%),
+             radial-gradient(circle at 68% 88%,rgba(140,124,178,.09),transparent 28%);
+  animation:sheen 26s ease-in-out infinite}
+@keyframes sheen{0%,100%{transform:translate3d(-2%,0,0)}50%{transform:translate3d(2%,1%,0)}}
+#tears{position:fixed;inset:0;z-index:-2;pointer-events:none}
+#solemn{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1s linear;
+  background:radial-gradient(ellipse at 50% 92%,rgba(46,144,136,.08),transparent 60%)}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--fog);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--honor)}
+.rail-num{font-size:18px;color:var(--marble);font-weight:500;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.5;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(10,20,27,.8)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--honor2);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(54px,11vw,116px);line-height:1;letter-spacing:.005em}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(30px,4.7vw,48px);line-height:1.12;margin-bottom:22px}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(237,235,227,.85)}
+.lede{font-size:20px;color:var(--marble)}
+em{font-style:italic;color:var(--fog)}
+strong{font-weight:500;color:var(--marble)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--fog);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--fog)}
+.coord b{display:block;color:var(--marble);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  color:var(--honor2);border:1px solid rgba(194,162,78,.4);padding:5px 10px;margin-top:28px;align-self:flex-start;max-width:64ch;line-height:1.5}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--honor2);flex:none}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(143,155,161,.55);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(237,235,227,.08)}
+.stat .v{font-family:var(--display);font-weight:600;font-size:clamp(30px,4.8vw,46px);line-height:1.05;color:var(--honor2);font-variant-numeric:tabular-nums}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--honor);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-weight:500;font-style:italic;font-size:clamp(26px,4.6vw,42px);line-height:1.2;quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--fog);margin-top:18px}
+
+.tl{border-left:1px solid var(--rule);margin-top:8px}
+.tl-item{padding:0 0 34px 28px;position:relative}
+.tl-item::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--harbor);border:1px solid var(--fog)}
+.tl-item.key::before{background:var(--honor);border-color:var(--honor);box-shadow:0 0 0 5px rgba(194,162,78,.15)}
+.tl-y{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--sheenA);margin-bottom:5px}
+.tl-item.key .tl-y{color:var(--honor2)}
+.tl-t{font-size:17px;color:var(--marble);margin-bottom:4px}
+.tl-d{font-size:14.5px;color:rgba(237,235,227,.6);max-width:52ch}
+
+.widget,.sitewrap{margin-top:14px;border:1px solid var(--rule);background:rgba(12,26,34,.5);padding:20px}
+.widget svg,.sitewrap svg{width:100%;height:auto;display:block}
+.spot{cursor:pointer}
+.spot rect,.spot ellipse,.spot path,.spot circle,.spot line{transition:opacity .25s}
+.spot .hot{opacity:0}
+.spot:hover .hot,.spot:focus .hot{opacity:.5}
+#spotinfo,#meminfo{font-family:var(--mono);font-size:12px;color:var(--fog);margin-top:16px;min-height:56px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.7}
+#spotinfo b,#meminfo b{color:var(--honor2);font-weight:500}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(237,235,227,.08);vertical-align:top}
+td.n{color:var(--marble);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:rgba(143,155,161,.72);line-height:1.7;margin-top:22px;max-width:60ch}
+
+.realimg{margin-top:22px;border:1px solid rgba(194,162,78,.35);background:rgba(194,162,78,.06);padding:22px}
+.realimg .badge{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--honor2);margin-bottom:14px}
+.realimg p{margin-bottom:14px}
+.realimg .rilink{display:inline-block;margin:0 18px 8px 0;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--sheenA);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:4px;transition:color .25s,border-color .25s}
+.realimg .rilink:hover{color:var(--honor2);border-color:var(--honor)}
+.realimg .cite{font-family:var(--mono);font-size:11px;color:rgba(143,155,161,.72);line-height:1.6;margin-top:8px}
+
+.shipart{margin-top:22px;border:1px solid var(--rule);background:rgba(12,26,34,.5);padding:18px 18px 12px}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:rgba(143,155,161,.72);letter-spacing:.05em;margin-top:10px}
+.bbship{transform-box:fill-box;transform-origin:50% 92%;animation:bbbob 8s ease-in-out infinite}
+@keyframes bbbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+.bbflag{transform-box:fill-box;transform-origin:0 50%;animation:bbflutter 1.9s ease-in-out infinite}
+@keyframes bbflutter{0%,100%{transform:scaleX(1) skewX(0deg)}50%{transform:scaleX(.82) skewX(-10deg)}}
+.bbsmoke{transform-box:fill-box;transform-origin:50% 100%;animation:bbsmoke 6s ease-in-out infinite}
+@keyframes bbsmoke{0%,100%{transform:translateX(0) scaleY(1);opacity:.5}50%{transform:translateX(8px) scaleY(1.1);opacity:.75}}
+
+.arclinks{display:grid;gap:2px;margin-top:24px;border-top:1px solid var(--rule)}
+.arclinks a{display:flex;gap:20px;align-items:baseline;padding:20px 0;text-decoration:none;color:inherit;
+  border-bottom:1px solid rgba(237,235,227,.08);transition:padding-left .3s ease,border-color .3s ease}
+.arclinks a:hover,.arclinks a:focus-visible{padding-left:14px;border-bottom-color:var(--honor)}
+.arclinks .arch{font-family:var(--mono);font-size:11px;color:var(--sheenA);min-width:172px}
+.arclinks .ttl{font-size:16px;color:var(--marble)}
+.arclinks .meta{font-size:13px;color:rgba(237,235,227,.5);margin-top:3px;max-width:46ch}
+.arclinks .go{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--fog);opacity:0;transition:opacity .3s}
+.arclinks a:hover .go,.arclinks a:focus-visible .go{opacity:1}
+
+.closing{border-top:1px solid var(--honor);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--fog);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:transparent;border:1px solid var(--rule);color:var(--marble);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--fog);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--honor);color:#1B1503;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.85}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--sheenA)}
+.signup .msg.err{color:#C0574C}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--honor2);border-color:var(--honor)}
+.src{font-family:var(--mono);font-size:11.5px;color:rgba(143,155,161,.62);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:14px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+  .arclinks a{flex-wrap:wrap;gap:8px} .arclinks .go{display:none} .arclinks .arch{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #water,#daylight,#solemn{transition:none}
+  #sheen,.bbship,.bbflag,.bbsmoke{animation:none}
+  #tears{display:none}
+}
+:focus-visible{outline:2px solid var(--honor);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="water"></div>
+<div id="daylight"></div>
+<div id="sheen"></div>
+<canvas id="tears"></canvas>
+<div id="solemn"></div>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Anno</div><div class="rail-num" id="railYear">1941</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Profondità</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1941" data-depth="0">
+  <div class="eyebrow">Corazzata · US Navy · classe Pennsylvania</div>
+  <h1>USS Arizona</h1>
+  <div class="sub">AFFONDATA 7 DICEMBRE 1941 · MAI RECUPERATA</div>
+  <div class="coordbox">
+    <div class="coord">Dove giace<b>Pearl Harbor · Ford Island · ~12 m</b></div>
+    <div class="coord">Cosa è oggi<b>tomba di guerra e memoriale nazionale</b></div>
+    <div class="coord">Caduti<b>1.177 · quasi metà di Pearl Harbor</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>CIMITERO DI GUERRA E MEMORIALE NAZIONALE (NATIONAL PARK SERVICE) · SITO SACRO, NON SI RECUPERA NÉ SI DISTURBA</div>
+  <div class="scrollcue">↓ scorri con rispetto</div>
+</section>
+
+<section class="reveal" data-year="1941" data-depth="12">
+  <div class="eyebrow">Perché questo relitto</div>
+  <h2>Un relitto che è una tomba</h2>
+  <p class="lede">La Batavia racconta il male che gli uomini si fanno. La USS Arizona racconta qualcosa di diverso: il lutto, e come una nazione sceglie di custodirlo. Non è un relitto da esplorare. È un cimitero.</p>
+  <p>Il 7 dicembre 1941 affondò in nove minuti con 1.177 uomini a bordo. Non fu mai recuperata: <strong>millecentodue di loro riposano ancora dentro lo scafo</strong>, dove morirono. Sopra di essa fu costruito un memoriale che la scavalca senza toccarla, e da oltre ottant'anni la nave continua a rilasciare gocce di nafta in superficie — quelle che chiamano "le lacrime dell'Arizona". Questo atlante la include non come curiosità, ma come luogo di memoria, e la tratta come tale.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">1.177</div><div class="k">uomini caduti</div></div>
+    <div class="stat"><div class="v">9</div><div class="k">minuti per affondare</div></div>
+    <div class="stat"><div class="v">1.102</div><div class="k">ancora a bordo</div></div>
+    <div class="stat"><div class="v">80+</div><div class="k">anni che perde nafta</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1941" data-depth="0">
+  <div class="eyebrow">7 dicembre 1941 · il contesto</div>
+  <h2>Il giorno che cambiò la guerra</h2>
+  <p>Quella domenica mattina gli Stati Uniti non erano ancora in guerra. Poco prima delle otto, centinaia di aerei giapponesi decollati da portaerei piombarono senza preavviso sulla base navale di Pearl Harbor, nelle Hawaii, dove riposava il grosso della flotta americana del Pacifico, ormeggiata lungo la cosiddetta "Battleship Row".</p>
+  <div class="moment">
+    <q>Ieri, 7 dicembre 1941 — una data che vivrà nell'infamia.</q>
+    <cite>FRANKLIN D. ROOSEVELT, AL CONGRESSO, 8 DICEMBRE 1941</cite>
+  </div>
+  <p>In poche ore l'attacco uccise 2.403 americani e trascinò gli Stati Uniti nella Seconda guerra mondiale. Di tutti quei morti, quasi la metà erano su una sola nave. La Arizona diventò da subito il simbolo di quella giornata — e lo è rimasta.</p>
+</section>
+
+<section class="reveal" data-year="1941" data-depth="0">
+  <div class="eyebrow">Le 8:06 del mattino</div>
+  <h2>Nove minuti</h2>
+  <p>Non fu una lenta agonia: fu quasi istantaneo. Il colpo decisivo attraversò i ponti corazzati e raggiunse il punto peggiore. Clicca per capire perché una corazzata da trentamila tonnellate sparì in pochi minuti.</p>
+  <div class="widget">
+    <svg id="strike" viewBox="0 0 640 260" role="img" aria-label="Schema del colpo fatale alla USS Arizona e dell'esplosione delle santabarbara di prua">
+      <title>Il colpo fatale alla USS Arizona</title>
+      <line x1="20" y1="196" x2="620" y2="196" stroke="rgba(46,144,136,.35)" stroke-width="1"/>
+      <text x="20" y="214" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="1.5">LINEA DI GALLEGGIAMENTO</text>
+      <!-- scafo -->
+      <path d="M90 196 L104 172 L540 172 L556 186 L548 196 Z" fill="rgba(46,144,136,.12)" stroke="#4E7E86" stroke-width="1.3"/>
+      <rect x="150" y="150" width="300" height="22" fill="rgba(46,144,136,.10)" stroke="#4E7E86" stroke-width="1"/>
+      <!-- torrioni/cannoni -->
+      <rect x="176" y="138" width="52" height="16" fill="rgba(46,144,136,.14)" stroke="#4E7E86" stroke-width="1"/>
+      <line x1="176" y1="146" x2="140" y2="140" stroke="#4E7E86" stroke-width="2.4"/>
+
+      <g class="spot" tabindex="0" data-t="Il colpo fatale" data-d="Una bomba corazzata da circa 800 kg — un proiettile d'artiglieria da nave modificato — sganciata da un bombardiere ad alta quota. Cadendo da oltre 3.000 metri, aveva l'energia per perforare i ponti corazzati della Arizona di prua.">
+        <circle class="hot" cx="250" cy="70" r="24"/>
+        <line x1="250" y1="30" x2="238" y2="150" stroke="var(--honor2)" stroke-width="1.6" stroke-dasharray="4 4"/>
+        <circle cx="250" cy="34" r="5" fill="var(--honor2)"/>
+        <text x="262" y="40" fill="var(--honor2)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">LA BOMBA</text>
+      </g>
+
+      <g class="spot" tabindex="0" data-t="Le santabarbara di prua" data-d="La bomba esplose in prossimità dei depositi delle munizioni e della polvere da sparo dei cannoni da 356 mm. È il punto più pericoloso di qualsiasi nave da guerra: dentro c'erano tonnellate di esplosivo.">
+        <rect class="hot" x="200" y="150" width="90" height="44"/>
+        <rect x="212" y="176" width="66" height="16" fill="rgba(158,62,56,.3)" stroke="var(--flag)" stroke-width="1.2"/>
+        <text x="245" y="216" fill="#C0574C" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">SANTABARBARA</text>
+      </g>
+
+      <g class="spot" tabindex="0" data-t="L'esplosione" data-d="Le riserve di munizioni detonarono in un'unica, enorme esplosione che sollevò la parte anteriore della nave e spezzò lo scafo. Testimoni la videro alzarsi dall'acqua. Da lì, la Arizona era condannata: affondò in circa nove minuti, portando con sé la maggior parte dell'equipaggio.">
+        <circle class="hot" cx="245" cy="150" r="40"/>
+        <path d="M245 150 l8 -20 l6 16 l16 -12 l-8 18 l20 2 l-18 8 l14 16 l-20 -8 l-4 20 l-8 -18 l-16 10 l8 -18 l-20 -4 l18 -8 Z" fill="rgba(217,190,110,.5)" stroke="var(--honor2)" stroke-width="1"/>
+      </g>
+
+      <text x="20" y="28" fill="rgba(237,235,227,.4)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">SCHEMA — NON IN SCALA · CLICCA PER CAPIRE</text>
+    </svg>
+    <div id="spotinfo">Seleziona un punto per capire la sequenza del disastro.</div>
+  </div>
+  <p style="margin-top:26px">Sul ponte morirono il contrammiraglio Isaac C. Kidd e il comandante Franklin Van Valkenburgh, ai loro posti. E tra i caduti c'erano legami che rendono la cifra ancora più dura da leggere: <strong>ventitré coppie di fratelli</strong> e un padre con il figlio, imbarcati insieme, morti insieme.</p>
+</section>
+
+<section class="reveal" data-year="1942" data-depth="12">
+  <div class="eyebrow">La decisione</div>
+  <h2>Perché non fu mai recuperata</h2>
+  <p>Dopo l'attacco, molte delle navi affondate a Pearl Harbor furono rimesse a galla, riparate e rimandate in guerra. Con la Arizona no. Il danno era troppo grave, la parte anteriore distrutta — ma soprattutto lo scafo era diventato qualcosa che non si poteva più toccare: la tomba di oltre mille uomini di cui era impossibile recuperare i resti.</p>
+  <p>Furono rimossi i cannoni ancora utilizzabili delle torri poppiere, riutilizzati altrove per lo sforzo bellico. Il resto fu lasciato dov'era, a poco più di dieci metri sotto la superficie del porto. Non un relitto abbandonato: un luogo di sepoltura, deliberatamente preservato.</p>
+</section>
+
+<section class="reveal" data-year="1962" data-depth="12">
+  <div class="eyebrow">Il memoriale · le lacrime nere</div>
+  <h2>Un ponte bianco che non la tocca</h2>
+  <p>Nel 1962 fu inaugurato il memoriale progettato da Alfred Preis — un architetto di origine austriaca che, ironia della storia, dopo Pearl Harbor era stato brevemente internato come "straniero nemico". La sua struttura bianca scavalca lo scafo affondato senza mai poggiarvisi: si abbassa al centro e si rialza alle estremità, a rappresentare — parole sue — la sconfitta iniziale e la vittoria finale. Dentro, un muro riporta i 1.177 nomi. Esplora il sito.</p>
+  <div class="sitewrap">
+    <svg viewBox="0 0 640 260" role="img" aria-label="Sezione del memoriale della USS Arizona che scavalca il relitto sul fondo del porto" class="fielded">
+      <title>Il memoriale e il relitto oggi</title>
+      <line x1="20" y1="120" x2="620" y2="120" stroke="rgba(237,235,227,.25)" stroke-width="1"/>
+      <text x="596" y="114" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="end" letter-spacing="1">SUPERFICIE</text>
+
+      <g class="spot" tabindex="0" data-t="Il memoriale (1962)" data-d="La struttura bianca di Alfred Preis, lunga circa 56 metri, poggia su piloni ai lati del relitto e lo scavalca senza toccarlo. La forma che si avvalla al centro e si rialza ai lati rappresenta la sconfitta e la successiva vittoria.">
+        <path class="hot" d="M180 96 L460 96 L460 118 L180 118 Z"/>
+        <path d="M182 112 Q320 132 458 112 L458 100 Q320 118 182 100 Z" fill="rgba(237,235,227,.85)" stroke="#CFCDC4" stroke-width="1"/>
+        <text x="320" y="88" fill="var(--marble)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">IL MEMORIALE</text>
+      </g>
+
+      <g class="spot" tabindex="0" data-t="Lo scafo, sul fondo" data-d="Il relitto giace a poco più di dieci metri, con la coperta appena sotto la superficie. Gran parte della struttura è intatta; una torretta emergeva dall'acqua per decenni. Non vi si fanno immersioni turistiche: solo studio e cerimonie.">
+        <rect class="hot" x="150" y="150" width="340" height="46"/>
+        <path d="M150 172 L170 152 L470 152 L492 166 L482 172 Z" fill="rgba(46,144,136,.16)" stroke="#4E7E86" stroke-width="1.2"/>
+        <text x="320" y="210" fill="#5FA39C" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">LO SCAFO · 1.102 CADUTI</text>
+      </g>
+
+      <g class="spot" tabindex="0" data-t="Le lacrime nere" data-d="Dai serbatoi ancora pieni di nafta salgono in superficie da 2 a 9 litri al giorno, formando iridescenze sull'acqua: le 'lacrime dell'Arizona'. Marina e Park Service hanno scelto di non svuotare i serbatoi — disturbarli rischierebbe un disastro ambientale, oltre a violare la tomba.">
+        <circle class="hot" cx="300" cy="150" r="16"/>
+        <circle cx="300" cy="138" r="3" fill="var(--sheenA)"/>
+        <circle cx="300" cy="120" r="2.4" fill="var(--sheenB)"/>
+        <circle cx="302" cy="104" r="2" fill="var(--sheenA)"/>
+        <text x="300" y="176" fill="#5FA39C" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">nafta</text>
+      </g>
+
+      <text x="20" y="30" fill="rgba(237,235,227,.4)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">SCHEMA — NON IN SCALA · CLICCA UN ELEMENTO</text>
+    </svg>
+    <div id="meminfo">Seleziona un elemento per leggerne il significato.</div>
+  </div>
+  <p class="lede" style="margin-top:26px">E c'è un ultimo gesto che rende questo luogo unico: i superstiti della Arizona possono scegliere di farsi tumulare nel relitto, deposti dai sommozzatori tra i loro commilitoni. Ottant'anni dopo, tornano a bordo.</p>
+</section>
+
+<section class="reveal" data-year="1941" data-depth="0">
+  <div class="eyebrow">Archivio</div>
+  <h2>Vederla quel mattino</h2>
+  <p>Le fotografie dell'attacco furono scattate dalla Marina degli Stati Uniti e sono di pubblico dominio: opere del governo federale, si possono vedere liberamente citando la fonte.</p>
+  <div class="realimg">
+    <div class="badge">Immagine storica reale</div>
+    <p>La fotografia più nota mostra la USS Arizona in fiamme e già affondata subito dopo l'esplosione, il 7 dicembre 1941. È un'immagine ufficiale della U.S. Navy, conservata ai National Archives.</p>
+    <a class="rilink" href="https://www.archives.gov/research/still-pictures/highlights/uss-arizona-burning" target="_blank" rel="noopener">Vedi la foto · U.S. National Archives ↗</a>
+    <a class="rilink" href="https://www.nps.gov/valr/learn/historyculture/uss-arizona.htm" target="_blank" rel="noopener">La nave e il memoriale · National Park Service ↗</a>
+    <p class="cite">U.S. Navy, «USS Arizona burning», 7 dicembre 1941. National Archives / U.S. Navy. Opera del governo federale statunitense, di pubblico dominio — riprodotta con attribuzione, non ospitata su questo sito.</p>
+  </div>
+</section>
+
+<section class="reveal" data-year="1916" data-depth="0">
+  <div class="eyebrow">La nave</div>
+  <h2>Com'era, prima</h2>
+  <p>Entrata in servizio nel 1916, la Arizona era una corazzata della classe Pennsylvania: circa 185 metri, oltre trentamila tonnellate, dodici cannoni da 356 mm in quattro torri, e i caratteristici alberi "a gabbia" a traliccio. Un simbolo della potenza navale americana della sua epoca.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 640 260" role="img" aria-label="Illustrazione stilizzata della corazzata USS Arizona">
+      <title>La corazzata USS Arizona</title>
+      <rect x="0" y="196" width="640" height="64" fill="rgba(46,144,136,.07)"/>
+      <path d="M-20 206 q 60 -8 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(46,144,136,.28)" stroke-width="1.3"/>
+      <g class="bbship">
+        <!-- scafo -->
+        <path d="M70 196 L96 178 L560 178 L588 190 L574 196 Z" fill="#1B2C33" stroke="#3E5A62" stroke-width="1.3"/>
+        <line x1="104" y1="184" x2="556" y2="184" stroke="#5FA39C" stroke-width="1"/>
+        <!-- sovrastruttura -->
+        <rect x="286" y="150" width="80" height="28" fill="#22343B" stroke="#3E5A62" stroke-width="1"/>
+        <!-- fumaiolo -->
+        <rect x="356" y="140" width="26" height="38" fill="#22343B" stroke="#3E5A62" stroke-width="1"/>
+        <g class="bbsmoke"><path d="M362 140 q6 -20 18 -30 q-2 16 -10 30 Z" fill="rgba(180,190,190,.35)"/></g>
+        <!-- alberi a gabbia (traliccio) -->
+        <g stroke="#5E7C84" stroke-width="1">
+          <path d="M300 150 L292 84 L318 84 L310 150 M300 150 L318 84 M310 150 L292 84"/>
+          <path d="M296 130 L314 130 M298 112 L312 112 M300 96 L310 96"/>
+          <rect x="290" y="76" width="30" height="9" fill="#22343B" stroke="#3E5A62"/>
+        </g>
+        <g stroke="#5E7C84" stroke-width="1">
+          <path d="M392 158 L386 104 L408 104 L402 158 M392 158 L408 104 M402 158 L386 104"/>
+          <path d="M389 138 L405 138 M391 122 L403 122"/>
+        </g>
+        <!-- torri e cannoni -->
+        <rect x="150" y="166" width="40" height="14" fill="#2A3C43" stroke="#3E5A62" stroke-width="1"/>
+        <line x1="150" y1="171" x2="108" y2="167" stroke="#3E5A62" stroke-width="2.6"/>
+        <line x1="150" y1="176" x2="108" y2="173" stroke="#3E5A62" stroke-width="2.6"/>
+        <rect x="212" y="166" width="40" height="14" fill="#2A3C43" stroke="#3E5A62" stroke-width="1"/>
+        <line x1="212" y1="171" x2="170" y2="167" stroke="#3E5A62" stroke-width="2.6"/>
+        <rect x="430" y="166" width="40" height="14" fill="#2A3C43" stroke="#3E5A62" stroke-width="1"/>
+        <line x1="470" y1="171" x2="512" y2="167" stroke="#3E5A62" stroke-width="2.6"/>
+        <line x1="470" y1="176" x2="512" y2="173" stroke="#3E5A62" stroke-width="2.6"/>
+        <!-- bandiera -->
+        <line x1="500" y1="178" x2="500" y2="128" stroke="#3E5A62" stroke-width="1.6"/>
+        <g class="bbflag" transform="translate(500 128)"><rect x="0" y="0" width="30" height="18" fill="#2F4A72"/><rect x="0" y="6" width="30" height="3" fill="#9E3E38"/><rect x="0" y="12" width="30" height="3" fill="#9E3E38"/></g>
+      </g>
+      <text x="20" y="28" fill="rgba(143,155,161,.6)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">CORAZZATA CLASSE PENNSYLVANIA — RICOSTRUZIONE STILIZZATA</text>
+    </svg>
+    <figcaption>Ricostruzione stilizzata. Le fotografie reali della nave e del memoriale sono negli archivi qui sopra.</figcaption>
+  </figure>
+</section>
+
+<section class="reveal" data-year="1941" data-depth="12">
+  <div class="eyebrow">I numeri</div>
+  <h2>La nave, misurata</h2>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Valore</th></tr></thead>
+    <tbody>
+      <tr><td>Tipo</td><td class="n">corazzata, classe Pennsylvania</td></tr>
+      <tr><td>In servizio dal</td><td class="n">1916</td></tr>
+      <tr><td>Lunghezza</td><td class="n">~185 m</td></tr>
+      <tr><td>Cannoni principali</td><td class="n">12 × 356 mm</td></tr>
+      <tr><td>Affondamento</td><td class="n">7 dicembre 1941 · ~9 minuti</td></tr>
+      <tr><td>Caduti</td><td class="n">1.177</td></tr>
+      <tr><td>Ancora nello scafo</td><td class="n">1.102</td></tr>
+      <tr><td>Profondità del relitto</td><td class="n">~12 m</td></tr>
+      <tr><td>Memoriale inaugurato</td><td class="n">1962</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Le cifre sono quelle ufficiali del National Park Service e della U.S. Navy. Il numero dei caduti (1.177) e dei resti ancora a bordo (1.102) sono conteggi documentati, non stime. La quantità di nafta rilasciata (2–9 litri al giorno) varia nel tempo.</p>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">Nota metodologica</div>
+  <h2>Cosa questa pagina non fa</h2>
+  <p>Non tratta un cimitero come un'attrazione. La Arizona non è un sito da immersione né un relitto da esplorare: è la tomba di oltre mille persone, protetta per legge, e questa pagina la presenta come tale — senza immagini macabre, senza retorica, riportando i fatti e i numeri come sono documentati.</p>
+  <p>Non prende posizioni politiche sulla guerra. Racconta cosa accadde a una nave e ai suoi uomini il 7 dicembre 1941, perché non fu mai recuperata, e perché una nazione ha scelto di custodirla così. Il rispetto per chi è ancora a bordo viene prima di ogni altra cosa.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 009 di 20</div>
+    <h2 style="margin-bottom:14px">La prossima cambia secolo e tono: la Mary Rose</h2>
+    <p>Dal lutto moderno a una finestra sul passato. 1545: l'ammiraglia di Enrico VIII affonda nel Solent sotto gli occhi del re — e nel 1982 viene riportata in superficie. Non un tesoro, ma una capsula del tempo della vita Tudor: archi, pettini, strumenti musicali, gli oggetti e le ossa degli uomini che c'erano.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce la prossima scheda</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="batavia.html">← Scheda 008: la Batavia</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">Tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · National Park Service — Pearl Harbor National Memorial (storia della nave, memoriale, caduti e resti a bordo) · U.S. Navy / Naval History and Heritage Command (attacco del 7 dicembre 1941, fotografie) · U.S. National Archives (foto «USS Arizona burning») · Encyclopædia Britannica (dati della nave e dell'attacco) · Woods Hole Oceanographic Institution (studio sul rilascio di nafta dal relitto) · progetto e significato del memoriale di Alfred Preis (1962)<br><br>
+      Wreck Atlas · Scheda 009 · Prototipo
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), water=document.getElementById('water');
+  var daylight=document.getElementById('daylight'), solemn=document.getElementById('solemn');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- rivelazione delle sezioni ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- le lacrime nere: gocce di nafta iridescenti che salgono ---------- */
+  var cv=document.getElementById('tears'), ctx=cv&&cv.getContext?cv.getContext('2d'):null, drops=[], W=0,H=0;
+  var sheen=['46,144,136','140,124,178','217,190,110'];
+  function size(){ if(!ctx)return; W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    drops=[]; var n=Math.round(W*H/42000);
+    for(var i=0;i<n;i++) drops.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.6,v:.12+Math.random()*.22,o:.1+Math.random()*.3,c:sheen[i%sheen.length]}); }
+  function draw(){ if(!ctx)return; ctx.clearRect(0,0,W,H);
+    for(var i=0;i<drops.length;i++){ var p=drops[i];
+      p.y-=p.v; p.x+=Math.sin(p.y*.015)*.06;
+      if(p.y<-4){ p.y=H+4; p.x=Math.random()*W; }
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fillStyle='rgba('+p.c+','+p.o.toFixed(3)+')'; ctx.fill(); }
+    requestAnimationFrame(draw); }
+  if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  /* ---------- fondo del porto ---------- */
+  var shades=['#0A141B','#0B171E','#0C1A22','#0B171E','#0A141B','#091319','#081116'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    document.getElementById('railDLab').textContent = (active.dataset.depth==='0') ? 'in superficie' : 'Profondità';
+    if(!reduce){
+      water.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)];
+      daylight.style.opacity=Math.max(0,1-p*2.2);
+      solemn.style.opacity=Math.max(0,(p-0.45)/0.55)*0.9;
+    }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- diagrammi cliccabili (colpo + memoriale) ---------- */
+  function wire(sel,target){
+    var info=document.getElementById(target); if(!info) return;
+    document.querySelectorAll(sel).forEach(function(z){
+      function show(){ info.innerHTML='<b>'+z.dataset.t+'</b><br>'+z.dataset.d; }
+      z.addEventListener('click',show); z.addEventListener('focus',show);
+      z.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} });
+    });
+  }
+  wire('#strike .spot','spotinfo');
+  document.querySelectorAll('.sitewrap .spot').forEach(function(z){
+    var info=document.getElementById('meminfo'); if(!info) return;
+    function show(){ info.innerHTML='<b>'+z.dataset.t+'</b><br>'+z.dataset.d; }
+    z.addEventListener('click',show); z.addEventListener('focus',show);
+    z.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} });
+  });
+
+  /* ---------- metriche di scroll ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'009-arizona',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] scheda 009 · '+m+'% a '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] sessione: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- iscrizione ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla — collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>
