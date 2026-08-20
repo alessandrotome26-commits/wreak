@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bismarck — 1941</title>
+<meta name="description" content="La corazzata tedesca Bismarck: in otto giorni affondò l'incrociatore HMS Hood e fu braccata e distrutta dall'intera Royal Navy nell'Atlantico del Nord, nel 1941. Ritrovata da Robert Ballard nel 1989 a quasi 4.800 metri.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bismarck — 1941">
+<meta property="og:description" content="In otto giorni affondò la nave più orgogliosa della Royal Navy e fu braccata e distrutta. Giace a 4.790 metri: il relitto più profondo di questo atlante, e una tomba di guerra.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#39434C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --steel:#39434C; --sea:#313B44; --slate:#2C353D; --abyss:#161C22;
+  --frost:#8FB0C0; --frost2:#AECAD8; --signal:#C24438; --signal2:#D9604F; --brass:#B39A5E;
+  --pale:#E4E9EC; --fog:#93A0A8;
+  --rule:rgba(228,233,236,.16);
+  --display:"Oswald",Georgia,sans-serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--steel);color:var(--pale);font-family:var(--body);font-weight:300;line-height:1.66;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#water{position:fixed;inset:0;z-index:-4;background:var(--steel);transition:background 1.6s ease}
+#sky{position:fixed;inset:0;z-index:-3;pointer-events:none;opacity:1;transition:opacity .8s linear;
+  background:linear-gradient(to bottom,rgba(174,202,216,.10),transparent 40%)}
+#rain{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:1;transition:opacity 1s linear}
+#depthv{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1s linear;
+  background:radial-gradient(ellipse at 50% 46%,transparent 30%,rgba(8,12,16,.85) 100%)}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--fog);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--frost)}
+.rail-num{font-size:18px;color:var(--pale);font-weight:500;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.5;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(57,67,76,.82)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--frost);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(58px,13vw,128px);line-height:.92;letter-spacing:.02em;text-transform:uppercase}
+h2{font-family:var(--display);font-weight:500;font-size:clamp(30px,4.8vw,50px);line-height:1.08;margin-bottom:22px;letter-spacing:.01em}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(228,233,236,.85)}
+.lede{font-size:20px;color:var(--pale)}
+em{font-style:italic;color:var(--fog)}
+strong{font-weight:500;color:var(--pale)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--fog);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--fog)}
+.coord b{display:block;color:var(--pale);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  color:var(--frost2);border:1px solid rgba(143,176,192,.4);padding:5px 10px;margin-top:28px;align-self:flex-start;max-width:64ch;line-height:1.5}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--frost2);flex:none}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(147,160,168,.7);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(228,233,236,.08)}
+.stat .v{font-family:var(--display);font-weight:500;font-size:clamp(30px,4.8vw,46px);line-height:1.05;color:var(--frost2);font-variant-numeric:tabular-nums}
+.stat .v.red{color:var(--signal2)}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--signal);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-weight:500;font-size:clamp(26px,4.6vw,44px);line-height:1.14;quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--fog);margin-top:18px}
+
+.tl{border-left:1px solid var(--rule);margin-top:8px}
+.tl-item{padding:0 0 34px 28px;position:relative}
+.tl-item::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--steel);border:1px solid var(--fog)}
+.tl-item.key::before{background:var(--signal);border-color:var(--signal);box-shadow:0 0 0 5px rgba(194,68,56,.15)}
+.tl-y{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--frost);margin-bottom:5px}
+.tl-item.key .tl-y{color:var(--signal2)}
+.tl-t{font-size:17px;color:var(--pale);margin-bottom:4px}
+.tl-d{font-size:14.5px;color:rgba(228,233,236,.6);max-width:52ch}
+
+.widget,.sitewrap{margin-top:14px;border:1px solid var(--rule);background:rgba(44,53,61,.6);padding:20px}
+.widget svg,.sitewrap svg{width:100%;height:auto;display:block}
+.wctrl{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);
+  font-family:var(--mono);font-size:11px;color:var(--fog)}
+.wctrl button{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;background:transparent;
+  color:var(--fog);border:1px solid var(--rule);padding:8px 13px;cursor:pointer;transition:border-color .25s,color .25s}
+.wctrl button:hover{border-color:var(--frost);color:var(--frost2)}
+.wctrl button[aria-pressed="true"]{border-color:var(--signal);color:var(--signal2)}
+#routeinfo{font-family:var(--mono);font-size:12px;color:var(--fog);margin-top:16px;min-height:52px;
+  border-top:1px solid var(--rule);padding-top:14px;line-height:1.7}
+#routeinfo b{color:var(--frost2);font-weight:500}
+.spot{cursor:pointer}
+.spot rect,.spot ellipse,.spot path,.spot circle,.spot line{transition:opacity .25s}
+.spot .hot{opacity:0}
+.spot:hover .hot,.spot:focus .hot{opacity:.45}
+#spotinfo{font-family:var(--mono);font-size:12px;color:var(--fog);margin-top:16px;min-height:56px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.7}
+#spotinfo b{color:var(--signal2);font-weight:500}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(228,233,236,.08);vertical-align:top}
+td.n{color:var(--pale);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:rgba(147,160,168,.75);line-height:1.7;margin-top:22px;max-width:60ch}
+
+.realimg{margin-top:22px;border:1px solid rgba(143,176,192,.35);background:rgba(143,176,192,.06);padding:22px}
+.realimg .badge{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--frost2);margin-bottom:14px}
+.realimg p{margin-bottom:14px}
+.realimg .rilink{display:inline-block;margin:0 18px 8px 0;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--frost);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:4px;transition:color .25s,border-color .25s}
+.realimg .rilink:hover{color:var(--frost2);border-color:var(--frost)}
+.realimg .cite{font-family:var(--mono);font-size:11px;color:rgba(147,160,168,.75);line-height:1.6;margin-top:8px}
+
+.shipart{margin-top:22px;border:1px solid var(--rule);background:rgba(44,53,61,.6);padding:18px 18px 12px}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:rgba(147,160,168,.75);letter-spacing:.05em;margin-top:10px}
+.bbship{transform-box:fill-box;transform-origin:50% 92%;animation:bbbob 8s ease-in-out infinite}
+@keyframes bbbob{0%,100%{transform:rotate(-.5deg) translateY(0)}50%{transform:rotate(.5deg) translateY(-2px)}}
+.bbpennant{transform-box:fill-box;transform-origin:0 50%;animation:bbpen 1.8s ease-in-out infinite}
+@keyframes bbpen{0%,100%{transform:scaleX(1) skewX(0deg)}50%{transform:scaleX(.82) skewX(-12deg)}}
+.bbwave{animation:bbwave 4.5s ease-in-out infinite}
+@keyframes bbwave{0%,100%{transform:translateX(0)}50%{transform:translateX(-10px)}}
+
+.arclinks{display:grid;gap:2px;margin-top:24px;border-top:1px solid var(--rule)}
+.arclinks a{display:flex;gap:20px;align-items:baseline;padding:20px 0;text-decoration:none;color:inherit;
+  border-bottom:1px solid rgba(228,233,236,.08);transition:padding-left .3s ease,border-color .3s ease}
+.arclinks a:hover,.arclinks a:focus-visible{padding-left:14px;border-bottom-color:var(--frost)}
+.arclinks .arch{font-family:var(--mono);font-size:11px;color:var(--frost);min-width:170px}
+.arclinks .ttl{font-size:16px;color:var(--pale)}
+.arclinks .meta{font-size:13px;color:rgba(228,233,236,.5);margin-top:3px;max-width:46ch}
+.arclinks .go{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--fog);opacity:0;transition:opacity .3s}
+.arclinks a:hover .go,.arclinks a:focus-visible .go{opacity:1}
+
+.closing{border-top:1px solid var(--frost);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--fog);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:transparent;border:1px solid var(--rule);color:var(--pale);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--fog);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--frost);color:#131A1E;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.85}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--frost2)}
+.signup .msg.err{color:#D9604F}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--frost2);border-color:var(--frost)}
+.src{font-family:var(--mono);font-size:11.5px;color:rgba(147,160,168,.7);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:14px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+  .arclinks a{flex-wrap:wrap;gap:8px} .arclinks .go{display:none} .arclinks .arch{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #water,#sky,#depthv{transition:none}
+  .bbship,.bbpennant,.bbwave{animation:none}
+  #rain{display:none}
+}
+:focus-visible{outline:2px solid var(--frost);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="water"></div>
+<div id="sky"></div>
+<canvas id="rain"></canvas>
+<div id="depthv"></div>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Anno</div><div class="rail-num" id="railYear">1941</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Profondità</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1941" data-depth="0">
+  <div class="eyebrow">Corazzata · Kriegsmarine</div>
+  <h1>Bismarck</h1>
+  <div class="sub">AFFONDATA 27 MAGGIO 1941 · RITROVATA 1989</div>
+  <div class="coordbox">
+    <div class="coord">Dove giace<b>Atlantico del Nord · ~4.790 m</b></div>
+    <div class="coord">Nell'atlante<b>il relitto più profondo</b></div>
+    <div class="coord">Caduti<b>~2.000 su ~2.200</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>TOMBA DI GUERRA · RELITTO A GRANDE PROFONDITÀ, RILEVATO E NON DISTURBATO — POSIZIONE APPROSSIMATA NOTA</div>
+  <div class="scrollcue">↓ scorri — la caccia dura otto giorni</div>
+</section>
+
+<section class="reveal" data-year="1941" data-depth="4790">
+  <div class="eyebrow">Perché questo relitto</div>
+  <h2>Otto giorni, e il fondo dell'oceano</h2>
+  <p class="lede">La Mary Rose l'abbiamo riportata su. La Bismarck no: giace a quasi cinquemila metri, il relitto più profondo di questo atlante, e lì resterà. La sua unica missione durò otto giorni — e tenne il mondo con il fiato sospeso.</p>
+  <p>Era una delle corazzate più grandi mai costruite, il simbolo della potenza navale della Germania. In quei pochi giorni del maggio 1941 affondò la nave più orgogliosa della Royal Navy e poi fu inseguita e distrutta da una flotta intera. È la storia di una caccia — e di una tomba: con lei morirono circa duemila uomini. Questo atlante la racconta come vicenda storica e come luogo di sepoltura, senza celebrare la macchina da guerra né il regime che la mandò in mare.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">~4.790</div><div class="k">metri di profondità</div></div>
+    <div class="stat"><div class="v">8</div><div class="k">giorni di missione</div></div>
+    <div class="stat"><div class="v red">~2.000</div><div class="k">caduti a bordo</div></div>
+    <div class="stat"><div class="v red">3</div><div class="k">superstiti su 1.418 (la Hood)</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1941" data-depth="0">
+  <div class="eyebrow">Maggio 1941 · l'Atlantico</div>
+  <h2>La guerra dei convogli</h2>
+  <p>Nel 1941 la Gran Bretagna dipende per la sua stessa sopravvivenza dai convogli che attraversano l'Atlantico: cibo, carburante, armi. Recidere quella linea è l'obiettivo tedesco. Con l'operazione <em>Rheinübung</em>, la Bismarck e l'incrociatore Prinz Eugen escono in mare aperto per dare la caccia ai mercantili: una sola grande corazzata sciolta nell'oceano può paralizzare il traffico di un impero.</p>
+  <p class="lede">Fermarla diventa, per la Royal Navy, una questione di vita o di morte — e di prestigio.</p>
+  <p>Contro le due navi tedesche la Gran Bretagna schiera una parte enorme della sua flotta. Il primo scontro, però, comincia male: molto male.</p>
+</section>
+
+<section class="reveal" data-year="1941" data-depth="0">
+  <div class="eyebrow">24 maggio 1941 · Stretto di Danimarca</div>
+  <h2>La fine della Hood</h2>
+  <p>All'alba del 24 maggio la Bismarck incontra l'orgoglio della Royal Navy: l'incrociatore da battaglia <strong>HMS Hood</strong>, per vent'anni il simbolo della potenza navale britannica, insieme alla corazzata Prince of Wales. Lo scontro dura pochi minuti. Una salva della Bismarck raggiunge i depositi delle munizioni della Hood.</p>
+  <div class="moment">
+    <q>Affondate la Bismarck.</q>
+    <cite>L'ORDINE DI WINSTON CHURCHILL, DOPO LA NOTIZIA DELLA PERDITA DELLA HOOD</cite>
+  </div>
+  <p>La Hood esplode e si spezza in due. In pochi minuti va a fondo con quasi tutto l'equipaggio: dei <strong>1.418 uomini a bordo se ne salvano tre</strong>. È un colpo tremendo per il morale britannico — e la caccia, da quel momento, diventa implacabile.</p>
+</section>
+
+<section class="reveal" data-year="1941" data-depth="0">
+  <div class="eyebrow">24–27 maggio · la caccia</div>
+  <h2>Tremila chilometri d'inseguimento</h2>
+  <p>Colpita a sua volta e con una perdita di carburante, la Bismarck punta verso i porti della Francia occupata per ripararsi. La Royal Navy la insegue attraverso l'Atlantico in tempesta. Segui le fasi.</p>
+  <div class="widget">
+    <svg id="routemap" viewBox="0 0 640 380" role="img" aria-label="Mappa schematica della caccia alla Bismarck nell'Atlantico del Nord">
+      <title>La caccia alla Bismarck</title>
+      <path d="M470 40 l70 -6 l50 10 l-8 40 l-90 6 l-30 -20 Z" fill="rgba(143,176,192,.10)" stroke="rgba(143,176,192,.3)" stroke-width="1"/>
+      <text x="516" y="34" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">NORVEGIA</text>
+      <path d="M40 120 l60 -8 l40 8 l-6 30 l-70 6 l-30 -18 Z" fill="rgba(143,176,192,.10)" stroke="rgba(143,176,192,.3)" stroke-width="1"/>
+      <text x="70" y="114" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">GROENLANDIA</text>
+      <path d="M470 300 l60 -6 l70 10 l-8 60 l-140 6 l-10 -40 Z" fill="rgba(143,176,192,.10)" stroke="rgba(143,176,192,.3)" stroke-width="1"/>
+      <text x="520" y="340" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">FRANCIA · BREST</text>
+
+      <path id="legBreak" d="M486 78 C 400 96, 300 110, 190 150" fill="none" stroke="var(--frost)" stroke-width="2" stroke-dasharray="5 6"/>
+      <circle cx="486" cy="78" r="5" fill="var(--frost)"/>
+      <text x="440" y="72" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9">l'uscita in mare</text>
+      <g id="hoodMark" opacity="0">
+        <circle cx="170" cy="156" r="9" fill="none" stroke="var(--signal2)" stroke-width="1.3"/>
+        <path d="M170 149 l2 5 h5 l-4 3.4 l1.6 5.2 l-4.6 -3.2 l-4.6 3.2 l1.6 -5.2 l-4 -3.4 h5 Z" fill="var(--signal2)"/>
+        <text x="120" y="176" fill="var(--signal2)" font-family="IBM Plex Mono, monospace" font-size="9">24 mag · la Hood</text>
+      </g>
+      <path id="legChase" d="M170 156 C 260 210, 360 250, 470 300" fill="none" stroke="var(--frost)" stroke-width="2.2" stroke-linecap="round" opacity="0"/>
+      <path id="legStrike" d="M340 232 l-16 -6 l14 -8" fill="none" stroke="var(--signal)" stroke-width="2.4" opacity="0"/>
+      <g id="strikeMark" opacity="0">
+        <circle cx="336" cy="238" r="8" fill="none" stroke="var(--signal2)" stroke-width="1.2"/>
+        <text x="346" y="256" fill="var(--signal2)" font-family="IBM Plex Mono, monospace" font-size="9">26 mag · il timone</text>
+      </g>
+      <g id="endMark" opacity="0">
+        <circle cx="470" cy="300" r="9" fill="none" stroke="var(--pale)" stroke-width="1.2"/>
+        <circle cx="470" cy="300" r="3.4" fill="var(--pale)"/>
+        <text x="360" y="296" fill="var(--pale)" font-family="IBM Plex Mono, monospace" font-size="9">27 mag · affonda</text>
+      </g>
+      <circle id="ship" cx="486" cy="78" r="4.5" fill="var(--pale)"/>
+      <text x="20" y="26" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">MAPPA SCHEMATICA — NON IN SCALA</text>
+    </svg>
+    <div class="wctrl">
+      <button id="btnBreak" aria-pressed="true">1 · L'uscita</button>
+      <button id="btnHood" aria-pressed="false">2 · La Hood</button>
+      <button id="btnChase" aria-pressed="false">3 · L'inseguimento</button>
+      <button id="btnEnd" aria-pressed="false">4 · La fine</button>
+    </div>
+    <div id="routeinfo"><b>1 · L'uscita in mare</b><br>Il 18–22 maggio Bismarck e Prinz Eugen lasciano la Germania e la Norvegia e puntano nell'Atlantico attraverso lo Stretto di Danimarca, per aggirare il blocco britannico e piombare sui convogli.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1941" data-depth="0">
+  <div class="eyebrow">26 maggio · il colpo che decide tutto</div>
+  <h2>Il biplano che uccise una corazzata</h2>
+  <p>Sfuggita ai suoi inseguitori per un giorno intero, la Bismarck sembra ormai a un passo dalla salvezza. Poi, all'imbrunire, dalla portaerei Ark Royal decollano dei <em>Fairey Swordfish</em>: biplani di tela e legno, lenti e già antiquati. Sembrano incapaci di scalfire una corazza d'acciaio. Uno di loro, invece, cambia la storia. Clicca.</p>
+  <div class="sitewrap">
+    <svg viewBox="0 0 640 260" role="img" aria-label="Schema del siluro che blocca il timone della Bismarck" class="fielded">
+      <title>Il colpo al timone della Bismarck</title>
+      <line x1="20" y1="150" x2="620" y2="150" stroke="rgba(143,176,192,.3)" stroke-width="1"/>
+      <path d="M120 150 L150 132 L500 132 L536 146 L520 150 Z" fill="rgba(143,176,192,.10)" stroke="#7E97A2" stroke-width="1.3"/>
+      <rect x="220" y="112" width="180" height="20" fill="rgba(143,176,192,.08)" stroke="#7E97A2" stroke-width="1"/>
+
+      <g class="spot" tabindex="0" data-t="Il siluro dello Swordfish" data-d="Un aereo lento e obsoleto — proprio la sua bassa velocità, si è detto, ingannò la difesa antiaerea, tarata su bersagli più rapidi. Il suo siluro colpì la Bismarck a poppa, nel punto più delicato.">
+        <circle class="hot" cx="470" cy="80" r="22"/>
+        <path d="M420 70 l40 4 l-6 8 l-40 -4 Z M436 76 l-14 -8 M440 78 l-14 12" fill="none" stroke="var(--frost2)" stroke-width="1.4"/>
+        <line x1="452" y1="86" x2="500" y2="150" stroke="var(--signal)" stroke-width="1.6" stroke-dasharray="4 4"/>
+        <text x="404" y="66" fill="var(--frost2)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">SWORDFISH</text>
+      </g>
+      <g class="spot" tabindex="0" data-t="Il timone bloccato" data-d="Il siluro esplose proprio contro i timoni e li incastrò a circa 12 gradi. Una nave che non può governare è come un cavallo azzoppato: la Bismarck non poteva più dirigersi verso la Francia. Poteva solo girare in tondo.">
+        <rect class="hot" x="470" y="126" width="70" height="40"/>
+        <path d="M500 132 L536 146 L520 150 L500 148 Z" fill="rgba(194,68,56,.3)" stroke="var(--signal)" stroke-width="1.4"/>
+        <text x="514" y="184" fill="var(--signal2)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">TIMONE · BLOCCATO</text>
+      </g>
+      <g class="spot" tabindex="0" data-t="Costretta a tornare indietro" data-d="Incapace di manovrare, la Bismarck fu trascinata dal mare a fare cerchi, avvicinandosi involontariamente alla flotta britannica che la inseguiva. Il caso più celebre della storia in cui un aereo quasi inoffensivo condannò la nave da guerra più potente del suo tempo.">
+        <circle class="hot" cx="250" cy="122" r="40"/>
+        <path d="M250 92 a30 30 0 1 1 -1 0" fill="none" stroke="var(--signal2)" stroke-width="1.6" stroke-dasharray="5 5"/>
+        <path d="M250 92 l-6 -8 l10 2 Z" fill="var(--signal2)"/>
+        <text x="250" y="176" fill="var(--signal2)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">GIRA IN TONDO</text>
+      </g>
+      <text x="20" y="28" fill="rgba(228,233,236,.4)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">SCHEMA — NON IN SCALA · CLICCA</text>
+    </svg>
+    <div id="spotinfo">Seleziona un punto per capire il colpo decisivo.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1941" data-depth="0">
+  <div class="eyebrow">27 maggio · la fine</div>
+  <h2>Novanta minuti di fuoco</h2>
+  <p>La mattina del 27 maggio le corazzate britanniche King George V e Rodney, con gli incrociatori, raggiungono la Bismarck immobilizzata e aprono il fuoco. In poco più di un'ora e mezza le scaricano addosso quasi tremila proiettili. La Bismarck è ridotta a un rottame in fiamme — ma non affonda.</p>
+  <p class="lede">Ed è qui che nasce un enigma ancora aperto: chi la mandò davvero a fondo?</p>
+  <p>Gli inglesi la rivendicano come loro preda; i superstiti tedeschi hanno sempre sostenuto di averla <strong>autoaffondata</strong>, aprendo le prese a mare per non consegnarla al nemico. Quando finalmente s'inabissa, intorno alle 10:40, in acqua restano centinaia di uomini. Le navi britanniche ne raccolgono circa 110, poi interrompono il soccorso per l'allarme di un sommergibile, lasciandone morire moltissimi. Dei circa duemiladuecento a bordo, si salvano poco più di cento.</p>
+</section>
+
+<section class="reveal" data-year="1989" data-depth="4790">
+  <div class="eyebrow">8 giugno 1989 · quasi cinquemila metri</div>
+  <h2>Ritrovata da chi trovò il Titanic</h2>
+  <p>La stessa mano che aveva individuato il Titanic ritrovò anche la Bismarck: nel 1989 Robert Ballard la localizzò a circa <strong>4.790 metri</strong>, a centinaia di chilometri a ovest della Francia. Ed è qui che la pagina scende con lei, dal grigio della tempesta al buio dell'abisso.</p>
+  <p>Il relitto è in piedi sul fondo e sorprendentemente integro: lo scafo non è collassato come ci si aspetterebbe da una nave affondata solo dal fuoco nemico. Per molti studiosi è l'indizio che pesa a favore dell'autoaffondamento — anche se quasi tutti concordano che i danni della battaglia l'avrebbero comunque condannata. Ballard non toccò nulla: la considerò, come il Titanic, un luogo di sepoltura da rispettare.</p>
+</section>
+
+<section class="reveal" data-year="1941" data-depth="0">
+  <div class="eyebrow">Archivio</div>
+  <h2>Vederla, e la sua caccia</h2>
+  <p>Nessuna immagine è ospitata qui: si linka a chi la custodisce, con la citazione e la relativa licenza.</p>
+  <div class="arclinks">
+    <a href="https://www.iwm.org.uk/history/second-world-war/how-the-royal-navy-hunted-down-the-bismarck" target="_blank" rel="noopener">
+      <span class="arch">IMPERIAL WAR MUSEUMS</span>
+      <span><span class="ttl">Come fu braccata la Bismarck</span><span class="meta">La ricostruzione della caccia, con le fotografie d'epoca della Royal Navy conservate dall'IWM.</span></span>
+      <span class="go">iwm.org.uk ↗</span>
+    </a>
+    <a href="https://commons.wikimedia.org/wiki/Category:Bismarck_(ship,_1939)" target="_blank" rel="noopener">
+      <span class="arch">WIKIMEDIA COMMONS</span>
+      <span><span class="ttl">Fotografie della nave</span><span class="meta">Immagini d'archivio (in parte dal Bundesarchiv, licenza CC-BY-SA con attribuzione).</span></span>
+      <span class="go">commons.wikimedia ↗</span>
+    </a>
+    <a href="https://www.rmg.co.uk/collections/objects/rmgc-object-12171" target="_blank" rel="noopener">
+      <span class="arch">ROYAL MUSEUMS GREENWICH</span>
+      <span><span class="ttl">Il racconto dell'affondamento</span><span class="meta">La vicenda del 27 maggio 1941 dalla prospettiva della Royal Navy.</span></span>
+      <span class="go">rmg.co.uk ↗</span>
+    </a>
+  </div>
+</section>
+
+<section class="reveal" data-year="1940" data-depth="0">
+  <div class="eyebrow">La nave</div>
+  <h2>Com'era</h2>
+  <p>Entrata in servizio nel 1940, la Bismarck era lunga circa 251 metri e dislocava a pieno carico intorno alle cinquantamila tonnellate: una delle corazzate più grandi mai costruite in Europa. Otto cannoni da 380 mm in quattro torri, una imponente sovrastruttura a torre al centro, un solo fumaiolo.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 640 240" role="img" aria-label="Illustrazione stilizzata della corazzata Bismarck">
+      <title>La corazzata Bismarck</title>
+      <rect x="0" y="176" width="640" height="64" fill="rgba(143,176,192,.06)"/>
+      <path d="M-20 186 q 60 -8 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(143,176,192,.28)" stroke-width="1.3" class="bbwave"/>
+      <g class="bbship">
+        <path d="M60 176 L88 158 L566 158 L596 170 L580 176 Z" fill="#4A555E" stroke="#6B7C86" stroke-width="1.3"/>
+        <line x1="96" y1="164" x2="562" y2="164" stroke="#8FB0C0" stroke-width="1"/>
+        <!-- sovrastruttura a torre -->
+        <rect x="290" y="120" width="60" height="38" fill="#3E4A52" stroke="#6B7C86" stroke-width="1"/>
+        <rect x="304" y="96" width="20" height="24" fill="#3E4A52" stroke="#6B7C86" stroke-width="1"/>
+        <circle cx="314" cy="94" r="4" fill="none" stroke="#8FB0C0" stroke-width="1"/>
+        <line x1="314" y1="90" x2="314" y2="70" stroke="#6B7C86" stroke-width="1.4"/>
+        <!-- fumaiolo -->
+        <rect x="366" y="126" width="30" height="32" fill="#3E4A52" stroke="#6B7C86" stroke-width="1"/>
+        <!-- torri principali con canne binate -->
+        <g fill="#465158" stroke="#6B7C86" stroke-width="1">
+          <rect x="150" y="150" width="44" height="12"/><rect x="206" y="150" width="44" height="12"/>
+          <rect x="400" y="150" width="44" height="12"/><rect x="456" y="150" width="44" height="12"/>
+        </g>
+        <g stroke="#6B7C86" stroke-width="2.4">
+          <line x1="150" y1="154" x2="110" y2="150"/><line x1="150" y1="158" x2="110" y2="154"/>
+          <line x1="206" y1="154" x2="166" y2="151"/><line x1="206" y1="158" x2="166" y2="155"/>
+          <line x1="444" y1="154" x2="484" y2="150"/><line x1="444" y1="158" x2="484" y2="154"/>
+          <line x1="500" y1="154" x2="540" y2="151"/><line x1="500" y1="158" x2="540" y2="155"/>
+        </g>
+        <!-- pennant neutro -->
+        <line x1="314" y1="70" x2="314" y2="58" stroke="#6B7C86" stroke-width="1.2"/>
+        <g class="bbpennant" transform="translate(314 58)"><path d="M0 0 L34 3 L24 7 L34 11 L0 9 Z" fill="#6B7C86"/></g>
+      </g>
+      <text x="20" y="28" fill="rgba(147,160,168,.7)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">CORAZZATA — RICOSTRUZIONE STILIZZATA</text>
+    </svg>
+    <figcaption>Ricostruzione stilizzata. Le fotografie reali della nave e della caccia sono negli archivi qui sopra.</figcaption>
+  </figure>
+</section>
+
+<section class="reveal" data-year="1941" data-depth="4790">
+  <div class="eyebrow">I numeri</div>
+  <h2>La nave, misurata</h2>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Valore</th></tr></thead>
+    <tbody>
+      <tr><td>Tipo</td><td class="n">corazzata</td></tr>
+      <tr><td>In servizio dal</td><td class="n">1940</td></tr>
+      <tr><td>Lunghezza</td><td class="n">~251 m</td></tr>
+      <tr><td>Cannoni principali</td><td class="n">8 × 380 mm</td></tr>
+      <tr><td>Missione operativa</td><td class="n">18–27 maggio 1941</td></tr>
+      <tr><td>Uomini a bordo</td><td class="n">~2.200</td></tr>
+      <tr><td>Superstiti</td><td class="n">~110</td></tr>
+      <tr><td>Profondità del relitto</td><td class="n">~4.790 m</td></tr>
+      <tr><td>Ritrovamento</td><td class="n">1989 (R. Ballard)</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Le cifre delle vittime e dei superstiti variano di qualche unità tra le fonti (circa 2.200 a bordo; ~110 salvati). La causa ultima dell'affondamento (fuoco britannico o autoaffondamento) resta discussa, e qui il dubbio è dichiarato. La profondità è quella diffusa dalla spedizione del 1989.</p>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">Nota metodologica</div>
+  <h2>Cosa questa pagina non fa</h2>
+  <p>Non celebra una macchina da guerra né il regime che la costruì. La Bismarck fu uno strumento della Germania nazista, e il fascino tecnico della sua storia non cancella questo. La pagina la tratta come vicenda storica e come tomba — di entrambe le parti: i 1.415 caduti della Hood e i circa duemila della Bismarck meritano lo stesso rispetto.</p>
+  <p>E non chiude una questione ancora aperta. Se a mandarla a fondo siano stati i colpi britannici o l'autoaffondamento tedesco è oggetto di dibattito tra gli storici; la pagina espone gli indizi e lascia il dubbio dov'è. Le cifre restano stime dichiarate.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 011 di 20</div>
+    <h2 style="margin-bottom:14px">La prossima è l'ultimo transatlantico perduto: l'Andrea Doria</h2>
+    <p>Dalla guerra alla pace, ma non alla quiete. 1956, nella nebbia al largo di New York: il transatlantico italiano Andrea Doria viene speronato dalla Stockholm e affonda lentamente. Un naufragio in diretta radio, con un salvataggio drammatico — e oggi il relitto è considerato il "Monte Everest" dei sub.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce la prossima scheda</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="maryrose.html">← Scheda 010: la Mary Rose</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">Tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · Imperial War Museums (la caccia alla Bismarck, fotografie) · Royal Museums Greenwich (affondamento del 27 maggio 1941) · Encyclopædia Britannica e Wikipedia (Operazione Rheinübung, Battaglia dello Stretto di Danimarca, ultima battaglia della Bismarck) · R. D. Ballard, «The Discovery of the Bismarck» (spedizione 1989, profondità ~4.790 m, stato del relitto) · Bundesarchiv / Wikimedia Commons (fotografie, licenza CC-BY-SA) · fonti sul dibattito autoaffondamento vs fuoco britannico<br><br>
+      Wreck Atlas · Scheda 011 · Prototipo
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), water=document.getElementById('water');
+  var sky=document.getElementById('sky'), depthv=document.getElementById('depthv'), rainEl=document.getElementById('rain');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- rivelazione delle sezioni ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- pioggia obliqua della tempesta atlantica ---------- */
+  var cv=rainEl, ctx=cv&&cv.getContext?cv.getContext('2d'):null, drops=[], W=0,H=0;
+  function size(){ if(!ctx)return; W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    drops=[]; var n=Math.round(W*H/9000);
+    for(var i=0;i<n;i++) drops.push({x:Math.random()*W,y:Math.random()*H,l:8+Math.random()*14,v:7+Math.random()*7,o:.06+Math.random()*.14}); }
+  function draw(){ if(!ctx)return; ctx.clearRect(0,0,W,H);
+    ctx.lineWidth=1;
+    for(var i=0;i<drops.length;i++){ var p=drops[i];
+      ctx.beginPath(); ctx.strokeStyle='rgba(200,215,222,'+p.o+')';
+      ctx.moveTo(p.x,p.y); ctx.lineTo(p.x-p.l*0.4,p.y+p.l); ctx.stroke();
+      p.y+=p.v; p.x-=p.v*0.4;
+      if(p.y>H+4){ p.y=-10; p.x=Math.random()*W*1.2; }
+    }
+    requestAnimationFrame(draw); }
+  if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  /* ---------- fondo: grigio acciaio; nell'abisso scende nel buio ---------- */
+  var shades=['#39434C','#37414A','#343E46','#313B44','#2C353D','#222A31','#161C22'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    var deep=active.dataset.depth!=='0';
+    document.getElementById('railDLab').textContent = deep ? 'Profondità' : 'in mare';
+    if(!reduce){
+      water.style.background = deep ? '#161C22' : shades[Math.min(Math.floor(p*4),3)];
+      sky.style.opacity = deep ? '0' : '1';
+      rainEl.style.opacity = deep ? '0' : '1';
+      depthv.style.opacity = deep ? '.92' : '0';
+    }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- la caccia ---------- */
+  var legBreak=document.getElementById('legBreak'), legChase=document.getElementById('legChase'), legStrike=document.getElementById('legStrike');
+  var hoodMark=document.getElementById('hoodMark'), strikeMark=document.getElementById('strikeMark'), endMark=document.getElementById('endMark');
+  var ship=document.getElementById('ship'), rinfo=document.getElementById('routeinfo'), routeAnim=null;
+  var rb={brk:document.getElementById('btnBreak'),hood:document.getElementById('btnHood'),chase:document.getElementById('btnChase'),end:document.getElementById('btnEnd')};
+  var RINFO={
+    brk:'<b>1 · L’uscita in mare</b><br>Il 18–22 maggio Bismarck e Prinz Eugen lasciano la Germania e la Norvegia e puntano nell’Atlantico attraverso lo Stretto di Danimarca, per aggirare il blocco britannico e piombare sui convogli.',
+    hood:'<b>2 · Lo Stretto di Danimarca</b><br>Il 24 maggio la Bismarck incontra la HMS Hood e la distrugge in pochi minuti: 3 superstiti su 1.418. Ma viene colpita a sua volta e perde carburante: deve puntare a un porto per ripararsi.',
+    chase:'<b>3 · L’inseguimento</b><br>Per tre giorni gran parte della Royal Navy insegue la Bismarck attraverso l’Atlantico in tempesta, verso i porti della Francia occupata. A un certo punto la perde di vista — poi la ritrova.',
+    end:'<b>4 · La fine</b><br>Bloccato il timone dal siluro dello Swordfish (26 maggio), la Bismarck non può più governare. Il 27 maggio le corazzate britanniche la raggiungono e la distruggono. Affonda a ovest della Francia.'
+  };
+  function press(k){ for(var b in rb){ rb[b].setAttribute('aria-pressed',String(b===k)); } }
+  function moveShip(path,dur,then){
+    if(!path||!path.getTotalLength){ if(then)then(); return; }
+    if(reduce){ var e=path.getPointAtLength(path.getTotalLength()); ship.setAttribute('cx',e.x); ship.setAttribute('cy',e.y); if(then)then(); return; }
+    if(routeAnim) cancelAnimationFrame(routeAnim);
+    var len=path.getTotalLength(), t0=null;
+    (function step(ts){ if(!t0)t0=ts; var k=Math.min((ts-t0)/dur,1);
+      var pt=path.getPointAtLength(len*k); ship.setAttribute('cx',pt.x); ship.setAttribute('cy',pt.y);
+      if(k<1) routeAnim=requestAnimationFrame(step); else if(then) then();
+    })(performance.now());
+  }
+  function stage(k){
+    press(k); rinfo.innerHTML=RINFO[k];
+    legChase.setAttribute('opacity',(k==='chase'||k==='end')?'1':'0');
+    strikeMark.setAttribute('opacity',(k==='end')?'1':'0');
+    endMark.setAttribute('opacity',(k==='end')?'1':'0');
+    hoodMark.setAttribute('opacity',(k==='hood'||k==='chase'||k==='end')?'1':'0');
+    if(k==='brk'){ hoodMark.setAttribute('opacity','0'); moveShip(legBreak,2200); }
+    else if(k==='hood'){ moveShip(legBreak,1200,function(){ hoodMark.setAttribute('opacity','1'); }); }
+    else if(k==='chase'){ moveShip(legChase,2600); }
+    else { moveShip(legChase,2200,function(){ endMark.setAttribute('opacity','1'); }); }
+  }
+  if(rb.brk){
+    rb.brk.addEventListener('click',function(){stage('brk');});
+    rb.hood.addEventListener('click',function(){stage('hood');});
+    rb.chase.addEventListener('click',function(){stage('chase');});
+    rb.end.addEventListener('click',function(){stage('end');});
+  }
+
+  /* ---------- il colpo al timone ---------- */
+  var info=document.getElementById('spotinfo');
+  if(info){
+    document.querySelectorAll('.spot').forEach(function(z){
+      function show(){ info.innerHTML='<b>'+z.dataset.t+'</b><br>'+z.dataset.d; }
+      z.addEventListener('click',show); z.addEventListener('focus',show);
+      z.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} });
+    });
+  }
+
+  /* ---------- metriche di scroll ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'011-bismarck',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] scheda 011 · '+m+'% a '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] sessione: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- iscrizione ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla — collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>

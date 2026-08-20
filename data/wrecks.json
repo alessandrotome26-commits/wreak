@@ -85,7 +85,7 @@
   "lat": 40.487,
   "lon": -69.85,
   "d": 76,
-  "st": "planned",
+  "st": "next",
   "f": "Transatlantico italiano affondato al largo di Nantucket dopo la collisione con la Stockholm."
  },
  {
@@ -104,8 +104,9 @@
   "lat": 48.167,
   "lon": -16.2,
   "d": 4791,
-  "st": "next",
-  "f": "Corazzata tedesca individuata nel 1989 a quasi 4.800 metri di profondità nell'Atlantico."
+  "st": "ready",
+  "href": "bismarck.html",
+  "f": "Corazzata tedesca: in otto giorni affondò la HMS Hood e fu braccata e distrutta dalla Royal Navy nel 1941. Individuata da Ballard nel 1989 a ~4.790 m, il relitto più profondo dell'atlante."
  },
  {
   "n": "Batavia",
