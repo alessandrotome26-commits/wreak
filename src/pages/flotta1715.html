@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flotta del 1715 — Florida</title>
+<meta name="description" content="La flotta spagnola del tesoro del 1715: undici navi cariche d'oro e d'argento, spazzate via da un uragano sulla costa della Florida. Oltre mille morti — e un tesoro che, tre secoli dopo, riaffiora ancora sulle spiagge della 'Treasure Coast'.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flotta del 1715 — Florida">
+<meta property="og:description" content="Non una nave, ma un'intera flotta del tesoro perduta in un uragano. Il relitto che non smette di dare: dopo 300 anni le monete d'oro riaffiorano ancora sulla spiaggia.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#E9DFC6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sand:#E9DFC6; --sand2:#DED2B4; --panel:#F4EEDC;
+  --ink:#2A2214; --ink2:#5A4E38; --fog:#8A7F66;
+  --surf:#2E8C8E; --surf2:#3FA9AB; --gold:#A9821F; --gold2:#C69C34; --storm:#556069; --rosso:#9A3B2A;
+  --rule:rgba(42,34,20,.17);
+  --display:"IM Fell English",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--sand);color:var(--ink);font-family:var(--body);font-weight:400;line-height:1.66;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#water{position:fixed;inset:0;z-index:-4;background:var(--sand);transition:background 1.6s ease}
+#sun{position:fixed;inset:0;z-index:-3;pointer-events:none;opacity:1;transition:opacity .8s linear;
+  background:radial-gradient(ellipse at 50% -8%,rgba(201,156,52,.16),transparent 44%)}
+#grains{position:fixed;inset:0;z-index:-2;pointer-events:none}
+#deepen{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1s linear;
+  background:radial-gradient(ellipse at 50% 80%,rgba(46,140,142,.10),transparent 60%)}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--fog);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--gold)}
+.rail-num{font-size:18px;color:var(--ink);font-weight:500;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.6;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(233,223,198,.82)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--surf);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(50px,10vw,104px);line-height:1.02;letter-spacing:.01em;color:var(--ink)}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(31px,5vw,50px);line-height:1.1;margin-bottom:22px;color:var(--ink)}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(42,34,20,.84);font-weight:300}
+.lede{font-size:20px;color:var(--ink);font-weight:400}
+em{font-style:italic;color:var(--ink2)}
+strong{font-weight:500;color:var(--ink)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--fog);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--fog)}
+.coord b{display:block;color:var(--ink);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid rgba(169,130,31,.45);padding:5px 10px;margin-top:28px;align-self:flex-start;max-width:64ch;line-height:1.5}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex:none}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(138,127,102,.95);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(42,34,20,.1)}
+.stat .v{font-family:var(--display);font-size:clamp(32px,5vw,50px);line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}
+.stat .v.red{color:var(--rosso)}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);margin-top:10px;line-height:1.5}
+
+.moment{border-left:3px solid var(--gold);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-size:clamp(27px,4.8vw,44px);line-height:1.18;quotes:"\201C" "\201D";color:var(--ink)}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--fog);margin-top:18px}
+
+.tl{border-left:1px solid var(--rule);margin-top:8px}
+.tl-item{padding:0 0 34px 28px;position:relative}
+.tl-item::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--sand);border:1px solid var(--fog)}
+.tl-item.key::before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 5px rgba(169,130,31,.15)}
+.tl-y{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--surf);margin-bottom:5px}
+.tl-item.key .tl-y{color:var(--gold)}
+.tl-t{font-size:17px;color:var(--ink);margin-bottom:4px}
+.tl-d{font-size:14.5px;color:rgba(42,34,20,.62);max-width:52ch}
+
+.widget{margin-top:14px;border:1px solid var(--rule);background:var(--panel);padding:20px}
+.widget svg{width:100%;height:auto;display:block}
+.wctrl{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:11px;color:var(--ink2)}
+.wctrl button{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;background:transparent;color:var(--ink2);border:1px solid var(--rule);padding:8px 14px;cursor:pointer;transition:border-color .25s,color .25s}
+.wctrl button:hover{border-color:var(--surf);color:var(--surf)}
+.wctrl button.primary{border-color:var(--storm);color:var(--storm)}
+.find{cursor:pointer}
+.find *{transition:opacity .25s}
+#finds{opacity:0;transition:opacity .9s ease}
+#finds.up{opacity:1}
+#foam{animation:foam 4s ease-in-out infinite}
+@keyframes foam{0%,100%{transform:translateX(0)}50%{transform:translateX(-14px)}}
+#findinfo{font-family:var(--mono);font-size:12px;color:var(--ink2);margin-top:16px;min-height:52px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.7}
+#findinfo b{color:var(--gold);font-weight:600}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(42,34,20,.1);vertical-align:top;color:rgba(42,34,20,.8)}
+td.n{color:var(--ink);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:rgba(138,127,102,.98);line-height:1.7;margin-top:22px;max-width:60ch}
+
+.realimg{margin-top:22px;border:1px solid rgba(169,130,31,.35);background:rgba(169,130,31,.07);padding:22px}
+.realimg .badge{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.realimg p{margin-bottom:14px}
+.realimg .rilink{display:inline-block;margin:0 18px 8px 0;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--surf);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:4px;transition:color .25s,border-color .25s}
+.realimg .rilink:hover{color:var(--gold);border-color:var(--gold)}
+.realimg .cite{font-family:var(--mono);font-size:11px;color:rgba(138,127,102,.98);line-height:1.6;margin-top:8px}
+
+.shipart{margin-top:22px;border:1px solid var(--rule);background:var(--panel);padding:18px 18px 12px}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:rgba(138,127,102,.98);letter-spacing:.05em;margin-top:10px}
+.cobglint{animation:cobglint 5s ease-in-out infinite}
+@keyframes cobglint{0%{transform:translateX(-40px);opacity:0}12%{opacity:.8}88%{opacity:.8}100%{transform:translateX(220px);opacity:0}}
+
+.arclinks{display:grid;gap:2px;margin-top:24px;border-top:1px solid var(--rule)}
+.arclinks a{display:flex;gap:20px;align-items:baseline;padding:20px 0;text-decoration:none;color:inherit;
+  border-bottom:1px solid rgba(42,34,20,.1);transition:padding-left .3s ease,border-color .3s ease}
+.arclinks a:hover,.arclinks a:focus-visible{padding-left:14px;border-bottom-color:var(--gold)}
+.arclinks .arch{font-family:var(--mono);font-size:11px;color:var(--surf);min-width:170px}
+.arclinks .ttl{font-size:16px;color:var(--ink)}
+.arclinks .meta{font-size:13px;color:rgba(42,34,20,.6);margin-top:3px;max-width:46ch}
+.arclinks .go{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--fog);opacity:0;transition:opacity .3s}
+.arclinks a:hover .go,.arclinks a:focus-visible .go{opacity:1}
+
+.closing{border-top:2px solid var(--gold);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--fog);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:rgba(255,255,255,.5);border:1px solid var(--rule);color:var(--ink);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--surf);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--gold);color:#1E1608;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.88}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--surf)}
+.signup .msg.err{color:#9A3B2A}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--ink2);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--gold);border-color:var(--gold)}
+.src{font-family:var(--mono);font-size:11.5px;color:rgba(138,127,102,.98);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:14px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+  .arclinks a{flex-wrap:wrap;gap:8px} .arclinks .go{display:none} .arclinks .arch{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #water,#sun,#deepen{transition:none}
+  #foam,.cobglint{animation:none}
+  #grains{display:none}
+}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="water"></div>
+<div id="sun"></div>
+<canvas id="grains"></canvas>
+<div id="deepen"></div>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Anno</div><div class="rail-num" id="railYear">1715</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Profondità</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1715" data-depth="0">
+  <div class="eyebrow">Flotta spagnola del tesoro · undici navi</div>
+  <h1>La Flotta<br>del 1715</h1>
+  <div class="sub">PERDUTA IN UN URAGANO 31 LUGLIO 1715 · E ANCORA OGGI RIAFFIORA</div>
+  <div class="coordbox">
+    <div class="coord">Dove naufragò<b>"Treasure Coast", Florida · pochi metri e sulla spiaggia</b></div>
+    <div class="coord">Cosa portava<b>un intero arretrato di tesoro americano</b></div>
+    <div class="coord">Il fatto unico<b>le monete tornano a riva da 300 anni</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>NON UN RELITTO, MA UNDICI · SITO STORICO TUTELATO DELLO STATO DELLA FLORIDA · IL TESORO RIAFFIORA ANCORA</div>
+  <div class="scrollcue">↓ scorri — il mare non ha ancora finito</div>
+</section>
+
+<section class="reveal" data-year="oggi" data-depth="0">
+  <div class="eyebrow">Perché questo relitto</div>
+  <h2>Il relitto che non smette di dare</h2>
+  <p class="lede">Le Mercedes tornarono a casa in tribunale. Il tesoro della Flotta del 1715 torna a casa da solo — a ogni tempesta, un pezzo alla volta, spinto sulla battigia di una spiaggia pubblica della Florida.</p>
+  <p>Non è una nave sola: sono <strong>undici navi</strong> di una flotta del tesoro spagnola, tutte affondate nella stessa notte, lungo lo stesso tratto di costa. Il carico si è sparso su miglia di fondale basso e sabbioso — e da tre secoli il mare lo rimescola e ne restituisce un po'. Nel 2015, esattamente trecento anni dopo, una famiglia in vacanza ne ha ripescato <strong>centouno monete d'oro</strong>, per quattro milioni e mezzo di dollari. È l'unico relitto di questo atlante che puoi ancora, letteralmente, trovare passeggiando.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">11</div><div class="k">navi perdute in una notte</div></div>
+    <div class="stat"><div class="v red">~1.000</div><div class="k">morti nell'uragano</div></div>
+    <div class="stat"><div class="v">300+</div><div class="k">anni che riaffiora</div></div>
+    <div class="stat"><div class="v">$4,5M</div><div class="k">d'oro trovati nel solo 2015</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1715" data-depth="0">
+  <div class="eyebrow">1715 · un tesoro trattenuto troppo a lungo</div>
+  <h2>Dodici anni di ricchezza su undici navi</h2>
+  <p>Perché una sola flotta portava così tanto? Perché per oltre un decennio non era quasi partita nessuna. La Guerra di successione spagnola aveva reso l'Atlantico troppo pericoloso, e il tesoro delle Americhe si era accumulato nei porti coloniali. Finita la guerra, tutto quell'arretrato fu caricato insieme: due flotte riunite — quella della Nueva España, al comando di Juan Esteban de Ubilla, e quella di Tierra Firme, di Antonio de Echeverz — più una nave francese, la <em>Grifón</em>.</p>
+  <p class="lede">La Spagna, dissanguata dalla guerra, aveva un disperato bisogno che quell'oro arrivasse a casa.</p>
+  <p>Il 24 luglio 1715 la flotta lascia L'Avana, in ritardo sulla stagione. Chiunque conoscesse quei mari sapeva che partire a fine luglio significava sfidare la stagione degli uragani caraibici. Fu un azzardo, e lo persero tutti.</p>
+</section>
+
+<section class="reveal" data-year="1715" data-depth="6">
+  <div class="eyebrow">31 luglio 1715 · ore 2 del mattino</div>
+  <h2>Una notte, undici relitti</h2>
+  <p>Sette giorni dopo la partenza, mentre risale la costa della Florida, la flotta viene investita da un uragano in piena notte. Non c'è scampo: una dopo l'altra, le navi vengono scagliate contro i bassifondi e la barriera, si aprono, affondano. All'alba del 31 luglio 1715, delle dodici navi ne mancano <strong>undici</strong>. Muoiono oltre mille persone, tra cui il comandante Ubilla.</p>
+  <div class="moment">
+    <q>Delle dodici, solo la francese si salvò — perché, per fortuna sfacciata, aveva preso una rotta diversa.</q>
+    <cite>SULLA GRIFÓN, L'UNICA NAVE DELLA FLOTTA SCAMPATA ALL'URAGANO</cite>
+  </div>
+  <p>La <em>Grifón</em>, che navigava un po' discosta dalle altre, sfuggì al peggio della tempesta e arrivò in Europa. Le spagnole, tutte insieme, restarono sul fondo — a pochi metri di profondità, quasi a portata di mano dalla riva. E fu proprio quella vicinanza a scrivere il resto della storia.</p>
+</section>
+
+<section class="reveal" data-year="1716" data-depth="0">
+  <div class="eyebrow">La spiaggia contesa</div>
+  <h2>Il tesoro che fece nascere i pirati</h2>
+  <p>I sopravvissuti montarono un campo sulla spiaggia e cominciarono a recuperare il tesoro dai relitti poco profondi, con l'aiuto di sommozzatori. In quattro anni ne tirarono su gran parte. Ma un tesoro incagliato su una spiaggia, in mezzo al nulla, è un magnete per i predatori.</p>
+  <p>Nel dicembre 1715 il pirata inglese <strong>Henry Jennings</strong>, salpato da Nassau, assaltò il campo di recupero spagnolo con centinaia di uomini e si portò via circa trecentocinquantamila pesos. Quel colpo — e la voce di un tesoro sparso su una spiaggia — attirò nei Caraibi avventurieri da ogni dove.</p>
+  <p class="lede">La Flotta del 1715 non finanziò solo la Spagna: diede la scintilla all'età dell'oro della pirateria.</p>
+  <p>Molti degli uomini che ronzavano intorno a quel tesoro sarebbero diventati i pirati leggendari della base di Nassau. Un naufragio, per una volta, non è la fine di una storia: è l'inizio di un'altra.</p>
+</section>
+
+<section class="reveal" data-year="oggi" data-depth="0">
+  <div class="eyebrow">Il fatto che ci rende unici</div>
+  <h2>Il mare la restituisce ancora</h2>
+  <p>Le monete e i gioielli della flotta si sono sparsi nella sabbia lungo chilometri di costa. Ogni grande mareggiata rimescola il fondale e ne rimette in circolo qualcuna: e così, dopo tre secoli, i reperti continuano a comparire sulla battigia. Prova: scatena una tempesta e guarda cosa lascia sulla sabbia.</p>
+  <div class="widget">
+    <svg id="beach" viewBox="0 0 640 300" role="img" aria-label="La spiaggia della Treasure Coast: dopo una tempesta riaffiorano monete e reperti">
+      <title>Il mare restituisce il tesoro</title>
+      <rect x="0" y="0" width="640" height="120" fill="rgba(201,156,52,.10)"/>
+      <rect x="0" y="120" width="640" height="66" fill="rgba(46,140,142,.20)"/>
+      <g id="foam"><path d="M-20 186 q 40 -8 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2"/></g>
+      <rect x="0" y="186" width="640" height="114" fill="rgba(222,210,180,.55)"/>
+      <text x="20" y="30" fill="rgba(42,34,20,.45)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">MARE ↑   ·   SPIAGGIA ↓   ·   CLICCA I REPERTI</text>
+
+      <g id="finds">
+        <g class="find" tabindex="0" data-t="Real de a ocho (8 reali)" data-d="Il 'pezzo da otto': la grande moneta d'argento coniata a mano, la valuta più diffusa al mondo per secoli. Ne riaffiorano a centinaia — è la moneta-simbolo dei relitti spagnoli.">
+          <circle cx="118" cy="232" r="16" fill="#CBC3B0" stroke="var(--ink2)" stroke-width="1.4"/>
+          <path d="M111 232 l7 -8 l7 8 l-7 8 Z" fill="none" stroke="var(--ink2)" stroke-width="1"/>
+        </g>
+        <g class="find" tabindex="0" data-t="Escudo d'oro" data-d="Moneta d'oro. Sono queste le più preziose che tornano a riva, e le più cercate: un pugno di escudos vale una piccola fortuna. Le 101 monete del 2015 erano d'oro.">
+          <circle cx="222" cy="252" r="15" fill="#CBA344" stroke="#7C5F16" stroke-width="1.4"/>
+          <circle cx="222" cy="252" r="9" fill="none" stroke="#7C5F16" stroke-width="1"/>
+        </g>
+        <g class="find" tabindex="0" data-t="Un 'Royal' del 1715" data-d="I 'Royals' sono monete da esibizione, coniate a mano con conio perfetto e forma tonda regolare, destinate al re. Rarissime: quando ne riaffiora una, fa notizia in tutto il mondo del collezionismo.">
+          <circle cx="330" cy="236" r="16" fill="#D6B24E" stroke="#7C5F16" stroke-width="1.6"/>
+          <path d="M330 226 l3 8 h8 l-6 5 l3 8 l-8 -5 l-8 5 l3 -8 l-6 -5 h8 Z" fill="#7C5F16"/>
+        </g>
+        <g class="find" tabindex="0" data-t="Frammento di porcellana cinese" data-d="Un coccio di porcellana blu e bianca dell'epoca Kangxi: arrivava dalla Cina attraverso il Pacifico e l'istmo di Panama. Nel carico c'era, letteralmente, mezzo mondo.">
+          <path class="find-hot" d="M430 246 l22 -6 l10 14 l-16 10 l-18 -6 Z" fill="#E7EEF2" stroke="var(--surf)" stroke-width="1.4"/>
+          <path d="M436 250 q10 -4 20 2" fill="none" stroke="var(--surf)" stroke-width="1"/>
+        </g>
+        <g class="find" tabindex="0" data-t="Uno smeraldo colombiano" data-d="Uno smeraldo di Muzo, dalla Nuova Granada. Molte pietre viaggiavano non registrate, come contrabbando privato: parte del tesoro non è mai comparsa in nessun elenco ufficiale, e forse è ancora tutta là.">
+          <path d="M520 240 l12 -6 l12 6 l-4 14 l-16 0 Z" fill="rgba(46,140,90,.75)" stroke="#1E5A3C" stroke-width="1.4"/>
+        </g>
+      </g>
+    </svg>
+    <div class="wctrl">
+      <button id="stormBtn" class="primary">Scatena una tempesta ⛈</button>
+      <button id="calmBtn">Torna la calma</button>
+    </div>
+    <div id="findinfo">Il mare è calmo, la spiaggia pulita. Premi "Scatena una tempesta": la mareggiata rimescolerà il fondale e depositerà dei reperti sulla sabbia.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1961" data-depth="0">
+  <div class="eyebrow">1955–1965 · i cercatori moderni</div>
+  <h2>Le "pietre nere e piatte" di Kip Wagner</h2>
+  <p>Per due secoli la flotta fu quasi dimenticata. Poi, negli anni Cinquanta, un uomo di nome <strong>Kip Wagner</strong>, camminando sulla spiaggia col cane, cominciò a raccogliere strane "pietre nere e piatte". Ne pulì una: era una moneta d'argento spagnola annerita dal mare. Aveva trovato la scia della Flotta del 1715.</p>
+  <p>Wagner e i suoi soci fondarono la <em>Real Eight Company</em> e riportarono alla luce i relitti sepolti al largo della costa: è la nascita della caccia moderna al tesoro in Florida, e il motivo per cui quel tratto di litorale oggi si chiama ufficialmente <strong>"Treasure Coast"</strong>.</p>
+  <p class="note">La stessa attrazione ha un lato oscuro. Nel 2015, delle centouno monete d'oro trovate, cinquanta furono nascoste e trafugate; la polizia della Florida ne ha poi recuperate trentasette. Dove c'è tesoro, c'è sempre chi prova a rubarlo — nel 1716 come oggi.</p>
+</section>
+
+<section class="reveal" data-year="1715" data-depth="0">
+  <div class="eyebrow">Il simbolo</div>
+  <h2>Il "pezzo da otto"</h2>
+  <p>Il vero protagonista di questa storia non è una nave, ma una moneta: il <em>real de a ocho</em>, coniato a mano nelle zecche americane con l'argento di Potosí e del Messico. Forma irregolare, croce e stemma di Castiglia e León, un peso garantito d'argento: fu la prima moneta davvero globale, accettata dai Caraibi alla Cina.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 400 260" role="img" aria-label="Illustrazione stilizzata di una moneta spagnola coniata a mano (pezzo da otto)">
+      <title>Un pezzo da otto</title>
+      <defs><clipPath id="cobClip"><path d="M120 60 Q 200 44 286 66 Q 316 130 288 200 Q 200 222 116 198 Q 92 128 120 60 Z"/></clipPath></defs>
+      <path d="M120 60 Q 200 44 286 66 Q 316 130 288 200 Q 200 222 116 198 Q 92 128 120 60 Z" fill="#CBC3AE" stroke="#6E6248" stroke-width="2.4"/>
+      <g clip-path="url(#cobClip)">
+        <!-- croce potenziata con castelli e leoni -->
+        <line x1="200" y1="78" x2="200" y2="186" stroke="#6E6248" stroke-width="6"/>
+        <line x1="132" y1="132" x2="270" y2="132" stroke="#6E6248" stroke-width="6"/>
+        <rect x="162" y="94" width="20" height="18" fill="none" stroke="#6E6248" stroke-width="2"/>
+        <rect x="220" y="152" width="20" height="18" fill="none" stroke="#6E6248" stroke-width="2"/>
+        <circle cx="230" cy="104" r="9" fill="none" stroke="#6E6248" stroke-width="2"/>
+        <circle cx="170" cy="162" r="9" fill="none" stroke="#6E6248" stroke-width="2"/>
+        <text x="200" y="214" fill="#6E6248" font-family="IBM Plex Mono, monospace" font-size="12" text-anchor="middle" letter-spacing="3">·8·</text>
+        <rect class="cobglint" x="90" y="40" width="26" height="200" fill="rgba(255,255,255,.35)" transform="rotate(8 200 132)"/>
+      </g>
+      <text x="24" y="30" fill="rgba(138,127,102,.98)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">REAL DE A OCHO — RICOSTRUZIONE STILIZZATA</text>
+    </svg>
+    <figcaption>Ricostruzione stilizzata di un "cob" coniato a mano. Le monete vere della flotta sono al McLarty Treasure Museum, sul luogo del campo dei naufraghi.</figcaption>
+  </figure>
+</section>
+
+<section class="reveal" data-year="oggi" data-depth="0">
+  <div class="eyebrow">Archivio</div>
+  <h2>Dove vederla, sulla sua spiaggia</h2>
+  <p>Nessuna immagine è ospitata qui: si linka a chi conserva e racconta la storia, con la citazione.</p>
+  <div class="arclinks">
+    <a href="https://en.wikipedia.org/wiki/McLarty_Treasure_Museum" target="_blank" rel="noopener">
+      <span class="arch">MCLARTY TREASURE MUSEUM</span>
+      <span><span class="ttl">Sul luogo del campo dei naufraghi</span><span class="meta">Il museo statale, dentro il Sebastian Inlet State Park, sorge dove i superstiti allestirono il campo di recupero. Espone le monete e i reperti veri.</span></span>
+      <span class="go">wikipedia ↗</span>
+    </a>
+    <a href="https://1715fleetsociety.com/history/" target="_blank" rel="noopener">
+      <span class="arch">1715 FLEET SOCIETY</span>
+      <span><span class="ttl">La storia della flotta e dei recuperi</span><span class="meta">Documenti, cronologia e ricerche sulla flotta, sul campo di recupero e sui salvatori moderni.</span></span>
+      <span class="go">1715fleetsociety.com ↗</span>
+    </a>
+    <a href="https://en.wikipedia.org/wiki/1715_Treasure_Fleet" target="_blank" rel="noopener">
+      <span class="arch">SCHEDA STORICA</span>
+      <span><span class="ttl">Le navi, l'uragano, i pirati</span><span class="meta">Sintesi documentata con i rimandi alle fonti sulla composizione della flotta e sulle conseguenze.</span></span>
+      <span class="go">wikipedia ↗</span>
+    </a>
+  </div>
+</section>
+
+<section class="reveal" data-year="1715" data-depth="0">
+  <div class="eyebrow">I numeri</div>
+  <h2>La flotta, misurata</h2>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Valore</th></tr></thead>
+    <tbody>
+      <tr><td>Navi partite da L'Avana</td><td class="n">12</td></tr>
+      <tr><td>Navi perdute</td><td class="n">11 (salva solo la francese Grifón)</td></tr>
+      <tr><td>Data del naufragio</td><td class="n">31 luglio 1715</td></tr>
+      <tr><td>Morti</td><td class="n">oltre 1.000</td></tr>
+      <tr><td>Dove</td><td class="n">"Treasure Coast", Florida</td></tr>
+      <tr><td>Profondità</td><td class="n">pochi metri, fino alla battigia</td></tr>
+      <tr><td>Riscoperta moderna (Kip Wagner)</td><td class="n">anni '50–'60</td></tr>
+      <tr><td>Oro trovato nel 2015</td><td class="n">101 monete · ~4,5 mln $</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Le cifre delle vittime ("oltre mille") e del carico sono stime storiche: il valore registrato era di alcuni milioni di pesos, ma il contrabbando non dichiarato rende impossibile un totale certo. Il numero delle navi è comunemente indicato in dodici partenze e undici perdite.</p>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">Nota metodologica</div>
+  <h2>Cosa questa pagina non fa</h2>
+  <p>Non trasforma un disastro in una caccia al tesoro spensierata. Sotto le monete che luccicano sulla sabbia ci sono più di mille morti annegati in una notte: la pagina tiene insieme le due cose. E non incoraggia lo scavo selvaggio: i relitti sono sotto la tutela dello Stato della Florida, e ogni ritrovamento va dichiarato — come mostra la vicenda delle monete rubate nel 2015.</p>
+  <p>Non spaccia stime per certezze. Quanto valesse davvero il carico, quante navi esattamente, quanti morti: sono numeri ricostruiti da documenti d'epoca e dichiarati come tali. La sola cosa certa è che una parte di quel tesoro è ancora là fuori, sotto la sabbia — e ogni tanto torna a salutare.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 014 di 20</div>
+    <h2 style="margin-bottom:14px">La prossima resta oro spagnolo, ma cambia mare: le Maravillas</h2>
+    <p>Dalla Florida alle Bahamas. La Nuestra Señora de las Maravillas, affondata nel 1656 sul banco corallino delle Bahamas: saccheggiata e recuperata a più riprese per oltre tre secoli, restituisce ancora oggi reperti dalla sabbia — un altro relitto che non finisce mai.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce la prossima scheda</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="mercedes.html">← Scheda 013: le Mercedes</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">Tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · 1715 Fleet Society (composizione della flotta, campo dei naufraghi, Real Eight Company) · Wikipedia / History Today (uragano del 31 luglio 1715, comandanti Ubilla ed Echeverz, la Grifón, l'assalto di Henry Jennings e la nascita della pirateria) · Florida State Parks — McLarty Treasure Museum e Survivors' & Salvagers' Camp (sito storico, reperti) · resoconti verificati sul ritrovamento del 2015 (famiglia Schmitt, 101 monete d'oro) e sul recupero delle monete rubate da parte della FWC · Kip Wagner e la storia della riscoperta moderna<br><br>
+      Wreck Atlas · Scheda 014 · Prototipo
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), water=document.getElementById('water');
+  var sun=document.getElementById('sun'), deepen=document.getElementById('deepen');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- rivelazione delle sezioni ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- granelli di sabbia sospinti dal vento ---------- */
+  var cv=document.getElementById('grains'), ctx=cv&&cv.getContext?cv.getContext('2d'):null, parts=[], W=0,H=0;
+  function size(){ if(!ctx)return; W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    parts=[]; var n=Math.round(W*H/32000);
+    for(var i=0;i<n;i++) parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.2+.3,v:.4+Math.random()*1.1,o:.05+Math.random()*.12}); }
+  function draw(){ if(!ctx)return; ctx.clearRect(0,0,W,H);
+    for(var i=0;i<parts.length;i++){ var p=parts[i];
+      p.x+=p.v; p.y+=Math.sin(p.x*.01)*.1;
+      if(p.x>W+4){ p.x=-4; p.y=Math.random()*H; }
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fillStyle='rgba(120,102,66,'+p.o+')'; ctx.fill(); }
+    requestAnimationFrame(draw); }
+  if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  /* ---------- fondo: sabbia calda ---------- */
+  var shades=['#E9DFC6','#E8DEC4','#E6DBC0','#E9DFC5','#EBE2CB','#ECE4CE','#EDE6D2'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    document.getElementById('railDLab').textContent = (active.dataset.depth==='0') ? 'in spiaggia' : 'Profondità';
+    if(!reduce){
+      water.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)];
+      sun.style.opacity=Math.max(.25,1-p*.9);
+    }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- widget: il mare restituisce ---------- */
+  var finds=document.getElementById('finds'), findinfo=document.getElementById('findinfo');
+  var stormBtn=document.getElementById('stormBtn'), calmBtn=document.getElementById('calmBtn');
+  if(stormBtn){ stormBtn.addEventListener('click',function(){
+    if(finds) finds.classList.add('up');
+    if(findinfo) findinfo.innerHTML='La mareggiata ha rimescolato il fondo e depositato dei reperti sulla sabbia. <b>Cliccali</b> per scoprire cosa sono — e da dove venivano.';
+  }); }
+  if(calmBtn){ calmBtn.addEventListener('click',function(){
+    if(finds) finds.classList.remove('up');
+    if(findinfo) findinfo.innerHTML='Il mare è tornato calmo, la spiaggia pulita. Ma sotto la sabbia c’è ancora molto: basterà la prossima tempesta.';
+  }); }
+  if(findinfo){
+    document.querySelectorAll('.find').forEach(function(z){
+      function show(){ if(!finds.classList.contains('up')) return; findinfo.innerHTML='<b>'+z.dataset.t+'</b><br>'+z.dataset.d; }
+      z.addEventListener('click',show); z.addEventListener('focus',show);
+      z.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} });
+    });
+  }
+
+  /* ---------- metriche di scroll ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'014-flotta1715',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] scheda 014 · '+m+'% a '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] sessione: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- iscrizione ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla — collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>

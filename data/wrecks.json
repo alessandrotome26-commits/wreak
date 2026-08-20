@@ -144,7 +144,7 @@
   "lat": 27.0,
   "lon": -79.0,
   "d": 12,
-  "st": "planned",
+  "st": "next",
   "f": "Almiranta spagnola naufragata nel 1656 sul Little Bahama Bank. Saccheggiata e recuperata per secoli; ancora oggi affiorano reperti dalla sabbia."
  },
  {
@@ -153,8 +153,9 @@
   "lat": 27.7,
   "lon": -80.4,
   "d": 6,
-  "st": "next",
-  "f": "Undici navi perdute in un uragano sulla costa atlantica della Florida. Recuperi fin dal 1715; i reperti continuano ad affiorare sulla 'Treasure Coast'."
+  "st": "ready",
+  "href": "flotta1715.html",
+  "f": "Undici navi del tesoro perdute in un uragano sulla costa della Florida (oltre 1.000 morti). Il tesoro riaffiora ancora oggi sulla 'Treasure Coast': nel 2015, 101 monete d'oro per ~4,5 mln $."
  },
  {
   "n": "Flotta spagnola del 1733",
