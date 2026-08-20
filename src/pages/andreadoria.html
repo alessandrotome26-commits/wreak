@@ -93,6 +93,12 @@ strong{font-weight:500;color:var(--ink)}
 
 .widget,.sitewrap{margin-top:14px;border:1px solid var(--rule);background:var(--panel);padding:20px}
 .widget svg,.sitewrap svg{width:100%;height:auto;display:block}
+.wctrl{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:11px;color:var(--ink2)}
+.wctrl input[type=range]{flex:1;min-width:150px;accent-color:#A22E2E}
+.wctrl button{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;background:transparent;color:var(--ink2);border:1px solid var(--rule);padding:8px 14px;cursor:pointer;transition:border-color .25s,color .25s}
+.wctrl button:hover{border-color:var(--rosso);color:var(--rosso)}
+#listmsg{font-family:var(--mono);font-size:12px;color:var(--ink2);margin-top:16px;min-height:44px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.7}
+#listmsg b{color:var(--rosso);font-weight:600}
 .spot{cursor:pointer}
 .spot rect,.spot ellipse,.spot path,.spot circle,.spot line{transition:opacity .25s}
 .spot .hot{opacity:0}
@@ -216,6 +222,14 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
   <p>È proprio questa fiducia il germe del disastro. Il radar mostra dove sono le altre navi, ma non pensa al posto di chi lo guarda. E in una notte di nebbia fittissima, due equipaggi che si fidavano dei loro schermi lessero la stessa scena in modo opposto.</p>
 </section>
 
+<section class="reveal" data-year="1953" data-depth="0">
+  <div class="eyebrow">Genova, 1951 · com'era fatta</div>
+  <h2>Un museo che attraversava l'oceano</h2>
+  <p>Prima di essere un naufragio, l'Andrea Doria era un vanto nazionale. La costruì il cantiere <strong>Ansaldo di Genova</strong>; costò ventinove milioni di dollari e portava il nome di Andrea Doria, il grande ammiraglio genovese del Cinquecento che aveva combattuto gli Ottomani. Quando entrò in servizio, nel 1953, era il biglietto da visita galleggiante dell'Italia risorta dalla guerra.</p>
+  <p class="lede">La chiamavano "un museo galleggiante" — e non era un modo di dire.</p>
+  <p>Ogni salone era decorato con opere d'arte commissionate ai migliori artisti italiani: murales, ceramiche, arazzi, e una <strong>statua di bronzo a grandezza naturale dell'ammiraglio</strong> nel salone di prima classe (sarà una delle prime cose che i sub tenteranno di recuperare dal relitto). Fu anche il primo transatlantico con <strong>tre piscine all'aperto</strong>, una per ciascuna classe. Non era la nave più grande né la più veloce dell'Atlantico: puntava tutto sull'eleganza. E la sua clientela era all'altezza — su quel viaggio fatale c'era anche l'attrice Betsy Drake, moglie di Cary Grant.</p>
+</section>
+
 <section class="reveal" data-year="1956" data-depth="0">
   <div class="eyebrow">25 luglio 1956 · ore 23:10 · al largo di Nantucket</div>
   <h2>L'urto nella nebbia</h2>
@@ -254,6 +268,41 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
     <cite>LA STORIA DI LINDA MORGAN, 14 ANNI — LA "RAGAZZA DEL MIRACOLO"</cite>
   </div>
   <p>Tra i tanti destini di quella notte, il più incredibile: Linda Morgan, quattordici anni, dormiva nella sua cabina sull'Andrea Doria. L'urto la scaraventò letteralmente sulla prua fracassata della Stockholm, dove fu ritrovata viva. Sua sorella e il patrigno, nella stessa cabina, morirono.</p>
+</section>
+
+<section class="reveal" data-year="1956" data-depth="0">
+  <div class="eyebrow">Il difetto fatale</div>
+  <h2>Perché si piegò subito su un fianco</h2>
+  <p>Una nave con doppio scafo e compartimenti stagni non dovrebbe rovesciarsi per un solo squarcio. L'Andrea Doria sì — e la ragione è un dettaglio tecnico che gli inquirenti misero al centro dell'inchiesta. A fine viaggio i suoi enormi serbatoi di carburante erano quasi vuoti. Le regole prevedevano di riempirli d'acqua di mare come zavorra, per tenere basso il baricentro; ma poi bisognava ripulirli prima di rifare il pieno — una spesa e una seccatura. Così, spesso, non si faceva.</p>
+  <p>Il risultato: appena l'acqua entrò dallo squarcio, sul lato colpito non c'era peso a bilanciare, e la nave si piegò di colpo. Muovi il cursore e guarda cosa succede alle scialuppe.</p>
+  <div class="widget">
+    <svg id="listsim" viewBox="0 0 560 300" role="img" aria-label="Simulatore: lo sbandamento dell'Andrea Doria e le sue scialuppe">
+      <title>Simulatore di sbandamento</title>
+      <line x1="20" y1="248" x2="540" y2="248" stroke="rgba(38,80,107,.5)" stroke-width="1" stroke-dasharray="4 5"/>
+      <text x="24" y="242" fill="var(--navy)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">LIVELLO DEL MARE</text>
+      <g id="shipCross" transform="rotate(0 280 248)">
+        <path d="M186 248 L192 200 L214 150 L346 150 L368 200 L374 248 Q280 270 186 248 Z" fill="rgba(38,80,107,.14)" stroke="var(--navy)" stroke-width="1.6"/>
+        <rect x="224" y="118" width="112" height="32" fill="rgba(38,80,107,.10)" stroke="var(--navy)" stroke-width="1"/>
+        <line x1="214" y1="150" x2="346" y2="150" stroke="var(--navy)" stroke-width="1"/>
+        <line x1="208" y1="150" x2="178" y2="150" stroke="var(--ink2)" stroke-width="1.4"/>
+        <path id="portBoat" d="M162 150 q16 16 32 0 Z" fill="#DCE6EA" stroke="#26506B" stroke-width="1.6"/>
+        <text x="178" y="130" fill="var(--navy)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">SINISTRA</text>
+        <line x1="352" y1="150" x2="382" y2="150" stroke="var(--ink2)" stroke-width="1.4"/>
+        <path d="M366 150 q16 16 32 0 Z" fill="#DCE6EA" stroke="#26506B" stroke-width="1.6"/>
+        <text x="382" y="130" fill="var(--navy)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">DESTRA</text>
+        <g id="portX" opacity="0" stroke="var(--rosso)" stroke-width="2.4"><path d="M166 142 l24 16 M190 142 l-24 16"/></g>
+      </g>
+      <text id="listDeg" x="536" y="42" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="18" text-anchor="end">0°</text>
+      <text x="536" y="58" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="end" letter-spacing="1">SBANDAMENTO</text>
+    </svg>
+    <div class="wctrl">
+      <span>SBANDA</span>
+      <input type="range" id="listSlider" min="0" max="30" value="0" aria-label="Angolo di sbandamento">
+      <button id="listBtn">Come quella notte ↗</button>
+    </div>
+    <div id="listmsg">La nave è dritta. Muovi il cursore: simula lo sbandamento dopo lo squarcio.</div>
+  </div>
+  <p>Superati i quindici gradi, le scialuppe del lato alto — <strong>metà del totale</strong> — non si possono più calare: penzolano contro la fiancata. In pochi minuti l'Andrea Doria aveva perso l'uso di metà delle sue lance. Se il mare, quella notte, non avesse mandato altre navi, non ci sarebbe stato modo di salvare tutti. E non era la prima avvisaglia: al viaggio inaugurale la nave aveva già sbandato di ben <em>ventotto gradi</em> per una sola grande onda.</p>
 </section>
 
 <section class="reveal" data-year="1956" data-depth="0">
@@ -490,6 +539,31 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
   }
   wire('.sitewrap .spot','collinfo');
   wire('.widget .spot','wreckinfo');
+
+  /* ---------- simulatore di sbandamento (su misura) ---------- */
+  var listSlider=document.getElementById('listSlider'), shipCross=document.getElementById('shipCross');
+  var portX=document.getElementById('portX'), listDeg=document.getElementById('listDeg'), listmsg=document.getElementById('listmsg');
+  var portBoat=document.getElementById('portBoat'), listBtn=document.getElementById('listBtn'), listAnim=null;
+  function setList(a){
+    a=Math.max(0,Math.min(30,a));
+    if(shipCross) shipCross.setAttribute('transform','rotate('+a.toFixed(1)+' 280 248)');
+    if(listDeg) listDeg.textContent=Math.round(a)+'°';
+    var lost=a>15;
+    if(portX) portX.setAttribute('opacity',lost?'1':'0');
+    if(portBoat) portBoat.setAttribute('stroke',lost?'#A22E2E':'#26506B');
+    if(listmsg){
+      if(a<3) listmsg.innerHTML='La nave è dritta. Muovi il cursore: simula lo sbandamento dopo lo squarcio.';
+      else if(!lost) listmsg.innerHTML='Sbanda di '+Math.round(a)+'°. Le scialuppe reggono ancora — ma il margine è di soli quindici gradi.';
+      else listmsg.innerHTML='<b>Oltre 15°.</b> Le scialuppe del lato alto (sinistra) non si possono più calare: penzolano contro la fiancata. Metà delle lance è già inutilizzabile.';
+    }
+  }
+  if(listSlider){ listSlider.addEventListener('input',function(){ if(listAnim){cancelAnimationFrame(listAnim);listAnim=null;} setList(+listSlider.value); }); setList(0); }
+  if(listBtn){ listBtn.addEventListener('click',function(){
+    if(reduce){ listSlider.value=22; setList(22); return; }
+    if(listAnim) cancelAnimationFrame(listAnim);
+    var start=+listSlider.value,t0=null,dur=1800,target=22;
+    (function step(ts){ if(!t0)t0=ts; var k=Math.min((ts-t0)/dur,1),e=1-Math.pow(1-k,2); var v=start+(target-start)*e; listSlider.value=v; setList(v); if(k<1) listAnim=requestAnimationFrame(step); else listAnim=null; })(performance.now());
+  }); }
 
   /* ---------- metriche di scroll ---------- */
   var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
