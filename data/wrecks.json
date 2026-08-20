@@ -45,8 +45,9 @@
   "lat": 50.79,
   "lon": -1.1,
   "d": 14,
-  "st": "next",
-  "f": "Ammiraglia di Enrico VIII, affondata nel Solent durante una battaglia e recuperata nel 1982."
+  "st": "ready",
+  "href": "maryrose.html",
+  "f": "Ammiraglia di Enrico VIII, affondata nel Solent nel 1545 sotto gli occhi del re e riportata in superficie nel 1982: una capsula del tempo della vita Tudor con ~19.000 oggetti."
  },
  {
   "n": "Relitto di Anticitera",
@@ -103,7 +104,7 @@
   "lat": 48.167,
   "lon": -16.2,
   "d": 4791,
-  "st": "planned",
+  "st": "next",
   "f": "Corazzata tedesca individuata nel 1989 a quasi 4.800 metri di profondità nell'Atlantico."
  },
  {
