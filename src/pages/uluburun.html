@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Uluburun — 1300 a.C.</title>
+<meta name="description" content="Il relitto più antico mai scavato: un mercantile dell'età del bronzo affondato intorno al 1300 a.C. al largo della Turchia, con un carico proveniente da almeno sette culture. La mappa dei commerci del mondo antico in una sola nave.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Uluburun — 1300 a.C.">
+<meta property="og:description" content="Non oro da spartirsi, ma il mondo intero in una stiva: rame di Cipro, stagno da lontanissimo, vetro, avorio, ambra del Baltico e un gioiello di Nefertiti. Il relitto più antico mai scavato.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#08191C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --abyss:#08191C; --sea:#0B2226; --deep:#0A1E22; --shelf:#0E2C2E;
+  --copper:#C77B3E; --copper2:#DD9152; --turq:#37B0AA; --turq2:#57CCC5; --gold:#D4A94E; --gold2:#E7C46A;
+  --ivory:#EDE4CE; --fog:#8FA39E;
+  --rule:rgba(237,228,206,.15);
+  --display:"Marcellus",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--abyss);color:var(--ivory);font-family:var(--body);font-weight:300;line-height:1.66;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#water{position:fixed;inset:0;z-index:-4;background:var(--abyss);transition:background 1.6s ease}
+#sun{position:fixed;inset:0;z-index:-3;pointer-events:none;opacity:1;transition:opacity .8s linear;
+  background:radial-gradient(ellipse at 50% -8%,rgba(221,145,82,.22),rgba(55,176,170,.06) 34%,transparent 52%)}
+#caustics{position:fixed;inset:-10%;z-index:-3;pointer-events:none;opacity:.6;
+  background:radial-gradient(circle at 30% 10%,rgba(221,145,82,.10),transparent 30%),
+             radial-gradient(circle at 70% 6%,rgba(87,204,197,.08),transparent 26%);
+  animation:caustics 22s ease-in-out infinite}
+@keyframes caustics{0%,100%{transform:translate3d(-2%,0,0) scaleX(1)}50%{transform:translate3d(2%,0,0) scaleX(1.05)}}
+#glints{position:fixed;inset:0;z-index:-2;pointer-events:none}
+#deepglow{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1s linear;
+  background:radial-gradient(ellipse at 50% 92%,rgba(55,176,170,.12),transparent 60%)}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--fog);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--copper)}
+.rail-num{font-size:18px;color:var(--ivory);font-weight:400;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.5;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(8,25,28,.8)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--turq2);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(52px,11vw,110px);line-height:1;letter-spacing:.01em}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(29px,4.6vw,48px);line-height:1.1;margin-bottom:22px}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(237,228,206,.86)}
+.lede{font-size:20px;color:var(--ivory)}
+em{font-style:italic;color:var(--fog)}
+strong{font-weight:500;color:var(--ivory)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--fog);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--fog)}
+.coord b{display:block;color:var(--ivory);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  color:var(--turq2);border:1px solid rgba(55,176,170,.4);padding:5px 10px;margin-top:28px;align-self:flex-start;max-width:62ch;line-height:1.5}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--turq2);flex:none}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(143,163,158,.55);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(237,228,206,.08)}
+.stat .v{font-family:var(--display);font-size:clamp(30px,4.8vw,46px);line-height:1.05;color:var(--copper2);font-variant-numeric:tabular-nums}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--copper);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-size:clamp(26px,4.6vw,42px);line-height:1.18;quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--fog);margin-top:18px}
+
+.tl{border-left:1px solid var(--rule);margin-top:8px}
+.tl-item{padding:0 0 34px 28px;position:relative}
+.tl-item::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--abyss);border:1px solid var(--fog)}
+.tl-item.key::before{background:var(--copper);border-color:var(--copper);box-shadow:0 0 0 5px rgba(199,123,62,.15)}
+.tl-y{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--turq2);margin-bottom:5px}
+.tl-item.key .tl-y{color:var(--copper2)}
+.tl-t{font-size:17px;color:var(--ivory);margin-bottom:4px}
+.tl-d{font-size:14.5px;color:rgba(237,228,206,.6);max-width:52ch}
+
+.widget{border:1px solid var(--rule);background:rgba(11,34,38,.5);padding:20px;margin-top:10px}
+.widget svg{width:100%;height:auto;display:block}
+.wctrl{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);
+  font-family:var(--mono);font-size:11px;color:var(--fog)}
+.wctrl button{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;background:transparent;
+  color:var(--fog);border:1px solid var(--rule);padding:8px 13px;cursor:pointer;transition:border-color .25s,color .25s}
+.wctrl button:hover{border-color:var(--turq);color:var(--turq2)}
+.wctrl button[aria-pressed="true"]{border-color:var(--copper);color:var(--copper2)}
+#routeinfo{font-family:var(--mono);font-size:12px;color:var(--fog);margin-top:16px;min-height:52px;
+  border-top:1px solid var(--rule);padding-top:14px;line-height:1.7}
+#routeinfo b{color:var(--copper2);font-weight:500}
+
+.sitewrap{margin-top:14px;border:1px solid var(--rule);background:rgba(11,34,38,.5);padding:20px}
+.sitewrap svg{width:100%;height:auto;display:block}
+.cargo{cursor:pointer}
+.cargo rect,.cargo ellipse,.cargo path,.cargo circle{transition:opacity .25s}
+.cargo .hot{opacity:0}
+.cargo:hover .hot,.cargo:focus .hot{opacity:.5}
+#cargoinfo{font-family:var(--mono);font-size:12px;color:var(--fog);margin-top:16px;min-height:56px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.7}
+#cargoinfo b{color:var(--gold2);font-weight:500}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(237,228,206,.08);vertical-align:top}
+td.n{color:var(--ivory);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:rgba(143,163,158,.72);line-height:1.7;margin-top:22px;max-width:60ch}
+
+.realimg{margin-top:22px;border:1px solid rgba(199,123,62,.35);background:rgba(199,123,62,.06);padding:22px}
+.realimg .badge{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--copper2);margin-bottom:14px}
+.realimg p{margin-bottom:14px}
+.realimg .rilink{display:inline-block;margin:0 18px 8px 0;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--turq2);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:4px;transition:color .25s,border-color .25s}
+.realimg .rilink:hover{color:var(--copper2);border-color:var(--copper)}
+.realimg .cite{font-family:var(--mono);font-size:11px;color:rgba(143,163,158,.72);line-height:1.6;margin-top:8px}
+
+.shipart{margin-top:22px;border:1px solid var(--rule);background:rgba(11,34,38,.5);padding:18px 18px 12px}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:rgba(143,163,158,.72);letter-spacing:.05em;margin-top:10px}
+.bship{transform-box:fill-box;transform-origin:50% 92%;animation:bshipbob 7s ease-in-out infinite}
+@keyframes bshipbob{0%,100%{transform:rotate(-.7deg) translateY(0)}50%{transform:rotate(.7deg) translateY(-3px)}}
+.bsail{transform-box:fill-box;transform-origin:50% 0;animation:bsail 4.5s ease-in-out infinite}
+@keyframes bsail{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.96)}}
+.bwave{animation:bwave 5s ease-in-out infinite}
+@keyframes bwave{0%,100%{transform:translateX(0)}50%{transform:translateX(-8px)}}
+
+.arclinks{display:grid;gap:2px;margin-top:24px;border-top:1px solid var(--rule)}
+.arclinks a{display:flex;gap:20px;align-items:baseline;padding:20px 0;text-decoration:none;color:inherit;
+  border-bottom:1px solid rgba(237,228,206,.08);transition:padding-left .3s ease,border-color .3s ease}
+.arclinks a:hover,.arclinks a:focus-visible{padding-left:14px;border-bottom-color:var(--copper)}
+.arclinks .arch{font-family:var(--mono);font-size:11px;color:var(--turq2);min-width:170px}
+.arclinks .ttl{font-size:16px;color:var(--ivory)}
+.arclinks .meta{font-size:13px;color:rgba(237,228,206,.5);margin-top:3px;max-width:46ch}
+.arclinks .go{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--fog);opacity:0;transition:opacity .3s}
+.arclinks a:hover .go,.arclinks a:focus-visible .go{opacity:1}
+
+.closing{border-top:1px solid var(--copper);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--fog);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:transparent;border:1px solid var(--rule);color:var(--ivory);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--fog);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--copper);color:#1B0F06;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.85}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--turq2)}
+.signup .msg.err{color:#E0846A}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--copper2);border-color:var(--copper)}
+.src{font-family:var(--mono);font-size:11.5px;color:rgba(143,163,158,.62);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:14px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+  .arclinks a{flex-wrap:wrap;gap:8px} .arclinks .go{display:none} .arclinks .arch{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #water,#sun,#deepglow{transition:none}
+  #caustics,.bship,.bsail,.bwave{animation:none}
+  #glints{display:none}
+}
+:focus-visible{outline:2px solid var(--copper);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="water"></div>
+<div id="sun"></div>
+<div id="caustics"></div>
+<canvas id="glints"></canvas>
+<div id="deepglow"></div>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Epoca</div><div class="rail-num" id="railYear">1300 a.C.</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Profondità</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1300 a.C." data-depth="0">
+  <div class="eyebrow">Mercantile dell'età del bronzo · Mediterraneo orientale</div>
+  <h1>Uluburun</h1>
+  <div class="sub">AFFONDATA c. 1300 a.C. · RITROVATA 1982 · SCAVATA 1984–1994</div>
+  <div class="coordbox">
+    <div class="coord">Dove giaceva<b>44–61 m · al largo di Kaş, Turchia</b></div>
+    <div class="coord">Il carico, oggi<b>Museo di archeologia subacquea, Bodrum</b></div>
+    <div class="coord">Primato<b>il relitto più antico mai scavato</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>SITO SCAVATO E DOCUMENTATO · REPERTI CONSERVATI AL MUSEO DI BODRUM — POSIZIONE STORICAMENTE NOTA</div>
+  <div class="scrollcue">↓ scorri — qui comincia il commercio</div>
+</section>
+
+<section class="reveal" data-year="1982" data-depth="0">
+  <div class="eyebrow">Perché questo relitto</div>
+  <h2>Il mondo intero in una stiva</h2>
+  <p class="lede">Il San José è il tesoro conteso. Uluburun è il suo esatto opposto: non oro da spartirsi, ma <strong>conoscenza da leggere</strong> — e la nave più antica che l'archeologia abbia mai scavato.</p>
+  <p>Affondò intorno al 1300 a.C., più di tremila anni fa, quando ancora non esistevano né Roma né l'alfabeto greco. E nella sua stiva c'era qualcosa di sbalorditivo: materie prime e oggetti provenienti da almeno <strong>sette culture diverse</strong>, dall'Egitto al Baltico. Una sola nave che, da sola, disegna la mappa dei commerci di tutto il mondo conosciuto dell'età del bronzo. Non racconta la storia di un naufragio: racconta come funzionava un intero mondo.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">~3.300</div><div class="k">anni fa</div></div>
+    <div class="stat"><div class="v">~10 t</div><div class="k">di rame nella stiva</div></div>
+    <div class="stat"><div class="v">7+</div><div class="k">culture rappresentate</div></div>
+    <div class="stat"><div class="v">22.000</div><div class="k">immersioni per scavarla</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1300 a.C." data-depth="0">
+  <div class="eyebrow">XIV–XIII secolo a.C. · il mondo del bronzo</div>
+  <h2>La prima età globale</h2>
+  <p>Per capire questa nave bisogna immaginare il Mediterraneo orientale di 3.300 anni fa: non un insieme di popoli isolati, ma una rete di grandi potenze in contatto costante. L'Egitto dei faraoni, l'impero ittita in Anatolia, i regni micenei in Grecia, Babilonia, l'Assiria, Cipro. I loro re si scambiavano lettere, doni e ambascerie — sappiamo persino cosa si scrivevano, dalle tavolette diplomatiche di Amarna.</p>
+  <p class="lede">E al centro di tutto c'era un metallo: il bronzo.</p>
+  <p>Il bronzo — armi, utensili, ricchezza — si fa unendo rame e stagno. Il rame abbondava a Cipro, ma lo stagno era raro e veniva da lontanissimo: senza commercio a lunga distanza, niente bronzo, niente civiltà del bronzo. Uluburun è la fotografia di quel sistema al suo apice — poco più di un secolo prima che crollasse di colpo, intorno al 1200 a.C., in una catena di catastrofi che spazzò via quasi tutte quelle potenze insieme.</p>
+</section>
+
+<section class="reveal" data-year="1982" data-depth="50">
+  <div class="eyebrow">1982 · al largo di Kaş</div>
+  <h2>Biscotti di metallo con le orecchie</h2>
+  <p>La scoperta è di quelle che sembrano inventate. Nel 1982 un giovane pescatore di spugne, Mehmed Çakır, del villaggio di Yalıkavak, racconta al suo capitano di aver visto sul fondo, a una quarantina di metri, degli strani oggetti di metallo.</p>
+  <div class="moment">
+    <q>Biscotti di metallo con le orecchie.</q>
+    <cite>MEHMED ÇAKIR, PESCATORE DI SPUGNE — LA DESCRIZIONE CHE SVELÒ IL RELITTO, 1982</cite>
+  </div>
+  <p>Quei "biscotti con le orecchie" erano lingotti di rame a forma di pelle di bue, con quattro maniglie agli angoli: la valuta grezza dell'età del bronzo. La segnalazione arriva agli archeologi subacquei dell'Institute of Nautical Archaeology. Tra il 1984 e il 1994, George Bass e Cemal Pulak conducono uno degli scavi subacquei più impegnativi della storia: undici stagioni, circa <strong>ventiduemila immersioni</strong>, tra i 44 e i 61 metri di profondità, al limite di ciò che un sommozzatore può fare in sicurezza.</p>
+</section>
+
+<section class="reveal" data-year="1300 a.C." data-depth="50">
+  <div class="eyebrow">Il carico</div>
+  <h2>Apri la stiva</h2>
+  <p>Nessun'altra nave antica ha restituito un carico simile. Clicca gli oggetti: ognuno viene da un angolo diverso del mondo di allora.</p>
+  <div class="sitewrap">
+    <svg viewBox="0 0 640 320" role="img" aria-label="Sezione stilizzata della stiva di Uluburun con il carico" class="fielded">
+      <title>Il carico di Uluburun</title>
+      <path d="M70 120 L570 120 L536 268 Q320 300 104 268 Z" fill="rgba(11,34,38,.7)" stroke="rgba(237,228,206,.2)" stroke-width="1.4"/>
+      <text x="70" y="110" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">SEZIONE DELLA STIVA — SCHEMA, NON IN SCALA · CLICCA IL CARICO</text>
+
+      <g class="cargo" tabindex="0" data-t="Rame di Cipro" data-d="Circa 10 tonnellate di lingotti a forma di pelle di bue: la più grande riserva di metallo grezzo dell'età del bronzo mai trovata. Da Cipro, l'isola del rame.">
+        <rect class="hot" x="120" y="210" width="200" height="52"/>
+        <path d="M132 250 l14 -8 l30 0 l14 8 l-14 8 l-30 0 Z" fill="rgba(199,123,62,.55)" stroke="var(--copper2)" stroke-width="1"/>
+        <path d="M182 250 l14 -8 l30 0 l14 8 l-14 8 l-30 0 Z" fill="rgba(199,123,62,.5)" stroke="var(--copper2)" stroke-width="1"/>
+        <path d="M232 250 l14 -8 l30 0 l14 8 l-14 8 l-30 0 Z" fill="rgba(199,123,62,.55)" stroke="var(--copper2)" stroke-width="1"/>
+        <path d="M157 236 l14 -8 l30 0 l14 8 l-14 8 l-30 0 Z" fill="rgba(199,123,62,.45)" stroke="var(--copper2)" stroke-width="1"/>
+        <path d="M207 236 l14 -8 l30 0 l14 8 l-14 8 l-30 0 Z" fill="rgba(199,123,62,.5)" stroke="var(--copper2)" stroke-width="1"/>
+        <text x="220" y="204" fill="var(--copper2)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">RAME · CIPRO</text>
+      </g>
+
+      <g class="cargo" tabindex="0" data-t="Stagno (origine dibattuta)" data-d="Circa 1 tonnellata di stagno: unito al rame in giusta proporzione, fa il bronzo. Da dove venisse è ancora una delle grandi domande aperte: Anatolia, Asia centrale, forse persino la Cornovaglia britannica. Gli studiosi non sono d'accordo.">
+        <rect class="hot" x="336" y="224" width="86" height="40"/>
+        <rect x="346" y="242" width="30" height="14" fill="rgba(143,163,158,.5)" stroke="#B9C6C2" stroke-width="1"/>
+        <rect x="382" y="242" width="30" height="14" fill="rgba(143,163,158,.45)" stroke="#B9C6C2" stroke-width="1"/>
+        <rect x="364" y="226" width="30" height="14" fill="rgba(143,163,158,.5)" stroke="#B9C6C2" stroke-width="1"/>
+        <text x="382" y="218" fill="#B9C6C2" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">STAGNO · ?</text>
+      </g>
+
+      <g class="cargo" tabindex="0" data-t="Vetro grezzo" data-d="Centinaia di dischi di vetro blu cobalto e turchese: sono i più antichi lingotti di vetro integri conosciuti. Materia prima preziosa, probabilmente dalle officine del Levante o dell'Egitto.">
+        <rect class="hot" x="438" y="214" width="92" height="48"/>
+        <ellipse cx="462" cy="248" rx="14" ry="7" fill="rgba(55,176,170,.6)" stroke="var(--turq2)" stroke-width="1"/>
+        <ellipse cx="492" cy="250" rx="14" ry="7" fill="rgba(55,120,176,.55)" stroke="var(--turq2)" stroke-width="1"/>
+        <ellipse cx="478" cy="234" rx="14" ry="7" fill="rgba(55,176,170,.55)" stroke="var(--turq2)" stroke-width="1"/>
+        <text x="484" y="210" fill="var(--turq2)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">VETRO · LEVANTE</text>
+      </g>
+
+      <g class="cargo" tabindex="0" data-t="Avorio ed ebano" data-d="Zanne di ippopotamo e di elefante, tronchi di ebano africano: il lusso che arrivava dal Sud, attraverso l'Egitto e la Nubia. Materie prime per intagliatori e falegnami di corte.">
+        <rect class="hot" x="120" y="150" width="150" height="46"/>
+        <path d="M128 190 Q160 178 196 184 Q168 190 128 190 Z" fill="rgba(237,228,206,.5)" stroke="#CFC7AE" stroke-width="1"/>
+        <rect x="150" y="164" width="80" height="9" rx="3" fill="rgba(40,30,22,.8)" stroke="#4A3826" stroke-width="1"/>
+        <text x="172" y="146" fill="#CFC7AE" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">AVORIO · EBANO</text>
+      </g>
+
+      <g class="cargo" tabindex="0" data-t="Giare cananee" data-d="Circa una tonnellata di resina di terebinto in grandi giare del Levante (i 'Canaanite jars'): profumo, incenso o materia per riti e unguenti. Portavano anche olive, uva e altri generi.">
+        <rect class="hot" x="284" y="150" width="120" height="46"/>
+        <path d="M300 158 q10 -6 20 0 l-3 30 q-7 5 -14 0 Z" fill="rgba(160,110,70,.45)" stroke="var(--copper)" stroke-width="1"/>
+        <path d="M332 158 q10 -6 20 0 l-3 30 q-7 5 -14 0 Z" fill="rgba(160,110,70,.4)" stroke="var(--copper)" stroke-width="1"/>
+        <path d="M364 158 q10 -6 20 0 l-3 30 q-7 5 -14 0 Z" fill="rgba(160,110,70,.45)" stroke="var(--copper)" stroke-width="1"/>
+        <text x="344" y="146" fill="var(--copper2)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">GIARE · LEVANTE</text>
+      </g>
+
+      <g class="cargo" tabindex="0" data-t="Scarabeo d'oro di Nefertiti" data-d="Un piccolo scarabeo d'oro con il nome della regina egizia Nefertiti: l'unico esemplare conosciuto al mondo. Oltre al suo valore, è un orologio: fissa il relitto all'epoca di Nefertiti, aiutando a datarlo.">
+        <circle class="hot" cx="452" cy="164" r="20"/>
+        <ellipse cx="452" cy="164" rx="11" ry="14" fill="rgba(212,169,78,.85)" stroke="var(--gold2)" stroke-width="1.4"/>
+        <line x1="452" y1="152" x2="452" y2="176" stroke="#8a6a20" stroke-width="1"/>
+        <text x="452" y="142" fill="var(--gold2)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">ORO · EGITTO</text>
+      </g>
+
+      <g class="cargo" tabindex="0" data-t="Ambra del Baltico" data-d="Perline di ambra: resina fossile che poteva venire solo dal Mar Baltico, migliaia di chilometri a nord. La prova che la rete di scambi arrivava fin nel cuore dell'Europa settentrionale.">
+        <circle class="hot" cx="520" cy="164" r="18"/>
+        <circle cx="514" cy="166" r="4" fill="rgba(221,145,82,.8)" stroke="var(--copper2)" stroke-width="1"/>
+        <circle cx="524" cy="160" r="4" fill="rgba(221,145,82,.7)" stroke="var(--copper2)" stroke-width="1"/>
+        <circle cx="528" cy="170" r="4" fill="rgba(221,145,82,.8)" stroke="var(--copper2)" stroke-width="1"/>
+        <text x="520" y="142" fill="var(--copper2)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">AMBRA · BALTICO</text>
+      </g>
+    </svg>
+    <div id="cargoinfo">Seleziona un elemento del carico per scoprire da dove veniva.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1300 a.C." data-depth="50">
+  <div class="eyebrow">Cosa significa</div>
+  <h2>Una nave, sette mondi</h2>
+  <p>Metti insieme i pezzi e ottieni una mappa. Il rame è cipriota; le giare e forse il vetro vengono dal Levante cananeo; l'avorio, l'ebano e lo scarabeo d'oro sono egizi e nubiani; la ceramica è micenea; c'è materiale che rimanda a Babilonia e all'Assiria; e l'ambra arriva addirittura dal Baltico. In un solo scafo si toccano <strong>Africa, Asia ed Europa</strong>.</p>
+  <p class="lede">È per questo che Uluburun è diventata la prova più citata di quella che gli studiosi chiamano la "globalizzazione dell'età del bronzo".</p>
+  <p>E resta un mistero che tiene ancora impegnati i laboratori: da dove veniva lo stagno. Le analisi isotopiche puntano a fonti diverse e in parte inconciliabili — le montagne del Tauro in Anatolia, l'Asia centrale, secondo alcuni persino la Cornovaglia, in Britannia. Tremila anni dopo, non abbiamo ancora una risposta definitiva su come quel metallo abbia raggiunto una nave affondata in Turchia. Ogni volta che sembra risolto, un nuovo studio riapre la questione.</p>
+</section>
+
+<section class="reveal" data-year="1300 a.C." data-depth="50">
+  <div class="eyebrow">La rotta</div>
+  <h2>Il giro del bronzo</h2>
+  <p>Dalla varietà del carico gli archeologi hanno ricostruito la rotta probabile: non un semplice andata-e-ritorno, ma un grande anello lungo le coste. Segui il percorso.</p>
+  <div class="widget">
+    <svg id="routemap" viewBox="0 0 640 360" role="img" aria-label="Mappa schematica della rotta commerciale circolare di Uluburun nel Mediterraneo orientale">
+      <title>La rotta circolare del bronzo</title>
+      <path d="M70 250 L150 244 L250 250 L470 250 L560 258 L540 320 L120 320 L60 300 Z" fill="rgba(199,123,62,.08)" stroke="rgba(199,123,62,.25)" stroke-width="1"/>
+      <text x="120" y="300" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="1">EGITTO / NORD AFRICA</text>
+      <path d="M120 96 l60 -8 l80 6 l-6 26 l-90 6 l-52 -8 Z" fill="rgba(55,176,170,.08)" stroke="rgba(55,176,170,.25)" stroke-width="1"/>
+      <text x="170" y="90" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">EGEO · MICENE</text>
+      <circle cx="470" cy="150" r="4" fill="var(--turq)"/>
+      <text x="470" y="138" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">CIPRO</text>
+      <circle cx="556" cy="176" r="4" fill="var(--copper)"/>
+      <text x="556" y="196" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">LEVANTE</text>
+
+      <path id="legLoop" d="M556 176 C 520 150, 490 150, 470 150 C 380 150, 300 150, 240 138 C 180 128, 150 118, 132 112" fill="none" stroke="var(--turq)" stroke-width="1.8" stroke-dasharray="5 6"/>
+      <path id="legLoop2" d="M132 112 C 120 140, 130 200, 180 246 C 260 300, 460 300, 540 260 C 560 250, 560 210, 556 176" fill="none" stroke="var(--turq)" stroke-width="1.4" stroke-dasharray="5 6" opacity=".5"/>
+      <path id="legLast" d="M470 150 C 400 150, 340 150, 300 158" fill="none" stroke="var(--copper)" stroke-width="2.6" stroke-linecap="round" opacity="0"/>
+      <g id="sinkMark" opacity="0">
+        <circle cx="300" cy="158" r="9" fill="none" stroke="var(--copper2)" stroke-width="1.3"/>
+        <path d="M300 151 l2 5 h5 l-4 3.4 l1.6 5.2 l-4.6 -3.2 l-4.6 3.2 l1.6 -5.2 l-4 -3.4 h5 Z" fill="var(--copper2)"/>
+        <text x="286" y="176" fill="var(--copper2)" font-family="IBM Plex Mono, monospace" font-size="9">ULUBURUN · il naufragio</text>
+      </g>
+      <circle id="bshipmark" cx="556" cy="176" r="4.5" fill="var(--ivory)"/>
+      <text x="20" y="26" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">MAPPA SCHEMATICA — ROTTA IPOTIZZATA, NON IN SCALA</text>
+    </svg>
+    <div class="wctrl">
+      <button id="btnLoop" aria-pressed="true">L'anello del commercio</button>
+      <button id="btnLast" aria-pressed="false">L'ultimo tratto</button>
+    </div>
+    <div id="routeinfo"><b>L'anello del commercio</b><br>Dai porti del Levante a Cipro per caricare il rame, poi lungo la costa dell'Anatolia meridionale verso i regni micenei dell'Egeo, e ritorno via Nord Africa ed Egitto. Una rotta circolare che sfiorava tre continenti.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1300 a.C." data-depth="0">
+  <div class="eyebrow">La nave</div>
+  <h2>Poco più di una barca, tutto un impero addosso</h2>
+  <p>Lo scafo era di cedro, costruito con la tecnica a mortase e tenoni — tavole incastrate l'una nell'altra — e misurava appena una quindicina di metri. Un solo albero, una grande vela quadra, un remo-timone a poppa. Nessun castello, nessun cannone: una barca da carico, guidata forse da una decina di uomini.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 640 300" role="img" aria-label="Illustrazione stilizzata di un mercantile dell'età del bronzo">
+      <title>Un mercantile dell'età del bronzo</title>
+      <rect x="0" y="238" width="640" height="62" fill="rgba(55,176,170,.07)"/>
+      <g class="bwave">
+        <path d="M-20 248 q 45 -8 90 0 t 90 0 t 90 0 t 90 0 t 90 0 t 90 0 t 90 0 t 90 0" fill="none" stroke="rgba(55,176,170,.3)" stroke-width="1.4"/>
+        <path d="M-20 262 q 55 -7 110 0 t 110 0 t 110 0 t 110 0 t 110 0 t 110 0 t 110 0" fill="none" stroke="rgba(55,176,170,.2)" stroke-width="1.2"/>
+      </g>
+      <g class="bship">
+        <!-- scafo a mezzaluna -->
+        <path d="M150 236 Q 320 214 490 236 Q 470 262 320 270 Q 170 262 150 236 Z" fill="#3A2C1C" stroke="#5A4630" stroke-width="1.3"/>
+        <path d="M150 236 Q 156 216 168 214 M490 236 Q 484 216 472 214" fill="none" stroke="#5A4630" stroke-width="2.4"/>
+        <line x1="178" y1="230" x2="462" y2="230" stroke="var(--copper2)" stroke-width="1.2"/>
+        <!-- remo timone -->
+        <line x1="470" y1="248" x2="516" y2="284" stroke="#3A2C1C" stroke-width="3"/>
+        <!-- albero unico -->
+        <line x1="320" y1="228" x2="320" y2="70" stroke="#3A2C1C" stroke-width="3.4"/>
+        <line x1="230" y1="92" x2="410" y2="92" stroke="#3A2C1C" stroke-width="2.4"/>
+        <!-- grande vela quadra -->
+        <path class="bsail" d="M232 94 L408 94 L404 186 Q320 200 236 186 Z" fill="#E3D8BF" stroke="#C7B98A" stroke-width="1.2"/>
+        <line x1="262" y1="96" x2="258" y2="188" stroke="rgba(199,123,62,.35)" stroke-width="1"/>
+        <line x1="320" y1="96" x2="320" y2="192" stroke="rgba(199,123,62,.35)" stroke-width="1"/>
+        <line x1="378" y1="96" x2="382" y2="188" stroke="rgba(199,123,62,.35)" stroke-width="1"/>
+        <!-- lingotti sul ponte -->
+        <path d="M250 226 l10 -6 l22 0 l10 6 l-10 6 l-22 0 Z" fill="rgba(199,123,62,.5)" stroke="var(--copper2)" stroke-width="1"/>
+        <path d="M358 226 l10 -6 l22 0 l10 6 l-10 6 l-22 0 Z" fill="rgba(199,123,62,.5)" stroke="var(--copper2)" stroke-width="1"/>
+      </g>
+      <text x="20" y="30" fill="rgba(143,163,158,.6)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">MERCANTILE DEL TARDO BRONZO — RICOSTRUZIONE STILIZZATA</text>
+    </svg>
+    <figcaption>Ricostruzione stilizzata. Le fotografie del relitto, dei lingotti e dei reperti sono degli archivi qui sotto.</figcaption>
+  </figure>
+</section>
+
+<section class="reveal" data-year="1994" data-depth="0">
+  <div class="eyebrow">Archivio</div>
+  <h2>Vedere il carico vero</h2>
+  <p>Nessuna immagine è ospitata qui: si linka a chi ha scavato e conserva i reperti, con la citazione. Le fotografie dei lingotti di rame, del vetro e dello scarabeo d'oro sono lì.</p>
+  <div class="arclinks">
+    <a href="https://nauticalarch.org/projects/uluburun-late-bronze-age-shipwreck-excavation/" target="_blank" rel="noopener">
+      <span class="arch">INSTITUTE OF NAUTICAL ARCH.</span>
+      <span><span class="ttl">Lo scavo, 1984–1994</span><span class="meta">L'archivio dell'INA (G. Bass, C. Pulak): fotografie dello scavo, dei lingotti a pelle di bue e del carico.</span></span>
+      <span class="go">nauticalarch.org ↗</span>
+    </a>
+    <a href="https://www.worldhistory.org/Uluburun_Shipwreck/" target="_blank" rel="noopener">
+      <span class="arch">WORLD HISTORY ENCYCL.</span>
+      <span><span class="ttl">Il carico, oggetto per oggetto</span><span class="meta">Sintesi documentata con immagini dei reperti conservati al Museo di archeologia subacquea di Bodrum.</span></span>
+      <span class="go">worldhistory.org ↗</span>
+    </a>
+    <a href="https://www.science.org/doi/10.1126/sciadv.abq3766" target="_blank" rel="noopener">
+      <span class="arch">SCIENCE ADVANCES 2022</span>
+      <span><span class="ttl">Il mistero dello stagno</span><span class="meta">Lo studio isotopico sull'origine dei lingotti di stagno — e il dibattito scientifico ancora aperto.</span></span>
+      <span class="go">science.org ↗</span>
+    </a>
+  </div>
+</section>
+
+<section class="reveal" data-year="1300 a.C." data-depth="50">
+  <div class="eyebrow">I numeri</div>
+  <h2>Il relitto, misurato</h2>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Valore</th></tr></thead>
+    <tbody>
+      <tr><td>Datazione</td><td class="n">~1330–1300 a.C.</td></tr>
+      <tr><td>Profondità del sito</td><td class="n">44–61 m</td></tr>
+      <tr><td>Rame (lingotti a pelle di bue)</td><td class="n">~10 t</td></tr>
+      <tr><td>Stagno (lingotti)</td><td class="n">~1 t</td></tr>
+      <tr><td>Lingotti di vetro grezzo</td><td class="n">centinaia</td></tr>
+      <tr><td>Culture rappresentate</td><td class="n">almeno 7</td></tr>
+      <tr><td>Stagioni di scavo</td><td class="n">11 · 1984–1994</td></tr>
+      <tr><td>Immersioni</td><td class="n">~22.000</td></tr>
+      <tr><td>Scoperta</td><td class="n">1982</td></tr>
+    </tbody>
+  </table>
+  <p class="note">"Il più antico" va inteso come il più antico relitto <em>scavato sistematicamente</em>; la datazione (~1330–1300 a.C.) deriva dalla dendrocronologia, dalla ceramica micenea e dallo scarabeo di Nefertiti. L'origine dello stagno e la destinazione finale della nave restano questioni aperte, e come tali sono scritte.</p>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">Nota metodologica</div>
+  <h2>Cosa questa pagina non fa</h2>
+  <p>Non trasforma le ipotesi in certezze. La rotta è ricostruita dalla composizione del carico, non documentata: è "probabile", e così è scritta. L'origine dello stagno è oggetto di studi che si contraddicono, e la pagina lo dice invece di scegliere una risposta comoda.</p>
+  <p>E non confonde ricchezza e significato. Il valore di Uluburun non è nel metallo che trasportava, ma in ciò che quel metallo racconta: che tremila anni fa, molto prima di quanto immaginiamo, il mondo era già connesso. Un relitto che non spartisce un tesoro — ne rivela uno molto più grande.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 007 di 20</div>
+    <h2 style="margin-bottom:14px">La prossima è il naufragio che diventò un incubo: la Batavia</h2>
+    <p>Dal commercio sereno del bronzo al lato più oscuro del mare. 1629, al largo dell'Australia occidentale: dopo il naufragio della nave della Compagnia olandese, su isole di corallo deserte si scatena un ammutinamento e un massacro. Il relitto come discesa nell'orrore umano.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce la prossima scheda</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="sanjose.html">← Scheda 006: il San José</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">Tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · Institute of Nautical Archaeology — INA (scavo 1984–1994, dir. George Bass e Cemal Pulak; composizione del carico, profondità, cronologia) · Museo di archeologia subacquea di Bodrum (conservazione dei reperti) · C. Pulak, pubblicazioni sul relitto di Uluburun (carico, sette culture, scarabeo di Nefertiti) · Science Advances 2022 e dibattito successivo sull'origine isotopica dello stagno · World History Encyclopedia; sintesi verificate (National Geographic, Archaeology) · scoperta 1982 (Mehmed Çakır, pescatore di spugne)<br><br>
+      Wreck Atlas · Scheda 007 · Prototipo
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), water=document.getElementById('water');
+  var sun=document.getElementById('sun'), deepglow=document.getElementById('deepglow');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- rivelazione delle sezioni ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- bagliori di rame/vetro/oro nel buio ---------- */
+  var cv=document.getElementById('glints'), ctx=cv&&cv.getContext?cv.getContext('2d'):null, parts=[], W=0,H=0;
+  var cols=['226,187,94','87,204,197','221,145,82'];
+  function size(){ if(!ctx)return; W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    parts=[]; var n=Math.round(W*H/24000);
+    for(var i=0;i<n;i++) parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.4+.4,v:.05+Math.random()*.13,o:.1+Math.random()*.36,tw:Math.random()*6.28,c:cols[i%cols.length]}); }
+  function draw(){ if(!ctx)return; ctx.clearRect(0,0,W,H);
+    for(var i=0;i<parts.length;i++){ var p=parts[i]; p.tw+=0.04;
+      p.y+=p.v; p.x+=Math.sin(p.y*.012)*.05;
+      if(p.y>H+4){ p.y=-4; p.x=Math.random()*W; }
+      var o=p.o*(0.55+0.45*Math.sin(p.tw));
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fillStyle='rgba('+p.c+','+o.toFixed(3)+')'; ctx.fill(); }
+    requestAnimationFrame(draw); }
+  if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  /* ---------- fondo: sole mediterraneo -> petrolio profondo ---------- */
+  var shades=['#0C2226','#0B2024','#0A1E22','#091B1F','#0A1E22','#08191C','#071518'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    document.getElementById('railDLab').textContent = (active.dataset.depth==='0') ? 'epoca' : 'Profondità';
+    if(!reduce){
+      water.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)];
+      sun.style.opacity=Math.max(0,1-p*2.2);
+      deepglow.style.opacity=Math.max(0,(p-0.5)/0.5)*0.9;
+    }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- carico cliccabile ---------- */
+  var carinfo=document.getElementById('cargoinfo');
+  if(carinfo){
+    document.querySelectorAll('.cargo').forEach(function(z){
+      function show(){ carinfo.innerHTML='<b>'+z.dataset.t+'</b><br>'+z.dataset.d; }
+      z.addEventListener('click',show); z.addEventListener('focus',show);
+      z.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} });
+    });
+  }
+
+  /* ---------- la rotta ---------- */
+  var legLoop=document.getElementById('legLoop'), legLoop2=document.getElementById('legLoop2');
+  var legLast=document.getElementById('legLast'), sinkMark=document.getElementById('sinkMark');
+  var bshipmark=document.getElementById('bshipmark'), rinfo=document.getElementById('routeinfo'), routeAnim=null;
+  var btnLoop=document.getElementById('btnLoop'), btnLast=document.getElementById('btnLast');
+  var RINFO={
+    loop:'<b>L’anello del commercio</b><br>Dai porti del Levante a Cipro per caricare il rame, poi lungo la costa dell’Anatolia meridionale verso i regni micenei dell’Egeo, e ritorno via Nord Africa ed Egitto. Una rotta circolare che sfiorava tre continenti.',
+    last:'<b>L’ultimo tratto</b><br>Carica di rame cipriota, la nave costeggiava l’Anatolia verso l’Egeo quando, davanti al promontorio di Uluburun, urtò e affondò su un fondale ripido, a oltre 40 metri. Non arrivò mai a destinazione.'
+  };
+  function moveShip(path,dur,then){
+    if(!path||!path.getTotalLength){ if(then)then(); return; }
+    if(reduce){ var e=path.getPointAtLength(path.getTotalLength()); bshipmark.setAttribute('cx',e.x); bshipmark.setAttribute('cy',e.y); if(then)then(); return; }
+    if(routeAnim) cancelAnimationFrame(routeAnim);
+    var len=path.getTotalLength(), t0=null;
+    (function step(ts){ if(!t0)t0=ts; var k=Math.min((ts-t0)/dur,1);
+      var pt=path.getPointAtLength(len*k); bshipmark.setAttribute('cx',pt.x); bshipmark.setAttribute('cy',pt.y);
+      if(k<1) routeAnim=requestAnimationFrame(step); else if(then) then();
+    })(performance.now());
+  }
+  function rstage(k){
+    btnLoop.setAttribute('aria-pressed',String(k==='loop'));
+    btnLast.setAttribute('aria-pressed',String(k==='last'));
+    rinfo.innerHTML=RINFO[k];
+    legLoop2.setAttribute('opacity', k==='loop'?'.5':'0');
+    legLast.setAttribute('opacity', k==='last'?'1':'0');
+    sinkMark.setAttribute('opacity', k==='last'?'1':'0');
+    if(k==='loop'){ legLoop.setAttribute('opacity','1'); moveShip(legLoop,3000); }
+    else { moveShip(legLast,1800,function(){ sinkMark.setAttribute('opacity','1'); }); }
+  }
+  if(btnLoop){
+    btnLoop.addEventListener('click',function(){rstage('loop');});
+    btnLast.addEventListener('click',function(){rstage('last');});
+  }
+
+  /* ---------- metriche di scroll ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'007-uluburun',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] scheda 007 · '+m+'% a '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] sessione: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- iscrizione ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla — collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>

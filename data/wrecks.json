@@ -64,8 +64,9 @@
   "lat": 36.126,
   "lon": 29.685,
   "d": 50,
-  "st": "next",
-  "f": "Relitto dell'età del bronzo al largo della Turchia, tra i più antichi mai scavati sistematicamente."
+  "st": "ready",
+  "href": "uluburun.html",
+  "f": "Il relitto più antico mai scavato: un mercantile dell'età del bronzo affondato ~1300 a.C. al largo della Turchia, con un carico proveniente da almeno sette culture. La mappa dei commerci del mondo antico in una sola nave."
  },
  {
   "n": "San José",
@@ -110,7 +111,7 @@
   "lat": -28.49,
   "lon": 113.79,
   "d": 5,
-  "st": "planned",
+  "st": "next",
   "f": "Nave della Compagnia olandese delle Indie Orientali, naufragata al largo dell'Australia occidentale."
  },
  {
