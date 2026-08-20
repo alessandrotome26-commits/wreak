@@ -134,8 +134,9 @@
   "lat": 36.4,
   "lon": -7.9,
   "d": 1138,
-  "st": "next",
-  "f": "Fregata spagnola affondata dagli inglesi nel 1804 al largo del Portogallo. Nel 2007 la Odyssey ne recuperò circa 500.000 monete; dopo una causa il tesoro tornò alla Spagna."
+  "st": "ready",
+  "href": "mercedes.html",
+  "f": "Fregata spagnola esplosa in battaglia nel 1804 al largo del Portogallo (238 morti). Nel 2007 la Odyssey ne recuperò ~500.000 monete; dopo una storica causa sull'immunità sovrana il tesoro tornò alla Spagna nel 2012."
  },
  {
   "n": "Nuestra Señora de las Maravillas",
@@ -152,7 +153,7 @@
   "lat": 27.7,
   "lon": -80.4,
   "d": 6,
-  "st": "planned",
+  "st": "next",
   "f": "Undici navi perdute in un uragano sulla costa atlantica della Florida. Recuperi fin dal 1715; i reperti continuano ad affiorare sulla 'Treasure Coast'."
  },
  {
