@@ -93,7 +93,7 @@
   "lat": 21.365,
   "lon": -157.95,
   "d": 12,
-  "st": "planned",
+  "st": "next",
   "f": "Affondata a Pearl Harbor. È un cimitero di guerra e un memoriale nazionale: nessuna localizzazione di dettaglio."
  },
  {
@@ -111,8 +111,9 @@
   "lat": -28.49,
   "lon": 113.79,
   "d": 5,
-  "st": "next",
-  "f": "Nave della Compagnia olandese delle Indie Orientali, naufragata al largo dell'Australia occidentale."
+  "st": "ready",
+  "href": "batavia.html",
+  "f": "Ammiraglia della Compagnia olandese delle Indie, naufragata nel 1629 al largo dell'Australia. Dopo il naufragio, un ammutinamento e il massacro di ~125 naufraghi sulle isole di corallo."
  },
  {
   "n": "Santa Margarita",
