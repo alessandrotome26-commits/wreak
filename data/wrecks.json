@@ -85,8 +85,9 @@
   "lat": 40.487,
   "lon": -69.85,
   "d": 76,
-  "st": "next",
-  "f": "Transatlantico italiano affondato al largo di Nantucket dopo la collisione con la Stockholm."
+  "st": "ready",
+  "href": "andreadoria.html",
+  "f": "Transatlantico italiano speronato nella nebbia dalla Stockholm al largo di Nantucket nel 1956. 51 morti ma ~1.660 salvati; oggi il relitto a 76 m è il 'Monte Everest' dei sub."
  },
  {
   "n": "USS Arizona",
@@ -133,7 +134,7 @@
   "lat": 36.4,
   "lon": -7.9,
   "d": 1138,
-  "st": "planned",
+  "st": "next",
   "f": "Fregata spagnola affondata dagli inglesi nel 1804 al largo del Portogallo. Nel 2007 la Odyssey ne recuperò circa 500.000 monete; dopo una causa il tesoro tornò alla Spagna."
  },
  {
