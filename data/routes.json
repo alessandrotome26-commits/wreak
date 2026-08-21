@@ -1,154 +1,666 @@
 {
   "atocha.html": {
-    "from": {"n": "L'Avana", "lon": -82.36, "lat": 23.13},
-    "to": {"n": "Siviglia", "lon": -6.0, "lat": 37.4},
+    "from": {
+      "n": "L'Avana",
+      "lon": -82.36,
+      "lat": 23.13,
+      "n_en": "Havana"
+    },
+    "to": {
+      "n": "Siviglia",
+      "lon": -6.0,
+      "lat": 37.4,
+      "n_en": "Seville"
+    },
     "wreck_label": "l'uragano del 1622",
     "caption": "Partita dall'Avana il 4 settembre 1622 con la flotta di Tierra Firme, verso Siviglia. Un uragano la sfasciò sui bassi fondali delle Florida Keys, pochi giorni dopo la partenza.",
-    "palette": {"bg": "#0B1A29", "land": "#173049", "coast": "#2C4E6C", "plan": "#6E8AA4", "done": "#C9A24A", "port": "#EADFC4", "wreck": "#D98A3A", "label": "#9BAEC2"}
+    "palette": {
+      "bg": "#0B1A29",
+      "land": "#173049",
+      "coast": "#2C4E6C",
+      "plan": "#6E8AA4",
+      "done": "#C9A24A",
+      "port": "#EADFC4",
+      "wreck": "#D98A3A",
+      "label": "#9BAEC2"
+    },
+    "caption_en": "Sailed from Havana on 4 September 1622 with the Tierra Firme fleet, bound for Seville. A hurricane smashed her on the shallows of the Florida Keys a few days out.",
+    "wreck_label_en": "the 1622 hurricane"
   },
   "vasa.html": {
-    "from": {"n": "Stoccolma", "lon": 18.07, "lat": 59.32},
-    "to": {"n": "il fronte in Prussia", "lon": 18.9, "lat": 54.5},
+    "from": {
+      "n": "Stoccolma",
+      "lon": 18.07,
+      "lat": 59.32,
+      "n_en": "Stockholm"
+    },
+    "to": {
+      "n": "il fronte in Prussia",
+      "lon": 18.9,
+      "lat": 54.5,
+      "n_en": "the Prussian front"
+    },
     "wreck_label": "capovolta dopo 1.300 m",
     "caption": "Doveva salpare da Stoccolma verso la guerra in Prussia. Si capovolse dopo appena 1.300 metri di navigazione, ancora dentro il porto: il tratto compiuto è quasi un punto.",
-    "palette": {"bg": "#122A2E", "land": "#1E3E38", "coast": "#356056", "plan": "#7FA08F", "done": "#C08A3A", "port": "#E8E0CC", "wreck": "#B5462F", "label": "#9DB4A6"}
+    "palette": {
+      "bg": "#122A2E",
+      "land": "#1E3E38",
+      "coast": "#356056",
+      "plan": "#7FA08F",
+      "done": "#C08A3A",
+      "port": "#E8E0CC",
+      "wreck": "#B5462F",
+      "label": "#9DB4A6"
+    },
+    "caption_en": "Meant to sail from Stockholm to the war in Prussia. She capsized after barely 1,300 metres, still inside the harbour: the distance covered is almost a point.",
+    "wreck_label_en": "capsized after 1,300 m"
   },
   "titanic.html": {
-    "from": {"n": "Southampton", "lon": -1.4, "lat": 50.9},
-    "via": [{"n": "Cherbourg", "lon": -1.62, "lat": 49.63}, {"n": "Queenstown", "lon": -8.3, "lat": 51.85}],
-    "to": {"n": "New York", "lon": -74.0, "lat": 40.7},
+    "from": {
+      "n": "Southampton",
+      "lon": -1.4,
+      "lat": 50.9,
+      "n_en": "Southampton"
+    },
+    "via": [
+      {
+        "n": "Cherbourg",
+        "lon": -1.62,
+        "lat": 49.63,
+        "n_en": "Cherbourg"
+      },
+      {
+        "n": "Queenstown",
+        "lon": -8.3,
+        "lat": 51.85,
+        "n_en": "Queenstown"
+      }
+    ],
+    "to": {
+      "n": "New York",
+      "lon": -74.0,
+      "lat": 40.7,
+      "n_en": "New York"
+    },
     "wreck_label": "l'iceberg",
     "caption": "Viaggio inaugurale Southampton → New York, con scali a Cherbourg e Queenstown. Colpì l'iceberg a metà oceano, nella notte del 14 aprile 1912.",
-    "palette": {"bg": "#0A0E14", "land": "#1A2028", "coast": "#333C46", "plan": "#7A8794", "done": "#C25B3A", "port": "#E6E9EC", "wreck": "#D98A6A", "label": "#9AA6B0"}
+    "palette": {
+      "bg": "#0A0E14",
+      "land": "#1A2028",
+      "coast": "#333C46",
+      "plan": "#7A8794",
+      "done": "#C25B3A",
+      "port": "#E6E9EC",
+      "wreck": "#D98A6A",
+      "label": "#9AA6B0"
+    },
+    "caption_en": "Maiden crossing Southampton to New York, calling at Cherbourg and Queenstown. She struck the iceberg mid-ocean on the night of 14 April 1912, and never arrived.",
+    "wreck_label_en": "the iceberg"
   },
   "endurance.html": {
-    "from": {"n": "Georgia del Sud", "lon": -36.5, "lat": -54.3},
-    "to": {"n": "Baia di Vahsel", "lon": -30.5, "lat": -77.6},
+    "from": {
+      "n": "Georgia del Sud",
+      "lon": -36.5,
+      "lat": -54.3,
+      "n_en": "South Georgia"
+    },
+    "to": {
+      "n": "Baia di Vahsel",
+      "lon": -30.5,
+      "lat": -77.6,
+      "n_en": "Vahsel Bay"
+    },
     "wreck_label": "stritolata dal pack",
     "caption": "Doveva sbarcare la spedizione alla Baia di Vahsel per attraversare l'Antartide a piedi. Non toccò mai terra: il ghiaccio la imprigionò e la frantumò nel Mare di Weddell.",
-    "palette": {"bg": "#D8E4EA", "land": "#B9CCD6", "coast": "#8FA9B6", "plan": "#5E7C8C", "done": "#1C3A4A", "port": "#25404E", "wreck": "#B5462F", "label": "#4A6472"}
+    "palette": {
+      "bg": "#D8E4EA",
+      "land": "#B9CCD6",
+      "coast": "#8FA9B6",
+      "plan": "#5E7C8C",
+      "done": "#1C3A4A",
+      "port": "#25404E",
+      "wreck": "#B5462F",
+      "label": "#4A6472"
+    },
+    "caption_en": "She was to land the expedition at Vahsel Bay to cross Antarctica on foot. She never reached land: the ice trapped and crushed her in the Weddell Sea.",
+    "wreck_label_en": "crushed by the ice"
   },
   "maryrose.html": {
-    "from": {"n": "Portsmouth", "lon": -1.09, "lat": 50.80},
-    "to": {"n": "la flotta francese", "lon": -1.15, "lat": 50.66},
+    "from": {
+      "n": "Portsmouth",
+      "lon": -1.09,
+      "lat": 50.8,
+      "n_en": "Portsmouth"
+    },
+    "to": {
+      "n": "la flotta francese",
+      "lon": -1.15,
+      "lat": 50.66,
+      "n_en": "the French fleet"
+    },
     "wreck_label": "affondata in battaglia",
     "caption": "Non una traversata ma una sortita: uscì da Portsmouth per affrontare la flotta francese nel Solent, e affondò lì, in vista della costa, il 19 luglio 1545.",
-    "palette": {"bg": "#E8DFC8", "land": "#CBBE9E", "coast": "#A08F68", "plan": "#8A6A3E", "done": "#7A2E24", "port": "#3A2E1E", "wreck": "#9A3320", "label": "#6E5E42"}
+    "palette": {
+      "bg": "#E8DFC8",
+      "land": "#CBBE9E",
+      "coast": "#A08F68",
+      "plan": "#8A6A3E",
+      "done": "#7A2E24",
+      "port": "#3A2E1E",
+      "wreck": "#9A3320",
+      "label": "#6E5E42"
+    },
+    "caption_en": "Not a crossing but a sortie: she sailed from Portsmouth to face the French fleet in the Solent, and sank there, in sight of the coast, on 19 July 1545.",
+    "wreck_label_en": "sunk in battle"
   },
   "anticitera.html": {
-    "from": {"n": "l'Egeo orientale", "lon": 28.2, "lat": 36.9},
-    "to": {"n": "Roma", "lon": 12.5, "lat": 41.9},
+    "from": {
+      "n": "l'Egeo orientale",
+      "lon": 28.2,
+      "lat": 36.9,
+      "n_en": "the eastern Aegean"
+    },
+    "to": {
+      "n": "Roma",
+      "lon": 12.5,
+      "lat": 41.9,
+      "n_en": "Rome"
+    },
     "wreck_label": "il naufragio",
     "caption": "Una nave romana carica di tesori greci, dall'Egeo verso l'Italia. Affondò contro l'isola di Anticitera, sulla rotta per Roma, intorno al 60 a.C.",
-    "palette": {"bg": "#12232C", "land": "#1E3A40", "coast": "#356169", "plan": "#7CA0A6", "done": "#C6A24A", "port": "#E6E2CC", "wreck": "#C08A3A", "label": "#9BB0B4"}
+    "palette": {
+      "bg": "#12232C",
+      "land": "#1E3A40",
+      "coast": "#356169",
+      "plan": "#7CA0A6",
+      "done": "#C6A24A",
+      "port": "#E6E2CC",
+      "wreck": "#C08A3A",
+      "label": "#9BB0B4"
+    },
+    "caption_en": "A Roman ship laden with Greek treasures, sailing from the Aegean toward Italy. She wrecked against the island of Antikythera, on the route to Rome, around 60 BC.",
+    "wreck_label_en": "the wreck"
   },
   "uluburun.html": {
-    "from": {"n": "Cipro e il Levante", "lon": 34.0, "lat": 35.2},
-    "to": {"n": "l'Egeo", "lon": 26.5, "lat": 37.6},
+    "from": {
+      "n": "Cipro e il Levante",
+      "lon": 34.0,
+      "lat": 35.2,
+      "n_en": "Cyprus and the Levant"
+    },
+    "to": {
+      "n": "l'Egeo",
+      "lon": 26.5,
+      "lat": 37.6,
+      "n_en": "the Aegean"
+    },
     "wreck_label": "il naufragio",
     "caption": "Un mercantile dell'Età del bronzo lungo la rotta del Mediterraneo orientale, da Cipro e dal Levante verso l'Egeo. Affondò contro un promontorio dell'Anatolia, ~1300 a.C.",
-    "palette": {"bg": "#0E2422", "land": "#1A3A34", "coast": "#2F5E54", "plan": "#7CA090", "done": "#C88A3A", "port": "#E6DEC6", "wreck": "#C77B3E", "label": "#9BB4A6"}
+    "palette": {
+      "bg": "#0E2422",
+      "land": "#1A3A34",
+      "coast": "#2F5E54",
+      "plan": "#7CA090",
+      "done": "#C88A3A",
+      "port": "#E6DEC6",
+      "wreck": "#C77B3E",
+      "label": "#9BB4A6"
+    },
+    "caption_en": "A Bronze Age merchantman on the eastern Mediterranean trade route, from Cyprus and the Levant toward the Aegean. She struck a headland of Anatolia and sank, around 1300 BC.",
+    "wreck_label_en": "the wreck"
   },
   "sanjose.html": {
-    "from": {"n": "Portobelo", "lon": -79.65, "lat": 9.55},
-    "via": [{"n": "Cartagena", "lon": -75.55, "lat": 10.42}],
-    "via_after": [{"n": "L'Avana", "lon": -82.36, "lat": 23.13}],
-    "to": {"n": "Siviglia", "lon": -6.0, "lat": 37.4},
+    "from": {
+      "n": "Portobelo",
+      "lon": -79.65,
+      "lat": 9.55,
+      "n_en": "Portobelo"
+    },
+    "via": [
+      {
+        "n": "Cartagena",
+        "lon": -75.55,
+        "lat": 10.42,
+        "n_en": "Cartagena"
+      }
+    ],
+    "via_after": [
+      {
+        "n": "L'Avana",
+        "lon": -82.36,
+        "lat": 23.13,
+        "n_en": "Havana"
+      }
+    ],
+    "to": {
+      "n": "Siviglia",
+      "lon": -6.0,
+      "lat": 37.4,
+      "n_en": "Seville"
+    },
     "wreck_label": "distrutta in battaglia (1708)",
     "caption": "Tornava in Spagna con il tesoro delle colonie: Portobelo, Cartagena, poi l'Avana e Siviglia. Gli inglesi la intercettarono appena fuori Cartagena e la fecero esplodere, l'8 giugno 1708.",
-    "palette": {"bg": "#0C1B2A", "land": "#183044", "coast": "#2C4E68", "plan": "#6E8AA2", "done": "#C9A24A", "port": "#EADFC4", "wreck": "#D98A3A", "label": "#9BAEC2"}
+    "palette": {
+      "bg": "#0C1B2A",
+      "land": "#183044",
+      "coast": "#2C4E68",
+      "plan": "#6E8AA2",
+      "done": "#C9A24A",
+      "port": "#EADFC4",
+      "wreck": "#D98A3A",
+      "label": "#9BAEC2"
+    },
+    "caption_en": "Homeward bound with the treasure of the colonies: Portobelo, Cartagena, then Havana and Seville. The British intercepted her just outside Cartagena and blew her up on 8 June 1708.",
+    "wreck_label_en": "destroyed in battle (1708)"
   },
   "andreadoria.html": {
-    "from": {"n": "Genova", "lon": 8.94, "lat": 44.40},
-    "via": [{"n": "Gibilterra", "lon": -5.6, "lat": 35.95}],
-    "to": {"n": "New York", "lon": -74.0, "lat": 40.7},
+    "from": {
+      "n": "Genova",
+      "lon": 8.94,
+      "lat": 44.4,
+      "n_en": "Genoa"
+    },
+    "via": [
+      {
+        "n": "Gibilterra",
+        "lon": -5.6,
+        "lat": 35.95,
+        "n_en": "Gibraltar"
+      }
+    ],
+    "to": {
+      "n": "New York",
+      "lon": -74.0,
+      "lat": 40.7,
+      "n_en": "New York"
+    },
     "wreck_label": "speronata nella nebbia",
     "caption": "Traversata Genova → New York. A poche ore dall'arrivo, nella nebbia al largo di Nantucket, fu speronata dalla Stockholm e affondò il giorno dopo, il 26 luglio 1956.",
-    "palette": {"bg": "#DCE2E6", "land": "#BDC9CF", "coast": "#93A6AE", "plan": "#5E7885", "done": "#1F3A46", "port": "#2A3D46", "wreck": "#B0472E", "label": "#556872"}
+    "palette": {
+      "bg": "#DCE2E6",
+      "land": "#BDC9CF",
+      "coast": "#93A6AE",
+      "plan": "#5E7885",
+      "done": "#1F3A46",
+      "port": "#2A3D46",
+      "wreck": "#B0472E",
+      "label": "#556872"
+    },
+    "caption_en": "Crossing Genoa to New York. Hours from arrival, in fog off Nantucket, she was rammed by the Stockholm and sank the next day, 26 July 1956.",
+    "wreck_label_en": "rammed in the fog"
   },
   "bismarck.html": {
-    "from": {"n": "Bergen", "lon": 5.32, "lat": 60.39},
-    "via": [{"n": "Stretto di Danimarca", "lon": -28.0, "lat": 66.3}],
-    "to": {"n": "Brest", "lon": -4.5, "lat": 48.4},
+    "from": {
+      "n": "Bergen",
+      "lon": 5.32,
+      "lat": 60.39,
+      "n_en": "Bergen"
+    },
+    "via": [
+      {
+        "n": "Stretto di Danimarca",
+        "lon": -28.0,
+        "lat": 66.3,
+        "n_en": "Denmark Strait"
+      }
+    ],
+    "to": {
+      "n": "Brest",
+      "lon": -4.5,
+      "lat": 48.4,
+      "n_en": "Brest"
+    },
     "wreck_label": "affondata dalla Royal Navy",
     "caption": "Operazione Rheinübung: da Bergen su per lo Stretto di Danimarca, poi la corsa verso Brest per riparare i danni dopo aver affondato la Hood. La Royal Navy la raggiunse a ~600 km dalla Francia, il 27 maggio 1941.",
-    "palette": {"bg": "#131A20", "land": "#232B32", "coast": "#3C4650", "plan": "#6E7C86", "done": "#AEB6BA", "port": "#DDE3E6", "wreck": "#C05A4E", "label": "#8A98A2"}
+    "palette": {
+      "bg": "#131A20",
+      "land": "#232B32",
+      "coast": "#3C4650",
+      "plan": "#6E7C86",
+      "done": "#AEB6BA",
+      "port": "#DDE3E6",
+      "wreck": "#C05A4E",
+      "label": "#8A98A2"
+    },
+    "caption_en": "Operation Rheinuebung: from Bergen up through the Denmark Strait, then a dash for Brest to repair after sinking HMS Hood. The Royal Navy caught her about 600 km from France, on 27 May 1941.",
+    "wreck_label_en": "sunk by the Royal Navy"
   },
   "batavia.html": {
-    "from": {"n": "Amsterdam", "lon": 4.9, "lat": 52.4},
-    "via": [{"n": "Città del Capo", "lon": 18.5, "lat": -33.9}],
-    "to": {"n": "Batavia (Giacarta)", "lon": 106.8, "lat": -6.1},
+    "from": {
+      "n": "Amsterdam",
+      "lon": 4.9,
+      "lat": 52.4,
+      "n_en": "Amsterdam"
+    },
+    "via": [
+      {
+        "n": "Città del Capo",
+        "lon": 18.5,
+        "lat": -33.9,
+        "n_en": "Cape Town"
+      }
+    ],
+    "to": {
+      "n": "Batavia (Giacarta)",
+      "lon": 106.8,
+      "lat": -6.1,
+      "n_en": "Batavia (Jakarta)"
+    },
     "wreck_label": "naufragata sui coralli",
     "caption": "Viaggio inaugurale della VOC: Amsterdam → Città del Capo → Batavia (l'odierna Giacarta). Naufragò sulle secche degli Houtman Abrolhos, al largo dell'Australia, il 4 giugno 1629 — e lì cominciò l'orrore.",
-    "palette": {"bg": "#15161C", "land": "#25262E", "coast": "#3E404A", "plan": "#7C7E88", "done": "#B84A38", "port": "#E2DCCE", "wreck": "#9E3528", "label": "#8C8E98"}
+    "palette": {
+      "bg": "#15161C",
+      "land": "#25262E",
+      "coast": "#3E404A",
+      "plan": "#7C7E88",
+      "done": "#B84A38",
+      "port": "#E2DCCE",
+      "wreck": "#9E3528",
+      "label": "#8C8E98"
+    },
+    "caption_en": "The VOC maiden voyage: Amsterdam, Cape Town, Batavia (today Jakarta). She wrecked on the Houtman Abrolhos shoals off Australia on 4 June 1629, where the horror began.",
+    "wreck_label_en": "wrecked on the reef"
   },
   "mercedes.html": {
-    "from": {"n": "Montevideo", "lon": -56.2, "lat": -34.9},
-    "to": {"n": "Cadice", "lon": -6.3, "lat": 36.5},
+    "from": {
+      "n": "Montevideo",
+      "lon": -56.2,
+      "lat": -34.9,
+      "n_en": "Montevideo"
+    },
+    "to": {
+      "n": "Cadice",
+      "lon": -6.3,
+      "lat": 36.5,
+      "n_en": "Cádiz"
+    },
     "wreck_label": "esplosa in battaglia (1804)",
     "caption": "Rientrava dal Sud America carica d'argento, diretta a Cadice. La squadra britannica la intercettò e la fece esplodere al largo dell'Algarve, il 5 ottobre 1804, a un passo da casa.",
-    "palette": {"bg": "#0E1428", "land": "#1C2440", "coast": "#333C60", "plan": "#7C86A6", "done": "#C24A5A", "port": "#E4E0D0", "wreck": "#D06A78", "label": "#9BA2C0"}
+    "palette": {
+      "bg": "#0E1428",
+      "land": "#1C2440",
+      "coast": "#333C60",
+      "plan": "#7C86A6",
+      "done": "#C24A5A",
+      "port": "#E4E0D0",
+      "wreck": "#D06A78",
+      "label": "#9BA2C0"
+    },
+    "caption_en": "Returning from South America laden with silver, bound for Cadiz. A British squadron intercepted her and blew her up off the Algarve on 5 October 1804, a step from home.",
+    "wreck_label_en": "blown up in battle (1804)"
   },
   "flotta1715.html": {
-    "from": {"n": "L'Avana", "lon": -82.36, "lat": 23.13},
-    "to": {"n": "Siviglia", "lon": -6.0, "lat": 37.4},
+    "from": {
+      "n": "L'Avana",
+      "lon": -82.36,
+      "lat": 23.13,
+      "n_en": "Havana"
+    },
+    "to": {
+      "n": "Siviglia",
+      "lon": -6.0,
+      "lat": 37.4,
+      "n_en": "Seville"
+    },
     "wreck_label": "l'uragano del 1715",
     "caption": "Undici navi cariche del tesoro delle Indie, dall'Avana verso la Spagna. Un uragano le scagliò tutte contro la costa orientale della Florida, il 31 luglio 1715.",
-    "palette": {"bg": "#EAE0C6", "land": "#D2C6A4", "coast": "#AC9C70", "plan": "#9A854A", "done": "#2F6E74", "port": "#4A3A22", "wreck": "#A85432", "label": "#6E5E40"}
+    "palette": {
+      "bg": "#EAE0C6",
+      "land": "#D2C6A4",
+      "coast": "#AC9C70",
+      "plan": "#9A854A",
+      "done": "#2F6E74",
+      "port": "#4A3A22",
+      "wreck": "#A85432",
+      "label": "#6E5E40"
+    },
+    "caption_en": "Eleven ships laden with the treasure of the Indies, from Havana toward Spain. A hurricane hurled them all against the east coast of Florida on 31 July 1715.",
+    "wreck_label_en": "the 1715 hurricane"
   },
   "lusitania.html": {
-    "from": {"n": "New York", "lon": -74.0, "lat": 40.7},
-    "to": {"n": "Liverpool", "lon": -3.0, "lat": 53.4},
+    "from": {
+      "n": "New York",
+      "lon": -74.0,
+      "lat": 40.7,
+      "n_en": "New York"
+    },
+    "to": {
+      "n": "Liverpool",
+      "lon": -3.0,
+      "lat": 53.4,
+      "n_en": "Liverpool"
+    },
     "wreck_label": "silurata",
     "caption": "Salpata da New York il 1º maggio 1915, diretta a Liverpool. Fu silurata a poche ore dalla meta, al largo dell'Old Head of Kinsale, in Irlanda.",
-    "palette": {"bg": "#0E201C", "land": "#20423A", "coast": "#3A5C52", "plan": "#7C97A0", "done": "#C0442E", "port": "#E9E5D8", "wreck": "#DA6A52", "label": "#AEB6BA"}
+    "palette": {
+      "bg": "#0E201C",
+      "land": "#20423A",
+      "coast": "#3A5C52",
+      "plan": "#7C97A0",
+      "done": "#C0442E",
+      "port": "#E9E5D8",
+      "wreck": "#DA6A52",
+      "label": "#AEB6BA"
+    },
+    "caption_en": "Sailed from New York on 1 May 1915, bound for Liverpool. She was torpedoed hours from her destination, off the Old Head of Kinsale, Ireland.",
+    "wreck_label_en": "torpedoed"
   },
   "sscentralamerica.html": {
-    "from": {"n": "Colón (Panamá)", "lon": -79.9, "lat": 9.36},
-    "via": [{"n": "L'Avana", "lon": -82.36, "lat": 23.13}],
-    "to": {"n": "New York", "lon": -74.0, "lat": 40.7},
+    "from": {
+      "n": "Colón (Panamá)",
+      "lon": -79.9,
+      "lat": 9.36,
+      "n_en": "Colón (Panama)"
+    },
+    "via": [
+      {
+        "n": "L'Avana",
+        "lon": -82.36,
+        "lat": 23.13,
+        "n_en": "Havana"
+      }
+    ],
+    "to": {
+      "n": "New York",
+      "lon": -74.0,
+      "lat": 40.7,
+      "n_en": "New York"
+    },
     "wreck_label": "l'uragano del 1857",
     "caption": "Da Colón a New York, con scalo all'Avana, carica dell'oro della California. Un uragano la colò a picco al largo di Cape Hatteras, il 12 settembre 1857, a pochi giorni dalla meta.",
-    "palette": {"bg": "#151109", "land": "#2A2416", "coast": "#4A3D24", "plan": "#9C8355", "done": "#C69A3E", "port": "#ECE1C6", "wreck": "#A9552F", "label": "#8A7B60"}
+    "palette": {
+      "bg": "#151109",
+      "land": "#2A2416",
+      "coast": "#4A3D24",
+      "plan": "#9C8355",
+      "done": "#C69A3E",
+      "port": "#ECE1C6",
+      "wreck": "#A9552F",
+      "label": "#8A7B60"
+    },
+    "caption_en": "From Colon to New York, calling at Havana, laden with California gold. A hurricane sent her down off Cape Hatteras on 12 September 1857, days from her destination.",
+    "wreck_label_en": "the 1857 hurricane"
   },
   "belitung.html": {
-    "from": {"n": "Canton (Cina)", "lon": 113.3, "lat": 23.1},
-    "via_after": [{"n": "Stretto di Malacca", "lon": 100.4, "lat": 2.2}],
-    "to": {"n": "il Golfo Persico", "lon": 50.0, "lat": 28.0},
+    "from": {
+      "n": "Canton (Cina)",
+      "lon": 113.3,
+      "lat": 23.1,
+      "n_en": "Canton (China)"
+    },
+    "via_after": [
+      {
+        "n": "Stretto di Malacca",
+        "lon": 100.4,
+        "lat": 2.2,
+        "n_en": "Strait of Malacca"
+      }
+    ],
+    "to": {
+      "n": "il Golfo Persico",
+      "lon": 50.0,
+      "lat": 28.0,
+      "n_en": "the Persian Gulf"
+    },
     "wreck_label": "il naufragio (~830)",
     "caption": "Un dhow arabo tornava dalla Cina verso il Golfo Persico, carico di sessantamila ceramiche. Affondò all'inizio del viaggio di ritorno, al largo di Belitung, intorno all'830.",
-    "palette": {"bg": "#EDE1C6", "land": "#D6C9A4", "coast": "#AC9A6E", "plan": "#5E7E5A", "done": "#B8892E", "port": "#3A2E1A", "wreck": "#B06A44", "label": "#6E5E40"}
+    "palette": {
+      "bg": "#EDE1C6",
+      "land": "#D6C9A4",
+      "coast": "#AC9A6E",
+      "plan": "#5E7E5A",
+      "done": "#B8892E",
+      "port": "#3A2E1A",
+      "wreck": "#B06A44",
+      "label": "#6E5E40"
+    },
+    "caption_en": "An Arab dhow was returning from China toward the Persian Gulf, laden with sixty thousand ceramics. She sank early in the return voyage, off Belitung, around 830 AD.",
+    "wreck_label_en": "the wreck (~830)"
   },
   "wilhelmgustloff.html": {
-    "from": {"n": "Gotenhafen (Gdynia)", "lon": 18.55, "lat": 54.53},
-    "to": {"n": "Kiel", "lon": 10.14, "lat": 54.32},
+    "from": {
+      "n": "Gotenhafen (Gdynia)",
+      "lon": 18.55,
+      "lat": 54.53,
+      "n_en": "Gotenhafen (Gdynia)"
+    },
+    "to": {
+      "n": "Kiel",
+      "lon": 10.14,
+      "lat": 54.32,
+      "n_en": "Kiel"
+    },
     "wreck_label": "silurata (30 gen 1945)",
     "caption": "Doveva portare oltre diecimila profughi da Gotenhafen verso ovest, lontano dall'Armata Rossa. Un sommergibile sovietico la silurò nel Baltico, poche ore dopo la partenza.",
-    "palette": {"bg": "#0B1420", "land": "#172330", "coast": "#2E3C48", "plan": "#4E6070", "done": "#8FB0C4", "port": "#DEE7ED", "wreck": "#EAC079", "label": "#88AAC0"}
+    "palette": {
+      "bg": "#0B1420",
+      "land": "#172330",
+      "coast": "#2E3C48",
+      "plan": "#4E6070",
+      "done": "#8FB0C4",
+      "port": "#DEE7ED",
+      "wreck": "#EAC079",
+      "label": "#88AAC0"
+    },
+    "caption_en": "She was to carry over ten thousand refugees from Gotenhafen westward, away from the Red Army. A Soviet submarine torpedoed her in the Baltic, hours after departure.",
+    "wreck_label_en": "torpedoed (30 Jan 1945)"
   },
   "franklin.html": {
-    "from": {"n": "Baia di Baffin", "lon": -62.0, "lat": 73.5},
-    "via": [{"n": "Stretto di Lancaster", "lon": -84.0, "lat": 74.2}],
-    "to": {"n": "lo Stretto di Bering", "lon": -128.0, "lat": 68.5},
+    "from": {
+      "n": "Baia di Baffin",
+      "lon": -62.0,
+      "lat": 73.5,
+      "n_en": "Baffin Bay"
+    },
+    "via": [
+      {
+        "n": "Stretto di Lancaster",
+        "lon": -84.0,
+        "lat": 74.2,
+        "n_en": "Lancaster Sound"
+      }
+    ],
+    "to": {
+      "n": "lo Stretto di Bering",
+      "lon": -128.0,
+      "lat": 68.5,
+      "n_en": "the Bering Strait"
+    },
     "wreck_label": "intrappolate nei ghiacci",
     "caption": "Cercavano il Passaggio a Nord-Ovest verso il Pacifico. Entrarono dalla Baia di Baffin e dallo Stretto di Lancaster, ma i ghiacci le imprigionarono presso l'Isola di Re Guglielmo. Nessuno completò il viaggio.",
-    "palette": {"bg": "#0C1A24", "land": "#152730", "coast": "#2E4450", "plan": "#5E8496", "done": "#7CA0B0", "port": "#E4ECEF", "wreck": "#5FB89A", "label": "#7CA0B0"}
+    "palette": {
+      "bg": "#0C1A24",
+      "land": "#152730",
+      "coast": "#2E4450",
+      "plan": "#5E8496",
+      "done": "#7CA0B0",
+      "port": "#E4ECEF",
+      "wreck": "#5FB89A",
+      "label": "#7CA0B0"
+    },
+    "caption_en": "They sought the Northwest Passage to the Pacific. They entered through Baffin Bay and Lancaster Sound, but the ice imprisoned them near King William Island. No one finished the voyage.",
+    "wreck_label_en": "beset in the ice"
   },
   "maryceleste.html": {
-    "from": {"n": "New York", "lon": -74.0, "lat": 40.7},
-    "via_after": [{"n": "Gibilterra", "lon": -5.6, "lat": 35.95}],
-    "to": {"n": "Genova", "lon": 8.94, "lat": 44.4},
-    "wreck": {"lon": -27.0, "lat": 38.0},
+    "from": {
+      "n": "New York",
+      "lon": -74.0,
+      "lat": 40.7,
+      "n_en": "New York"
+    },
+    "via_after": [
+      {
+        "n": "Gibilterra",
+        "lon": -5.6,
+        "lat": 35.95,
+        "n_en": "Gibraltar"
+      }
+    ],
+    "to": {
+      "n": "Genova",
+      "lon": 8.94,
+      "lat": 44.4,
+      "n_en": "Genoa"
+    },
+    "wreck": {
+      "lon": -27.0,
+      "lat": 38.0
+    },
     "wreck_label": "trovata alla deriva",
     "caption": "Salpata da New York per Genova con un carico di alcol. Fu trovata deserta e alla deriva a metà Atlantico, a est delle Azzorre. (Il relitto vero è altrove: una scogliera di Haiti, 1885.)",
-    "palette": {"bg": "#E7DEC6", "land": "#D0C6A6", "coast": "#A89A72", "plan": "#8A99A6", "done": "#38506A", "port": "#2B2E31", "wreck": "#A24B37", "label": "#6E655A"}
+    "palette": {
+      "bg": "#E7DEC6",
+      "land": "#D0C6A6",
+      "coast": "#A89A72",
+      "plan": "#8A99A6",
+      "done": "#38506A",
+      "port": "#2B2E31",
+      "wreck": "#A24B37",
+      "label": "#6E655A"
+    },
+    "caption_en": "Sailed from New York for Genoa with a cargo of alcohol. She was found deserted and adrift mid-Atlantic, east of the Azores. (The real wreck lies elsewhere: a reef off Haiti, 1885.)",
+    "wreck_label_en": "found adrift"
   },
   "britannic.html": {
-    "from": {"n": "Southampton", "lon": -1.4, "lat": 50.9},
-    "via": [{"n": "Gibilterra", "lon": -5.6, "lat": 35.95}, {"n": "Napoli", "lon": 14.25, "lat": 40.85}],
-    "to": {"n": "Mudros (Lemno)", "lon": 25.25, "lat": 39.87},
+    "from": {
+      "n": "Southampton",
+      "lon": -1.4,
+      "lat": 50.9,
+      "n_en": "Southampton"
+    },
+    "via": [
+      {
+        "n": "Gibilterra",
+        "lon": -5.6,
+        "lat": 35.95,
+        "n_en": "Gibraltar"
+      },
+      {
+        "n": "Napoli",
+        "lon": 14.25,
+        "lat": 40.85,
+        "n_en": "Naples"
+      }
+    ],
+    "to": {
+      "n": "Mudros (Lemno)",
+      "lon": 25.25,
+      "lat": 39.87,
+      "n_en": "Mudros (Lemnos)"
+    },
     "wreck_label": "la mina (Kea)",
     "caption": "Rotta di guerra da Southampton a Lemno, per imbarcare i feriti. Una mina la colò a picco nel Canale di Kea, nell'Egeo, il 21 novembre 1916, prima dell'ultima tappa.",
-    "palette": {"bg": "#0C3446", "land": "#164152", "coast": "#2E5E70", "plan": "#5FA9BE", "done": "#C43B32", "port": "#EAF1F0", "wreck": "#E8746A", "label": "#B9CFD2"}
+    "palette": {
+      "bg": "#0C3446",
+      "land": "#164152",
+      "coast": "#2E5E70",
+      "plan": "#5FA9BE",
+      "done": "#C43B32",
+      "port": "#EAF1F0",
+      "wreck": "#E8746A",
+      "label": "#B9CFD2"
+    },
+    "caption_en": "A wartime route from Southampton to Lemnos, to take on the wounded. A mine sent her down in the Kea Channel, in the Aegean, on 21 November 1916, before the last leg.",
+    "wreck_label_en": "the mine (Kea)"
   }
 }

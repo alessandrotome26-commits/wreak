@@ -1,329 +1,431 @@
 [
  {
+  "id": "atocha",
   "n": "Nuestra Señora de Atocha",
+  "n_en": "Nuestra Señora de Atocha",
   "y": 1622,
   "lat": 24.5,
   "lon": -82.0,
   "d": 17,
   "st": "ready",
   "f": "Galeone spagnolo affondato in un uragano due giorni dopo la partenza da L'Avana. Ritrovato nel 1985 dopo sedici anni di ricerca.",
+  "f_en": "Spanish galleon of the Tierra Firme fleet, wrecked by a 1622 hurricane in the Florida Keys with an immense treasure. Found by Mel Fisher in 1985 after a 16-year search.",
   "href": "atocha.html"
  },
  {
+  "id": "vasa",
   "n": "Vasa",
+  "n_en": "Vasa",
   "y": 1628,
   "lat": 59.325,
   "lon": 18.09,
   "d": 32,
   "st": "ready",
   "href": "vasa.html",
-  "f": "Affondò dopo poco più di un chilometro di navigazione nel porto di Stoccolma, davanti alla folla. Recuperata quasi intera nel 1961."
+  "f": "Affondò dopo poco più di un chilometro di navigazione nel porto di Stoccolma, davanti alla folla. Recuperata quasi intera nel 1961.",
+  "f_en": "Swedish warship that capsized in Stockholm harbour on her maiden voyage in 1628. Recovered almost intact in 1961 — the best-preserved 17th-century ship in the world."
  },
  {
+  "id": "titanic",
   "n": "RMS Titanic",
+  "n_en": "RMS Titanic",
   "y": 1912,
   "lat": 41.726,
   "lon": -49.948,
   "d": 3800,
   "st": "ready",
   "href": "titanic.html",
-  "f": "Individuato nel 1985 da Robert Ballard e Jean-Louis Michel, a circa 3.800 metri nell'Atlantico settentrionale. Irrecuperabile, e in lento disfacimento."
+  "f": "Individuato nel 1985 da Robert Ballard e Jean-Louis Michel, a circa 3.800 metri nell'Atlantico settentrionale. Irrecuperabile, e in lento disfacimento.",
+  "f_en": "The most famous liner in history: sank on her maiden voyage in 1912 after striking an iceberg, with about 1,500 dead. The wreck lies at ~3,800 m, found in 1985."
  },
  {
+  "id": "endurance",
   "n": "Endurance",
+  "n_en": "Endurance",
   "y": 1915,
   "lat": -68.733,
   "lon": -52.333,
   "d": 3008,
   "st": "ready",
   "href": "endurance.html",
-  "f": "La nave di Ernest Shackleton, stritolata dai ghiacci nel 1915: tutti e 28 gli uomini si salvarono. Ritrovata intatta a 3.008 m nel Mare di Weddell nel 2022."
+  "f": "La nave di Ernest Shackleton, stritolata dai ghiacci nel 1915: tutti e 28 gli uomini si salvarono. Ritrovata intatta a 3.008 m nel Mare di Weddell nel 2022.",
+  "f_en": "Ernest Shackleton's ship, crushed by Antarctic pack ice in 1915. The crew survived an epic ordeal; the wreck was found almost intact in 2022 at 3,000 m."
  },
  {
+  "id": "mary-rose",
   "n": "Mary Rose",
+  "n_en": "Mary Rose",
   "y": 1545,
   "lat": 50.79,
   "lon": -1.1,
   "d": 14,
   "st": "ready",
   "href": "maryrose.html",
-  "f": "Ammiraglia di Enrico VIII, affondata nel Solent nel 1545 sotto gli occhi del re e riportata in superficie nel 1982: una capsula del tempo della vita Tudor con ~19.000 oggetti."
+  "f": "Ammiraglia di Enrico VIII, affondata nel Solent nel 1545 sotto gli occhi del re e riportata in superficie nel 1982: una capsula del tempo della vita Tudor con ~19.000 oggetti.",
+  "f_en": "Henry VIII's Tudor warship, sunk in the Solent in 1545 and raised in 1982 with over 19,000 objects — a time capsule of Tudor life."
  },
  {
+  "id": "antikythera",
   "n": "Relitto di Anticitera",
+  "n_en": "Antikythera Wreck",
   "y": -70,
   "lat": 35.887,
   "lon": 23.31,
   "d": 50,
   "st": "ready",
   "href": "anticitera.html",
-  "f": "Nave romana con a bordo il meccanismo di Anticitera, il più antico calcolatore meccanico conosciuto. Trovata dai pescatori di spugne nel 1900."
+  "f": "Nave romana con a bordo il meccanismo di Anticitera, il più antico calcolatore meccanico conosciuto. Trovata dai pescatori di spugne nel 1900.",
+  "f_en": "A Roman-era ship carrying Greek treasures, wrecked off Antikythera around 60 BC. It held the Antikythera mechanism, the oldest known analog computer."
  },
  {
+  "id": "uluburun",
   "n": "Uluburun",
+  "n_en": "Uluburun",
   "y": -1300,
   "lat": 36.126,
   "lon": 29.685,
   "d": 50,
   "st": "ready",
   "href": "uluburun.html",
-  "f": "Il relitto più antico mai scavato: un mercantile dell'età del bronzo affondato ~1300 a.C. al largo della Turchia, con un carico proveniente da almeno sette culture. La mappa dei commerci del mondo antico in una sola nave."
+  "f": "Il relitto più antico mai scavato: un mercantile dell'età del bronzo affondato ~1300 a.C. al largo della Turchia, con un carico proveniente da almeno sette culture. La mappa dei commerci del mondo antico in una sola nave.",
+  "f_en": "A Late Bronze Age merchant ship (~1300 BC) off southern Turkey, carrying cargo from seven cultures — the oldest known seagoing shipwreck."
  },
  {
+  "id": "san-jose",
   "n": "San José",
+  "n_en": "San José",
   "y": 1708,
   "lat": 10.0,
   "lon": -75.9,
   "d": 600,
   "st": "ready",
   "href": "sanjose.html",
-  "f": "Capitana della flotta spagnola del tesoro, esplosa in battaglia nel 1708 al largo di Cartagena con ~600 uomini e ~200 t di oro, argento e smeraldi. Individuata nel 2015 a 600 m; ancora contesa da quattro parti."
+  "f": "Capitana della flotta spagnola del tesoro, esplosa in battaglia nel 1708 al largo di Cartagena con ~600 uomini e ~200 t di oro, argento e smeraldi. Individuata nel 2015 a 600 m; ancora contesa da quattro parti.",
+  "f_en": "Spanish galleon blown up by the British off Cartagena in 1708 with a legendary treasure aboard. Perhaps the richest wreck ever found; its ownership is disputed."
  },
  {
+  "id": "andrea-doria",
   "n": "SS Andrea Doria",
+  "n_en": "SS Andrea Doria",
   "y": 1956,
   "lat": 40.487,
   "lon": -69.85,
   "d": 76,
   "st": "ready",
   "href": "andreadoria.html",
-  "f": "Transatlantico italiano speronato nella nebbia dalla Stockholm al largo di Nantucket nel 1956. 51 morti ma ~1.660 salvati; oggi il relitto a 76 m è il 'Monte Everest' dei sub."
+  "f": "Transatlantico italiano speronato nella nebbia dalla Stockholm al largo di Nantucket nel 1956. 51 morti ma ~1.660 salvati; oggi il relitto a 76 m è il 'Monte Everest' dei sub.",
+  "f_en": "Italian liner rammed by the Stockholm in the fog off Nantucket in 1956. A famous, dangerous deep dive — the 'Mount Everest of scuba diving'."
  },
  {
+  "id": "arizona",
   "n": "USS Arizona",
+  "n_en": "USS Arizona",
   "y": 1941,
   "lat": 21.365,
   "lon": -157.95,
   "d": 12,
   "st": "ready",
   "href": "arizona.html",
-  "f": "Corazzata affondata in nove minuti a Pearl Harbor il 7 dicembre 1941 con 1.177 uomini. Mai recuperata: è un cimitero di guerra e un memoriale nazionale, e perde ancora nafta dal fondo."
+  "f": "Corazzata affondata in nove minuti a Pearl Harbor il 7 dicembre 1941 con 1.177 uomini. Mai recuperata: è un cimitero di guerra e un memoriale nazionale, e perde ancora nafta dal fondo.",
+  "f_en": "US battleship sunk in the attack on Pearl Harbor, 7 December 1941. A war grave for over 1,100 men; it still weeps oil. Treated with the respect due a cemetery."
  },
  {
+  "id": "bismarck",
   "n": "Bismarck",
+  "n_en": "Bismarck",
   "y": 1941,
   "lat": 48.167,
   "lon": -16.2,
   "d": 4791,
   "st": "ready",
   "href": "bismarck.html",
-  "f": "Corazzata tedesca: in otto giorni affondò la HMS Hood e fu braccata e distrutta dalla Royal Navy nel 1941. Individuata da Ballard nel 1989 a ~4.790 m, il relitto più profondo dell'atlante."
+  "f": "Corazzata tedesca: in otto giorni affondò la HMS Hood e fu braccata e distrutta dalla Royal Navy nel 1941. Individuata da Ballard nel 1989 a ~4.790 m, il relitto più profondo dell'atlante.",
+  "f_en": "German battleship sunk in the Atlantic in 1941 after a legendary chase. Lies at ~4,790 m — the deepest wreck in this atlas. A war grave."
  },
  {
+  "id": "batavia",
   "n": "Batavia",
+  "n_en": "Batavia",
   "y": 1629,
   "lat": -28.49,
   "lon": 113.79,
   "d": 5,
   "st": "ready",
   "href": "batavia.html",
-  "f": "Ammiraglia della Compagnia olandese delle Indie, naufragata nel 1629 al largo dell'Australia. Dopo il naufragio, un ammutinamento e il massacro di ~125 naufraghi sulle isole di corallo."
+  "f": "Ammiraglia della Compagnia olandese delle Indie, naufragata nel 1629 al largo dell'Australia. Dopo il naufragio, un ammutinamento e il massacro di ~125 naufraghi sulle isole di corallo.",
+  "f_en": "VOC ship wrecked off Western Australia on her maiden voyage in 1629, followed by one of history's most brutal mutinies and massacres."
  },
  {
+  "id": "santa-margarita",
   "n": "Santa Margarita",
+  "n_en": "Santa Margarita",
   "y": 1622,
   "lat": 24.52,
   "lon": -82.25,
   "d": 6,
   "st": "planned",
-  "f": "Galeone della flotta del 1622, affondato nello stesso uragano dell'Atocha al largo delle Florida Keys. Recuperi ingenti dagli anni '80; parte del carico è ancora dispersa."
+  "f": "Galeone della flotta del 1622, affondato nello stesso uragano dell'Atocha al largo delle Florida Keys. Recuperi ingenti dagli anni '80; parte del carico è ancora dispersa.",
+  "f_en": "Spanish galleon of the 1622 fleet, sister to the Atocha, wrecked in the same Florida hurricane. Part of its silver has been recovered."
  },
  {
+  "id": "mercedes",
   "n": "Nuestra Señora de las Mercedes",
+  "n_en": "Nuestra Señora de las Mercedes",
   "y": 1804,
   "lat": 36.4,
   "lon": -7.9,
   "d": 1138,
   "st": "ready",
   "href": "mercedes.html",
-  "f": "Fregata spagnola esplosa in battaglia nel 1804 al largo del Portogallo (238 morti). Nel 2007 la Odyssey ne recuperò ~500.000 monete; dopo una storica causa sull'immunità sovrana il tesoro tornò alla Spagna nel 2012."
+  "f": "Fregata spagnola esplosa in battaglia nel 1804 al largo del Portogallo (238 morti). Nel 2007 la Odyssey ne recuperò ~500.000 monete; dopo una storica causa sull'immunità sovrana il tesoro tornò alla Spagna nel 2012.",
+  "f_en": "Spanish frigate blown up by the British off Portugal in 1804. Its silver, salvaged by Odyssey, was returned to Spain in 2012 after a landmark court case."
  },
  {
+  "id": "maravillas",
   "n": "Nuestra Señora de las Maravillas",
+  "n_en": "Nuestra Señora de las Maravillas",
   "y": 1656,
   "lat": 27.0,
   "lon": -79.0,
   "d": 12,
   "st": "planned",
-  "f": "Almiranta spagnola naufragata nel 1656 sul Little Bahama Bank. Saccheggiata e recuperata per secoli; ancora oggi affiorano reperti dalla sabbia."
+  "f": "Almiranta spagnola naufragata nel 1656 sul Little Bahama Bank. Saccheggiata e recuperata per secoli; ancora oggi affiorano reperti dalla sabbia.",
+  "f_en": "Spanish almiranta wrecked on the Little Bahama Bank in 1656. Plundered and salvaged for centuries; artefacts still surface from the sand."
  },
  {
+  "id": "fleet-1715",
   "n": "Flotta spagnola del 1715",
+  "n_en": "1715 Spanish Treasure Fleet",
   "y": 1715,
   "lat": 27.7,
   "lon": -80.4,
   "d": 6,
   "st": "ready",
   "href": "flotta1715.html",
-  "f": "Undici navi del tesoro perdute in un uragano sulla costa della Florida (oltre 1.000 morti). Il tesoro riaffiora ancora oggi sulla 'Treasure Coast': nel 2015, 101 monete d'oro per ~4,5 mln $."
+  "f": "Undici navi del tesoro perdute in un uragano sulla costa della Florida (oltre 1.000 morti). Il tesoro riaffiora ancora oggi sulla 'Treasure Coast': nel 2015, 101 monete d'oro per ~4,5 mln $.",
+  "f_en": "Eleven ships lost in a single hurricane off the Florida coast in 1715, carrying the treasure of the Indies. Coins still wash ashore today."
  },
  {
+  "id": "fleet-1733",
   "n": "Flotta spagnola del 1733",
+  "n_en": "1733 Spanish Treasure Fleet",
   "y": 1733,
   "lat": 24.85,
   "lon": -80.68,
   "d": 6,
   "st": "planned",
-  "f": "Flotta spagnola dispersa da un uragano sulle Florida Keys. Molti relitti, in parte recuperati; il San Pedro è oggi un parco archeologico subacqueo."
+  "f": "Flotta spagnola dispersa da un uragano sulle Florida Keys. Molti relitti, in parte recuperati; il San Pedro è oggi un parco archeologico subacqueo.",
+  "f_en": "A Spanish fleet scattered by a hurricane in the Florida Keys in 1733. Many of its wrecks are now popular dive sites."
  },
  {
+  "id": "lusitania",
   "n": "RMS Lusitania",
+  "n_en": "RMS Lusitania",
   "y": 1915,
   "lat": 51.42,
   "lon": -8.52,
   "d": 93,
   "st": "ready",
   "href": "lusitania.html",
-  "f": "Transatlantico britannico silurato dal sommergibile tedesco U-20 al largo dell'Irlanda nel 1915: quasi 1.200 morti. Contribuì a trascinare gli Stati Uniti nella Prima guerra mondiale."
+  "f": "Transatlantico britannico silurato dal sommergibile tedesco U-20 al largo dell'Irlanda nel 1915: quasi 1.200 morti. Contribuì a trascinare gli Stati Uniti nella Prima guerra mondiale.",
+  "f_en": "British liner torpedoed by the German U-boat U-20 off Ireland in 1915: nearly 1,200 dead. Helped turn US opinion toward the First World War."
  },
  {
+  "id": "central-america",
   "n": "SS Central America",
+  "n_en": "SS Central America",
   "y": 1857,
   "lat": 31.75,
   "lon": -77.0,
   "d": 2200,
   "st": "ready",
   "href": "sscentralamerica.html",
-  "f": "La 'Nave d'Oro': affondò in un uragano al largo della Carolina con tonnellate d'oro della corsa californiana. La sua perdita aggravò il panico finanziario del 1857. Ritrovata nel 1988."
+  "f": "La 'Nave d'Oro': affondò in un uragano al largo della Carolina con tonnellate d'oro della corsa californiana. La sua perdita aggravò il panico finanziario del 1857. Ritrovata nel 1988.",
+  "f_en": "The 'Ship of Gold': sank in an 1857 hurricane off the Carolinas with tons of California Gold Rush gold, worsening the Panic of 1857. Found in 1988."
  },
  {
+  "id": "britannic",
   "n": "HMHS Britannic",
+  "n_en": "HMHS Britannic",
   "y": 1916,
   "lat": 37.7,
   "lon": 24.28,
   "d": 120,
   "st": "ready",
   "href": "britannic.html",
-  "f": "La nave gemella del Titanic, adibita a nave ospedale, affondata nel 1916 nell'Egeo per una mina. Individuata da Jacques Cousteau; oggi l'immersione tecnica più ambita del Mediterraneo."
+  "f": "La nave gemella del Titanic, adibita a nave ospedale, affondata nel 1916 nell'Egeo per una mina. Individuata da Jacques Cousteau; oggi l'immersione tecnica più ambita del Mediterraneo.",
+  "f_en": "The Titanic's sister ship, serving as a hospital ship, sunk by a mine in the Aegean in 1916. Found by Jacques Cousteau; today the Mediterranean's most coveted technical dive."
  },
  {
+  "id": "thistlegorm",
   "n": "SS Thistlegorm",
+  "n_en": "SS Thistlegorm",
   "y": 1941,
   "lat": 27.81,
   "lon": 33.92,
   "d": 30,
   "st": "planned",
-  "f": "Mercantile britannico affondato dai tedeschi nel Mar Rosso nel 1941, col suo carico di guerra ancora dentro: moto, camion, locomotive. Riscoperto da Cousteau, è uno dei relitti-museo più celebri al mondo."
+  "f": "Mercantile britannico affondato dai tedeschi nel Mar Rosso nel 1941, col suo carico di guerra ancora dentro: moto, camion, locomotive. Riscoperto da Cousteau, è uno dei relitti-museo più celebri al mondo.",
+  "f_en": "British merchant ship sunk by the Germans in the Red Sea in 1941 with its war cargo still aboard: motorcycles, trucks, locomotives. A world-famous wreck-museum."
  },
  {
+  "id": "edmund-fitzgerald",
   "n": "SS Edmund Fitzgerald",
+  "n_en": "SS Edmund Fitzgerald",
   "y": 1975,
   "lat": 46.99,
   "lon": -85.11,
   "d": 160,
   "st": "next",
-  "f": "Carico di minerale del ferro inghiottito da una tempesta sul Lago Superiore nel 1975: 29 morti, nessun superstite, un SOS mai lanciato. Immortalato in una celebre canzone; causa dell'affondamento ancora ignota."
+  "f": "Carico di minerale del ferro inghiottito da una tempesta sul Lago Superiore nel 1975: 29 morti, nessun superstite, un SOS mai lanciato. Immortalato in una celebre canzone; causa dell'affondamento ancora ignota.",
+  "f_en": "An iron-ore freighter swallowed by a storm on Lake Superior in 1975: 29 dead, no survivors, no distress call. Immortalized in a famous song; the cause is still unknown."
  },
  {
+  "id": "belitung",
   "n": "Relitto di Belitung",
+  "n_en": "Belitung Wreck",
   "y": 830,
   "lat": -2.53,
   "lon": 107.62,
   "d": 17,
   "st": "ready",
   "href": "belitung.html",
-  "f": "Un dhow arabo affondato intorno all'830 d.C. al largo dell'Indonesia con circa 60.000 ceramiche cinesi dell'epoca Tang: la prova più antica della 'via della seta marittima' tra Cina e mondo arabo."
+  "f": "Un dhow arabo affondato intorno all'830 d.C. al largo dell'Indonesia con circa 60.000 ceramiche cinesi dell'epoca Tang: la prova più antica della 'via della seta marittima' tra Cina e mondo arabo.",
+  "f_en": "An Arab dhow wrecked off Indonesia around 830 AD with some 60,000 Tang-dynasty Chinese ceramics: the oldest evidence of the maritime Silk Road between China and the Arab world."
  },
  {
+  "id": "nanhai-one",
   "n": "Nanhai One",
+  "n_en": "Nanhai One",
   "y": 1180,
   "lat": 21.7,
   "lon": 112.2,
   "d": 20,
   "st": "planned",
-  "f": "Mercantile cinese della dinastia Song affondato nel Mar Cinese Meridionale con oltre 180.000 oggetti. Nel 2007 è stato sollevato intero, dentro un enorme cassone d'acciaio, e portato in un museo costruito attorno a lui."
+  "f": "Mercantile cinese della dinastia Song affondato nel Mar Cinese Meridionale con oltre 180.000 oggetti. Nel 2007 è stato sollevato intero, dentro un enorme cassone d'acciaio, e portato in un museo costruito attorno a lui.",
+  "f_en": "A Chinese merchant ship of the Song dynasty (~1180), recovered whole off Guangdong with tens of thousands of objects. A landmark of maritime archaeology."
  },
  {
+  "id": "wilhelm-gustloff",
   "n": "MV Wilhelm Gustloff",
+  "n_en": "MV Wilhelm Gustloff",
   "y": 1945,
   "lat": 55.07,
   "lon": 17.42,
   "d": 44,
   "st": "ready",
   "href": "wilhelmgustloff.html",
-  "f": "Nave tedesca carica di profughi in fuga dalla Prussia orientale, silurata da un sommergibile sovietico nel Baltico nel 1945: circa 9.000 morti, il più grande naufragio della storia — e uno dei meno raccontati."
+  "f": "Nave tedesca carica di profughi in fuga dalla Prussia orientale, silurata da un sommergibile sovietico nel Baltico nel 1945: circa 9.000 morti, il più grande naufragio della storia — e uno dei meno raccontati.",
+  "f_en": "German ship packed with refugees fleeing East Prussia, torpedoed by a Soviet submarine in the Baltic in 1945: about 9,000 dead, the deadliest sinking in history — and one of the least told."
  },
  {
+  "id": "sao-jose",
   "n": "São José-Paquete de Africa",
+  "n_en": "São José-Paquete de Africa",
   "y": 1794,
   "lat": -33.94,
   "lon": 18.37,
   "d": 8,
   "st": "planned",
-  "f": "Vascello negriero portoghese naufragato al largo di Città del Capo nel 1794 con 512 mozambicani schiavizzati a bordo: ne morirono oltre 200. Uno dei primi relitti di nave negriera mai identificati e studiati."
+  "f": "Vascello negriero portoghese naufragato al largo di Città del Capo nel 1794 con 512 mozambicani schiavizzati a bordo: ne morirono oltre 200. Uno dei primi relitti di nave negriera mai identificati e studiati.",
+  "f_en": "A Portuguese slave ship wrecked off Cape Town in 1794 with enslaved people aboard. A site of memory of the transatlantic slave trade."
  },
  {
+  "id": "erebus-terror",
   "n": "HMS Erebus e Terror",
+  "n_en": "HMS Erebus and Terror",
   "y": 1848,
   "lat": 68.24,
   "lon": -98.87,
   "d": 11,
   "st": "ready",
   "href": "franklin.html",
-  "f": "Le due navi della spedizione artica di Sir John Franklin, perdute tra i ghiacci del Canada nel 1848 con 129 uomini: nessun superstite. Il più grande mistero polare, risolto solo nel 2014–2016 grazie alla tradizione orale inuit."
+  "f": "Le due navi della spedizione artica di Sir John Franklin, perdute tra i ghiacci del Canada nel 1848 con 129 uomini: nessun superstite. Il più grande mistero polare, risolto solo nel 2014–2016 grazie alla tradizione orale inuit.",
+  "f_en": "The two ships of Sir John Franklin's Arctic expedition, lost in the Canadian ice in 1848 with 129 men: no survivors. The greatest polar mystery, solved in 2014–2016 thanks to Inuit oral tradition."
  },
  {
+  "id": "hunley",
   "n": "H.L. Hunley",
+  "n_en": "H.L. Hunley",
   "y": 1864,
   "lat": 32.68,
   "lon": -79.77,
   "d": 9,
   "st": "planned",
-  "f": "Il primo sottomarino della storia ad affondare una nave nemica: nel 1864, al largo di Charleston, colò a picco l'incrociatore unionista Housatonic — e sparì anch'esso con tutto l'equipaggio. Riportato in superficie nel 2000."
+  "f": "Il primo sottomarino della storia ad affondare una nave nemica: nel 1864, al largo di Charleston, colò a picco l'incrociatore unionista Housatonic — e sparì anch'esso con tutto l'equipaggio. Riportato in superficie nel 2000.",
+  "f_en": "Confederate submarine, the first in history to sink an enemy warship (1864) — then vanished with her crew. Raised in 2000; why she sank is still debated."
  },
  {
+  "id": "vrouw-maria",
   "n": "Vrouw Maria",
+  "n_en": "Vrouw Maria",
   "y": 1771,
   "lat": 59.85,
   "lon": 21.35,
   "d": 41,
   "st": "planned",
-  "f": "Mercantile olandese naufragato nel Baltico finlandese nel 1771 mentre portava a Caterina la Grande di Russia dipinti di maestri fiamminghi. Ritrovato nel 1999, ancora sul fondo: un museo d'arte sommerso e conteso."
+  "f": "Mercantile olandese naufragato nel Baltico finlandese nel 1771 mentre portava a Caterina la Grande di Russia dipinti di maestri fiamminghi. Ritrovato nel 1999, ancora sul fondo: un museo d'arte sommerso e conteso.",
+  "f_en": "A Dutch merchant ship wrecked off Finland in 1771 carrying a cargo of art and luxury goods. Exceptionally preserved in the cold Baltic; the subject of an ownership dispute."
  },
  {
+  "id": "mary-celeste",
   "n": "Mary Celeste",
+  "n_en": "Mary Celeste",
   "y": 1872,
   "lat": 18.6,
   "lon": -73.65,
   "d": 4,
   "st": "ready",
   "href": "maryceleste.html",
-  "f": "La 'nave fantasma' per eccellenza: nel 1872 fu trovata alla deriva nell'Atlantico, perfettamente in ordine ma senza un'anima a bordo. L'equipaggio non fu più ritrovato. La nave finì i suoi giorni su una scogliera di Haiti nel 1885."
+  "f": "La 'nave fantasma' per eccellenza: nel 1872 fu trovata alla deriva nell'Atlantico, perfettamente in ordine ma senza un'anima a bordo. L'equipaggio non fu più ritrovato. La nave finì i suoi giorni su una scogliera di Haiti nel 1885.",
+  "f_en": "The archetypal 'ghost ship': found adrift in the Atlantic in 1872, in perfect order but with no one aboard. The crew was never found. The ship met her end on a Haiti reef in 1885."
  },
  {
+  "id": "empress-of-ireland",
   "n": "RMS Empress of Ireland",
+  "n_en": "RMS Empress of Ireland",
   "y": 1914,
   "lat": 48.62,
   "lon": -68.4,
   "d": 40,
   "st": "planned",
-  "f": "Transatlantico affondato in pochi minuti nel fiume San Lorenzo nel 1914 dopo una collisione nella nebbia: oltre mille morti. La 'Titanic del Canada', quasi dimenticata perché la guerra scoppiò poche settimane dopo."
+  "f": "Transatlantico affondato in pochi minuti nel fiume San Lorenzo nel 1914 dopo una collisione nella nebbia: oltre mille morti. La 'Titanic del Canada', quasi dimenticata perché la guerra scoppiò poche settimane dopo.",
+  "f_en": "Canadian liner sunk in the St. Lawrence after a collision in fog in 1914: over 1,000 dead, more passengers lost than on the Titanic — yet almost forgotten."
  },
  {
+  "id": "gribshunden",
   "n": "Gribshunden",
+  "n_en": "Gribshunden",
   "y": 1495,
   "lat": 56.15,
   "lon": 15.35,
   "d": 10,
   "st": "planned",
-  "f": "Nave ammiraglia di re Hans di Danimarca, affondata per un incendio nel Baltico nel 1495. Conservata benissimo dall'acqua fredda, con una polena a forma di mostro marino: una delle navi medievali meglio superstiti al mondo."
+  "f": "Nave ammiraglia di re Hans di Danimarca, affondata per un incendio nel Baltico nel 1495. Conservata benissimo dall'acqua fredda, con una polena a forma di mostro marino: una delle navi medievali meglio superstiti al mondo.",
+  "f_en": "Warship of the Danish king Hans, sunk in 1495. One of the oldest and best-preserved carvel-built ships in the world, with a famous carved figurehead."
  },
  {
+  "id": "merchant-royal",
   "n": "Merchant Royal",
+  "n_en": "Merchant Royal",
   "y": 1641,
   "lat": 49.9,
   "lon": -6.5,
   "d": 100,
   "st": "planned",
-  "f": "Il 'Dorado dei mari': nave inglese affondata al largo della Cornovaglia nel 1641 con un immenso carico d'oro e d'argento. Mai ritrovata: la sua posizione esatta resta uno dei più celebri misteri dei cacciatori di tesori."
+  "f": "Il 'Dorado dei mari': nave inglese affondata al largo della Cornovaglia nel 1641 con un immenso carico d'oro e d'argento. Mai ritrovata: la sua posizione esatta resta uno dei più celebri misteri dei cacciatori di tesori.",
+  "f_en": "English ship lost off Cornwall in 1641 with an enormous cargo of gold and silver — 'the El Dorado of the seas'. Never found."
  },
  {
+  "id": "flor-de-la-mar",
   "n": "Flor de la Mar",
+  "n_en": "Flor de la Mar",
   "y": 1511,
   "lat": 5.3,
   "lon": 97.8,
   "d": 30,
   "st": "planned",
-  "f": "Carracca portoghese affondata nello Stretto di Malacca nel 1511 con il bottino saccheggiato alla città di Malacca — forse il più grande tesoro mai perduto in mare. Mai localizzata; la posizione è tuttora ignota."
+  "f": "Carracca portoghese affondata nello Stretto di Malacca nel 1511 con il bottino saccheggiato alla città di Malacca — forse il più grande tesoro mai perduto in mare. Mai localizzata; la posizione è tuttora ignota.",
+  "f_en": "Portuguese carrack lost off Sumatra in 1511, laden with the plunder of Malacca. One of the most sought-after and richest lost treasures in history."
  }
 ]
