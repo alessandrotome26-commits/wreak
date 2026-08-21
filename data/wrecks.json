@@ -218,7 +218,8 @@
   "lat": -2.53,
   "lon": 107.62,
   "d": 17,
-  "st": "next",
+  "st": "ready",
+  "href": "belitung.html",
   "f": "Un dhow arabo affondato intorno all'830 d.C. al largo dell'Indonesia con circa 60.000 ceramiche cinesi dell'epoca Tang: la prova più antica della 'via della seta marittima' tra Cina e mondo arabo."
  },
  {
@@ -255,7 +256,7 @@
   "lat": 68.24,
   "lon": -98.87,
   "d": 11,
-  "st": "planned",
+  "st": "next",
   "f": "Le due navi della spedizione artica di Sir John Franklin, perdute tra i ghiacci del Canada nel 1848 con 129 uomini: nessun superstite. Il più grande mistero polare, risolto solo nel 2014–2016 grazie alla tradizione orale inuit."
  },
  {

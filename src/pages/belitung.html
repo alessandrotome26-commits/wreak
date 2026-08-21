@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relitto di Belitung — 830 d.C.</title>
+<meta name="description" content="Nel IX secolo un dhow arabo carico di sessantamila ceramiche cinesi affondò nel Mar di Giava. È la prova più antica e più splendida della via della seta marittima: l'incontro diretto tra la Cina dei Tang e il mondo islamico, mille anni prima della globalizzazione.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Relitto di Belitung — 830 d.C.">
+<meta property="og:description" content="Una nave araba, un carico cinese, un naufragio indonesiano: tre civiltà in un solo relitto. E una ciotola che porta scritta la sua data: 826.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#EFE3CC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sand:#EFE3CC; --paper2:#F4EBD6; --panel:#E7D8B7;
+  --ink:#3A2E1E; --ink2:#5A4B34; --fog:#8A7A5E;
+  --gold:#B8892E; --gold2:#D3A346; --celadon:#5E7E5A; --celadon2:#7E9C74;
+  --cobalt:#2E5A82; --cobalt2:#3F74A2; --clay:#B06A44;
+  --rule:rgba(58,46,30,.16);
+  --display:"Gilda Display",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--sand);color:var(--ink);font-family:var(--body);font-weight:300;line-height:1.68;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#warmth{position:fixed;inset:0;z-index:-4;background:var(--sand);transition:background 1.6s ease}
+#sun{position:fixed;inset:-12%;z-index:-3;pointer-events:none;opacity:.7;
+  background:radial-gradient(circle at 30% 18%,rgba(211,163,70,.14),transparent 42%),
+             radial-gradient(circle at 74% 76%,rgba(94,126,90,.08),transparent 40%)}
+#shimmer{position:fixed;inset:-10%;z-index:-2;pointer-events:none;opacity:.5;
+  background:radial-gradient(circle at 50% 40%,rgba(255,246,224,.5),transparent 42%);
+  animation:shimmer 40s ease-in-out infinite alternate}
+@keyframes shimmer{0%{transform:translate3d(-2%,-1%,0) scale(1.04)}100%{transform:translate3d(3%,2%,0) scale(1.12)}}
+#motes{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--fog);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--gold)}
+.rail-num{font-size:18px;color:var(--ink);font-weight:500;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.65;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(239,227,204,.82)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--celadon);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(44px,9vw,98px);line-height:1.02;letter-spacing:0}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(29px,4.6vw,49px);line-height:1.14;margin-bottom:22px}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:var(--ink2)}
+.lede{font-size:20px;color:var(--ink)}
+em{font-style:italic;color:var(--fog)}
+strong{font-weight:500;color:var(--ink)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--fog);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--fog)}
+.coord b{display:block;color:var(--ink);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:flex-start;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  color:var(--clay);border:1px solid rgba(176,106,68,.42);padding:6px 11px;margin-top:28px;align-self:flex-start;max-width:66ch;line-height:1.6}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--clay);flex:none;margin-top:5px}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(138,122,94,.9);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(58,46,30,.1)}
+.stat .v{font-family:var(--display);font-weight:400;font-size:clamp(30px,4.8vw,46px);line-height:1.05;color:var(--celadon);font-variant-numeric:tabular-nums}
+.stat .v.gold{color:var(--gold)}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--gold);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-style:italic;font-size:clamp(24px,4.2vw,38px);line-height:1.24;color:var(--ink);quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--fog);margin-top:18px}
+
+.sitewrap{margin-top:14px;border:1px solid var(--rule);background:var(--paper2);padding:22px 20px}
+.sitewrap svg{width:100%;height:auto;display:block}
+.obj{cursor:pointer}
+.obj .halo{opacity:0;transition:opacity .25s}
+.obj:hover .halo,.obj:focus .halo{opacity:.5}
+.obj .body{transition:transform .2s}
+.obj:hover .body,.obj:focus .body{transform:translateY(-3px)}
+#bowlinfo{font-family:var(--mono);font-size:12px;color:var(--ink2);margin-top:16px;min-height:62px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.75}
+#bowlinfo b{color:var(--clay);font-weight:500}
+#bowlinfo .two{color:var(--cobalt)}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(58,46,30,.1);vertical-align:top}
+td.n{color:var(--ink);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:var(--fog);line-height:1.75;margin-top:22px;max-width:60ch}
+
+.realimg{margin-top:22px;border:1px solid rgba(46,90,130,.3);background:rgba(46,90,130,.05);padding:22px}
+.realimg .badge{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--cobalt);margin-bottom:14px}
+.realimg p{margin-bottom:14px}
+.realimg .rilink{display:inline-block;margin:0 18px 8px 0;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--cobalt);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:4px;transition:color .25s,border-color .25s}
+.realimg .rilink:hover{color:var(--gold);border-color:var(--gold)}
+.realimg .cite{font-family:var(--mono);font-size:11px;color:var(--fog);line-height:1.6;margin-top:8px}
+
+.shipart{margin-top:22px;border:1px solid var(--rule);background:var(--paper2);padding:18px 18px 12px}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:var(--fog);letter-spacing:.05em;margin-top:10px}
+.dhow{transform-box:fill-box;transform-origin:50% 80%;animation:dhowsail 10s ease-in-out infinite}
+@keyframes dhowsail{0%,100%{transform:translateX(0) rotate(-.8deg)}50%{transform:translateX(12px) rotate(.8deg)}}
+.dhwave{animation:dhwave 5.5s ease-in-out infinite}
+@keyframes dhwave{0%,100%{transform:translateX(0)}50%{transform:translateX(-8px)}}
+
+.closing{border-top:1px solid var(--gold);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--fog);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:var(--paper2);border:1px solid var(--rule);color:var(--ink);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--celadon);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--gold);color:#2C1E08;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.88}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--celadon)}
+.signup .msg.err{color:var(--clay)}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--gold);border-color:var(--gold)}
+.src{font-family:var(--mono);font-size:11.5px;color:var(--fog);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:14px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #warmth,#shimmer{transition:none;animation:none}
+  .dhow,.dhwave{animation:none}
+  #motes{display:none}
+}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="warmth"></div>
+<div id="sun"></div>
+<div id="shimmer"></div>
+<canvas id="motes"></canvas>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Anno</div><div class="rail-num" id="railYear">830</div><div class="rail-lab">d.C.</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Profondità</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="830" data-depth="0">
+  <div class="eyebrow">Dhow arabo · Mar di Giava · IX secolo</div>
+  <h1>Relitto di Belitung</h1>
+  <div class="sub">AFFONDATO INTORNO ALL'830 · LA VIA DELLA SETA IN FONDO AL MARE</div>
+  <div class="coordbox">
+    <div class="coord">Dove giace<b>al largo di Belitung, Indonesia · ~17 m</b></div>
+    <div class="coord">Il carico<b>~60.000 oggetti dell'epoca Tang</b></div>
+    <div class="coord">La scoperta<b>pescatori di oloturie, 1998</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>DATATO DA UN'ISCRIZIONE: 826 d.C. · SCAVO COMMERCIALE, NON SCIENTIFICO · CARICO OGGI A SINGAPORE, VENDUTO PER 32 MLN $</div>
+  <div class="scrollcue">↓ scorri — tre civiltà in un solo relitto</div>
+</section>
+
+<section class="reveal" data-year="830" data-depth="17">
+  <div class="eyebrow">Perché questo relitto</div>
+  <h2>La prova più antica che il mondo era già connesso</h2>
+  <p class="lede">Una nave araba, un carico cinese, un naufragio indonesiano. In un solo relitto si toccano tre civiltà e undici secoli fa — e la sorpresa è quanto già allora il mondo fosse in rete.</p>
+  <p>Nel IX secolo, mentre l'Europa era frammentata, due grandi imperi — la <strong>Cina dei Tang</strong> e il <strong>califfato abbaside</strong> di Baghdad — erano collegati da una rotta commerciale che attraversava mezzo pianeta via mare. Di quella rotta sapevamo dai testi. Poi, nel 1998, dei pescatori indonesiani trovarono la <em>nave</em>: un dhow arabo affondato con sessantamila oggetti cinesi nella stiva. Per la prima volta potevamo studiare, plancia per plancia, la macchina della prima globalizzazione. E su una ciotola, incredibilmente, c'era scritta una data.</p>
+  <div class="stats">
+    <div class="stat"><div class="v gold">~60.000</div><div class="k">oggetti nel carico</div></div>
+    <div class="stat"><div class="v gold">~56.500</div><div class="k">ciotole di Changsha</div></div>
+    <div class="stat"><div class="v">~1.200</div><div class="k">anni fa</div></div>
+    <div class="stat"><div class="v">826</div><div class="k">la data scritta su una ciotola</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="830" data-depth="17">
+  <div class="eyebrow">La nave</div>
+  <h2>Una nave cucita, non inchiodata</h2>
+  <p>La cosa più sorprendente non era nella stiva, ma nello scafo. Il dhow di Belitung non aveva un solo chiodo di ferro: le sue tavole erano <strong>cucite tra loro con corde vegetali</strong>, secondo una tecnica araba antichissima, che rendeva lo scafo flessibile e riparabile ovunque. Era fatto di teak indiano e legni africani — già la sua costruzione, dunque, era un intreccio di tre continenti.</p>
+  <p class="lede">È il primo dhow arabo mai ritrovato nelle acque del Sud-est asiatico.</p>
+  <p>Navi come questa vivevano sul respiro dei <strong>monsoni</strong>: partivano dal Golfo Persico con il vento di stagione, raggiungevano i porti della Cina meridionale come Canton — dove esistevano interi quartieri di mercanti stranieri — e tornavano indietro quando il vento si invertiva, con le stive piene di merci. Questa nave aveva completato l'andata. Affondò al ritorno, a un passo da casa dei suoi committenti.</p>
+</section>
+
+<section class="reveal" data-year="830" data-depth="17">
+  <div class="eyebrow">Due mondi in un oggetto</div>
+  <h2>Cosa raccontano i vasi</h2>
+  <p>Il carico di Belitung non è solo bello: è un documento. Ogni pezzo mostra come, già nel IX secolo, la Cina producesse in serie per un mercato lontano, adattando forme e decori al gusto del compratore. Clicca gli oggetti.</p>
+  <div class="sitewrap">
+    <svg viewBox="0 0 640 220" role="img" aria-label="Quattro oggetti del carico di Belitung: una ciotola datata, una per il mercato islamico, la coppa d'oro, un piatto blu e bianco" class="fielded">
+      <title>Due mondi in un oggetto</title>
+      <line x1="30" y1="168" x2="610" y2="168" stroke="var(--rule)" stroke-width="1"/>
+      <text x="30" y="24" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">DAL CARICO — CLICCA UN OGGETTO</text>
+
+      <!-- 1: ciotola datata (Changsha) -->
+      <g class="obj" tabindex="0" data-t="La ciotola che porta una data" data-d="Una ciotola di Changsha reca l'iscrizione «sedicesimo giorno del settimo mese del secondo anno dell'era Baoli»: cioè l'826 d.C. È come trovare la ricevuta di un naufragio." data-s="Il radiocarbonio sull'anice stellato del carico conferma: la nave affondò intorno all'830.">
+        <ellipse class="halo" cx="120" cy="150" rx="52" ry="30" fill="var(--gold2)"/>
+        <g class="body">
+          <path d="M84 132 Q120 190 156 132 Z" fill="#E9DBBE" stroke="var(--celadon)" stroke-width="1.4"/>
+          <ellipse cx="120" cy="132" rx="36" ry="9" fill="#DCCBA6" stroke="var(--celadon)" stroke-width="1.4"/>
+          <rect x="108" y="140" width="24" height="14" rx="2" fill="none" stroke="var(--clay)" stroke-width="1"/>
+          <text x="120" y="151" fill="var(--clay)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle">826</text>
+        </g>
+        <text x="120" y="206" fill="var(--celadon)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle">CIOTOLA DATATA</text>
+      </g>
+
+      <!-- 2: ciotola per il mercato islamico -->
+      <g class="obj" tabindex="0" data-t="Una ciotola pensata per Baghdad" data-d="Migliaia di ciotole di Changsha erano decorate non per la Cina, ma per il gusto del mondo islamico: motivi geometrici, losanghe, persino scritte che imitano la calligrafia araba." data-s="È mass-production su misura del cliente: marketing internazionale, dodici secoli fa.">
+        <ellipse class="halo" cx="255" cy="150" rx="52" ry="30" fill="var(--clay)"/>
+        <g class="body">
+          <path d="M219 132 Q255 190 291 132 Z" fill="#E9DBBE" stroke="var(--clay)" stroke-width="1.4"/>
+          <ellipse cx="255" cy="132" rx="36" ry="9" fill="#DCCBA6" stroke="var(--clay)" stroke-width="1.4"/>
+          <path d="M240 146 l7 -7 l7 7 l7 -7 l7 7" fill="none" stroke="var(--clay)" stroke-width="1.2"/>
+        </g>
+        <text x="255" y="206" fill="var(--clay)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle">PER IL MERCATO ARABO</text>
+      </g>
+
+      <!-- 3: coppa d'oro ottagonale -->
+      <g class="obj" tabindex="0" data-t="La coppa d'oro" data-d="Il pezzo più prezioso: una coppa d'oro ottagonale alta dieci centimetri, la più grande d'epoca Tang mai trovata. Sui lati sono incisi musici e danzatori dai tratti stranieri, non cinesi." data-s="Persino l'oggetto più cinese celebra un mondo cosmopolita: la Tang era un impero aperto, pieno di volti d'altrove.">
+        <ellipse class="halo" cx="390" cy="146" rx="46" ry="34" fill="var(--gold2)"/>
+        <g class="body">
+          <path d="M366 116 L414 116 L406 156 L374 156 Z" fill="var(--gold2)" stroke="var(--gold)" stroke-width="1.4"/>
+          <ellipse cx="390" cy="116" rx="24" ry="7" fill="var(--gold)" stroke="var(--gold)" stroke-width="1"/>
+          <rect x="382" y="156" width="16" height="6" fill="var(--gold)"/>
+          <ellipse cx="390" cy="164" rx="18" ry="5" fill="var(--gold)"/>
+          <line x1="390" y1="120" x2="390" y2="152" stroke="var(--gold)" stroke-width=".8" opacity=".6"/>
+          <line x1="378" y1="122" x2="380" y2="152" stroke="var(--gold)" stroke-width=".8" opacity=".6"/>
+          <line x1="402" y1="122" x2="400" y2="152" stroke="var(--gold)" stroke-width=".8" opacity=".6"/>
+        </g>
+        <text x="390" y="206" fill="var(--gold)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle">COPPA D'ORO</text>
+      </g>
+
+      <!-- 4: piatto blu e bianco -->
+      <g class="obj" tabindex="0" data-t="Il piatto blu e bianco" data-d="Tra i reperti ci sono alcuni dei più antichi piatti cinesi «blu e bianco» conosciuti. Il bianco è porcellana cinese; il blu è cobalto importato dal Medio Oriente." data-s="La celeberrima porcellana blu e bianco nasce così: pigmento persiano su ceramica cinese. Due mondi, letteralmente, in un solo piatto.">
+        <ellipse class="halo" cx="525" cy="150" rx="54" ry="26" fill="var(--cobalt2)"/>
+        <g class="body">
+          <ellipse cx="525" cy="150" rx="44" ry="15" fill="#F0EAD8" stroke="var(--cobalt)" stroke-width="1.4"/>
+          <ellipse cx="525" cy="150" rx="26" ry="8" fill="none" stroke="var(--cobalt)" stroke-width="1.1"/>
+          <circle cx="525" cy="150" r="4" fill="var(--cobalt)"/>
+          <path d="M505 150 q6 -7 12 0 M523 150 q6 -7 12 0" fill="none" stroke="var(--cobalt2)" stroke-width="1"/>
+        </g>
+        <text x="525" y="206" fill="var(--cobalt)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle">BLU E BIANCO</text>
+      </g>
+    </svg>
+    <div id="bowlinfo">Seleziona un oggetto: ognuno racconta come Cina e mondo islamico si parlavano già, attraverso la ceramica.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="830" data-depth="17">
+  <div class="eyebrow">La prima globalizzazione</div>
+  <h2>Cinquantaseimila ciotole, tutte uguali</h2>
+  <p>Il numero che colpisce di più non è il valore dei tesori, ma la quantità dei pezzi comuni: circa <strong>cinquantaseimila e cinquecento ciotole</strong> quasi identiche, uscite dalle fornaci di Changsha, nell'entroterra cinese. Non erano oggetti d'arte per l'élite: erano <em>merce</em>, prodotta in serie, impilata in colonne dentro grandi giare per resistere al viaggio.</p>
+  <p>È la prova materiale di un'economia già globale: una fabbrica cinese che produce a getto continuo per clienti a diecimila chilometri di distanza, variando i decori a seconda del mercato di destinazione. La ciotola con la data del 826 non è un gioiello: è, semplicemente, un prodotto con un numero di serie. Ed è proprio questa banalità a renderla straordinaria — perché racconta la vita di tutti, non solo dei re.</p>
+</section>
+
+<section class="reveal" data-year="830" data-depth="17">
+  <div class="eyebrow">I tesori</div>
+  <h2>L'oro dei Tang e la nascita del blu e bianco</h2>
+  <p>Accanto alla massa delle ciotole, il carico nascondeva pezzi eccezionali. Il più celebre è una <strong>coppa d'oro ottagonale</strong>, la più grande d'epoca Tang mai ritrovata: sui suoi lati sono incisi musici e danzatori dai tratti chiaramente stranieri, testimoni di quanto la capitale cinese fosse, all'epoca, una metropoli cosmopolita piena di volti venuti da ovest.</p>
+  <p>Ma la scoperta più densa di futuro è più modesta: alcuni <strong>piatti «blu e bianco»</strong> tra i più antichi conosciuti. Quel decoro che oggi associamo alla porcellana cinese per antonomasia nacque, in realtà, da un incontro: il bianco è ceramica cinese, ma il blu è <strong>cobalto importato dal Medio Oriente</strong>. La porcellana più "cinese" del mondo è, alla radice, un prodotto meticcio — e Belitung ne conserva una delle prime prove.</p>
+</section>
+
+<section class="reveal" data-year="1999" data-depth="17">
+  <div class="eyebrow">La questione aperta</div>
+  <h2>Salvato, o saccheggiato?</h2>
+  <p>Su questo relitto pesa una controversia che è giusto raccontare per intero. Lo scavo non fu condotto da archeologi, ma da una <strong>società commerciale</strong> tedesca, la Seabed Explorations di Tilman Walterfang, con regolare permesso indonesiano — perché l'Indonesia non aderisce alla convenzione UNESCO che vieta lo sfruttamento commerciale dei siti sommersi. L'intero carico fu poi <strong>venduto a Singapore per 32 milioni di dollari</strong>. Nel 2011 una grande mostra prevista allo Smithsonian fu rinviata per le proteste degli archeologi.</p>
+  <div class="moment">
+    <q>Un sito archeologico si scava una volta sola. Farlo per vendere, e non per sapere, cancella per sempre informazioni che nessun catalogo restituirà.</q>
+    <cite>LA CRITICA DELL'ARCHEOLOGIA ACCADEMICA ALLO SCAVO COMMERCIALE</cite>
+  </div>
+  <p>La difesa, però, non è banale. Il sito era a pochi metri di profondità, esposto ai saccheggiatori; il carico fu tenuto insieme invece di essere disperso sul mercato, la struttura della nave fu documentata, e i reperti furono conservati, studiati e pubblicati. Un compromesso imperfetto tra la salvezza e la scienza — che questa scheda registra senza assolvere né condannare, perché la perdita e la salvezza, qui, convivono.</p>
+</section>
+
+<section class="reveal" data-year="830" data-depth="17">
+  <div class="eyebrow">La nave</div>
+  <h2>Il vento di stagione</h2>
+  <p>Il dhow di Belitung era una nave da carico di media stazza — chiglia di circa quindici metri — con la classica vela latina triangolare che permetteva di stringere il vento. Non un vascello da battaglia né una nave di lusso: uno strumento di lavoro, costruito per una sola cosa, cavalcare i monsoni tra due mondi, e capace di farlo con lo scafo tenuto insieme dalle corde.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 640 230" role="img" aria-label="Illustrazione stilizzata di un dhow arabo con vela latina">
+      <title>Il dhow di Belitung</title>
+      <path d="M-20 198 q 60 -7 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(94,126,90,.5)" stroke-width="1.4" class="dhwave"/>
+      <path d="M-20 210 q 60 -6 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(94,126,90,.3)" stroke-width="1.2" class="dhwave"/>
+      <g class="dhow">
+        <!-- scafo curvo del dhow -->
+        <path d="M180 178 Q210 156 300 156 L470 156 Q500 158 486 176 Q470 192 300 192 Q214 192 180 178 Z" fill="#8A6A3E" stroke="#5A4326" stroke-width="1.3"/>
+        <line x1="220" y1="168" x2="470" y2="168" stroke="#B0895A" stroke-width="1"/>
+        <!-- albero inclinato -->
+        <line x1="330" y1="156" x2="360" y2="46" stroke="#5A4326" stroke-width="2.6"/>
+        <!-- vela latina triangolare -->
+        <path d="M356 50 L360 168 L470 150 Z" fill="#EBDFC6" stroke="#C9B78E" stroke-width="1.2"/>
+        <line x1="356" y1="50" x2="470" y2="150" stroke="#C9B78E" stroke-width="1"/>
+        <!-- pennone -->
+        <line x1="356" y1="50" x2="250" y2="120" stroke="#5A4326" stroke-width="1.6"/>
+      </g>
+      <text x="20" y="28" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">DHOW ARABO A VELA LATINA — RICOSTRUZIONE STILIZZATA</text>
+    </svg>
+    <figcaption>Ricostruzione stilizzata. I reperti reali e la struttura della nave sono documentati dagli enti qui sotto.</figcaption>
+  </figure>
+  <div class="realimg">
+    <div class="badge">Reperti e immagini reali</div>
+    <p>La collezione — le ciotole di Changsha, la coppa d'oro, i piatti blu e bianco — è conservata a Singapore ed è stata esposta e pubblicata; documentazione e immagini sono presso i musei e gli enti culturali.</p>
+    <a class="rilink" href="https://en.unesco.org/silkroad/silk-road-themes/underwater-heritage/belitung-shipwreck" target="_blank" rel="noopener">Scheda · UNESCO Silk Road ↗</a>
+    <a class="rilink" href="https://asiasociety.org/new-york/exhibitions/secrets-sea-tang-shipwreck-and-early-trade-asia" target="_blank" rel="noopener">«Secrets of the Sea» · Asia Society ↗</a>
+    <p class="cite">Immagini dei reperti presso UNESCO, Asia Society e i musei di Singapore (Asian Civilisations Museum / ArtScience Museum), riprodotte con attribuzione presso le fonti, non ospitate su questo sito.</p>
+  </div>
+</section>
+
+<section class="reveal" data-year="830" data-depth="17">
+  <div class="eyebrow">I numeri</div>
+  <h2>Il relitto, misurato</h2>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Valore</th></tr></thead>
+    <tbody>
+      <tr><td>Tipo</td><td class="n">dhow arabo (fasciame cucito, senza chiodi)</td></tr>
+      <tr><td>Chiglia / baglio</td><td class="n">~15,3 m / ~5,1 m</td></tr>
+      <tr><td>Materiali</td><td class="n">teak indiano, legni africani, corde vegetali</td></tr>
+      <tr><td>Affondato</td><td class="n">~830 d.C. (rotta di ritorno dalla Cina)</td></tr>
+      <tr><td>Dove</td><td class="n">al largo di Belitung, Indonesia · ~17 m</td></tr>
+      <tr><td>Scoperto</td><td class="n">1998 (pescatori di oloturie)</td></tr>
+      <tr><td>Carico</td><td class="n">~60.000 oggetti (≈56.500 ciotole di Changsha)</td></tr>
+      <tr><td>Datazione</td><td class="n">iscrizione su ciotola: 826 d.C. (+ radiocarbonio)</td></tr>
+      <tr><td>Pezzi unici</td><td class="n">coppa d'oro ottagonale, piatti blu e bianco</td></tr>
+      <tr><td>Oggi</td><td class="n">collezione a Singapore (venduta per 32 mln $)</td></tr>
+    </tbody>
+  </table>
+  <p class="note">La datazione dell'826 viene da un'iscrizione su una ciotola ed è corroborata dal radiocarbonio; l'affondamento è collocato intorno all'830. Le cifre del carico sono quelle dei cataloghi pubblicati dopo il recupero.</p>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">Nota metodologica</div>
+  <h2>Cosa questa pagina tiene insieme</h2>
+  <p>Due cose che di solito si separano. La meraviglia: un relitto che dimostra, con sessantamila oggetti, che il mondo era interconnesso mille e duecento anni fa, e che la porcellana più "cinese" nasce da un pigmento mediorientale. E il disagio: quel tesoro lo conosciamo perché fu recuperato in modo commerciale e venduto, non scavato dalla scienza. Le due cose non si annullano, e la pagina non ne nasconde nessuna.</p>
+  <p>Le date sono ancorate a un'iscrizione e a un dato di laboratorio, non a una leggenda. E l'oggetto che ci commuove di più non è la coppa d'oro, ma una ciotola qualunque con sopra una data: la ricevuta involontaria di un naufragio, e la firma di un'epoca che credevamo di conoscere solo dai libri.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 018 di 20</div>
+    <h2 style="margin-bottom:14px">La prossima è la spedizione che sparì tra i ghiacci: Erebus e Terror</h2>
+    <p>Dai mari caldi dell'equatore all'Artico più ostile. Nel 1845 due navi della Royal Marina britannica, la Erebus e la Terror, partirono per cercare il Passaggio a Nord-Ovest e svanirono con centoventinove uomini. Le ritrovarono solo nel nostro secolo — grazie a una testimonianza che gli inglesi avevano ignorato per centosettant'anni: quella degli Inuit.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce la prossima scheda</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="wilhelmgustloff.html">← Scheda 017: la Wilhelm Gustloff</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">Tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · UNESCO, «The Belitung Shipwreck» (via della seta marittima, significato) · Wikipedia «Belitung shipwreck» (dhow a fasciame cucito, iscrizione dell'826, ~60.000 / ~56.500 pezzi, coppa d'oro ottagonale, blu e bianco) · Asia Society, «Secrets of the Sea: A Tang Shipwreck and Early Trade in Asia» · National Geographic, «Made in China / Tang shipwreck» · Trafficking Culture e CNN (2011) sulla controversia dello scavo commerciale (Seabed Explorations / T. Walterfang, vendita a Singapore, mostra Smithsonian rinviata)<br><br>
+      Wreck Atlas · Scheda 018 · Prototipo
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), warmth=document.getElementById('warmth');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- rivelazione delle sezioni ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- pulviscolo dorato nella luce ---------- */
+  var cv=document.getElementById('motes'), ctx=cv&&cv.getContext?cv.getContext('2d'):null, parts=[], W=0,H=0;
+  function size(){ if(!ctx)return; W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    parts=[]; var n=Math.round(W*H/32000);
+    for(var i=0;i<n;i++) parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.3+.3,v:.2+Math.random()*.6,o:.05+Math.random()*.1}); }
+  function draw(){ if(!ctx)return; ctx.clearRect(0,0,W,H);
+    for(var i=0;i<parts.length;i++){ var p=parts[i];
+      p.x+=p.v; p.y+=Math.sin(p.x*.008)*.05;
+      if(p.x>W+4){ p.x=-4; p.y=Math.random()*H; }
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fillStyle='rgba(184,137,46,'+p.o+')'; ctx.fill(); }
+    requestAnimationFrame(draw); }
+  if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  /* ---------- fondo: luce calda, lievi variazioni ---------- */
+  var shades=['#EFE3CC','#F0E4CD','#EEE1C8','#F1E6D0','#EFE3CB','#EDE0C6','#F2E7D2'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    document.getElementById('railDLab').textContent = (active.dataset.depth==='0') ? 'in mare' : 'Profondità';
+    if(!reduce){ warmth.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)]; }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- due mondi in un oggetto (vasi cliccabili) ---------- */
+  var info=document.getElementById('bowlinfo');
+  if(info){
+    document.querySelectorAll('.obj').forEach(function(o){
+      function show(){ info.innerHTML='<b>'+o.dataset.t+'</b><br>'+o.dataset.d+'<br><span class="two">↳ '+o.dataset.s+'</span>'; }
+      o.addEventListener('click',show); o.addEventListener('focus',show);
+      o.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} });
+    });
+  }
+
+  /* ---------- metriche di scroll ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'018-belitung',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] scheda 018 · '+m+'% a '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] sessione: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- iscrizione ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla — collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>
