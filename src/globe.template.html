@@ -53,17 +53,29 @@ body{background:var(--abyss);color:var(--paper);font-family:var(--body);font-wei
  font-family:var(--mono);font-size:14px;cursor:pointer;padding:4px 8px}
 #card .x:hover{color:var(--paper)}
 
-#routes{position:absolute;left:0;top:0;z-index:4;width:212px;max-width:52vw;
- background:rgba(5,13,20,.9);border:1px solid var(--rule);padding:12px 12px 8px}
-#routes h4{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--silver);margin-bottom:6px}
-#routes .rt-hint{font-family:var(--mono);font-size:10px;color:rgba(174,182,186,.6);line-height:1.5;margin-bottom:8px}
-#routes .rt{display:flex;align-items:center;gap:9px;width:100%;text-align:left;background:transparent;border:none;
- color:rgba(222,216,200,.6);font-family:var(--mono);font-size:11px;padding:5px 2px;cursor:pointer;transition:color .2s}
-#routes .rt:hover,#routes .rt:focus-visible{color:var(--paper)}
-#routes .rt .sw{width:18px;border-top:2px solid;flex:none}
+#routes{position:absolute;left:16px;bottom:16px;z-index:4;width:244px;max-width:62vw;
+ background:rgba(6,15,22,.95);border:1px solid var(--rule);border-left:2px solid var(--gold);
+ box-shadow:0 12px 34px rgba(0,0,0,.4)}
+#routes .rt-head{display:flex;align-items:center;justify-content:space-between;width:100%;
+ background:transparent;border:none;cursor:pointer;padding:13px 14px}
+#routes .rt-title{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+#routes .rt-tog{font-family:var(--mono);font-size:12px;color:var(--silver);transition:transform .25s}
+#routes.collapsed .rt-tog{transform:rotate(-90deg)}
+#routes .rt-body{padding:0 10px 10px;border-top:1px solid var(--rule);overflow:hidden}
+#routes.collapsed .rt-body{display:none}
+#routes .rt-hint{font-family:var(--mono);font-size:10px;color:rgba(174,182,186,.6);line-height:1.55;margin:11px 4px 9px}
+#routes .rt{display:flex;align-items:center;gap:11px;width:100%;text-align:left;background:transparent;border:none;
+ color:rgba(222,216,200,.62);font-family:var(--mono);font-size:11px;padding:9px 6px;cursor:pointer;
+ border-bottom:1px solid rgba(174,182,186,.07);transition:color .2s,background .2s}
+#routes .rt:last-child{border-bottom:none}
+#routes .rt:hover,#routes .rt:focus-visible{color:var(--paper);background:rgba(174,182,186,.05)}
+#routes .rt .sw{width:20px;border-top:2px solid;flex:none;opacity:.35;transition:opacity .2s}
+#routes .rt .rt-name{flex:1;line-height:1.25}
+#routes .rt .pip{width:7px;height:7px;border-radius:50%;border:1px solid rgba(174,182,186,.5);flex:none}
 #routes .rt[aria-pressed="true"]{color:var(--paper)}
-#routes .rt[aria-pressed="false"] .sw{opacity:.32}
-@media (max-width:720px){ #routes{position:static;width:auto;max-width:none;margin:0 0 10px} }
+#routes .rt[aria-pressed="true"] .sw{opacity:1}
+#routes .rt[aria-pressed="true"] .pip{background:var(--pc);border-color:var(--pc)}
+@media (max-width:720px){ #routes{position:static;left:auto;bottom:auto;width:auto;max-width:none;margin:0 0 12px} }
 
 .section{max-width:1240px;margin:0 auto;padding:60px 28px 30px}
 .section h2{font-family:var(--display);font-weight:400;font-size:clamp(26px,4vw,40px);margin-top:10px}
@@ -175,19 +187,42 @@ var ROUTES=[
  ]}
 ];
 var routesOn = {};
+var reduceGlobe = (window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+/* densifica la linea principale di ogni rotta, per il pallino che scorre */
+ROUTES.forEach(function(r){
+  var main=r.coords[0], f=[];
+  for(var i=0;i<main.length-1;i++){
+    var it=d3.geoInterpolate(main[i],main[i+1]);
+    for(var s=0;s<14;s++) f.push(it(s/14));
+  }
+  f.push(main[main.length-1]);
+  r._flow=f; r._ph=Math.random();
+});
+
 (function buildLegend(){
   var box=document.getElementById('routes'); if(!box) return;
-  box.innerHTML='<h4>Rotte commerciali</h4><div class="rt-hint">Attivale per capire perché i relitti sono lì.</div>';
+  var head=document.createElement('button');
+  head.className='rt-head'; head.type='button'; head.setAttribute('aria-expanded','true');
+  head.innerHTML='<span class="rt-title">Rotte commerciali</span><span class="rt-tog">–</span>';
+  head.addEventListener('click',function(){
+    var c=box.classList.toggle('collapsed');
+    head.setAttribute('aria-expanded', c?'false':'true');
+  });
+  box.appendChild(head);
+  var body=document.createElement('div'); body.className='rt-body';
+  body.innerHTML='<div class="rt-hint">Attiva una o più rotte per capire perché i relitti sono proprio lì.</div>';
   ROUTES.forEach(function(r){
     var b=document.createElement('button');
-    b.className='rt'; b.type='button'; b.setAttribute('aria-pressed','false');
-    b.innerHTML='<span class="sw" style="border-top-color:'+r.color+'"></span>'+r.name;
+    b.className='rt'; b.type='button'; b.setAttribute('aria-pressed','false'); b.style.setProperty('--pc',r.color);
+    b.innerHTML='<span class="sw" style="border-top-color:'+r.color+'"></span><span class="rt-name">'+r.name+'</span><span class="pip"></span>';
     b.addEventListener('click',function(){
       routesOn[r.id]=!routesOn[r.id];
       b.setAttribute('aria-pressed', routesOn[r.id]?'true':'false');
     });
-    box.appendChild(b);
+    body.appendChild(b);
   });
+  box.appendChild(body);
 })();
 
 var projection = d3.geoOrthographic().translate([CX,CY]).clipAngle(90).precision(0.5);
@@ -221,6 +256,18 @@ function draw(){
     ctx.setLineDash(r.dash||[]); ctx.lineCap='round'; ctx.lineJoin='round';
     ctx.strokeStyle=r.color; ctx.globalAlpha=.82; ctx.lineWidth=2.4; ctx.stroke();
     ctx.restore();
+    // pallino che scorre lungo la rotta
+    if(!reduceGlobe && r._flow){
+      var n=r._flow.length, ph=((Date.now()*0.00009 + r._ph)%1+1)%1;
+      var pt=r._flow[Math.floor(ph*n)%n];
+      if(visible(pt[0],pt[1])){
+        var pp=projection(pt);
+        ctx.save();
+        ctx.beginPath(); ctx.arc(pp[0],pp[1],11,0,6.2832); ctx.strokeStyle=r.color; ctx.globalAlpha=.28; ctx.lineWidth=1.4; ctx.stroke();
+        ctx.beginPath(); ctx.arc(pp[0],pp[1],5,0,6.2832); ctx.fillStyle=r.color; ctx.globalAlpha=.95; ctx.fill();
+        ctx.restore();
+      }
+    }
   });
 
   var fs=Math.max(15,Math.round(baseR*zoom*0.033));
