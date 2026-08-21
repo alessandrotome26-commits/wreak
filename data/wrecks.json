@@ -218,7 +218,7 @@
   "lat": -2.53,
   "lon": 107.62,
   "d": 17,
-  "st": "planned",
+  "st": "next",
   "f": "Un dhow arabo affondato intorno all'830 d.C. al largo dell'Indonesia con circa 60.000 ceramiche cinesi dell'epoca Tang: la prova più antica della 'via della seta marittima' tra Cina e mondo arabo."
  },
  {
@@ -236,7 +236,8 @@
   "lat": 55.07,
   "lon": 17.42,
   "d": 44,
-  "st": "next",
+  "st": "ready",
+  "href": "wilhelmgustloff.html",
   "f": "Nave tedesca carica di profughi in fuga dalla Prussia orientale, silurata da un sommergibile sovietico nel Baltico nel 1945: circa 9.000 morti, il più grande naufragio della storia — e uno dei meno raccontati."
  },
  {

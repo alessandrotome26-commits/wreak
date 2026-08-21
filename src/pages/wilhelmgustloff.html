@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wilhelm Gustloff — 1945</title>
+<meta name="description" content="Il 30 gennaio 1945, un transatlantico tedesco stipato di oltre diecimila profughi in fuga fu silurato nel Baltico gelato. Con circa novemila morti — sei volte il Titanic — è il naufragio più letale della storia. E quasi nessuno lo conosce.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wilhelm Gustloff — 1945">
+<meta property="og:description" content="Novemila morti in una notte di gennaio. Il naufragio più letale mai avvenuto — e uno dei meno raccontati. Questa scheda dà un nome a quel silenzio.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0B1420">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#0B1420; --deep:#070E17; --panel:#10202E;
+  --ice:#DEE7ED; --ice2:#A9BAC6; --steel:#5E7488; --frost:#88AAC0;
+  --amber:#D9A24E; --amber2:#EAC079; --fog:#6E7C88;
+  --rule:rgba(222,231,237,.13);
+  --display:"DM Serif Display",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--ice);font-family:var(--body);font-weight:300;line-height:1.68;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#sea{position:fixed;inset:0;z-index:-4;background:var(--night);transition:background 1.6s ease}
+#deepglow{position:fixed;inset:-10%;z-index:-3;pointer-events:none;opacity:.6;
+  background:radial-gradient(circle at 30% 22%,rgba(94,116,136,.10),transparent 38%),
+             radial-gradient(circle at 72% 74%,rgba(20,34,48,.7),transparent 44%)}
+#vigil{position:fixed;left:50%;bottom:-6%;transform:translateX(-50%);width:70vw;height:46vh;z-index:-2;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 100%,rgba(217,162,78,.13),transparent 62%);
+  animation:vigil 7s ease-in-out infinite alternate}
+@keyframes vigil{0%{opacity:.7}100%{opacity:1}}
+#snow{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--fog);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--amber)}
+.rail-num{font-size:18px;color:var(--ice);font-weight:500;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.6;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(11,20,32,.82)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--frost);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(46px,9.5vw,104px);line-height:1;letter-spacing:0}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(29px,4.6vw,49px);line-height:1.14;margin-bottom:22px}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(222,231,237,.84)}
+.lede{font-size:20px;color:var(--ice)}
+em{font-style:italic;color:var(--ice2)}
+strong{font-weight:500;color:var(--ice)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--fog);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--fog)}
+.coord b{display:block;color:var(--ice);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:flex-start;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  color:var(--frost);border:1px solid rgba(136,170,192,.36);padding:6px 11px;margin-top:28px;align-self:flex-start;max-width:66ch;line-height:1.6}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--frost);flex:none;margin-top:5px}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(110,124,136,.9);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(222,231,237,.08)}
+.stat .v{font-family:var(--display);font-weight:400;font-size:clamp(32px,5vw,50px);line-height:1.05;color:var(--frost);font-variant-numeric:tabular-nums}
+.stat .v.amber{color:var(--amber2)}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--amber);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-style:italic;font-size:clamp(24px,4.2vw,38px);line-height:1.24;color:var(--ice);quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--fog);margin-top:18px}
+
+.sitewrap{margin-top:14px;border:1px solid var(--rule);background:rgba(16,32,46,.6);padding:22px 20px}
+.sitewrap svg{width:100%;height:auto;display:block}
+.bar{cursor:pointer}
+.bar rect{transition:opacity .2s}
+.bar:hover .barfill,.bar:focus .barfill{opacity:.82}
+.bar .barlab,.bar .barnum{transition:fill .2s}
+.bar:hover .barlab,.bar:focus .barlab{fill:var(--ice)}
+#tollinfo{font-family:var(--mono);font-size:12px;color:var(--ice2);margin-top:16px;min-height:58px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.75}
+#tollinfo b{color:var(--amber2);font-weight:500}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(222,231,237,.08);vertical-align:top}
+td.n{color:var(--ice);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:rgba(110,124,136,.9);line-height:1.75;margin-top:22px;max-width:60ch}
+
+.realimg{margin-top:22px;border:1px solid rgba(136,170,192,.3);background:rgba(136,170,192,.055);padding:22px}
+.realimg .badge{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--frost);margin-bottom:14px}
+.realimg p{margin-bottom:14px}
+.realimg .rilink{display:inline-block;margin:0 18px 8px 0;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--frost);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:4px;transition:color .25s,border-color .25s}
+.realimg .rilink:hover{color:var(--amber2);border-color:var(--amber)}
+.realimg .cite{font-family:var(--mono);font-size:11px;color:rgba(110,124,136,.9);line-height:1.6;margin-top:8px}
+
+.shipart{margin-top:22px;border:1px solid var(--rule);background:rgba(16,32,46,.6);padding:18px 18px 12px}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:rgba(110,124,136,.9);letter-spacing:.05em;margin-top:10px}
+.wgship{transform-box:fill-box;transform-origin:50% 90%;animation:wgroll 9s ease-in-out infinite}
+@keyframes wgroll{0%,100%{transform:rotate(-.7deg)}50%{transform:rotate(.7deg)}}
+.wgwave{animation:wgwave 5.5s ease-in-out infinite}
+@keyframes wgwave{0%,100%{transform:translateX(0)}50%{transform:translateX(-8px)}}
+
+.closing{border-top:1px solid var(--amber);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--fog);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:rgba(16,32,46,.6);border:1px solid var(--rule);color:var(--ice);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--frost);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--amber);color:#241706;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.88}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--frost)}
+.signup .msg.err{color:var(--amber2)}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--amber2);border-color:var(--amber)}
+.src{font-family:var(--mono);font-size:11.5px;color:rgba(110,124,136,.85);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:14px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #sea,#vigil{transition:none;animation:none}
+  .wgship,.wgwave{animation:none}
+  #snow{display:none}
+}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="sea"></div>
+<div id="deepglow"></div>
+<div id="vigil"></div>
+<canvas id="snow"></canvas>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Anno</div><div class="rail-num" id="railYear">1945</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Profondità</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1945" data-depth="0">
+  <div class="eyebrow">Transatlantico → nave da evacuazione · Mar Baltico</div>
+  <h1>Wilhelm Gustloff</h1>
+  <div class="sub">SILURATA 30 GENNAIO 1945 · IL NAUFRAGIO PIÙ LETALE DELLA STORIA</div>
+  <div class="coordbox">
+    <div class="coord">Dove giace<b>Baltico, al largo della Pomerania · ~44 m</b></div>
+    <div class="coord">A bordo<b>oltre 10.000 — in gran parte profughi</b></div>
+    <div class="coord">Vittime<b>~9.000 (fino a 4–5.000 bambini)</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>TOMBA DI GUERRA (POLONIA) · RELITTO A ~44 M · CIRCA SEI VOLTE LE VITTIME DEL TITANIC · OGNI CIFRA È UNA STIMA</div>
+  <div class="scrollcue">↓ scorri — con rispetto</div>
+</section>
+
+<section class="reveal" data-year="1945" data-depth="44">
+  <div class="eyebrow">Perché questo relitto</div>
+  <h2>Il naufragio più letale della storia — e quasi nessuno lo conosce</h2>
+  <p class="lede">Chiedete a chiunque quale sia il più grande disastro navale di sempre, e vi risponderà "il Titanic". Sbaglia di sei volte.</p>
+  <p>In una notte di gennaio del 1945 morirono nel Baltico circa <strong>novemila persone</strong> — quasi tutte civili, in fuga, e migliaia di loro bambini. Nessun altro naufragio, prima o dopo, si è avvicinato a quel numero. Eppure la Wilhelm Gustloff è rimasta per decenni nel silenzio, un buco nero nella memoria. Questa scheda esiste per una ragione semplice: un disastro di questa portata non può restare senza nome. Lo raccontiamo con i fatti verificati, la loro complessità morale, e il rispetto dovuto a una tomba.</p>
+  <div class="stats">
+    <div class="stat"><div class="v amber">~9.000</div><div class="k">morti in una notte</div></div>
+    <div class="stat"><div class="v">~6×</div><div class="k">le vittime del Titanic</div></div>
+    <div class="stat"><div class="v">10.000+</div><div class="k">persone stipate a bordo</div></div>
+    <div class="stat"><div class="v">~1.200</div><div class="k">i sopravvissuti</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1937" data-depth="0">
+  <div class="eyebrow">La nave</div>
+  <h2>Nata come propaganda della gioia</h2>
+  <p>C'è un'amara ironia nell'origine di questa nave. Varata nel 1937, la Wilhelm Gustloff fu la prima costruita apposta per il programma nazista <em>Kraft durch Freude</em> — "Forza attraverso la gioia" — che offriva crociere a prezzi popolari agli operai tedeschi, come vetrina del regime. Portava il nome di un funzionario nazista assassinato nel 1936, elevato a martire.</p>
+  <p class="lede">Una nave costruita per mostrare la felicità del Terzo Reich divenne la più grande tomba galleggiante della storia.</p>
+  <p>Con la guerra, la crociera finì. La Gustloff fu prima nave ospedale, poi, dal 1940, caserma galleggiante nel porto di Gotenhafen: alloggio per gli allievi sommergibilisti della Kriegsmarine. Fu verniciata di grigio militare e dotata di cannoni contraerei. Un dettaglio che, cinque anni dopo, sarebbe pesato sulla domanda più difficile di tutta questa storia.</p>
+</section>
+
+<section class="reveal" data-year="1945" data-depth="0">
+  <div class="eyebrow">Gennaio 1945 · Operazione Hannibal</div>
+  <h2>Un milione di persone in fuga sul ghiaccio</h2>
+  <p>All'inizio del 1945 l'Armata Rossa dilaga nella Prussia orientale. Per la popolazione tedesca, terrorizzata dalle notizie della rappresaglia sovietica, resta una sola via di scampo: il mare. La Kriegsmarine lancia l'<strong>Operazione Hannibal</strong>, una delle più grandi evacuazioni navali della storia: nell'arco di mesi porterà in salvo oltre un milione di persone attraverso un Baltico invernale.</p>
+  <p>La Gustloff, ferma da anni in porto, viene richiamata in servizio. Il 30 gennaio salpa da Gotenhafen carica ben oltre ogni limite: progettata per meno di duemila persone, ne imbarca <strong>oltre diecimila</strong> — profughi, feriti, ausiliarie della marina, e migliaia di bambini. Fuori fa diversi gradi sotto zero. Il mare è nero e coperto di lastre di ghiaccio.</p>
+</section>
+
+<section class="reveal" data-year="1945" data-depth="44">
+  <div class="eyebrow">La scala della perdita</div>
+  <h2>Fama e morte, all'inverso</h2>
+  <p>Il modo più onesto per capire la Gustloff è confrontarla. I naufragi che il mondo ricorda non sono quelli che uccisero di più: i più letali avvennero quasi tutti nel Baltico, negli ultimi mesi di guerra, e sono quasi sconosciuti. Clicca una barra.</p>
+  <div class="sitewrap">
+    <svg viewBox="0 0 640 300" role="img" aria-label="Confronto tra i naufragi più letali: la Gustloff supera di gran lunga i più famosi" class="fielded">
+      <title>Il naufragio più letale</title>
+      <!-- asse -->
+      <line x1="176" y1="20" x2="176" y2="284" stroke="var(--rule)" stroke-width="1"/>
+      <text x="20" y="18" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">VITTIME STIMATE · CLICCA UNA BARRA</text>
+
+      <!-- Gustloff ~9000 -> larghezza 440 (scala: 9000 => 440px) -->
+      <g class="bar" tabindex="0" data-t="Wilhelm Gustloff · 1945" data-d="Silurata nel Baltico durante l'Operazione Hannibal. ~9.000 morti, in gran parte profughi civili. Il naufragio più letale della storia.">
+        <rect x="176" y="36" width="440" height="26" class="barfill" fill="var(--amber)"/>
+        <text x="172" y="53" class="barlab" fill="var(--ice2)" font-family="IBM Plex Mono, monospace" font-size="10.5" text-anchor="end">Wilhelm Gustloff · 1945</text>
+        <text x="606" y="53" class="barnum" fill="#241706" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="500" text-anchor="end">~9.000</text>
+      </g>
+      <!-- Goya ~7000 -> 342 -->
+      <g class="bar" tabindex="0" data-t="Goya · 1945" data-d="Anch'essa affondata nel Baltico durante l'Operazione Hannibal, pochi mesi dopo la Gustloff. Circa 7.000 morti. Praticamente sconosciuta.">
+        <rect x="176" y="78" width="342" height="26" class="barfill" fill="var(--frost)"/>
+        <text x="172" y="95" class="barlab" fill="var(--ice2)" font-family="IBM Plex Mono, monospace" font-size="10.5" text-anchor="end">Goya · 1945</text>
+        <text x="524" y="95" class="barnum" fill="var(--ice2)" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="start">~7.000</text>
+      </g>
+      <!-- Cap Arcona ~4500 -> 220 -->
+      <g class="bar" tabindex="0" data-t="Cap Arcona · 1945" data-d="Carica di prigionieri dei campi di concentramento, fu bombardata per errore dalla RAF nel maggio 1945. Circa 4.500 morti.">
+        <rect x="176" y="120" width="220" height="26" class="barfill" fill="var(--frost)"/>
+        <text x="172" y="137" class="barlab" fill="var(--ice2)" font-family="IBM Plex Mono, monospace" font-size="10.5" text-anchor="end">Cap Arcona · 1945</text>
+        <text x="402" y="137" class="barnum" fill="var(--ice2)" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="start">~4.500</text>
+      </g>
+      <!-- Doña Paz ~4000 -> 196 -->
+      <g class="bar" tabindex="0" data-t="Doña Paz · 1987" data-d="Traghetto filippino in collisione con una petroliera. Stime fino a ~4.000 morti: il più grave disastro navale in tempo di pace.">
+        <rect x="176" y="162" width="196" height="26" class="barfill" fill="var(--steel)"/>
+        <text x="172" y="179" class="barlab" fill="var(--ice2)" font-family="IBM Plex Mono, monospace" font-size="10.5" text-anchor="end">Doña Paz · 1987</text>
+        <text x="378" y="179" class="barnum" fill="var(--ice2)" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="start">~4.000</text>
+      </g>
+      <!-- Titanic ~1500 -> 73 -->
+      <g class="bar" tabindex="0" data-t="Titanic · 1912" data-d="Il naufragio più famoso del mondo. ~1.500 morti: una tragedia enorme — e, nella scala di questa pagina, meno di un sesto della Gustloff.">
+        <rect x="176" y="204" width="73" height="26" class="barfill" fill="var(--steel)"/>
+        <text x="172" y="221" class="barlab" fill="var(--ice2)" font-family="IBM Plex Mono, monospace" font-size="10.5" text-anchor="end">Titanic · 1912</text>
+        <text x="255" y="221" class="barnum" fill="var(--ice2)" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="start">~1.500</text>
+      </g>
+      <!-- Lusitania ~1200 -> 59 -->
+      <g class="bar" tabindex="0" data-t="Lusitania · 1915" data-d="Silurata al largo dell'Irlanda, spinse gli Stati Uniti verso la Prima guerra mondiale. ~1.200 morti (vedi scheda 015).">
+        <rect x="176" y="246" width="59" height="26" class="barfill" fill="var(--steel)"/>
+        <text x="172" y="263" class="barlab" fill="var(--ice2)" font-family="IBM Plex Mono, monospace" font-size="10.5" text-anchor="end">Lusitania · 1915</text>
+        <text x="241" y="263" class="barnum" fill="var(--ice2)" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="start">~1.200</text>
+      </g>
+    </svg>
+    <div id="tollinfo">Le tre barre più lunghe sono tutte del 1945, tutte nel Baltico — e quasi nessuno le conosce. Clicca per i dettagli.</div>
+  </div>
+  <p class="note">Cifre stimate, arrotondate, con margini d'incertezza anche ampi (specie per Cap Arcona e Doña Paz). Servono a dare la scala, non a stilare una classifica esatta del dolore.</p>
+</section>
+
+<section class="reveal" data-year="1945" data-depth="44">
+  <div class="eyebrow">30 gennaio 1945 · ore 21 circa</div>
+  <h2>Tre siluri nel buio</h2>
+  <p>Nelle acque gelide al largo della Pomerania, il sommergibile sovietico <strong>S-13</strong>, comandato da <strong>Alexander Marinesko</strong>, individua la sagoma enorme e male illuminata della Gustloff. Lancia quattro siluri. Tre colpiscono: a prua, a centro nave, e nella sala macchine, che si spegne di colpo lasciando la nave al buio e senza energia.</p>
+  <div class="moment">
+    <q>Le scialuppe erano ghiacciate ai paranchi. L'acqua era a pochi gradi sopra lo zero. Per la maggior parte di chi finì in mare, non ci fu tempo.</q>
+    <cite>DALLE RICOSTRUZIONI DEL DISASTRO — LE CONDIZIONI DI QUELLA NOTTE</cite>
+  </div>
+  <p>La nave s'inclina subito. Con oltre diecimila persone a bordo e posti in scialuppa per circa cinquemila — molte delle quali congelate e impossibili da calare — non c'è scampo per la maggioranza. In poche decine di minuti la Gustloff scompare. Nel buio, nel gelo, nel panico, muoiono circa novemila persone. È il numero di un'intera cittadina, cancellata in una notte.</p>
+</section>
+
+<section class="reveal" data-year="2002" data-depth="44">
+  <div class="eyebrow">Il silenzio, e la memoria</div>
+  <h2>Perché non ne abbiamo mai sentito parlare</h2>
+  <p>La ragione dell'oblio è dolorosa e comprensibile insieme. Le vittime erano tedesche, in una guerra scatenata dalla Germania. Nel dopoguerra, piangere apertamente i propri morti civili sembrava, a molti tedeschi, una forma indebita di autocommiserazione — quasi un modo per mettere sullo stesso piano il carnefice e la vittima. Così la Gustloff scivolò in un lungo silenzio.</p>
+  <p class="lede">Il tabù si ruppe solo nel 2002, con un romanzo.</p>
+  <p>Fu il premio Nobel <strong>Günter Grass</strong>, con <em>Il passo del gambero</em>, a riportare la tragedia nella memoria pubblica tedesca, ponendo la domanda giusta: si possono ricordare i civili tedeschi morti senza per questo relativizzare i crimini del nazismo? La risposta di questa scheda è la stessa di Grass: sì — a patto di non dimenticare mai il contesto. Piangere novemila bambini e profughi non assolve chi scatenò la guerra.</p>
+</section>
+
+<section class="reveal" data-year="1945" data-depth="44">
+  <div class="eyebrow">La domanda difficile</div>
+  <h2>Era un bersaglio legittimo?</h2>
+  <p>È la questione che accompagna la Gustloff da ottant'anni, e va affrontata senza sconti. Sul piano del diritto di guerra, la risposta è scomoda: <strong>sì</strong>. La nave era verniciata di grigio militare, armata con cannoni contraerei, trasportava oltre novecento militari — tra cui allievi sommergibilisti — e non era segnalata come nave ospedale. Un istituto tedesco di diritto marittimo l'ha classificata come obiettivo militare legittimo.</p>
+  <p>E tuttavia, su quella nave, per ogni militare c'erano dieci civili: donne, feriti, vecchi, e migliaia di bambini. Marinesko non poteva saperlo con certezza — vedeva solo una grande nave nemica nel buio — ma il risultato fu una strage di innocenti. La sua stessa vicenda è ambigua: bevitore incallito, radiato dalla marina nell'ottobre 1945, fu riabilitato e nominato <strong>Eroe dell'Unione Sovietica solo nel 1990</strong>, postumo. Due verità che non si annullano: un atto di guerra legittimo, e una catastrofe umana. Tenerle insieme è l'unico modo onesto di raccontarla.</p>
+</section>
+
+<section class="reveal" data-year="1937" data-depth="44">
+  <div class="eyebrow">La nave</div>
+  <h2>Grande, grigia, sovraccarica</h2>
+  <p>Lunga oltre duecento metri, con un solo fumaiolo, la Gustloff era un transatlantico di media stazza, concepito per crociere confortevoli. Nella sua ultima notte non aveva più nulla di una nave da diporto: dipinta di grigio da guerra, spenta, appesantita da migliaia di corpi oltre ogni previsione, avanzava lenta nel buio del Baltico.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 640 230" role="img" aria-label="Illustrazione stilizzata del transatlantico Wilhelm Gustloff, verniciato di grigio militare">
+      <title>Il transatlantico Wilhelm Gustloff</title>
+      <path d="M-20 194 q 60 -7 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(94,116,136,.5)" stroke-width="1.4" class="wgwave"/>
+      <path d="M-20 206 q 60 -6 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(94,116,136,.3)" stroke-width="1.2" class="wgwave"/>
+      <g class="wgship">
+        <path d="M96 170 L120 152 L560 152 L590 166 L568 170 Z" fill="#3A4753" stroke="#586873" stroke-width="1.2"/>
+        <line x1="126" y1="159" x2="556" y2="159" stroke="#5E7488" stroke-width="1"/>
+        <rect x="180" y="130" width="300" height="22" fill="#495967" stroke="#6B7B87" stroke-width="1"/>
+        <g fill="#2C3945"><rect x="196" y="136" width="6" height="8"/><rect x="216" y="136" width="6" height="8"/><rect x="236" y="136" width="6" height="8"/><rect x="256" y="136" width="6" height="8"/><rect x="276" y="136" width="6" height="8"/><rect x="296" y="136" width="6" height="8"/><rect x="316" y="136" width="6" height="8"/><rect x="336" y="136" width="6" height="8"/><rect x="356" y="136" width="6" height="8"/><rect x="376" y="136" width="6" height="8"/><rect x="396" y="136" width="6" height="8"/><rect x="416" y="136" width="6" height="8"/><rect x="436" y="136" width="6" height="8"/><rect x="456" y="136" width="6" height="8"/></g>
+        <!-- singolo fumaiolo -->
+        <rect x="312" y="96" width="34" height="36" fill="#414F5B" stroke="#606F7A" stroke-width="1"/>
+        <line x1="150" y1="130" x2="150" y2="84" stroke="#586873" stroke-width="1.6"/>
+        <line x1="500" y1="130" x2="500" y2="88" stroke="#586873" stroke-width="1.6"/>
+      </g>
+      <text x="20" y="28" fill="rgba(110,124,136,.9)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">TRANSATLANTICO KDF, GRIGIO DI GUERRA — RICOSTRUZIONE STILIZZATA</text>
+    </svg>
+    <figcaption>Ricostruzione stilizzata. Le fotografie storiche della nave sono conservate dagli archivi qui sotto.</figcaption>
+  </figure>
+  <div class="realimg">
+    <div class="badge">Immagini storiche reali</div>
+    <p>Le fotografie della Wilhelm Gustloff — come nave da crociera e come nave grigia da guerra — sono conservate dagli archivi tedeschi e dai musei, insieme alla documentazione del disastro.</p>
+    <a class="rilink" href="https://www.nationalww2museum.org/war/articles/sinking-wilhelm-gustloff" target="_blank" rel="noopener">La ricostruzione · The National WWII Museum ↗</a>
+    <a class="rilink" href="https://www.britannica.com/topic/MV-Wilhelm-Gustloff" target="_blank" rel="noopener">Voce e cifre · Encyclopædia Britannica ↗</a>
+    <p class="cite">Fotografie d'epoca dal Bundesarchiv tedesco e dai musei citati, riprodotte con attribuzione presso le fonti, non ospitate su questo sito.</p>
+  </div>
+</section>
+
+<section class="reveal" data-year="1945" data-depth="44">
+  <div class="eyebrow">I numeri</div>
+  <h2>Il disastro, in cifre</h2>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Valore</th></tr></thead>
+    <tbody>
+      <tr><td>Tipo</td><td class="n">transatlantico KdF (1937), poi nave da evacuazione</td></tr>
+      <tr><td>Lunghezza</td><td class="n">~208 m</td></tr>
+      <tr><td>Capacità di progetto</td><td class="n">meno di 2.000 persone</td></tr>
+      <tr><td>Persone a bordo (30 gen 1945)</td><td class="n">oltre 10.000 (stime ~10.582)</td></tr>
+      <tr><td>Vittime</td><td class="n">~9.000 (fino a 4–5.000 bambini)</td></tr>
+      <tr><td>Sopravvissuti</td><td class="n">~1.200</td></tr>
+      <tr><td>Affondamento</td><td class="n">30 gennaio 1945, notte · Baltico</td></tr>
+      <tr><td>Causa</td><td class="n">3 siluri · sommergibile sovietico S-13</td></tr>
+      <tr><td>Posti in scialuppa</td><td class="n">~5.000 (molte ghiacciate)</td></tr>
+      <tr><td>Profondità del relitto</td><td class="n">~44 m (tomba di guerra, Polonia)</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Le cifre delle persone a bordo e delle vittime sono stime con margini ampi: la nave era stipata oltre ogni registro, e molti a bordo non furono mai contati. La cifra di ~9.000 morti è quella comunemente accettata; alcune fonti arrivano a ~9.300.</p>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">Nota metodologica</div>
+  <h2>Come si racconta una tragedia così</h2>
+  <p>Con due cautele, tenute insieme. La prima: le cifre sono stime, e come tali sono dichiarate — nessuno saprà mai il numero esatto di chi salì su quella nave, né di chi non scese. La seconda, più delicata: ricordare novemila civili tedeschi morti non significa in alcun modo attenuare le responsabilità del nazismo. Le due cose convivono. La Gustloff era un obiettivo militare legittimo <em>e</em> il teatro di una strage di innocenti; il contesto era una guerra di aggressione tedesca <em>e</em> quei bambini non l'avevano voluta.</p>
+  <p>Questo atlante racconta relitti, non emette sentenze. Ma di fronte al naufragio più letale della storia, il silenzio non è neutralità: è un secondo torto verso chi è morto. Dare un nome, un numero e un contesto a quella notte è il minimo che si possa fare. Il relitto riposa a quarantaquattro metri, ed è una tomba: si guarda, non si tocca.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 017 di 20</div>
+    <h2 style="margin-bottom:14px">La prossima cambia mare e millennio: il relitto di Belitung</h2>
+    <p>Dal gelo del Baltico ai mari caldi dell'Indonesia, e indietro di undici secoli. Nel IX secolo un veliero arabo carico di sessantamila ceramiche cinesi affondò nel Mar di Giava: la prova più antica e più splendida della Via della Seta marittima, l'incontro diretto tra la Cina dei Tang e il mondo islamico. Dopo tanto buio, una storia di scambio e di meraviglia.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce la prossima scheda</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="maryceleste.html">← Scheda 016: la Mary Celeste</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">Tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · Encyclopædia Britannica «MV Wilhelm Gustloff» (nave, cifre, dinamica) · The National WWII Museum, New Orleans (ricostruzione del disastro) · Smithsonian Magazine (perché è quasi sconosciuto) · Wikipedia «MV Wilhelm Gustloff» e «Alexander Marinesko» (S-13, siluri, Operazione Hannibal, dibattito sull'obiettivo legittimo, Eroe dell'URSS 1990) · Günter Grass, «Im Krebsgang / Il passo del gambero» (2002)<br><br>
+      Wreck Atlas · Scheda 017 · Prototipo
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), sea=document.getElementById('sea');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- rivelazione delle sezioni ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- neve che cade nella notte ---------- */
+  var cv=document.getElementById('snow'), ctx=cv&&cv.getContext?cv.getContext('2d'):null, flakes=[], W=0,H=0;
+  function size(){ if(!ctx)return; W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    flakes=[]; var n=Math.round(W*H/26000);
+    for(var i=0;i<n;i++) flakes.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.4,vy:.3+Math.random()*.9,drift:Math.random()*.5-.25,o:.12+Math.random()*.3}); }
+  function draw(){ if(!ctx)return; ctx.clearRect(0,0,W,H);
+    for(var i=0;i<flakes.length;i++){ var f=flakes[i];
+      f.y+=f.vy; f.x+=f.drift+Math.sin(f.y*.01)*.2;
+      if(f.y>H+4){ f.y=-4; f.x=Math.random()*W; }
+      ctx.beginPath(); ctx.arc(f.x,f.y,f.r,0,6.2832);
+      ctx.fillStyle='rgba(222,231,237,'+f.o+')'; ctx.fill(); }
+    requestAnimationFrame(draw); }
+  if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  /* ---------- fondo: mare notturno, discesa nel buio ---------- */
+  var shades=['#0B1420','#0A1220','#09111D','#080F1A','#070E17','#060C15','#050A12'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    document.getElementById('railDLab').textContent = (active.dataset.depth==='0') ? 'in mare' : 'Profondità';
+    if(!reduce){ sea.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)]; }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- confronto dei naufragi (barre cliccabili) ---------- */
+  var toll=document.getElementById('tollinfo');
+  if(toll){
+    document.querySelectorAll('.bar').forEach(function(b){
+      function show(){ toll.innerHTML='<b>'+b.dataset.t+'</b><br>'+b.dataset.d; }
+      b.addEventListener('click',show); b.addEventListener('focus',show);
+      b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} });
+    });
+  }
+
+  /* ---------- metriche di scroll ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'017-wilhelmgustloff',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] scheda 017 · '+m+'% a '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] sessione: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- iscrizione ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla — collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>
