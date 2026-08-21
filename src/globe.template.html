@@ -128,8 +128,8 @@ body{background:var(--abyss);color:var(--paper);font-family:var(--body);font-wei
 
 <div class="section" id="esplora">
   <div class="eyebrow">L'archivio</div>
-  <h2>Dodici relitti, per ora</h2>
-  <div class="sub">CLICCA UN NOME PER I DETTAGLI · <a href="mappa.html" style="color:var(--gold);text-decoration:none">MAPPA DEL FONDALE →</a></div>
+  <h2 id="wcount">I relitti sul globo</h2>
+  <div class="sub" id="wsub">CLICCA UN NOME PER I DETTAGLI · <a href="mappa.html" style="color:var(--gold);text-decoration:none">MAPPA DEL FONDALE →</a></div>
   <div style="margin-top:26px">
     <div class="legend">
       <span><i style="background:#BE9247"></i>Scheda pronta</span>
@@ -396,6 +396,15 @@ WRECKS.map(function(w,i){return{w:w,i:i};}).sort(function(a,b){return a.w.y-b.w.
   list.appendChild(b);
 });
 function syncList(){}
+
+// intestazione dinamica dell'elenco
+(function(){
+  var nReady=WRECKS.filter(function(w){return w.st==='ready';}).length;
+  var h=document.getElementById('wcount'); if(h) h.textContent=WRECKS.length+' relitti sul globo';
+  var s=document.getElementById('wsub');
+  if(s) s.innerHTML=nReady+' con scheda pronta · clicca un nome per i dettagli · '+
+    '<a href="mappa.html" style="color:var(--gold);text-decoration:none">MAPPA DEL FONDALE →</a>';
+})();
 
 requestAnimationFrame(draw);
 })();
