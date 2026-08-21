@@ -144,7 +144,7 @@
   "lat": 27.0,
   "lon": -79.0,
   "d": 12,
-  "st": "next",
+  "st": "planned",
   "f": "Almiranta spagnola naufragata nel 1656 sul Little Bahama Bank. Saccheggiata e recuperata per secoli; ancora oggi affiorano reperti dalla sabbia."
  },
  {
@@ -172,7 +172,8 @@
   "lat": 51.42,
   "lon": -8.52,
   "d": 93,
-  "st": "planned",
+  "st": "ready",
+  "href": "lusitania.html",
   "f": "Transatlantico britannico silurato dal sommergibile tedesco U-20 al largo dell'Irlanda nel 1915: quasi 1.200 morti. Contribuì a trascinare gli Stati Uniti nella Prima guerra mondiale."
  },
  {
@@ -280,7 +281,7 @@
   "lat": 18.6,
   "lon": -73.65,
   "d": 4,
-  "st": "planned",
+  "st": "next",
   "f": "La 'nave fantasma' per eccellenza: nel 1872 fu trovata alla deriva nell'Atlantico, perfettamente in ordine ma senza un'anima a bordo. L'equipaggio non fu più ritrovato. La nave finì i suoi giorni su una scogliera di Haiti nel 1885."
  },
  {
