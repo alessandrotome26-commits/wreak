@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SS Central America — 1857</title>
+<meta name="description" content="La 'Nave d'Oro': nel 1857 il piroscafo SS Central America affondò in un uragano al largo delle Carolinas con dieci tonnellate d'oro della corsa californiana, aggravando il panico finanziario del 1857. Ritrovata da un robot a 2.200 metri nel 1988 — e poi al centro di uno scandalo che dura ancora.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SS Central America — 1857">
+<meta property="og:description" content="Un naufragio con tre vite: una tragedia eroica che scosse l'economia americana, il primo grande recupero robotico degli abissi, e un cacciatore di tesori finito latitante. Oro e profondità: il finale dell'atlante.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#17130D">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --char:#17130D; --deep2:#100C07; --panel:#211A11;
+  --cream:#ECE1C6; --cream2:#C8BA98; --fog:#8A7B60;
+  --gold:#C69A3E; --gold2:#E3BE62; --sepia:#9C8355;
+  --sonar:#4FA9B0; --sonar2:#78CBD1; --rust:#A9552F;
+  --rule:rgba(236,225,198,.14);
+  --display:"Rozha One",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--char);color:var(--cream);font-family:var(--body);font-weight:300;line-height:1.66;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#ground{position:fixed;inset:0;z-index:-4;background:var(--char);transition:background 1.6s ease}
+#vign{position:fixed;inset:0;z-index:-3;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 34%,rgba(198,154,62,.10),transparent 52%),
+             radial-gradient(ellipse at 50% 108%,rgba(0,0,0,.6),transparent 46%)}
+#sonarpulse{position:fixed;inset:-10%;z-index:-2;pointer-events:none;opacity:.4;
+  background:radial-gradient(circle at 70% 78%,rgba(79,169,176,.1),transparent 44%);
+  animation:sp 9s ease-in-out infinite alternate}
+@keyframes sp{0%{opacity:.25}100%{opacity:.5}}
+#dust{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--fog);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--gold)}
+.rail-num{font-size:18px;color:var(--cream);font-weight:500;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.6;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(23,19,13,.82)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(42px,8.6vw,96px);line-height:1.02;letter-spacing:0}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(29px,4.6vw,49px);line-height:1.16;margin-bottom:22px}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(236,225,198,.82)}
+.lede{font-size:20px;color:var(--cream)}
+em{font-style:italic;color:var(--cream2)}
+strong{font-weight:500;color:var(--cream)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--fog);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--fog)}
+.coord b{display:block;color:var(--cream);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:flex-start;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  color:var(--sonar2);border:1px solid rgba(120,203,209,.32);padding:6px 11px;margin-top:28px;align-self:flex-start;max-width:66ch;line-height:1.6}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--sonar2);flex:none;margin-top:5px}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(138,123,96,.9);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(236,225,198,.08)}
+.stat .v{font-family:var(--display);font-weight:400;font-size:clamp(30px,4.8vw,46px);line-height:1.05;color:var(--gold2);font-variant-numeric:tabular-nums}
+.stat .v.rust{color:var(--rust)}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--gold);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-size:clamp(23px,4.1vw,37px);line-height:1.26;color:var(--cream);quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--fog);margin-top:18px}
+
+.sitewrap{margin-top:14px;border:1px solid var(--rule);background:rgba(33,26,17,.6);padding:22px 20px}
+.sitewrap svg{width:100%;height:auto;display:block}
+.act{cursor:pointer}
+.act .halo{opacity:0;transition:opacity .25s}
+.act:hover .halo,.act:focus .halo{opacity:.55}
+.act .node{transition:transform .2s}
+.act:hover .node,.act:focus .node{transform:scale(1.12)}
+#actinfo{font-family:var(--mono);font-size:12px;color:rgba(236,225,198,.82);margin-top:16px;min-height:62px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.75}
+#actinfo b{color:var(--gold2);font-weight:500}
+#actinfo .deep{color:var(--sonar2)}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(236,225,198,.08);vertical-align:top}
+td.n{color:var(--cream);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:rgba(138,123,96,.9);line-height:1.75;margin-top:22px;max-width:60ch}
+
+.realimg{margin-top:22px;border:1px solid rgba(198,154,62,.32);background:rgba(198,154,62,.055);padding:22px}
+.realimg .badge{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);margin-bottom:14px}
+.realimg p{margin-bottom:14px}
+.realimg .rilink{display:inline-block;margin:0 18px 8px 0;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--gold2);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:4px;transition:color .25s,border-color .25s}
+.realimg .rilink:hover{color:var(--sonar2);border-color:var(--sonar)}
+.realimg .cite{font-family:var(--mono);font-size:11px;color:rgba(138,123,96,.9);line-height:1.6;margin-top:8px}
+
+.shipart{margin-top:22px;border:1px solid var(--rule);background:rgba(33,26,17,.6);padding:18px 18px 12px}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:rgba(138,123,96,.9);letter-spacing:.05em;margin-top:10px}
+.scaship{transform-box:fill-box;transform-origin:50% 90%;animation:scatilt 7s ease-in-out infinite}
+@keyframes scatilt{0%,100%{transform:rotate(-1.4deg)}50%{transform:rotate(1.4deg)}}
+.scawave{animation:scawave 4.5s ease-in-out infinite}
+@keyframes scawave{0%,100%{transform:translateX(0)}50%{transform:translateX(-9px)}}
+.scawheel{transform-box:fill-box;transform-origin:center;animation:scawheel 3.4s linear infinite}
+@keyframes scawheel{to{transform:rotate(360deg)}}
+
+.closing{border-top:1px solid var(--gold);padding-top:34px;margin-top:20px}
+.finale{font-family:var(--display);font-size:clamp(22px,3.4vw,32px);line-height:1.3;color:var(--gold2);margin:6px 0 20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--fog);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:rgba(33,26,17,.6);border:1px solid var(--rule);color:var(--cream);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--gold);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--gold);color:#241A06;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.88}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--sonar2)}
+.signup .msg.err{color:var(--rust)}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--gold2);border-color:var(--gold)}
+.src{font-family:var(--mono);font-size:11.5px;color:rgba(138,123,96,.85);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:14px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #ground,#sonarpulse{transition:none;animation:none}
+  .scaship,.scawave,.scawheel{animation:none}
+  #dust{display:none}
+}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="ground"></div>
+<div id="vign"></div>
+<div id="sonarpulse"></div>
+<canvas id="dust"></canvas>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Anno</div><div class="rail-num" id="railYear">1857</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Profondità</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1857" data-depth="0">
+  <div class="eyebrow">Piroscafo a ruote · «Ship of Gold» · 1857</div>
+  <h1>SS Central America</h1>
+  <div class="sub">AFFONDATA IN URAGANO · 12 SETTEMBRE 1857 · ~425 MORTI</div>
+  <div class="coordbox">
+    <div class="coord">Dove giace<b>al largo di Cape Hatteras · ~2.200 m</b></div>
+    <div class="coord">Il carico<b>~10 tonnellate d'oro della corsa californiana</b></div>
+    <div class="coord">Le vite<b>~425 perse · 153 salvate</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>RELITTO PROFONDO (~2.200 m) · RECUPERO ROBOTICO 1988 · CONTESO IN TRIBUNALE PER DECENNI · PARTE DELL'ORO ANCORA MANCANTE</div>
+  <div class="scrollcue">↓ scorri — la ventesima, e ultima del primo giro</div>
+</section>
+
+<section class="reveal" data-year="1857" data-depth="2200">
+  <div class="eyebrow">Perché questo relitto · scheda 020</div>
+  <h2>Un naufragio con tre vite</h2>
+  <p class="lede">Chiudiamo l'atlante come l'abbiamo aperto: con l'oro e con l'abisso. Ma nessun relitto racconta, come questo, che una nave può affondare tre volte — nel mare, in borsa e in tribunale.</p>
+  <p>Nel 1857 la Central America portò a fondo dieci tonnellate d'oro e quattrocentoventicinque persone, e la sua perdita fece tremare l'economia di un'intera nazione. Nel 1988 tornò alla luce grazie a un robot calato a oltre due chilometri di profondità, in una delle imprese tecnologiche più audaci mai tentate. E poi, negli anni 2010, quello stesso oro trascinò il suo scopritore in fuga, poi in carcere. È la storia di come il metallo più desiderato del mondo rovina chiunque lo tocchi — e il modo perfetto per chiudere il primo giro di questo atlante.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">~10 t</div><div class="k">d'oro nella stiva</div></div>
+    <div class="stat"><div class="v rust">~425</div><div class="k">vite perse</div></div>
+    <div class="stat"><div class="v">~2.200 m</div><div class="k">di profondità</div></div>
+    <div class="stat"><div class="v">3</div><div class="k">vite in 160 anni</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1857" data-depth="0">
+  <div class="eyebrow">Settembre 1857 · l'uragano</div>
+  <h2>Tre giorni con i secchi in mano</h2>
+  <p>La Central America era il ponte d'oro tra due Americhe: raccoglieva a Panama l'oro che i cercatori avevano estratto in California e lo portava alle banche dell'Est. Il 3 settembre 1857 salpò da Panama con cinquecentosettantotto persone e un carico da favola. Sei giorni dopo, al largo delle Carolinas, la investì un uragano.</p>
+  <p>Per tre giorni la nave lottò. Quando l'acqua spense le caldaie e con esse le pompe, non restò che la disperazione organizzata: <strong>una catena umana di passeggeri e marinai che svuotava la stiva con i secchi</strong>, per un giorno e una notte interi, in una battaglia persa contro il mare che saliva.</p>
+  <div class="moment">
+    <q>Fece salire sulle scialuppe prima le donne e i bambini. Poi, in alta uniforme, rimase sul ponte con la sua nave.</q>
+    <cite>LA FINE DEL CAPITANO WILLIAM LEWIS HERNDON, 12 SETTEMBRE 1857</cite>
+  </div>
+  <p>Il brigantino Marine raccolse <strong>centocinquantatré naufraghi</strong>, quasi tutti donne e bambini. Poco dopo la nave si inabissò con gli altri quattrocentoventicinque. Il capitano Herndon, che avrebbe potuto salvarsi, scelse di affondare con lei: fu pianto come un eroe nazionale, e una città della Virginia porta ancora il suo nome.</p>
+</section>
+
+<section class="reveal" data-year="1857" data-depth="0">
+  <div class="eyebrow">La conseguenza</div>
+  <h2>L'oro che non arrivò in banca</h2>
+  <p>Quel carico non era solo un tesoro privato: era ossigeno per il sistema bancario. Nell'estate del 1857 le banche dell'Est, già fragili, aspettavano proprio quelle tonnellate d'oro californiano per puntellare le loro riserve. Quando la Central America colò a picco, l'oro non arrivò.</p>
+  <p class="lede">La fiducia crollò, e con essa una fila di banche: il naufragio contribuì ad aggravare il <strong>Panico del 1857</strong>, una delle prime crisi finanziarie di respiro internazionale.</p>
+  <p>È uno degli esempi più nitidi di quanto una storia di questo atlante possa uscire dall'acqua e toccare la vita di tutti: un uragano al largo di Cape Hatteras che diventa, nel giro di settimane, fallimenti a New York e disoccupazione nelle città. Il mare, qui, presenta il conto anche a chi non l'ha mai visto.</p>
+</section>
+
+<section class="reveal" data-year="1988" data-depth="2200">
+  <div class="eyebrow">Le tre vite del relitto</div>
+  <h2>Giù nell'abisso, e ritorno</h2>
+  <p>La parabola della Central America si legge meglio lungo un solo asse: la profondità. L'oro scese a duemiladuecento metri, vi restò più di un secolo, risalì con la tecnologia — e trascinò con sé, in caduta, chi lo aveva riportato a galla. Clicca le tre vite.</p>
+  <div class="sitewrap">
+    <svg viewBox="0 0 640 320" role="img" aria-label="Le tre vite del relitto lungo l'asse della profondità: il naufragio del 1857, il recupero del 1988, lo scandalo del 2015" class="fielded">
+      <title>Le tre vite del relitto</title>
+      <defs>
+        <linearGradient id="col" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#3A3220"/>
+          <stop offset="0.5" stop-color="#1B2A2C"/>
+          <stop offset="1" stop-color="#0B1416"/>
+        </linearGradient>
+      </defs>
+      <rect x="70" y="34" width="26" height="256" fill="url(#col)" stroke="var(--rule)" stroke-width="1"/>
+      <text x="102" y="42" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9">0 m — superficie</text>
+      <text x="102" y="286" fill="var(--sonar2)" font-family="IBM Plex Mono, monospace" font-size="9">~2.200 m — il fondo</text>
+      <text x="30" y="22" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">CLICCA UNA DELLE TRE VITE</text>
+
+      <!-- percorso: giù (1857) e su (1988->2015) -->
+      <path d="M180 66 L330 250 L470 84" fill="none" stroke="var(--gold)" stroke-width="1.4" stroke-dasharray="4 5" opacity=".7"/>
+
+      <!-- 1857: superficie -->
+      <g class="act" tabindex="0" data-t="1857 · il naufragio" data-d="Un uragano affonda la nave al largo di Cape Hatteras. ~425 morti, ~10 tonnellate d'oro perdute, e un colpo al sistema bancario che aggrava il Panico del 1857." data-c="gold">
+        <circle class="halo" cx="180" cy="66" r="26" fill="var(--gold2)"/>
+        <circle class="node" cx="180" cy="66" r="11" fill="var(--gold)" stroke="#241A06" stroke-width="1.5"/>
+        <text x="180" y="40" fill="var(--gold2)" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="middle" font-weight="500">1857</text>
+        <text x="180" y="92" fill="var(--cream2)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle">NAUFRAGIO</text>
+      </g>
+      <!-- 1988: il fondo -->
+      <g class="act" tabindex="0" data-t="1988 · il recupero" data-d="Tommy Thompson trova il relitto a ~2.200 m e cala il robot Nemo: è uno dei primi grandi recuperi robotici degli abissi. Risalgono migliaia di monete e lingotti; un lingotto da 36 kg sarà venduto per circa 8 milioni di dollari." data-c="deep">
+        <circle class="halo" cx="330" cy="250" r="28" fill="var(--sonar)"/>
+        <circle class="node" cx="330" cy="250" r="12" fill="var(--sonar)" stroke="#06201F" stroke-width="1.5"/>
+        <text x="330" y="278" fill="var(--sonar2)" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="middle" font-weight="500">1988</text>
+        <text x="330" y="234" fill="var(--cream2)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle">IL ROBOT NEMO</text>
+      </g>
+      <!-- 2015: di nuovo in superficie, lo scandalo -->
+      <g class="act" tabindex="0" data-t="2015 · lo scandalo" data-d="Trentanove assicurazioni reclamano l'oro; gli investitori non vedono un dollaro. Ordinato a rivelare dove sono 500 monete d'oro, Thompson sparisce, vive sotto falso nome, e viene arrestato: resterà in carcere per oltraggio alla corte. Parte dell'oro non è mai stata ritrovata." data-c="rust">
+        <circle class="halo" cx="470" cy="84" r="26" fill="var(--rust)"/>
+        <circle class="node" cx="470" cy="84" r="11" fill="var(--rust)" stroke="#2A1408" stroke-width="1.5"/>
+        <text x="470" y="58" fill="var(--rust)" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="middle" font-weight="500">2015</text>
+        <text x="470" y="110" fill="var(--cream2)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle">LO SCANDALO</text>
+      </g>
+    </svg>
+    <div id="actinfo">La stessa nave, tre volte: affonda, risorge, e affonda di nuovo — stavolta trascinando chi l'aveva ritrovata. Clicca una vita.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1988" data-depth="2200">
+  <div class="eyebrow">1988 · l'impresa</div>
+  <h2>Un robot in un giardino d'oro</h2>
+  <p>Per centotrentun anni l'oro rimase irraggiungibile: duemiladuecento metri erano ben oltre la portata di qualsiasi sommozzatore. Poi arrivò <strong>Tommy Thompson</strong>, un ingegnere dell'Ohio con un'idea ostinata e un gruppo di investitori. Costruì un robot sottomarino, <strong>Nemo</strong>, capace di lavorare a quelle profondità con delicatezza chirurgica, e nel settembre 1988 lo calò sul relitto.</p>
+  <p class="lede">Le telecamere inquadrarono qualcosa che nessuno aveva mai visto: lingotti e monete d'oro sparsi sul fondo come in un giardino.</p>
+  <p>Fu un trionfo tecnologico che aprì l'era del recupero robotico degli abissi. Risalirono migliaia di monete e lingotti; il pezzo più celebre, un lingotto da trentasei chili, sarebbe stato venduto per circa otto milioni di dollari — all'epoca l'oggetto-moneta più prezioso del mondo. Sembrava la fine perfetta di una tragedia. Era, invece, l'inizio della terza vita del relitto.</p>
+</section>
+
+<section class="reveal" data-year="2015" data-depth="0">
+  <div class="eyebrow">Il conto</div>
+  <h2>La maledizione dell'oro</h2>
+  <p>L'oro, riemerso, non portò pace ma cause. Trentanove compagnie di assicurazione, eredi di chi aveva risarcito le perdite nel 1857, rivendicarono il tesoro; ne seguirono anni di tribunali. Ma il colpo di scena vero riguarda l'uomo che aveva reso possibile tutto: <strong>gli investitori che avevano finanziato l'impresa non videro mai un dollaro</strong>.</p>
+  <p>Quando un giudice gli ordinò di rivelare dove fossero finite cinquecento monete d'oro coniate dal tesoro, Thompson non si presentò: <strong>sparì</strong>. Visse in fuga sotto falso nome in un albergo della Florida, pagando in contanti, finché i marshal lo arrestarono nel 2015. Rifiutandosi di dire dove fosse l'oro, restò in carcere per oltraggio alla corte, con una multa che cresceva di mille dollari al giorno, per quasi un decennio. E quelle monete, a oggi, non sono mai state ritrovate.</p>
+  <p class="note">Così l'atlante che si era aperto con l'oro conteso dell'Atocha si chiude con un altro oro conteso: la prova che, tra tutti i carichi che raccontiamo, quello che fa più naufragi è sempre lo stesso.</p>
+</section>
+
+<section class="reveal" data-year="1857" data-depth="2200">
+  <div class="eyebrow">La nave</div>
+  <h2>Il ponte d'oro tra due oceani</h2>
+  <p>La Central America era un piroscafo a ruote lungo circa ottantacinque metri, con le due grandi ruote a pale ai fianchi e tre alberi ausiliari. Faceva la spola sulla rotta di Panama, l'arteria attraverso cui passava gran parte dell'oro californiano diretto a Est prima che esistesse una ferrovia transcontinentale. Un cavallo da soma del mare, che il 12 settembre 1857 portò con sé un pezzo dell'economia americana.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 640 230" role="img" aria-label="Illustrazione stilizzata del piroscafo a ruote SS Central America nella tempesta">
+      <title>Il piroscafo SS Central America</title>
+      <path d="M-20 196 q 50 -12 110 -2 t 120 4 t 120 -6 t 120 4 t 130 -2" fill="none" stroke="rgba(156,131,85,.5)" stroke-width="1.5" class="scawave"/>
+      <path d="M-20 208 q 50 -8 110 0 t 120 2 t 120 -4 t 120 2 t 130 0" fill="none" stroke="rgba(156,131,85,.3)" stroke-width="1.2" class="scawave"/>
+      <g class="scaship">
+        <path d="M150 172 L176 156 L520 156 L548 170 L150 172 Z" fill="#2A2214" stroke="#4C3D24" stroke-width="1.2"/>
+        <rect x="250" y="138" width="180" height="18" fill="#372C1A" stroke="#4C3D24" stroke-width="1"/>
+        <!-- fumaiolo -->
+        <rect x="330" y="104" width="22" height="36" fill="#3A2E1A" stroke="#57462A" stroke-width="1"/>
+        <path d="M336 104 q6 -20 20 -30 q-3 16 -10 30 Z" fill="rgba(120,108,86,.4)"/>
+        <!-- alberi -->
+        <line x1="210" y1="156" x2="210" y2="86" stroke="#4C3D24" stroke-width="1.8"/>
+        <line x1="470" y1="156" x2="470" y2="92" stroke="#4C3D24" stroke-width="1.8"/>
+        <!-- ruota a pale -->
+        <circle class="scawheel" cx="300" cy="162" r="24" fill="none" stroke="var(--gold)" stroke-width="2"/>
+        <g class="scawheel" style="transform-origin:300px 162px">
+          <line x1="300" y1="138" x2="300" y2="186" stroke="var(--gold)" stroke-width="1.4"/>
+          <line x1="276" y1="162" x2="324" y2="162" stroke="var(--gold)" stroke-width="1.4"/>
+          <line x1="283" y1="145" x2="317" y2="179" stroke="var(--gold)" stroke-width="1.4"/>
+          <line x1="317" y1="145" x2="283" y2="179" stroke="var(--gold)" stroke-width="1.4"/>
+        </g>
+      </g>
+      <text x="20" y="28" fill="rgba(138,123,96,.9)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">PIROSCAFO A RUOTE — RICOSTRUZIONE STILIZZATA</text>
+    </svg>
+    <figcaption>Ricostruzione stilizzata. Le incisioni d'epoca, le foto del recupero e le monete d'oro sono presso gli enti qui sotto.</figcaption>
+  </figure>
+  <div class="realimg">
+    <div class="badge">Immagini e reperti reali</div>
+    <p>Le incisioni del 1857, le immagini del recupero robotico e le celebri monete e lingotti d'oro della Central America sono documentati dai musei e dagli enti numismatici.</p>
+    <a class="rilink" href="https://www.nationalgeographic.com/history/article/shipwreck-ss-central-america-panic-1857" target="_blank" rel="noopener">Il naufragio e il Panico del 1857 · National Geographic ↗</a>
+    <a class="rilink" href="https://en.wikipedia.org/wiki/SS_Central_America" target="_blank" rel="noopener">La vicenda completa · Wikipedia ↗</a>
+    <p class="cite">Incisioni d'epoca (1857), immagini del recupero e reperti aurei presso National Geographic, Smithsonian e gli archivi numismatici (PCGS «Ship of Gold»), riprodotti con attribuzione presso le fonti, non ospitati su questo sito.</p>
+  </div>
+</section>
+
+<section class="reveal" data-year="1857" data-depth="2200">
+  <div class="eyebrow">I numeri</div>
+  <h2>La Nave d'Oro, in cifre</h2>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Valore</th></tr></thead>
+    <tbody>
+      <tr><td>Tipo</td><td class="n">piroscafo a ruote (~85 m)</td></tr>
+      <tr><td>Rotta</td><td class="n">Panama → New York (oro californiano)</td></tr>
+      <tr><td>Persone a bordo</td><td class="n">578</td></tr>
+      <tr><td>Vittime</td><td class="n">~425 · salvati 153 (donne e bambini)</td></tr>
+      <tr><td>Affondamento</td><td class="n">12 settembre 1857 · uragano, Cape Hatteras</td></tr>
+      <tr><td>Carico d'oro</td><td class="n">~10 tonnellate (corsa californiana)</td></tr>
+      <tr><td>Conseguenza</td><td class="n">aggravò il Panico del 1857</td></tr>
+      <tr><td>Relitto ritrovato</td><td class="n">1988, a ~2.200 m (robot Nemo)</td></tr>
+      <tr><td>Valore recuperato</td><td class="n">~100–150 milioni di dollari</td></tr>
+      <tr><td>Epilogo</td><td class="n">battaglie legali · scopritore in carcere · oro ancora mancante</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Le cifre dell'oro (peso e valore) variano secondo le fonti e i recuperi successivi. Il numero delle vittime è comunemente indicato in ~425 su 578. La vicenda giudiziaria è reale e documentata; parte delle monete recuperate risulta tuttora non rintracciata.</p>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">Nota metodologica · e un saluto</div>
+  <h2>Venti relitti, un solo metodo</h2>
+  <p>Anche qui teniamo insieme le due facce: l'eroismo documentato del capitano Herndon e dei passeggeri con i secchi, e la freddezza dei numeri; il trionfo tecnologico del 1988 e lo squallore giudiziario che ne seguì. Le cifre dell'oro sono dichiarate come stime, la vicenda legale come cronaca verificata, e ciò che manca — parte del tesoro, la verità su quelle monete — è detto mancante, non inventato.</p>
+  <p class="lede">Con questa scheda si chiude il primo giro dell'atlante: venti relitti, venti modi di raccontare il mare.</p>
+  <p>Dall'oro dell'Atocha a quello della Central America, dal ghiaccio di Franklin ai monsoni di Belitung, abbiamo cercato ogni volta la stessa cosa: non il puntino su una mappa, ma la storia vera, verificata e umana che ci sta dietro. L'atlante non si ferma qui — altri relitti aspettano sul globo — ma questi primi venti sono la promessa di come intendiamo raccontarli. Grazie di aver navigato fin quaggiù.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 020 di 20 · fine del primo giro</div>
+    <div class="finale">Il mare restituisce tutto, prima o poi: relitti, tesori, e verità.</div>
+    <p>Il viaggio continua. La prossima a salpare sarà la <strong>Britannic</strong>, la sorella dimenticata del Titanic. Lascia la tua email e ti avviso quando esce.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce la prossima scheda</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="franklin.html">← Scheda 019: Erebus e Terror</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">Tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · Wikipedia «SS Central America» e «Tommy Gregory Thompson» (naufragio, carico d'oro, recupero 1988 con il ROV Nemo a ~2.134 m, vicenda giudiziaria e latitanza) · National Geographic (il naufragio e il Panico del 1857) · Smithsonian Institution · U.S. Naval Institute «Last Cruise of the SS Central America» · NBC News, NPR, CNN (arresto 2015, oltraggio alla corte, monete mancanti) · PCGS «Ship of Gold» (reperti aurei)<br><br>
+      Wreck Atlas · Scheda 020 · Prototipo · fine del primo giro
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), ground=document.getElementById('ground');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- rivelazione delle sezioni ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- pulviscolo d'oro che risale ---------- */
+  var cv=document.getElementById('dust'), ctx=cv&&cv.getContext?cv.getContext('2d'):null, parts=[], W=0,H=0;
+  function size(){ if(!ctx)return; W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    parts=[]; var n=Math.round(W*H/32000);
+    for(var i=0;i<n;i++) parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.3+.3,vy:.2+Math.random()*.6,o:.05+Math.random()*.12}); }
+  function draw(){ if(!ctx)return; ctx.clearRect(0,0,W,H);
+    for(var i=0;i<parts.length;i++){ var p=parts[i];
+      p.y-=p.vy; p.x+=Math.sin(p.y*.008)*.05;
+      if(p.y<-4){ p.y=H+4; p.x=Math.random()*W; }
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fillStyle='rgba(211,163,70,'+p.o+')'; ctx.fill(); }
+    requestAnimationFrame(draw); }
+  if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  /* ---------- fondo: dalla tempesta color seppia giù nell'abisso ---------- */
+  var shades=['#17130D','#161911','#141E1C','#112220','#0E201E','#0C1B1A','#0A1615'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    document.getElementById('railDLab').textContent = (active.dataset.depth==='0') ? 'in superficie' : 'Profondità';
+    if(!reduce){ ground.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)]; }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- le tre vite del relitto (nodi cliccabili) ---------- */
+  var info=document.getElementById('actinfo');
+  if(info){
+    document.querySelectorAll('.act').forEach(function(a){
+      function show(){
+        var c=a.dataset.c, cls = c==='deep' ? 'deep' : '';
+        info.innerHTML='<b>'+a.dataset.t+'</b><br><span class="'+cls+'">'+a.dataset.d+'</span>';
+      }
+      a.addEventListener('click',show); a.addEventListener('focus',show);
+      a.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} });
+    });
+  }
+
+  /* ---------- metriche di scroll ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'020-sscentralamerica',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] scheda 020 · '+m+'% a '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] sessione: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- iscrizione ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla — collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>

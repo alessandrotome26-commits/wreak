@@ -182,7 +182,8 @@
   "lat": 31.75,
   "lon": -77.0,
   "d": 2200,
-  "st": "next",
+  "st": "ready",
+  "href": "sscentralamerica.html",
   "f": "La 'Nave d'Oro': affondò in un uragano al largo della Carolina con tonnellate d'oro della corsa californiana. La sua perdita aggravò il panico finanziario del 1857. Ritrovata nel 1988."
  },
  {
@@ -191,7 +192,7 @@
   "lat": 37.7,
   "lon": 24.28,
   "d": 120,
-  "st": "planned",
+  "st": "next",
   "f": "La nave gemella del Titanic, adibita a nave ospedale, affondata nel 1916 nell'Egeo per una mina. Individuata da Jacques Cousteau; oggi l'immersione tecnica più ambita del Mediterraneo."
  },
  {
