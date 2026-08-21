@@ -165,5 +165,158 @@
   "d": 6,
   "st": "planned",
   "f": "Flotta spagnola dispersa da un uragano sulle Florida Keys. Molti relitti, in parte recuperati; il San Pedro è oggi un parco archeologico subacqueo."
+ },
+ {
+  "n": "RMS Lusitania",
+  "y": 1915,
+  "lat": 51.42,
+  "lon": -8.52,
+  "d": 93,
+  "st": "planned",
+  "f": "Transatlantico britannico silurato dal sommergibile tedesco U-20 al largo dell'Irlanda nel 1915: quasi 1.200 morti. Contribuì a trascinare gli Stati Uniti nella Prima guerra mondiale."
+ },
+ {
+  "n": "SS Central America",
+  "y": 1857,
+  "lat": 31.75,
+  "lon": -77.0,
+  "d": 2200,
+  "st": "planned",
+  "f": "La 'Nave d'Oro': affondò in un uragano al largo della Carolina con tonnellate d'oro della corsa californiana. La sua perdita aggravò il panico finanziario del 1857. Ritrovata nel 1988."
+ },
+ {
+  "n": "HMHS Britannic",
+  "y": 1916,
+  "lat": 37.7,
+  "lon": 24.28,
+  "d": 120,
+  "st": "planned",
+  "f": "La nave gemella del Titanic, adibita a nave ospedale, affondata nel 1916 nell'Egeo per una mina. Individuata da Jacques Cousteau; oggi l'immersione tecnica più ambita del Mediterraneo."
+ },
+ {
+  "n": "SS Thistlegorm",
+  "y": 1941,
+  "lat": 27.81,
+  "lon": 33.92,
+  "d": 30,
+  "st": "planned",
+  "f": "Mercantile britannico affondato dai tedeschi nel Mar Rosso nel 1941, col suo carico di guerra ancora dentro: moto, camion, locomotive. Riscoperto da Cousteau, è uno dei relitti-museo più celebri al mondo."
+ },
+ {
+  "n": "SS Edmund Fitzgerald",
+  "y": 1975,
+  "lat": 46.99,
+  "lon": -85.11,
+  "d": 160,
+  "st": "planned",
+  "f": "Carico di minerale del ferro inghiottito da una tempesta sul Lago Superiore nel 1975: 29 morti, nessun superstite, un SOS mai lanciato. Immortalato in una celebre canzone; causa dell'affondamento ancora ignota."
+ },
+ {
+  "n": "Relitto di Belitung",
+  "y": 830,
+  "lat": -2.53,
+  "lon": 107.62,
+  "d": 17,
+  "st": "planned",
+  "f": "Un dhow arabo affondato intorno all'830 d.C. al largo dell'Indonesia con circa 60.000 ceramiche cinesi dell'epoca Tang: la prova più antica della 'via della seta marittima' tra Cina e mondo arabo."
+ },
+ {
+  "n": "Nanhai One",
+  "y": 1180,
+  "lat": 21.7,
+  "lon": 112.2,
+  "d": 20,
+  "st": "planned",
+  "f": "Mercantile cinese della dinastia Song affondato nel Mar Cinese Meridionale con oltre 180.000 oggetti. Nel 2007 è stato sollevato intero, dentro un enorme cassone d'acciaio, e portato in un museo costruito attorno a lui."
+ },
+ {
+  "n": "MV Wilhelm Gustloff",
+  "y": 1945,
+  "lat": 55.07,
+  "lon": 17.42,
+  "d": 44,
+  "st": "planned",
+  "f": "Nave tedesca carica di profughi in fuga dalla Prussia orientale, silurata da un sommergibile sovietico nel Baltico nel 1945: circa 9.000 morti, il più grande naufragio della storia — e uno dei meno raccontati."
+ },
+ {
+  "n": "São José-Paquete de Africa",
+  "y": 1794,
+  "lat": -33.94,
+  "lon": 18.37,
+  "d": 8,
+  "st": "planned",
+  "f": "Vascello negriero portoghese naufragato al largo di Città del Capo nel 1794 con 512 mozambicani schiavizzati a bordo: ne morirono oltre 200. Uno dei primi relitti di nave negriera mai identificati e studiati."
+ },
+ {
+  "n": "HMS Erebus e Terror",
+  "y": 1848,
+  "lat": 68.24,
+  "lon": -98.87,
+  "d": 11,
+  "st": "planned",
+  "f": "Le due navi della spedizione artica di Sir John Franklin, perdute tra i ghiacci del Canada nel 1848 con 129 uomini: nessun superstite. Il più grande mistero polare, risolto solo nel 2014–2016 grazie alla tradizione orale inuit."
+ },
+ {
+  "n": "H.L. Hunley",
+  "y": 1864,
+  "lat": 32.68,
+  "lon": -79.77,
+  "d": 9,
+  "st": "planned",
+  "f": "Il primo sottomarino della storia ad affondare una nave nemica: nel 1864, al largo di Charleston, colò a picco l'incrociatore unionista Housatonic — e sparì anch'esso con tutto l'equipaggio. Riportato in superficie nel 2000."
+ },
+ {
+  "n": "Vrouw Maria",
+  "y": 1771,
+  "lat": 59.85,
+  "lon": 21.35,
+  "d": 41,
+  "st": "planned",
+  "f": "Mercantile olandese naufragato nel Baltico finlandese nel 1771 mentre portava a Caterina la Grande di Russia dipinti di maestri fiamminghi. Ritrovato nel 1999, ancora sul fondo: un museo d'arte sommerso e conteso."
+ },
+ {
+  "n": "Mary Celeste",
+  "y": 1872,
+  "lat": 18.6,
+  "lon": -73.65,
+  "d": 4,
+  "st": "planned",
+  "f": "La 'nave fantasma' per eccellenza: nel 1872 fu trovata alla deriva nell'Atlantico, perfettamente in ordine ma senza un'anima a bordo. L'equipaggio non fu più ritrovato. La nave finì i suoi giorni su una scogliera di Haiti nel 1885."
+ },
+ {
+  "n": "RMS Empress of Ireland",
+  "y": 1914,
+  "lat": 48.62,
+  "lon": -68.4,
+  "d": 40,
+  "st": "planned",
+  "f": "Transatlantico affondato in pochi minuti nel fiume San Lorenzo nel 1914 dopo una collisione nella nebbia: oltre mille morti. La 'Titanic del Canada', quasi dimenticata perché la guerra scoppiò poche settimane dopo."
+ },
+ {
+  "n": "Gribshunden",
+  "y": 1495,
+  "lat": 56.15,
+  "lon": 15.35,
+  "d": 10,
+  "st": "planned",
+  "f": "Nave ammiraglia di re Hans di Danimarca, affondata per un incendio nel Baltico nel 1495. Conservata benissimo dall'acqua fredda, con una polena a forma di mostro marino: una delle navi medievali meglio superstiti al mondo."
+ },
+ {
+  "n": "Merchant Royal",
+  "y": 1641,
+  "lat": 49.9,
+  "lon": -6.5,
+  "d": 100,
+  "st": "planned",
+  "f": "Il 'Dorado dei mari': nave inglese affondata al largo della Cornovaglia nel 1641 con un immenso carico d'oro e d'argento. Mai ritrovata: la sua posizione esatta resta uno dei più celebri misteri dei cacciatori di tesori."
+ },
+ {
+  "n": "Flor de la Mar",
+  "y": 1511,
+  "lat": 5.3,
+  "lon": 97.8,
+  "d": 30,
+  "st": "planned",
+  "f": "Carracca portoghese affondata nello Stretto di Malacca nel 1511 con il bottino saccheggiato alla città di Malacca — forse il più grande tesoro mai perduto in mare. Mai localizzata; la posizione è tuttora ignota."
  }
 ]
