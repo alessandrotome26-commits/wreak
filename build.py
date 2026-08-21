@@ -56,13 +56,100 @@ def load_wrecks():
     return wrecks
 
 
-def build_globe(wrecks):
+# Sostituzioni IT→EN applicate SOLO al testo del template (prima del codice vendor).
+# Ordine importante: le stringhe piu' lunghe prima delle loro sottostringhe.
+GLOBE_EN = [
+    ('lang="it"', 'lang="en"'),
+    ('Wreck Atlas — il globo', 'Wreck Atlas — the globe'),
+    ('Tremila anni di naufragi su un globo navigabile. Trascina, clicca un punto, apri la storia.',
+     'Three thousand years of shipwrecks on a navigable globe. Drag, click a point, open the story.'),
+    ('Ogni punto è una nave che non è mai arrivata. Trascina il globo, clicca un punto.',
+     'Every point is a ship that never arrived. Drag the globe, click a point.'),
+    ('Ogni punto è una nave che non è mai arrivata.',
+     'Every point is a ship that never arrived.'),
+    ('Tremila anni<br>sotto la superficie', 'Three thousand years<br>beneath the surface'),
+    ('Filtri per categoria', 'Filter by category'),
+    ('Rotte commerciali', 'Trade routes'),
+    ('Globo terrestre ruotabile con i relitti cliccabili e le rotte commerciali',
+     'Rotatable globe with clickable wrecks and trade routes'),
+    ('Dettaglio relitto', 'Wreck detail'),
+    ('aria-label="Chiudi"', 'aria-label="Close"'),
+    ('Posizione<b id="cp">', 'Position<b id="cp">'),
+    ('Profondità<b id="cd">', 'Depth<b id="cd">'),
+    ("Comincia l'esplorazione ↓", 'Begin exploring ↓'),
+    (">L'archivio<", '>The archive<'),
+    ('relitti sul globo', 'wrecks on the globe'),
+    ('con scheda pronta · clicca un nome per i dettagli · ', 'ready · click a name for details · '),
+    ('CLICCA UN NOME PER I DETTAGLI · ', 'CLICK A NAME FOR DETAILS · '),
+    ('MAPPA DEL FONDALE →', 'SEABED MAP →'),
+    ('href="mappa.html"', 'href="../mappa.html"'),
+    ('Scheda pronta', 'Card ready'),
+    ('In lavorazione', 'In progress'),
+    ('In programma', 'Planned'),
+    ('Rotta dell’oro spagnola', 'Spanish gold route'),
+    ('Via della seta marittima', 'Maritime Silk Road'),
+    ('Rotta dei transatlantici', 'Ocean-liner route'),
+    ('Rotta delle spezie (VOC, via del Capo)', 'Spice route (VOC, via the Cape)'),
+    ('Rotta del bronzo (Tardo Bronzo)', 'Bronze route (Late Bronze Age)'),
+    ('Via dell’ambra', 'Amber road'),
+    ('Attiva una o più rotte per capire perché i relitti sono proprio lì.',
+     'Turn on one or more routes to see why the wrecks lie where they do.'),
+    ("L'Avana", 'Havana'), ('Città del Capo', 'Cape Town'), ('Cadice', 'Cádiz'),
+    ('Bassora', 'Basra'), ('Danzica', 'Gdańsk'), ('Delta del Nilo', 'Nile Delta'),
+    ('Cipro', 'Cyprus'), ('Creta', 'Crete'), ('Roma', 'Rome'),
+    ("'Antichità'", "'Antiquity'"), ("'Tesori'", "'Treasure'"), ("'Guerra'", "'War'"),
+    ("'Misteri'", "'Mysteries'"), ("'Moderni'", "'Modern'"), ("'Tutti'", "'All'"),
+    ('Apri la scheda →', 'Open the card →'),
+    ('Prossima scheda', 'Next card'),
+    ("' a.C.'", "' BC'"),
+    ("?'E':'O'", "?'E':'W'"),
+    ('· profondità ', '· depth '),
+    ('Cartografia: Natural Earth (pubblico dominio), 1:50m, incorporata nel file — il globo funziona offline.',
+     'Cartography: Natural Earth (public domain), 1:50m, embedded in the file — the globe works offline.'),
+    ('Motore cartografico: D3 (ISC) e topojson-client (ISC), incorporati.',
+     'Mapping engine: D3 (ISC) and topojson-client (ISC), embedded.'),
+    ('Posizioni approssimate, arrotondate. Non utilizzabili per la navigazione né per localizzare i siti. · Wreck Atlas · Prototipo',
+     'Approximate, rounded positions. Not for navigation or for locating the sites. · Wreck Atlas · Prototype'),
+]
+
+
+def _globe_wrecks(wrecks, lang):
+    """Copia dei relitti per il globo, con nome/descrizione della lingua e
+    'ready' solo se la scheda in quella lingua esiste (niente link morti)."""
+    out = []
+    for w in wrecks:
+        d = {"id": w.get("id"), "y": w["y"], "lat": w["lat"], "lon": w["lon"], "d": w["d"]}
+        if lang == "en":
+            d["n"] = w.get("n_en", w["n"])
+            d["f"] = w.get("f_en", w["f"])
+            href = w.get("href")
+            en_ok = bool(href) and (SRC / "pages" / "en" / href).exists()
+            if w["st"] == "ready" and not en_ok:
+                d["st"] = "planned"
+            else:
+                d["st"] = w["st"]
+                if en_ok:
+                    d["href"] = href
+        else:
+            d["n"] = w["n"]
+            d["f"] = w["f"]
+            d["st"] = w["st"]
+            if w.get("href"):
+                d["href"] = w["href"]
+        out.append(d)
+    return out
+
+
+def build_globe(wrecks, lang="it"):
     tpl = (SRC / "globe.template.html").read_text(encoding="utf-8")
+    if lang == "en":
+        for it, en in GLOBE_EN:
+            tpl = tpl.replace(it, en)
     out = (
         tpl.replace("/*__D3__*/", (VENDOR / "d3.min.js").read_text(encoding="utf-8"))
         .replace("/*__TOPO__*/", (VENDOR / "topojson-client.min.js").read_text(encoding="utf-8"))
         .replace("/*__LAND__*/", (VENDOR / "land-50m.json").read_text(encoding="utf-8"))
-        .replace("/*__WRECKS__*/", json.dumps(wrecks, ensure_ascii=False))
+        .replace("/*__WRECKS__*/", json.dumps(_globe_wrecks(wrecks, lang), ensure_ascii=False))
     )
     for marker in ("/*__D3__*/", "/*__TOPO__*/", "/*__LAND__*/", "/*__WRECKS__*/"):
         assert marker not in out, f"segnaposto non sostituito: {marker}"
@@ -75,23 +162,26 @@ def load_routes():
     return json.loads(ROUTES.read_text(encoding="utf-8"))
 
 
-def build_pages(wrecks, routes):
-    """Copia le pagine, riallinea l'array WRECKS (mappa) e inietta le mappe-rotta."""
+def build_page_set(src_dir, wrecks, routes, lang):
+    """Costruisce le schede di una lingua: riallinea WRECKS (mappa) e inietta
+    le mappe-rotta nella lingua giusta. src_dir inesistente → nessuna pagina."""
+    if not src_dir.exists():
+        return {}
     payload = "var WRECKS=" + json.dumps(wrecks, ensure_ascii=False) + ";"
     by_href = {w["href"]: w for w in wrecks if w.get("href")}
     pages = {}
-    for p in sorted((SRC / "pages").glob("*.html")):
+    for p in sorted(src_dir.glob("*.html")):
         html = p.read_text(encoding="utf-8")
         if re.search(r"var WRECKS=\[.*?\];", html, re.S):
             html = re.sub(r"var WRECKS=\[.*?\];", payload, html, count=1, flags=re.S)
         if "<!--ROUTEMAP-->" in html:
             route = routes.get(p.name)
             if not route:
-                raise SystemExit(f"{p.name}: manca la rotta in data/routes.json")
+                raise SystemExit(f"{lang}/{p.name}: manca la rotta in data/routes.json")
             w = by_href.get(p.name)
             if not w:
-                raise SystemExit(f"{p.name}: nessun relitto con href={p.name} per la rotta")
-            fig = render_route(route, (w["lon"], w["lat"]), route["palette"])
+                raise SystemExit(f"{lang}/{p.name}: nessun relitto con href={p.name}")
+            fig = render_route(route, (w["lon"], w["lat"]), route["palette"], lang)
             html = html.replace("<!--ROUTEMAP-->", fig)
         pages[p.name] = html
     return pages
@@ -201,7 +291,7 @@ def _decimate(pts, tol=1.0):
     return out
 
 
-def render_route(route, wreck_lonlat, pal):
+def render_route(route, wreck_lonlat, pal, lang="it"):
     """SVG autonomo della rotta: coste reali ritagliate + percorso fatto/da fare."""
     frm = (route["from"]["lon"], route["from"]["lat"])
     to = (route["to"]["lon"], route["to"]["lat"])
@@ -211,6 +301,21 @@ def render_route(route, wreck_lonlat, pal):
         wr = (route["wreck"]["lon"], route["wreck"]["lat"])
     else:
         wr = tuple(wreck_lonlat)
+
+    en = lang == "en"
+
+    def L(o):
+        return (o.get("n_en") or o["n"]) if en else o["n"]
+
+    cap = (route.get("caption_en") or route["caption"]) if en else route["caption"]
+    wlab = ((route.get("wreck_label_en") or route.get("wreck_label", "the wreck")) if en
+            else route.get("wreck_label", "il naufragio"))
+    never = " — never reached" if en else " — mai raggiunta"
+    note = ("PLANNED ROUTE · SOLID = SAILED · DASHED = NEVER SAILED" if en
+            else "ROTTA PREVISTA · TRATTO CONTINUO = COMPIUTO · TRATTEGGIO = MAI PERCORSO")
+    aria = (f"Planned route: from {L(route['from'])} to {L(route['to'])}, with the wreck point"
+            if en else
+            f"La rotta prevista: da {L(route['from'])} verso {L(route['to'])}, con il punto del naufragio")
     # ordine delle tappe: origine, scali raggiunti, naufragio, scali mancati, meta
     done_pts = [frm] + via + [wr]
     plan_pts = [wr] + via_after + [to]
@@ -292,19 +397,18 @@ def render_route(route, wreck_lonlat, pal):
               f'{label}</text></g>')
         return g
 
-    marks = [marker(frm, route["from"]["n"], "from")]
+    marks = [marker(frm, L(route["from"]), "from")]
     for v in route.get("via", []):
-        marks.append(marker((v["lon"], v["lat"]), v["n"], "via"))
-    marks.append(marker(wr, route.get("wreck_label", "il naufragio"), "wreck"))
+        marks.append(marker((v["lon"], v["lat"]), L(v), "via"))
+    marks.append(marker(wr, wlab, "wreck"))
     for v in route.get("via_after", []):
-        marks.append(marker((v["lon"], v["lat"]), v["n"], "via"))
-    marks.append(marker(to, route["to"]["n"] + " — mai raggiunta", "to"))
+        marks.append(marker((v["lon"], v["lat"]), L(v), "via"))
+    marks.append(marker(to, L(route["to"]) + never, "to"))
 
     svg = (
         f'<svg viewBox="0 0 {W:.0f} {H:.0f}" role="img" '
         f'style="width:100%;height:auto;display:block" '
-        f'aria-label="La rotta prevista: da {route["from"]["n"]} verso {route["to"]["n"]}, '
-        f'con il punto del naufragio">'
+        f'aria-label="{aria}">'
         f'<rect x="0" y="0" width="{W:.0f}" height="{H:.0f}" fill="{pal["bg"]}"/>'
         f'<path d="{land_d}" fill="{pal["land"]}" fill-rule="evenodd" '
         f'stroke="{pal["coast"]}" stroke-width="0.8" stroke-linejoin="round"/>'
@@ -314,15 +418,14 @@ def render_route(route, wreck_lonlat, pal):
         f'stroke-linecap="round"/>'
         + "".join(marks)
         + f'<text x="16" y="24" font-family="IBM Plex Mono, monospace" font-size="9.5" '
-        f'letter-spacing="1" fill="{pal["label"]}" opacity="0.75">ROTTA PREVISTA · '
-        f'TRATTO CONTINUO = COMPIUTO · TRATTEGGIO = MAI PERCORSO</text>'
+        f'letter-spacing="1" fill="{pal["label"]}" opacity="0.75">{note}</text>'
         + "</svg>"
     )
     fig = (
         f'<figure class="routemap" style="margin-top:22px;border:1px solid {pal["coast"]};'
         f'background:{pal["bg"]};padding:16px 16px 12px">{svg}'
         f'<figcaption style="font-family:IBM Plex Mono, monospace;font-size:11px;'
-        f'color:{pal["label"]};letter-spacing:.04em;margin-top:10px">{route["caption"]}'
+        f'color:{pal["label"]};letter-spacing:.04em;margin-top:10px">{cap}'
         f'</figcaption></figure>'
     )
     return fig
@@ -348,20 +451,30 @@ def main():
     print(f"dati: {len(wrecks)} relitti, {sum(1 for w in wrecks if w['st']=='ready')} con scheda pronta")
 
     routes = load_routes()
-    globe = build_globe(wrecks)
-    pages = build_pages(wrecks, routes)
+    globe_it = build_globe(wrecks, "it")
+    globe_en = build_globe(wrecks, "en")
+    pages_it = build_page_set(SRC / "pages", wrecks, routes, "it")
+    pages_en = build_page_set(SRC / "pages" / "en", wrecks, routes, "en")
     geo = build_geojson(wrecks)
 
     if check_only:
-        print("--check: dati e template coerenti, niente scritto.")
+        print(f"--check: dati e template coerenti (IT: {len(pages_it)} pagine, "
+              f"EN: {len(pages_en)} pagine). Niente scritto.")
         return
 
     DIST.mkdir(exist_ok=True)
-    (DIST / "globo.html").write_text(globe, encoding="utf-8")
-    print(f"  dist/globo.html        {len(globe)//1024} KB")
-    for name, html in pages.items():
+    (DIST / "en").mkdir(exist_ok=True)
+    # Italiano alla radice (immutato); inglese in /en/ (cresce in parallelo).
+    (DIST / "globo.html").write_text(globe_it, encoding="utf-8")
+    print(f"  dist/globo.html        {len(globe_it)//1024} KB")
+    for name, html in pages_it.items():
         (DIST / name).write_text(html, encoding="utf-8")
-        print(f"  dist/{name:<18} {len(html)//1024} KB")
+    print(f"  dist/*.html            {len(pages_it)} schede IT")
+    (DIST / "en" / "globo.html").write_text(globe_en, encoding="utf-8")
+    print(f"  dist/en/globo.html     {len(globe_en)//1024} KB")
+    for name, html in pages_en.items():
+        (DIST / "en" / name).write_text(html, encoding="utf-8")
+    print(f"  dist/en/*.html         {len(pages_en)} schede EN")
     (DIST / "relitti.geojson").write_text(json.dumps(geo, ensure_ascii=False, indent=1), encoding="utf-8")
     print("  dist/relitti.geojson")
 
@@ -369,7 +482,7 @@ def main():
         shutil.copy(SRC / "index.html", DIST / "index.html")
     else:
         shutil.copy(DIST / "globo.html", DIST / "index.html")
-        print("  dist/index.html        (copia del globo: e' la pagina d'ingresso)")
+        print("  dist/index.html        (copia del globo IT: pagina d'ingresso provvisoria)")
 
     print("\nfatto. Apri dist/index.html in un browser.")
 

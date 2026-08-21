@@ -61,10 +61,18 @@ async function testPage(file) {
     console.error('dist/ non esiste. Esegui prima: python3 build.py');
     process.exit(1);
   }
-  const files = fs.readdirSync(DIST).filter((f) => f.endsWith('.html') && f !== 'index.html');
+  const files = fs.readdirSync(DIST)
+    .filter((f) => f.endsWith('.html') && f !== 'index.html')
+    .map((f) => path.join(DIST, f));
+  const enDir = path.join(DIST, 'en');
+  if (fs.existsSync(enDir)) {
+    fs.readdirSync(enDir)
+      .filter((f) => f.endsWith('.html'))
+      .forEach((f) => files.push(path.join(enDir, f)));
+  }
   let failed = 0;
   for (const f of files) {
-    const r = await testPage(path.join(DIST, f));
+    const r = await testPage(f);
     if (r.errors.length) failed++;
     console.log(
       (r.errors.length ? 'FAIL ' : 'OK   ') + r.name.padEnd(16) +

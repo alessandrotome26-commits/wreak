@@ -248,13 +248,13 @@ ROUTES.forEach(function(r){
 /* ---------- filtri per categoria ---------- */
 var CATS=[{id:'antichita',n:'Antichità'},{id:'tesori',n:'Tesori'},{id:'guerra',n:'Guerra'},{id:'misteri',n:'Misteri'},{id:'moderni',n:'Moderni'}];
 var CATMAP={
- "Uluburun":"antichita","Relitto di Anticitera":"antichita","Relitto di Belitung":"antichita","Nanhai One":"antichita","Gribshunden":"antichita",
- "Nuestra Señora de Atocha":"tesori","Santa Margarita":"tesori","San José":"tesori","Nuestra Señora de las Mercedes":"tesori","Nuestra Señora de las Maravillas":"tesori","Flotta spagnola del 1715":"tesori","Flotta spagnola del 1733":"tesori","SS Central America":"tesori","Merchant Royal":"tesori","Flor de la Mar":"tesori",
- "Vasa":"guerra","Mary Rose":"guerra","USS Arizona":"guerra","Bismarck":"guerra","H.L. Hunley":"guerra","MV Wilhelm Gustloff":"guerra","São José-Paquete de Africa":"guerra","Batavia":"guerra",
- "Mary Celeste":"misteri","HMS Erebus e Terror":"misteri",
- "RMS Titanic":"moderni","RMS Lusitania":"moderni","HMHS Britannic":"moderni","SS Andrea Doria":"moderni","RMS Empress of Ireland":"moderni","SS Edmund Fitzgerald":"moderni","SS Thistlegorm":"moderni","Endurance":"moderni"
+ "uluburun":"antichita","antikythera":"antichita","belitung":"antichita","nanhai-one":"antichita","gribshunden":"antichita",
+ "atocha":"tesori","santa-margarita":"tesori","san-jose":"tesori","mercedes":"tesori","maravillas":"tesori","fleet-1715":"tesori","fleet-1733":"tesori","central-america":"tesori","merchant-royal":"tesori","flor-de-la-mar":"tesori",
+ "vasa":"guerra","mary-rose":"guerra","arizona":"guerra","bismarck":"guerra","hunley":"guerra","wilhelm-gustloff":"guerra","sao-jose":"guerra","batavia":"guerra",
+ "mary-celeste":"misteri","erebus-terror":"misteri",
+ "titanic":"moderni","lusitania":"moderni","britannic":"moderni","andrea-doria":"moderni","empress-of-ireland":"moderni","edmund-fitzgerald":"moderni","thistlegorm":"moderni","endurance":"moderni"
 };
-function catOf(w){ return CATMAP[w.n] || (w.y<1500?'antichita':(w.y<1900?'tesori':'moderni')); }
+function catOf(w){ return CATMAP[w.id] || (w.y<1500?'antichita':(w.y<1900?'tesori':'moderni')); }
 var filterCat=null;
 (function buildFilters(){
   var box=document.getElementById('filters'); if(!box) return;
