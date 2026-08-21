@@ -78,6 +78,15 @@ body{background:var(--abyss);color:var(--paper);font-family:var(--body);font-wei
 /* schermi larghi: sposta il pannello FUORI dal globo, nello spazio nero a sinistra */
 @media (min-width:1440px){ #routes{left:-272px;top:50%;bottom:auto;transform:translateY(-50%)} }
 @media (max-width:720px){ #routes{position:static;left:auto;bottom:auto;width:auto;max-width:none;margin:0 0 12px} }
+/* schermi larghi: scheda del relitto nel margine nero a destra */
+@media (min-width:1520px){ #card{right:-320px} }
+
+#filters{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:20px}
+#filters button{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+ background:transparent;color:var(--silver);border:1px solid var(--rule);padding:8px 14px;cursor:pointer;
+ transition:border-color .2s,color .2s,background .2s}
+#filters button:hover{color:var(--paper);border-color:var(--silver)}
+#filters button.on{color:var(--gold);border-color:var(--gold);background:rgba(190,146,71,.1)}
 
 .section{max-width:1240px;margin:0 auto;padding:60px 28px 30px}
 .section h2{font-family:var(--display);font-weight:400;font-size:clamp(26px,4vw,40px);margin-top:10px}
@@ -113,6 +122,7 @@ body{background:var(--abyss);color:var(--paper);font-family:var(--body);font-wei
   <div class="eyebrow">Wreck Atlas</div>
   <h1 class="title">Tremila anni<br>sotto la superficie</h1>
   <div class="tag">Ogni punto è una nave che non è mai arrivata. Trascina il globo, clicca un punto.</div>
+  <div id="filters" aria-label="Filtri per categoria"></div>
   <div id="stage">
     <div id="routes" aria-label="Rotte commerciali"></div>
     <canvas id="globe" width="1300" height="1300" aria-label="Globo terrestre ruotabile con i relitti cliccabili e le rotte commerciali"></canvas>
@@ -235,6 +245,42 @@ ROUTES.forEach(function(r){
   box.appendChild(body);
 })();
 
+/* ---------- filtri per categoria ---------- */
+var CATS=[{id:'antichita',n:'Antichità'},{id:'tesori',n:'Tesori'},{id:'guerra',n:'Guerra'},{id:'misteri',n:'Misteri'},{id:'moderni',n:'Moderni'}];
+var CATMAP={
+ "Uluburun":"antichita","Relitto di Anticitera":"antichita","Relitto di Belitung":"antichita","Nanhai One":"antichita","Gribshunden":"antichita",
+ "Nuestra Señora de Atocha":"tesori","Santa Margarita":"tesori","San José":"tesori","Nuestra Señora de las Mercedes":"tesori","Nuestra Señora de las Maravillas":"tesori","Flotta spagnola del 1715":"tesori","Flotta spagnola del 1733":"tesori","SS Central America":"tesori","Merchant Royal":"tesori","Flor de la Mar":"tesori",
+ "Vasa":"guerra","Mary Rose":"guerra","USS Arizona":"guerra","Bismarck":"guerra","H.L. Hunley":"guerra","MV Wilhelm Gustloff":"guerra","São José-Paquete de Africa":"guerra","Batavia":"guerra",
+ "Mary Celeste":"misteri","HMS Erebus e Terror":"misteri",
+ "RMS Titanic":"moderni","RMS Lusitania":"moderni","HMHS Britannic":"moderni","SS Andrea Doria":"moderni","RMS Empress of Ireland":"moderni","SS Edmund Fitzgerald":"moderni","SS Thistlegorm":"moderni","Endurance":"moderni"
+};
+function catOf(w){ return CATMAP[w.n] || (w.y<1500?'antichita':(w.y<1900?'tesori':'moderni')); }
+var filterCat=null;
+(function buildFilters(){
+  var box=document.getElementById('filters'); if(!box) return;
+  function chip(id,label){
+    var b=document.createElement('button'); b.type='button'; b.textContent=label;
+    if(id===null) b.classList.add('on');
+    b.addEventListener('click',function(){
+      filterCat=id;
+      box.querySelectorAll('button').forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on');
+      applyFilter();
+    });
+    box.appendChild(b);
+  }
+  chip(null,'Tutti');
+  CATS.forEach(function(c){ chip(c.id,c.n); });
+})();
+function applyFilter(){
+  document.querySelectorAll('.rowdet').forEach(function(d){ d.remove(); });
+  document.querySelectorAll('#list button').forEach(function(b){
+    b.classList.remove('sel');
+    b.style.display = (!filterCat || b.dataset.cat===filterCat) ? '' : 'none';
+  });
+  if(typeof card!=='undefined' && target && filterCat && catOf(target)!==filterCat){ card.classList.remove('on'); target=null; }
+}
+
 var projection = d3.geoOrthographic().translate([CX,CY]).clipAngle(90).precision(0.5);
 var path = d3.geoPath(projection, ctx);
 
@@ -283,6 +329,7 @@ function draw(){
   var fs=Math.max(15,Math.round(baseR*zoom*0.033));
   var labels=[];
   WRECKS.forEach(function(k){
+    if(filterCat && catOf(k)!==filterCat){ k._vis=false; k._x=undefined; return; }
     var vis=visible(k.lon,k.lat);
     k._vis=vis;
     if(!vis){ k._x=undefined; return; }
@@ -416,6 +463,7 @@ var list=document.getElementById('list');
 WRECKS.map(function(w,i){return{w:w,i:i};}).sort(function(a,b){return a.w.y-b.w.y;}).forEach(function(o){
   var b=document.createElement('button');
   b.dataset.i=o.i;
+  b.dataset.cat=catOf(o.w);
   b.innerHTML='<span>'+(o.w.y<0?Math.abs(o.w.y)+' a.C.':o.w.y)+'</span>'+o.w.n;
   b.addEventListener('click',function(){
     var open = b.nextElementSibling && b.nextElementSibling.classList.contains('rowdet');
