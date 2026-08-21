@@ -188,6 +188,14 @@ var ROUTES=[
    [[18.6,54.4],[17,51],[16,49],[15,47],[13.4,45.8],[12.6,43],[12.5,41.9]]
  ]}
 ];
+var PORTS={
+ oro:[{n:"L'Avana",lon:-82.4,lat:23.1},{n:"Veracruz",lon:-96.1,lat:19.2},{n:"Portobelo",lon:-79.6,lat:9.5},{n:"Cartagena",lon:-75.5,lat:10.4},{n:"Cadice",lon:-6.3,lat:36.5}],
+ seta:[{n:"Canton",lon:113.3,lat:23.1},{n:"Malacca",lon:100.4,lat:2.2},{n:"Muscat",lon:58.4,lat:23.6},{n:"Bassora",lon:47.8,lat:30.5}],
+ liner:[{n:"Southampton",lon:-1.4,lat:50.9},{n:"New York",lon:-74,lat:40.6}],
+ spezie:[{n:"Amsterdam",lon:4.9,lat:52.4},{n:"Città del Capo",lon:18.5,lat:-33.9},{n:"Batavia",lon:106.8,lat:-6.1}],
+ bronzo:[{n:"Ugarit",lon:35.8,lat:35.6},{n:"Cipro",lon:33,lat:35},{n:"Creta",lon:25,lat:35.3},{n:"Delta del Nilo",lon:31,lat:31.3}],
+ ambra:[{n:"Danzica",lon:18.6,lat:54.4},{n:"Roma",lon:12.5,lat:41.9}]
+};
 var routesOn = {};
 var reduceGlobe = (window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
 
@@ -273,6 +281,7 @@ function draw(){
   });
 
   var fs=Math.max(15,Math.round(baseR*zoom*0.033));
+  var labels=[];
   WRECKS.forEach(function(k){
     var vis=visible(k.lon,k.lat);
     k._vis=vis;
@@ -288,9 +297,37 @@ function draw(){
     ctx.beginPath(); ctx.arc(p[0],p[1],sel?8:6,0,6.2832);
     ctx.fillStyle=col; ctx.fill();
     if(sel||k.st==='ready'||k.st==='next'){
-      ctx.font='500 '+fs+'px "IBM Plex Mono", monospace'; ctx.fillStyle=col;
-      ctx.fillText(k.n, p[0]+26, p[1]+fs*0.35);
+      labels.push({x:p[0],y:p[1],text:k.n,col:col,pri:sel?0:(k.st==='ready'?2:3),port:false});
     }
+  });
+  // porti sulle rotte attive (piccoli, solo quando la rotta è accesa)
+  ROUTES.forEach(function(r){
+    if(!routesOn[r.id] || !PORTS[r.id]) return;
+    PORTS[r.id].forEach(function(pt){
+      if(!visible(pt.lon,pt.lat)) return;
+      var pp=projection([pt.lon,pt.lat]);
+      ctx.beginPath(); ctx.arc(pp[0],pp[1],3.4,0,6.2832);
+      ctx.strokeStyle=r.color; ctx.globalAlpha=.9; ctx.lineWidth=1.5; ctx.stroke(); ctx.globalAlpha=1;
+      labels.push({x:pp[0],y:pp[1],text:pt.n,col:r.color,pri:5,port:true});
+    });
+  });
+  // posiziona le etichette evitando le sovrapposizioni (selezionato e pronti hanno la priorità)
+  labels.sort(function(a,b){ return a.pri-b.pri; });
+  var placed=[];
+  labels.forEach(function(L){
+    var f = L.port ? Math.max(12,Math.round(fs*0.62)) : fs;
+    ctx.font=(L.port?'400 ':'500 ')+f+'px "IBM Plex Mono", monospace';
+    var tw=ctx.measureText(L.text).width;
+    var bx=L.x+(L.port?12:26), base=L.y+f*0.34, by=base-f*0.85, bh=f*1.05;
+    if(bx+tw>W-2 || bx<2 || by<2 || by+bh>H-2) return;
+    var hit=false;
+    for(var i=0;i<placed.length;i++){ var rr=placed[i];
+      if(!(bx>rr.x+rr.w || bx+tw<rr.x || by>rr.y+rr.h || by+bh<rr.y)){ hit=true; break; } }
+    if(hit) return;
+    placed.push({x:bx,y:by,w:tw,h:bh});
+    ctx.globalAlpha=L.port?.85:1;
+    ctx.fillStyle=L.col; ctx.fillText(L.text, bx, base);
+    ctx.globalAlpha=1;
   });
 
   // filo tratteggiato: dal punto selezionato verso il pannello laterale
