@@ -53,6 +53,18 @@ body{background:var(--abyss);color:var(--paper);font-family:var(--body);font-wei
  font-family:var(--mono);font-size:14px;cursor:pointer;padding:4px 8px}
 #card .x:hover{color:var(--paper)}
 
+#routes{position:absolute;left:0;top:0;z-index:4;width:212px;max-width:52vw;
+ background:rgba(5,13,20,.9);border:1px solid var(--rule);padding:12px 12px 8px}
+#routes h4{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--silver);margin-bottom:6px}
+#routes .rt-hint{font-family:var(--mono);font-size:10px;color:rgba(174,182,186,.6);line-height:1.5;margin-bottom:8px}
+#routes .rt{display:flex;align-items:center;gap:9px;width:100%;text-align:left;background:transparent;border:none;
+ color:rgba(222,216,200,.6);font-family:var(--mono);font-size:11px;padding:5px 2px;cursor:pointer;transition:color .2s}
+#routes .rt:hover,#routes .rt:focus-visible{color:var(--paper)}
+#routes .rt .sw{width:18px;border-top:2px solid;flex:none}
+#routes .rt[aria-pressed="true"]{color:var(--paper)}
+#routes .rt[aria-pressed="false"] .sw{opacity:.32}
+@media (max-width:720px){ #routes{position:static;width:auto;max-width:none;margin:0 0 10px} }
+
 .section{max-width:1240px;margin:0 auto;padding:60px 28px 30px}
 .section h2{font-family:var(--display);font-weight:400;font-size:clamp(26px,4vw,40px);margin-top:10px}
 .sub{font-family:var(--mono);font-size:11.5px;color:var(--silver);margin-top:12px;letter-spacing:.05em}
@@ -88,7 +100,8 @@ body{background:var(--abyss);color:var(--paper);font-family:var(--body);font-wei
   <h1 class="title">Tremila anni<br>sotto la superficie</h1>
   <div class="tag">Ogni punto è una nave che non è mai arrivata. Trascina il globo, clicca un punto.</div>
   <div id="stage">
-    <canvas id="globe" width="1300" height="1300" aria-label="Globo terrestre ruotabile con dodici relitti cliccabili"></canvas>
+    <div id="routes" aria-label="Rotte commerciali"></div>
+    <canvas id="globe" width="1300" height="1300" aria-label="Globo terrestre ruotabile con i relitti cliccabili e le rotte commerciali"></canvas>
     <div id="card" role="dialog" aria-label="Dettaglio relitto">
       <button class="x" aria-label="Chiudi">×</button>
       <div class="cy" id="cy"></div>
@@ -137,6 +150,46 @@ var land = topojson.feature(LAND, LAND.objects.land);
 var graticule = d3.geoGraticule10();
 var sphere = {type:"Sphere"};
 
+/* ---------- rotte commerciali (strato attivabile dalla legenda) ---------- */
+var ROUTES=[
+ {id:'oro', name:'Rotta dell’oro spagnola', color:'#BE9247', dash:[], coords:[
+   [[-96.1,19.2],[-90,21],[-82.4,23.1],[-80.2,26.5],[-70,29],[-55,32],[-40,34],[-25,36],[-12,37],[-6.3,36.5]],
+   [[-79.6,9.5],[-77,9.8],[-75.5,10.4],[-80,17],[-82.4,23.1]]
+ ]},
+ {id:'seta', name:'Via della seta marittima', color:'#4F9080', dash:[9,7], coords:[
+   [[113.3,23.1],[112,15],[108,8],[103,3],[97,6],[88,8],[80,7],[72,13],[63,19],[57,23],[50,28],[48,30]],
+   [[63,19],[54,8],[47,0],[42,-4],[39,-6]]
+ ]},
+ {id:'liner', name:'Rotta dei transatlantici', color:'#AEB6BA', dash:[], coords:[
+   [[-1.4,50.9],[-6,50],[-16,49.5],[-28,48],[-42,46],[-54,43],[-66,41],[-74,40.6]]
+ ]},
+ {id:'spezie', name:'Rotta delle spezie (VOC, via del Capo)', color:'#8FA05B', dash:[4,6], coords:[
+   [[4.9,52.4],[-4,45],[-14,32],[-20,15],[-16,0],[0,-20],[14,-33],[19,-34.7],[36,-33],[56,-28],[76,-18],[96,-9],[106.8,-6.1]]
+ ]},
+ {id:'bronzo', name:'Rotta del bronzo (Tardo Bronzo)', color:'#C77B3E', dash:[2,5], coords:[
+   [[35.8,35.6],[34,35.1],[32,35],[30,36.2],[27,36.4],[25,35.4],[23.4,37.4]],
+   [[23.4,37.4],[26,34],[29,32],[31,31.3],[34,32.2],[35.8,35.6]]
+ ]},
+ {id:'ambra', name:'Via dell’ambra', color:'#E0B75A', dash:[1,5], coords:[
+   [[18.6,54.4],[17,51],[16,49],[15,47],[13.4,45.8],[12.6,43],[12.5,41.9]]
+ ]}
+];
+var routesOn = {};
+(function buildLegend(){
+  var box=document.getElementById('routes'); if(!box) return;
+  box.innerHTML='<h4>Rotte commerciali</h4><div class="rt-hint">Attivale per capire perché i relitti sono lì.</div>';
+  ROUTES.forEach(function(r){
+    var b=document.createElement('button');
+    b.className='rt'; b.type='button'; b.setAttribute('aria-pressed','false');
+    b.innerHTML='<span class="sw" style="border-top-color:'+r.color+'"></span>'+r.name;
+    b.addEventListener('click',function(){
+      routesOn[r.id]=!routesOn[r.id];
+      b.setAttribute('aria-pressed', routesOn[r.id]?'true':'false');
+    });
+    box.appendChild(b);
+  });
+})();
+
 var projection = d3.geoOrthographic().translate([CX,CY]).clipAngle(90).precision(0.5);
 var path = d3.geoPath(projection, ctx);
 
@@ -159,6 +212,16 @@ function draw(){
   ctx.beginPath(); path(land);
   ctx.fillStyle='#1E303C'; ctx.fill();
   ctx.strokeStyle='rgba(174,182,186,.5)'; ctx.lineWidth=0.7; ctx.stroke();
+
+  // rotte commerciali attive (sotto ai punti)
+  ROUTES.forEach(function(r){
+    if(!routesOn[r.id]) return;
+    ctx.save();
+    ctx.beginPath(); path({type:'MultiLineString', coordinates:r.coords});
+    ctx.setLineDash(r.dash||[]); ctx.lineCap='round'; ctx.lineJoin='round';
+    ctx.strokeStyle=r.color; ctx.globalAlpha=.82; ctx.lineWidth=2.4; ctx.stroke();
+    ctx.restore();
+  });
 
   var fs=Math.max(15,Math.round(baseR*zoom*0.033));
   WRECKS.forEach(function(k){
