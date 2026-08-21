@@ -75,6 +75,8 @@ body{background:var(--abyss);color:var(--paper);font-family:var(--body);font-wei
 #routes .rt[aria-pressed="true"]{color:var(--paper)}
 #routes .rt[aria-pressed="true"] .sw{opacity:1}
 #routes .rt[aria-pressed="true"] .pip{background:var(--pc);border-color:var(--pc)}
+/* schermi larghi: sposta il pannello FUORI dal globo, nello spazio nero a sinistra */
+@media (min-width:1440px){ #routes{left:-272px;top:50%;bottom:auto;transform:translateY(-50%)} }
 @media (max-width:720px){ #routes{position:static;left:auto;bottom:auto;width:auto;max-width:none;margin:0 0 12px} }
 
 .section{max-width:1240px;margin:0 auto;padding:60px 28px 30px}
