@@ -182,7 +182,7 @@
   "lat": 31.75,
   "lon": -77.0,
   "d": 2200,
-  "st": "planned",
+  "st": "next",
   "f": "La 'Nave d'Oro': affondò in un uragano al largo della Carolina con tonnellate d'oro della corsa californiana. La sua perdita aggravò il panico finanziario del 1857. Ritrovata nel 1988."
  },
  {
@@ -256,7 +256,8 @@
   "lat": 68.24,
   "lon": -98.87,
   "d": 11,
-  "st": "next",
+  "st": "ready",
+  "href": "franklin.html",
   "f": "Le due navi della spedizione artica di Sir John Franklin, perdute tra i ghiacci del Canada nel 1848 con 129 uomini: nessun superstite. Il più grande mistero polare, risolto solo nel 2014–2016 grazie alla tradizione orale inuit."
  },
  {

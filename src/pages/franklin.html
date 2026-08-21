@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Erebus e Terror — 1845</title>
+<meta name="description" content="Nel 1845 due navi della Royal Navy, la Erebus e la Terror, partirono per il Passaggio a Nord-Ovest con 129 uomini e sparirono tra i ghiacci dell'Artico. Il più grande mistero polare fu risolto solo nel 2014-2016 — grazie alla tradizione orale inuit, ignorata per 170 anni.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Erebus e Terror — 1845">
+<meta property="og:description" content="Centoventinove uomini svaniti nel ghiaccio. La risposta non venne dalla scienza dell'Impero, ma da una testimonianza inuit derisa per un secolo e mezzo — e infine dimostrata esatta.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0C1A24">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --polar:#0C1A24; --deep:#08131B; --panel:#10222E;
+  --ice:#E4ECEF; --ice2:#AFC3CB; --glacier:#5E8496; --glacier2:#7CA0B0;
+  --aurora:#5FB89A; --aurora2:#86D4B3; --brass:#C0A15E;
+  --fog:#6C7E88; --rule:rgba(228,236,239,.13);
+  --display:"Besley",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--polar);color:var(--ice);font-family:var(--body);font-weight:300;line-height:1.68;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#ice{position:fixed;inset:0;z-index:-4;background:var(--polar);transition:background 1.6s ease}
+#aur{position:fixed;left:-10%;right:-10%;top:-6%;height:60vh;z-index:-3;pointer-events:none;opacity:.5;
+  background:radial-gradient(ellipse at 32% 0%,rgba(95,184,154,.16),transparent 58%),
+             radial-gradient(ellipse at 68% 8%,rgba(124,160,176,.12),transparent 56%);
+  animation:aur 22s ease-in-out infinite alternate}
+@keyframes aur{0%{transform:translateX(-3%) scaleY(1);opacity:.4}100%{transform:translateX(4%) scaleY(1.12);opacity:.62}}
+#deepglow{position:fixed;inset:-10%;z-index:-2;pointer-events:none;opacity:.6;
+  background:radial-gradient(circle at 72% 82%,rgba(8,19,27,.85),transparent 46%)}
+#snow{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--fog);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--aurora)}
+.rail-num{font-size:18px;color:var(--ice);font-weight:500;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.6;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(12,26,36,.82)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--aurora2);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:500;font-size:clamp(44px,9vw,100px);line-height:1.02;letter-spacing:-.01em}
+h2{font-family:var(--display);font-weight:500;font-size:clamp(29px,4.6vw,49px);line-height:1.14;margin-bottom:22px}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(228,236,239,.84)}
+.lede{font-size:20px;color:var(--ice)}
+em{font-style:italic;color:var(--ice2)}
+strong{font-weight:500;color:var(--ice)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--fog);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--fog)}
+.coord b{display:block;color:var(--ice);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:flex-start;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  color:var(--glacier2);border:1px solid rgba(124,160,176,.36);padding:6px 11px;margin-top:28px;align-self:flex-start;max-width:66ch;line-height:1.6}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--glacier2);flex:none;margin-top:5px}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(108,126,136,.9);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(228,236,239,.08)}
+.stat .v{font-family:var(--display);font-weight:500;font-size:clamp(31px,4.9vw,48px);line-height:1.05;color:var(--glacier2);font-variant-numeric:tabular-nums}
+.stat .v.aur{color:var(--aurora2)}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--aurora);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-style:italic;font-size:clamp(24px,4.2vw,38px);line-height:1.24;color:var(--ice);quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--fog);margin-top:18px}
+
+.tl{border-left:1px solid var(--rule);margin-top:8px}
+.tl-item{padding:0 0 34px 28px;position:relative}
+.tl-item::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--polar);border:1px solid var(--fog)}
+.tl-item.key::before{background:var(--aurora);border-color:var(--aurora);box-shadow:0 0 0 5px rgba(95,184,154,.15)}
+.tl-y{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--glacier2);margin-bottom:5px}
+.tl-item.key .tl-y{color:var(--aurora2)}
+.tl-t{font-size:17px;color:var(--ice);margin-bottom:4px}
+.tl-d{font-size:14.5px;color:rgba(228,236,239,.6);max-width:52ch}
+
+/* widget: la nota di Victory Point */
+.notewrap{margin-top:14px;border:1px solid var(--rule);background:rgba(16,34,46,.6);padding:20px}
+.ntoggle{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.ntog{font-family:var(--mono);font-size:11px;letter-spacing:.06em;background:transparent;color:var(--ice2);
+  border:1px solid var(--rule);padding:9px 14px;cursor:pointer;transition:border-color .2s,color .2s,background .2s}
+.ntog:hover{color:var(--ice);border-color:var(--glacier2)}
+.ntog.on{color:var(--polar);background:var(--aurora);border-color:var(--aurora);font-weight:500}
+.paper{background:#E7DEC6;color:#2A2317;padding:24px 26px;position:relative;font-family:var(--display);line-height:1.6;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);min-height:210px;overflow:hidden}
+.paper .form{font-size:13.5px;color:#4A4230}
+.paper .msg{font-size:16px;margin:14px 0;color:#2A2317}
+.paper .stamp{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:#6E6142;text-transform:uppercase}
+.paper .scrawl{margin-top:16px;padding-top:14px;border-top:1px dashed rgba(120,60,40,.4);
+  font-style:italic;color:#7A2E1C;font-size:15.5px;line-height:1.55;transform:rotate(-.6deg)}
+.paper.grim{background:#DED2B4}
+.paper .sig{font-family:var(--mono);font-size:10.5px;color:#6E6142;margin-top:16px}
+#noteState{font-family:var(--mono);font-size:12px;color:var(--ice2);margin-top:16px;line-height:1.7}
+#noteState b{color:var(--aurora2);font-weight:500}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(228,236,239,.08);vertical-align:top}
+td.n{color:var(--ice);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:rgba(108,126,136,.9);line-height:1.75;margin-top:22px;max-width:60ch}
+
+.realimg{margin-top:22px;border:1px solid rgba(95,184,154,.28);background:rgba(95,184,154,.05);padding:22px}
+.realimg .badge{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--aurora2);margin-bottom:14px}
+.realimg p{margin-bottom:14px}
+.realimg .rilink{display:inline-block;margin:0 18px 8px 0;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--aurora2);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:4px;transition:color .25s,border-color .25s}
+.realimg .rilink:hover{color:var(--brass);border-color:var(--brass)}
+.realimg .cite{font-family:var(--mono);font-size:11px;color:rgba(108,126,136,.9);line-height:1.6;margin-top:8px}
+
+.shipart{margin-top:22px;border:1px solid var(--rule);background:rgba(16,34,46,.6);padding:18px 18px 12px}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:rgba(108,126,136,.9);letter-spacing:.05em;margin-top:10px}
+.frship{transform-box:fill-box;transform-origin:50% 90%;animation:frtilt 12s ease-in-out infinite}
+@keyframes frtilt{0%,100%{transform:rotate(-1deg)}50%{transform:rotate(1deg)}}
+.frglow{animation:frglow 8s ease-in-out infinite}
+@keyframes frglow{0%,100%{opacity:.4}50%{opacity:.75}}
+
+.closing{border-top:1px solid var(--aurora);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--fog);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:rgba(16,34,46,.6);border:1px solid var(--rule);color:var(--ice);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--glacier2);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--aurora);color:#062018;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.88}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--aurora2)}
+.signup .msg.err{color:var(--brass)}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--aurora2);border-color:var(--aurora)}
+.src{font-family:var(--mono);font-size:11.5px;color:rgba(108,126,136,.85);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:14px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #ice,#aur{transition:none;animation:none}
+  .frship,.frglow{animation:none}
+  #snow{display:none}
+}
+:focus-visible{outline:2px solid var(--aurora);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="ice"></div>
+<div id="aur"></div>
+<div id="deepglow"></div>
+<canvas id="snow"></canvas>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Anno</div><div class="rail-num" id="railYear">1845</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Profondità</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1845" data-depth="0">
+  <div class="eyebrow">Spedizione artica · Royal Navy · 1845</div>
+  <h1>Erebus e Terror</h1>
+  <div class="sub">PERDUTE TRA I GHIACCI · 129 UOMINI · NESSUN SUPERSTITE</div>
+  <div class="coordbox">
+    <div class="coord">Dove giacciono<b>Artico canadese, isola di Re Guglielmo</b></div>
+    <div class="coord">Persi<b>129 uomini — nessun superstite</b></div>
+    <div class="coord">Ritrovate<b>Erebus 2014 · Terror 2016</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>SITO STORICO NAZIONALE CANADESE, COGESTITO CON GLI INUIT · RELITTI ECCEZIONALMENTE CONSERVATI (~11 E ~24 M)</div>
+  <div class="scrollcue">↓ scorri — nel silenzio bianco</div>
+</section>
+
+<section class="reveal" data-year="1845" data-depth="24">
+  <div class="eyebrow">Perché questo relitto</div>
+  <h2>Il più grande mistero polare — e chi aveva la risposta</h2>
+  <p class="lede">Due navi della marina più potente del mondo, centoventinove uomini, inghiottiti dal ghiaccio senza un testimone bianco. Per un secolo e mezzo, l'Impero cercò la verità nel posto sbagliato.</p>
+  <p>Perché la verità c'era già, ed era stata raccontata: gli <strong>Inuit</strong> avevano visto, sapevano, e lo dissero. Solo che nessuno, a Londra, volle credere a "dei selvaggi". Ci vollero centosettant'anni e il ritrovamento dei due relitti — <strong>esattamente dove la tradizione orale inuit indicava</strong> — perché quella testimonianza fosse riconosciuta esatta. Questa scheda racconta due cose insieme: la fine agghiacciante della spedizione Franklin, e la lunga ingiustizia fatta a chi, per primo, aveva detto la verità.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">2</div><div class="k">navi inghiottite</div></div>
+    <div class="stat"><div class="v aur">129</div><div class="k">uomini a bordo</div></div>
+    <div class="stat"><div class="v aur">0</div><div class="k">superstiti</div></div>
+    <div class="stat"><div class="v">~170</div><div class="k">anni per dar retta agli Inuit</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1845" data-depth="0">
+  <div class="eyebrow">Maggio 1845 · la partenza</div>
+  <h2>L'orgoglio di un impero, corazzato di certezze</h2>
+  <p>Il Passaggio a Nord-Ovest — una rotta marittima attraverso l'Artico che collegasse Atlantico e Pacifico — era l'ossessione della marina britannica. Nel 1845 l'Ammiragliato mise insieme la spedizione più equipaggiata di sempre: due robuste bombarde, la <strong>Erebus</strong> e la <strong>Terror</strong>, rinforzate contro i ghiacci, dotate di motori a vapore, cabine riscaldate, una biblioteca di oltre mille volumi e cibo in scatola per tre anni.</p>
+  <p class="lede">Al comando, il cinquantanovenne Sir John Franklin. A bordo, centoventinove uomini e la sicurezza di vincere.</p>
+  <p>Quella tecnologia, però, nascondeva insidie. Il cibo in scatola, saldato con piombo, avrebbe forse avvelenato lentamente gli equipaggi; e nessun motore a vapore poteva nulla contro un Artico che quell'anno non liberò mai le navi dalla morsa. Alcune baleniere le avvistarono nella baia di Baffin nel luglio 1845. Poi, il silenzio.</p>
+</section>
+
+<section class="reveal" data-year="1848" data-depth="0">
+  <div class="eyebrow">1846–1848 · la fine lenta</div>
+  <h2>Centoventinove modi di non tornare</h2>
+  <p>Le navi rimasero intrappolate nel pack presso l'<strong>isola di Re Guglielmo</strong> per quasi due inverni. Gli uomini morivano a uno a uno: scorbuto, fame, freddo, forse l'avvelenamento da piombo. Franklin morì l'11 giugno 1847. Nell'aprile del 1848 i <strong>centocinque superstiti</strong> abbandonarono le navi e tentarono l'impossibile: marciare a piedi verso sud, trascinando scialuppe montate su slitte, in cerca di un fiume che li portasse a un avamposto.</p>
+  <p class="lede">Non ce la fece nessuno. Tutti e centoventinove morirono.</p>
+  <p>Le ossa ritrovate lungo la rotta della marcia raccontano l'ultimo, terribile capitolo: segni di taglio compatibili con il <strong>cannibalismo</strong>, l'estrema risorsa di uomini disperati. Fu la parte della verità che l'Inghilterra vittoriana avrebbe rifiutato con più violenza.</p>
+</section>
+
+<section class="reveal" data-year="1847" data-depth="0">
+  <div class="eyebrow">L'unico documento</div>
+  <h2>Il foglio che dice due volte la verità</h2>
+  <p>Di tutta la spedizione resta un solo, straziante documento scritto: una nota lasciata in un tumulo di pietre a Victory Point. Fu compilata due volte, a un anno di distanza, sullo stesso foglio. Usa l'interruttore.</p>
+  <div class="notewrap">
+    <div class="ntoggle" role="tablist" aria-label="Le due date della nota">
+      <button class="ntog on" id="btn1847" role="tab" aria-selected="true">28 maggio 1847</button>
+      <button class="ntog" id="btn1848" role="tab" aria-selected="false">25 aprile 1848</button>
+    </div>
+    <div class="paper" id="paper">
+      <div class="stamp">H.M.S. EREBUS &amp; TERROR — VICTORY POINT</div>
+      <div class="msg" id="paperMsg">28 di maggio 1847. Le navi Erebus e Terror hanno svernato nel ghiaccio. Sir John Franklin comanda la spedizione. <strong>Tutto bene.</strong></div>
+      <div class="sig" id="paperSig">Gore, tenente · Des Vœux, ufficiale di rotta</div>
+    </div>
+    <div id="noteState"><b>Maggio 1847.</b> Tutto procede secondo i piani. La formula «Tutto bene» chiude il messaggio: nessuno, a bordo, immagina cosa stia per arrivare.</div>
+  </div>
+  <p class="note">Lo stesso foglio, ripreso undici mesi dopo, divenne la pietra tombale della spedizione: gli ufficiali aggiunsero le nuove notizie negli spazi bianchi, ai margini del vecchio messaggio ottimista. È il prima e il dopo di una catastrofe, su un solo pezzo di carta.</p>
+</section>
+
+<section class="reveal" data-year="1854" data-depth="0">
+  <div class="eyebrow">1854 · la verità, rifiutata</div>
+  <h2>«Dei selvaggi non possono aver ragione»</h2>
+  <p>Mentre decine di spedizioni di soccorso setacciavano invano l'Artico, un esploratore, <strong>John Rae</strong>, fece la cosa più semplice e più saggia: ascoltò gli Inuit. Nel 1854 raccolse i loro racconti — precisi, coerenti — sulla morte degli uomini di Franklin, e persino sul cannibalismo finale. Portò a Londra le prove materiali: posate con le iniziali degli ufficiali, la medaglia stessa di Sir John.</p>
+  <div class="moment">
+    <q>Dalle mutilazioni di molti cadaveri, è evidente che i nostri sventurati connazionali furono ridotti all'ultima estrema risorsa per prolungare l'esistenza.</q>
+    <cite>DAL RAPPORTO DI JOHN RAE ALL'AMMIRAGLIATO, 1854 — BASATO SULLA TESTIMONIANZA INUIT</cite>
+  </div>
+  <p>La reazione fu feroce. La vedova, Lady Jane Franklin, non poteva accettare che un eroe dell'Impero fosse finito così, e spinse il più celebre scrittore del tempo, <strong>Charles Dickens</strong>, a demolire pubblicamente Rae. Dickens scrisse che ufficiali britannici "civili" non si sarebbero mai abbassati al cannibalismo, e bollò gli Inuit come "selvaggi" bugiardi e assassini. Rae, che aveva semplicemente detto la verità, fu emarginato e mai onorato come meritava.</p>
+</section>
+
+<section class="reveal" data-year="2016" data-depth="24">
+  <div class="eyebrow">2014–2016 · la testimonianza vendicata</div>
+  <h2>Le navi erano dove gli Inuit dicevano</h2>
+  <p>La storia ha un finale che sa di giustizia. Un ricercatore inuit, <strong>Louie Kamookak</strong>, dedicò trent'anni a raccogliere la memoria orale degli anziani della sua comunità sui luoghi della spedizione. Quando Parks Canada avviò le ricerche moderne, fu la sua conoscenza a indicare dove guardare.</p>
+  <p class="lede">Nel 2014 fu trovata la Erebus. Nel 2016 la Terror — nella baia che porta il suo nome, esattamente dove la tradizione inuit l'aveva sempre collocata.</p>
+  <p>Le due navi giacciono in acque fredde e poco profonde, straordinariamente conservate: ponti interi, oggetti al loro posto, un archivio sommerso ancora da leggere. Ma la scoperta più importante non è di legno: è che una testimonianza indigena, derisa per centosettant'anni come favola di "selvaggi", si è rivelata la mappa più precisa che avessimo. Il sito è oggi cogestito con gli Inuit, e la loro voce, finalmente, è al centro del racconto.</p>
+</section>
+
+<section class="reveal" data-year="1845" data-depth="24">
+  <div class="eyebrow">Le navi</div>
+  <h2>Due bombarde, strette nel pack</h2>
+  <p>La Erebus e la Terror erano navi da guerra particolari — bombarde, costruite per reggere il rinculo di enormi mortai — e proprio per questo dotate di scafi robustissimi, ideali da rinforzare per i ghiacci. La stessa Terror aveva già affrontato l'Antartide. Nell'immaginario resta la scena della loro fine: due tre-alberi immobili, prigionieri del pack, sotto la luce verde dell'aurora boreale.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 640 240" role="img" aria-label="Illustrazione stilizzata di una nave della spedizione Franklin intrappolata nei ghiacci sotto l'aurora">
+      <title>Una nave stretta nel ghiaccio</title>
+      <path d="M40 40 Q200 12 340 44 T620 40" fill="none" stroke="rgba(95,184,154,.6)" stroke-width="2" class="frglow"/>
+      <path d="M60 60 Q220 34 360 64 T628 58" fill="none" stroke="rgba(124,160,176,.4)" stroke-width="1.4" class="frglow"/>
+      <!-- banchisa -->
+      <path d="M0 182 L120 168 L210 184 L340 166 L470 186 L560 170 L640 184 L640 240 L0 240 Z" fill="#16303E" stroke="#2C4A5A" stroke-width="1"/>
+      <path d="M120 168 L210 184 L170 200 L96 190 Z" fill="#1C3A4A"/>
+      <path d="M340 166 L470 186 L420 202 L318 188 Z" fill="#1C3A4A"/>
+      <g class="frship">
+        <path d="M262 178 L392 178 L378 194 L276 194 Z" fill="#182028" stroke="#3A4C58" stroke-width="1.2"/>
+        <line x1="286" y1="178" x2="286" y2="86" stroke="#3A4C58" stroke-width="2.4"/>
+        <line x1="327" y1="178" x2="327" y2="74" stroke="#3A4C58" stroke-width="2.6"/>
+        <line x1="368" y1="178" x2="368" y2="90" stroke="#3A4C58" stroke-width="2.4"/>
+        <line x1="286" y1="104" x2="368" y2="104" stroke="#2E3E48" stroke-width="1.2"/>
+        <line x1="286" y1="128" x2="368" y2="128" stroke="#2E3E48" stroke-width="1.2"/>
+        <!-- vele serrate -->
+        <rect x="300" y="96" width="54" height="4" fill="#4A5C68"/>
+        <rect x="300" y="120" width="54" height="4" fill="#4A5C68"/>
+        <!-- lanterna calda -->
+        <circle cx="327" cy="166" r="3.2" fill="#C0A15E"/>
+      </g>
+      <text x="20" y="28" fill="rgba(108,126,136,.9)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">BOMBARDA ARTICA NEL PACK, SOTTO L'AURORA — RICOSTRUZIONE STILIZZATA</text>
+    </svg>
+    <figcaption>Ricostruzione stilizzata. Le immagini reali delle navi, dei relitti e dei reperti sono presso gli enti qui sotto.</figcaption>
+  </figure>
+  <div class="realimg">
+    <div class="badge">Documenti e immagini reali</div>
+    <p>La nota di Victory Point, i reperti raccolti da Rae e le immagini dei relitti di Erebus e Terror sono conservati dai grandi musei e da Parks Canada.</p>
+    <a class="rilink" href="https://www.rmg.co.uk/stories/maritime-history/hms-terror-erebus-history-franklin-lost-expedition" target="_blank" rel="noopener">La spedizione e la nota · Royal Museums Greenwich ↗</a>
+    <a class="rilink" href="https://parks.canada.ca/lhn-nhs/nu/epaveswrecks" target="_blank" rel="noopener">I relitti · Parks Canada ↗</a>
+    <p class="cite">Immagini d'epoca e dei relitti presso i Royal Museums Greenwich, Parks Canada e il Canadian Museum of History, riprodotte con attribuzione presso le fonti, non ospitate su questo sito.</p>
+  </div>
+</section>
+
+<section class="reveal" data-year="1848" data-depth="24">
+  <div class="eyebrow">I numeri</div>
+  <h2>La spedizione, in cifre</h2>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Valore</th></tr></thead>
+    <tbody>
+      <tr><td>Navi</td><td class="n">HMS Erebus e HMS Terror (bombarde, a vapore)</td></tr>
+      <tr><td>Partenza</td><td class="n">Gran Bretagna, maggio 1845</td></tr>
+      <tr><td>Uomini</td><td class="n">129 (comandante Sir John Franklin)</td></tr>
+      <tr><td>Obiettivo</td><td class="n">il Passaggio a Nord-Ovest</td></tr>
+      <tr><td>Intrappolate nei ghiacci</td><td class="n">isola di Re Guglielmo, 1846–48</td></tr>
+      <tr><td>Franklin morto</td><td class="n">11 giugno 1847</td></tr>
+      <tr><td>Navi abbandonate</td><td class="n">22 aprile 1848 (105 uomini a piedi)</td></tr>
+      <tr><td>Superstiti</td><td class="n">nessuno</td></tr>
+      <tr><td>Relitti ritrovati</td><td class="n">Erebus 2014 (~11 m) · Terror 2016 (~24 m)</td></tr>
+      <tr><td>Grazie a</td><td class="n">tradizione orale inuit + Parks Canada</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Le date e i fatti provengono dalla nota di Victory Point, dalla testimonianza inuit raccolta da Rae e dalle ricerche archeologiche successive. Il ruolo del piombo nell'avvelenamento degli equipaggi è discusso; il cannibalismo tra gli ultimi superstiti è invece confermato dai segni sulle ossa.</p>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">Nota metodologica</div>
+  <h2>Chi ha il diritto di raccontare</h2>
+  <p>Questa scheda prende posizione su una cosa sola: su chi avesse ragione. Per un secolo e mezzo la versione ufficiale ha creduto ai documenti scritti dell'Impero e ha trattato la memoria orale inuit come inaffidabile per principio. I relitti, trovati dove gli Inuit dicevano, hanno ribaltato quella gerarchia. Riconoscerlo non è buonismo: è metodo. Una fonte va giudicata per la sua accuratezza, non per il colore della pelle di chi la trasmette.</p>
+  <p>Sul resto, la pagina resta cauta: la questione del piombo è dibattuta e la presentiamo come tale, mentre il cannibalismo è un dato osteologico, non un'accusa morale. I relitti sono tombe e archivi insieme, cogestiti con le comunità inuit — e si guardano, non si depredano. La lezione più grande di Franklin non è come si muore tra i ghiacci, ma come, per troppo tempo, si è deciso a chi credere.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 019 di 20</div>
+    <h2 style="margin-bottom:14px">La prossima chiude la serie: la Ship of Gold</h2>
+    <p>Dal ghiaccio all'oro. Nel 1857 il piroscafo SS Central America affondò in un uragano al largo delle Carolinas con tonnellate d'oro della corsa californiana: la sua perdita contribuì a scatenare una crisi finanziaria, e il suo recupero, un secolo e mezzo dopo, fu un'impresa di tecnologia e di tribunali. La ventesima scheda chiude il primo giro dell'atlante.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce la prossima scheda</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="belitung.html">← Scheda 018: il relitto di Belitung</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">Tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · Royal Museums Greenwich (la spedizione, la nota di Victory Point, come la tradizione orale inuit portò ai relitti) · Encyclopædia Britannica «Franklin expedition» · Parks Canada, Sito storico nazionale dei relitti di HMS Erebus e HMS Terror · Smithsonian Magazine e CBC News (testimonianza inuit, J. Rae, la campagna di C. Dickens, Louie Kamookak) · Canadian Museum of History (la conoscenza inuit e la spedizione Franklin)<br><br>
+      Wreck Atlas · Scheda 019 · Prototipo
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), ice=document.getElementById('ice');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- rivelazione delle sezioni ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- neve artica ---------- */
+  var cv=document.getElementById('snow'), ctx=cv&&cv.getContext?cv.getContext('2d'):null, flakes=[], W=0,H=0;
+  function size(){ if(!ctx)return; W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    flakes=[]; var n=Math.round(W*H/28000);
+    for(var i=0;i<n;i++) flakes.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.4+.4,vy:.25+Math.random()*.8,drift:Math.random()*.6-.3,o:.1+Math.random()*.28}); }
+  function draw(){ if(!ctx)return; ctx.clearRect(0,0,W,H);
+    for(var i=0;i<flakes.length;i++){ var f=flakes[i];
+      f.y+=f.vy; f.x+=f.drift+Math.sin(f.y*.008)*.2;
+      if(f.y>H+4){ f.y=-4; f.x=Math.random()*W; }
+      ctx.beginPath(); ctx.arc(f.x,f.y,f.r,0,6.2832);
+      ctx.fillStyle='rgba(228,236,239,'+f.o+')'; ctx.fill(); }
+    requestAnimationFrame(draw); }
+  if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  /* ---------- fondo: ghiaccio che scurisce verso il fondo ---------- */
+  var shades=['#0C1A24','#0B1822','#0A161F','#09141C','#08131B','#071119','#060F16'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    document.getElementById('railDLab').textContent = (active.dataset.depth==='0') ? 'sul ghiaccio' : 'Profondità';
+    if(!reduce){ ice.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)]; }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- la nota di Victory Point (interruttore 1847/1848) ---------- */
+  var paper=document.getElementById('paper'), paperMsg=document.getElementById('paperMsg'), paperSig=document.getElementById('paperSig');
+  var noteState=document.getElementById('noteState'), b47=document.getElementById('btn1847'), b48=document.getElementById('btn1848');
+  var STATE={
+    '1847':{
+      cls:false,
+      msg:'28 di maggio 1847. Le navi Erebus e Terror hanno svernato nel ghiaccio. Sir John Franklin comanda la spedizione. <strong>Tutto bene.</strong>',
+      sig:'Gore, tenente · Des Vœux, ufficiale di rotta',
+      scrawl:null,
+      state:'<b>Maggio 1847.</b> Tutto procede secondo i piani. La formula «Tutto bene» chiude il messaggio: nessuno, a bordo, immagina cosa stia per arrivare.'
+    },
+    '1848':{
+      cls:true,
+      msg:'28 di maggio 1847. Le navi Erebus e Terror hanno svernato nel ghiaccio. Sir John Franklin comanda la spedizione. <strong>Tutto bene.</strong>',
+      sig:'Gore, tenente · Des Vœux, ufficiale di rotta',
+      scrawl:'25 aprile 1848. Le navi sono abbandonate, strette nel ghiaccio da un anno e mezzo. Sir John Franklin è morto l’ 11 giugno 1847. Finora, in tutto, 24 morti. Partiamo domani, 26, verso il Back’s Fish River.',
+      state:'<b>Aprile 1848.</b> Undici mesi dopo, la stessa carta. Ai margini del messaggio ottimista, gli ufficiali scrivono la fine: Franklin morto, ventiquattro vittime, le navi abbandonate. È l’ultima notizia che avremo da loro.'
+    }
+  };
+  function setNote(y){
+    var s=STATE[y]; if(!s) return;
+    paper.className='paper'+(s.cls?' grim':'');
+    paperMsg.innerHTML=s.msg;
+    var html='';
+    if(s.scrawl){ html='<div class="scrawl">'+s.scrawl+'</div>'; }
+    paperSig.innerHTML=s.sig+html;
+    noteState.innerHTML=s.state;
+    b47.classList.toggle('on',y==='1847'); b47.setAttribute('aria-selected',y==='1847');
+    b48.classList.toggle('on',y==='1848'); b48.setAttribute('aria-selected',y==='1848');
+  }
+  if(b47&&b48){
+    b47.addEventListener('click',function(){setNote('1847');});
+    b48.addEventListener('click',function(){setNote('1848');});
+  }
+
+  /* ---------- metriche di scroll ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'019-franklin',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] scheda 019 · '+m+'% a '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] sessione: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- iscrizione ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla — collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>
