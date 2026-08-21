@@ -142,5 +142,13 @@
     "wreck_label": "trovata alla deriva",
     "caption": "Salpata da New York per Genova con un carico di alcol. Fu trovata deserta e alla deriva a metà Atlantico, a est delle Azzorre. (Il relitto vero è altrove: una scogliera di Haiti, 1885.)",
     "palette": {"bg": "#E7DEC6", "land": "#D0C6A6", "coast": "#A89A72", "plan": "#8A99A6", "done": "#38506A", "port": "#2B2E31", "wreck": "#A24B37", "label": "#6E655A"}
+  },
+  "britannic.html": {
+    "from": {"n": "Southampton", "lon": -1.4, "lat": 50.9},
+    "via": [{"n": "Gibilterra", "lon": -5.6, "lat": 35.95}, {"n": "Napoli", "lon": 14.25, "lat": 40.85}],
+    "to": {"n": "Mudros (Lemno)", "lon": 25.25, "lat": 39.87},
+    "wreck_label": "la mina (Kea)",
+    "caption": "Rotta di guerra da Southampton a Lemno, per imbarcare i feriti. Una mina la colò a picco nel Canale di Kea, nell'Egeo, il 21 novembre 1916, prima dell'ultima tappa.",
+    "palette": {"bg": "#0C3446", "land": "#164152", "coast": "#2E5E70", "plan": "#5FA9BE", "done": "#C43B32", "port": "#EAF1F0", "wreck": "#E8746A", "label": "#B9CFD2"}
   }
 }

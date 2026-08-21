@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HMHS Britannic — 1916</title>
+<meta name="description" content="La sorella maggiore del Titanic, costruita più sicura di lei — doppio scafo, paratie più alte, più scialuppe — affondò come nave ospedale in appena 55 minuti nell'Egeo, nel 1916. Con una sopravvissuta che aveva già scampato il Titanic: Violet Jessop.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HMHS Britannic — 1916">
+<meta property="og:description" content="La più sicura delle tre sorelle Olympic affondò più in fretta di tutte. Una mina, gli oblò aperti, cinquantacinque minuti — e trenta morti risucchiati dalle eliche.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0C3446">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --aegean:#0C3446; --deep:#082631; --panel:#103A4B;
+  --foam:#EAF1F0; --foam2:#B9CFD2; --fog:#7A98A0;
+  --sky:#5FA9BE; --sky2:#8CC6D6; --cross:#C43B32; --cross2:#E0665C;
+  --green:#5E9A78; --brass:#C8A24E;
+  --rule:rgba(234,241,240,.14);
+  --display:"Prata",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--aegean);color:var(--foam);font-family:var(--body);font-weight:300;line-height:1.68;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#water{position:fixed;inset:0;z-index:-4;background:var(--aegean);transition:background 1.6s ease}
+#rays{position:fixed;inset:-15% -10% 0;z-index:-3;pointer-events:none;opacity:.5;
+  background:linear-gradient(100deg,transparent 12%,rgba(140,198,214,.10) 20%,transparent 28%,transparent 44%,rgba(140,198,214,.09) 52%,transparent 60%,transparent 76%,rgba(140,198,214,.08) 84%,transparent 92%);
+  animation:rays 26s ease-in-out infinite alternate}
+@keyframes rays{0%{transform:translateX(-3%) skewX(-2deg)}100%{transform:translateX(4%) skewX(2deg)}}
+#deepglow{position:fixed;inset:-10%;z-index:-2;pointer-events:none;opacity:.7;
+  background:radial-gradient(circle at 50% -6%,rgba(140,198,214,.14),transparent 44%),
+             radial-gradient(circle at 60% 108%,rgba(6,26,36,.85),transparent 46%)}
+#bubbles{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--fog);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--sky)}
+.rail-num{font-size:18px;color:var(--foam);font-weight:500;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.6;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(12,52,70,.82)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--sky2);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(46px,9.5vw,104px);line-height:1.02;letter-spacing:0}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(29px,4.6vw,49px);line-height:1.16;margin-bottom:22px}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(234,241,240,.84)}
+.lede{font-size:20px;color:var(--foam)}
+em{font-style:italic;color:var(--foam2)}
+strong{font-weight:500;color:var(--foam)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--fog);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--fog)}
+.coord b{display:block;color:var(--foam);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:flex-start;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  color:var(--sky2);border:1px solid rgba(140,198,214,.34);padding:6px 11px;margin-top:28px;align-self:flex-start;max-width:66ch;line-height:1.6}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--sky2);flex:none;margin-top:5px}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(122,152,160,.9);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(234,241,240,.08)}
+.stat .v{font-family:var(--display);font-weight:400;font-size:clamp(31px,4.9vw,48px);line-height:1.05;color:var(--sky2);font-variant-numeric:tabular-nums}
+.stat .v.cross{color:var(--cross2)}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--cross);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-style:italic;font-size:clamp(24px,4.2vw,38px);line-height:1.24;color:var(--foam);quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--fog);margin-top:18px}
+
+.sitewrap{margin-top:14px;border:1px solid var(--rule);background:rgba(16,58,75,.6);padding:22px 20px}
+.sitewrap svg{width:100%;height:auto;display:block}
+.sis{cursor:pointer}
+.sis .halo{opacity:0;transition:opacity .25s}
+.sis:hover .halo,.sis:focus .halo{opacity:.5}
+.sis .hull{transition:transform .2s}
+.sis:hover .hull,.sis:focus .hull{transform:translateY(-3px)}
+#sisinfo{font-family:var(--mono);font-size:12px;color:rgba(234,241,240,.82);margin-top:16px;min-height:62px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.75}
+#sisinfo b{color:var(--sky2);font-weight:500}
+#sisinfo .vj{color:var(--cross2)}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(234,241,240,.08);vertical-align:top}
+td.n{color:var(--foam);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:rgba(122,152,160,.9);line-height:1.75;margin-top:22px;max-width:60ch}
+
+.realimg{margin-top:22px;border:1px solid rgba(196,59,50,.3);background:rgba(196,59,50,.05);padding:22px}
+.realimg .badge{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--cross2);margin-bottom:14px}
+.realimg p{margin-bottom:14px}
+.realimg .rilink{display:inline-block;margin:0 18px 8px 0;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--sky2);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:4px;transition:color .25s,border-color .25s}
+.realimg .rilink:hover{color:var(--cross2);border-color:var(--cross)}
+.realimg .cite{font-family:var(--mono);font-size:11px;color:rgba(122,152,160,.9);line-height:1.6;margin-top:8px}
+
+.shipart{margin-top:22px;border:1px solid var(--rule);background:rgba(16,58,75,.6);padding:18px 18px 12px}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:rgba(122,152,160,.9);letter-spacing:.05em;margin-top:10px}
+.brship{transform-box:fill-box;transform-origin:50% 92%;animation:brbob 8s ease-in-out infinite}
+@keyframes brbob{0%,100%{transform:translateY(0) rotate(-.5deg)}50%{transform:translateY(-2px) rotate(.5deg)}}
+.brwave{animation:brwave 5s ease-in-out infinite}
+@keyframes brwave{0%,100%{transform:translateX(0)}50%{transform:translateX(-8px)}}
+
+.closing{border-top:1px solid var(--cross);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--fog);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:rgba(16,58,75,.6);border:1px solid var(--rule);color:var(--foam);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--sky);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--sky);color:#062733;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.88}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--sky2)}
+.signup .msg.err{color:var(--cross2)}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--sky2);border-color:var(--sky)}
+.src{font-family:var(--mono);font-size:11.5px;color:rgba(122,152,160,.85);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:14px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #water,#rays{transition:none;animation:none}
+  .brship,.brwave{animation:none}
+  #bubbles{display:none}
+}
+:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="water"></div>
+<div id="rays"></div>
+<div id="deepglow"></div>
+<canvas id="bubbles"></canvas>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Anno</div><div class="rail-num" id="railYear">1916</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Profondità</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1916" data-depth="0">
+  <div class="eyebrow">Nave ospedale · classe Olympic · Mar Egeo</div>
+  <h1>Britannic</h1>
+  <div class="sub">AFFONDATA 21 NOVEMBRE 1916 · IN 55 MINUTI</div>
+  <div class="coordbox">
+    <div class="coord">Dove giace<b>Canale di Kea, Egeo · ~120 m</b></div>
+    <div class="coord">A bordo<b>~1.065 (equipaggio, medici, infermiere)</b></div>
+    <div class="coord">Vittime<b>~30 — per le eliche</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>RELITTO A ~120 M, DI PROPRIETÀ PRIVATA · L'«EVEREST» DELL'IMMERSIONE TECNICA · POSIZIONE STORICAMENTE NOTA</div>
+  <div class="scrollcue">↓ scorri — la sorella che imparò dal Titanic</div>
+</section>
+
+<section class="reveal" data-year="1916" data-depth="120">
+  <div class="eyebrow">Perché questo relitto</div>
+  <h2>La più sicura delle tre sorelle affondò più in fretta di tutte</h2>
+  <p class="lede">Dopo il Titanic, gli ingegneri corressero ogni errore: doppio scafo, paratie più alte, più scialuppe. La Britannic era la sorella perfezionata, la nave che <em>non poteva</em> ripetere quel disastro. Affondò in cinquantacinque minuti — un quarto del tempo del Titanic.</p>
+  <p>Eppure morirono solo una trentina di persone su oltre mille. Questa scheda parla di questo paradosso: di come la sicurezza funzioni davvero, e di come un dettaglio banale — degli oblò lasciati aperti — possa vanificarla; di come si possa affondare in fretta e salvarsi quasi tutti, e affondare lenti e morire a migliaia. E di una donna che era a bordo di entrambe le sorelle quando colarono a picco.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">55</div><div class="k">minuti per affondare</div></div>
+    <div class="stat"><div class="v">~1.065</div><div class="k">persone a bordo</div></div>
+    <div class="stat"><div class="v cross">~30</div><div class="k">vittime (per le eliche)</div></div>
+    <div class="stat"><div class="v">3</div><div class="k">sorelle di classe Olympic</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1914" data-depth="0">
+  <div class="eyebrow">Le tre sorelle</div>
+  <h2>Nata più grande, mai passeggera</h2>
+  <p>La White Star Line aveva progettato tre giganti gemelli: l'<strong>Olympic</strong>, il <strong>Titanic</strong> e la <strong>Britannic</strong>. Quest'ultima, varata nel 1914, era la più grande e la più moderna delle tre — ma non portò mai un solo passeggero pagante. Scoppiata la guerra, fu requisita e trasformata nella più grande <strong>nave ospedale</strong> del mondo: scafo bianco, una fascia verde, enormi croci rosse sui fianchi.</p>
+  <p class="lede">Le tre sorelle si somigliavano come gocce d'acqua. I loro destini, no. Clicca ciascuna.</p>
+  <div class="sitewrap">
+    <svg viewBox="0 0 640 250" role="img" aria-label="Le tre sorelle di classe Olympic: Olympic, Titanic e Britannic, con i loro destini" class="fielded">
+      <title>Le tre sorelle</title>
+      <line x1="20" y1="188" x2="620" y2="188" stroke="rgba(140,198,214,.25)" stroke-width="1"/>
+      <text x="20" y="26" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">CLASSE OLYMPIC — CLICCA UNA SORELLA</text>
+
+      <!-- Olympic -->
+      <g class="sis" tabindex="0" data-t="RMS Olympic · 1911" data-c="La fortunata" data-d="La sola a vivere a lungo: sopravvisse alla collisione con la HMS Hawke nel 1911, a un siluramento, e a una lunga carriera. Fu demolita nel 1935." data-vj="Nel 1911, alla collisione con la Hawke, a bordo c'era Violet Jessop.">
+        <ellipse class="halo" cx="130" cy="150" rx="82" ry="46" fill="var(--sky)"/>
+        <g class="hull">
+          <path d="M64 168 L80 156 L196 156 L208 168 Z" fill="#D9E4E4" stroke="#9FB6B8" stroke-width="1"/>
+          <rect x="92" y="146" width="90" height="10" fill="#EAF1F0"/>
+          <rect x="100" y="122" width="9" height="24" fill="#C8A24E"/><rect x="118" y="120" width="9" height="26" fill="#C8A24E"/>
+          <rect x="136" y="120" width="9" height="26" fill="#C8A24E"/><rect x="154" y="122" width="9" height="24" fill="#C8A24E"/>
+        </g>
+        <text x="130" y="204" fill="var(--foam2)" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="middle">OLYMPIC · 1911</text>
+        <text x="130" y="220" fill="var(--sky2)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle">sopravvisse</text>
+      </g>
+      <!-- Titanic -->
+      <g class="sis" tabindex="0" data-t="RMS Titanic · 1912" data-c="La leggenda" data-d="Affondò nel viaggio inaugurale contro un iceberg: circa 1.500 morti, il naufragio più celebre della storia. (Vedi la scheda 003.)" data-vj="Anche sul Titanic, quella notte, c'era Violet Jessop — e si salvò.">
+        <ellipse class="halo" cx="320" cy="150" rx="82" ry="46" fill="var(--sky)"/>
+        <g class="hull">
+          <path d="M254 168 L270 156 L386 156 L398 168 Z" fill="#D9E4E4" stroke="#9FB6B8" stroke-width="1"/>
+          <rect x="282" y="146" width="90" height="10" fill="#EAF1F0"/>
+          <rect x="290" y="122" width="9" height="24" fill="#C8A24E"/><rect x="308" y="120" width="9" height="26" fill="#C8A24E"/>
+          <rect x="326" y="120" width="9" height="26" fill="#C8A24E"/><rect x="344" y="122" width="9" height="24" fill="#C8A24E"/>
+        </g>
+        <text x="320" y="204" fill="var(--foam2)" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="middle">TITANIC · 1912</text>
+        <text x="320" y="220" fill="var(--cross2)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle">~1.500 morti</text>
+      </g>
+      <!-- Britannic -->
+      <g class="sis" tabindex="0" data-t="HMHS Britannic · 1916" data-c="Questa nave" data-d="La più grande e la più sicura, mai usata come transatlantico. Affondò come nave ospedale in 55 minuti, colpita da una mina nell'Egeo: ~30 morti." data-vj="E per la terza volta c'era lei, Violet Jessop: saltò da una scialuppa e sfuggì per un soffio alle eliche.">
+        <ellipse class="halo" cx="510" cy="150" rx="82" ry="46" fill="var(--cross)"/>
+        <g class="hull">
+          <path d="M444 168 L460 156 L576 156 L588 168 Z" fill="#EAF1F0" stroke="#9FB6B8" stroke-width="1"/>
+          <rect x="460" y="160" width="116" height="4" fill="var(--green)"/>
+          <rect x="472" y="146" width="90" height="10" fill="#EAF1F0"/>
+          <rect x="480" y="122" width="9" height="24" fill="#C8A24E"/><rect x="498" y="120" width="9" height="26" fill="#C8A24E"/>
+          <rect x="516" y="120" width="9" height="26" fill="#C8A24E"/><rect x="534" y="122" width="9" height="24" fill="#C8A24E"/>
+          <path d="M512 148 h10 v4 h-3 v3 h-4 v-3 h-3 Z" fill="var(--cross)"/>
+        </g>
+        <text x="510" y="204" fill="var(--foam2)" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="middle">BRITANNIC · 1916</text>
+        <text x="510" y="220" fill="var(--cross2)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle">~30 morti · 55 min</text>
+      </g>
+    </svg>
+    <div id="sisinfo">Tre navi quasi identiche, tre destini opposti — e una sola persona, Violet Jessop, a bordo di ognuna nel suo momento peggiore. Clicca una sorella.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1916" data-depth="120">
+  <div class="eyebrow">21 novembre 1916 · ore 8 · Canale di Kea</div>
+  <h2>Una mina, e una decisione sbagliata</h2>
+  <p>Diretta a Lemno per imbarcare feriti, la Britannic attraversava all'alba lo stretto braccio di mare tra l'isola di Kea e la costa greca. Poco dopo le otto, un'esplosione la scosse a prua, sul lato di dritta: una <strong>mina navale</strong>, posata pochi giorni prima dal sommergibile tedesco U-73.</p>
+  <p>Il comandante Bartlett prese una decisione comprensibile e fatale: puntare a tutta forza verso Kea, sperando di arenare la nave in acque basse e salvarla. Ma la velocità <strong>spinse altra acqua dentro lo scafo</strong>, e soprattutto dentro una fila di <strong>oblò lasciati aperti</strong> dalle infermiere per arieggiare le corsie. Man mano che la nave s'inclinava, quegli oblò scesero sotto il livello del mare e la allagarono. La sorella più sicura del Titanic stava affondando il doppio più in fretta.</p>
+</section>
+
+<section class="reveal" data-year="1916" data-depth="120">
+  <div class="eyebrow">I trenta</div>
+  <h2>Perché morirono così in pochi — e come</h2>
+  <p>Ecco il rovescio luminoso del paradosso: nonostante l'affondamento fulmineo, si salvarono più di mille persone su millesessantacinque. Il mare era caldo, era giorno, e la costa vicina. Dove il Titanic era affondato di notte in un Atlantico gelido, la Britannic colava a picco in un mattino d'Egeo.</p>
+  <div class="moment">
+    <q>Saltai in acqua, ma fui risucchiata sotto la chiglia, verso le eliche. Qualcosa mi colpì la testa. Sopravvissi.</q>
+    <cite>DAI RICORDI DI VIOLET JESSOP — SUPERSTITE DI ENTRAMBE LE SORELLE</cite>
+  </div>
+  <p>La quasi totalità delle trenta vittime morì per un'unica, atroce ragione: <strong>due scialuppe furono calate troppo presto</strong>, mentre la nave ancora avanzava, e finirono risucchiate nelle enormi eliche ancora in movimento. Fu allora che l'ordine di fermare le macchine arrivò, tardi. Chi non si trovò in quelle due scialuppe, in gran parte, tornò a casa.</p>
+</section>
+
+<section class="reveal" data-year="1916" data-depth="120">
+  <div class="eyebrow">Il paradosso</div>
+  <h2>Quando la sicurezza non basta</h2>
+  <p>La Britannic è un caso di studio quasi perfetto. Aveva tutto ciò che al Titanic era mancato: un <strong>doppio scafo</strong> lungo le sale macchine e le caldaie, <strong>cinque paratie stagne innalzate</strong> fino a dodici metri sopra la linea di galleggiamento, scialuppe in abbondanza. Sulla carta, era inaffondabile <em>sul serio</em>.</p>
+  <p class="lede">E infatti non fu lo scafo a tradirla, ma la routine di un ospedale: gli oblò aperti per far respirare i malati.</p>
+  <p>È la lezione che questa nave lascia in eredità: la sicurezza non è un elenco di dispositivi, ma la disciplina con cui si usano. Il miglior doppio scafo del mondo non serve a nulla se l'acqua può entrare da una fila di finestrini a filo d'acqua. E, all'opposto, la vicinanza alla costa e la luce del giorno salvarono più vite di qualunque paratia. La Britannic affondò per un dettaglio, e si salvò per una circostanza.</p>
+</section>
+
+<section class="reveal" data-year="1975" data-depth="120">
+  <div class="eyebrow">Il ritrovamento</div>
+  <h2>Cousteau, e l'Everest dei sub</h2>
+  <p>Per quasi sessant'anni la Britannic riposò dimenticata sul fondo dell'Egeo. La ritrovò, nel 1975, <strong>Jacques Cousteau</strong>: giaceva a centoventi metri, adagiata sul fianco destro, incredibilmente integra — molto più del Titanic, che si trova a quasi quattromila metri e in due tronconi.</p>
+  <p>Proprio per questo la Britannic è diventata un mito per i subacquei: centoventi metri sono al limite estremo dell'immersione tecnica, e raggiungerla è un'impresa che pochi possono permettersi. Dal 1996 il relitto è di proprietà privata, dello storico Simon Mills, che l'acquistò dal governo britannico. Ancora oggi la nave restituisce reperti e domande: un transatlantico da sogno che non portò mai nessuno in vacanza, e che riposa come un museo sigillato in fondo al mare.</p>
+</section>
+
+<section class="reveal" data-year="1914" data-depth="120">
+  <div class="eyebrow">La nave</div>
+  <h2>Bianca, con le croci rosse</h2>
+  <p>Lunga quasi duecentosettanta metri, con i quattro fumaioli tipici delle sorelle Olympic, in guerra la Britannic non aveva più nulla del transatlantico di lusso: era dipinta di <strong>bianco</strong>, cinta da una <strong>fascia verde</strong> e segnata da grandi <strong>croci rosse</strong>, i colori che, per le convenzioni internazionali, avrebbero dovuto proteggerla. Non bastarono contro una mina.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 640 230" role="img" aria-label="Illustrazione stilizzata della nave ospedale Britannic, bianca con fascia verde e croci rosse">
+      <title>La nave ospedale Britannic</title>
+      <rect x="0" y="176" width="640" height="54" fill="rgba(95,169,190,.08)"/>
+      <path d="M-20 186 q 60 -8 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(95,169,190,.4)" stroke-width="1.3" class="brwave"/>
+      <g class="brship">
+        <path d="M60 176 L86 160 L566 160 L596 174 L578 176 Z" fill="#EAF1F0" stroke="#9FB6B8" stroke-width="1.2"/>
+        <rect x="86" y="166" width="480" height="5" fill="#5E9A78"/>
+        <rect x="150" y="138" width="330" height="22" fill="#F3F7F6" stroke="#B9CFD2" stroke-width="1"/>
+        <g fill="#9FB6B8"><rect x="164" y="144" width="6" height="7"/><rect x="184" y="144" width="6" height="7"/><rect x="204" y="144" width="6" height="7"/><rect x="224" y="144" width="6" height="7"/><rect x="244" y="144" width="6" height="7"/><rect x="264" y="144" width="6" height="7"/><rect x="284" y="144" width="6" height="7"/><rect x="304" y="144" width="6" height="7"/><rect x="324" y="144" width="6" height="7"/><rect x="344" y="144" width="6" height="7"/><rect x="364" y="144" width="6" height="7"/><rect x="384" y="144" width="6" height="7"/><rect x="404" y="144" width="6" height="7"/><rect x="424" y="144" width="6" height="7"/><rect x="444" y="144" width="6" height="7"/><rect x="464" y="144" width="6" height="7"/></g>
+        <!-- croce rossa sullo scafo -->
+        <path d="M300 164 h14 v5 h-4.5 v4.5 h-5 v-4.5 h-4.5 Z" fill="#C43B32"/>
+        <!-- quattro fumaioli color camoscio -->
+        <g><rect x="212" y="100" width="26" height="40" fill="#D8C48A" stroke="#B49A55" stroke-width="1"/><rect x="212" y="100" width="26" height="8" fill="#2A2417"/>
+        <rect x="266" y="98" width="26" height="42" fill="#D8C48A" stroke="#B49A55" stroke-width="1"/><rect x="266" y="98" width="26" height="8" fill="#2A2417"/>
+        <rect x="320" y="98" width="26" height="42" fill="#D8C48A" stroke="#B49A55" stroke-width="1"/><rect x="320" y="98" width="26" height="8" fill="#2A2417"/>
+        <rect x="374" y="100" width="26" height="40" fill="#D8C48A" stroke="#B49A55" stroke-width="1"/><rect x="374" y="100" width="26" height="8" fill="#2A2417"/></g>
+        <line x1="120" y1="138" x2="120" y2="92" stroke="#9FB6B8" stroke-width="1.6"/>
+        <line x1="470" y1="138" x2="470" y2="96" stroke="#9FB6B8" stroke-width="1.6"/>
+      </g>
+      <text x="20" y="28" fill="rgba(122,152,160,.9)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">NAVE OSPEDALE, CLASSE OLYMPIC — RICOSTRUZIONE STILIZZATA</text>
+    </svg>
+    <figcaption>Ricostruzione stilizzata. Le fotografie reali della nave e del relitto sono presso gli archivi qui sotto.</figcaption>
+  </figure>
+  <div class="realimg">
+    <div class="badge">Immagini storiche reali</div>
+    <p>Le fotografie della Britannic come nave ospedale, i ritratti di Violet Jessop e le immagini del relitto sono conservati dai musei e dagli storici che studiano la nave.</p>
+    <a class="rilink" href="https://www.britannica.com/topic/Britannic" target="_blank" rel="noopener">La nave e l'affondamento · Encyclopædia Britannica ↗</a>
+    <a class="rilink" href="https://en.wikipedia.org/wiki/HMHS_Britannic" target="_blank" rel="noopener">La vicenda completa · Wikipedia ↗</a>
+    <p class="cite">Fotografie d'epoca (Imperial War Museums e archivi navali) e immagini del relitto, riprodotte con attribuzione presso le fonti, non ospitate su questo sito.</p>
+  </div>
+</section>
+
+<section class="reveal" data-year="1916" data-depth="120">
+  <div class="eyebrow">La rotta</div>
+  <h2>Il viaggio interrotto</h2>
+  <p>Da Southampton fino all'Egeo, per imbarcare i feriti a Lemno e riportarli in patria: una rotta di guerra, mille volte percorsa. Il tratto continuo mostra dove arrivò; il tratteggio, l'ultimo braccio di mare che non attraversò mai.</p>
+  <!--ROUTEMAP-->
+</section>
+
+<section class="reveal" data-year="1916" data-depth="120">
+  <div class="eyebrow">I numeri</div>
+  <h2>La sorella, misurata</h2>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Valore</th></tr></thead>
+    <tbody>
+      <tr><td>Classe</td><td class="n">Olympic (sorella di Titanic e Olympic)</td></tr>
+      <tr><td>Varata</td><td class="n">1914 · mai in servizio commerciale</td></tr>
+      <tr><td>Ruolo</td><td class="n">nave ospedale (la più grande del mondo)</td></tr>
+      <tr><td>Lunghezza</td><td class="n">~269 m</td></tr>
+      <tr><td>A bordo (21 nov 1916)</td><td class="n">~1.065 (equipaggio, RAMC, 77 infermiere)</td></tr>
+      <tr><td>Vittime</td><td class="n">~30 (risucchiate dalle eliche)</td></tr>
+      <tr><td>Affondamento</td><td class="n">21 nov 1916 · ~55 minuti · Canale di Kea</td></tr>
+      <tr><td>Causa</td><td class="n">mina navale (sommergibile U-73)</td></tr>
+      <tr><td>Profondità del relitto</td><td class="n">~120 m (di proprietà privata)</td></tr>
+      <tr><td>Ritrovata</td><td class="n">1975 (J. Cousteau)</td></tr>
+    </tbody>
+  </table>
+  <p class="note">La causa fu a lungo incerta tra mina e siluro: le prove indicano una mina posata dall'U-73. Le cifre delle vittime (~30) e delle persone a bordo (~1.065) sono quelle del rapporto ufficiale del comandante Bartlett. Il relitto è un luogo che custodisce memoria di guerra: si esplora con rispetto.</p>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">Nota metodologica</div>
+  <h2>Cosa insegna, davvero</h2>
+  <p>Che la sicurezza è un sistema, non un oggetto. La Britannic aveva le difese che al Titanic erano mancate, e affondò comunque, più in fretta, per un gesto d'abitudine; e si salvò, comunque, per la fortuna della geografia e dell'ora. Raccontarla significa resistere a due tentazioni opposte: dipingerla come una seconda tragedia del Titanic (non lo fu: morirono in trenta), o come un lieto fine (non lo fu per quei trenta, né per una nave costata una fortuna e mai vissuta).</p>
+  <p>Sui punti dubbi restiamo cauti: la mina è la spiegazione più solida, ma la citiamo come tale; le cifre sono quelle ufficiali. E la coincidenza di Violet Jessop, per quanto straordinaria, è documentata — non l'abbiamo gonfiata, perché non ne ha bisogno. Alcune storie sono già abbastanza incredibili così come sono.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 021 di 20+ · la serie continua</div>
+    <h2 style="margin-bottom:14px">La prossima lascia il mare per un lago: la Edmund Fitzgerald</h2>
+    <p>Dall'Egeo tiepido alle acque gelide del Lago Superiore. Nel 1975 il grande mercantile Edmund Fitzgerald sparì in una tempesta con tutti i suoi ventinove uomini, senza un solo grido di soccorso e senza una spiegazione certa. Una ballata la rese immortale — e il mistero è ancora aperto.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce la prossima scheda</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="sscentralamerica.html">← Scheda 020: la SS Central America</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">Tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · Encyclopædia Britannica «Britannic» (nave, affondamento, relitto) · Wikipedia «HMHS Britannic» e «Violet Jessop» (dinamica, U-73, oblò aperti, le tre sorelle) · HISTORY.com e Imperial War Museums (nave ospedale, cronaca) · Simon Mills, proprietario e storico del relitto · resoconti dell'immersione di J. Cousteau (1975)<br><br>
+      Wreck Atlas · Scheda 021 · Prototipo
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), water=document.getElementById('water');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- rivelazione delle sezioni ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- bollicine che salgono ---------- */
+  var cv=document.getElementById('bubbles'), ctx=cv&&cv.getContext?cv.getContext('2d'):null, parts=[], W=0,H=0;
+  function size(){ if(!ctx)return; W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    parts=[]; var n=Math.round(W*H/34000);
+    for(var i=0;i<n;i++) parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.4,v:.25+Math.random()*.7,o:.05+Math.random()*.14}); }
+  function draw(){ if(!ctx)return; ctx.clearRect(0,0,W,H);
+    for(var i=0;i<parts.length;i++){ var p=parts[i];
+      p.y-=p.v; p.x+=Math.sin(p.y*.02)*.14;
+      if(p.y<-4){ p.y=H+4; p.x=Math.random()*W; }
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.strokeStyle='rgba(200,226,230,'+p.o+')'; ctx.lineWidth=1; ctx.stroke(); }
+    requestAnimationFrame(draw); }
+  if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  /* ---------- fondo: dall'azzurro di superficie al blu profondo ---------- */
+  var shades=['#0C3446','#0C3244','#0B2E3F','#0A2A3A','#092634','#08222F','#081F2A'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    document.getElementById('railDLab').textContent = (active.dataset.depth==='0') ? 'in mare' : 'Profondità';
+    if(!reduce){ water.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)]; }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- le tre sorelle (silhouette cliccabili) ---------- */
+  var info=document.getElementById('sisinfo');
+  if(info){
+    document.querySelectorAll('.sis').forEach(function(s){
+      function show(){ info.innerHTML='<b>'+s.dataset.t+' — '+s.dataset.c+'</b><br>'+s.dataset.d+'<br><span class="vj">↳ '+s.dataset.vj+'</span>'; }
+      s.addEventListener('click',show); s.addEventListener('focus',show);
+      s.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} });
+    });
+  }
+
+  /* ---------- metriche di scroll ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'021-britannic',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] scheda 021 · '+m+'% a '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] sessione: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- iscrizione ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla — collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>
