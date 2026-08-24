@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mary Celeste — 1872</title>
+<meta name="description" content="In 1872 the brigantine Mary Celeste was found adrift in the middle of the Atlantic, in perfect order but with not a soul aboard. Ten people gone, no body ever found. The maritime mystery par excellence — separated here from its legend.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mary Celeste — 1872">
+<meta property="og:description" content="A sound ship, an intact cargo, provisions for months. Only one thing missing: the ten people who should have been aboard. And the lifeboat.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#E9E2D2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E9E2D2; --paper2:#EFE9DB; --panel:#E4DBC7;
+  --ink:#2B2E31; --ink2:#4B4F52; --fog:#7A756B;
+  --sea:#93A6A6; --rope:#9A7A4C; --navy:#38506A; --navy2:#4E6B87; --seal:#A24B37;
+  --rule:rgba(43,46,49,.16);
+  --display:"Libre Caslon Display",Georgia,serif;
+  --serif:"Libre Caslon Text",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-weight:300;line-height:1.68;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#daylight{position:fixed;inset:0;z-index:-4;background:var(--paper);transition:background 1.6s ease}
+#grain{position:fixed;inset:0;z-index:-3;pointer-events:none;opacity:.5;
+  background:radial-gradient(circle at 22% 20%,rgba(154,122,76,.05),transparent 36%),
+             radial-gradient(circle at 78% 72%,rgba(56,80,106,.045),transparent 34%)}
+#fog{position:fixed;inset:-12%;z-index:-2;pointer-events:none;opacity:.5;
+  background:radial-gradient(circle at 35% 40%,rgba(255,255,255,.5),transparent 40%),
+             radial-gradient(circle at 68% 58%,rgba(255,255,255,.4),transparent 38%);
+  animation:fog 50s ease-in-out infinite alternate}
+@keyframes fog{0%{transform:translate3d(-2%,-1%,0) scale(1.04)}100%{transform:translate3d(3%,2%,0) scale(1.12)}}
+#motes{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--fog);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--seal)}
+.rail-num{font-size:18px;color:var(--ink);font-weight:500;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.6;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(233,226,210,.82)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--navy);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(50px,10.5vw,112px);line-height:.98;letter-spacing:-.005em}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,4.7vw,50px);line-height:1.12;margin-bottom:22px}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:var(--ink2)}
+.lede{font-size:20px;color:var(--ink);font-family:var(--serif)}
+em{font-style:italic;color:var(--fog)}
+strong{font-weight:500;color:var(--ink)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--fog);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--fog)}
+.coord b{display:block;color:var(--ink);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:flex-start;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  color:var(--seal);border:1px solid rgba(162,75,55,.4);padding:6px 11px;margin-top:28px;align-self:flex-start;max-width:66ch;line-height:1.6}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--seal);flex:none;margin-top:5px}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(122,117,107,.85);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(43,46,49,.1)}
+.stat .v{font-family:var(--display);font-weight:400;font-size:clamp(30px,4.8vw,46px);line-height:1.05;color:var(--navy);font-variant-numeric:tabular-nums}
+.stat .v.seal{color:var(--seal)}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--seal);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--serif);font-style:italic;font-size:clamp(24px,4.2vw,38px);line-height:1.25;color:var(--ink);quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--fog);margin-top:18px}
+
+.tl{border-left:1px solid var(--rule);margin-top:8px}
+.tl-item{padding:0 0 34px 28px;position:relative}
+.tl-item::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--paper);border:1px solid var(--fog)}
+.tl-item.key::before{background:var(--seal);border-color:var(--seal);box-shadow:0 0 0 5px rgba(162,75,55,.14)}
+.tl-y{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--navy);margin-bottom:5px}
+.tl-item.key .tl-y{color:var(--seal)}
+.tl-t{font-size:17px;color:var(--ink);margin-bottom:4px}
+.tl-d{font-size:14.5px;color:var(--fog);max-width:52ch}
+
+.sitewrap{margin-top:14px;border:1px solid var(--rule);background:var(--paper2);padding:20px}
+.sitewrap svg{width:100%;height:auto;display:block}
+.plan-note{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--fog)}
+.spot{cursor:pointer}
+.spot .hot{opacity:0;transition:opacity .25s}
+.spot:hover .hot,.spot:focus .hot{opacity:.5}
+.spot .pin{transition:transform .2s}
+.spot:hover .pin,.spot:focus .pin{transform:translateY(-2px)}
+#dossier{font-family:var(--mono);font-size:12px;color:var(--ink2);margin-top:16px;min-height:64px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.75}
+#dossier b{color:var(--seal);font-weight:500}
+#dossier .sugg{color:var(--navy)}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(43,46,49,.1);vertical-align:top;color:var(--ink2)}
+td.n{color:var(--ink);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:var(--fog);line-height:1.75;margin-top:22px;max-width:60ch}
+
+.realimg{margin-top:22px;border:1px solid rgba(56,80,106,.32);background:rgba(56,80,106,.055);padding:22px}
+.realimg .badge{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--navy);margin-bottom:14px}
+.realimg p{margin-bottom:14px}
+.realimg .rilink{display:inline-block;margin:0 18px 8px 0;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--navy);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:4px;transition:color .25s,border-color .25s}
+.realimg .rilink:hover{color:var(--seal);border-color:var(--seal)}
+.realimg .cite{font-family:var(--mono);font-size:11px;color:var(--fog);line-height:1.6;margin-top:8px}
+
+.shipart{margin-top:22px;border:1px solid var(--rule);background:var(--paper2);padding:18px 18px 12px}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:var(--fog);letter-spacing:.05em;margin-top:10px}
+.mcship{transform-box:fill-box;transform-origin:50% 60%;animation:mcdrift 11s ease-in-out infinite}
+@keyframes mcdrift{0%,100%{transform:translateX(0) rotate(-.6deg)}50%{transform:translateX(10px) rotate(.6deg)}}
+.mcwave{animation:mcwave 6s ease-in-out infinite}
+@keyframes mcwave{0%,100%{transform:translateX(0)}50%{transform:translateX(-7px)}}
+
+.closing{border-top:1px solid var(--seal);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--fog);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:var(--paper2);border:1px solid var(--rule);color:var(--ink);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--navy);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--navy);color:#EDE7DA;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.88}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--navy)}
+.signup .msg.err{color:var(--seal)}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--seal);border-color:var(--seal)}
+.src{font-family:var(--mono);font-size:11.5px;color:var(--fog);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:14px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #daylight,#fog{transition:none;animation:none}
+  .mcship,.mcwave{animation:none}
+  #motes{display:none}
+}
+:focus-visible{outline:2px solid var(--seal);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="daylight"></div>
+<div id="grain"></div>
+<div id="fog"></div>
+<canvas id="motes"></canvas>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Year</div><div class="rail-num" id="railYear">1872</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Aboard</div><div class="rail-num" id="railDepth">10</div><div class="rail-lab" id="railDUnit">people</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1872" data-depth="10" data-unit="people">
+  <div class="eyebrow">Merchant brigantine · the ghost ship</div>
+  <h1>Mary Celeste</h1>
+  <div class="sub">FOUND ADRIFT · 5 DECEMBER 1872 · NO ONE ABOARD</div>
+  <div class="coordbox">
+    <div class="coord">Found adrift<b>~400 miles east of the Azores</b></div>
+    <div class="coord">Aboard<b>10 people — never seen again</b></div>
+    <div class="coord">The real wreck<b>Rochelois reef, Haiti · 1885</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>UNSOLVED MYSTERY · NO BODY EVER FOUND — AND THE 1872 WRECK DOES NOT EXIST: THE SHIP SANK ELSEWHERE, THIRTEEN YEARS LATER</div>
+  <div class="scrollcue">↓ scroll — only one thing was missing: everyone</div>
+</section>
+
+<section class="reveal" data-year="1872" data-depth="10" data-unit="people">
+  <div class="eyebrow">Why this wreck</div>
+  <h2>A ship where nothing was wrong — except that everyone was gone</h2>
+  <p class="lede">Not the deepest, not the richest, not the deadliest. The Mary Celeste enters this atlas for a quality no other wreck has: it is the most <em>unexplained</em>.</p>
+  <p>When she was found, in the middle of the Atlantic, she was in perfect order. Sound, still under sail, cargo almost intact and provisions for months. Everything was in its place. Missing only were the ten people who should have been there — and the lifeboat. There was no blood, no struggle, no note. Only silence. For a hundred and fifty years we have tried to fill it, and this card does an uncommon thing: it separates the little we know from the enormous legend we have built on top.</p>
+  <div class="stats">
+    <div class="stat"><div class="v seal">10</div><div class="k">people vanished</div></div>
+    <div class="stat"><div class="v seal">0</div><div class="k">bodies found</div></div>
+    <div class="stat"><div class="v">1,701</div><div class="k">barrels of cargo, almost all intact</div></div>
+    <div class="stat"><div class="v">~150</div><div class="k">years without an answer</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1872" data-depth="10" data-unit="people">
+  <div class="eyebrow">The ship and the voyage</div>
+  <h2>A ship with a reputation for bad luck</h2>
+  <p>Built in 1861 in Nova Scotia, she was first named <strong>Amazon</strong>, and even then carried a sinister reputation: her first captain died a few days after taking command. Renamed Mary Celeste under American flag, in November 1872 she was in the hands of a much-respected captain, <strong>Benjamin Briggs</strong> — a prudent, teetotal man who, fittingly, carried alcohol only as cargo.</p>
+  <p class="lede">With him came his wife Sarah and their two-year-old daughter Sophia.</p>
+  <p>On 7 November the Mary Celeste left New York for Genoa, with <strong>1,701 barrels of industrial alcohol</strong> in the hold and seven carefully chosen crewmen. Ten people in all. A routine voyage, on a sound ship, with a good captain and a sea that, that November, was not even particularly bad.</p>
+</section>
+
+<section class="reveal" data-year="1872" data-depth="10" data-unit="people">
+  <div class="eyebrow">5 December 1872 · mid-Atlantic</div>
+  <h2>Another ship saw her lurching</h2>
+  <p>About four hundred miles east of the Azores, the British brigantine <strong>Dei Gratia</strong>, commanded by David Morehouse, sighted a ship moving strangely, as if with no one at the helm. It was the Mary Celeste — which Morehouse, by an unsettling coincidence, knew: he had dined with Briggs a few weeks earlier, in New York.</p>
+  <div class="moment">
+    <q>She was under full sail, but no one answered. They boarded, and found a ship perfectly in order, and perfectly empty.</q>
+    <cite>FROM THE DEI GRATIA CREW'S ACCOUNT OF THE BOARDING</cite>
+  </div>
+  <p>The last entry in the log was dated <strong>25 November</strong>: ten days earlier. In those ten days the ship had kept sailing alone, with no one at the wheel. The Dei Gratia crew took her eight hundred miles to Gibraltar. And there the questions began that still have no answer.</p>
+</section>
+
+<section class="reveal" data-year="1872" data-depth="10" data-unit="people">
+  <div class="eyebrow">The inspection</div>
+  <h2>What they found aboard</h2>
+  <p>The power — and the cruelty — of this mystery lies in the details: every clue seems to rule out one explanation and suggest another. Here is the ship seen from above, as they found her. Click the clues.</p>
+  <div class="sitewrap">
+    <svg viewBox="0 0 640 300" role="img" aria-label="Top-down plan of the Mary Celeste with the clues found aboard" class="fielded">
+      <title>The inspection — plan of the ship</title>
+      <path d="M70 150 C70 108 110 92 170 90 L500 90 C560 92 600 120 616 150 C600 180 560 208 500 210 L170 210 C110 208 70 192 70 150 Z"
+            fill="rgba(154,122,76,.10)" stroke="var(--rope)" stroke-width="1.6"/>
+      <line x1="90" y1="150" x2="600" y2="150" stroke="rgba(43,46,49,.18)" stroke-width="1" stroke-dasharray="4 6"/>
+      <text x="592" y="150" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="end" dy="-4">BOW →</text>
+      <text x="96" y="150" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9" dy="-4">← STERN</text>
+
+      <rect x="96" y="120" width="66" height="60" rx="3" fill="rgba(56,80,106,.10)" stroke="var(--navy)" stroke-width="1.1"/>
+      <circle cx="250" cy="150" r="12" fill="none" stroke="var(--rope)" stroke-width="1.4"/><circle cx="250" cy="150" r="3.5" fill="var(--rope)"/>
+      <circle cx="410" cy="150" r="12" fill="none" stroke="var(--rope)" stroke-width="1.4"/><circle cx="410" cy="150" r="3.5" fill="var(--rope)"/>
+      <rect x="300" y="132" width="34" height="36" rx="2" fill="rgba(154,122,76,.14)" stroke="var(--rope)" stroke-width="1"/>
+      <rect x="352" y="134" width="30" height="32" rx="2" fill="rgba(154,122,76,.14)" stroke="var(--rope)" stroke-width="1"/>
+
+      <g class="spot" tabindex="0" data-t="The missing lifeboat" data-d="The lifeboat was gone: almost certainly launched on purpose. A rope still hung over one side, as if something had been tied to the ship — and then broke free." data-s="No one was thrown overboard: they left of their own accord, in order, in the boat.">
+        <circle class="hot" cx="120" cy="96" r="20"/>
+        <path class="pin" d="M120 78 c-8 0 -14 6 -14 14 c0 10 14 20 14 20 s14 -10 14 -20 c0 -8 -6 -14 -14 -14 Z" fill="var(--seal)"/>
+        <circle cx="120" cy="92" r="4.5" fill="var(--paper2)"/>
+        <text x="120" y="238" fill="var(--seal)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle">LIFEBOAT</text>
+      </g>
+      <g class="spot" tabindex="0" data-t="The cabin: instruments and log gone" data-d="From the captain's cabin, the chronometer, the sextant and the navigation papers were missing. The log, however, remained: its last entry is dated 25 November." data-s="Whoever left had time to take the instruments to navigate. A deliberate departure, not a blind flight.">
+        <circle class="hot" cx="129" cy="150" r="26"/>
+        <path class="pin" d="M129 122 c-9 0 -16 7 -16 16 c0 12 16 22 16 22 s16 -10 16 -22 c0 -9 -7 -16 -16 -16 Z" fill="var(--navy)"/>
+        <circle cx="129" cy="138" r="5" fill="var(--paper2)"/>
+        <text x="129" y="252" fill="var(--navy)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle">CABIN</text>
+      </g>
+      <g class="spot" tabindex="0" data-t="The dismantled bilge pump" data-d="One of the bilge pumps had been taken apart, and there was about a metre of water in the hold — not enough to sink her, but enough to frighten." data-s="Perhaps Briggs, with no working pump, believed the ship was taking on more water than she really was.">
+        <circle class="hot" cx="250" cy="150" r="22"/>
+        <path class="pin" d="M250 118 c-9 0 -16 7 -16 16 c0 12 16 22 16 22 s16 -10 16 -22 c0 -9 -7 -16 -16 -16 Z" fill="var(--navy)"/>
+        <circle cx="250" cy="134" r="5" fill="var(--paper2)"/>
+        <text x="250" y="252" fill="var(--navy)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle">PUMP</text>
+      </g>
+      <g class="spot" tabindex="0" data-t="Nine empty barrels of 1,701" data-d="The cargo was almost intact — but nine barrels were empty. They were the only ones made of red oak, a more porous wood, prone to letting vapours seep through." data-s="Evaporated alcohol may have filled the hold with fumes: the seed of a fear of explosion.">
+        <circle class="hot" cx="317" cy="150" r="22"/>
+        <path class="pin" d="M317 118 c-9 0 -16 7 -16 16 c0 12 16 22 16 22 s16 -10 16 -22 c0 -9 -7 -16 -16 -16 Z" fill="var(--seal)"/>
+        <circle cx="317" cy="134" r="5" fill="var(--paper2)"/>
+        <text x="317" y="252" fill="var(--seal)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle">9 BARRELS</text>
+      </g>
+      <g class="spot" tabindex="0" data-t="The cargo and hatches" data-d="The rest of the 1,701 barrels of alcohol were in place. The main hatch was closed and secured when they came aboard." data-s="No looting, no piracy: no one stole the cargo, which was worth more than the ship itself.">
+        <circle class="hot" cx="367" cy="150" r="22"/>
+        <path class="pin" d="M367 118 c-9 0 -16 7 -16 16 c0 12 16 22 16 22 s16 -10 16 -22 c0 -9 -7 -16 -16 -16 Z" fill="var(--rope)"/>
+        <circle cx="367" cy="134" r="5" fill="var(--paper2)"/>
+        <text x="367" y="252" fill="var(--rope)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle">CARGO</text>
+      </g>
+      <g class="spot" tabindex="0" data-t="Six months of provisions" data-d="In the galley there was food and water for six months, untouched. No sign of haste at the stove, no abandoned meal: the 'still-warm plates' are pure invention." data-s="It was not hunger, nor an interrupted meal: the ship was fully able to sustain her ten passengers.">
+        <circle class="hot" cx="470" cy="150" r="22"/>
+        <path class="pin" d="M470 118 c-9 0 -16 7 -16 16 c0 12 16 22 16 22 s16 -10 16 -22 c0 -9 -7 -16 -16 -16 Z" fill="var(--rope)"/>
+        <circle cx="470" cy="134" r="5" fill="var(--paper2)"/>
+        <text x="470" y="252" fill="var(--rope)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle">PROVISIONS</text>
+      </g>
+
+      <text x="20" y="26" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1" class="plan-note">SCHEMATIC PLAN — NOT TO SCALE · CLICK A CLUE</text>
+    </svg>
+    <div id="dossier">Select a clue to read what they found — and what it suggests.</div>
+  </div>
+  <p class="note">Each entry gives the established finding and, in blue, the hypothesis that detail feeds. None of these clues, alone, closes the case: it is their sum that makes it fascinating.</p>
+</section>
+
+<section class="reveal" data-year="1873" data-depth="10" data-unit="people">
+  <div class="eyebrow">Gibraltar · the inquiry</div>
+  <h2>A judge convinced it was a crime</h2>
+  <p>At Gibraltar, the official in charge of the inquiry, <strong>Frederick Solly-Flood</strong>, was convinced from the start that he was looking at a crime: a mutiny, a murder, perhaps a fraud. He had every stain on the wood and every mark on the ship examined for evidence of violence.</p>
+  <p class="lede">After more than three months, he found nothing.</p>
+  <p>The stains were not blood. There were no used weapons, no signs of a struggle. In the end the court had to grant the Dei Gratia crew a salvage award — but a modest one, almost grudging, because the suspicion that those men knew something never quite dissolved. It was the first injustice of this story: to be suspected for having rescued an empty ship.</p>
+</section>
+
+<section class="reveal" data-year="1873" data-depth="10" data-unit="people">
+  <div class="eyebrow">The most likely explanation</div>
+  <h2>Not a monster: an error of caution</h2>
+  <p>Lined up, the clues tell a sober story, and precisely for that reason a credible one. Some barrels of alcohol seep vapours into the hold. A noise, a burst of compressed air, perhaps the pump not working and the water rising: Briggs fears an imminent explosion, or believes the ship is sinking.</p>
+  <p>He takes a prudent and fatal decision: he lowers the lifeboat and puts everyone into it, keeping it tied to the ship with a long rope, to come back once the danger has passed. But the wind stiffens, the Mary Celeste picks up under full sail — and the rope parts. Ten people are left in an open boat, in the middle of the Atlantic, watching their ship pull away, safe and sound, without them.</p>
+  <p class="note">It is a hypothesis, not a certainty: it has weak points (the fumes were not smelled, the hatch was closed). But it explains all the clues with no need for pirates, monsters or crimes. The extraordinary explanations — seaquakes, waterspouts, mutinies — remain possible, but no evidence supports them.</p>
+</section>
+
+<section class="reveal" data-year="1884" data-depth="10" data-unit="people">
+  <div class="eyebrow">The legend versus the facts</div>
+  <h2>The mystery we know was written by a novelist</h2>
+  <p>Most of what the world "knows" about the Mary Celeste comes not from the Gibraltar records, but from a short story. In 1884 a still-unknown young doctor, <strong>Arthur Conan Doyle</strong> — the future creator of Sherlock Holmes — published anonymously a tale inspired by the case, presenting it almost as a true testimony.</p>
+  <p class="lede">He called it, mistakenly, "<em>Marie</em> Celeste" — and that error has entered pop culture forever.</p>
+  <p>In his story Doyle invented a bloody mutiny and an adventure ending. From there, book by book, the most famous and most false details were added: the meals still steaming on the table, the hot tea in the cups, the lit pipe. None of these things was ever found. The documented truth is barer and more disturbing: a ship in order, and no one aboard. We turned an absence into a novel because the absence, alone, was unbearable to us.</p>
+</section>
+
+<section class="reveal" data-year="1885" data-depth="10" data-unit="people">
+  <div class="eyebrow">The real end</div>
+  <h2>The wreck the legend does not tell</h2>
+  <p>Here is the paradox that gives this card its place in the atlas: <strong>the wreck of the Mary Celeste is not where everyone imagines it</strong>. The ship did not sink in 1872, in the middle of the Atlantic. After the abandonment she kept sailing for years, passing from hand to hand, always chased by her reputation.</p>
+  <p>In January 1885 her last captain, <strong>Gilman Parker</strong>, loaded her with worthless goods declared as valuable, insured her for thirty thousand dollars and deliberately ran her onto a reef off <strong>Haiti</strong>, to collect the payout. He was tried in Boston for fraud and for <em>barratry</em> — the wilful casting-away of one's own ship. The ghost ship did not vanish into nothing: she ended her days the victim of a swindle, on a Caribbean reef, far from the spot where her myth still floats.</p>
+</section>
+
+<section class="reveal" data-year="1872" data-depth="10" data-unit="people">
+  <div class="eyebrow">The ship</div>
+  <h2>A brigantine, adrift</h2>
+  <p>The Mary Celeste was a two-masted brigantine, about thirty metres long: a modest, sturdy cargo ship, built for the Atlantic. The image that remains is the one history handed down — sails still set, the wheel free, and no one aboard.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 640 240" role="img" aria-label="Stylized illustration of the brigantine Mary Celeste adrift">
+      <title>The brigantine Mary Celeste adrift</title>
+      <path d="M-20 196 q 60 -7 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(147,166,166,.55)" stroke-width="1.4" class="mcwave"/>
+      <path d="M-20 208 q 60 -6 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(147,166,166,.32)" stroke-width="1.2" class="mcwave"/>
+      <g class="mcship">
+        <path d="M196 176 L452 176 L430 196 L220 196 Z" fill="#5A4A34" stroke="#3B2F20" stroke-width="1.2"/>
+        <line x1="210" y1="182" x2="440" y2="182" stroke="#9A7A4C" stroke-width="1"/>
+        <line x1="270" y1="176" x2="270" y2="58" stroke="#3B2F20" stroke-width="2.4"/>
+        <line x1="372" y1="176" x2="372" y2="66" stroke="#3B2F20" stroke-width="2.4"/>
+        <line x1="196" y1="176" x2="500" y2="92" stroke="#3B2F20" stroke-width="1"/>
+        <path d="M272 66 L322 76 L272 120 Z" fill="#E4DBC7" stroke="#B7A98C" stroke-width="1"/>
+        <path d="M272 124 L318 132 L272 164 Z" fill="#DCD2BB" stroke="#B7A98C" stroke-width="1"/>
+        <path d="M374 74 L420 84 L374 124 Z" fill="#E4DBC7" stroke="#B7A98C" stroke-width="1"/>
+        <path d="M268 66 L226 78 L268 118 Z" fill="#DCD2BB" stroke="#B7A98C" stroke-width="1"/>
+        <path d="M220 190 q -14 12 -6 26" fill="none" stroke="#9A7A4C" stroke-width="1.3" stroke-dasharray="2 3"/>
+      </g>
+      <text x="20" y="28" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">TWO-MASTED BRIGANTINE — STYLIZED RECONSTRUCTION</text>
+    </svg>
+    <figcaption>Stylized reconstruction. Very few images of the ship survive: the best known shows her when she was still called Amazon.</figcaption>
+  </figure>
+  <div class="realimg">
+    <div class="badge">Real documents and images</div>
+    <p>The few surviving visual sources — the 1861 painting of the ship as <em>Amazon</em>, the Gibraltar inquiry records, Conan Doyle's 1884 tale — are held by archives and history magazines.</p>
+    <a class="rilink" href="https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/" target="_blank" rel="noopener">The case reconstructed · Smithsonian Magazine ↗</a>
+    <a class="rilink" href="https://www.britannica.com/topic/Mary-Celeste" target="_blank" rel="noopener">Entry and theories · Encyclopædia Britannica ↗</a>
+    <p class="cite">Period images from the archives and history magazines cited, reproduced with attribution at the sources, not hosted on this site.</p>
+  </div>
+</section>
+
+<section class="reveal" data-year="1872" data-depth="10" data-unit="people">
+  <div class="eyebrow">The route</div>
+  <h2>The voyage cut short</h2>
+  <p>Every wreck is, first of all, a voyage that did not arrive. The solid line marks the distance actually covered; the dashed line, the part that was never sailed.</p>
+  <!--ROUTEMAP-->
+</section>
+
+<section class="reveal" data-year="1872" data-depth="10" data-unit="people">
+  <div class="eyebrow">The numbers</div>
+  <h2>The case, in figures</h2>
+  <table>
+    <thead><tr><th>Item</th><th class="n">Value</th></tr></thead>
+    <tbody>
+      <tr><td>Type</td><td class="n">merchant brigantine (ex Amazon, 1861)</td></tr>
+      <tr><td>Departure</td><td class="n">New York, 7 Nov 1872 → Genoa</td></tr>
+      <tr><td>Cargo</td><td class="n">1,701 barrels of industrial alcohol</td></tr>
+      <tr><td>People aboard</td><td class="n">10 (Capt. Briggs, wife, daughter, 7 crew)</td></tr>
+      <tr><td>Found</td><td class="n">~5 Dec 1872 · ~400 mi east of the Azores</td></tr>
+      <tr><td>By whom</td><td class="n">brigantine Dei Gratia (Capt. Morehouse)</td></tr>
+      <tr><td>Last log entry</td><td class="n">25 November 1872</td></tr>
+      <tr><td>Empty barrels found</td><td class="n">9 of 1,701 (red oak, porous)</td></tr>
+      <tr><td>Bodies found</td><td class="n">0</td></tr>
+      <tr><td>End of the ship</td><td class="n">deliberately run aground · Haiti, 1885</td></tr>
+    </tbody>
+  </table>
+  <p class="note">The date of discovery ranges between 4 and 5 December 1872 depending on the source. The number of people aboard (10) is certain. No theory of the disappearance is confirmed: the page presents the most credible one as such, not as truth.</p>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0" data-unit="now">
+  <div class="eyebrow">A note on method</div>
+  <h2>What this page does not do</h2>
+  <p>It does not solve the mystery — because it is not solved. It carefully distinguishes what was established at Gibraltar (a ship in order, the lifeboat and instruments missing, nine empty barrels, no sign of violence) from what was invented later (the warm meals, the tea in the cups, the bloody mutiny). The most likely explanation is presented with its weak points stated, not as a solution.</p>
+  <p>And it corrects the underlying misunderstanding: the wreck of the Mary Celeste does not lie in the middle of the Atlantic, but on a reef off Haiti, where she ended thirteen years later at the hands of a swindler. Separating the facts from the myth takes nothing away from the fascination of the story: on the contrary, it shows how little, in the end, we need to build a legend.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Card 016 of 20</div>
+    <h2 style="margin-bottom:14px">The next is the deadliest of all: the Wilhelm Gustloff</h2>
+    <p>From the silent mystery of ten people to the greatest tragedy ever to befall a single ship. In January 1945, a German liner packed with nine thousand fleeing refugees was torpedoed in the frozen Baltic. It was the deadliest sinking in history — and almost no one knows it. The next card gives that silence a name.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Notify me when the next card is out</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required>
+        <button type="submit">Notify me</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="lusitania.html">← Card 015: the Lusitania</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">All the wrecks on the globe →</a>
+  </div>
+  <footer>
+    <div class="src">
+      SOURCES · Encyclopædia Britannica "Mary Celeste" (ship, discovery, theories) · HISTORY.com (voyage, Dei Gratia, inquiry) · Smithsonian Magazine "Abandoned Ship: The Mary Celeste" (chronicle and forensics) · Wikipedia "Mary Celeste" (ship Amazon, 9 red-oak barrels, final fate) · The Arthur Conan Doyle Encyclopaedia and Wikipedia "J. Habakuk Jephson's Statement" (the 1884 tale, the "Marie Celeste" spelling, the birth of the myth) · Gibraltar court records (F. Solly-Flood)<br><br>
+      Wreck Atlas · Card 016 · Prototype
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), daylight=document.getElementById('daylight');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- section reveal ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- pale drifting haze ---------- */
+  var cv=document.getElementById('motes'), ctx=cv&&cv.getContext?cv.getContext('2d'):null, parts=[], W=0,H=0;
+  function size(){ if(!ctx)return; W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    parts=[]; var n=Math.round(W*H/34000);
+    for(var i=0;i<n;i++) parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.3+.3,v:.22+Math.random()*.6,o:.04+Math.random()*.08}); }
+  function draw(){ if(!ctx)return; ctx.clearRect(0,0,W,H);
+    for(var i=0;i<parts.length;i++){ var p=parts[i];
+      p.x+=p.v; p.y+=Math.sin(p.x*.008)*.06;
+      if(p.x>W+4){ p.x=-4; p.y=Math.random()*H; }
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fillStyle='rgba(90,80,60,'+p.o+')'; ctx.fill(); }
+    requestAnimationFrame(draw); }
+  if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  /* ---------- background: bleached daylight, faint variations ---------- */
+  var shades=['#E9E2D2','#EAE3D3','#E7E0CF','#E9E3D2','#EBE5D5','#E8E1D0','#EDE7D8'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    document.getElementById('railDLab').textContent = (active.dataset.unit==='now') ? 'state' : 'Aboard';
+    document.getElementById('railDUnit').textContent = active.dataset.unit;
+    if(!reduce){ daylight.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)]; }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- the inspection (clickable clues) ---------- */
+  var dossier=document.getElementById('dossier');
+  if(dossier){
+    document.querySelectorAll('.spot').forEach(function(z){
+      function show(){ dossier.innerHTML='<b>'+z.dataset.t+'</b><br>'+z.dataset.d+'<br><span class="sugg">↳ '+z.dataset.s+'</span>'; }
+      z.addEventListener('click',show); z.addEventListener('focus',show);
+      z.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} });
+    });
+  }
+
+  /* ---------- scroll metrics ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'016-maryceleste',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] card 016 · '+m+'% at '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] session: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- sign-up ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Please enter a valid email address.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registered. The prototype does not send anything yet — connect your email service here.';
+      console.log('[wreck-atlas] sign-up:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>
