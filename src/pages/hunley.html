@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>H.L. Hunley — 1864</title>
+<meta name="description" content="Il sommergibile confederato a manovella che nel 1864 fu il primo della storia ad affondare una nave da guerra — e subito dopo sparì con i suoi otto uomini. Recuperato nel 2000, custodisce ancora il suo enigma: perché non tornò mai indietro?">
+<meta property="og:type" content="article">
+<meta property="og:title" content="H.L. Hunley — 1864">
+<meta property="og:description" content="Otto uomini in un tubo di ferro, una manovella e un siluro. Fecero la storia, poi svanirono al loro posto. Forse li uccise la loro stessa arma.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#12181C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arbutus+Slab&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --harbor:#12181C; --deep:#0C1114; --panel:#1A2227;
+  --bone:#DAD6C8; --bone2:#B0AC9C; --fog:#7C7E78;
+  --iron:#5E6B70; --iron2:#8A979C; --harborgreen:#3E5E52;
+  --rust:#9A5A34; --rust2:#BE7746; --amber:#C99A46; --amber2:#E4C069;
+  --rule:rgba(218,214,200,.14);
+  --display:"Arbutus Slab",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--harbor);color:var(--bone);font-family:var(--body);font-weight:300;line-height:1.66;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#water{position:fixed;inset:0;z-index:-4;background:var(--harbor);transition:background 1.6s ease}
+#murk{position:fixed;inset:-12%;z-index:-3;pointer-events:none;opacity:.6;
+  background:radial-gradient(circle at 28% 22%,rgba(62,94,82,.10),transparent 40%),
+             radial-gradient(circle at 74% 76%,rgba(12,17,20,.85),transparent 46%)}
+#lantern{position:fixed;left:50%;top:34%;transform:translate(-50%,-50%);width:60vw;height:44vh;z-index:-2;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 50%,rgba(201,154,70,.10),transparent 60%);
+  animation:lantern 6s ease-in-out infinite alternate}
+@keyframes lantern{0%{opacity:.6}100%{opacity:.95}}
+#silt{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--fog);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--amber)}
+.rail-num{font-size:18px;color:var(--bone);font-weight:500;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.55;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(18,24,28,.82)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber2);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(44px,9vw,98px);line-height:1.02;letter-spacing:-.01em}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(28px,4.5vw,46px);line-height:1.14;margin-bottom:22px}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(218,214,200,.84)}
+.lede{font-size:20px;color:var(--bone)}
+em{font-style:italic;color:var(--bone2)}
+strong{font-weight:400;color:var(--bone);border-bottom:1px solid rgba(201,154,70,.35)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--fog);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--fog)}
+.coord b{display:block;color:var(--bone);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:flex-start;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  color:var(--amber2);border:1px solid rgba(201,154,70,.36);padding:6px 11px;margin-top:28px;align-self:flex-start;max-width:66ch;line-height:1.6}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--amber2);flex:none;margin-top:5px}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(124,126,120,.9);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(218,214,200,.08)}
+.stat .v{font-family:var(--display);font-weight:400;font-size:clamp(30px,4.8vw,46px);line-height:1.05;color:var(--amber2);font-variant-numeric:tabular-nums}
+.stat .v.rust{color:var(--rust2)}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--amber);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-style:italic;font-size:clamp(24px,4.3vw,39px);line-height:1.22;color:var(--bone);quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--fog);margin-top:18px}
+
+.cut{margin-top:14px;border:1px solid var(--rule);background:rgba(26,34,39,.6);padding:22px 20px}
+.cut svg{width:100%;height:auto;display:block}
+.hz{cursor:pointer}
+.hz .hot{opacity:0;transition:opacity .25s}
+.hz:hover .hot,.hz:focus .hot{opacity:.5}
+#hunleyinfo{font-family:var(--mono);font-size:12px;color:var(--bone2);margin-top:16px;min-height:60px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.75}
+#hunleyinfo b{color:var(--amber2);font-weight:500}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(218,214,200,.08);vertical-align:top}
+td.n{color:var(--bone);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:rgba(124,126,120,.9);line-height:1.75;margin-top:22px;max-width:60ch}
+
+.realimg{margin-top:22px;border:1px solid rgba(201,154,70,.32);background:rgba(201,154,70,.05);padding:22px}
+.realimg .badge{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber2);margin-bottom:14px}
+.realimg p{margin-bottom:14px}
+.arclinks{display:grid;gap:2px;margin-top:6px}
+.arclinks a{display:flex;gap:20px;align-items:baseline;padding:18px 0;text-decoration:none;color:inherit;
+  border-bottom:1px solid rgba(218,214,200,.09);transition:padding-left .3s ease,border-color .3s ease}
+.arclinks a:first-child{border-top:1px solid rgba(218,214,200,.09)}
+.arclinks a:hover,.arclinks a:focus-visible{padding-left:12px;border-bottom-color:var(--amber)}
+.arclinks .arch{font-family:var(--mono);font-size:11px;color:var(--iron2);min-width:170px}
+.arclinks .ttl{font-size:15.5px;color:var(--bone)}
+.arclinks .meta{font-size:13px;color:rgba(218,214,200,.55);margin-top:3px;max-width:46ch}
+.arclinks .go{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--fog);opacity:0;transition:opacity .3s}
+.arclinks a:hover .go,.arclinks a:focus-visible .go{opacity:1}
+.realimg .cite{font-family:var(--mono);font-size:11px;color:rgba(124,126,120,.9);line-height:1.6;margin-top:14px}
+
+.shipart{margin-top:22px;border:1px solid var(--rule);background:rgba(26,34,39,.6);padding:18px 18px 12px}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:rgba(124,126,120,.9);letter-spacing:.05em;margin-top:10px}
+.subglide{transform-box:fill-box;transform-origin:50% 50%;animation:subglide 9s ease-in-out infinite}
+@keyframes subglide{0%,100%{transform:translateX(0) rotate(-.6deg)}50%{transform:translateX(10px) rotate(.6deg)}}
+
+.closing{border-top:1px solid var(--amber);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--fog);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:rgba(26,34,39,.6);border:1px solid var(--rule);color:var(--bone);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--amber);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--amber);color:#201603;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.88}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--amber2)}
+.signup .msg.err{color:var(--rust2)}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--amber2);border-color:var(--amber)}
+.src{font-family:var(--mono);font-size:11.5px;color:rgba(124,126,120,.85);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:14px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+  .arclinks a{flex-wrap:wrap;gap:6px} .arclinks .go{display:none} .arclinks .arch{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #water,#lantern{transition:none;animation:none}
+  .subglide{animation:none}
+  #silt{display:none}
+}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="water"></div>
+<div id="murk"></div>
+<div id="lantern"></div>
+<canvas id="silt"></canvas>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Anno</div><div class="rail-num" id="railYear">1864</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Profondità</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1864" data-depth="0">
+  <div class="eyebrow">Sommergibile confederato · Guerra civile americana · 1864</div>
+  <h1>H.L. Hunley</h1>
+  <div class="sub">PRIMO SOMMERGIBILE AD AFFONDARE UNA NAVE DA GUERRA · POI SPARITO</div>
+  <div class="coordbox">
+    <div class="coord">Dove giaceva<b>al largo di Charleston · ~9 m</b></div>
+    <div class="coord">Equipaggio<b>8 uomini — mai tornati</b></div>
+    <div class="coord">Morti in tutto<b>~21, in tre equipaggi</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>RECUPERATO NEL 2000 · EQUIPAGGIO SEPOLTO CON GLI ONORI · CAUSA DELLA PERDITA ANCORA DIBATTUTA</div>
+  <div class="scrollcue">↓ scorri — nel buio del porto</div>
+</section>
+
+<section class="reveal" data-year="1864" data-depth="9">
+  <div class="eyebrow">Perché questo relitto</div>
+  <h2>La macchina che fece la storia e poi svanì</h2>
+  <p class="lede">Il 17 febbraio 1864, per la prima volta al mondo, un sommergibile affondò una nave da guerra. Realizzò ciò che nessuno aveva mai fatto — e non tornò mai a raccontarlo.</p>
+  <p>La Hunley era un tubo di ferro lungo dodici metri, mosso a mano da otto uomini che giravano una manovella nel buio. Un'idea con mezzo secolo di anticipo, costruita da una nazione allo stremo. Uccise già due equipaggi nei collaudi, poi colpì e affondò la USS Housatonic al largo di Charleston. Segnalò il successo con una luce verso la costa. E sparì. Per centotrentuno anni nessuno seppe dov'era, né perché non fosse rientrata. Questa scheda racconta la macchina, l'impresa e l'enigma che custodiva ancora quando, nel 2000, la riportarono a galla.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">1°</div><div class="k">sommergibile a colare a picco una nave</div></div>
+    <div class="stat"><div class="v">8</div><div class="k">uomini a bordo, l'ultima notte</div></div>
+    <div class="stat"><div class="v rust">~21</div><div class="k">morti in tre equipaggi</div></div>
+    <div class="stat"><div class="v">131</div><div class="k">anni prima del ritrovamento</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1863" data-depth="0">
+  <div class="eyebrow">La macchina</div>
+  <h2>Una bara che funzionava</h2>
+  <p>Nel 1863 la Confederazione era soffocata dal blocco navale dell'Unione: i porti del Sud erano chiusi, e con essi i rifornimenti. Da questa disperazione nacque un'arma che sembrava impossibile — un battello capace di immergersi e colpire le navi nemiche dal basso. Lunga circa dodici metri e larga poco più di un metro, la Hunley era mossa da <strong>sette uomini che giravano a mano una manovella</strong> collegata all'elica, mentre l'ottavo, il comandante, la guidava e ne controllava l'immersione.</p>
+  <p class="lede">Prima ancora di combattere, aveva già ucciso.</p>
+  <p>Durante i collaudi affondò <strong>due volte</strong>, portando con sé due interi equipaggi — tra cui, in una di quelle prove, il suo stesso finanziatore, Horace Lawson Hunley, da cui prese il nome. In tutto, prima e dopo l'attacco, il battello costò la vita a una ventina di uomini. Salirci a bordo, nel febbraio del 1864, significava sapere tutto questo. Salirono lo stesso.</p>
+</section>
+
+<section class="reveal" data-year="1864" data-depth="9">
+  <div class="eyebrow">17 febbraio 1864 · notte · al largo di Charleston</div>
+  <h2>Il primo colpo della storia sottomarina</h2>
+  <p>Al comando c'era il tenente <strong>George Dixon</strong>. Nell'oscurità, la Hunley uscì dall'Isola di Sullivan e si avvicinò lentamente alla USS Housatonic, un poderoso sloop da guerra dell'Unione in servizio di blocco, a circa quattro miglia dalla costa. All'estremità di una lunga asta di ferro, a prua, portava un <strong>siluro</strong>: una carica di polvere nera.</p>
+  <p>La Hunley conficcò l'asta nello scafo nemico, sotto la linea di galleggiamento, e la caricò a esplodere. La Housatonic si squarciò e colò a picco in pochi minuti. Era la prima volta, nella storia dell'umanità, che un sommergibile affondava una nave da guerra: un momento che anticipava di mezzo secolo la guerra sottomarina del Novecento. Dalla costa, poco dopo, si vide una <strong>luce</strong> — il segnale convenuto: <em>missione compiuta, torniamo a casa</em>. Fu l'ultima cosa che si seppe di loro.</p>
+</section>
+
+<section class="reveal" data-year="1864" data-depth="9">
+  <div class="eyebrow">Il meccanismo · dentro lo scafo</div>
+  <h2>Otto uomini, una manovella</h2>
+  <p>Per capire la Hunley bisogna entrarci. Non c'era spazio per stare in piedi, né vie di fuga rapide: solo un cilindro di ferro, una manovella e la fiducia reciproca di otto uomini. Clicca le parti.</p>
+  <div class="cut">
+    <svg viewBox="0 0 640 200" role="img" aria-label="Spaccato della Hunley: il siluro ad asta, il comandante e i sette uomini alla manovella" class="fielded">
+      <title>Otto uomini, una manovella</title>
+      <line x1="20" y1="176" x2="620" y2="176" stroke="rgba(218,214,200,.12)" stroke-width="1"/>
+      <text x="20" y="26" fill="rgba(124,126,120,.9)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">SPACCATO — NON IN SCALA · CLICCA UNA PARTE</text>
+      <!-- scafo a sigaro -->
+      <path d="M120 100 Q140 66 300 66 L520 66 Q560 70 574 100 Q560 130 520 134 L300 134 Q140 134 120 100 Z" fill="rgba(94,107,112,.14)" stroke="var(--iron2)" stroke-width="1.4"/>
+      <!-- albero di manovella -->
+      <line x1="180" y1="102" x2="520" y2="102" stroke="var(--iron)" stroke-width="2"/>
+      <!-- boccaporti -->
+      <rect x="196" y="56" width="20" height="12" fill="rgba(94,107,112,.3)" stroke="var(--iron2)" stroke-width="1"/>
+      <rect x="470" y="56" width="20" height="12" fill="rgba(94,107,112,.3)" stroke="var(--iron2)" stroke-width="1"/>
+
+      <!-- siluro ad asta (prua a sinistra) -->
+      <g class="hz" tabindex="0" data-t="Il siluro ad asta" data-d="A prua, all'estremità di un'asta di ferro lunga circa cinque metri, una carica di polvere nera. Non si lanciava: si conficcava nello scafo nemico sotto la linea di galleggiamento e si faceva esplodere. L'arma era efficace — e pericolosamente vicina a chi la usava.">
+        <line class="hot" x1="24" y1="100" x2="120" y2="100" stroke="var(--rust)" stroke-width="14"/>
+        <line x1="30" y1="100" x2="120" y2="100" stroke="var(--rust)" stroke-width="2.4"/>
+        <circle cx="30" cy="100" r="8" fill="var(--rust2)" stroke="var(--rust)" stroke-width="1.4"/>
+        <text x="30" y="128" fill="var(--rust2)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">IL SILURO</text>
+      </g>
+
+      <!-- comandante Dixon (prua interna) -->
+      <g class="hz" tabindex="0" data-t="Il tenente George Dixon" data-d="A prua, l'ottavo uomo: il comandante. Non girava la manovella — guidava il battello, ne regolava l'immersione con le pompe e osservava dal boccaporto. In tasca portava una moneta d'oro deformata da un proiettile, che a Shiloh gli aveva salvato la vita. La ritrovarono con lui.">
+        <circle class="hot" cx="196" cy="100" r="22"/>
+        <circle cx="196" cy="100" r="9" fill="var(--amber)"/>
+        <text x="196" y="156" fill="var(--amber2)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">DIXON</text>
+      </g>
+
+      <!-- sette alla manovella -->
+      <g class="hz" tabindex="0" data-t="I sette alla manovella" data-d="Sette uomini seduti in fila, spalla contro spalla, giravano a mano la manovella che muoveva l'elica: era questo il 'motore' della Hunley. Un lavoro sfiancante, in uno spazio in cui non ci si poteva alzare, con l'aria che bastava per poche ore. La loro forza era l'unica spinta del battello.">
+        <rect class="hot" x="236" y="78" width="250" height="46"/>
+        <g fill="var(--iron2)">
+          <circle cx="256" cy="100" r="7"/><circle cx="290" cy="100" r="7"/><circle cx="324" cy="100" r="7"/><circle cx="358" cy="100" r="7"/><circle cx="392" cy="100" r="7"/><circle cx="426" cy="100" r="7"/><circle cx="460" cy="100" r="7"/>
+        </g>
+        <text x="358" y="156" fill="var(--iron2)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">SETTE ALLA MANOVELLA</text>
+      </g>
+
+      <!-- perché non tornarono (tutto lo scafo) -->
+      <g class="hz" tabindex="0" data-t="Perché non tornarono?" data-d="È l'enigma. Gli otto furono trovati ognuno al proprio posto, senza fratture, senza segni di panico o di fuga. La teoria più recente (Duke University, 2017): l'onda d'urto del loro stesso siluro, trasmessa attraverso il ferro dello scafo, ne lacerò i polmoni all'istante. Non è confermata ufficialmente — ma spiega perché nessuno provò a scappare.">
+        <rect class="hot" x="130" y="64" width="440" height="72" rx="34"/>
+        <text x="540" y="60" fill="var(--bone2)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="end" letter-spacing="1">↑ clicca lo scafo</text>
+      </g>
+    </svg>
+    <div id="hunleyinfo">Seleziona una parte per entrare dentro la Hunley — e avvicinarti al suo enigma.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="2000" data-depth="9">
+  <div class="eyebrow">Il mistero</div>
+  <h2>Trovati ognuno al suo posto</h2>
+  <p>La Hunley fu individuata nel 1995 da una squadra guidata dallo scrittore <strong>Clive Cussler</strong> e recuperata intatta nel 2000. Quando gli archeologi la aprirono, trovarono una scena tanto ordinata quanto agghiacciante: gli otto scheletri erano <strong>ognuno alla propria stazione</strong>, il comandante a prua e i sette alle rispettive posizioni di manovella. Nessun osso rotto, nessun ammasso vicino ai boccaporti, nessun segno che avessero tentato di uscire.</p>
+  <div class="moment">
+    <q>Non si erano mossi. Qualunque cosa li avesse uccisi, li aveva colti tutti insieme, in silenzio, mentre erano ancora al lavoro.</q>
+    <cite>DALL'ANALISI DEI RESTI RECUPERATI DALLA HUNLEY</cite>
+  </div>
+  <p>La spiegazione più accreditata è arrivata nel 2017 da una ricercatrice della Duke University, Rachel Lance: l'esplosione del loro stesso siluro, a pochi metri di distanza, avrebbe generato un'<strong>onda d'urto</strong> trasmessa attraverso il ferro dello scafo, sufficiente a lacerare i polmoni degli uomini all'istante. Avrebbero, in sostanza, ucciso sé stessi con la propria arma. La teoria spiega tutto — la posizione dei corpi, l'assenza di fughe — ma la Marina e i conservatori del relitto non l'hanno mai sancita come certezza. L'enigma, ufficialmente, resta aperto.</p>
+</section>
+
+<section class="reveal" data-year="1862" data-depth="9">
+  <div class="eyebrow">La curiosità</div>
+  <h2>La moneta che salvò una vita, due volte</h2>
+  <p>Tra i reperti recuperati, uno ha commosso il mondo più di ogni altro. Sul bacino del tenente Dixon fu trovata una <strong>moneta d'oro da venti dollari</strong>, deformata da un colpo. Dietro c'è una storia che sembra leggenda, e invece è vera: la moneta gli era stata donata, si dice, dall'innamorata prima della guerra. Nella battaglia di Shiloh, nel 1862, un proiettile colpì Dixon alla gamba — ma trovò prima la moneta nella sua tasca, e ne assorbì l'urto, salvandogli la vita.</p>
+  <p class="lede">Dixon la portò con sé per sempre, e vi fece incidere quattro parole.</p>
+  <p>Sul metallo, levigato e inciso a mano, si legge ancora: <em>"Shiloh, 6 aprile 1862. La mia salvatrice. G. E. D."</em> La stessa moneta che gli aveva salvato la vita a Shiloh era con lui, in fondo al mare, la notte in cui la Hunley non tornò. Non poté salvarlo una seconda volta — ma ha attraversato con lui centotrentuno anni di buio, per riemergere e raccontarci chi era.</p>
+</section>
+
+<section class="reveal" data-year="1864" data-depth="9">
+  <div class="eyebrow">La macchina</div>
+  <h2>Un sigaro di ferro</h2>
+  <p>Vista di fianco, la Hunley non somigliava a una nave: era un lungo cilindro affusolato di ferro, con due torrette-boccaporto e alette di profondità ai lati. Un oggetto brutale e geniale, nato da lamiere di caldaia e da un'idea che il mondo non era ancora pronto ad accogliere. Oggi riposa, conservata, in una vasca a Charleston.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 640 180" role="img" aria-label="Illustrazione stilizzata del sommergibile Hunley, di profilo">
+      <title>Il sommergibile Hunley</title>
+      <path d="M-20 150 q 60 -6 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(62,94,82,.5)" stroke-width="1.3"/>
+      <g class="subglide">
+        <path d="M80 96 Q110 62 320 62 L520 62 Q580 66 596 96 Q580 126 520 130 L320 130 Q110 130 80 96 Z" fill="#2A343A" stroke="#5E6B70" stroke-width="1.4"/>
+        <line x1="120" y1="96" x2="560" y2="96" stroke="#8A979C" stroke-width="1" opacity=".5"/>
+        <rect x="220" y="50" width="26" height="16" rx="3" fill="#33403F" stroke="#6B7B7A" stroke-width="1"/>
+        <rect x="410" y="50" width="26" height="16" rx="3" fill="#33403F" stroke="#6B7B7A" stroke-width="1"/>
+        <!-- aletta -->
+        <path d="M330 130 l40 22 l-10 -22 Z" fill="#2A343A" stroke="#5E6B70" stroke-width="1"/>
+        <!-- elica -->
+        <g><line x1="592" y1="80" x2="592" y2="112" stroke="#C99A46" stroke-width="2"/><line x1="584" y1="96" x2="600" y2="96" stroke="#C99A46" stroke-width="2"/></g>
+        <!-- asta del siluro -->
+        <line x1="12" y1="96" x2="80" y2="96" stroke="#9A5A34" stroke-width="2.4"/>
+        <circle cx="14" cy="96" r="7" fill="#BE7746"/>
+      </g>
+      <text x="20" y="24" fill="rgba(124,126,120,.9)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">SOMMERGIBILE A MANOVELLA, 1864 — RICOSTRUZIONE STILIZZATA</text>
+    </svg>
+    <figcaption>Ricostruzione stilizzata. Il battello reale, la moneta di Dixon e i reperti sono presso gli archivi qui sotto.</figcaption>
+  </figure>
+</section>
+
+<section class="reveal" data-year="1864" data-depth="9">
+  <div class="eyebrow">La rotta</div>
+  <h2>Il viaggio interrotto</h2>
+  <p>Non una traversata, ma una sortita di poche miglia. Il tratto continuo mostra l'andata verso il bersaglio; il tratteggio, il breve ritorno alla base che non fu mai completato.</p>
+  <!--ROUTEMAP-->
+</section>
+
+<section class="reveal" data-year="1864" data-depth="9">
+  <div class="eyebrow">I numeri</div>
+  <h2>La macchina, misurata</h2>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Valore</th></tr></thead>
+    <tbody>
+      <tr><td>Tipo</td><td class="n">sommergibile confederato (a manovella)</td></tr>
+      <tr><td>Lunghezza</td><td class="n">~12 m (40 piedi)</td></tr>
+      <tr><td>Equipaggio</td><td class="n">8 (7 alla manovella + 1 al timone)</td></tr>
+      <tr><td>Arma</td><td class="n">siluro ad asta (polvere nera)</td></tr>
+      <tr><td>Impresa</td><td class="n">1° sommergibile ad affondare una nave (USS Housatonic)</td></tr>
+      <tr><td>Data</td><td class="n">17 febbraio 1864 · al largo di Charleston</td></tr>
+      <tr><td>Morti in tutto</td><td class="n">~21 (tre equipaggi, incl. H. Hunley)</td></tr>
+      <tr><td>Ritrovato / recuperato</td><td class="n">1995 (Cussler/NUMA) / 2000</td></tr>
+      <tr><td>Profondità</td><td class="n">~9 m</td></tr>
+      <tr><td>Causa della perdita</td><td class="n">dibattuta (onda d'urto del proprio siluro?)</td></tr>
+    </tbody>
+  </table>
+  <p class="note">La causa dell'affondamento è dichiarata come questione aperta: la teoria dell'onda d'urto (Duke University, 2017) è la più accreditata ma non è stata sancita ufficialmente. Le cifre delle vittime (~21 su tre equipaggi) e le dimensioni sono quelle comunemente riportate.</p>
+</section>
+
+<section class="reveal" data-year="2000" data-depth="9">
+  <div class="eyebrow">Archivio</div>
+  <h2>Vederla, e vedere la moneta</h2>
+  <p>Nessun file è ospitato qui: si rimanda a chi custodisce il battello, i suoi uomini e i suoi reperti. Link specifici, scelti uno per uno.</p>
+  <div class="realimg">
+    <div class="badge">Conservazione e archivio</div>
+    <div class="arclinks">
+      <a href="https://www.hunley.org/george-dixon/" target="_blank" rel="noopener">
+        <span class="arch">FRIENDS OF THE HUNLEY</span>
+        <span><span class="ttl">Il tenente Dixon e la sua moneta d'oro</span><span class="meta">L'ente che ha recuperato e conserva il battello: la storia di Dixon e della moneta-salvavita ritrovata con lui.</span></span>
+        <span class="go">hunley.org ↗</span>
+      </a>
+      <a href="https://www.history.navy.mil/browse-by-topic/wars-conflicts-and-operations/civil-war/ships-civil-war/civil-war-hunley.html" target="_blank" rel="noopener">
+        <span class="arch">U.S. NAVY (NHHC)</span>
+        <span><span class="ttl">La Hunley e l'affondamento della Housatonic</span><span class="meta">La scheda del Naval History and Heritage Command sull'impresa e sul relitto.</span></span>
+        <span class="go">history.navy.mil ↗</span>
+      </a>
+      <a href="https://www.smithsonianmag.com/science-nature/one-scientist-takes-on-mystery-why-civil-war-submarine-sank-180964587/" target="_blank" rel="noopener">
+        <span class="arch">SMITHSONIAN</span>
+        <span><span class="ttl">La teoria dell'onda d'urto</span><span class="meta">Come lo studio di Rachel Lance ha ricostruito cosa possa aver ucciso l'equipaggio.</span></span>
+        <span class="go">smithsonianmag.com ↗</span>
+      </a>
+    </div>
+    <p class="cite">Fotografie, reperti e documentazione presso i Friends of the Hunley (Warren Lasch Conservation Center), il Naval History and Heritage Command e Smithsonian Magazine, riprodotti con attribuzione presso le fonti, non ospitati su questo sito.</p>
+  </div>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">Nota metodologica</div>
+  <h2>Cosa questa pagina non fa</h2>
+  <p>Non chiude il mistero: presenta la teoria dell'onda d'urto come la più accreditata, ma dichiara che non è confermata ufficialmente — perché è così. E non trasforma un'arma di guerra in un'epica pulita: la Hunley fu costruita per uccidere, uccise (i quarantadue uomini della Housatonic ebbero cinque morti), e uccise soprattutto i propri, tre equipaggi in pochi mesi.</p>
+  <p>Ma tiene ferma anche la scala umana. Dietro "il primo sommergibile della storia" ci sono otto uomini che scelsero di scendere in un tubo di ferro sapendo cosa era già successo a chi li aveva preceduti, e una moneta incisa a mano che ci ricorda che ognuno di loro aveva una vita, e qualcuno che gliela voleva salvare. Il relitto è una tomba restituita: recuperato con cura, i suoi uomini sepolti con gli onori.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 024 di 20+ · la serie continua</div>
+    <h2 style="margin-bottom:14px">La prossima issa la bandiera nera: la Whydah Gally</h2>
+    <p>Dal sommergibile ai pirati veri. Nel 1717 la Whydah, nave del leggendario "Black Sam" Bellamy, affondò in una tempesta al largo di Cape Cod con il suo bottino. È l'<strong>unico relitto pirata al mondo autenticato con certezza</strong> — e sai grazie a cosa? A una campana con inciso il suo nome.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce la prossima scheda</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="thistlegorm.html">← Scheda 023: la Thistlegorm</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">Tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · Naval History and Heritage Command — U.S. Navy (impresa, affondamento della USS Housatonic, ritrovamento e recupero) · Encyclopædia Britannica «H.L. Hunley» · Friends of the Hunley / Warren Lasch Conservation Center (recupero 2000, tenente G. Dixon, moneta d'oro, sepoltura dell'equipaggio) · R. Lance et al., PLOS ONE (2017) e Smithsonian Magazine (teoria dell'onda d'urto) · Clive Cussler / NUMA (ritrovamento 1995)<br><br>
+      Wreck Atlas · Scheda 024 · Prototipo
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), water=document.getElementById('water');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- rivelazione delle sezioni ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- limo sospeso nel porto ---------- */
+  var cv=document.getElementById('silt'), ctx=cv&&cv.getContext?cv.getContext('2d'):null, parts=[], W=0,H=0;
+  function size(){ if(!ctx)return; W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    parts=[]; var n=Math.round(W*H/26000);
+    for(var i=0;i<n;i++) parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.3+.3,v:.12+Math.random()*.4,drift:Math.random()*.4-.2,o:.05+Math.random()*.12}); }
+  function draw(){ if(!ctx)return; ctx.clearRect(0,0,W,H);
+    for(var i=0;i<parts.length;i++){ var p=parts[i];
+      p.y+=p.v; p.x+=p.drift+Math.sin(p.y*.008)*.08;
+      if(p.y>H+4){ p.y=-4; p.x=Math.random()*W; }
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fillStyle='rgba(160,160,146,'+p.o+')'; ctx.fill(); }
+    requestAnimationFrame(draw); }
+  if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  /* ---------- fondo: dal porto notturno al buio del fondo ---------- */
+  var shades=['#12181C','#111619','#0F1417','#0E1215','#0C1114','#0B0F12','#0A0D10'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    document.getElementById('railDLab').textContent = (active.dataset.depth==='0') ? 'in mare' : 'Profondità';
+    if(!reduce){ water.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)]; }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- spaccato: otto uomini, una manovella ---------- */
+  var info=document.getElementById('hunleyinfo');
+  if(info){
+    document.querySelectorAll('.hz').forEach(function(z){
+      function show(){ info.innerHTML='<b>'+z.dataset.t+'</b><br>'+z.dataset.d; }
+      z.addEventListener('click',show); z.addEventListener('focus',show);
+      z.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} });
+    });
+  }
+
+  /* ---------- metriche di scroll ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'024-hunley',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] scheda 024 · '+m+'% a '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] sessione: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- iscrizione ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla — collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>

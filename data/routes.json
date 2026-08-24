@@ -740,5 +740,33 @@
       "wreck": "#D96B54",
       "label": "#B7D2D2"
     }
+  },
+  "hunley.html": {
+    "from": {
+      "n": "Isola di Sullivan",
+      "lon": -79.84,
+      "lat": 32.76,
+      "n_en": "Sullivan's Island"
+    },
+    "to": {
+      "n": "Isola di Sullivan (il ritorno)",
+      "lon": -79.84,
+      "lat": 32.76,
+      "n_en": "Sullivan's Island (the return)"
+    },
+    "wreck_label": "sparita al ritorno",
+    "wreck_label_en": "vanished on the way back",
+    "caption": "Non una traversata, ma una sortita notturna: la Hunley uscì dall'Isola di Sullivan, affondò la USS Housatonic a circa quattro miglia al largo di Charleston il 17 febbraio 1864 — e non fece mai ritorno alla base.",
+    "caption_en": "Not a crossing but a night sortie: the Hunley left Sullivan's Island, sank the USS Housatonic about four miles off Charleston on 17 February 1864 — and never returned to base.",
+    "palette": {
+      "bg": "#12181C",
+      "land": "#1E262A",
+      "coast": "#3A464C",
+      "plan": "#7C7E78",
+      "done": "#C99A46",
+      "port": "#DAD6C8",
+      "wreck": "#9A5A34",
+      "label": "#B0AC9C"
+    }
   }
 }

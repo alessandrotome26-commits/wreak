@@ -353,9 +353,10 @@
   "lat": 32.68,
   "lon": -79.77,
   "d": 9,
-  "st": "next",
+  "st": "ready",
   "f": "Il primo sottomarino della storia ad affondare una nave nemica: nel 1864, al largo di Charleston, colò a picco l'incrociatore unionista Housatonic — e sparì anch'esso con tutto l'equipaggio. Riportato in superficie nel 2000.",
-  "f_en": "Confederate submarine, the first in history to sink an enemy warship (1864) — then vanished with her crew. Raised in 2000; why she sank is still debated."
+  "f_en": "Confederate submarine, the first in history to sink an enemy warship (1864) — then vanished with her crew. Raised in 2000; why she sank is still debated.",
+  "href": "hunley.html"
  },
  {
   "id": "vrouw-maria",
@@ -438,7 +439,7 @@
   "lat": 41.9,
   "lon": -69.98,
   "d": 5,
-  "st": "planned",
+  "st": "next",
   "f": "L'unico relitto pirata autenticato al mondo: la nave di 'Black Sam' Bellamy, affondata in una tempesta al largo di Cape Cod nel 1717. La campana con il suo nome ne ha provato l'identità.",
   "f_en": "The only fully authenticated pirate shipwreck: 'Black Sam' Bellamy's ship, sunk in a storm off Cape Cod in 1717. A bell bearing her name proved her identity."
  },
