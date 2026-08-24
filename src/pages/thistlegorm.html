@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SS Thistlegorm — 1941</title>
+<meta name="description" content="Mercantile britannico carico di materiale bellico per l'8ª Armata, affondato all'ancora nel Mar Rosso nel 1941 da due bombardieri tedeschi. Oggi, a trenta metri, è una capsula del tempo della Seconda guerra mondiale — e uno dei relitti-museo più amati dai sub.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SS Thistlegorm — 1941">
+<meta property="og:description" content="Camion, moto, due locomotive, stivali, fucili: un deposito di guerra congelato a trenta metri. Colata a picco non in battaglia, ma all'ancora, da aerei a caccia di un'altra nave.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0C3E4A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --reef:#0C3E4A; --deep:#082E38; --panel:#0F4A54;
+  --foam:#EAF2F0; --foam2:#B7D2D2; --fog:#7FA0A2;
+  --turq:#3FB0A8; --turq2:#63C9C0; --sun:#E8C15C; --sun2:#F2D584;
+  --olive:#8A8046; --rust:#B0623A; --coral:#D96B54; --coral2:#E88A74;
+  --rule:rgba(234,242,240,.14);
+  --display:"Fjalla One",Georgia,sans-serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--reef);color:var(--foam);font-family:var(--body);font-weight:300;line-height:1.66;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#water{position:fixed;inset:0;z-index:-4;background:var(--reef);transition:background 1.6s ease}
+#caustic{position:fixed;inset:-12%;z-index:-3;pointer-events:none;opacity:.5;
+  background:radial-gradient(circle at 30% 12%,rgba(99,201,192,.14),transparent 40%),
+             radial-gradient(circle at 68% 18%,rgba(242,213,132,.10),transparent 42%),
+             radial-gradient(circle at 78% 74%,rgba(8,46,56,.7),transparent 46%);
+  animation:caustic 30s ease-in-out infinite alternate}
+@keyframes caustic{0%{transform:translate3d(-2%,-1%,0) scale(1.05)}100%{transform:translate3d(3%,2%,0) scale(1.12)}}
+#motes{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--fog);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--sun)}
+.rail-num{font-size:18px;color:var(--foam);font-weight:500;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.6;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(12,62,74,.82)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--turq2);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(48px,10vw,110px);line-height:1;letter-spacing:.01em}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(28px,4.6vw,48px);line-height:1.12;margin-bottom:22px;letter-spacing:.01em}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(234,242,240,.85)}
+.lede{font-size:20px;color:var(--foam)}
+em{font-style:italic;color:var(--foam2)}
+strong{font-weight:500;color:var(--foam)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--fog);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--fog)}
+.coord b{display:block;color:var(--foam);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:flex-start;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  color:var(--turq2);border:1px solid rgba(99,201,192,.36);padding:6px 11px;margin-top:28px;align-self:flex-start;max-width:66ch;line-height:1.6}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--turq2);flex:none;margin-top:5px}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(127,160,162,.9);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(234,242,240,.08)}
+.stat .v{font-family:var(--display);font-weight:400;font-size:clamp(30px,4.8vw,46px);line-height:1.05;color:var(--sun);font-variant-numeric:tabular-nums}
+.stat .v.coral{color:var(--coral2)}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--coral);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-size:clamp(24px,4.3vw,39px);line-height:1.2;color:var(--foam);quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--fog);margin-top:18px}
+
+/* widget then/now */
+.tnwrap{margin-top:14px;border:1px solid var(--rule);background:rgba(15,74,84,.55);padding:20px}
+.tnwrap svg{width:100%;height:auto;display:block}
+.tntoggle{display:flex;gap:8px;margin-top:16px;justify-content:center}
+.tnbtn{font-family:var(--mono);font-size:11px;letter-spacing:.06em;background:transparent;color:var(--foam2);
+  border:1px solid var(--rule);padding:9px 18px;cursor:pointer;transition:border-color .2s,color .2s,background .2s}
+.tnbtn:hover{color:var(--foam);border-color:var(--turq2)}
+.tnbtn.on{color:var(--reef);background:var(--turq2);border-color:var(--turq2);font-weight:500}
+#tnmsg{font-family:var(--mono);font-size:12px;color:var(--foam2);margin-top:16px;min-height:52px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.75;text-align:center}
+#tnmsg b{color:var(--sun2);font-weight:500}
+#ynow{opacity:0;transition:opacity .6s ease}
+#y1941{opacity:1;transition:opacity .6s ease}
+.tnwrap.now #ynow{opacity:1}
+.tnwrap.now #y1941{opacity:0}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(234,242,240,.08);vertical-align:top}
+td.n{color:var(--foam);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:rgba(127,160,162,.9);line-height:1.75;margin-top:22px;max-width:60ch}
+
+.realimg{margin-top:22px;border:1px solid rgba(232,193,92,.32);background:rgba(232,193,92,.05);padding:22px}
+.realimg .badge{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--sun2);margin-bottom:14px}
+.realimg p{margin-bottom:14px}
+.arclinks{display:grid;gap:2px;margin-top:6px}
+.arclinks a{display:flex;gap:20px;align-items:baseline;padding:18px 0;text-decoration:none;color:inherit;
+  border-bottom:1px solid rgba(234,242,240,.09);transition:padding-left .3s ease,border-color .3s ease}
+.arclinks a:first-child{border-top:1px solid rgba(234,242,240,.09)}
+.arclinks a:hover,.arclinks a:focus-visible{padding-left:12px;border-bottom-color:var(--sun)}
+.arclinks .arch{font-family:var(--mono);font-size:11px;color:var(--turq2);min-width:150px}
+.arclinks .ttl{font-size:15.5px;color:var(--foam)}
+.arclinks .meta{font-size:13px;color:rgba(234,242,240,.55);margin-top:3px;max-width:48ch}
+.arclinks .go{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--fog);opacity:0;transition:opacity .3s}
+.arclinks a:hover .go,.arclinks a:focus-visible .go{opacity:1}
+.realimg .cite{font-family:var(--mono);font-size:11px;color:rgba(127,160,162,.9);line-height:1.6;margin-top:14px}
+
+.shipart{margin-top:22px;border:1px solid var(--rule);background:rgba(15,74,84,.55);padding:18px 18px 12px}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:rgba(127,160,162,.9);letter-spacing:.05em;margin-top:10px}
+.tgship{transform-box:fill-box;transform-origin:50% 90%;animation:tgbob 8s ease-in-out infinite}
+@keyframes tgbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+.tgfish{transform-box:fill-box;animation:tgfish 9s linear infinite}
+@keyframes tgfish{0%{transform:translateX(-30px)}100%{transform:translateX(660px)}}
+
+.closing{border-top:1px solid var(--coral);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--fog);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:rgba(15,74,84,.55);border:1px solid var(--rule);color:var(--foam);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--turq2);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--sun);color:#26200A;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.88}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--turq2)}
+.signup .msg.err{color:var(--coral2)}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--sun2);border-color:var(--sun)}
+.src{font-family:var(--mono);font-size:11.5px;color:rgba(127,160,162,.85);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:14px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+  .arclinks a{flex-wrap:wrap;gap:6px} .arclinks .go{display:none} .arclinks .arch{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #water,#caustic{transition:none;animation:none}
+  .tgship,.tgfish{animation:none}
+  #motes{display:none}
+}
+:focus-visible{outline:2px solid var(--sun);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="water"></div>
+<div id="caustic"></div>
+<canvas id="motes"></canvas>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Anno</div><div class="rail-num" id="railYear">1941</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Profondità</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1941" data-depth="0">
+  <div class="eyebrow">Mercantile armato · Mar Rosso · 1941</div>
+  <h1>Thistlegorm</h1>
+  <div class="sub">BOMBARDATA 6 OTTOBRE 1941 · OGGI IL RELITTO-MUSEO PIÙ AMATO</div>
+  <div class="coordbox">
+    <div class="coord">Dove giace<b>Sha'ab Ali, Golfo di Suez · ~30 m</b></div>
+    <div class="coord">Il carico<b>materiale bellico per l'8ª Armata</b></div>
+    <div class="coord">Vittime<b>9 su ~42</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>RELITTO A ~30 M · META D'IMMERSIONE IN EGITTO · TOMBA DI 9 UOMINI · SITO IN SOFFERENZA PER IL TURISMO SUBACQUEO</div>
+  <div class="scrollcue">↓ scorri — un deposito di guerra sott'acqua</div>
+</section>
+
+<section class="reveal" data-year="1941" data-depth="30">
+  <div class="eyebrow">Perché questo relitto</div>
+  <h2>Un magazzino della guerra, congelato a trenta metri</h2>
+  <p class="lede">Quasi tutti i relitti di questo atlante raccontano una fine. La Thistlegorm racconta anche un contenuto: la stiva di una nave da guerra rimasta esattamente com'era la notte in cui affondò, nel 1941.</p>
+  <p>A trenta metri di profondità, nel Mar Rosso, c'è un pezzo di Seconda guerra mondiale intatto: camion allineati, motociclette ancora riconoscibili, due locomotive a vapore, cataste di stivali di gomma, fucili, munizioni. Tutto ciò che serviva a un esercito, sigillato dall'acqua tiepida. La Thistlegorm non fu affondata in battaglia, ma all'ancora, da aerei che cercavano un'altra nave — e oggi è insieme una tomba, un museo e una barriera corallina. Questa scheda racconta le tre cose insieme.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">~30</div><div class="k">metri di profondità</div></div>
+    <div class="stat"><div class="v coral">9</div><div class="k">morti su ~42</div></div>
+    <div class="stat"><div class="v">2</div><div class="k">locomotive nel carico</div></div>
+    <div class="stat"><div class="v">1941</div><div class="k">e tutto è ancora lì</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1941" data-depth="0">
+  <div class="eyebrow">Il viaggio</div>
+  <h2>Dodicimila miglia per rifornire un esercito</h2>
+  <p>Nel 1941 il Mediterraneo era un mare troppo pericoloso: sorvegliato da aerei e sommergibili dell'Asse, chiuso al traffico alleato. Per portare rifornimenti all'<strong>8ª Armata</strong> britannica che combatteva in Nord Africa, la Thistlegorm dovette fare il giro lungo: da Glasgow, giù per l'Atlantico, attorno al <strong>Capo di Buona Speranza</strong>, risalire l'oceano Indiano ed entrare nel Mar Rosso dal basso. Circa dodicimila miglia nautiche per raggiungere il Canale di Suez.</p>
+  <p class="lede">Nella stiva portava un intero esercito in scatola.</p>
+  <p>Camion Bedford, motociclette <strong>BSA</strong>, veicoli cingolati, ali per aerei da ricognizione Westland Lysander, motori d'aereo, fucili, munizioni, e persino cataste di stivali di gomma. Sul ponte, assicurate, viaggiavano <strong>due grandi locomotive a vapore</strong> con i loro tender — settantadue tonnellate l'una — destinate alle ferrovie egiziane. Il manifesto diceva sobriamente "parti di ricambio". La realtà era un deposito galleggiante.</p>
+</section>
+
+<section class="reveal" data-year="1941" data-depth="30">
+  <div class="eyebrow">6 ottobre 1941 · ore 01:30 · Sha'ab Ali</div>
+  <h2>Colpita all'ancora, di notte</h2>
+  <p>Arrivata nel Golfo di Suez, la Thistlegorm dovette fermarsi: il canale era congestionato e le fu assegnato un ancoraggio di attesa, "Safe Anchorage F", presso la secca di Sha'ab Ali. Rimase ferma per giorni, un bersaglio immobile sotto la luna.</p>
+  <p>Quella notte due bombardieri tedeschi <strong>Heinkel He 111</strong>, decollati da Creta, erano a caccia di un grande trasporto truppe alleato che non trovarono. Sulla via del ritorno avvistarono le navi all'ancora nel golfo. Sganciarono due bombe pesanti sulla stiva numero quattro: quella piena di munizioni.</p>
+  <div class="moment">
+    <q>L'esplosione fu così violenta da scagliare in mare le due locomotive, ciascuna di settanta tonnellate, a decine di metri dallo scafo.</q>
+    <cite>DALLA RICOSTRUZIONE DELL'AFFONDAMENTO — 6 OTTOBRE 1941</cite>
+  </div>
+  <p>La nave si spezzò e colò a picco in pochi minuti. Morirono <strong>nove uomini</strong> — tra marinai e artiglieri della Royal Navy imbarcati per la difesa — su circa quarantadue a bordo. Non un naufragio in mare aperto, non una battaglia navale: una nave da carico distrutta all'ancora, per una coincidenza, mentre aspettava soltanto il suo turno per passare.</p>
+</section>
+
+<section class="reveal" data-year="1941" data-depth="30">
+  <div class="eyebrow">Il meccanismo · 1941 ↔ oggi</div>
+  <h2>Come un deposito diventa una barriera</h2>
+  <p>Ottant'anni sott'acqua trasformano tutto. La stessa stiva che nel 1941 era un magazzino militare, oggi è un giardino di corallo abitato dai pesci — con i suoi camion e le sue moto ancora al loro posto, sotto le incrostazioni. Usa l'interruttore.</p>
+  <div class="tnwrap" id="tnwrap">
+    <svg viewBox="0 0 640 280" role="img" aria-label="La stiva della Thistlegorm, dal carico del 1941 alla barriera corallina di oggi" class="fielded">
+      <title>1941 e oggi</title>
+      <rect x="0" y="0" width="640" height="280" fill="rgba(8,46,56,.4)"/>
+      <line x1="20" y1="232" x2="620" y2="232" stroke="rgba(234,242,240,.18)" stroke-width="1"/>
+      <!-- stato 1941 -->
+      <g id="y1941">
+        <!-- camion -->
+        <rect x="70" y="176" width="80" height="34" fill="rgba(138,128,70,.5)" stroke="#8A8046" stroke-width="1.4"/>
+        <rect x="150" y="186" width="34" height="24" fill="rgba(138,128,70,.4)" stroke="#8A8046" stroke-width="1.2"/>
+        <circle cx="92" cy="212" r="9" fill="none" stroke="#8A8046" stroke-width="1.6"/><circle cx="132" cy="212" r="9" fill="none" stroke="#8A8046" stroke-width="1.6"/>
+        <!-- moto -->
+        <circle cx="240" cy="204" r="13" fill="none" stroke="#B7C0A0" stroke-width="1.6"/><circle cx="284" cy="204" r="13" fill="none" stroke="#B7C0A0" stroke-width="1.6"/>
+        <path d="M240 204 L262 190 L284 204" fill="none" stroke="#B7C0A0" stroke-width="1.6"/>
+        <!-- casse -->
+        <rect x="330" y="182" width="30" height="28" fill="rgba(176,98,58,.35)" stroke="#B0623A" stroke-width="1.2"/>
+        <rect x="366" y="188" width="26" height="22" fill="rgba(176,98,58,.30)" stroke="#B0623A" stroke-width="1.2"/>
+        <!-- locomotiva -->
+        <rect x="440" y="170" width="120" height="40" fill="rgba(60,72,74,.6)" stroke="#8FA6A6" stroke-width="1.4"/>
+        <rect x="452" y="150" width="26" height="20" fill="rgba(60,72,74,.6)" stroke="#8FA6A6" stroke-width="1.2"/>
+        <circle cx="466" cy="212" r="8" fill="none" stroke="#8FA6A6" stroke-width="1.6"/><circle cx="500" cy="212" r="8" fill="none" stroke="#8FA6A6" stroke-width="1.6"/><circle cx="534" cy="212" r="8" fill="none" stroke="#8FA6A6" stroke-width="1.6"/>
+        <text x="70" y="60" fill="var(--sun2)" font-family="Fjalla One, sans-serif" font-size="30">1941</text>
+        <text x="70" y="82" fill="var(--foam2)" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1">CAMION · MOTO · CASSE · LOCOMOTIVE</text>
+      </g>
+      <!-- stato oggi -->
+      <g id="ynow">
+        <!-- stesse sagome, incrostate -->
+        <rect x="70" y="176" width="80" height="34" fill="rgba(63,176,168,.22)" stroke="#3FB0A8" stroke-width="1.4"/>
+        <rect x="150" y="186" width="34" height="24" fill="rgba(63,176,168,.18)" stroke="#3FB0A8" stroke-width="1.2"/>
+        <circle cx="92" cy="212" r="9" fill="none" stroke="#3FB0A8" stroke-width="1.6"/><circle cx="132" cy="212" r="9" fill="none" stroke="#3FB0A8" stroke-width="1.6"/>
+        <circle cx="240" cy="204" r="13" fill="none" stroke="#3FB0A8" stroke-width="1.6"/><circle cx="284" cy="204" r="13" fill="none" stroke="#3FB0A8" stroke-width="1.6"/>
+        <rect x="440" y="170" width="120" height="40" fill="rgba(63,176,168,.16)" stroke="#3FB0A8" stroke-width="1.4"/>
+        <!-- corallo -->
+        <g fill="#D96B54"><circle cx="96" cy="176" r="7"/><circle cx="128" cy="174" r="5"/><circle cx="470" cy="170" r="7"/><circle cx="520" cy="172" r="6"/></g>
+        <g fill="#E8C15C"><circle cx="240" cy="192" r="5"/><circle cx="352" cy="182" r="5"/><circle cx="548" cy="174" r="5"/></g>
+        <g fill="rgba(99,201,192,.6)"><circle cx="200" cy="150" r="4"/><circle cx="320" cy="130" r="4"/><circle cx="420" cy="150" r="4"/></g>
+        <!-- pesci -->
+        <g class="tgfish"><path d="M150 120 l14 -6 l0 12 Z" fill="var(--sun2)"/><path d="M188 138 l12 -5 l0 10 Z" fill="var(--coral2)"/></g>
+        <!-- sub per scala -->
+        <g stroke="var(--foam)" stroke-width="1.6" fill="none"><circle cx="596" cy="96" r="7"/><path d="M596 103 L596 126 M596 110 L584 118 M596 110 L608 118 M596 126 L588 142 M596 126 L604 142"/></g>
+        <text x="70" y="60" fill="var(--turq2)" font-family="Fjalla One, sans-serif" font-size="30">OGGI</text>
+        <text x="70" y="82" fill="var(--foam2)" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1">CORALLO · PESCI · SUB · IL CARICO SOTTO</text>
+      </g>
+      <text x="20" y="26" fill="rgba(234,242,240,.4)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">SCHEMA — NON IN SCALA · SCEGLI L'EPOCA</text>
+    </svg>
+    <div class="tntoggle">
+      <button class="tnbtn on" id="btn1941" type="button">1941</button>
+      <button class="tnbtn" id="btnnow" type="button">Oggi</button>
+    </div>
+    <div id="tnmsg"><b>1941.</b> La stiva è un deposito militare: camion Bedford, moto BSA, casse di munizioni, e sul ponte due locomotive a vapore dirette in Egitto.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="30">
+  <div class="eyebrow">Il museo sommerso</div>
+  <h2>Tutto è ancora al suo posto</h2>
+  <p>È questo a rendere la Thistlegorm diversa da quasi ogni altro relitto: non è uno scafo vuoto, ma un carico intero. Nelle stive i camion Bedford stanno ancora in fila; sopra e accanto ad essi, le motociclette <strong>BSA M20</strong> — dopo ottant'anni di mare, ancora riconoscibili modello per modello. Ci sono stivali di gomma accatastati, fucili, ali d'aereo, munizioni.</p>
+  <p class="lede">E, sul fondale, le due locomotive: sbalzate dall'esplosione, giacciono una per lato dello scafo, ciascuna dove è caduta.</p>
+  <p>È un museo che nessun museo potrebbe allestire: gli oggetti sono al loro posto originario, nel contesto per cui erano stati caricati, congelati nell'istante dell'affondamento. Ed è anche la sua fragilità: a differenza di un museo, qui non ci sono vetrine. Ogni pinna, ogni ancora di gommone, ogni mano che tocca consuma un pezzo di quel 1941.</p>
+</section>
+
+<section class="reveal" data-year="1955" data-depth="30">
+  <div class="eyebrow">Persa, ritrovata, ripersa</div>
+  <h2>La trovò Cousteau, poi il silenzio</h2>
+  <p>Dopo la guerra la Thistlegorm scivolò nell'oblio. La riportò alla luce, nel 1955, <strong>Jacques Cousteau</strong>: guidato dai racconti dei pescatori locali, la individuò, vi si immerse e ne parlò nel suo libro <em>Il mondo del silenzio del mare</em>. Poi, curiosamente, la lasciò nel vago — non ne pubblicò la posizione esatta — e il relitto tornò a sparire dalla mappa per quasi quarant'anni.</p>
+  <p>Fu riscoperta dai diving operator solo nel <strong>1992</strong>, e da allora è diventata una delle immersioni su relitto più famose del pianeta: migliaia di sub ogni anno scendono a visitare il suo carico. Questa popolarità è insieme la sua fortuna e la sua condanna: le cime d'ormeggio degli anni hanno danneggiato lo scafo, e il passaggio continuo consuma il sito. Alcuni progetti recenti l'hanno perciò <strong>rilevata in 3D</strong> ad altissima risoluzione — così, se un giorno il relitto cederà, ne resterà almeno un gemello digitale.</p>
+</section>
+
+<section class="reveal" data-year="1940" data-depth="30">
+  <div class="eyebrow">La nave</div>
+  <h2>Un mercantile qualunque, un carico straordinario</h2>
+  <p>La Thistlegorm non era una nave speciale: un mercantile della Marina mercantile britannica, lungo circa centoventisei metri, armato a poppa con un cannone e una mitragliera per difendersi. Il suo valore non stava nello scafo, ma in ciò che portava — e in ciò che, affondando, ha conservato per noi.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 640 210" role="img" aria-label="Illustrazione stilizzata del mercantile Thistlegorm nel Mar Rosso">
+      <title>Il mercantile Thistlegorm</title>
+      <path d="M-20 176 q 60 -6 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(63,176,168,.45)" stroke-width="1.3"/>
+      <g class="tgfish"><path d="M40 60 l12 -5 l0 10 Z" fill="var(--sun2)" opacity=".8"/></g>
+      <g class="tgship">
+        <path d="M70 156 L92 142 L560 142 L586 154 L70 156 Z" fill="#20423E" stroke="#3E6E68" stroke-width="1.2"/>
+        <line x1="98" y1="148" x2="556" y2="148" stroke="var(--sun)" stroke-width="1"/>
+        <rect x="300" y="120" width="70" height="22" fill="#2E5A56" stroke="#4E8A84" stroke-width="1"/>
+        <!-- locomotive sul ponte -->
+        <rect x="160" y="128" width="46" height="14" fill="#3E4A4C" stroke="#7FA0A2" stroke-width="1"/>
+        <rect x="220" y="128" width="46" height="14" fill="#3E4A4C" stroke="#7FA0A2" stroke-width="1"/>
+        <line x1="130" y1="120" x2="130" y2="86" stroke="#3E6E68" stroke-width="1.6"/>
+        <line x1="470" y1="120" x2="470" y2="90" stroke="#3E6E68" stroke-width="1.6"/>
+        <rect x="392" y="112" width="20" height="30" fill="#2E5A56" stroke="#4E8A84" stroke-width="1"/>
+      </g>
+      <text x="20" y="26" fill="rgba(127,160,162,.9)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">MERCANTILE CON LE LOCOMOTIVE SUL PONTE — RICOSTRUZIONE STILIZZATA</text>
+    </svg>
+    <figcaption>Ricostruzione stilizzata. Le immagini reali del relitto e del carico sono presso gli archivi qui sotto.</figcaption>
+  </figure>
+</section>
+
+<section class="reveal" data-year="1941" data-depth="30">
+  <div class="eyebrow">La rotta</div>
+  <h2>Il viaggio interrotto</h2>
+  <p>Ogni relitto è, prima di tutto, un viaggio che non è arrivato. Il tratto continuo segna il lunghissimo giro intorno all'Africa che la nave compì davvero; il tratteggio, l'ultimo breve tratto verso Suez che non fece mai.</p>
+  <!--ROUTEMAP-->
+</section>
+
+<section class="reveal" data-year="1941" data-depth="30">
+  <div class="eyebrow">I numeri</div>
+  <h2>La nave, misurata</h2>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Valore</th></tr></thead>
+    <tbody>
+      <tr><td>Tipo</td><td class="n">mercantile armato (Marina mercantile)</td></tr>
+      <tr><td>Varata</td><td class="n">1940 · ~126,5 m · 4.898 GRT</td></tr>
+      <tr><td>Rotta</td><td class="n">Glasgow → Capo di Buona Speranza → Mar Rosso (~12.000 miglia)</td></tr>
+      <tr><td>Carico</td><td class="n">camion, moto BSA, 2 locomotive, ali di aereo, fucili, munizioni</td></tr>
+      <tr><td>Affondamento</td><td class="n">6 ott 1941, ~01:30 · 2 bombardieri He 111</td></tr>
+      <tr><td>A bordo / vittime</td><td class="n">~42 · 9 morti</td></tr>
+      <tr><td>Profondità del relitto</td><td class="n">~30 m · Sha'ab Ali, Golfo di Suez</td></tr>
+      <tr><td>Riscoperta</td><td class="n">Cousteau 1955; di nuovo dal 1992</td></tr>
+      <tr><td>Oggi</td><td class="n">tra i relitti-museo più immersi al mondo</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Le cifre dell'equipaggio e delle vittime (~42 a bordo, 9 morti) sono quelle comunemente riportate; alcune fonti le declinano leggermente diverse. Il carico è documentato dai rilievi e dalle immersioni: molti pezzi sono ancora identificabili modello per modello. Il relitto è un luogo di sepoltura e un sito fragile.</p>
+</section>
+
+<section class="reveal" data-year="1992" data-depth="30">
+  <div class="eyebrow">Archivio</div>
+  <h2>Vederla com'è oggi</h2>
+  <p>Nessun file è ospitato qui: si rimanda a chi ha rilevato e documentato il relitto. Link specifici, scelti uno per uno.</p>
+  <div class="realimg">
+    <div class="badge">Rilievi e archivio</div>
+    <div class="arclinks">
+      <a href="https://thethistlegormproject.com/" target="_blank" rel="noopener">
+        <span class="arch">THE THISTLEGORM PROJECT</span>
+        <span><span class="ttl">Il rilievo 3D e i video a 360°</span><span class="meta">Il progetto di ricerca (Università di Nottingham e altri) che ha mappato in fotogrammetria l'intero relitto e il suo carico.</span></span>
+        <span class="go">thethistlegormproject.com ↗</span>
+      </a>
+      <a href="https://www.youtube.com/watch?v=vkZQM3vKl88" target="_blank" rel="noopener">
+        <span class="arch">JACQUES COUSTEAU</span>
+        <span><span class="ttl">Il filmato del ritrovamento, 1955</span><span class="meta">Le immagini d'archivio della prima immersione di Cousteau sul relitto, dalle riprese della sua spedizione.</span></span>
+        <span class="go">youtube ↗</span>
+      </a>
+      <a href="https://divemagazine.com/scuba-diving-long-reads/75-facts-about-the-thistlegorm" target="_blank" rel="noopener">
+        <span class="arch">DIVE MAGAZINE</span>
+        <span><span class="ttl">Settantacinque fatti sul relitto</span><span class="meta">Un dossier dettagliato su nave, carico, affondamento e stato attuale del sito.</span></span>
+        <span class="go">divemagazine.com ↗</span>
+      </a>
+    </div>
+    <p class="cite">Rilievi, filmati e fotografie presso The Thistlegorm Project, la Cousteau Society e DIVE Magazine, riprodotti con attribuzione presso le fonti, non ospitati su questo sito.</p>
+  </div>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">Nota metodologica</div>
+  <h2>Cosa questa pagina tiene insieme</h2>
+  <p>Tre nature che di solito si separano. La Thistlegorm è una <strong>tomba</strong> — nove uomini morirono qui — e va rispettata come tale. È un <strong>museo</strong>, il più autentico possibile, perché i suoi oggetti sono nel contesto originario e non dietro una vetrina. Ed è una <strong>barriera</strong> viva, che ottant'anni di mare hanno costruito sul suo acciaio. La pagina non sceglie una di queste tre: le racconta insieme, perché insieme esistono.</p>
+  <p>Sui numeri restiamo cauti (le cifre dell'equipaggio variano di poco tra le fonti) e sul sito siamo espliciti: è fragile, e la sua stessa fama lo sta consumando. Per questo esistono i rilievi 3D — e per questo questa pagina non incoraggia nessuno a "prendere un souvenir": ciò che rende straordinario questo relitto è, esattamente, che tutto sia ancora al suo posto.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 023 di 20+ · la serie continua</div>
+    <h2 style="margin-bottom:14px">La prossima è la più piccola e la più audace: la H.L. Hunley</h2>
+    <p>Dal grande mercantile a un guscio d'acciaio lungo dodici metri. Nel 1864 il sommergibile confederato H.L. Hunley fu il primo della storia ad affondare una nave da guerra nemica — e subito dopo sparì con tutto l'equipaggio. Recuperato nel 2000, custodisce ancora il suo enigma: perché non tornò mai indietro?</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce la prossima scheda</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="edmundfitzgerald.html">← Scheda 022: la Edmund Fitzgerald</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">Tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · Wikipedia «SS Thistlegorm» (nave, rotta, dinamica dell'affondamento, carico) · The Thistlegorm Project (rilievo 3D, Università di Nottingham) · DIVE Magazine, «75 facts about the Thistlegorm» · Jacques Cousteau, «Il mondo del silenzio del mare / The Living Sea» (riscoperta 1955) · guide e resoconti d'immersione (Master Liveaboards, Scuba Diving)<br><br>
+      Wreck Atlas · Scheda 023 · Prototipo
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), water=document.getElementById('water');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- rivelazione delle sezioni ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- pulviscolo marino nella luce calda ---------- */
+  var cv=document.getElementById('motes'), ctx=cv&&cv.getContext?cv.getContext('2d'):null, parts=[], W=0,H=0;
+  function size(){ if(!ctx)return; W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    parts=[]; var n=Math.round(W*H/24000);
+    for(var i=0;i<n;i++) parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.4,v:.15+Math.random()*.5,drift:Math.random()*.5-.25,o:.05+Math.random()*.12}); }
+  function draw(){ if(!ctx)return; ctx.clearRect(0,0,W,H);
+    for(var i=0;i<parts.length;i++){ var p=parts[i];
+      p.y-=p.v; p.x+=p.drift+Math.sin(p.y*.01)*.1;
+      if(p.y<-4){ p.y=H+4; p.x=Math.random()*W; }
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fillStyle='rgba(200,230,226,'+p.o+')'; ctx.fill(); }
+    requestAnimationFrame(draw); }
+  if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  /* ---------- fondo: dalla superficie luminosa al blu del relitto ---------- */
+  var shades=['#0C3E4A','#0C3C47','#0B3843','#0A343E','#093039','#082E38','#072A33'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    document.getElementById('railDLab').textContent = (active.dataset.depth==='0') ? 'in mare' : 'Profondità';
+    if(!reduce){ water.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)]; }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- 1941 / oggi ---------- */
+  var tnwrap=document.getElementById('tnwrap'), tnmsg=document.getElementById('tnmsg');
+  var b41=document.getElementById('btn1941'), bnow=document.getElementById('btnnow');
+  var TN={
+    '1941':'<b>1941.</b> La stiva è un deposito militare: camion Bedford, moto BSA, casse di munizioni, e sul ponte due locomotive a vapore dirette in Egitto.',
+    'now':'<b>Oggi.</b> Le stesse sagome, sotto ottant’anni di corallo e banchi di pesci. Il carico è ancora lì; le due locomotive giacciono sul fondo, una per lato. Un sub, in alto a destra, dà la scala.'
+  };
+  function setTN(k){
+    if(!tnwrap) return;
+    tnwrap.classList.toggle('now', k==='now');
+    tnmsg.innerHTML=TN[k];
+    b41.classList.toggle('on', k==='1941'); b41.setAttribute('aria-pressed', k==='1941'?'true':'false');
+    bnow.classList.toggle('on', k==='now'); bnow.setAttribute('aria-pressed', k==='now'?'true':'false');
+  }
+  if(b41&&bnow){ b41.addEventListener('click',function(){setTN('1941');}); bnow.addEventListener('click',function(){setTN('now');}); }
+
+  /* ---------- metriche di scroll ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'023-thistlegorm',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] scheda 023 · '+m+'% a '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] sessione: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- iscrizione ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla — collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>

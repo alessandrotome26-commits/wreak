@@ -698,5 +698,47 @@
       "wreck": "#E0BC6A",
       "label": "#AEB8BA"
     }
+  },
+  "thistlegorm.html": {
+    "from": {
+      "n": "Glasgow",
+      "lon": -4.3,
+      "lat": 55.9,
+      "n_en": "Glasgow"
+    },
+    "via": [
+      {
+        "n": "Città del Capo",
+        "lon": 18.5,
+        "lat": -33.9,
+        "n_en": "Cape Town"
+      },
+      {
+        "n": "Golfo di Aden",
+        "lon": 45.0,
+        "lat": 12.0,
+        "n_en": "Gulf of Aden"
+      }
+    ],
+    "to": {
+      "n": "Suez (Porto Tewfik)",
+      "lon": 32.55,
+      "lat": 29.97,
+      "n_en": "Suez (Port Tewfik)"
+    },
+    "wreck_label": "le bombe (6 ott 1941)",
+    "wreck_label_en": "the bombs (6 Oct 1941)",
+    "caption": "Il Mediterraneo era chiuso: per rifornire l'8ª Armata in Nord Africa, la Thistlegorm fece il giro attorno al Capo di Buona Speranza (~12.000 miglia). Fu bombardata all'ancora nel Golfo di Suez, in attesa di attraversare il canale, il 6 ottobre 1941.",
+    "caption_en": "The Mediterranean was closed: to supply the 8th Army in North Africa, the Thistlegorm sailed the long way round the Cape of Good Hope (~12,000 miles). She was bombed at anchor in the Gulf of Suez, waiting to transit the canal, on 6 October 1941.",
+    "palette": {
+      "bg": "#0C3E4A",
+      "land": "#14494A",
+      "coast": "#2E6E68",
+      "plan": "#7FA0A2",
+      "done": "#E8C15C",
+      "port": "#EAF2F0",
+      "wreck": "#D96B54",
+      "label": "#B7D2D2"
+    }
   }
 }

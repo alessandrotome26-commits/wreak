@@ -264,9 +264,10 @@
   "lat": 27.81,
   "lon": 33.92,
   "d": 30,
-  "st": "next",
+  "st": "ready",
   "f": "Mercantile britannico affondato dai tedeschi nel Mar Rosso nel 1941, col suo carico di guerra ancora dentro: moto, camion, locomotive. Riscoperto da Cousteau, è uno dei relitti-museo più celebri al mondo.",
-  "f_en": "British merchant ship sunk by the Germans in the Red Sea in 1941 with its war cargo still aboard: motorcycles, trucks, locomotives. A world-famous wreck-museum."
+  "f_en": "British merchant ship sunk by the Germans in the Red Sea in 1941 with its war cargo still aboard: motorcycles, trucks, locomotives. A world-famous wreck-museum.",
+  "href": "thistlegorm.html"
  },
  {
   "id": "edmund-fitzgerald",
@@ -352,7 +353,7 @@
   "lat": 32.68,
   "lon": -79.77,
   "d": 9,
-  "st": "planned",
+  "st": "next",
   "f": "Il primo sottomarino della storia ad affondare una nave nemica: nel 1864, al largo di Charleston, colò a picco l'incrociatore unionista Housatonic — e sparì anch'esso con tutto l'equipaggio. Riportato in superficie nel 2000.",
   "f_en": "Confederate submarine, the first in history to sink an enemy warship (1864) — then vanished with her crew. Raised in 2000; why she sank is still debated."
  },
