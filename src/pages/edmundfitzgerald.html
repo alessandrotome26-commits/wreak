@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SS Edmund Fitzgerald — 1975</title>
+<meta name="description" content="Il più grande mercantile dei Grandi Laghi, inghiottito da una tempesta sul Lago Superiore il 10 novembre 1975 con tutti i suoi ventinove uomini. Nessun SOS, nessun superstite, una causa mai accertata — e una ballata che l'ha resa immortale.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SS Edmund Fitzgerald — 1975">
+<meta property="og:description" content="«Stiamo tenendo botta.» Poi il segnale sparì dal radar. Ventinove uomini, nessuna chiamata di soccorso, e un mistero ancora aperto in fondo a un lago.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#13191B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --storm:#13191B; --deep:#0D1214; --panel:#1A2225;
+  --ash:#D8DEDF; --ash2:#AEB8BA; --fog:#7C878A;
+  --steel:#6E8188; --lake:#3E7A72; --lake2:#5C9A90;
+  --iron:#9A5E38; --iron2:#C07A48; --bronze:#C79A46; --bronze2:#E0BC6A;
+  --rule:rgba(216,222,223,.14);
+  --display:"Bitter",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--storm);color:var(--ash);font-family:var(--body);font-weight:300;line-height:1.66;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#lake{position:fixed;inset:0;z-index:-4;background:var(--storm);transition:background 1.6s ease}
+#murk{position:fixed;inset:-12%;z-index:-3;pointer-events:none;opacity:.6;
+  background:radial-gradient(circle at 26% 20%,rgba(62,122,114,.10),transparent 40%),
+             radial-gradient(circle at 74% 74%,rgba(13,18,20,.85),transparent 44%)}
+#gale{position:fixed;inset:-10%;z-index:-2;pointer-events:none;opacity:.5;
+  background:repeating-linear-gradient(108deg,transparent 0 22px,rgba(174,184,186,.05) 22px 23px);
+  animation:gale 7s linear infinite}
+@keyframes gale{0%{transform:translateX(0)}100%{transform:translateX(-46px)}}
+#spray{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--fog);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--iron2)}
+.rail-num{font-size:18px;color:var(--ash);font-weight:500;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.55;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(19,25,27,.82)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--lake2);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(46px,9.5vw,104px);line-height:1;letter-spacing:-.01em}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,4.5vw,47px);line-height:1.14;margin-bottom:22px}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(216,222,223,.84)}
+.lede{font-size:20px;color:var(--ash)}
+em{font-style:italic;color:var(--ash2)}
+strong{font-weight:500;color:var(--ash)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--fog);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--fog)}
+.coord b{display:block;color:var(--ash);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:flex-start;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  color:var(--lake2);border:1px solid rgba(92,154,144,.36);padding:6px 11px;margin-top:28px;align-self:flex-start;max-width:66ch;line-height:1.6}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--lake2);flex:none;margin-top:5px}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(124,135,138,.9);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(216,222,223,.08)}
+.stat .v{font-family:var(--display);font-weight:600;font-size:clamp(30px,4.8vw,46px);line-height:1.05;color:var(--iron2);font-variant-numeric:tabular-nums}
+.stat .v.lake{color:var(--lake2)}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--iron2);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(25px,4.4vw,40px);line-height:1.2;color:var(--ash);quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--fog);margin-top:18px}
+
+/* widget radar */
+.radarwrap{margin-top:14px;border:1px solid var(--rule);background:rgba(13,18,20,.6);padding:20px}
+.radarwrap svg{width:100%;max-width:420px;height:auto;display:block;margin:0 auto}
+.rsteps{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;justify-content:center}
+.rstep{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;background:transparent;color:var(--ash2);
+  border:1px solid var(--rule);padding:9px 13px;cursor:pointer;transition:border-color .2s,color .2s,background .2s}
+.rstep:hover{color:var(--ash);border-color:var(--lake2)}
+.rstep.on{color:var(--storm);background:var(--lake2);border-color:var(--lake2);font-weight:500}
+#radmsg{font-family:var(--mono);font-size:12px;color:var(--ash2);margin-top:16px;min-height:56px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.75;text-align:center}
+#radmsg b{color:var(--iron2);font-weight:500}
+.fitzsweep{transform-box:fill-box;transform-origin:center;animation:sweep 4s linear infinite}
+@keyframes sweep{to{transform:rotate(360deg)}}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(216,222,223,.08);vertical-align:top}
+td.n{color:var(--ash);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:rgba(124,135,138,.9);line-height:1.75;margin-top:22px;max-width:60ch}
+
+.realimg{margin-top:22px;border:1px solid rgba(199,154,70,.32);background:rgba(199,154,70,.05);padding:22px}
+.realimg .badge{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bronze2);margin-bottom:14px}
+.realimg p{margin-bottom:14px}
+.arclinks{display:grid;gap:2px;margin-top:6px}
+.arclinks a{display:flex;gap:20px;align-items:baseline;padding:18px 0;text-decoration:none;color:inherit;
+  border-bottom:1px solid rgba(216,222,223,.09);transition:padding-left .3s ease,border-color .3s ease}
+.arclinks a:first-child{border-top:1px solid rgba(216,222,223,.09)}
+.arclinks a:hover,.arclinks a:focus-visible{padding-left:12px;border-bottom-color:var(--bronze)}
+.arclinks .arch{font-family:var(--mono);font-size:11px;color:var(--lake2);min-width:150px}
+.arclinks .ttl{font-size:15.5px;color:var(--ash)}
+.arclinks .meta{font-size:13px;color:rgba(216,222,223,.55);margin-top:3px;max-width:48ch}
+.arclinks .go{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--fog);opacity:0;transition:opacity .3s}
+.arclinks a:hover .go,.arclinks a:focus-visible .go{opacity:1}
+.realimg .cite{font-family:var(--mono);font-size:11px;color:rgba(124,135,138,.9);line-height:1.6;margin-top:14px}
+
+.shipart{margin-top:22px;border:1px solid var(--rule);background:rgba(13,18,20,.6);padding:18px 18px 12px}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:rgba(124,135,138,.9);letter-spacing:.05em;margin-top:10px}
+.efship{transform-box:fill-box;transform-origin:50% 90%;animation:efpitch 6s ease-in-out infinite}
+@keyframes efpitch{0%,100%{transform:rotate(-1.6deg) translateY(0)}50%{transform:rotate(1.6deg) translateY(-2px)}}
+.efwave{animation:efwave 4s ease-in-out infinite}
+@keyframes efwave{0%,100%{transform:translateX(0)}50%{transform:translateX(-10px)}}
+
+.closing{border-top:1px solid var(--iron2);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--fog);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:rgba(13,18,20,.6);border:1px solid var(--rule);color:var(--ash);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--lake2);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--iron2);color:#160B04;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.88}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--lake2)}
+.signup .msg.err{color:var(--iron2)}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--bronze2);border-color:var(--bronze)}
+.src{font-family:var(--mono);font-size:11.5px;color:rgba(124,135,138,.85);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:14px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+  .arclinks a{flex-wrap:wrap;gap:6px} .arclinks .go{display:none} .arclinks .arch{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #lake,#gale{transition:none;animation:none}
+  .efship,.efwave,.fitzsweep{animation:none}
+  #spray{display:none}
+}
+:focus-visible{outline:2px solid var(--iron2);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="lake"></div>
+<div id="murk"></div>
+<div id="gale"></div>
+<canvas id="spray"></canvas>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Anno</div><div class="rail-num" id="railYear">1975</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Profondità</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1975" data-depth="0">
+  <div class="eyebrow">Mercantile dei Grandi Laghi · 1975</div>
+  <h1>Edmund Fitzgerald</h1>
+  <div class="sub">AFFONDATA 10 NOVEMBRE 1975 · 29 MORTI · NESSUN SOS</div>
+  <div class="coordbox">
+    <div class="coord">Dove giace<b>Lago Superiore, presso Whitefish Point · ~160 m</b></div>
+    <div class="coord">Persi<b>29 uomini — nessun superstite</b></div>
+    <div class="coord">Causa<b>mai accertata</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>ACQUA DOLCE · TOMBA DI 29 UOMINI · POSIZIONE STORICAMENTE NOTA · IMMERSIONI REGOLAMENTATE DALL'ONTARIO</div>
+  <div class="scrollcue">↓ scorri — nella tempesta di novembre</div>
+</section>
+
+<section class="reveal" data-year="1975" data-depth="160">
+  <div class="eyebrow">Perché questo relitto</div>
+  <h2>La Titanic dei Grandi Laghi</h2>
+  <p class="lede">Non serve un oceano per inghiottire una nave. Il più grande mercantile dei Grandi Laghi scomparve in un'ora, a poche miglia dal riparo, in un lago — e non lasciò nemmeno il tempo di un grido d'aiuto.</p>
+  <p>I Grandi Laghi non sono stagni: sono mari interni, capaci di tempeste che i marinai temono più dell'Atlantico. Il Lago Superiore, il più vasto lago d'acqua dolce del mondo, in novembre diventa un campo di battaglia. Il 10 novembre 1975 vi si perse la Edmund Fitzgerald con tutti e ventinove i suoi uomini: nessun superstite, nessun corpo restituito, nessuna spiegazione definitiva. È entrata nella leggenda non per un ritrovamento, ma per una canzone — e questa scheda prova a restituirle i fatti sotto la ballata.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">29</div><div class="k">morti</div></div>
+    <div class="stat"><div class="v">0</div><div class="k">superstiti</div></div>
+    <div class="stat"><div class="v">0</div><div class="k">chiamate di soccorso</div></div>
+    <div class="stat"><div class="v lake">~160</div><div class="k">metri, in acqua dolce</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1958" data-depth="0">
+  <div class="eyebrow">La nave</div>
+  <h2>La regina dei Laghi</h2>
+  <p>Varata nel 1958, la Edmund Fitzgerald era lunga circa duecentoventidue metri: al suo debutto, la più grande nave mai vista sui Grandi Laghi, tanto da guadagnarsi il titolo di "regina dei Laghi". Non un transatlantico elegante, ma un cavallo da soma dell'acciaio americano: trasportava <strong>taconite</strong>, i pellet di minerale di ferro, dai porti del Lago Superiore alle acciaierie a valle.</p>
+  <p class="lede">Faceva un mestiere di routine, su un mare che di routine non ha nulla.</p>
+  <p>I marinai dei Laghi conoscono e temono la "strega di novembre": quando l'aria fredda artica scende sull'acqua ancora tiepida, si scatenano tempeste rapidissime, con onde corte, ripide e ravvicinate — diverse da quelle oceaniche, e per certi versi più insidiose. La Fitzgerald aveva attraversato quelle acque per diciassette anni. Al suo ultimo viaggio, ne incontrò una delle peggiori del secolo.</p>
+</section>
+
+<section class="reveal" data-year="1975" data-depth="160">
+  <div class="eyebrow">10 novembre 1975 · Lago Superiore</div>
+  <h2>Due navi nella bufera</h2>
+  <p>Partita da Superior, in Wisconsin, il 9 novembre carica di ventiseimila tonnellate di taconite, la Fitzgerald puntava verso un'acciaieria vicino a Detroit. Poco dopo, il servizio meteo trasformò l'allerta in tempesta severa: venti di forza uragano e onde che avrebbero raggiunto i dieci metri.</p>
+  <p>Non era sola. Poco dietro navigava un'altra nave, la <strong>Arthur M. Anderson</strong>, il cui comandante Bernie Cooper restò in contatto radio con il capitano della Fitzgerald, <strong>Ernest McSorley</strong>. Nelle ore della tempesta McSorley segnalò guai crescenti: un principio di sbandamento, sfiati danneggiati, i radar fuori uso. "È uno dei mari peggiori in cui sia mai stato", disse. L'Anderson divenne i suoi occhi: la seguiva sul proprio schermo radar, un puntino nel buio davanti a sé.</p>
+</section>
+
+<section class="reveal" data-year="1975" data-depth="160">
+  <div class="eyebrow">Il meccanismo · l'ultima mezz'ora</div>
+  <h2>Il puntino che sparì dallo schermo</h2>
+  <p>La Fitzgerald non affondò sotto gli occhi di nessuno: affondò dentro il radar dell'Anderson, come un segnale che a un certo punto non c'è più. Ripercorri gli ultimi contatti.</p>
+  <div class="radarwrap">
+    <svg viewBox="0 0 360 360" role="img" aria-label="Schermo radar della Arthur M. Anderson che segue la Edmund Fitzgerald fino a perderne il segnale" class="fielded">
+      <title>L'ultima mezz'ora sullo schermo radar</title>
+      <circle cx="180" cy="180" r="150" fill="rgba(62,122,114,.06)" stroke="rgba(92,154,144,.35)" stroke-width="1"/>
+      <circle cx="180" cy="180" r="100" fill="none" stroke="rgba(92,154,144,.22)" stroke-width="1"/>
+      <circle cx="180" cy="180" r="50" fill="none" stroke="rgba(92,154,144,.22)" stroke-width="1"/>
+      <line x1="30" y1="180" x2="330" y2="180" stroke="rgba(92,154,144,.16)" stroke-width="1"/>
+      <line x1="180" y1="30" x2="180" y2="330" stroke="rgba(92,154,144,.16)" stroke-width="1"/>
+      <g class="fitzsweep"><path d="M180 180 L180 30 A150 150 0 0 1 262 58 Z" fill="rgba(92,154,144,.10)"/></g>
+      <!-- Anderson (al centro) -->
+      <path d="M180 196 l7 14 l-14 0 Z" fill="var(--ash2)"/>
+      <text x="180" y="226" fill="var(--ash2)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">ANDERSON</text>
+      <!-- Fitzgerald blip -->
+      <g id="fitzblip">
+        <circle id="blipHalo" cx="180" cy="96" r="12" fill="none" stroke="var(--iron2)" stroke-width="1.2" opacity=".5"/>
+        <circle id="blipDot" cx="180" cy="96" r="5" fill="var(--iron2)"/>
+        <text id="blipLab" x="196" y="99" fill="var(--iron2)" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="1">FITZGERALD</text>
+      </g>
+      <text x="30" y="24" fill="rgba(124,135,138,.85)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">RADAR — SCHEMATICO · SCEGLI UN ORARIO</text>
+    </svg>
+    <div class="rsteps">
+      <button class="rstep on" data-s="0" type="button">ore 15:30</button>
+      <button class="rstep" data-s="1" type="button">19:10 · «tenendo botta»</button>
+      <button class="rstep" data-s="2" type="button">19:20 · silenzio</button>
+    </div>
+    <div id="radmsg">Metà pomeriggio: la Fitzgerald è davanti alla Anderson e la tempesta cresce. McSorley segnala un principio di sbandamento e i radar fuori uso, ma tiene la rotta verso il riparo di Whitefish Bay.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1975" data-depth="160">
+  <div class="eyebrow">Le ultime parole</div>
+  <h2>«Stiamo tenendo botta»</h2>
+  <p>Alle sette e dieci di sera, l'Anderson chiamò la Fitzgerald per avvisarla di un'altra nave in avvicinamento e chiese, quasi di sfuggita, come se la cavassero. La risposta di McSorley fu tranquilla, quasi ordinaria.</p>
+  <div class="moment">
+    <q>Stiamo tenendo botta.</q>
+    <cite>ERNEST McSORLEY, ULTIME PAROLE DALLA EDMUND FITZGERALD · ORE 19:10 CIRCA</cite>
+  </div>
+  <p>Furono le ultime parole che qualcuno udì dalla nave. Pochi minuti dopo, quando la neve si diradò, gli uomini dell'Anderson cercarono le luci della Fitzgerald davanti a sé. Non c'erano più. Il puntino sul radar era scomparso. Non c'era stato un mayday, non un razzo, non un rumore: una nave lunga come due campi da calcio, con ventinove persone a bordo, era semplicemente sparita dalla superficie del lago in una manciata di minuti.</p>
+</section>
+
+<section class="reveal" data-year="1976" data-depth="160">
+  <div class="eyebrow">Il mistero</div>
+  <h2>Tre spiegazioni, nessuna certezza</h2>
+  <p>Il relitto fu individuato l'anno dopo, spezzato in due a centosessanta metri di profondità. Ma cosa avesse aperto quella falla mortale non è mai stato deciso in modo definitivo, e a mezzo secolo di distanza il dibattito è ancora vivo. Tre le ipotesi principali.</p>
+  <p><strong>L'allagamento dai boccaporti.</strong> La commissione della Guardia Costiera indicò come causa più probabile la perdita di galleggiabilità per un massiccio allagamento della stiva: coperture dei boccaporti mal serrate, sotto ondate che spazzavano il ponte, avrebbero lasciato entrare acqua a tonnellate senza che nessuno se ne accorgesse.</p>
+  <p><strong>La secca di Six Fathom.</strong> L'associazione degli armatori dei Laghi respinse quella tesi: quei boccaporti erano in uso da trent'anni. Propose invece che la nave avesse strisciato su una secca poco profonda vicino all'isola di Caribou, riportando una falla che l'avrebbe condannata lentamente. <strong>Le onde anomale.</strong> Una terza ipotesi chiama in causa le famigerate onde anomale del Superiore — le "tre sorelle", tre ondate ravvicinate — capaci di caricare e affondare una nave in pochi secondi. Forse fu una combinazione. Di certo, nessuno lo saprà mai con sicurezza: gli unici ventinove testimoni non sono tornati.</p>
+</section>
+
+<section class="reveal" data-year="1976" data-depth="160">
+  <div class="eyebrow">La leggenda</div>
+  <h2>La nave che salvò una canzone</h2>
+  <p>Quasi tutti i relitti di questo atlante sono sopravvissuti nella memoria grazie a un ritrovamento, a un tesoro, a una fotografia. La Edmund Fitzgerald è sopravvissuta grazie a una <strong>ballata</strong>. Nel 1976, a meno di un anno dal naufragio, il cantautore canadese <strong>Gordon Lightfoot</strong> pubblicò "The Wreck of the Edmund Fitzgerald": arrivò al secondo posto delle classifiche americane e trasformò una tragedia locale in un lutto condiviso da milioni di persone.</p>
+  <p class="lede">È forse l'unico relitto al mondo la cui memoria è affidata soprattutto a una melodia.</p>
+  <p>La canzone diede voce anche a una vecchia credenza dei marinai dei Laghi: che il Superiore, gelido, "non restituisca mai i suoi morti". C'è del vero nel folklore: nelle sue acque freddissime i corpi non risalgono in superficie come nel mare. È anche per questo che il sito è trattato come una tomba, e non come un relitto qualunque — e che le immersioni, oggi, sono strettamente regolamentate.</p>
+</section>
+
+<section class="reveal" data-year="1995" data-depth="160">
+  <div class="eyebrow">La campana</div>
+  <h2>Ventinove rintocchi</h2>
+  <p>Nel 1995, in accordo con le famiglie, un gruppo di sommozzatori statunitensi e canadesi recuperò dal relitto, a centosessanta metri, l'unico oggetto che potesse davvero dare pace: la <strong>campana di bronzo</strong> della nave. Fu portata in superficie il 4 luglio, restaurata, e messa in mostra al Great Lakes Shipwreck Museum di Whitefish Point.</p>
+  <p>Al suo posto, sul relitto, i sommozzatori lasciarono una <strong>replica</strong> con incisi i ventinove nomi dell'equipaggio: un gesto per non spogliare mai del tutto la tomba di ciò che le appartiene. Ogni anno, nell'anniversario, la campana originale viene suonata <strong>ventinove volte</strong> — una per ciascun uomo — e a volte una trentesima, per tutti i marinai perduti sui Laghi. È il modo più semplice, e più esatto, di ricordare che sotto la storia della nave ci sono ventinove storie di persone.</p>
+</section>
+
+<section class="reveal" data-year="1975" data-depth="160">
+  <div class="eyebrow">La nave</div>
+  <h2>Una diga d'acciaio, carica di ferro</h2>
+  <p>La Fitzgerald era una tipica rinfusiera dei Laghi: un lungo scafo basso e diritto, la plancia a prua e le macchine a poppa, e in mezzo la fila di boccaporti che chiudevano la stiva colma di taconite. Proprio quella lunga schiena piatta, spazzata dalle onde in quella notte, è al centro dell'ipotesi dell'allagamento.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 640 220" role="img" aria-label="Illustrazione stilizzata della rinfusiera Edmund Fitzgerald nella tempesta">
+      <title>La rinfusiera Edmund Fitzgerald</title>
+      <path d="M-20 188 q 55 -14 110 -2 t 120 4 t 120 -6 t 120 4 t 130 -2" fill="none" stroke="rgba(62,122,114,.5)" stroke-width="1.5" class="efwave"/>
+      <path d="M-20 200 q 55 -9 110 0 t 120 2 t 120 -4 t 120 2 t 130 0" fill="none" stroke="rgba(62,122,114,.3)" stroke-width="1.2" class="efwave"/>
+      <g class="efship">
+        <path d="M60 168 L60 150 L582 150 L604 168 Z" fill="#2A211A" stroke="#4C3A2A" stroke-width="1.2"/>
+        <line x1="66" y1="158" x2="596" y2="158" stroke="var(--iron2)" stroke-width="1"/>
+        <!-- plancia a prua -->
+        <rect x="86" y="128" width="40" height="22" fill="#33403F" stroke="#586B69" stroke-width="1"/>
+        <!-- boccaporti -->
+        <g fill="#4C3A2A"><rect x="150" y="142" width="30" height="8"/><rect x="190" y="142" width="30" height="8"/><rect x="230" y="142" width="30" height="8"/><rect x="270" y="142" width="30" height="8"/><rect x="310" y="142" width="30" height="8"/><rect x="350" y="142" width="30" height="8"/><rect x="390" y="142" width="30" height="8"/><rect x="430" y="142" width="30" height="8"/><rect x="470" y="142" width="30" height="8"/></g>
+        <!-- macchine a poppa -->
+        <rect x="520" y="120" width="46" height="30" fill="#33403F" stroke="#586B69" stroke-width="1"/>
+        <rect x="536" y="104" width="14" height="18" fill="#2A211A" stroke="#4C3A2A" stroke-width="1"/>
+      </g>
+      <text x="20" y="26" fill="rgba(124,135,138,.9)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">RINFUSIERA DEI GRANDI LAGHI — RICOSTRUZIONE STILIZZATA</text>
+    </svg>
+    <figcaption>Ricostruzione stilizzata. Le fotografie reali della nave, del relitto e della campana sono presso gli archivi qui sotto.</figcaption>
+  </figure>
+</section>
+
+<section class="reveal" data-year="1975" data-depth="160">
+  <div class="eyebrow">La rotta</div>
+  <h2>Il viaggio interrotto</h2>
+  <p>Ogni relitto è, prima di tutto, un viaggio che non è arrivato. Il tratto continuo segna il percorso davvero compiuto; il tratteggio, quello che non fu mai fatto — l'ultimo tratto, verso il riparo, che mancava così poco.</p>
+  <!--ROUTEMAP-->
+</section>
+
+<section class="reveal" data-year="1975" data-depth="160">
+  <div class="eyebrow">I numeri</div>
+  <h2>La nave, misurata</h2>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Valore</th></tr></thead>
+    <tbody>
+      <tr><td>Tipo</td><td class="n">rinfusiera dei Grandi Laghi</td></tr>
+      <tr><td>Varata</td><td class="n">1958 · la più grande dei Laghi</td></tr>
+      <tr><td>Lunghezza</td><td class="n">~222 m</td></tr>
+      <tr><td>Carico</td><td class="n">~26.000 t di taconite (pellet di ferro)</td></tr>
+      <tr><td>A bordo</td><td class="n">29 · nessun superstite</td></tr>
+      <tr><td>Affondamento</td><td class="n">10 nov 1975, ~19:15 · Lago Superiore</td></tr>
+      <tr><td>Distanza dal riparo</td><td class="n">~28 km dall'imboccatura di Whitefish Bay</td></tr>
+      <tr><td>Causa</td><td class="n">mai accertata (boccaporti / secca / onde)</td></tr>
+      <tr><td>Profondità del relitto</td><td class="n">~160 m · spezzato in due</td></tr>
+      <tr><td>Chiamate di soccorso</td><td class="n">nessuna</td></tr>
+    </tbody>
+  </table>
+  <p class="note">La causa dell'affondamento è dichiarata come questione aperta: le tre ipotesi principali (allagamento dai boccaporti, incaglio sulla secca di Six Fathom, onde anomale) sono esposte con il loro peso, senza sceglierne una come certa. Le cifre del carico e le distanze sono arrotondate secondo i rapporti d'inchiesta.</p>
+</section>
+
+<section class="reveal" data-year="1995" data-depth="160">
+  <div class="eyebrow">Archivio</div>
+  <h2>Vederla, ascoltarla, ricordarla</h2>
+  <p>Nessun file è ospitato qui: si rimanda agli archivi che custodiscono la nave, l'inchiesta e la memoria dei ventinove. Sono link specifici, scelti uno per uno.</p>
+  <div class="realimg">
+    <div class="badge">Archivi e memoria</div>
+    <div class="arclinks">
+      <a href="https://shipwreckmuseum.com/edmund-fitzgerald/" target="_blank" rel="noopener">
+        <span class="arch">GREAT LAKES SHIPWRECK MUSEUM</span>
+        <span><span class="ttl">La nave, il naufragio e la campana</span><span class="meta">Il museo di Whitefish Point che custodisce ed espone la campana di bronzo recuperata dal relitto.</span></span>
+        <span class="go">shipwreckmuseum.com ↗</span>
+      </a>
+      <a href="https://www.ntsb.gov/investigations/Pages/DCA76AM001.aspx" target="_blank" rel="noopener">
+        <span class="arch">NTSB</span>
+        <span><span class="ttl">Il rapporto d'inchiesta ufficiale</span><span class="meta">L'indagine del National Transportation Safety Board sull'affondamento, con l'analisi delle cause.</span></span>
+        <span class="go">ntsb.gov ↗</span>
+      </a>
+      <a href="https://nmgl.org/the-bell-of-the-fitzgerald-fall-1995/" target="_blank" rel="noopener">
+        <span class="arch">NATIONAL MUSEUM OF THE GREAT LAKES</span>
+        <span><span class="ttl">Il recupero della campana, 1995</span><span class="meta">La cronaca del recupero della campana e dei ventinove rintocchi in memoria dell'equipaggio.</span></span>
+        <span class="go">nmgl.org ↗</span>
+      </a>
+    </div>
+    <p class="cite">Fotografie, documenti d'inchiesta e reperti presso il Great Lakes Shipwreck Historical Society, l'NTSB e il National Museum of the Great Lakes, riprodotti con attribuzione presso le fonti, non ospitati su questo sito.</p>
+  </div>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">Nota metodologica</div>
+  <h2>Cosa questa pagina non fa</h2>
+  <p>Non sceglie una causa. A cinquant'anni di distanza, cosa abbia aperto lo scafo resta oggetto di dibattito tra esperti seri, e la pagina espone le tre ipotesi con il loro peso reale invece di offrire una soluzione rassicurante. Non tratta la ballata come storia: la canzone è un fatto culturale enorme, ma alcuni suoi dettagli sono licenza poetica, e i fatti verificati restano quelli dei rapporti d'inchiesta.</p>
+  <p>E non dimentica la scala umana. Dietro "ventinove morti" ci sono ventinove nomi, incisi sulla campana lasciata in fondo al lago. Il relitto è una tomba d'acqua dolce, la sua posizione è nota ma le immersioni sono regolamentate, e questa pagina non incoraggia a raggiungerlo. Si ricorda, non si visita.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 022 di 20+ · la serie continua</div>
+    <h2 style="margin-bottom:14px">La prossima cambia mare e temperatura: la Thistlegorm</h2>
+    <p>Dal gelo di un lago d'acqua dolce al tepore del Mar Rosso. Nel 1941 un mercantile britannico carico di materiale bellico — moto, camion, locomotive — fu affondato dagli aerei tedeschi e riscoperto da Cousteau: oggi è uno dei relitti-museo più amati dai sub di tutto il mondo.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce la prossima scheda</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="britannic.html">← Scheda 021: la Britannic</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">Tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · Great Lakes Shipwreck Historical Society / Great Lakes Shipwreck Museum (nave, naufragio, campana) · NTSB, Marine Accident Report (indagine ufficiale) · U.S. Coast Guard Marine Board of Inquiry e Lake Carriers' Association (ipotesi contrapposte sulla causa) · HISTORY.com ed EBSCO (cronaca, ultimi contatti con la Arthur M. Anderson) · National Museum of the Great Lakes (recupero della campana, 1995) · Gordon Lightfoot, «The Wreck of the Edmund Fitzgerald» (1976)<br><br>
+      Wreck Atlas · Scheda 022 · Prototipo
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), lake=document.getElementById('lake');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- rivelazione delle sezioni ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- spruzzi di tempesta ---------- */
+  var cv=document.getElementById('spray'), ctx=cv&&cv.getContext?cv.getContext('2d'):null, parts=[], W=0,H=0;
+  function size(){ if(!ctx)return; W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    parts=[]; var n=Math.round(W*H/16000);
+    for(var i=0;i<n;i++) parts.push({x:Math.random()*W,y:Math.random()*H,len:4+Math.random()*10,vx:-3-Math.random()*4,vy:1+Math.random()*2,o:.06+Math.random()*.16}); }
+  function draw(){ if(!ctx)return; ctx.clearRect(0,0,W,H); ctx.lineWidth=1;
+    for(var i=0;i<parts.length;i++){ var p=parts[i];
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<-12||p.y>H+12){ p.x=Math.random()*W+40; p.y=-12; }
+      ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(p.x-p.vx*1.6,p.y-p.vy*1.6);
+      ctx.strokeStyle='rgba(190,204,206,'+p.o+')'; ctx.stroke(); }
+    requestAnimationFrame(draw); }
+  if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  /* ---------- fondo: il lago che si fa nero ---------- */
+  var shades=['#13191B','#121719','#101517','#0F1416','#0D1214','#0C1113','#0A0F11'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    document.getElementById('railDLab').textContent = (active.dataset.depth==='0') ? 'in superficie' : 'Profondità';
+    if(!reduce){ lake.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)]; }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- radar: l'ultima mezz'ora ---------- */
+  var blip=document.getElementById('fitzblip'), blipLab=document.getElementById('blipLab');
+  var radmsg=document.getElementById('radmsg');
+  var STEPS=[
+    {y:96, op:1, lab:'FITZGERALD',
+     msg:'Metà pomeriggio: la Fitzgerald è davanti alla Anderson e la tempesta cresce. McSorley segnala un principio di sbandamento e i radar fuori uso, ma tiene la rotta verso il riparo di Whitefish Bay.'},
+    {y:120, op:1, lab:'FITZGERALD',
+     msg:'<b>Ore 19:10.</b> Interpellata dalla Anderson, la Fitzgerald risponde tranquilla: «Stiamo tenendo botta». È l’ultima comunicazione che qualcuno riceverà dalla nave.'},
+    {y:120, op:0, lab:'',
+     msg:'<b>Ore 19:20.</b> La neve si dirada, l’Anderson cerca le luci davanti a sé: non ci sono più. Il segnale è sparito dal radar. Nessun mayday, nessun razzo — ventinove uomini scomparsi in pochi minuti.'}
+  ];
+  function setStep(i){
+    var s=STEPS[i]; if(!s||!blip) return;
+    var dot=document.getElementById('blipDot'), halo=document.getElementById('blipHalo');
+    dot.setAttribute('cy',s.y); halo.setAttribute('cy',s.y);
+    blipLab.setAttribute('y', s.y+3); blipLab.textContent=s.lab;
+    blip.style.transition='opacity .5s'; blip.style.opacity=s.op;
+    radmsg.innerHTML=s.msg;
+    document.querySelectorAll('.rstep').forEach(function(b){ b.classList.toggle('on', +b.dataset.s===i); b.setAttribute('aria-pressed', +b.dataset.s===i?'true':'false'); });
+  }
+  document.querySelectorAll('.rstep').forEach(function(b){
+    b.addEventListener('click',function(){ setStep(+b.dataset.s); });
+  });
+
+  /* ---------- metriche di scroll ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'022-edmundfitzgerald',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] scheda 022 · '+m+'% a '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] sessione: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- iscrizione ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla — collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>

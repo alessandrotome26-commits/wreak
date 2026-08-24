@@ -264,7 +264,7 @@
   "lat": 27.81,
   "lon": 33.92,
   "d": 30,
-  "st": "planned",
+  "st": "next",
   "f": "Mercantile britannico affondato dai tedeschi nel Mar Rosso nel 1941, col suo carico di guerra ancora dentro: moto, camion, locomotive. Riscoperto da Cousteau, è uno dei relitti-museo più celebri al mondo.",
   "f_en": "British merchant ship sunk by the Germans in the Red Sea in 1941 with its war cargo still aboard: motorcycles, trucks, locomotives. A world-famous wreck-museum."
  },
@@ -276,9 +276,10 @@
   "lat": 46.99,
   "lon": -85.11,
   "d": 160,
-  "st": "next",
+  "st": "ready",
   "f": "Carico di minerale del ferro inghiottito da una tempesta sul Lago Superiore nel 1975: 29 morti, nessun superstite, un SOS mai lanciato. Immortalato in una celebre canzone; causa dell'affondamento ancora ignota.",
-  "f_en": "An iron-ore freighter swallowed by a storm on Lake Superior in 1975: 29 dead, no survivors, no distress call. Immortalized in a famous song; the cause is still unknown."
+  "f_en": "An iron-ore freighter swallowed by a storm on Lake Superior in 1975: 29 dead, no survivors, no distress call. Immortalized in a famous song; the cause is still unknown.",
+  "href": "edmundfitzgerald.html"
  },
  {
   "id": "belitung",

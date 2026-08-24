@@ -662,5 +662,41 @@
     },
     "caption_en": "A wartime route from Southampton to Lemnos, to take on the wounded. A mine sent her down in the Kea Channel, in the Aegean, on 21 November 1916, before the last leg.",
     "wreck_label_en": "the mine (Kea)"
+  },
+  "edmundfitzgerald.html": {
+    "from": {
+      "n": "Superior (WI)",
+      "lon": -92.1,
+      "lat": 46.72,
+      "n_en": "Superior, WI"
+    },
+    "via_after": [
+      {
+        "n": "Sault Ste. Marie",
+        "lon": -84.35,
+        "lat": 46.5,
+        "n_en": "Sault Ste. Marie"
+      }
+    ],
+    "to": {
+      "n": "Detroit",
+      "lon": -83.1,
+      "lat": 42.32,
+      "n_en": "Detroit"
+    },
+    "wreck_label": "la tempesta",
+    "wreck_label_en": "the storm",
+    "caption": "Carica di taconite, da Superior verso l'acciaieria di Detroit, via le chiuse di Sault Ste. Marie. Una tempesta la inghiottì nel Lago Superiore il 10 novembre 1975, a poche miglia dal riparo di Whitefish Bay.",
+    "caption_en": "Laden with taconite, from Superior toward the steel mill at Detroit, via the Sault Ste. Marie locks. A storm swallowed her in Lake Superior on 10 November 1975, a few miles from the shelter of Whitefish Bay.",
+    "palette": {
+      "bg": "#13191B",
+      "land": "#232B2E",
+      "coast": "#3E4A4E",
+      "plan": "#6E8188",
+      "done": "#C07A48",
+      "port": "#D8DEDF",
+      "wreck": "#E0BC6A",
+      "label": "#AEB8BA"
+    }
   }
 }
