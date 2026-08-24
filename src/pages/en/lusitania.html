@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RMS Lusitania — 1915</title>
+<meta name="description" content="The Cunard liner torpedoed by a German U-boat off Ireland in 1915: she sank in eighteen minutes, with nearly 1,200 dead. A mysterious second explosion, a propaganda war, and the push that drew the United States toward the First World War.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RMS Lusitania — 1915">
+<meta property="og:description" content="One torpedo, a never-explained second explosion, eighteen minutes. Not the deadliest wreck — but perhaps the one that changed history the most.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#122622">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sea:#122622; --deep:#0E1F1B; --slate:#17302A; --panel:#173029;
+  --ivory:#E9E5D8; --fog:#8A968F;
+  --cunard:#C0442E; --cunard2:#DA6A52; --steel:#7C97A0; --steel2:#9CB4BB; --brass:#B69A5E;
+  --rule:rgba(233,229,216,.15);
+  --display:"Newsreader",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--sea);color:var(--ivory);font-family:var(--body);font-weight:300;line-height:1.66;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#water{position:fixed;inset:0;z-index:-4;background:var(--sea);transition:background 1.6s ease}
+#haze{position:fixed;inset:-12%;z-index:-3;pointer-events:none;opacity:.55;
+  background:radial-gradient(circle at 28% 26%,rgba(124,151,160,.08),transparent 34%),
+             radial-gradient(circle at 72% 66%,rgba(124,151,160,.06),transparent 32%);
+  animation:haze 42s ease-in-out infinite alternate}
+@keyframes haze{0%{transform:translate3d(-2%,-1%,0) scale(1.03)}100%{transform:translate3d(3%,2%,0) scale(1.1)}}
+#motes{position:fixed;inset:0;z-index:-2;pointer-events:none}
+#alarm{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1.1s linear;
+  background:radial-gradient(ellipse at 50% 46%,rgba(192,68,46,.2),transparent 56%)}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--fog);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--cunard)}
+.rail-num{font-size:18px;color:var(--ivory);font-weight:500;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.5;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(18,38,34,.82)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--steel2);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:500;font-size:clamp(52px,11vw,116px);line-height:1;letter-spacing:-.01em}
+h2{font-family:var(--display);font-weight:500;font-size:clamp(30px,4.7vw,50px);line-height:1.1;margin-bottom:22px}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(233,229,216,.85)}
+.lede{font-size:20px;color:var(--ivory)}
+em{font-style:italic;color:var(--fog)}
+strong{font-weight:500;color:var(--ivory)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--fog);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--fog)}
+.coord b{display:block;color:var(--ivory);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  color:var(--steel2);border:1px solid rgba(124,151,160,.4);padding:5px 10px;margin-top:28px;align-self:flex-start;max-width:64ch;line-height:1.5}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--steel2);flex:none}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(138,150,143,.7);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(233,229,216,.08)}
+.stat .v{font-family:var(--display);font-weight:500;font-size:clamp(30px,4.8vw,46px);line-height:1.05;color:var(--steel2);font-variant-numeric:tabular-nums}
+.stat .v.red{color:var(--cunard2)}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--cunard);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-weight:500;font-style:italic;font-size:clamp(25px,4.4vw,40px);line-height:1.2;quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--fog);margin-top:18px}
+
+.tl{border-left:1px solid var(--rule);margin-top:8px}
+.tl-item{padding:0 0 34px 28px;position:relative}
+.tl-item::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--sea);border:1px solid var(--fog)}
+.tl-item.key::before{background:var(--cunard);border-color:var(--cunard);box-shadow:0 0 0 5px rgba(192,68,46,.15)}
+.tl-y{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--steel2);margin-bottom:5px}
+.tl-item.key .tl-y{color:var(--cunard2)}
+.tl-t{font-size:17px;color:var(--ivory);margin-bottom:4px}
+.tl-d{font-size:14.5px;color:rgba(233,229,216,.6);max-width:52ch}
+
+.widget,.sitewrap{margin-top:14px;border:1px solid var(--rule);background:rgba(23,48,41,.55);padding:20px}
+.widget svg,.sitewrap svg{width:100%;height:auto;display:block}
+.spot{cursor:pointer}
+.spot rect,.spot ellipse,.spot path,.spot circle,.spot line{transition:opacity .25s}
+.spot .hot{opacity:0}
+.spot:hover .hot,.spot:focus .hot{opacity:.45}
+#expinfo{font-family:var(--mono);font-size:12px;color:var(--fog);margin-top:16px;min-height:60px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.7}
+#expinfo b{color:var(--cunard2);font-weight:500}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(233,229,216,.08);vertical-align:top}
+td.n{color:var(--ivory);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:rgba(138,150,143,.75);line-height:1.7;margin-top:22px;max-width:60ch}
+
+.realimg{margin-top:22px;border:1px solid rgba(182,154,94,.35);background:rgba(182,154,94,.06);padding:22px}
+.realimg .badge{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin-bottom:14px}
+.realimg p{margin-bottom:14px}
+.realimg .rilink{display:inline-block;margin:0 18px 8px 0;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--steel2);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:4px;transition:color .25s,border-color .25s}
+.realimg .rilink:hover{color:var(--brass);border-color:var(--brass)}
+.realimg .cite{font-family:var(--mono);font-size:11px;color:rgba(138,150,143,.75);line-height:1.6;margin-top:8px}
+
+.shipart{margin-top:22px;border:1px solid var(--rule);background:rgba(23,48,41,.55);padding:18px 18px 12px}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:rgba(138,150,143,.75);letter-spacing:.05em;margin-top:10px}
+.luship{transform-box:fill-box;transform-origin:50% 92%;animation:lubob 8s ease-in-out infinite}
+@keyframes lubob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+.lusmoke{transform-box:fill-box;transform-origin:50% 100%;animation:lusmoke 6s ease-in-out infinite}
+@keyframes lusmoke{0%,100%{transform:translateX(0) scaleY(1);opacity:.4}50%{transform:translateX(12px) scaleY(1.12);opacity:.62}}
+.luwave{animation:luwave 5s ease-in-out infinite}
+@keyframes luwave{0%,100%{transform:translateX(0)}50%{transform:translateX(-8px)}}
+
+.arclinks{display:grid;gap:2px;margin-top:24px;border-top:1px solid var(--rule)}
+.arclinks a{display:flex;gap:20px;align-items:baseline;padding:20px 0;text-decoration:none;color:inherit;
+  border-bottom:1px solid rgba(233,229,216,.08);transition:padding-left .3s ease,border-color .3s ease}
+.arclinks a:hover,.arclinks a:focus-visible{padding-left:14px;border-bottom-color:var(--cunard)}
+.arclinks .arch{font-family:var(--mono);font-size:11px;color:var(--steel2);min-width:172px}
+.arclinks .ttl{font-size:16px;color:var(--ivory)}
+.arclinks .meta{font-size:13px;color:rgba(233,229,216,.5);margin-top:3px;max-width:46ch}
+.arclinks .go{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--fog);opacity:0;transition:opacity .3s}
+.arclinks a:hover .go,.arclinks a:focus-visible .go{opacity:1}
+
+.closing{border-top:1px solid var(--cunard);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--fog);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:transparent;border:1px solid var(--rule);color:var(--ivory);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--fog);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--cunard);color:#F6E7E2;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.88}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--steel2)}
+.signup .msg.err{color:#DA6A52}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--cunard2);border-color:var(--cunard)}
+.src{font-family:var(--mono);font-size:11.5px;color:rgba(138,150,143,.7);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:14px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+  .arclinks a{flex-wrap:wrap;gap:8px} .arclinks .go{display:none} .arclinks .arch{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #water,#haze,#alarm{transition:none;animation:none}
+  .luship,.lusmoke,.luwave{animation:none}
+  #motes{display:none}
+}
+:focus-visible{outline:2px solid var(--cunard);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="water"></div>
+<div id="haze"></div>
+<canvas id="motes"></canvas>
+<div id="alarm"></div>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Year</div><div class="rail-num" id="railYear">1915</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Depth</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metres</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1915" data-depth="0">
+  <div class="eyebrow">Ocean liner · Cunard Line</div>
+  <h1>Lusitania</h1>
+  <div class="sub">TORPEDOED 7 MAY 1915 · SANK IN 18 MINUTES</div>
+  <div class="coordbox">
+    <div class="coord">Where she lies<b>off the Old Head of Kinsale, Ireland · ~93 m</b></div>
+    <div class="coord">Dead<b>~1,198 of ~1,959</b></div>
+    <div class="coord">The spark<b>128 Americans — toward the war</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>WAR GRAVE AND HISTORIC SITE · WRECK AT ~93 M — POSITION HISTORICALLY KNOWN</div>
+  <div class="scrollcue">↓ scroll — eighteen minutes were enough</div>
+</section>
+
+<section class="reveal" data-year="1915" data-depth="93">
+  <div class="eyebrow">Why this wreck</div>
+  <h2>The sinking that changed the war</h2>
+  <p class="lede">The Titanic was a tragedy of pride: an accident. The Lusitania was something different — an act of war against civilians, and for that reason it changed history more than almost any other wreck.</p>
+  <p>She is not the deepest nor the deadliest in this atlas. But a single torpedo, a <strong>second explosion never fully explained</strong> and <strong>eighteen minutes</strong> were enough to kill nearly twelve hundred people, among them one hundred and twenty-eight Americans. From there came a wave of outrage, a propaganda war, and the long slide of the United States toward the First World War. This card tells how a ship that sank in under twenty minutes shifted the centre of gravity of the twentieth century.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">18</div><div class="k">minutes to sink</div></div>
+    <div class="stat"><div class="v red">~1,198</div><div class="k">dead of ~1,959</div></div>
+    <div class="stat"><div class="v red">128</div><div class="k">Americans among the dead</div></div>
+    <div class="stat"><div class="v">1</div><div class="k">single torpedo</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1915" data-depth="0">
+  <div class="eyebrow">May 1915 · the warning</div>
+  <h2>A notice next to the advertisement</h2>
+  <p>By May 1915 the First World War had entered its darkest phase. Germany had declared the waters around the British Isles a war zone, where any enemy ship could be sunk without warning by its U-boats. And it made that known.</p>
+  <p class="lede">On 1 May, in the New York papers, a notice from the German embassy appeared — with a cruel twist of fate — right beside the Cunard advertisement for the Lusitania's departure.</p>
+  <p>It reminded travellers that anyone boarding a British ship in those waters did so at their own risk. But the Lusitania was the fastest ship on the Atlantic: no one truly believed a slow submarine could ever catch her. She sailed with nearly two thousand people aboard.</p>
+</section>
+
+<section class="reveal" data-year="1915" data-depth="93">
+  <div class="eyebrow">The route</div>
+  <h2>The voyage that stopped hours from its destination</h2>
+  <p>A routine Atlantic crossing, sailed a thousand times: from New York to Liverpool. The Lusitania completed almost all of it. The solid line shows how far she got; the dashed line, the few kilometres she never sailed.</p>
+  <!--ROUTEMAP-->
+</section>
+
+<section class="reveal" data-year="1915" data-depth="93" data-alarm="1">
+  <div class="eyebrow">7 May 1915 · 14:10 · off Kinsale</div>
+  <h2>One torpedo, then something else</h2>
+  <p>A few kilometres from the Irish coast, the submarine <strong>U-20</strong>, commanded by Walther Schwieger, had the most famous ship in the world in its sights. It fired a single torpedo. It struck below the waterline, toward the bow.</p>
+  <div class="moment">
+    <q>An unusually heavy detonation, with a great cloud of smoke far above the funnel.</q>
+    <cite>FROM THE LOG OF U-20, JUST AFTER THE TORPEDO STRUCK</cite>
+  </div>
+  <p>It was that <em>second</em> explosion — far more violent than the torpedo — that doomed the ship. The Lusitania listed at once, and so sharply that almost all the lifeboats became unusable: <strong>only six of the forty-eight</strong> were launched. In eighteen minutes the fastest ship in the world was on the bottom. But what really caused that second blast? It is the mystery that has lasted a century.</p>
+</section>
+
+<section class="reveal" data-year="1915" data-depth="93" data-alarm="1">
+  <div class="eyebrow">The mystery</div>
+  <h2>What was the second explosion?</h2>
+  <p>The torpedo alone does not sink an ocean liner in eighteen minutes. Something inside the hull exploded right after, and to this day scholars do not agree on what. Click the theories.</p>
+  <div class="sitewrap">
+    <svg viewBox="0 0 640 240" role="img" aria-label="Section of the Lusitania: the torpedo point and the theories about the second explosion" class="fielded">
+      <title>The second explosion</title>
+      <line x1="20" y1="150" x2="620" y2="150" stroke="rgba(124,151,160,.35)" stroke-width="1"/>
+      <text x="20" y="168" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="1.5">WATERLINE</text>
+      <path d="M90 150 L120 128 L520 128 L556 142 L540 150 Z" fill="rgba(124,151,160,.10)" stroke="#6E8890" stroke-width="1.3"/>
+      <rect x="150" y="106" width="330" height="22" fill="rgba(124,151,160,.07)" stroke="#6E8890" stroke-width="1"/>
+
+      <g class="spot" tabindex="0" data-t="The torpedo (the certain cause)" data-d="A single torpedo from U-20 struck the ship toward the bow, on the starboard side, below the waterline. It opened a serious breach — but not one that, alone, could sink the ship in eighteen minutes. It was only the trigger.">
+        <line x1="600" y1="176" x2="470" y2="146" stroke="var(--cunard)" stroke-width="2" stroke-dasharray="5 4"/>
+        <circle class="hot" cx="470" cy="144" r="22"/>
+        <circle cx="470" cy="144" r="6" fill="var(--cunard)"/>
+        <text x="470" y="196" fill="var(--cunard2)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">← THE TORPEDO</text>
+      </g>
+      <g class="spot" tabindex="0" data-t="Theory 1 — the munitions" data-d="The German claim: there was war materiel in the hold. The manifest listed millions of rifle cartridges and barrels of metal powder. But this was small-arms ammunition, not high explosive: experts doubt it could produce a blast of that kind. It remains the German justification — and the heart of the controversy.">
+        <rect class="hot" x="150" y="128" width="90" height="46"/>
+        <rect x="164" y="152" width="62" height="16" fill="rgba(182,154,94,.28)" stroke="var(--brass)" stroke-width="1.2"/>
+        <text x="195" y="192" fill="var(--brass)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">MUNITIONS?</text>
+      </g>
+      <g class="spot" tabindex="0" data-t="Theory 2 — the coal dust" data-d="By the end of the crossing the coal bunkers were nearly empty, full of fine dust suspended in the air. The torpedo may have ignited it: coal dust, in certain conditions, explodes with enormous violence. It is today one of the most credited explanations.">
+        <rect class="hot" x="256" y="128" width="90" height="46"/>
+        <path d="M270 168 q30 -14 60 0 l-4 6 q-26 8 -52 0 Z" fill="rgba(30,40,38,.7)" stroke="#5E6E68" stroke-width="1.2"/>
+        <text x="300" y="192" fill="#9CB4BB" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">COAL?</text>
+      </g>
+      <g class="spot" tabindex="0" data-t="Theory 3 — the boilers and steam" data-d="Another possibility: seawater burst onto the red-hot boilers or ruptured the high-pressure steam lines, causing a secondary explosion. A purely technical explanation, with no need for any secret cargo.">
+        <rect class="hot" x="360" y="128" width="90" height="46"/>
+        <circle cx="392" cy="150" r="10" fill="none" stroke="var(--steel2)" stroke-width="1.4"/>
+        <circle cx="418" cy="150" r="10" fill="none" stroke="var(--steel2)" stroke-width="1.4"/>
+        <text x="405" y="192" fill="var(--steel2)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">BOILERS?</text>
+      </g>
+      <text x="20" y="28" fill="rgba(233,229,216,.4)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">DIAGRAM — NOT TO SCALE · CLICK A THEORY</text>
+    </svg>
+    <div id="expinfo">Select the torpedo or a theory to understand what sank the ship in eighteen minutes.</div>
+  </div>
+  <p class="note">More than a century on, and despite dives on the wreck, there is no definitive agreement. This page presents the theories with their real weight, without choosing the most convenient one: here, the doubt is part of the story.</p>
+</section>
+
+<section class="reveal" data-year="1915" data-depth="0">
+  <div class="eyebrow">The people</div>
+  <h2>Who was aboard</h2>
+  <p>Among the nearly two thousand passengers were emigrant families, infants, and some of America's best-known names. The most famous is <strong>Alfred Vanderbilt</strong>, one of the richest men in the United States. He could not swim. In the last minutes he helped others into the lifeboats and, according to witnesses, <strong>gave his own life jacket to a woman</strong>. His body was never found.</p>
+  <p class="lede">The captain, William Turner, survived — and paid a price for it.</p>
+  <p>"Bowler Bill", as he was nicknamed, stayed on the bridge to the last, and it was the buoyancy of his life jacket alone that saved him. Cleared of every charge — he had stayed at his post — he nonetheless became the scapegoat of a nation looking for someone to blame, and lived the rest of his life in semi-seclusion.</p>
+</section>
+
+<section class="reveal" data-year="1915" data-depth="0">
+  <div class="eyebrow">The war of images</div>
+  <h2>How a medal became propaganda</h2>
+  <p>The Lusitania did not sink only in the water: she sank in world public opinion, and there the battle went on. The most curious episode concerns a small object. A German artist, Karl Goetz, struck a <strong>satirical medal</strong> accusing Cunard of loading munitions onto a passenger ship, with the mocking legend "no contraband".</p>
+  <p>The British seized the chance. They reversed the sense of the satire and had about <strong>two hundred and fifty thousand copies</strong> made, sold to the public as proof of German barbarity. An object created to justify the sinking ended up as one of the most effective propaganda weapons against Germany.</p>
+  <div class="realimg">
+    <div class="badge">Real historical images</div>
+    <p>Photographs of the ship, the German newspaper notice, the "Remember the Lusitania" posters and the Goetz medal are held by the great museums and archives, largely in the public domain.</p>
+    <a class="rilink" href="https://www.iwm.org.uk/history/first-world-war/usa/lusitania" target="_blank" rel="noopener">The sinking and the propaganda · Imperial War Museums ↗</a>
+    <a class="rilink" href="https://americanhistory.si.edu/explore/stories/remember-lusitania-3-pieces-world-war-i-propaganda" target="_blank" rel="noopener">The propaganda · Smithsonian ↗</a>
+    <a class="rilink" href="https://www.rmslusitania.info/people/" target="_blank" rel="noopener">The people aboard · The Lusitania Resource ↗</a>
+    <p class="cite">Period photographs and prints (1915) from the archives of the Imperial War Museums, the Smithsonian and the Library of Congress. Largely public-domain material, reproduced with attribution, not hosted on this site.</p>
+  </div>
+</section>
+
+<section class="reveal" data-year="1917" data-depth="0">
+  <div class="eyebrow">The consequence</div>
+  <h2>Two years until the war</h2>
+  <p>It is often said, for convenience, that the Lusitania "brought America into the war". It is not true, and it is right to say so precisely: the United States entered the conflict only in April 1917, nearly two years later, when Germany resumed unrestricted submarine warfare and the Zimmermann telegram was intercepted.</p>
+  <p class="lede">But the Lusitania did something deeper: it shifted the feeling of a whole country.</p>
+  <p>It showed an America that regarded the war as a distant, European affair just how ruthless Germany was prepared to be. Those one hundred and twenty-eight American dead did not bring a declaration of war, but they made thinkable what had been unthinkable. When the war came, "Remember the Lusitania" was already written on the walls.</p>
+</section>
+
+<section class="reveal" data-year="1907" data-depth="0">
+  <div class="eyebrow">The ship</div>
+  <h2>The fastest on the Atlantic</h2>
+  <p>Entering service in 1907, the Lusitania was about 240 metres long, with four unmistakable funnels in Cunard's colours, red-orange and black. She won the Blue Riband for the fastest Atlantic crossing: it was her very speed that fed the belief — proven fatal — that no submarine could ever threaten her.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 640 230" role="img" aria-label="Stylized illustration of the ocean liner Lusitania">
+      <title>The ocean liner Lusitania</title>
+      <rect x="0" y="172" width="640" height="58" fill="rgba(124,151,160,.06)"/>
+      <path d="M-20 182 q 60 -8 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(124,151,160,.28)" stroke-width="1.3" class="luwave"/>
+      <g class="luship">
+        <path d="M46 172 L74 156 L582 156 L612 168 L594 172 Z" fill="#20342E" stroke="#48605A" stroke-width="1.2"/>
+        <line x1="80" y1="162" x2="576" y2="162" stroke="#C0442E" stroke-width="1.2"/>
+        <rect x="150" y="134" width="330" height="22" fill="#E9E5D8" stroke="#9AA6A0" stroke-width="1"/>
+        <g fill="#7C8A84"><rect x="164" y="140" width="6" height="7"/><rect x="184" y="140" width="6" height="7"/><rect x="204" y="140" width="6" height="7"/><rect x="224" y="140" width="6" height="7"/><rect x="244" y="140" width="6" height="7"/><rect x="264" y="140" width="6" height="7"/><rect x="284" y="140" width="6" height="7"/><rect x="304" y="140" width="6" height="7"/><rect x="324" y="140" width="6" height="7"/><rect x="344" y="140" width="6" height="7"/><rect x="364" y="140" width="6" height="7"/><rect x="384" y="140" width="6" height="7"/><rect x="404" y="140" width="6" height="7"/><rect x="424" y="140" width="6" height="7"/><rect x="444" y="140" width="6" height="7"/><rect x="464" y="140" width="6" height="7"/></g>
+        <g>
+          <rect x="212" y="96" width="26" height="40" fill="#C0442E" stroke="#7C2A1C" stroke-width="1"/><rect x="212" y="96" width="26" height="9" fill="#20120E"/>
+          <rect x="266" y="94" width="26" height="42" fill="#C0442E" stroke="#7C2A1C" stroke-width="1"/><rect x="266" y="94" width="26" height="9" fill="#20120E"/>
+          <rect x="320" y="94" width="26" height="42" fill="#C0442E" stroke="#7C2A1C" stroke-width="1"/><rect x="320" y="94" width="26" height="9" fill="#20120E"/>
+          <rect x="374" y="96" width="26" height="40" fill="#C0442E" stroke="#7C2A1C" stroke-width="1"/><rect x="374" y="96" width="26" height="9" fill="#20120E"/>
+        </g>
+        <g class="lusmoke"><path d="M225 96 q8 -24 24 -36 q-2 18 -12 36 Z" fill="rgba(120,132,126,.35)"/></g>
+        <line x1="120" y1="134" x2="120" y2="88" stroke="#48605A" stroke-width="1.6"/>
+        <line x1="470" y1="134" x2="470" y2="92" stroke="#48605A" stroke-width="1.6"/>
+      </g>
+      <text x="20" y="28" fill="rgba(138,150,143,.75)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">CUNARD LINER — STYLIZED RECONSTRUCTION</text>
+    </svg>
+    <figcaption>Stylized reconstruction. Real photographs of the ship and the propaganda materials are in the archives above.</figcaption>
+  </figure>
+</section>
+
+<section class="reveal" data-year="1915" data-depth="93">
+  <div class="eyebrow">The numbers</div>
+  <h2>The ship, measured</h2>
+  <table>
+    <thead><tr><th>Item</th><th class="n">Value</th></tr></thead>
+    <tbody>
+      <tr><td>Type</td><td class="n">ocean liner, Cunard Line</td></tr>
+      <tr><td>In service from</td><td class="n">1907</td></tr>
+      <tr><td>Length</td><td class="n">~240 m</td></tr>
+      <tr><td>People aboard</td><td class="n">~1,959</td></tr>
+      <tr><td>Dead</td><td class="n">~1,198 (128 Americans)</td></tr>
+      <tr><td>Sinking</td><td class="n">7 May 1915 · ~18 minutes</td></tr>
+      <tr><td>Torpedoes</td><td class="n">1 (submarine U-20)</td></tr>
+      <tr><td>Lifeboats launched</td><td class="n">6 of 48</td></tr>
+      <tr><td>Wreck depth</td><td class="n">~93 m</td></tr>
+    </tbody>
+  </table>
+  <p class="note">The figures for people aboard and for the dead vary by a few units between sources (about 1,959 aboard; about 1,198 dead). The cause of the second explosion is still debated and is stated as an open question. The wreck lies in Irish waters and is a place of burial.</p>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">A note on method</div>
+  <h2>What this page does not do</h2>
+  <p>It does not close an unsolved mystery. What caused the second explosion — munitions, coal, boilers — has been debated for a century, and the page presents the theories with their real weight instead of choosing the most sensational one. The manifest did list war materiel: that is a fact, and it should be stated without thereby justifying the sinking of a ship full of civilians.</p>
+  <p>And it does not simplify the consequences. The Lusitania did not "bring America into the war": it pushed her, prepared her, made it thinkable — two years before it actually happened. Distinguishing influence from cause is the kind of precision this story deserves. The figures remain stated estimates.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Card 015 of 20</div>
+    <h2 style="margin-bottom:14px">The next one has no explanation: the Mary Celeste</h2>
+    <p>From the mystery of a single explosion to a total mystery. In 1872 the Mary Celeste was found adrift in the middle of the Atlantic, in perfect order, cargo intact and the lifeboat gone — but with not a soul aboard. The crew was never seen again, and no one, to this day, knows what happened.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Notify me when the next card is out</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required>
+        <button type="submit">Notify me</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="flotta1715.html">← Card 014: the 1715 Fleet</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">All the wrecks on the globe →</a>
+  </div>
+  <footer>
+    <div class="src">
+      SOURCES · Imperial War Museums (sinking of 7 May 1915, propaganda, Goetz medal) · Encyclopædia Britannica (ship, dynamics, significance) · Wikipedia "Sinking of the RMS Lusitania" (U-20 and W. Schwieger, second explosion, cargo manifest) · Library of Congress / U.S. Office of the Historian (German newspaper notice, US reaction, diplomatic notes) · Smithsonian, National Museum of American History (propaganda) · The Lusitania Resource (people aboard, Capt. W. Turner, A. Vanderbilt) · investigations on the wreck (G. Bemis)<br><br>
+      Wreck Atlas · Card 015 · Prototype
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), water=document.getElementById('water'), alarm=document.getElementById('alarm');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- section reveal ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- cold drifting haze ---------- */
+  var cv=document.getElementById('motes'), ctx=cv&&cv.getContext?cv.getContext('2d'):null, parts=[], W=0,H=0;
+  function size(){ if(!ctx)return; W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    parts=[]; var n=Math.round(W*H/30000);
+    for(var i=0;i<n;i++) parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.4+.3,v:.35+Math.random()*.9,o:.05+Math.random()*.12}); }
+  function draw(){ if(!ctx)return; ctx.clearRect(0,0,W,H);
+    for(var i=0;i<parts.length;i++){ var p=parts[i];
+      p.x+=p.v; p.y+=Math.sin(p.x*.01)*.08;
+      if(p.x>W+4){ p.x=-4; p.y=Math.random()*H; }
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fillStyle='rgba(200,214,210,'+p.o+')'; ctx.fill(); }
+    requestAnimationFrame(draw); }
+  if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  /* ---------- background: cold sea; the vermilion alarm in the torpedo sections ---------- */
+  var shades=['#122622','#122824','#102520','#0F221E','#0E201C','#0D1E1A','#0C1B18'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    document.getElementById('railDLab').textContent = (active.dataset.depth==='0') ? 'at sea' : 'Depth';
+    alarm.style.opacity = active.dataset.alarm ? '1' : '0';
+    if(!reduce){ water.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)]; }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- the second explosion (clickable investigation) ---------- */
+  var info=document.getElementById('expinfo');
+  if(info){
+    document.querySelectorAll('.spot').forEach(function(z){
+      function show(){ info.innerHTML='<b>'+z.dataset.t+'</b><br>'+z.dataset.d; }
+      z.addEventListener('click',show); z.addEventListener('focus',show);
+      z.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} });
+    });
+  }
+
+  /* ---------- scroll metrics ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'015-lusitania',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] card 015 · '+m+'% at '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] session: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- sign-up ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Please enter a valid email address.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registered. The prototype does not send anything yet — connect your email service here.';
+      console.log('[wreck-atlas] sign-up:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>
