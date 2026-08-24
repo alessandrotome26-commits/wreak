@@ -439,9 +439,10 @@
   "lat": 41.9,
   "lon": -69.98,
   "d": 5,
-  "st": "next",
+  "st": "ready",
   "f": "L'unico relitto pirata autenticato al mondo: la nave di 'Black Sam' Bellamy, affondata in una tempesta al largo di Cape Cod nel 1717. La campana con il suo nome ne ha provato l'identità.",
-  "f_en": "The only fully authenticated pirate shipwreck: 'Black Sam' Bellamy's ship, sunk in a storm off Cape Cod in 1717. A bell bearing her name proved her identity."
+  "f_en": "The only fully authenticated pirate shipwreck: 'Black Sam' Bellamy's ship, sunk in a storm off Cape Cod in 1717. A bell bearing her name proved her identity.",
+  "href": "whydah.html"
  },
  {
   "id": "queen-annes-revenge",
@@ -451,7 +452,7 @@
   "lat": 34.69,
   "lon": -76.68,
   "d": 8,
-  "st": "planned",
+  "st": "next",
   "f": "L'ammiraglia di Barbanera, incagliata in North Carolina nel 1718 e ritrovata nel 1996: la più celebre nave pirata, anche se non 'firmata' come la Whydah.",
   "f_en": "Blackbeard's flagship, run aground in North Carolina in 1718 and found in 1996: the most famous pirate ship, though not 'signed' like the Whydah."
  },

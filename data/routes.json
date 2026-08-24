@@ -768,5 +768,33 @@
       "wreck": "#9A5A34",
       "label": "#B0AC9C"
     }
+  },
+  "whydah.html": {
+    "from": {
+      "n": "i Caraibi (la cattura)",
+      "lon": -74.0,
+      "lat": 22.0,
+      "n_en": "the Caribbean (the capture)"
+    },
+    "to": {
+      "n": "Cape Cod",
+      "lon": -70.1,
+      "lat": 41.93,
+      "n_en": "Cape Cod"
+    },
+    "wreck_label": "il nor'easter",
+    "wreck_label_en": "the nor'easter",
+    "caption": "Non una rotta di commercio, ma quella di un predatore: catturata da Bellamy nei Caraibi, la Whydah risaliva la costa americana quando un nor'easter la scagliò sulle secche di Wellfleet, a Cape Cod, il 26 aprile 1717.",
+    "caption_en": "Not a trade route but a predator's: captured by Bellamy in the Caribbean, the Whydah was working up the American coast when a nor'easter dashed her on the sandbars off Wellfleet, Cape Cod, on 26 April 1717.",
+    "palette": {
+      "bg": "#0E141C",
+      "land": "#1A2530",
+      "coast": "#3A5460",
+      "plan": "#7A828A",
+      "done": "#C79A3E",
+      "port": "#E8DCC0",
+      "wreck": "#C05A4E",
+      "label": "#BEB393"
+    }
   }
 }
