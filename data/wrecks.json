@@ -429,5 +429,101 @@
   "st": "planned",
   "f": "Carracca portoghese affondata nello Stretto di Malacca nel 1511 con il bottino saccheggiato alla città di Malacca — forse il più grande tesoro mai perduto in mare. Mai localizzata; la posizione è tuttora ignota.",
   "f_en": "Portuguese carrack lost off Sumatra in 1511, laden with the plunder of Malacca. One of the most sought-after and richest lost treasures in history."
+ },
+ {
+  "id": "whydah",
+  "n": "Whydah Gally",
+  "n_en": "Whydah Gally",
+  "y": 1717,
+  "lat": 41.9,
+  "lon": -69.98,
+  "d": 5,
+  "st": "planned",
+  "f": "L'unico relitto pirata autenticato al mondo: la nave di 'Black Sam' Bellamy, affondata in una tempesta al largo di Cape Cod nel 1717. La campana con il suo nome ne ha provato l'identità.",
+  "f_en": "The only fully authenticated pirate shipwreck: 'Black Sam' Bellamy's ship, sunk in a storm off Cape Cod in 1717. A bell bearing her name proved her identity."
+ },
+ {
+  "id": "queen-annes-revenge",
+  "n": "Queen Anne's Revenge",
+  "n_en": "Queen Anne's Revenge",
+  "y": 1718,
+  "lat": 34.69,
+  "lon": -76.68,
+  "d": 8,
+  "st": "planned",
+  "f": "L'ammiraglia di Barbanera, incagliata in North Carolina nel 1718 e ritrovata nel 1996: la più celebre nave pirata, anche se non 'firmata' come la Whydah.",
+  "f_en": "Blackbeard's flagship, run aground in North Carolina in 1718 and found in 1996: the most famous pirate ship, though not 'signed' like the Whydah."
+ },
+ {
+  "id": "sf-hydro",
+  "n": "SF Hydro",
+  "n_en": "SF Hydro",
+  "y": 1944,
+  "lat": 59.92,
+  "lon": 8.9,
+  "d": 430,
+  "st": "planned",
+  "f": "Il traghetto affondato dai sabotatori norvegesi nel 1944 per impedire ai nazisti di trasportare l'acqua pesante verso la bomba atomica. Giace in un lago profondo; con esso morirono anche civili.",
+  "f_en": "The ferry sunk by Norwegian saboteurs in 1944 to stop the Nazis moving heavy water toward the atomic bomb. It lies in a deep lake; civilians died with it too."
+ },
+ {
+  "id": "indianapolis",
+  "n": "USS Indianapolis",
+  "n_en": "USS Indianapolis",
+  "y": 1945,
+  "lat": 12.03,
+  "lon": 134.8,
+  "d": 5500,
+  "st": "planned",
+  "f": "L'incrociatore che consegnò i componenti della bomba di Hiroshima, silurato nel 1945: gli uomini restarono giorni in acqua tra gli squali. Relitto trovato nel 2017 a ~5.500 m.",
+  "f_en": "The cruiser that delivered the Hiroshima bomb components, torpedoed in 1945: the men spent days in shark-infested water. Wreck found in 2017 at ~5,500 m."
+ },
+ {
+  "id": "u-864",
+  "n": "U-864",
+  "n_en": "U-864",
+  "y": 1945,
+  "lat": 60.77,
+  "lon": 4.72,
+  "d": 150,
+  "st": "planned",
+  "f": "L'unico sommergibile affondato da un altro sommergibile, entrambi in immersione (1945). Portava mercurio ai giapponesi: oggi è una minaccia ambientale al largo della Norvegia.",
+  "f_en": "The only submarine sunk by another submarine while both were submerged (1945). It carried mercury to Japan: today an environmental hazard off Norway."
+ },
+ {
+  "id": "yamato",
+  "n": "Yamato",
+  "n_en": "Yamato",
+  "y": 1945,
+  "lat": 30.37,
+  "lon": 128.08,
+  "d": 340,
+  "st": "planned",
+  "f": "La corazzata più grande mai costruita, mandata a morte in una missione suicida nel 1945: ~3.000 morti. Giace spezzata nel Mar Cinese Orientale.",
+  "f_en": "The largest battleship ever built, sent to its death on a suicide mission in 1945: ~3,000 dead. It lies broken in the East China Sea."
+ },
+ {
+  "id": "kublai-khan-fleet",
+  "n": "Flotta di Kublai Khan",
+  "n_en": "Kublai Khan's Fleet",
+  "y": 1281,
+  "lat": 33.2,
+  "lon": 129.72,
+  "d": 25,
+  "st": "planned",
+  "f": "La flotta d'invasione di Kublai Khan, distrutta da un tifone al largo del Giappone nel 1281: da quel 'vento divino' nasce la parola kamikaze. I relitti giacciono presso Takashima.",
+  "f_en": "Kublai Khan's invasion fleet, destroyed by a typhoon off Japan in 1281: that 'divine wind' gave us the word kamikaze. The wrecks lie off Takashima."
+ },
+ {
+  "id": "hms-hood",
+  "n": "HMS Hood",
+  "n_en": "HMS Hood",
+  "y": 1941,
+  "lat": 63.33,
+  "lon": -31.8,
+  "d": 2800,
+  "st": "planned",
+  "f": "L'incrociatore da battaglia britannico saltato in aria dalla Bismarck nel 1941: 1.415 morti, solo 3 superstiti. Giace nello Stretto di Danimarca, tomba di guerra.",
+  "f_en": "The British battlecruiser blown up by the Bismarck in 1941: 1,415 dead, only 3 survivors. It lies in the Denmark Strait, a war grave."
  }
 ]
