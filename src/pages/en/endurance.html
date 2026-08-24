@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Endurance — 1915</title>
+<meta name="description" content="The ship with which Ernest Shackleton attempted to cross Antarctica, crushed by the Weddell Sea pack ice in 1915 and found intact at 3,008 metres in 2022. All 28 men survived.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Endurance — 1915">
+<meta property="og:description" content="Crushed by the ice in 1915. Twenty-eight men, not one death. Found intact, standing upright in the dark, at 3,008 metres, in 2022.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#E9F0F4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1B2A31; --slate:#3E5A66; --faint:rgba(27,42,49,.62);
+  --glacier:#2F7690; --amber:#BE6A2A; --line:rgba(27,42,49,.16);
+  --panel:rgba(255,255,255,.5);
+  --display:"Zilla Slab",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+body.deep{
+  --ink:#EAF1F5; --slate:#A9C1CB; --faint:rgba(234,241,245,.68);
+  --glacier:#7BB6C9; --amber:#E0864A; --line:rgba(234,241,245,.16);
+  --panel:rgba(9,30,42,.5);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#E9F0F4;color:var(--ink);font-family:var(--body);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:color .8s ease}
+
+#sky{position:fixed;inset:0;z-index:-4;background:#E9F0F4;transition:background .8s ease}
+#floes{position:fixed;inset:-10%;z-index:-3;pointer-events:none;opacity:1;transition:opacity 1s linear;
+  background:radial-gradient(circle at 22% 30%,rgba(255,255,255,.75),transparent 26%),
+             radial-gradient(circle at 68% 22%,rgba(255,255,255,.6),transparent 22%),
+             radial-gradient(circle at 82% 64%,rgba(255,255,255,.66),transparent 24%),
+             radial-gradient(circle at 38% 74%,rgba(255,255,255,.55),transparent 22%);
+  filter:blur(6px);animation:floe 46s ease-in-out infinite alternate}
+@keyframes floe{0%{transform:translate3d(-2%,-1%,0)}100%{transform:translate3d(3%,2%,0)}}
+#spindrift{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:1;transition:opacity 1s linear}
+#glow{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.7;transition:opacity 1s linear;
+  background:radial-gradient(ellipse at 50% 8%,rgba(255,255,255,.55),transparent 42%)}
+body.deep #floes{opacity:0}
+body.deep #spindrift{opacity:.35}
+body.deep #glow{opacity:0}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--slate);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--line)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--glacier)}
+.rail-num{font-size:19px;color:var(--ink);font-weight:600;letter-spacing:0;font-variant-numeric:tabular-nums;transition:color .8s ease}
+.rail-lab{font-size:9px;opacity:.55;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(233,240,244,.72);transition:background .8s ease}
+body.deep .rail-block{background:rgba(7,23,34,.72)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--glacier);margin-bottom:20px;transition:color .8s ease}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(50px,11vw,116px);line-height:.96;letter-spacing:-.01em;color:var(--ink);transition:color .8s ease}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,4.6vw,46px);line-height:1.1;margin-bottom:22px;color:var(--ink);transition:color .8s ease}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:var(--slate);transition:color .8s ease}
+.lede{font-size:20px;color:var(--ink)}
+em{font-style:italic;color:var(--faint)}
+strong{font-weight:600;color:var(--ink)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--slate);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--line);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--slate)}
+.coord b{display:block;color:var(--ink);font-size:15px;font-weight:600;margin-top:3px}
+.conf{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  color:var(--glacier);border:1px solid rgba(47,118,144,.4);padding:5px 10px;margin-top:28px;align-self:flex-start;max-width:62ch;line-height:1.5}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--glacier);flex:none}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--faint);text-transform:uppercase;animation:bob 3.2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0);opacity:.55}50%{transform:translateY(6px);opacity:.95}}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--line)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid var(--line)}
+.stat .v{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.8vw,46px);line-height:1;color:var(--amber);font-variant-numeric:tabular-nums}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--amber);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-weight:600;font-size:clamp(26px,4.6vw,42px);line-height:1.16;quotes:"\201C" "\201D";color:var(--ink)}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--slate);margin-top:18px}
+
+.tl{border-left:1px solid var(--line);margin-top:8px}
+.tl-item{padding:0 0 34px 28px;position:relative}
+.tl-item::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:#E9F0F4;border:1px solid var(--slate)}
+body.deep .tl-item::before{background:#0A1E2A}
+.tl-item.key::before{background:var(--amber);border-color:var(--amber);box-shadow:0 0 0 5px rgba(190,106,42,.15)}
+.tl-y{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--glacier);margin-bottom:5px}
+.tl-item.key .tl-y{color:var(--amber)}
+.tl-t{font-size:17px;color:var(--ink);margin-bottom:4px;transition:color .8s ease}
+.tl-d{font-size:14.5px;color:var(--faint);max-width:52ch}
+
+.widget{border:1px solid var(--line);background:var(--panel);padding:20px;margin-top:10px;transition:background .8s ease}
+.widget svg{width:100%;height:auto;display:block}
+.wctrl{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:11px;color:var(--slate)}
+.wctrl button{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;background:transparent;
+  color:var(--slate);border:1px solid var(--line);padding:8px 13px;cursor:pointer;transition:border-color .25s,color .25s}
+.wctrl button:hover{border-color:var(--glacier);color:var(--glacier)}
+.wctrl button[aria-pressed="true"]{border-color:var(--amber);color:var(--amber)}
+#routeinfo{font-family:var(--mono);font-size:12px;color:var(--slate);margin-top:16px;min-height:52px;
+  border-top:1px solid var(--line);padding-top:14px;line-height:1.7}
+#routeinfo b{color:var(--amber);font-weight:600}
+
+.sitewrap{margin-top:14px;border:1px solid var(--line);background:var(--panel);padding:20px;transition:background .8s ease}
+.sitewrap svg{width:100%;height:auto;display:block}
+.zone{cursor:pointer}
+.zone rect,.zone ellipse,.zone path,.zone circle{transition:opacity .25s}
+.zone .hot{opacity:0}
+.zone:hover .hot,.zone:focus .hot{opacity:.5}
+#wreckinfo{font-family:var(--mono);font-size:12px;color:var(--slate);margin-top:16px;min-height:44px;border-top:1px solid var(--line);padding-top:14px;line-height:1.6}
+#wreckinfo b{color:var(--glacier);font-weight:600}
+
+.shipart{margin-top:22px;border:1px solid var(--line);background:var(--panel);padding:18px 18px 12px;transition:background .8s ease}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.05em;margin-top:10px}
+.shipwrap{transform-box:fill-box;transform-origin:50% 92%;animation:sailbob 6.5s ease-in-out infinite}
+@keyframes sailbob{0%,100%{transform:rotate(-.7deg) translateY(0)}50%{transform:rotate(.7deg) translateY(-3px)}}
+.flag{transform-box:fill-box;transform-origin:0 50%;animation:flutter 1.7s ease-in-out infinite}
+@keyframes flutter{0%,100%{transform:scaleX(1) skewX(0deg)}50%{transform:scaleX(.78) skewX(-12deg)}}
+.wave{animation:wavemove 5s ease-in-out infinite}
+@keyframes wavemove{0%,100%{transform:translateX(0)}50%{transform:translateX(-8px)}}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--line)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--slate)}
+td.n{color:var(--ink);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:var(--faint);line-height:1.7;margin-top:22px;max-width:60ch}
+
+.arclinks{display:grid;gap:2px;margin-top:24px;border-top:1px solid var(--line)}
+.arclinks a{display:flex;gap:20px;align-items:baseline;padding:20px 0;text-decoration:none;color:inherit;
+  border-bottom:1px solid var(--line);transition:padding-left .3s ease,border-color .3s ease}
+.arclinks a:hover,.arclinks a:focus-visible{padding-left:14px;border-bottom-color:var(--amber)}
+.arclinks .arch{font-family:var(--mono);font-size:11px;color:var(--glacier);min-width:150px}
+.arclinks .ttl{font-size:16px;color:var(--ink)}
+.arclinks .meta{font-size:13px;color:var(--faint);margin-top:3px;max-width:46ch}
+.arclinks .go{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--slate);opacity:0;transition:opacity .3s}
+.arclinks a:hover .go,.arclinks a:focus-visible .go{opacity:1}
+
+.closing{border-top:1px solid var(--amber);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:transparent;border:1px solid var(--line);color:var(--ink);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--slate);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--amber);color:#FFF6EE;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.85}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--glacier)}
+.signup .msg.err{color:#C0532A}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--slate);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--amber);border-color:var(--amber)}
+.src{font-family:var(--mono);font-size:11.5px;color:var(--faint);line-height:1.9}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:15px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+  .arclinks a{flex-wrap:wrap;gap:8px} .arclinks .go{display:none} .arclinks .arch{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #sky,#floes,#glow,#spindrift{transition:none}
+  #floes,.shipwrap,.flag,.wave{animation:none}
+  .scrollcue{animation:none}
+  #spindrift{display:none}
+}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="sky"></div>
+<div id="floes"></div>
+<canvas id="spindrift"></canvas>
+<div id="glow"></div>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Year</div><div class="rail-num" id="railYear">1915</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">on the ice</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metres</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1915" data-depth="0">
+  <div class="eyebrow">Three-masted barquentine · Imperial Trans-Antarctic Expedition</div>
+  <h1>Endurance</h1>
+  <div class="sub">CRUSHED BY THE ICE 21 NOVEMBER 1915 · FOUND 5 MARCH 2022</div>
+  <div class="coordbox">
+    <div class="coord">Where she lies<b>3,008 m · Weddell Sea</b></div>
+    <div class="coord">Crew saved<b>28 of 28</b></div>
+    <div class="coord">Adrift in the ice<b>~10 months</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>PROTECTED HISTORIC SITE · ANTARCTIC TREATY MONUMENT No.93 — SURVEY ONLY, NOTHING REMOVED</div>
+  <div class="scrollcue">↓ scroll — no one died here</div>
+</section>
+
+<section class="reveal" data-year="2022" data-depth="0">
+  <div class="eyebrow">Why this wreck</div>
+  <h2>The shipwreck everyone lived through</h2>
+  <p class="lede">In an atlas of lost ships, the Endurance is the luminous exception: the story is not of how many died, but of how <strong>twenty-eight men out of twenty-eight</strong> came home after the sea had taken their ship.</p>
+  <p>Then there is the second life, just as improbable. Crushed by the ice in 1915, the ship sank to three thousand metres in one of the most remote seas on the planet, and there she stayed invisible for a hundred and seven years. When robots finally lit her up in 2022, she was no corroded skeleton: she was a ship, standing on the bottom, with her name still legible on the stern. The same sea that had killed her had also preserved her — for the same reason as the Vasa, at the other end of the world.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">28</div><div class="k">men aboard</div></div>
+    <div class="stat"><div class="v">0</div><div class="k">dead</div></div>
+    <div class="stat"><div class="v">107</div><div class="k">years invisible on the bottom</div></div>
+    <div class="stat"><div class="v">3,008</div><div class="k">metres deep</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1914" data-depth="0">
+  <div class="eyebrow">1914 · the ambition</div>
+  <h2>To cross Antarctica on foot</h2>
+  <p>With the South Pole reached by Amundsen in 1911, one last feat remained: to cross the entire Antarctic continent by land, sea to sea, passing through the Pole. Ernest Shackleton made it his own. The ship chosen to carry the team to the edge of the Weddell Sea was a three-masted oak vessel built in Norway, launched as <em>Polaris</em> and renamed <strong>Endurance</strong> after Shackleton's family motto: <em>Fortitudine vincimus</em>, "by endurance we conquer".</p>
+  <p>Aboard, twenty-eight men and nearly seventy sled dogs. But they never reached the continent: the ice stopped them before they could even land.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 640 320" role="img" aria-label="Stylized illustration of the Endurance under sail in 1914">
+      <title>The Endurance under sail, 1914</title>
+      <rect x="0" y="258" width="640" height="62" fill="rgba(47,118,144,.10)"/>
+      <g class="wave">
+        <path d="M-20 266 q 45 -8 90 0 t 90 0 t 90 0 t 90 0 t 90 0 t 90 0 t 90 0 t 90 0" fill="none" stroke="rgba(47,118,144,.38)" stroke-width="1.4"/>
+        <path d="M-20 280 q 55 -7 110 0 t 110 0 t 110 0 t 110 0 t 110 0 t 110 0 t 110 0" fill="none" stroke="rgba(47,118,144,.22)" stroke-width="1.2"/>
+      </g>
+      <path d="M64 270 l20 -7 l16 7 l-9 8 l-22 0 Z" fill="rgba(255,255,255,.82)" stroke="rgba(47,118,144,.32)" stroke-width="1"/>
+      <path d="M528 274 l24 -6 l18 8 l-11 7 l-26 -1 Z" fill="rgba(255,255,255,.78)" stroke="rgba(47,118,144,.32)" stroke-width="1"/>
+
+      <g class="shipwrap">
+        <line x1="320" y1="76" x2="506" y2="230" stroke="rgba(58,44,28,.45)" stroke-width="1"/>
+        <line x1="320" y1="76" x2="196" y2="246" stroke="rgba(58,44,28,.45)" stroke-width="1"/>
+        <line x1="246" y1="246" x2="246" y2="98" stroke="#3A2C1C" stroke-width="3"/>
+        <line x1="320" y1="246" x2="320" y2="74" stroke="#3A2C1C" stroke-width="3.4"/>
+        <line x1="396" y1="246" x2="396" y2="106" stroke="#3A2C1C" stroke-width="3"/>
+        <line x1="452" y1="248" x2="516" y2="230" stroke="#2A2016" stroke-width="2.6"/>
+        <path d="M212 120 L280 120 L277 156 Q246 165 215 156 Z" fill="#ECE5D3" stroke="#C7B98A" stroke-width="1"/>
+        <path d="M206 160 L286 160 L282 200 Q246 210 210 200 Z" fill="#EAE2CF" stroke="#C7B98A" stroke-width="1"/>
+        <path d="M200 204 L292 204 L288 240 Q246 250 204 240 Z" fill="#E7DEC9" stroke="#C7B98A" stroke-width="1"/>
+        <path d="M282 100 L358 100 L355 142 Q320 152 285 142 Z" fill="#ECE5D3" stroke="#C7B98A" stroke-width="1"/>
+        <path d="M274 146 L366 146 L362 190 Q320 201 278 190 Z" fill="#EAE2CF" stroke="#C7B98A" stroke-width="1"/>
+        <path d="M266 194 L374 194 L370 240 Q320 251 270 240 Z" fill="#E7DEC9" stroke="#C7B98A" stroke-width="1"/>
+        <path d="M396 128 L396 242 L352 236 L364 140 Z" fill="#E7DEC9" stroke="#C7B98A" stroke-width="1"/>
+        <path d="M372 130 L430 132 L426 168 L376 164 Z" fill="#ECE5D3" stroke="#C7B98A" stroke-width="1"/>
+        <path d="M462 138 L512 230 L456 242 Z" fill="#EAE2CF" stroke="#C7B98A" stroke-width="1"/>
+        <path d="M446 120 L470 234 L440 240 Z" fill="#ECE5D3" stroke="#C7B98A" stroke-width="1"/>
+        <line x1="210" y1="120" x2="282" y2="120" stroke="#3A2C1C" stroke-width="2"/>
+        <line x1="204" y1="160" x2="288" y2="160" stroke="#3A2C1C" stroke-width="2"/>
+        <line x1="198" y1="204" x2="294" y2="204" stroke="#3A2C1C" stroke-width="2"/>
+        <line x1="280" y1="100" x2="360" y2="100" stroke="#3A2C1C" stroke-width="2"/>
+        <line x1="272" y1="146" x2="368" y2="146" stroke="#3A2C1C" stroke-width="2"/>
+        <line x1="264" y1="194" x2="376" y2="194" stroke="#3A2C1C" stroke-width="2"/>
+        <path d="M182 246 L462 246 L444 268 Q320 286 200 268 Z" fill="#2A2016" stroke="#4A3826" stroke-width="1.2"/>
+        <line x1="194" y1="252" x2="452" y2="252" stroke="#B98A55" stroke-width="1.4"/>
+        <path class="flag" d="M320 66 L356 70 L351 78 L356 86 L320 84 Z" fill="#BE6A2A"/>
+      </g>
+      <text x="20" y="30" fill="var(--faint)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">THE ENDURANCE AS SHE WAS — UNDER SAIL, 1914</text>
+    </svg>
+    <figcaption>Stylized reconstruction, not a survey. The real photographs of the ship — taken by Frank Hurley — are in the archive at the foot of the page.</figcaption>
+  </figure>
+</section>
+
+<section class="reveal" data-year="1914" data-depth="0">
+  <div class="eyebrow">August 1914 · on the brink of war</div>
+  <h2>Setting off as the world goes into the trenches</h2>
+  <p>There is a detail always forgotten: the Endurance sailed just as Europe was plunging into the First World War. In August 1914, with war just declared, Shackleton offered ship and crew to the war effort. From the Admiralty, Winston Churchill replied with a single word: "Proceed."</p>
+  <p class="lede">So the purest of adventures set off for the ice at the very moment the continent was sinking into the mud of the trenches.</p>
+  <p>It is a contrast that gives the measure of the enterprise: while millions of men went to die in Europe, twenty-eight of them went to stake their lives at the opposite end of the planet for a geographic first. And several of those Antarctica gave back alive would later end up fighting for real.</p>
+</section>
+
+<section class="reveal" data-year="1915" data-depth="0">
+  <div class="eyebrow">January–November 1915 · Weddell Sea</div>
+  <h2>Caught, carried, crushed</h2>
+  <p>In January 1915, a day's sailing from the coast, the pack ice closes around the hull and holds it fast. The Endurance stops being a ship and becomes a floating wreck: a prisoner of the ice, she drifts with it for months, dragged slowly to the northwest.</p>
+  <div class="moment">
+    <q>What the ice gets, the ice keeps.</q>
+    <cite>A LINE ATTRIBUTED TO ERNEST SHACKLETON, FACING THE GRIP OF THE PACK</cite>
+  </div>
+  <p>In October the pressure of the ice begins to break the hull; water comes in. On 21 November 1915 the ship slips beneath the surface. Before leaving her, Captain Frank Worsley — an extraordinary navigator — notes the position of the sinking. It would be that number, a century later, that guided those who came looking for her.</p>
+</section>
+
+<section class="reveal" data-year="1916" data-depth="0">
+  <div class="eyebrow">1915–1916 · the escape</div>
+  <h2>Eight hundred miles not to die</h2>
+  <p>With no ship, no radio, on a drifting floe, twenty-eight men begin a retreat that has become legend. Follow the stages.</p>
+  <div class="widget">
+    <svg id="map" viewBox="0 0 640 400" role="img" aria-label="Schematic map of the drift and the escape of the Endurance crew">
+      <title>The drift of the Endurance and the escape toward rescue</title>
+      <path d="M40 372 L120 366 L260 372 L300 388 L120 392 L40 388 Z" fill="rgba(47,118,144,.12)" stroke="rgba(47,118,144,.4)" stroke-width="1"/>
+      <text x="150" y="386" fill="var(--slate)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">ANTARCTICA · WEDDELL SEA</text>
+      <path d="M250 150 l24 -8 l14 12 l-10 16 l-22 4 l-10 -14 Z" fill="rgba(47,118,144,.14)" stroke="rgba(47,118,144,.45)" stroke-width="1"/>
+      <text x="262" y="140" fill="var(--slate)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">ELEPHANT I.</text>
+      <path d="M545 96 l40 -6 l14 14 l-18 16 l-34 -4 l-6 -12 Z" fill="rgba(47,118,144,.14)" stroke="rgba(47,118,144,.45)" stroke-width="1"/>
+      <text x="572" y="86" fill="var(--slate)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">SOUTH GEORGIA</text>
+
+      <path id="legDrift" d="M300 350 C 296 320, 288 300, 292 270 C 296 244, 286 224, 296 206" fill="none" stroke="var(--glacier)" stroke-width="2" stroke-dasharray="5 6"/>
+      <circle cx="300" cy="350" r="5" fill="var(--glacier)"/>
+      <text x="312" y="352" fill="var(--slate)" font-family="IBM Plex Mono, monospace" font-size="9">Jan 1915 · caught by the ice</text>
+      <g id="sinkMark" opacity="0">
+        <circle cx="296" cy="206" r="9" fill="none" stroke="var(--amber)" stroke-width="1.2"/>
+        <path d="M296 199 l2.2 5 h5.2 l-4.2 3.4 l1.6 5.4 l-4.4 -3.4 l-4.4 3.4 l1.6 -5.4 l-4.2 -3.4 h5.2 Z" fill="var(--amber)"/>
+        <text x="308" y="200" fill="var(--amber)" font-family="IBM Plex Mono, monospace" font-size="9">21 Nov 1915 · sinks</text>
+      </g>
+
+      <path id="legBoats" d="M296 206 C 290 196, 278 176, 268 162" fill="none" stroke="var(--amber)" stroke-width="2.4" stroke-linecap="round" opacity="0"/>
+      <path id="legCaird" d="M268 162 C 360 150, 470 128, 556 112" fill="none" stroke="var(--amber)" stroke-width="2.4" stroke-linecap="round" opacity="0" stroke-dasharray="1400" stroke-dashoffset="1400"/>
+      <path id="legRescue" d="M556 112 C 470 150, 360 162, 274 158" fill="none" stroke="var(--glacier)" stroke-width="1.6" stroke-linecap="round" opacity="0" stroke-dasharray="4 5"/>
+
+      <circle id="expShip" cx="300" cy="350" r="4.5" fill="var(--ink)"/>
+      <text x="20" y="26" fill="var(--faint)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">SCHEMATIC MAP — SIMPLIFIED GEOGRAPHY, NOT TO SCALE</text>
+    </svg>
+    <div class="wctrl">
+      <button id="btnDrift" aria-pressed="true">1 · The drift</button>
+      <button id="btnBoats" aria-pressed="false">2 · To the boats</button>
+      <button id="btnCaird" aria-pressed="false">3 · The James Caird</button>
+      <button id="btnRescue" aria-pressed="false">4 · The return</button>
+    </div>
+    <div id="routeinfo"><b>1 · The drift in the ice</b><br>From January 1915 the pack imprisons the Endurance and drags her northwest for ten months, until she sinks on 21 November. The crew camps on the ice and waits for it to break up.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1916" data-depth="0">
+  <div class="eyebrow">The stages of the escape</div>
+  <h2>How to come back from nothing</h2>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-y">April 1916</div>
+      <div class="tl-t">Elephant Island, in three boats</div>
+      <div class="tl-d">When the pack breaks up, the twenty-eight cram into the three boats saved from the ship — the James Caird, the Dudley Docker, the Stancomb Wills — and after days in the open sea reach an uninhabited, wind-swept island. It is solid ground, the first in sixteen months. But no one will ever pass that way.</div>
+    </div>
+    <div class="tl-item key">
+      <div class="tl-y">April–May 1916</div>
+      <div class="tl-t">The James Caird, 800 miles of ocean</div>
+      <div class="tl-d">Shackleton picks five men and the best of the boats, seven metres long. They cross about 800 nautical miles of the stormiest sea on Earth, guided only by Worsley's rare sextant readings, to South Georgia. Fifteen, sixteen days. One of the greatest feats of seamanship in history.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-y">May 1916</div>
+      <div class="tl-t">On foot over the mountains</div>
+      <div class="tl-d">Landed on the wrong side of the island, Shackleton, Worsley and Crean cross on foot the never-traversed mountains of South Georgia — thirty-six hours without a stop — and reach the whaling station at Stromness.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-y">30 August 1916</div>
+      <div class="tl-t">No one left behind</div>
+      <div class="tl-d">After four attempts turned back by the ice, Shackleton returns to Elephant Island on the Chilean tug <em>Yelcho</em> and picks up the twenty-two men left there. They were all alive. In two years of disaster, not one death.</div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1915" data-depth="0">
+  <div class="eyebrow">The images</div>
+  <h2>The man who saved the photographs from the ice</h2>
+  <p>That images of this story exist at all is thanks to one man: Frank Hurley, the expedition photographer. When the ship was abandoned, he dived into the freezing water of the flooded hold to recover the glass photographic plates. Then, having to lighten the load, he and Shackleton selected about a hundred to keep and smashed the rest on the ice, so that no one would be tempted to go back for them.</p>
+  <p class="lede">Those surviving plates are among the most extraordinary photographs ever taken: the ship lit up at night, trapped and already doomed, in the middle of the white.</p>
+</section>
+
+<section class="reveal" data-year="2022" data-depth="3008">
+  <div class="eyebrow">5 March 2022 · under the ice</div>
+  <h2>Three thousand metres down, a century later</h2>
+  <p>Finding her seemed impossible: the Weddell Sea is covered by the most hostile pack ice on the planet, the very ice that had stopped the Endurance herself. The <em>Endurance22</em> expedition, sailing from Cape Town on the South African icebreaker <strong>S.A. Agulhas II</strong>, lowered autonomous robots — the <em>Sabertooth</em> — beneath the ice, with only the position Worsley noted in 1915 as a starting point.</p>
+  <p>They found her on 5 March 2022, about four miles from that point, at <strong>3,008 metres</strong>. And here the page descends with her: from the white of the pack to the absolute dark of the bottom, where the ship rests upright.</p>
+  <div class="moment">
+    <q>By far the finest wooden shipwreck I have ever seen. She is upright, well clear of the seabed, intact.</q>
+    <cite>MENSUN BOUND, DIRECTOR OF EXPLORATION, ENDURANCE22</cite>
+  </div>
+</section>
+
+<section class="reveal" data-year="2022" data-depth="3008">
+  <div class="eyebrow">The wreck</div>
+  <h2>Intact, and untouchable</h2>
+  <p>The robots removed nothing: they only photographed and scanned. The Endurance is a <strong>Historic Monument protected by the Antarctic Treaty</strong>, and will stay where she is. Click to read what the cameras saw.</p>
+  <div class="sitewrap">
+    <svg viewBox="0 0 640 300" role="img" aria-label="Stylized model of the Endurance wreck on the seabed" class="fielded">
+      <title>Diagram of the Endurance wreck at 3,008 metres</title>
+      <line x1="20" y1="248" x2="620" y2="248" stroke="var(--line)" stroke-width="1"/>
+      <text x="20" y="268" fill="var(--faint)" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.5">SEABED · 3,008 m · WEDDELL SEA</text>
+
+      <path d="M120 248 L150 210 L470 210 L508 224 L500 248 Z" fill="rgba(190,106,42,.14)" stroke="var(--amber)" stroke-width="1.4"/>
+      <path d="M150 210 L150 196 L470 196 L470 210 Z" fill="rgba(190,106,42,.10)" stroke="var(--amber)" stroke-width="1"/>
+      <line x1="210" y1="196" x2="210" y2="70" stroke="var(--slate)" stroke-width="2"/>
+      <line x1="300" y1="196" x2="300" y2="56" stroke="var(--slate)" stroke-width="2.2"/>
+      <line x1="390" y1="196" x2="390" y2="76" stroke="var(--slate)" stroke-width="2"/>
+      <line x1="176" y1="96" x2="244" y2="96" stroke="var(--slate)" stroke-width="1.2"/>
+      <line x1="264" y1="84" x2="336" y2="84" stroke="var(--slate)" stroke-width="1.2"/>
+
+      <g class="zone" tabindex="0" data-t="The name plate" data-d="On the stern, beneath the taffrail, the arc of letters: ENDURANCE, with the polar star that recalls the ship's first name, Polaris. It is the image that went around the world in 2022: the name still perfectly legible after 107 years.">
+        <rect class="hot" x="440" y="196" width="80" height="52"/>
+        <path d="M452 236 a34 20 0 0 1 60 0" fill="none" stroke="var(--amber)" stroke-width="1.4"/>
+        <path d="M480 214 l1.8 4 h4.4 l-3.6 2.8 l1.4 4.4 l-3.6 -2.8 l-3.6 2.8 l1.4 -4.4 l-3.6 -2.8 h4.4 Z" fill="var(--amber)"/>
+        <text x="482" y="196" fill="var(--amber)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">THE NAME</text>
+      </g>
+      <g class="zone" tabindex="0" data-t="The wheel and helm" data-d="The ship's wheel is still in place, along with much of the deck gear. Nothing has been moved by the current: the ship settled almost in sailing trim, as if she had simply stopped floating.">
+        <circle class="hot" cx="300" cy="200" r="24"/>
+        <circle cx="300" cy="200" r="14" fill="none" stroke="var(--glacier)" stroke-width="1.4"/>
+        <line x1="300" y1="186" x2="300" y2="214" stroke="var(--glacier)" stroke-width="1"/>
+        <line x1="286" y1="200" x2="314" y2="200" stroke="var(--glacier)" stroke-width="1"/>
+        <text x="300" y="176" fill="var(--glacier)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">THE HELM</text>
+      </g>
+      <g class="zone" tabindex="0" data-t="Why she is so preserved" data-d="The Weddell Sea is too cold, and free of the molluscs that devour wood in almost every other sea — the same biological luck that saved the Vasa in the Baltic. That is why, at three thousand metres, she is not a skeleton but a ship.">
+        <rect class="hot" x="150" y="196" width="120" height="52"/>
+        <circle cx="180" cy="224" r="3" fill="var(--slate)" opacity=".7"/>
+        <circle cx="205" cy="230" r="2.6" fill="var(--slate)" opacity=".6"/>
+        <circle cx="230" cy="226" r="3" fill="var(--slate)" opacity=".7"/>
+        <text x="200" y="196" fill="var(--slate)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">THE INTACT WOOD</text>
+      </g>
+      <text x="20" y="30" fill="var(--faint)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">STYLIZED DIAGRAM — NOT TO SCALE · CLICK A PART</text>
+    </svg>
+    <div id="wreckinfo">Select a part of the wreck to read its description.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1915" data-depth="0">
+  <div class="eyebrow">The route</div>
+  <h2>The voyage cut short</h2>
+  <p>Every wreck is, first of all, a voyage that did not arrive. The solid line marks the distance actually covered; the dashed line, the part that was never sailed.</p>
+  <!--ROUTEMAP-->
+</section>
+
+<section class="reveal" data-year="1915" data-depth="0">
+  <div class="eyebrow">The numbers</div>
+  <h2>The ship and the feat, measured</h2>
+  <table>
+    <thead><tr><th>Item</th><th class="n">Value</th></tr></thead>
+    <tbody>
+      <tr><td>Launched (as <em>Polaris</em>, Norway)</td><td class="n">1912</td></tr>
+      <tr><td>Length</td><td class="n">~44 m</td></tr>
+      <tr><td>Men aboard</td><td class="n">28</td></tr>
+      <tr><td>Sled dogs</td><td class="n">~69</td></tr>
+      <tr><td>Caught by the ice → sinking</td><td class="n">~10 months</td></tr>
+      <tr><td>The James Caird crossing</td><td class="n">~800 miles · ~16 days</td></tr>
+      <tr><td>Dead</td><td class="n">0</td></tr>
+      <tr><td>Wreck depth</td><td class="n">3,008 m</td></tr>
+      <tr><td>Years before discovery</td><td class="n">107</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Ship and expedition data from the expedition chronicles and the Endurance22 reports; the wreck position is the one released by the 2022 expedition, about four miles from the point Worsley noted in 1915. Open-sea distances are those commonly reported ("about 800 miles") and remain approximate.</p>
+</section>
+
+<section class="reveal" data-year="2022" data-depth="0">
+  <div class="eyebrow">Archive</div>
+  <h2>Seeing her, above and below the ice</h2>
+  <p>No image is hosted here: we link to those who hold them. The first archive is the expedition that found her; the second holds Frank Hurley's original plates; the third is the Antarctic Treaty register that declares her protected.</p>
+  <div class="arclinks">
+    <a href="https://endurance22.org/" target="_blank" rel="noopener">
+      <span class="arch">ENDURANCE22</span>
+      <span><span class="ttl">The 2022 discovery</span><span class="meta">The expedition's official site: images and scans of the wreck at 3,008 metres, and the diary of the search beneath the pack.</span></span>
+      <span class="go">endurance22.org ↗</span>
+    </a>
+    <a href="https://www.sl.nsw.gov.au/collection-items/photographs-hurley-endurance" target="_blank" rel="noopener">
+      <span class="arch">STATE LIBRARY NSW</span>
+      <span><span class="ttl">Frank Hurley's photographs</span><span class="meta">The plates saved from the flooded hold, digitized: the ship in the ice, the camp, the escape.</span></span>
+      <span class="go">sl.nsw.gov.au ↗</span>
+    </a>
+    <a href="https://www.ats.aq/devph/en/apa-database/187" target="_blank" rel="noopener">
+      <span class="arch">ANTARCTIC TREATY</span>
+      <span><span class="ttl">Historic Monument No.93</span><span class="meta">The official listing that protects the Endurance wreck: it may be surveyed, not touched.</span></span>
+      <span class="go">ats.aq ↗</span>
+    </a>
+  </div>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">A note on method</div>
+  <h2>What this page does not do</h2>
+  <p>It does not inflate the numbers of an epic already extraordinary on its own. The "about 800 miles" of the James Caird and the "about ten months" of drift remain approximations, as the sources report them. The wreck position is the one stated by the 2022 expedition, not a coordinate to the metre: the site is protected and its integrity comes before curiosity.</p>
+  <p>It does not reduce the survival to luck or to pure heroism. It was a combination of discipline, exceptional navigation and the right decisions taken at the right moment — and also, it must be said, of a margin that could have broken at a thousand points. That it ended without a death was by no means written.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Card 005 of 20</div>
+    <h2 style="margin-bottom:14px">Card 006 is ready: the San José</h2>
+    <p>From a feat with no dead and no gold to its exact opposite: a Spanish galleon sunk by the British in 1708 off Cartagena, with nearly six hundred men and a cargo of gold and silver now valued in the billions. It lies at six hundred metres — and over who owns it, the fight still rages, among states, salvage companies and Indigenous peoples.</p>
+    <a class="globelink" style="margin-top:6px" href="sanjose.html">Open the San José card →</a>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Notify me when the next card is out</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required>
+        <button type="submit">Notify me</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="anticitera.html">← Card 004: Antikythera</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">All the wrecks on the globe →</a>
+  </div>
+  <footer>
+    <div class="src">
+      SOURCES · Endurance22 Expedition / Falklands Maritime Heritage Trust (discovery 5 March 2022, depth 3,008 m, S.A. Agulhas II, Sabertooth vehicles, state of preservation; M. Bound) · Antarctic Treaty Secretariat (Historic Monument No.93, protection of the wreck) · chronicles of the Imperial Trans-Antarctic Expedition 1914–1917 (drift, sinking 21 November 1915, F. Worsley's position, the James Caird crossing, rescue of 30 August 1916) · Frank Hurley photographs, State Library of New South Wales<br><br>
+      Wreck Atlas · Card 005 · Prototype
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), sky=document.getElementById('sky');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- section reveal ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- spindrift: wind-blown snow ---------- */
+  var cv=document.getElementById('spindrift'), ctx=cv&&cv.getContext?cv.getContext('2d'):null, parts=[], W=0,H=0;
+  function size(){ if(!ctx)return; W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    parts=[]; var n=Math.round(W*H/16000);
+    for(var i=0;i<n;i++) parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.3,v:.6+Math.random()*1.8,o:.12+Math.random()*.4,s:Math.random()*.4-.2}); }
+  function draw(){ if(!ctx)return; ctx.clearRect(0,0,W,H);
+    var dark=document.body.classList.contains('deep');
+    for(var i=0;i<parts.length;i++){ var p=parts[i];
+      p.x+=p.v; p.y+=p.s+Math.sin(p.x*.01)*.15;
+      if(p.x>W+4){ p.x=-4; p.y=Math.random()*H; }
+      if(p.y>H+4){ p.y=-4; } if(p.y<-4){ p.y=H+4; }
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fillStyle=(dark?'rgba(180,205,215,':'rgba(255,255,255,')+p.o+')'; ctx.fill(); }
+    requestAnimationFrame(draw); }
+  if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  /* ---------- background: from the white of the pack to the dark of the bottom ---------- */
+  var iceShades=['#E9F0F4','#E5EEF2','#DEEAF0','#D6E5EC','#CBDFE8'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    var deep=active.dataset.depth!=='0';
+    document.getElementById('railDLab').textContent = deep ? 'Depth' : 'on the ice';
+    document.body.classList.toggle('deep',deep);
+    /* background and text change TOGETHER: light on the ice, dark on the wreck */
+    if(deep){
+      sky.style.background='#0C2333';
+    } else {
+      sky.style.background=iceShades[Math.min(Math.floor(p*iceShades.length),iceShades.length-1)];
+    }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- escape map ---------- */
+  var legDrift=document.getElementById('legDrift'), legBoats=document.getElementById('legBoats');
+  var legCaird=document.getElementById('legCaird'), legRescue=document.getElementById('legRescue');
+  var sinkMark=document.getElementById('sinkMark'), expShip=document.getElementById('expShip');
+  var rinfo=document.getElementById('routeinfo'), mapAnim=null;
+  var btns={drift:document.getElementById('btnDrift'),boats:document.getElementById('btnBoats'),caird:document.getElementById('btnCaird'),rescue:document.getElementById('btnRescue')};
+  var INFO={
+    drift:'<b>1 · The drift in the ice</b><br>From January 1915 the pack imprisons the Endurance and drags her northwest for ten months, until she sinks on 21 November. The crew camps on the ice and waits for it to break up.',
+    boats:'<b>2 · To the boats → Elephant Island</b><br>Once the pack breaks up, the 28 men cram into three boats and reach Elephant Island: solid ground, but uninhabited and off every shipping route. Alone, no one would find them.',
+    caird:'<b>3 · The James Caird → South Georgia</b><br>Shackleton and five men cross ~800 nautical miles of stormy ocean in a seven-metre boat, in about a fortnight, guided by Worsley’s sextant.',
+    rescue:'<b>4 · The return for all</b><br>After the crossing of South Georgia on foot and four attempts turned back by the ice, Shackleton returns to Elephant Island on the Yelcho on 30 August 1916. He saves everyone: not one death.'
+  };
+  function press(k){ for(var b in btns){ btns[b].setAttribute('aria-pressed', String(b===k)); } }
+  function moveShip(path,dur,then){
+    if(!path||!path.getTotalLength){ if(then)then(); return; }
+    if(reduce){ var e=path.getPointAtLength(path.getTotalLength()); expShip.setAttribute('cx',e.x); expShip.setAttribute('cy',e.y); if(then)then(); return; }
+    if(mapAnim) cancelAnimationFrame(mapAnim);
+    var len=path.getTotalLength(), t0=null;
+    (function step(ts){ if(!t0)t0=ts; var k=Math.min((ts-t0)/dur,1);
+      var pt=path.getPointAtLength(len*k); expShip.setAttribute('cx',pt.x); expShip.setAttribute('cy',pt.y);
+      if(k<1) mapAnim=requestAnimationFrame(step); else if(then) then();
+    })(performance.now());
+  }
+  function stage(k){
+    press(k); rinfo.innerHTML=INFO[k];
+    legBoats.setAttribute('opacity', (k==='boats'||k==='caird'||k==='rescue')?'1':'0');
+    legCaird.setAttribute('opacity', (k==='caird'||k==='rescue')?'1':'0');
+    legRescue.setAttribute('opacity', (k==='rescue')?'1':'0');
+    legCaird.classList.toggle('run', k==='caird'||k==='rescue');
+    if(k==='drift'){ sinkMark.setAttribute('opacity','0'); moveShip(legDrift,2600,function(){ sinkMark.setAttribute('opacity','1'); }); }
+    else if(k==='boats'){ sinkMark.setAttribute('opacity','1'); moveShip(legBoats,1500); }
+    else if(k==='caird'){ sinkMark.setAttribute('opacity','1'); moveShip(legCaird,2600); }
+    else { sinkMark.setAttribute('opacity','1'); moveShip(legRescue,2200); }
+  }
+  if(legCaird){ legCaird.style.transition='stroke-dashoffset 2.6s ease-out'; }
+  var css=document.createElement('style'); css.textContent='#legCaird.run{stroke-dashoffset:0}'; document.head.appendChild(css);
+  if(btns.drift){
+    btns.drift.addEventListener('click',function(){stage('drift');});
+    btns.boats.addEventListener('click',function(){stage('boats');});
+    btns.caird.addEventListener('click',function(){stage('caird');});
+    btns.rescue.addEventListener('click',function(){stage('rescue');});
+  }
+
+  /* ---------- wreck zones ---------- */
+  var winfo=document.getElementById('wreckinfo');
+  if(winfo){
+    document.querySelectorAll('.zone').forEach(function(z){
+      function show(){ winfo.innerHTML='<b>'+z.dataset.t+'</b><br>'+z.dataset.d; }
+      z.addEventListener('click',show); z.addEventListener('focus',show);
+      z.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} });
+    });
+  }
+
+  /* ---------- scroll metrics ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'005-endurance',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] card 005 · '+m+'% at '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] session: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- sign-up ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Please enter a valid email address.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registered. The prototype does not send anything yet — connect your email service here.';
+      console.log('[wreck-atlas] sign-up:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>
