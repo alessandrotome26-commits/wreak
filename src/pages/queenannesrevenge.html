@@ -38,13 +38,6 @@ body{background:var(--smoke);color:var(--bone);font-family:var(--body);font-weig
   animation:fuse 6s ease-in-out infinite alternate}
 @keyframes fuse{0%{opacity:.6}100%{opacity:.95}}
 #smokecv{position:fixed;inset:0;z-index:-1;pointer-events:none}
-#sea{position:fixed;left:0;right:0;bottom:0;width:100%;height:26vh;z-index:-1;pointer-events:none;
-  opacity:.92;filter:drop-shadow(0 -6px 18px rgba(74,114,99,.18))}
-.seaw{transform-box:view-box}
-.seaw1{animation:seaw1 11s ease-in-out infinite}
-.seaw2{animation:seaw2 8s ease-in-out infinite}
-@keyframes seaw1{0%,100%{transform:translateX(0)}50%{transform:translateX(-22px)}}
-@keyframes seaw2{0%,100%{transform:translateX(0)}50%{transform:translateX(18px)}}
 
 #rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
   justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
@@ -161,7 +154,7 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
   #air,#fuse{transition:none;animation:none}
-  .qship,.qflag,.qwave,.seaw1,.seaw2{animation:none}
+  .qship,.qflag,.qwave{animation:none}
   #smokecv{display:none}
 }
 :focus-visible{outline:2px solid var(--ember);outline-offset:3px}
@@ -173,17 +166,6 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
 <div id="murk"></div>
 <div id="fuse"></div>
 <canvas id="smokecv"></canvas>
-<svg id="sea" viewBox="0 0 640 200" preserveAspectRatio="none" aria-hidden="true">
-  <defs>
-    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="rgba(74,114,99,0)"/>
-      <stop offset="1" stop-color="rgba(74,114,99,.5)"/>
-    </linearGradient>
-  </defs>
-  <rect x="0" y="60" width="640" height="140" fill="url(#seaGrad)"/>
-  <path class="seaw seaw1" d="M-40 70 q 80 -16 160 0 t 160 0 t 160 0 t 160 0 t 80 0 V200 H-40 Z" fill="rgba(74,114,99,.30)"/>
-  <path class="seaw seaw2" d="M-40 92 q 90 14 180 0 t 180 0 t 180 0 t 120 0 V200 H-40 Z" fill="rgba(108,154,134,.22)"/>
-</svg>
 
 <div id="rail" aria-hidden="true">
   <div id="railFill"></div>

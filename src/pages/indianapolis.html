@@ -35,15 +35,13 @@ body{background:var(--night);color:var(--foam);font-family:var(--body);font-weig
   background:radial-gradient(circle at 40% 40%,rgba(226,236,240,.5),rgba(226,236,240,.06) 70%,transparent);transition:opacity 1s linear}
 #deepv{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:0;transition:opacity 1s linear;
   background:radial-gradient(ellipse at 50% 44%,transparent 30%,rgba(3,7,12,.9) 100%)}
-#sea{position:fixed;left:0;right:0;bottom:0;width:100%;height:30vh;z-index:-1;pointer-events:none;opacity:.9;overflow:hidden}
-.seaw1{animation:seaw1 13s ease-in-out infinite}
-.seaw2{animation:seaw2 9s ease-in-out infinite}
-.shark1{animation:shark1 26s linear infinite}
-.shark2{animation:shark2 34s linear infinite}
-@keyframes seaw1{0%,100%{transform:translateX(0)}50%{transform:translateX(-22px)}}
-@keyframes seaw2{0%,100%{transform:translateX(0)}50%{transform:translateX(18px)}}
-@keyframes shark1{0%{transform:translate(-160px,0)}100%{transform:translate(720px,0)}}
-@keyframes shark2{0%{transform:translate(720px,0) scaleX(-1)}100%{transform:translate(-180px,0) scaleX(-1)}}
+#sharks{position:fixed;left:0;right:0;bottom:0;height:64vh;z-index:-1;pointer-events:none;opacity:.5}
+.shark1{animation:shark1 32s linear infinite}
+.shark2{animation:shark2 44s linear infinite}
+.shark3{animation:shark3 38s linear infinite}
+@keyframes shark1{0%{transform:translate(-200px,60px)}100%{transform:translate(780px,60px)}}
+@keyframes shark2{0%{transform:translate(780px,150px) scaleX(-1)}100%{transform:translate(-220px,150px) scaleX(-1)}}
+@keyframes shark3{0%{transform:translate(-240px,236px)}100%{transform:translate(820px,236px)}}
 
 #rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
   justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
@@ -170,7 +168,7 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
   #ocean,#sun,#deepv,#moon{transition:none}
-  .seaw1,.seaw2,.shark1,.shark2,.inship,.inwave{animation:none}
+  .shark1,.shark2,.shark3,.inship,.inwave{animation:none}
 }
 :focus-visible{outline:2px solid var(--sun);outline-offset:3px}
 </style>
@@ -181,20 +179,10 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
 <div id="sun"></div>
 <div id="moon"></div>
 <div id="deepv"></div>
-<svg id="sea" viewBox="0 0 640 220" preserveAspectRatio="none" aria-hidden="true">
-  <defs>
-    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="rgba(19,34,52,0)"/>
-      <stop offset="1" stop-color="rgba(10,20,32,.6)"/>
-    </linearGradient>
-  </defs>
-  <rect x="0" y="40" width="640" height="180" fill="url(#seaGrad)"/>
-  <g opacity="0.5">
-    <path class="shark1" d="M60 150 q 26 -12 54 0 q -12 -14 -2 -22 q -16 8 -22 16 q -26 -4 -46 6 q 8 4 16 0 z" fill="#31506080"/>
-    <path class="shark2" d="M300 176 q 22 -10 46 0 q -10 -12 -2 -18 q -14 6 -18 12 q -22 -4 -40 6 q 8 3 14 0 z" fill="#2a4656aa"/>
-  </g>
-  <path class="seaw1" d="M-40 60 q 80 -14 160 0 t 160 0 t 160 0 t 160 0 t 80 0 V220 H-40 Z" fill="rgba(19,34,52,.5)"/>
-  <path class="seaw2" d="M-40 82 q 90 12 180 0 t 180 0 t 180 0 t 120 0 V220 H-40 Z" fill="rgba(10,20,32,.5)"/>
+<svg id="sharks" viewBox="0 0 640 320" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  <path class="shark1" d="M6 24 C34 15 78 15 104 21 L112 23 C128 21 140 25 150 17 L142 29 L152 39 C138 33 124 33 108 29 C78 35 34 35 10 29 L0 33 Z M60 16 L70 2 L82 16 Z" fill="rgba(24,38,50,.55)"/>
+  <path class="shark2" d="M6 24 C34 15 78 15 104 21 L112 23 C128 21 140 25 150 17 L142 29 L152 39 C138 33 124 33 108 29 C78 35 34 35 10 29 L0 33 Z M60 16 L70 2 L82 16 Z" fill="rgba(18,30,42,.5)"/>
+  <path class="shark3" d="M6 24 C34 15 78 15 104 21 L112 23 C128 21 140 25 150 17 L142 29 L152 39 C138 33 124 33 108 29 C78 35 34 35 10 29 L0 33 Z M60 16 L70 2 L82 16 Z" fill="rgba(22,34,46,.4)"/>
 </svg>
 
 <div id="rail" aria-hidden="true">
