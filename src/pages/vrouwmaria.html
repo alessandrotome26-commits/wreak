@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vrouw Maria — 1771</title>
+<meta name="description" content="Il mercantile olandese Vrouw Maria affondò nel 1771 al largo della Finlandia con una stiva di dipinti di maestri destinati a Caterina la Grande. Ritrovato intatto nel 1999 nel Baltico gelido: una galleria d'arte sul fondo del mare, ancora là sotto.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vrouw Maria — 1771">
+<meta property="og:description" content="Una dozzina di capolavori olandesi per l'imperatrice di Russia, inghiottiti dal Baltico. La nave è ancora là, quasi intatta — e forse, nella stiva, anche i quadri.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#EBF1F4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --frost:#EBF1F4; --paper:#F7FAFB; --panel:#DEE9ED;
+  --ink:#1A2730; --ink2:#3E545F; --slate:#657E8C;
+  --baltic:#3E7C93; --baltic2:#71A8BC; --delft:#2E4C7E;
+  --gild:#A87B2C; --gild2:#CBA24A; --gild3:#E6C877;
+  --rule:rgba(26,39,48,.14);
+  --display:"Fraunces",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--frost);color:var(--ink);font-family:var(--body);font-weight:300;line-height:1.66;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#hall{position:fixed;inset:0;z-index:-4;background:var(--frost);transition:background 1.6s ease}
+#skylight{position:fixed;left:50%;top:-12%;transform:translateX(-50%);width:64vw;height:70vh;z-index:-3;pointer-events:none;opacity:.5;transition:opacity 1s linear;
+  background:linear-gradient(to bottom,rgba(230,200,119,.18),rgba(230,200,119,0) 66%)}
+#motes{position:fixed;inset:0;z-index:-2;pointer-events:none}
+#cool{position:fixed;inset:-10%;z-index:-1;pointer-events:none;opacity:.5;
+  background:radial-gradient(ellipse at 70% 84%,rgba(62,124,147,.10),transparent 52%)}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--slate);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--gild2)}
+.rail-num{font-size:19px;color:var(--ink);font-weight:500;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.7;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(235,241,244,.82)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gild);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:500;font-size:clamp(46px,9.5vw,104px);line-height:.98;letter-spacing:-.01em}
+h2{font-family:var(--display);font-weight:500;font-size:clamp(29px,4.6vw,48px);line-height:1.1;margin-bottom:22px;letter-spacing:-.005em}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(26,39,48,.9)}
+.lede{font-size:20px;color:var(--ink)}
+em{font-style:italic;color:var(--ink2)}
+strong{font-weight:500;color:var(--ink);border-bottom:1px solid rgba(168,123,44,.35)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--slate);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--slate)}
+.coord b{display:block;color:var(--ink);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:flex-start;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  color:var(--baltic);border:1px solid rgba(62,124,147,.4);padding:6px 11px;margin-top:28px;align-self:flex-start;max-width:66ch;line-height:1.6;background:rgba(255,255,255,.4)}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--baltic);flex:none;margin-top:5px}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--slate);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(26,39,48,.09)}
+.stat .v{font-family:var(--display);font-weight:500;font-size:clamp(30px,4.8vw,46px);line-height:1.04;color:var(--baltic);font-variant-numeric:tabular-nums}
+.stat .v.gild{color:var(--gild)}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--gild2);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(24px,4.2vw,38px);line-height:1.24;color:var(--ink);quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--slate);margin-top:18px}
+
+.tl{border-left:1px solid var(--rule);margin-top:8px}
+.tl-item{padding:0 0 34px 28px;position:relative}
+.tl-item::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--frost);border:1px solid var(--slate)}
+.tl-item.key::before{background:var(--gild2);border-color:var(--gild2);box-shadow:0 0 0 5px rgba(203,162,74,.16)}
+.tl-y{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--baltic);margin-bottom:5px}
+.tl-item.key .tl-y{color:var(--gild)}
+.tl-t{font-size:17px;color:var(--ink);margin-bottom:4px}
+.tl-d{font-size:14.5px;color:rgba(26,39,48,.62);max-width:52ch}
+
+/* widget: la galleria sommersa */
+.gallery{margin-top:14px;border:1px solid var(--rule);background:var(--paper);padding:22px 20px;box-shadow:0 8px 30px rgba(26,39,48,.06)}
+.galtog{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.galtog button{font-family:var(--mono);font-size:11px;letter-spacing:.04em;background:transparent;color:var(--ink2);
+  border:1px solid var(--rule);padding:9px 13px;cursor:pointer;transition:border-color .2s,color .2s,background .2s}
+.galtog button:hover{color:var(--ink);border-color:var(--gild2)}
+.galtog button[aria-pressed="true"]{color:#fff;background:var(--gild);border-color:var(--gild);font-weight:500}
+.frame{background:linear-gradient(135deg,#EFE0BC,#E4CF9A);padding:16px;border-radius:2px;
+  box-shadow:0 0 0 3px #B58E3D, inset 0 0 0 3px #8A6A2A, 0 12px 30px rgba(60,40,10,.22)}
+.frame svg{width:100%;height:auto;display:block;background:#F3ECDA}
+.frame .plate{display:none}
+.frame .plate.on{display:block}
+#galinfo{font-family:var(--mono);font-size:12px;color:var(--ink2);margin-top:16px;min-height:58px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.8}
+#galinfo b{color:var(--gild);font-weight:600}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(26,39,48,.09);vertical-align:top}
+td.n{color:var(--ink);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:var(--slate);line-height:1.75;margin-top:22px;max-width:60ch}
+
+.realimg{margin-top:22px;border:1px solid rgba(168,123,44,.32);background:rgba(203,162,74,.06);padding:22px}
+.realimg .badge{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gild);margin-bottom:14px}
+.realimg p{margin-bottom:14px}
+.arclinks{display:grid;gap:2px;margin-top:6px}
+.arclinks a{display:flex;gap:20px;align-items:baseline;padding:18px 0;text-decoration:none;color:inherit;
+  border-bottom:1px solid rgba(26,39,48,.09);transition:padding-left .3s ease,border-color .3s ease}
+.arclinks a:first-child{border-top:1px solid rgba(26,39,48,.09)}
+.arclinks a:hover,.arclinks a:focus-visible{padding-left:12px;border-bottom-color:var(--gild2)}
+.arclinks .arch{font-family:var(--mono);font-size:11px;color:var(--baltic);min-width:150px}
+.arclinks .ttl{font-size:15.5px;color:var(--ink)}
+.arclinks .meta{font-size:13px;color:rgba(26,39,48,.58);margin-top:3px;max-width:46ch}
+.arclinks .go{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--slate);opacity:0;transition:opacity .3s}
+.arclinks a:hover .go,.arclinks a:focus-visible .go{opacity:1}
+.realimg .cite{font-family:var(--mono);font-size:11px;color:var(--slate);line-height:1.6;margin-top:14px}
+
+.shipart{margin-top:22px;border:1px solid var(--rule);background:var(--paper);padding:18px 18px 12px}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:var(--slate);letter-spacing:.05em;margin-top:10px}
+.vmship{transform-box:fill-box;transform-origin:50% 86%;animation:vmbob 10s ease-in-out infinite}
+@keyframes vmbob{0%,100%{transform:rotate(-.7deg) translateY(0)}50%{transform:rotate(.7deg) translateY(-2px)}}
+.vmwave{animation:vmwave 6s ease-in-out infinite}
+@keyframes vmwave{0%,100%{transform:translateX(0)}50%{transform:translateX(-8px)}}
+
+.closing{border-top:1px solid var(--gild2);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:#fff;border:1px solid var(--rule);color:var(--ink);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--gild2);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--gild);color:#fff;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.88}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--gild)}
+.signup .msg.err{color:#B5482F}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--slate);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--gild);border-color:var(--gild2)}
+.src{font-family:var(--mono);font-size:11.5px;color:var(--slate);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:15px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+  .arclinks a{flex-wrap:wrap;gap:6px} .arclinks .go{display:none} .arclinks .arch{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #hall,#skylight{transition:none}
+  .vmship,.vmwave{animation:none}
+  #motes{display:none}
+}
+:focus-visible{outline:2px solid var(--gild);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="hall"></div>
+<div id="skylight"></div>
+<canvas id="motes"></canvas>
+<div id="cool"></div>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Anno</div><div class="rail-num" id="railYear">1771</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Profondità</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1771" data-depth="0">
+  <div class="eyebrow">Mercantile olandese · 1771 · una galleria sul fondo</div>
+  <h1>Vrouw Maria</h1>
+  <div class="sub">AFFONDÒ CON I QUADRI DI CATERINA LA GRANDE · MAR BALTICO</div>
+  <div class="coordbox">
+    <div class="coord">Dove giace<b>Arcipelago finlandese · ~41 m</b></div>
+    <div class="coord">Il carico<b>dipinti di maestri per l'Ermitage</b></div>
+    <div class="coord">Ritrovata<b>1999, intatta</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>RELITTO ECCEZIONALMENTE CONSERVATO DAL BALTICO FREDDO · ANCORA SUL FONDO · SITO PROTETTO</div>
+  <div class="scrollcue">↓ scorri — nella luce fredda del Nord</div>
+</section>
+
+<section class="reveal" data-year="1999" data-depth="41">
+  <div class="eyebrow">Perché questo relitto</div>
+  <h2>Un museo, non un tesoro</h2>
+  <p class="lede">Gli altri relitti custodiscono argento, oro, monete. Questo custodisce qualcosa che il denaro non ricompra: dipinti. Una dozzina di capolavori olandesi diretti alla collezionista più vorace d'Europa — e persi in una notte di tempesta.</p>
+  <p>La Vrouw Maria era una nave mercantile qualunque, ma la sua stiva la rende unica in tutto l'atlante: portava opere d'arte comprate per <strong>Caterina la Grande</strong>, imperatrice di Russia. E c'è un dettaglio che accende l'immaginazione più di qualsiasi lingotto: grazie al gelo del Baltico la nave è ancora là, quasi intatta — il che significa che, forse, nella stiva sigillata ci sono ancora i quadri. Non lo sappiamo. Ed è proprio questo a rendere il relitto uno dei più affascinanti d'Europa.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">1771</div><div class="k">l'anno del naufragio</div></div>
+    <div class="stat"><div class="v">~41</div><div class="k">metri di profondità</div></div>
+    <div class="stat"><div class="v gild">~12</div><div class="k">dipinti documentati nel carico</div></div>
+    <div class="stat"><div class="v">1999</div><div class="k">l'anno del ritrovamento</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1771" data-depth="0">
+  <div class="eyebrow">Settembre 1771 · Amsterdam</div>
+  <h2>Da Amsterdam allo zar</h2>
+  <p>Il 5 settembre 1771 la Vrouw Maria, un piccolo mercantile a due alberi, lascia Amsterdam diretta a San Pietroburgo. È un viaggio di routine sulla rotta del Baltico, che nave e capitano hanno già fatto altre volte. La stiva è piena delle merci di sempre — zucchero, stoffe, coloranti, mercurio, zinco — ma anche di casse ben protette, dal valore incalcolabile.</p>
+  <p class="lede">Dentro quelle casse c'era l'arte: una dozzina di dipinti di maestri olandesi, appena venduti all'asta e diretti alla corte imperiale russa.</p>
+  <p>Caterina la Grande stava costruendo la collezione che sarebbe diventata il museo dell'Ermitage, e comprava in tutta Europa con una fame leggendaria. Quel carico era per lei. Non arrivò mai.</p>
+</section>
+
+<section class="reveal" data-year="1771" data-depth="0">
+  <div class="eyebrow">L'arte · l'asta Braamcamp</div>
+  <h2>Il quadro che nessuno rivedrà</h2>
+  <p>I dipinti venivano dall'asta della collezione di Gerrit Braamcamp, un ricco mercante di Amsterdam, dispersa nel 1771. Gli agenti di Caterina vi acquistarono alcune opere, tra cui — secondo le fonti — un piccolo capolavoro celebre: <em>The Nursery</em> (la cameretta), un trittico su tavola di quercia di <strong>Gerrit Dou</strong>, allievo prediletto di Rembrandt e primo pittore olandese di fama europea.</p>
+  <div class="moment">
+    <q>Una dozzina di capolavori olandesi, diretti alla collezionista più vorace d'Europa.</q>
+    <cite>IL CARICO D'ARTE DELLA VROUW MARIA, SECONDO LE FONTI SULL'ASTA BRAAMCAMP DEL 1771</cite>
+  </div>
+  <p>Perdere un dipinto non è come perdere un lingotto: un lingotto si rifonde uguale, un quadro è irripetibile. La tavola di Dou, se davvero era a bordo, non esiste più da nessun'altra parte al mondo. A meno che — ed è l'ipotesi che nessuno riesce a scacciare — non sia ancora là sotto, chiusa nella sua cassa, nel buio freddo del Baltico.</p>
+</section>
+
+<section class="reveal" data-year="1771" data-depth="0">
+  <div class="eyebrow">Il meccanismo · la stiva</div>
+  <h2>La galleria sommersa</h2>
+  <p>Cosa c'era davvero in quelle casse, e cosa possiamo dire con certezza? Apri la cornice e guarda il carico, un pezzo alla volta — distinguendo ciò che i documenti provano da ciò che resta leggenda.</p>
+  <div class="gallery">
+    <div class="galtog">
+      <button data-p="asta" aria-pressed="true">L'asta</button>
+      <button data-p="quadro" aria-pressed="false">Il quadro perduto</button>
+      <button data-p="carico" aria-pressed="false">Il resto del carico</button>
+      <button data-p="dubbio" aria-pressed="false">Documento o leggenda?</button>
+    </div>
+    <div class="frame">
+      <svg viewBox="0 0 560 300" role="img" aria-label="Cornice dorata: il carico d'arte della Vrouw Maria">
+        <title>La galleria sommersa</title>
+        <!-- L'ASTA -->
+        <g class="plate on" data-plate="asta">
+          <rect x="40" y="60" width="480" height="150" fill="#EAD9AE" opacity=".4"/>
+          <rect x="250" y="120" width="80" height="70" fill="#C9A65A" stroke="#8A6A2A" stroke-width="2"/>
+          <line x1="230" y1="120" x2="350" y2="120" stroke="#8A6A2A" stroke-width="3"/>
+          <path d="M120 150 l30 -14 l6 14 l-30 14 Z" fill="#8A6A2A"/>
+          <line x1="150" y1="136" x2="176" y2="120" stroke="#8A6A2A" stroke-width="4" stroke-linecap="round"/>
+          <g fill="#9A8256"><circle cx="410" cy="150" r="10"/><circle cx="440" cy="150" r="10"/><circle cx="425" cy="180" r="10"/></g>
+          <text x="280" y="250" text-anchor="middle" fill="#7A5E24" font-family="Fraunces, serif" font-size="20" font-style="italic">L'asta Braamcamp, 1771</text>
+        </g>
+        <!-- IL QUADRO (trittico) -->
+        <g class="plate" data-plate="quadro">
+          <rect x="120" y="70" width="60" height="120" fill="#B98F4A" stroke="#6E4E1E" stroke-width="2"/>
+          <rect x="188" y="56" width="184" height="134" fill="#C9A05A" stroke="#6E4E1E" stroke-width="3"/>
+          <rect x="380" y="70" width="60" height="120" fill="#B98F4A" stroke="#6E4E1E" stroke-width="2"/>
+          <circle cx="280" cy="110" r="20" fill="#EBD9B0" opacity=".7"/>
+          <path d="M250 165 q30 -34 60 0 Z" fill="#8A6A2A" opacity=".6"/>
+          <rect x="150" y="120" width="16" height="40" fill="#8A6A2A" opacity=".5"/>
+          <rect x="394" y="120" width="16" height="40" fill="#8A6A2A" opacity=".5"/>
+          <text x="280" y="250" text-anchor="middle" fill="#7A5E24" font-family="Fraunces, serif" font-size="20" font-style="italic">«The Nursery» · Gerrit Dou</text>
+        </g>
+        <!-- IL CARICO -->
+        <g class="plate" data-plate="carico">
+          <g fill="#C9A65A" stroke="#8A6A2A" stroke-width="2">
+            <rect x="120" y="120" width="70" height="60"/><rect x="200" y="130" width="70" height="50"/>
+            <rect x="300" y="110" width="64" height="70"/><rect x="374" y="132" width="66" height="48"/>
+          </g>
+          <line x1="120" y1="150" x2="190" y2="150" stroke="#8A6A2A" stroke-width="2"/>
+          <line x1="300" y1="145" x2="364" y2="145" stroke="#8A6A2A" stroke-width="2"/>
+          <text x="280" y="250" text-anchor="middle" fill="#7A5E24" font-family="Fraunces, serif" font-size="20" font-style="italic">Zucchero, mercurio, coloranti…</text>
+        </g>
+        <!-- DUBBIO -->
+        <g class="plate" data-plate="dubbio">
+          <rect x="180" y="66" width="120" height="140" fill="#C9A05A" stroke="#6E4E1E" stroke-width="3"/>
+          <rect x="250" y="86" width="120" height="140" fill="#B98F4A" stroke="#6E4E1E" stroke-width="3" opacity=".55"/>
+          <text x="300" y="165" text-anchor="middle" fill="#6E4E1E" font-family="Fraunces, serif" font-size="80">?</text>
+          <text x="280" y="262" text-anchor="middle" fill="#7A5E24" font-family="Fraunces, serif" font-size="19" font-style="italic">Cosa è certo, cosa è leggenda</text>
+        </g>
+        <text x="24" y="30" fill="#9A8256" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1">RICOSTRUZIONE STILIZZATA · CLICCA I PULSANTI</text>
+      </svg>
+    </div>
+    <div id="galinfo"><b>L'asta.</b> Nel 1771 la ricca collezione di Gerrit Braamcamp viene messa all'asta ad Amsterdam. Gli agenti di Caterina la Grande vi comprano opere per l'Ermitage: parte di quel bottino d'arte finisce nelle casse della Vrouw Maria.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1771" data-depth="41">
+  <div class="eyebrow">Ottobre 1771 · l'arcipelago</div>
+  <h2>Una tempesta tra gli scogli</h2>
+  <p>All'inizio di ottobre, mentre attraversa l'insidioso arcipelago al largo della Finlandia, la Vrouw Maria è sorpresa da una tempesta. Nel buio urta uno scoglio, vicino all'isola di <strong>Jurmo</strong>, e imbarca acqua. L'equipaggio non muore: fa in tempo a mettersi in salvo, e per giorni cerca disperatamente di tenere a galla la nave e di recuperare il carico.</p>
+  <p class="lede">Ma il Baltico ha la meglio: il 9 ottobre 1771 la Vrouw Maria scivola sotto la superficie, portandosi via le casse che non erano riuscite a salvare.</p>
+  <p>La notizia arriva fino a San Pietroburgo. Si racconta che Caterina, saputo del carico perduto, abbia mosso la diplomazia per tentarne il recupero. Invano: la nave era sparita, e con lei i suoi quadri, per oltre due secoli.</p>
+</section>
+
+<section class="reveal" data-year="1900" data-depth="41">
+  <div class="eyebrow">Perché è ancora là</div>
+  <h2>Il mare che conserva</h2>
+  <p class="lede">Come il Vasa a Stoccolma, la Vrouw Maria deve la sua sopravvivenza a un dettaglio del Baltico: è un mare freddo, poco salato e povero d'ossigeno, dove la <em>Teredo navalis</em>, il verme che divora il legno negli altri mari, non riesce a vivere.</p>
+  <p>In qualunque oceano, dopo due secoli e mezzo, non sarebbe rimasto nulla. Qui, invece, i sommozzatori hanno trovato uno scafo quasi integro, con gli alberi ancora in piedi e il carico al suo posto. È lo stesso miracolo di conservazione che rende il Baltico il più grande cimitero di relitti intatti del mondo — e che tiene viva la domanda sui dipinti.</p>
+</section>
+
+<section class="reveal" data-year="1999" data-depth="41">
+  <div class="eyebrow">Estate 1999 · il ritrovamento</div>
+  <h2>Duecentoventotto anni dopo</h2>
+  <p>A cercarla per anni fu il sommozzatore finlandese <strong>Rauno Koivusaari</strong>, con il gruppo Pro Vrouw Maria. Incrociando gli archivi storici con le ricerche sul fondale, nell'estate del 1999 individuò il relitto a circa quarantuno metri di profondità, nelle acque dell'arcipelago di Nagu.</p>
+  <p>Le immagini che ne vennero fecero il giro del mondo: una nave del Settecento in piedi nel buio, sorprendentemente conservata. Da quel momento la Vrouw Maria smise di essere una leggenda e divenne un caso reale — archeologico, ma anche, subito, diplomatico.</p>
+</section>
+
+<section class="reveal" data-year="2005" data-depth="41">
+  <div class="eyebrow">Il nodo</div>
+  <h2>Di chi è? E si deve tirarla su?</h2>
+  <p>Un relitto così solleva due domande difficili. La prima: <strong>a chi appartiene?</strong> Giace in acque finlandesi, ed è la Finlandia — attraverso l'agenzia nazionale per i beni culturali — a custodirlo e proteggerlo. Ma la nave era olandese, il carico era stato pagato per la corte russa, e più di un Paese ha guardato con interesse a quel fondo di mare. È un patrimonio conteso, sospeso tra più bandiere.</p>
+  <p>La seconda: <strong>si deve recuperare?</strong> Tirare su la nave, come si fece col Vasa, sarebbe un'impresa enorme e rischiosa — e c'è chi teme che i dipinti, se ancora esistono, non sopravviverebbero al ritorno all'aria. Per ora la scelta è stata la prudenza: la Vrouw Maria resta dov'è, monitorata e protetta, un museo sigillato che nessuno ha ancora aperto.</p>
+</section>
+
+<section class="reveal" data-year="1771" data-depth="41">
+  <div class="eyebrow">La nave</div>
+  <h2>Un piccolo mercante del Nord</h2>
+  <p>La Vrouw Maria era una <em>snauw</em>, un modesto veliero mercantile a due alberi, del tipo che percorreva a migliaia le rotte del Nord Europa. Niente cannoni, niente lusso: solo una stiva capiente e uno scafo robusto. Proprio la sua ordinarietà rende straordinario ciò che portava — e la sua fine, un promemoria che la storia dell'arte, a volte, passa per una nave qualunque.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 640 210" role="img" aria-label="Illustrazione stilizzata del mercantile Vrouw Maria nella luce fredda del Baltico">
+      <title>Il mercantile Vrouw Maria</title>
+      <path d="M-20 172 q 60 -6 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(62,124,147,.4)" stroke-width="1.4" class="vmwave"/>
+      <path d="M-20 184 q 60 -5 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(113,168,188,.4)" stroke-width="1.2" class="vmwave"/>
+      <g class="vmship">
+        <path d="M170 166 L196 150 L470 150 L500 164 L484 172 L184 172 Z" fill="#C9D6DA" stroke="#8FA6AE" stroke-width="1.3"/>
+        <line x1="196" y1="156" x2="484" y2="156" stroke="#7E97A0" stroke-width="1"/>
+        <line x1="266" y1="150" x2="266" y2="46" stroke="#8A7A5E" stroke-width="3"/>
+        <line x1="392" y1="150" x2="392" y2="58" stroke="#8A7A5E" stroke-width="2.8"/>
+        <path d="M226 74 L306 74 L300 128 Q266 138 232 128 Z" fill="#F2ECDC" stroke="#C7Bda0" stroke-width="1"/>
+        <path d="M356 84 L430 84 L424 130 Q392 140 360 130 Z" fill="#F2ECDC" stroke="#C7BDA0" stroke-width="1"/>
+        <path d="M266 46 l0 -8 l22 4 l-22 5 Z" fill="#B98F4A"/>
+        <rect x="300" y="132" width="70" height="18" fill="#B98F4A" opacity=".5" stroke="#8A6A2A" stroke-width="1"/>
+      </g>
+      <text x="20" y="28" fill="var(--slate)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">MERCANTILE A DUE ALBERI — RICOSTRUZIONE STILIZZATA</text>
+    </svg>
+    <figcaption>Ricostruzione stilizzata. Le immagini reali del relitto e la documentazione sono presso gli enti qui sotto.</figcaption>
+  </figure>
+  <div class="realimg">
+    <div class="badge">Documenti e immagini reali</div>
+    <p>Il relitto, il carico e la disputa sono documentati dagli enti che lo studiano e dagli archivi olandesi e finlandesi.</p>
+    <div class="arclinks">
+      <a href="https://mass.cultureelerfgoed.nl/vrouw-maria" target="_blank" rel="noopener">
+        <span class="arch">MASS · ERFGOED (NL)</span>
+        <span><span class="ttl">La scheda del relitto</span><span class="meta">Il registro del patrimonio marittimo olandese: la nave, il carico e lo stato del relitto.</span></span>
+        <span class="go">cultureelerfgoed.nl ↗</span>
+      </a>
+      <a href="https://www.museovirasto.fi/en" target="_blank" rel="noopener">
+        <span class="arch">FINNISH HERITAGE AGENCY</span>
+        <span><span class="ttl">Chi custodisce la Vrouw Maria</span><span class="meta">L'agenzia finlandese per i beni culturali, responsabile del relitto e della sua tutela.</span></span>
+        <span class="go">museovirasto.fi ↗</span>
+      </a>
+      <a href="https://www.thedailybeast.com/the-hunt-for-catherine-the-greats-shipwreck-treasure/" target="_blank" rel="noopener">
+        <span class="arch">THE DAILY BEAST</span>
+        <span><span class="ttl">Il tesoro perduto della zarina</span><span class="meta">La storia dei dipinti di Caterina e della caccia al relitto, per il lettore generale.</span></span>
+        <span class="go">thedailybeast.com ↗</span>
+      </a>
+    </div>
+    <p class="cite">Documentazione e immagini presso il Rijksdienst voor het Cultureel Erfgoed (MaSS), la Finnish Heritage Agency (Museovirasto) e le testate citate, riprodotte con attribuzione presso le fonti, non ospitate su questo sito.</p>
+  </div>
+</section>
+
+<section class="reveal" data-year="1771" data-depth="41">
+  <div class="eyebrow">La rotta</div>
+  <h2>Il viaggio interrotto</h2>
+  <p>Da Amsterdam a San Pietroburgo con l'arte per la zarina. Il tratto continuo è quanto navigò; il tratteggio, l'ultimo tratto verso la Russia che non completò mai.</p>
+  <!--ROUTEMAP-->
+</section>
+
+<section class="reveal" data-year="1771" data-depth="41">
+  <div class="eyebrow">I numeri</div>
+  <h2>La nave, misurata</h2>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Valore</th></tr></thead>
+    <tbody>
+      <tr><td>Tipo</td><td class="n">mercantile olandese a due alberi (snauw)</td></tr>
+      <tr><td>Partenza</td><td class="n">Amsterdam, 5 settembre 1771</td></tr>
+      <tr><td>Destinazione</td><td class="n">San Pietroburgo (corte di Caterina la Grande)</td></tr>
+      <tr><td>Carico d'arte</td><td class="n">~12 dipinti di maestri olandesi (asta Braamcamp)</td></tr>
+      <tr><td>Naufragio</td><td class="n">9 ottobre 1771, presso l'isola di Jurmo (Finlandia)</td></tr>
+      <tr><td>Equipaggio</td><td class="n">tratto in salvo</td></tr>
+      <tr><td>Profondità</td><td class="n">~41 m</td></tr>
+      <tr><td>Ritrovata</td><td class="n">1999 (R. Koivusaari / Pro Vrouw Maria)</td></tr>
+      <tr><td>Oggi</td><td class="n">sul fondo, protetta dalla Finlandia · non recuperata</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Il numero e l'identità precisa dei dipinti restano in parte dibattuti: le fonti concordano su una dozzina di opere per Caterina, ma cosa esattamente ci fosse — e cosa sopravviva oggi nella stiva — non è confermato. La pagina lo dice: tra ciò che i documenti provano e ciò che la leggenda aggiunge, la differenza resta visibile.</p>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">Nota metodologica</div>
+  <h2>Cosa questa pagina tiene separato</h2>
+  <p>Il documentato dal desiderato. È certo che la Vrouw Maria portava opere d'arte per Caterina, ed è certo che il relitto è straordinariamente conservato. È invece un'ipotesi — affascinante ma non provata — che i dipinti siano ancora integri là sotto: la pagina la presenta come tale, senza trasformarla in un fatto per renderla più bella.</p>
+  <p>E tiene la posizione riservata, come per ogni sito ancora sul fondo: la Vrouw Maria è protetta proprio perché intatta, e una mappa al metro sarebbe un invito ai saccheggiatori. È un museo sigillato che appartiene, prima ancora che a uno Stato, a chiunque sappia aspettare per aprirlo bene.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 029 di 20+ · la serie continua</div>
+    <h2 style="margin-bottom:14px">La prossima cambia oceano: la Nanhai One</h2>
+    <p>Dall'arte europea alla Via della Seta marittima. Un mercantile cinese della dinastia Song, affondato nel Mar Cinese Meridionale otto secoli fa con oltre centomila oggetti di ceramica, oro e argento. Recuperato nel 2007 <strong>tutto intero</strong>, dentro una gigantesca cassa d'acciaio — uno dei recuperi più incredibili della storia.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce la prossima scheda</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="indianapolis.html">← Scheda 028: la USS Indianapolis</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">Tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · Wikipedia «Vrouw Maria» (nave, carico, naufragio 9 ott 1771, ritrovamento 1999) · MaSS – Maritime Stepping Stones, Rijksdienst voor het Cultureel Erfgoed (registro del relitto) · Finnish Heritage Agency / Museovirasto (custodia e tutela del sito) · «The Wreck of Vrouw Maria — A Sunken Treasure or a Common European Heritage?» (la disputa di proprietà) · fonti sull'asta Braamcamp 1771 e su Gerrit Dou («The Nursery»)<br><br>
+      Wreck Atlas · Scheda 029 · Prototipo
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), hall=document.getElementById('hall'), sky=document.getElementById('skylight');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- rivelazione delle sezioni ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- pulviscolo d'oro nella luce (come in una galleria) ---------- */
+  var cv=document.getElementById('motes'), ctx=cv&&cv.getContext?cv.getContext('2d'):null, motes=[], W=0,H=0;
+  function size(){ if(!ctx)return; W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    motes=[]; var n=Math.round(W*H/42000);
+    for(var i=0;i<n;i++) motes.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.4+.5,v:.08+Math.random()*.22,drift:Math.random()*.4-.2,o:.10+Math.random()*.22}); }
+  function draw(){ if(!ctx)return; ctx.clearRect(0,0,W,H);
+    for(var i=0;i<motes.length;i++){ var m=motes[i];
+      m.y-=m.v; m.x+=m.drift+Math.sin(m.y*.006)*.12;
+      if(m.y<-4){ m.y=H+4; m.x=Math.random()*W; }
+      ctx.beginPath(); ctx.arc(m.x,m.y,m.r,0,6.2832);
+      ctx.fillStyle='rgba(210,168,74,'+m.o+')'; ctx.fill(); }
+    requestAnimationFrame(draw); }
+  if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  /* ---------- fondo chiaro: Baltico freddo → luce d'oro dei quadri → freddo ---------- */
+  var shades=['#EBF1F4','#E7EFF1','#E3EDEF','#F2EBD9','#F1E7CC','#DFEAEE','#CCDEE6'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    document.getElementById('railDLab').textContent = (active.dataset.depth==='0') ? 'in superficie' : 'Profondità';
+    if(!reduce){
+      hall.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)];
+      /* la luce dorata si accende sulle sezioni dell'arte (metà pagina) */
+      sky.style.opacity=String(Math.max(.15, 1-Math.abs(p-0.42)/0.34));
+    }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- la galleria sommersa ---------- */
+  var galBtns=document.querySelectorAll('.galtog button'), plates=document.querySelectorAll('.frame .plate'), galinfo=document.getElementById('galinfo');
+  var GAL={
+    asta:'<b>L’asta.</b> Nel 1771 la ricca collezione di Gerrit Braamcamp viene messa all’asta ad Amsterdam. Gli agenti di Caterina la Grande vi comprano opere per l’Ermitage: parte di quel bottino d’arte finisce nelle casse della Vrouw Maria.',
+    quadro:'<b>Il quadro perduto.</b> Tra le opere ci sarebbe stata <i>The Nursery</i>, un trittico su tavola di Gerrit Dou, allievo di Rembrandt. Se era davvero a bordo, oggi non esiste da nessun’altra parte: perdere un dipinto non è come perdere un lingotto.',
+    carico:'<b>Il resto del carico.</b> Oltre all’arte, la stiva portava le merci di una rotta baltica qualunque: zucchero, coloranti, mercurio, zinco, stoffe. È questo mix di ordinario e straordinario a rendere la nave così particolare.',
+    dubbio:'<b>Documento o leggenda?</b> È certo che c’erano opere per Caterina; il numero e i titoli esatti, e soprattutto <i>cosa sopravviva oggi</i> nella stiva, restano incerti. La pagina tiene separato ciò che i documenti provano da ciò che l’immaginazione aggiunge.'
+  };
+  function showPlate(k){
+    galBtns.forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.p===k)); });
+    plates.forEach(function(pl){ pl.classList.toggle('on', pl.dataset.plate===k); });
+    galinfo.innerHTML=GAL[k];
+  }
+  galBtns.forEach(function(b){ b.addEventListener('click',function(){ showPlate(b.dataset.p); }); });
+
+  /* ---------- metriche di scroll ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'029-vrouwmaria',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] scheda 029 · '+m+'% a '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] sessione: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- iscrizione ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla — collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>

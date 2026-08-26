@@ -303,7 +303,7 @@
     "lat": 21.7,
     "lon": 112.2,
     "d": 20,
-    "st": "planned",
+    "st": "next",
     "f": "Mercantile cinese della dinastia Song affondato nel Mar Cinese Meridionale con oltre 180.000 oggetti. Nel 2007 è stato sollevato intero, dentro un enorme cassone d'acciaio, e portato in un museo costruito attorno a lui.",
     "f_en": "A Chinese merchant ship of the Song dynasty (~1180), recovered whole off Guangdong with tens of thousands of objects. A landmark of maritime archaeology."
   },
@@ -366,9 +366,10 @@
     "lat": 59.85,
     "lon": 21.35,
     "d": 41,
-    "st": "next",
+    "st": "ready",
     "f": "Mercantile olandese naufragato nel Baltico finlandese nel 1771 mentre portava a Caterina la Grande di Russia dipinti di maestri fiamminghi. Ritrovato nel 1999, ancora sul fondo: un museo d'arte sommerso e conteso.",
-    "f_en": "A Dutch merchant ship wrecked off Finland in 1771 carrying a cargo of art and luxury goods. Exceptionally preserved in the cold Baltic; the subject of an ownership dispute."
+    "f_en": "A Dutch merchant ship wrecked off Finland in 1771 carrying a cargo of art and luxury goods. Exceptionally preserved in the cold Baltic; the subject of an ownership dispute.",
+    "href": "vrouwmaria.html"
   },
   {
     "id": "mary-celeste",

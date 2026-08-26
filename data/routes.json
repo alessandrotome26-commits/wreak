@@ -930,5 +930,49 @@
       "wreck": "#E2543F",
       "label": "#9FB2BE"
     }
+  },
+  "vrouwmaria.html": {
+    "from": {
+      "n": "Amsterdam",
+      "lon": 4.9,
+      "lat": 52.37,
+      "n_en": "Amsterdam"
+    },
+    "via": [
+      {
+        "n": "il Sund (Copenaghen)",
+        "lon": 12.6,
+        "lat": 55.68,
+        "n_en": "the Sound (Copenhagen)"
+      }
+    ],
+    "via_after": [
+      {
+        "n": "Helsinki",
+        "lon": 24.94,
+        "lat": 60.17,
+        "n_en": "Helsinki"
+      }
+    ],
+    "to": {
+      "n": "San Pietroburgo",
+      "lon": 30.3,
+      "lat": 59.93,
+      "n_en": "Saint Petersburg"
+    },
+    "wreck_label": "affondata (i quadri)",
+    "wreck_label_en": "sunk (the paintings)",
+    "caption": "Da Amsterdam a San Pietroburgo, con i dipinti per Caterina la Grande. Il tratto continuo è la rotta baltica che percorse; il tratteggio, l'ultimo tratto verso la Russia che una tempesta, tra gli scogli dell'arcipelago finlandese, le impedì di completare nell'ottobre 1771.",
+    "caption_en": "From Amsterdam to Saint Petersburg, with the paintings for Catherine the Great. The solid line is the Baltic route she sailed; the dashed line, the last leg to Russia that a storm, among the rocks of the Finnish archipelago, stopped her from completing in October 1771.",
+    "palette": {
+      "bg": "#EBF1F4",
+      "land": "#D6E2E6",
+      "coast": "#90A8B0",
+      "plan": "#8CA1AC",
+      "done": "#3E7C93",
+      "port": "#243A44",
+      "wreck": "#B58A3D",
+      "label": "#41525C"
+    }
   }
 }
