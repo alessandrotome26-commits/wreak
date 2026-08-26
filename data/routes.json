@@ -874,5 +874,61 @@
       "wreck": "#B83A2B",
       "label": "#3E545F"
     }
+  },
+  "indianapolis.html": {
+    "from": {
+      "n": "San Francisco",
+      "lon": -122.4,
+      "lat": 37.7,
+      "n_en": "San Francisco"
+    },
+    "via": [
+      {
+        "n": "Pearl Harbor",
+        "lon": -157.9,
+        "lat": 21.35,
+        "n_en": "Pearl Harbor"
+      },
+      {
+        "n": "Tinian (la bomba)",
+        "lon": 145.62,
+        "lat": 15.0,
+        "n_en": "Tinian (the bomb)"
+      },
+      {
+        "n": "Guam",
+        "lon": 144.75,
+        "lat": 13.45,
+        "n_en": "Guam"
+      }
+    ],
+    "via_after": [
+      {
+        "n": "Leyte",
+        "lon": 125.0,
+        "lat": 10.7,
+        "n_en": "Leyte"
+      }
+    ],
+    "to": {
+      "n": "Leyte, Filippine",
+      "lon": 125.0,
+      "lat": 10.7,
+      "n_en": "Leyte, Philippines"
+    },
+    "wreck_label": "silurata",
+    "wreck_label_en": "torpedoed",
+    "caption": "Dalla California a Tinian con i componenti della bomba, poi verso le Filippine. Il tratto continuo è quanto navigò — mezzo Pacifico; il tratteggio, il breve tratto da Guam a Leyte che il siluro dell'I-58 le impedì di completare, la notte del 30 luglio 1945.",
+    "caption_en": "From California to Tinian with the bomb components, then on toward the Philippines. The solid line is all she sailed — half the Pacific; the dashed line, the short leg from Guam to Leyte that the I-58's torpedo stopped her from completing, on the night of 30 July 1945.",
+    "palette": {
+      "bg": "#0A1420",
+      "land": "#17242F",
+      "coast": "#3A5260",
+      "plan": "#6E8494",
+      "done": "#E39A34",
+      "port": "#EDF2F4",
+      "wreck": "#E2543F",
+      "label": "#9FB2BE"
+    }
   }
 }

@@ -366,7 +366,7 @@
     "lat": 59.85,
     "lon": 21.35,
     "d": 41,
-    "st": "planned",
+    "st": "next",
     "f": "Mercantile olandese naufragato nel Baltico finlandese nel 1771 mentre portava a Caterina la Grande di Russia dipinti di maestri fiamminghi. Ritrovato nel 1999, ancora sul fondo: un museo d'arte sommerso e conteso.",
     "f_en": "A Dutch merchant ship wrecked off Finland in 1771 carrying a cargo of art and luxury goods. Exceptionally preserved in the cold Baltic; the subject of an ownership dispute."
   },
@@ -478,9 +478,10 @@
     "lat": 12.03,
     "lon": 134.8,
     "d": 5500,
-    "st": "next",
+    "st": "ready",
     "f": "L'incrociatore che consegnò i componenti della bomba di Hiroshima, silurato nel 1945: gli uomini restarono giorni in acqua tra gli squali. Relitto trovato nel 2017 a ~5.500 m.",
-    "f_en": "The cruiser that delivered the Hiroshima bomb components, torpedoed in 1945: the men spent days in shark-infested water. Wreck found in 2017 at ~5,500 m."
+    "f_en": "The cruiser that delivered the Hiroshima bomb components, torpedoed in 1945: the men spent days in shark-infested water. Wreck found in 2017 at ~5,500 m.",
+    "href": "indianapolis.html"
   },
   {
     "id": "u-864",

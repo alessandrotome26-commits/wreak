@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>USS Indianapolis — 1945</title>
+<meta name="description" content="L'incrociatore USS Indianapolis consegnò i componenti della bomba di Hiroshima e pochi giorni dopo, il 30 luglio 1945, fu silurato: quasi 900 uomini in mare per cinque giorni, tra sete e squali. Solo 316 sopravvissero. Il relitto fu trovato nel 2017 a ~5.500 m.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="USS Indianapolis — 1945">
+<meta property="og:description" content="Consegnò la bomba che avrebbe chiuso la guerra, poi fu silurata. Nessuno la cercò per giorni: gli uomini restarono in acqua tra gli squali. La più grande perdita di vite in mare della U.S. Navy.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0A1420">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#0A1420; --deep:#060D16; --panel:#132234;
+  --foam:#EDF2F4; --foam2:#C2D0D8; --steel:#9FB2BE; --slate:#617988;
+  --sun:#E39A34; --sun2:#F2BC5A; --warn:#C63A2B; --warn2:#E2543F; --shark:#31506080;
+  --rule:rgba(237,242,244,.15);
+  --display:"Saira Condensed","Arial Narrow",sans-serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--foam);font-family:var(--body);font-weight:300;line-height:1.66;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#ocean{position:fixed;inset:0;z-index:-4;background:var(--night);transition:background 1.6s ease}
+#sun{position:fixed;left:50%;top:-8%;transform:translateX(-50%);width:70vw;height:52vh;z-index:-3;pointer-events:none;opacity:0;transition:opacity 1s linear;
+  background:radial-gradient(ellipse at 50% 0%,rgba(242,188,90,.16),transparent 60%)}
+#moon{position:fixed;right:12%;top:8%;width:120px;height:120px;z-index:-3;pointer-events:none;border-radius:50%;
+  background:radial-gradient(circle at 40% 40%,rgba(226,236,240,.5),rgba(226,236,240,.06) 70%,transparent);transition:opacity 1s linear}
+#deepv{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:0;transition:opacity 1s linear;
+  background:radial-gradient(ellipse at 50% 44%,transparent 30%,rgba(3,7,12,.9) 100%)}
+#sea{position:fixed;left:0;right:0;bottom:0;width:100%;height:30vh;z-index:-1;pointer-events:none;opacity:.9;overflow:hidden}
+.seaw1{animation:seaw1 13s ease-in-out infinite}
+.seaw2{animation:seaw2 9s ease-in-out infinite}
+.shark1{animation:shark1 26s linear infinite}
+.shark2{animation:shark2 34s linear infinite}
+@keyframes seaw1{0%,100%{transform:translateX(0)}50%{transform:translateX(-22px)}}
+@keyframes seaw2{0%,100%{transform:translateX(0)}50%{transform:translateX(18px)}}
+@keyframes shark1{0%{transform:translate(-160px,0)}100%{transform:translate(720px,0)}}
+@keyframes shark2{0%{transform:translate(720px,0) scaleX(-1)}100%{transform:translate(-180px,0) scaleX(-1)}}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--slate);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--sun)}
+.rail-num{font-size:19px;color:var(--foam);font-weight:600;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.6;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(10,20,32,.82)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--sun2);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(52px,11vw,120px);line-height:.92;letter-spacing:.005em;text-transform:uppercase}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(30px,4.8vw,50px);line-height:1.06;margin-bottom:22px;letter-spacing:.01em}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(237,242,244,.88)}
+.lede{font-size:20px;color:var(--foam)}
+em{font-style:italic;color:var(--foam2)}
+strong{font-weight:500;color:var(--foam);border-bottom:1px solid rgba(227,154,52,.32)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--steel);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--slate)}
+.coord b{display:block;color:var(--foam);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:flex-start;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  color:var(--sun2);border:1px solid rgba(227,154,52,.36);padding:6px 11px;margin-top:28px;align-self:flex-start;max-width:66ch;line-height:1.6}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--sun2);flex:none;margin-top:5px}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(97,121,136,.9);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(237,242,244,.08)}
+.stat .v{font-family:var(--display);font-weight:600;font-size:clamp(32px,5vw,50px);line-height:1;color:var(--sun2);font-variant-numeric:tabular-nums}
+.stat .v.warn{color:var(--warn2)}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--warn);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-weight:500;font-size:clamp(26px,4.6vw,42px);line-height:1.12;quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--slate);margin-top:18px}
+
+.tl{border-left:1px solid var(--rule);margin-top:8px}
+.tl-item{padding:0 0 34px 28px;position:relative}
+.tl-item::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--night);border:1px solid var(--slate)}
+.tl-item.key::before{background:var(--warn);border-color:var(--warn);box-shadow:0 0 0 5px rgba(198,58,43,.15)}
+.tl-y{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--sun2);margin-bottom:5px}
+.tl-item.key .tl-y{color:var(--warn2)}
+.tl-t{font-size:17px;color:var(--foam);margin-bottom:4px}
+.tl-d{font-size:14.5px;color:rgba(237,242,244,.62);max-width:52ch}
+
+.days{margin-top:14px;border:1px solid var(--rule);background:rgba(19,34,52,.55);padding:22px 20px}
+.daytog{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.daytog button{font-family:var(--mono);font-size:11px;letter-spacing:.02em;background:transparent;color:var(--foam2);
+  border:1px solid var(--rule);padding:9px 12px;cursor:pointer;transition:border-color .2s,color .2s,background .2s}
+.daytog button:hover{color:var(--foam);border-color:var(--sun)}
+.daytog button[aria-pressed="true"]{color:var(--night);background:var(--sun2);border-color:var(--sun2);font-weight:600}
+.daycount{display:flex;align-items:baseline;gap:14px;font-family:var(--display);margin-bottom:6px}
+.daycount .big{font-size:clamp(40px,7vw,64px);font-weight:700;color:var(--foam);line-height:1;font-variant-numeric:tabular-nums}
+.daycount .arrow{font-family:var(--mono);font-size:12px;color:var(--slate);letter-spacing:.1em}
+.daycount .end{font-size:clamp(26px,4vw,34px);font-weight:600;color:var(--sun2)}
+.daybar{height:12px;border:1px solid var(--rule);background:rgba(6,13,22,.6);overflow:hidden;margin-top:8px}
+.daybar span{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--warn),var(--sun));transition:width .6s ease}
+.daylab{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--slate);text-transform:uppercase;margin-top:8px}
+#dayinfo{font-family:var(--mono);font-size:12px;color:rgba(237,242,244,.82);margin-top:16px;min-height:56px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.8}
+#dayinfo b{color:var(--sun2);font-weight:600}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(237,242,244,.08);vertical-align:top}
+td.n{color:var(--foam);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:rgba(97,121,136,.95);line-height:1.75;margin-top:22px;max-width:60ch}
+
+.realimg{margin-top:22px;border:1px solid rgba(227,154,52,.3);background:rgba(227,154,52,.05);padding:22px}
+.realimg .badge{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--sun2);margin-bottom:14px}
+.realimg p{margin-bottom:14px}
+.arclinks{display:grid;gap:2px;margin-top:6px}
+.arclinks a{display:flex;gap:20px;align-items:baseline;padding:18px 0;text-decoration:none;color:inherit;
+  border-bottom:1px solid rgba(237,242,244,.09);transition:padding-left .3s ease,border-color .3s ease}
+.arclinks a:first-child{border-top:1px solid rgba(237,242,244,.09)}
+.arclinks a:hover,.arclinks a:focus-visible{padding-left:12px;border-bottom-color:var(--sun)}
+.arclinks .arch{font-family:var(--mono);font-size:11px;color:var(--steel);min-width:168px}
+.arclinks .ttl{font-size:15.5px;color:var(--foam)}
+.arclinks .meta{font-size:13px;color:rgba(237,242,244,.55);margin-top:3px;max-width:46ch}
+.arclinks .go{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--slate);opacity:0;transition:opacity .3s}
+.arclinks a:hover .go,.arclinks a:focus-visible .go{opacity:1}
+.realimg .cite{font-family:var(--mono);font-size:11px;color:rgba(97,121,136,.95);line-height:1.6;margin-top:14px}
+
+.shipart{margin-top:22px;border:1px solid var(--rule);background:rgba(19,34,52,.55);padding:18px 18px 12px}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:rgba(97,121,136,.95);letter-spacing:.05em;margin-top:10px}
+.inship{transform-box:fill-box;transform-origin:50% 88%;animation:inbob 9s ease-in-out infinite}
+@keyframes inbob{0%,100%{transform:rotate(-.6deg) translateY(0)}50%{transform:rotate(.6deg) translateY(-2px)}}
+.inwave{animation:inwave 5s ease-in-out infinite}
+@keyframes inwave{0%,100%{transform:translateX(0)}50%{transform:translateX(-9px)}}
+
+.closing{border-top:1px solid var(--sun);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:rgba(19,34,52,.5);border:1px solid var(--rule);color:var(--foam);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--sun);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--sun);color:#1A1206;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.88}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--sun2)}
+.signup .msg.err{color:var(--warn2)}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--slate);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--sun2);border-color:var(--sun)}
+.src{font-family:var(--mono);font-size:11.5px;color:rgba(97,121,136,.9);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:15px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+  .arclinks a{flex-wrap:wrap;gap:6px} .arclinks .go{display:none} .arclinks .arch{min-width:0}
+  #moon{width:80px;height:80px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #ocean,#sun,#deepv,#moon{transition:none}
+  .seaw1,.seaw2,.shark1,.shark2,.inship,.inwave{animation:none}
+}
+:focus-visible{outline:2px solid var(--sun);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="ocean"></div>
+<div id="sun"></div>
+<div id="moon"></div>
+<div id="deepv"></div>
+<svg id="sea" viewBox="0 0 640 220" preserveAspectRatio="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="rgba(19,34,52,0)"/>
+      <stop offset="1" stop-color="rgba(10,20,32,.6)"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="40" width="640" height="180" fill="url(#seaGrad)"/>
+  <g opacity="0.5">
+    <path class="shark1" d="M60 150 q 26 -12 54 0 q -12 -14 -2 -22 q -16 8 -22 16 q -26 -4 -46 6 q 8 4 16 0 z" fill="#31506080"/>
+    <path class="shark2" d="M300 176 q 22 -10 46 0 q -10 -12 -2 -18 q -14 6 -18 12 q -22 -4 -40 6 q 8 3 14 0 z" fill="#2a4656aa"/>
+  </g>
+  <path class="seaw1" d="M-40 60 q 80 -14 160 0 t 160 0 t 160 0 t 160 0 t 80 0 V220 H-40 Z" fill="rgba(19,34,52,.5)"/>
+  <path class="seaw2" d="M-40 82 q 90 12 180 0 t 180 0 t 180 0 t 120 0 V220 H-40 Z" fill="rgba(10,20,32,.5)"/>
+</svg>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Anno</div><div class="rail-num" id="railYear">1945</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Profondità</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1945" data-depth="0">
+  <div class="eyebrow">Incrociatore pesante · U.S. Navy · 1945</div>
+  <h1>USS Indianapolis</h1>
+  <div class="sub">CONSEGNÒ LA BOMBA DI HIROSHIMA — POI IL MARE E GLI SQUALI</div>
+  <div class="coordbox">
+    <div class="coord">Dove giace<b>Mare delle Filippine · ~5.500 m</b></div>
+    <div class="coord">In mare<b>~880 uomini · 316 salvati</b></div>
+    <div class="coord">Affondato<b>30 luglio 1945, silurato</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>TOMBA DI GUERRA · RELITTO PROFONDO (~5.500 M) TROVATO NEL 2017 · POSIZIONE NON DI DETTAGLIO</div>
+  <div class="scrollcue">↓ scorri — dal chiaro di luna all'abisso</div>
+</section>
+
+<section class="reveal" data-year="1945" data-depth="5500">
+  <div class="eyebrow">Perché questo relitto</div>
+  <h2>La nave che portò la bomba — e poi sparì</h2>
+  <p class="lede">Consegnò l'arma che avrebbe chiuso la guerra e, pochi giorni dopo, affondò in dodici minuti. Ma non fu il siluro a uccidere quasi tutti: fu ciò che venne dopo, in acqua, mentre nessuno sapeva che erano lì.</p>
+  <p>È la più grande perdita di vite in mare da una singola nave nella storia della U.S. Navy, e l'attacco di squali più letale mai documentato sull'uomo. È anche la storia di un'ingiustizia: il comandante fu processato per aver perso la sua nave, e ci vollero cinquantacinque anni — e un ragazzino delle medie — per riabilitarlo. Questa scheda scende con la nave, dal chiaro di luna del siluramento fino ai cinquemilacinquecento metri dove è stata ritrovata nel 2017.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">~1.195</div><div class="k">uomini a bordo</div></div>
+    <div class="stat"><div class="v warn">~880</div><div class="k">in acqua dopo l'affondamento</div></div>
+    <div class="stat"><div class="v warn">316</div><div class="k">sopravvissuti</div></div>
+    <div class="stat"><div class="v">~5</div><div class="k">giorni in mare prima dei soccorsi</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1945" data-depth="0">
+  <div class="eyebrow">Luglio 1945 · la missione segreta</div>
+  <h2>Il carico più segreto della guerra</h2>
+  <p>A fine luglio 1945 l'Indianapolis lasciò San Francisco per una corsa solitaria ad alta velocità attraverso il Pacifico. Nella stiva, in una cassa sorvegliata giorno e notte, c'erano l'<strong>uranio e i componenti di "Little Boy"</strong> — la bomba atomica che pochi giorni dopo sarebbe stata sganciata su Hiroshima. Nemmeno gli ufficiali sapevano cosa stessero trasportando.</p>
+  <p class="lede">Consegnò il carico all'isola di Tinian il 26 luglio. La missione più importante della sua vita era compiuta.</p>
+  <p>Da Tinian proseguì per Guam, e da lì fu inviata verso Leyte, nelle Filippine, per addestramento. Un incrociatore veloce, solo, in acque ritenute ormai sicure. Non lo erano.</p>
+</section>
+
+<section class="reveal" data-year="1945" data-depth="0">
+  <div class="eyebrow">30 luglio 1945 · 00:15</div>
+  <h2>Dodici minuti</h2>
+  <p>Poco dopo la mezzanotte, il sommergibile giapponese <strong>I-58</strong>, al comando di Mochitsura Hashimoto, vide la sagoma dell'Indianapolis stagliarsi contro la luna. Lanciò una salva di siluri: due colpirono. Le esplosioni squarciarono la prua e i depositi; la nave si inclinò e affondò in circa <strong>dodici minuti</strong>, troppo in fretta per lanciare un SOS efficace o calare quasi tutte le scialuppe.</p>
+  <p>Circa trecento uomini morirono con la nave. Gli altri — quasi novecento — finirono nell'acqua nera del Pacifico, molti con addosso solo un giubbotto di salvataggio, sparsi su chilometri di mare. Cominciava, per loro, la parte peggiore.</p>
+</section>
+
+<section class="reveal" data-year="1945" data-depth="0">
+  <div class="eyebrow">Il meccanismo · cinque giorni</div>
+  <h2>Cinque giorni in mare</h2>
+  <p>Nessuno sapeva che erano lì. Passa i giorni e guarda cosa accadeva a chi galleggiava, in attesa di soccorsi che non arrivavano.</p>
+  <div class="days">
+    <div class="daytog">
+      <button data-d="0" aria-pressed="true">30 lug · l'affondamento</button>
+      <button data-d="1" aria-pressed="false">La prima notte</button>
+      <button data-d="2" aria-pressed="false">Il sole</button>
+      <button data-d="3" aria-pressed="false">Gli squali</button>
+      <button data-d="4" aria-pressed="false">2 ago · i soccorsi</button>
+    </div>
+    <div class="daycount">
+      <div class="big" id="dayBig">~880</div>
+      <div class="arrow">IN ACQUA →</div>
+      <div class="end">316 salvati</div>
+    </div>
+    <div class="daybar"><span id="dayBar"></span></div>
+    <div class="daylab">quanti ancora vivi — andamento illustrativo (i dati giorno per giorno non sono noti con precisione)</div>
+    <div id="dayinfo"><b>30 luglio.</b> La nave affonda in dodici minuti. Circa 300 uomini muoiono a bordo; quasi 880 finiscono in acqua, sparsi su chilometri, con pochissime scialuppe e molti feriti o ustionati.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1945" data-depth="0">
+  <div class="eyebrow">L'errore</div>
+  <h2>Nessuno venne a cercarli</h2>
+  <p>Ecco il dettaglio che trasforma una tragedia in uno scandalo: la Marina non si accorse subito della scomparsa. Alcune stazioni ricevettero segnali di soccorso, ma nessuna agì — chi pensò a un inganno giapponese, chi aveva dato ordine di non essere disturbato. Una nave da guerra con quasi milleduecento uomini semplicemente non arrivò a destinazione, e per giorni nessuno la cercò.</p>
+  <p class="lede">Furono trovati per puro caso.</p>
+  <p>Il 2 agosto un aereo da pattugliamento in ricognizione di routine, pilotato da Wilbur Gwinn, notò per caso una chiazza di nafta e teste che si agitavano nell'acqua. Un idrovolante PBY, pilotato da <strong>Adrian Marks</strong>, arrivò sul posto e — contro gli ordini, che vietavano gli ammaraggi in mare aperto — si posò tra le onde per caricare a bordo gli uomini più deboli, legandone alcuni persino sulle ali. I soccorsi durarono giorni. Solo <strong>316</strong> uomini furono tratti in salvo.</p>
+</section>
+
+<section class="reveal" data-year="1945" data-depth="0">
+  <div class="eyebrow">Il mare</div>
+  <h2>Gli squali</h2>
+  <p>È la parte che il mondo ricorda, ed è vera — anche se va detta senza spettacolo. Attirati dal sangue, dai corpi e dai movimenti, gli squali (soprattutto squali pinna bianca oceanici) rimasero attorno ai naufraghi per giorni. Colpivano soprattutto i morti e i più deboli, quelli che si allontanavano dai gruppi.</p>
+  <p>Ma non furono gli squali a uccidere di più. Uccisero soprattutto la <strong>sete e il sole</strong>: circondati d'acqua e senza una goccia da bere, molti cedettero alla disidratazione; altri bevvero acqua di mare e morirono nel delirio. E uccise il <strong>freddo</strong> delle notti, e lo sfinimento. Il terrore delle pinne era continuo, ma la morte più comune fu silenziosa: un uomo che smette di aggrapparsi e scivola sotto.</p>
+</section>
+
+<section class="reveal" data-year="1968" data-depth="0">
+  <div class="eyebrow">L'ingiustizia</div>
+  <h2>Il capitano messo sotto processo</h2>
+  <p>Il comandante Charles B. McVay III fu uno dei pochissimi sopravvissuti tra gli ufficiali — e l'unico capitano della U.S. Navy nella Seconda guerra mondiale a essere processato in corte marziale per la perdita della propria nave in azione nemica. L'accusa: non aver ordinato una rotta a zigzag per sfuggire ai sommergibili.</p>
+  <div class="moment">
+    <q>L'avrei affondata comunque, che zigzagasse o no.</q>
+    <cite>MOCHITSURA HASHIMOTO, COMANDANTE DELL'I-58, CHIAMATO A TESTIMONIARE AL PROCESSO DI McVAY</cite>
+  </div>
+  <p>La Marina fece testimoniare persino il comandante del sommergibile nemico, che dichiarò che lo zigzag non avrebbe fatto differenza. McVay fu condannato lo stesso. Perseguitato per anni dalle lettere di alcune famiglie delle vittime, nel <strong>1968 si tolse la vita</strong>. Solo nel 2000 il Congresso lo riabilitò ufficialmente — grazie anche alla campagna di uno <strong>studente delle medie</strong>, Hunter Scott, che ne aveva fatto una ricerca scolastica e aveva riportato alla luce le prove della sua innocenza.</p>
+</section>
+
+<section class="reveal" data-year="1975" data-depth="0">
+  <div class="eyebrow">La curiosità</div>
+  <h2>Come il mondo venne a saperlo: <em>Jaws</em></h2>
+  <p>Per decenni la storia dell'Indianapolis rimase poco nota al grande pubblico. A cambiare tutto fu, curiosamente, un film sugli squali. Nel 1975, in <em>Lo squalo</em> di Steven Spielberg, il personaggio del vecchio cacciatore Quint racconta di notte, con voce bassa, di essere stato uno dei naufraghi dell'Indianapolis.</p>
+  <div class="moment">
+    <q>Undicimila uomini finirono in acqua… non so quanti squali. In media sei ogni ora.</q>
+    <cite>DAL MONOLOGO DI QUINT IN «LO SQUALO» (1975) — VERSIONE ROMANZATA, CON NUMERI NON ESATTI</cite>
+  </div>
+  <p>Il monologo è tra i più celebri della storia del cinema, e portò milioni di persone a scoprire il naufragio. Alcuni dettagli sono inesatti (i numeri, l'attribuzione della perdita), ma l'effetto fu reale: da allora l'Indianapolis è nella memoria collettiva. La cultura popolare, a volte, salva le storie che la storia ufficiale aveva lasciato affondare.</p>
+</section>
+
+<section class="reveal" data-year="2017" data-depth="5500">
+  <div class="eyebrow">19 agosto 2017 · ~5.500 metri</div>
+  <h2>Ritrovata dopo 72 anni</h2>
+  <p>Per decenni la posizione esatta del relitto restò ignota. A trovarla, nel 2017, fu una spedizione finanziata da <strong>Paul Allen</strong>, il cofondatore di Microsoft, con la nave da ricerca <em>Petrel</em> e l'aiuto degli storici della Naval History and Heritage Command. Riesaminando i registri di rotta, ristrinsero l'area — e a oltre cinquemilacinquecento metri di profondità, nel Mare delle Filippine, i robot filmarono lo scafo.</p>
+  <p>Il relitto è oggi una <strong>tomba di guerra</strong> protetta, e per questo la sua posizione precisa non viene divulgata. Per i pochi sopravvissuti ancora in vita, e per le famiglie, quella scoperta fu la fine di una lunghissima attesa: sapere, finalmente, dove riposavano i loro uomini.</p>
+</section>
+
+<section class="reveal" data-year="1945" data-depth="5500">
+  <div class="eyebrow">La nave</div>
+  <h2>Un incrociatore veloce</h2>
+  <p>L'Indianapolis era un incrociatore pesante della classe Portland: lungo circa 186 metri, veloce, armato con nove cannoni da 203 mm in tre torri. Era stato la nave ammiraglia della Quinta Flotta e aveva già combattuto in mezzo Pacifico. Proprio la sua velocità lo rese la scelta ideale per la corsa segreta con la bomba — e lo lasciò, dopo, solo e senza scorta.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 640 210" role="img" aria-label="Illustrazione stilizzata dell'incrociatore USS Indianapolis sotto la luna">
+      <title>L'incrociatore USS Indianapolis</title>
+      <circle cx="548" cy="44" r="26" fill="rgba(226,236,240,.14)"/>
+      <path d="M-20 168 q 60 -6 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(49,80,96,.55)" stroke-width="1.4" class="inwave"/>
+      <path d="M-20 180 q 60 -5 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(49,80,96,.4)" stroke-width="1.2" class="inwave"/>
+      <g class="inship">
+        <path d="M96 158 L128 146 L556 146 L590 158 L572 166 L112 166 Z" fill="#1B2B3A" stroke="#3C5567" stroke-width="1.2"/>
+        <rect x="250" y="112" width="150" height="34" fill="#22384A" stroke="#3C5567" stroke-width="1"/>
+        <path d="M300 112 L308 82 L326 82 L330 112 Z" fill="#22384A" stroke="#3C5567" stroke-width="1"/>
+        <line x1="317" y1="82" x2="317" y2="58" stroke="#3C5567" stroke-width="1.4"/>
+        <rect x="420" y="120" width="26" height="26" fill="#1F3346" stroke="#3C5567" stroke-width="1"/>
+        <!-- torri da 203 mm -->
+        <g fill="#2C475A" stroke="#4A6577" stroke-width="1"><rect x="150" y="138" width="34" height="10"/><rect x="196" y="138" width="34" height="10"/><rect x="470" y="138" width="34" height="10"/></g>
+        <g stroke="#4A6577" stroke-width="2.2"><line x1="150" y1="142" x2="120" y2="139"/><line x1="196" y1="142" x2="166" y2="139"/><line x1="504" y1="142" x2="534" y2="139"/></g>
+        <line x1="128" y1="152" x2="572" y2="152" stroke="#617988" stroke-width="1"/>
+      </g>
+      <text x="20" y="28" fill="rgba(97,121,136,.9)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">INCROCIATORE PESANTE SOTTO LA LUNA — RICOSTRUZIONE STILIZZATA</text>
+    </svg>
+    <figcaption>Ricostruzione stilizzata. Le foto reali della nave, dell'equipaggio e del relitto sono presso gli archivi qui sotto.</figcaption>
+  </figure>
+  <div class="realimg">
+    <div class="badge">Documenti e immagini reali</div>
+    <p>La nave, l'equipaggio, il processo e la scoperta del 2017 sono documentati dalla Marina e dall'organizzazione dei sopravvissuti.</p>
+    <div class="arclinks">
+      <a href="https://www.history.navy.mil/browse-by-topic/ships/modern-ships/indianapolis.html" target="_blank" rel="noopener">
+        <span class="arch">NAVAL HISTORY &amp; HERITAGE COMMAND</span>
+        <span><span class="ttl">La perdita dell'Indianapolis</span><span class="meta">Le fotografie ufficiali della U.S. Navy, i documenti dell'affondamento e la scoperta del relitto nel 2017.</span></span>
+        <span class="go">history.navy.mil ↗</span>
+      </a>
+      <a href="https://www.ussindianapolis.com/" target="_blank" rel="noopener">
+        <span class="arch">USS INDIANAPOLIS CA-35 LEGACY</span>
+        <span><span class="ttl">I sopravvissuti e l'equipaggio</span><span class="meta">L'organizzazione dei sopravvissuti: elenco dell'equipaggio, testimonianze e la riabilitazione di McVay.</span></span>
+        <span class="go">ussindianapolis.com ↗</span>
+      </a>
+      <a href="https://www.nationalww2museum.org/war/articles/surviving-sinking-uss-indianapolis" target="_blank" rel="noopener">
+        <span class="arch">THE NATIONAL WWII MUSEUM</span>
+        <span><span class="ttl">Sopravvivere all'affondamento</span><span class="meta">Il racconto dei cinque giorni in acqua, basato sulle testimonianze dei superstiti.</span></span>
+        <span class="go">nationalww2museum.org ↗</span>
+      </a>
+    </div>
+    <p class="cite">Fotografie e documentazione presso la Naval History and Heritage Command (U.S. Navy), la USS Indianapolis CA-35 Legacy Organization e il National WWII Museum, riprodotte con attribuzione presso le fonti, non ospitate su questo sito.</p>
+  </div>
+</section>
+
+<section class="reveal" data-year="1945" data-depth="5500">
+  <div class="eyebrow">La rotta</div>
+  <h2>Il viaggio interrotto</h2>
+  <p>Dalla California a Tinian con la bomba, poi verso le Filippine. Il tratto continuo è quanto navigò; il tratteggio, il breve tratto verso Leyte che non completò mai.</p>
+  <!--ROUTEMAP-->
+</section>
+
+<section class="reveal" data-year="1945" data-depth="5500">
+  <div class="eyebrow">I numeri</div>
+  <h2>La nave, misurata</h2>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Valore</th></tr></thead>
+    <tbody>
+      <tr><td>Tipo</td><td class="n">incrociatore pesante, classe Portland (~186 m)</td></tr>
+      <tr><td>Missione decisiva</td><td class="n">consegna dei componenti di "Little Boy" a Tinian (26 lug 1945)</td></tr>
+      <tr><td>Affondamento</td><td class="n">30 luglio 1945, silurato dal sommergibile I-58</td></tr>
+      <tr><td>A bordo</td><td class="n">~1.195 uomini</td></tr>
+      <tr><td>Morti con la nave</td><td class="n">~300</td></tr>
+      <tr><td>In acqua</td><td class="n">~880, per circa 5 giorni</td></tr>
+      <tr><td>Sopravvissuti</td><td class="n">316</td></tr>
+      <tr><td>Soccorsi</td><td class="n">2–3 agosto 1945 (avvistati per caso)</td></tr>
+      <tr><td>Profondità del relitto</td><td class="n">~5.500 m (Mare delle Filippine)</td></tr>
+      <tr><td>Ritrovato</td><td class="n">19 agosto 2017 (spedizione di Paul Allen)</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Le cifre delle vittime variano leggermente tra le fonti (comunemente ~1.195 a bordo, ~300 con la nave, 316 sopravvissuti). L'andamento giorno per giorno nel widget è illustrativo: i due dati certi sono quanti entrarono in acqua e quanti furono salvati. La posizione del relitto non è divulgata: è una tomba di guerra.</p>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">Nota metodologica</div>
+  <h2>Cosa questa pagina tiene fermo</h2>
+  <p>Che è una tomba di guerra. La posizione precisa non si pubblica, i morti si nominano con rispetto, e la parte degli squali si racconta senza farne uno spettacolo: uccisero, ma uccisero di più la sete, il sole e il freddo, e dirlo è più onesto che alimentare una leggenda da film.</p>
+  <p>Che McVay fu trattato ingiustamente. La riabilitazione del 2000 è un fatto, non un'opinione, e la pagina la riporta come tale — senza per questo nascondere il dolore delle famiglie che allora lo accusarono. E che i numeri sono stime concordi ma non identiche tra le fonti: dove oscillano, lo diciamo, invece di sceglierne uno e spacciarlo per esatto.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 028 di 20+ · la serie continua</div>
+    <h2 style="margin-bottom:14px">La prossima cambia mare e secolo: la Vrouw Maria</h2>
+    <p>Dalla guerra all'arte. Nel 1771 un mercantile olandese affondò in una tempesta al largo della Finlandia con una stiva piena di <strong>dipinti di maestri</strong> — alcuni, si dice, acquistati da Caterina la Grande di Russia. Una galleria d'arte sul fondo del Baltico, gelida e sorprendentemente conservata, ancora al centro di una disputa internazionale.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce la prossima scheda</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="sfhydro.html">← Scheda 027: la SF Hydro</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">Tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · Naval History and Heritage Command, U.S. Navy (perdita dell'Indianapolis, corte marziale di McVay, scoperta del relitto 2017) · Encyclopædia Britannica «USS Indianapolis» (affondamento, squali, sopravvissuti) · The National WWII Museum e Pacific War Museum (i cinque giorni in acqua, testimonianze) · USNI News e National Geographic (spedizione di Paul Allen, ~5.500 m, agosto 2017) · Congressional Record, 2000 (riabilitazione di McVay; ricerca di Hunter Scott)<br><br>
+      Wreck Atlas · Scheda 028 · Prototipo
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), ocean=document.getElementById('ocean');
+  var sunEl=document.getElementById('sun'), moonEl=document.getElementById('moon'), deepv=document.getElementById('deepv');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- rivelazione delle sezioni ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- fondo: arco notte → sole cocente → abisso ---------- */
+  var shades=['#0A1420','#0D1A28','#14202C','#22301F','#2E2E1C','#1A2430','#070D16'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    var deep=active.dataset.depth!=='0';
+    document.getElementById('railDLab').textContent = deep ? 'Profondità' : 'in mare';
+    if(!reduce){
+      ocean.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)];
+      /* il sole cocente domina a metà pagina (i giorni in acqua); la luna all'inizio */
+      var sunGlow=Math.max(0,1-Math.abs(p-0.5)/0.32);
+      sunEl.style.opacity=String(deep? sunGlow*0.2 : sunGlow);
+      moonEl.style.opacity=String(Math.max(0,1-p*3.2));
+      deepv.style.opacity=String(p>0.82?Math.min((p-0.82)/0.18,0.92):0);
+    }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- cinque giorni in mare ---------- */
+  var dayBig=document.getElementById('dayBig'), dayBar=document.getElementById('dayBar'), dayinfo=document.getElementById('dayinfo');
+  var dayBtns=document.querySelectorAll('.daytog button');
+  var DAYS=[
+    {big:'~880',bar:100,txt:'<b>30 luglio.</b> La nave affonda in dodici minuti. Circa 300 uomini muoiono a bordo; quasi 880 finiscono in acqua, sparsi su chilometri, con pochissime scialuppe e molti feriti o ustionati.'},
+    {big:'la notte',bar:80,txt:'<b>La prima notte.</b> Il freddo dell’acqua e la nafta ingoiata iniziano a fare vittime. Al buio i gruppi si disperdono; chi è solo è in pericolo. Nessun soccorso: nessuno sa ancora che sono lì.'},
+    {big:'il sole',bar:58,txt:'<b>Il giorno.</b> Sotto il sole a picco, senza acqua da bere, comincia la disidratazione. Chi cede e beve acqua di mare precipita nel delirio. È il vero grande killer del naufragio, più degli squali.'},
+    {big:'le pinne',bar:44,txt:'<b>Gli squali.</b> Per giorni gli squali restano attorno ai naufraghi, colpendo i morti e i più deboli ai margini dei gruppi. Il terrore è continuo, ma i più muoiono comunque di sete, freddo e sfinimento.'},
+    {big:'316',bar:36,txt:'<b>2–3 agosto.</b> Avvistati per caso, i naufraghi vengono soccorsi per giorni. Adrian Marks ammara in mare aperto, contro gli ordini, per salvare i più deboli. Alla fine i sopravvissuti sono <b>316</b>.'}
+  ];
+  function setDay(i){
+    var d=DAYS[i]; if(!d) return;
+    dayBtns.forEach(function(b){ b.setAttribute('aria-pressed', String(+b.dataset.d===i)); });
+    dayBig.textContent=d.big; dayBar.style.width=d.bar+'%'; dayinfo.innerHTML=d.txt;
+  }
+  dayBtns.forEach(function(b){ b.addEventListener('click',function(){ setDay(+b.dataset.d); }); });
+  setDay(0);
+
+  /* ---------- metriche di scroll ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'028-indianapolis',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] scheda 028 · '+m+'% a '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] sessione: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- iscrizione ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla — collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>
