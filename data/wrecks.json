@@ -465,9 +465,10 @@
     "lat": 59.92,
     "lon": 8.9,
     "d": 430,
-    "st": "next",
+    "st": "ready",
     "f": "Il traghetto affondato dai sabotatori norvegesi nel 1944 per impedire ai nazisti di trasportare l'acqua pesante verso la bomba atomica. Giace in un lago profondo; con esso morirono anche civili.",
-    "f_en": "The ferry sunk by Norwegian saboteurs in 1944 to stop the Nazis moving heavy water toward the atomic bomb. It lies in a deep lake; civilians died with it too."
+    "f_en": "The ferry sunk by Norwegian saboteurs in 1944 to stop the Nazis moving heavy water toward the atomic bomb. It lies in a deep lake; civilians died with it too.",
+    "href": "sfhydro.html"
   },
   {
     "id": "indianapolis",
@@ -477,7 +478,7 @@
     "lat": 12.03,
     "lon": 134.8,
     "d": 5500,
-    "st": "planned",
+    "st": "next",
     "f": "L'incrociatore che consegnò i componenti della bomba di Hiroshima, silurato nel 1945: gli uomini restarono giorni in acqua tra gli squali. Relitto trovato nel 2017 a ~5.500 m.",
     "f_en": "The cruiser that delivered the Hiroshima bomb components, torpedoed in 1945: the men spent days in shark-infested water. Wreck found in 2017 at ~5,500 m."
   },

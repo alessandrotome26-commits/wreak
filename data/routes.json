@@ -832,5 +832,47 @@
       "wreck": "#8E3A2E",
       "label": "#B6AC94"
     }
+  },
+  "sfhydro.html": {
+    "from": {
+      "n": "Mæl, lago Tinnsjø (l'imbarco)",
+      "lon": 8.8,
+      "lat": 59.83,
+      "n_en": "Mæl, Lake Tinnsjø (loading)"
+    },
+    "via_after": [
+      {
+        "n": "Tinnoset",
+        "lon": 8.94,
+        "lat": 59.99,
+        "n_en": "Tinnoset"
+      },
+      {
+        "n": "il porto di Menstad",
+        "lon": 9.62,
+        "lat": 59.13,
+        "n_en": "the port of Menstad"
+      }
+    ],
+    "to": {
+      "n": "la Germania",
+      "lon": 10.0,
+      "lat": 53.55,
+      "n_en": "Germany"
+    },
+    "wreck_label": "affondato",
+    "wreck_label_en": "sunk",
+    "caption": "Il traghetto doveva attraversare il lago Tinnsjø e proseguire in treno e nave fino alla Germania, con l'acqua pesante per il programma atomico nazista. Il tratto continuo è quanto navigò: pochi minuti dopo la partenza, sopra il punto più profondo del lago, l'esplosione lo mandò a fondo. Tutto il resto — il tratteggio — non fu mai percorso.",
+    "caption_en": "The ferry was to cross Lake Tinnsjø and continue by rail and ship to Germany, carrying the heavy water for the Nazi atomic programme. The solid line is all it sailed: a few minutes after leaving, over the deepest point of the lake, the explosion sent it down. The rest — the dashed line — was never travelled.",
+    "palette": {
+      "bg": "#E9F1F5",
+      "land": "#CFDDE4",
+      "coast": "#8FA7B3",
+      "plan": "#7A94A2",
+      "done": "#B83A2B",
+      "port": "#2E4756",
+      "wreck": "#B83A2B",
+      "label": "#3E545F"
+    }
   }
 }

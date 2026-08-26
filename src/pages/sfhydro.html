@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SF Hydro — 1944</title>
+<meta name="description" content="Il traghetto SF Hydro, affondato dai sabotatori norvegesi nel lago Tinnsjø il 20 febbraio 1944 per impedire ai nazisti di portare in Germania l'acqua pesante destinata alla bomba atomica. Un'impresa necessaria e tragica: con la nave morirono anche dei civili.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SF Hydro — 1944">
+<meta property="og:description" content="Per fermare la bomba di Hitler, la resistenza norvegese affondò un traghetto di passeggeri su un lago profondo 460 metri. Morirono anche dei civili — e decenni dopo l'acqua pesante fu ritrovata e analizzata.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#E9F1F5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sky:#E9F1F5; --paper:#F5F9FB; --panel:#DCE7EC;
+  --ink:#182731; --ink2:#3B525E; --slate:#647C8A;
+  --frost:#B4C8D2; --frost2:#CBDBE3;
+  --water:#3E86A4; --water2:#6FA9C2;
+  --deuter:#1C7A6E; --deuter2:#2FA091;
+  --warn:#B83A2B; --warn2:#D6503C;
+  --rule:rgba(24,39,49,.14);
+  --display:"Familjen Grotesk","Segoe UI",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--sky);color:var(--ink);font-family:var(--body);font-weight:300;line-height:1.66;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#lake{position:fixed;inset:0;z-index:-4;background:var(--sky);transition:background 1.6s ease}
+#coldlight{position:fixed;inset:-10%;z-index:-3;pointer-events:none;opacity:.9;
+  background:radial-gradient(ellipse at 50% -6%,rgba(255,255,255,.75),transparent 52%),
+             radial-gradient(ellipse at 78% 12%,rgba(111,169,194,.14),transparent 56%)}
+#snow{position:fixed;inset:0;z-index:-2;pointer-events:none}
+#sea{position:fixed;left:0;right:0;bottom:0;width:100%;height:24vh;z-index:-1;pointer-events:none;opacity:.9}
+.seaw1{animation:seaw1 12s ease-in-out infinite}
+.seaw2{animation:seaw2 9s ease-in-out infinite}
+@keyframes seaw1{0%,100%{transform:translateX(0)}50%{transform:translateX(-20px)}}
+@keyframes seaw2{0%,100%{transform:translateX(0)}50%{transform:translateX(16px)}}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--slate);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--water)}
+.rail-num{font-size:18px;color:var(--ink);font-weight:500;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.7;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(233,241,245,.82)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--deuter);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(48px,10vw,110px);line-height:.98;letter-spacing:-.02em}
+h2{font-family:var(--display);font-weight:500;font-size:clamp(28px,4.4vw,46px);line-height:1.12;margin-bottom:22px;letter-spacing:-.01em}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(24,39,49,.9)}
+.lede{font-size:20px;color:var(--ink)}
+em{font-style:italic;color:var(--ink2)}
+strong{font-weight:500;color:var(--ink);border-bottom:1px solid rgba(28,122,110,.3)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--slate);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--slate)}
+.coord b{display:block;color:var(--ink);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:flex-start;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  color:var(--ink2);border:1px solid var(--frost);padding:6px 11px;margin-top:28px;align-self:flex-start;max-width:66ch;line-height:1.6;background:rgba(255,255,255,.4)}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--deuter2);flex:none;margin-top:5px}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--slate);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(24,39,49,.09)}
+.stat .v{font-family:var(--display);font-weight:600;font-size:clamp(28px,4.6vw,44px);line-height:1.04;color:var(--water);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.stat .v.warn{color:var(--warn)}
+.stat .v.deu{color:var(--deuter)}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--deuter);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-weight:400;font-style:italic;font-size:clamp(23px,4vw,36px);line-height:1.28;color:var(--ink);quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--slate);margin-top:18px}
+
+.tl{border-left:1px solid var(--rule);margin-top:8px}
+.tl-item{padding:0 0 34px 28px;position:relative}
+.tl-item::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--sky);border:1px solid var(--slate)}
+.tl-item.key::before{background:var(--warn);border-color:var(--warn);box-shadow:0 0 0 5px rgba(184,58,43,.14)}
+.tl-y{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--deuter);margin-bottom:5px}
+.tl-item.key .tl-y{color:var(--warn)}
+.tl-t{font-size:17px;color:var(--ink);margin-bottom:4px;font-weight:400}
+.tl-d{font-size:14.5px;color:rgba(24,39,49,.62);max-width:52ch}
+
+.mol{margin-top:14px;border:1px solid var(--rule);background:var(--paper);padding:22px 20px;box-shadow:0 8px 30px rgba(24,39,49,.06)}
+.mol svg{width:100%;height:auto;display:block}
+.moltog{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.moltog button{font-family:var(--mono);font-size:11px;letter-spacing:.04em;background:transparent;color:var(--ink2);
+  border:1px solid var(--rule);padding:9px 14px;cursor:pointer;transition:border-color .2s,color .2s,background .2s}
+.moltog button:hover{color:var(--ink);border-color:var(--deuter2)}
+.moltog button[aria-pressed="true"]{color:#fff;background:var(--deuter);border-color:var(--deuter);font-weight:500}
+.neut{opacity:0;transition:opacity .5s ease}
+.neut.on{opacity:1}
+.mlabel{font-family:var(--display);font-weight:600}
+#molinfo{font-family:var(--mono);font-size:12px;color:var(--ink2);margin-top:16px;min-height:60px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.8}
+#molinfo b{color:var(--deuter);font-weight:600}
+.molmeter{display:flex;align-items:center;gap:12px;margin-top:14px;font-family:var(--mono);font-size:11px;color:var(--slate)}
+.molbar{flex:1;height:10px;border:1px solid var(--rule);background:#fff;overflow:hidden}
+.molbar span{display:block;height:100%;width:50%;background:linear-gradient(90deg,var(--water2),var(--deuter));transition:width .5s ease}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(24,39,49,.09);vertical-align:top}
+td.n{color:var(--ink);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:var(--slate);line-height:1.75;margin-top:22px;max-width:60ch}
+
+.realimg{margin-top:22px;border:1px solid var(--frost);background:rgba(255,255,255,.5);padding:22px}
+.realimg .badge{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--deuter);margin-bottom:14px}
+.realimg p{margin-bottom:14px}
+.arclinks{display:grid;gap:2px;margin-top:6px}
+.arclinks a{display:flex;gap:20px;align-items:baseline;padding:18px 0;text-decoration:none;color:inherit;
+  border-bottom:1px solid rgba(24,39,49,.09);transition:padding-left .3s ease,border-color .3s ease}
+.arclinks a:first-child{border-top:1px solid rgba(24,39,49,.09)}
+.arclinks a:hover,.arclinks a:focus-visible{padding-left:12px;border-bottom-color:var(--deuter2)}
+.arclinks .arch{font-family:var(--mono);font-size:11px;color:var(--water);min-width:150px}
+.arclinks .ttl{font-size:15.5px;color:var(--ink)}
+.arclinks .meta{font-size:13px;color:rgba(24,39,49,.58);margin-top:3px;max-width:46ch}
+.arclinks .go{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--slate);opacity:0;transition:opacity .3s}
+.arclinks a:hover .go,.arclinks a:focus-visible .go{opacity:1}
+.realimg .cite{font-family:var(--mono);font-size:11px;color:var(--slate);line-height:1.6;margin-top:14px}
+
+.shipart{margin-top:22px;border:1px solid var(--rule);background:var(--paper);padding:18px 18px 12px}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:var(--slate);letter-spacing:.05em;margin-top:10px}
+.hyship{transform-box:fill-box;transform-origin:50% 86%;animation:hybob 9s ease-in-out infinite}
+@keyframes hybob{0%,100%{transform:rotate(-.6deg) translateY(0)}50%{transform:rotate(.6deg) translateY(-2px)}}
+.hysmoke{transform-box:fill-box;transform-origin:50% 100%;animation:hysmoke 5s ease-in-out infinite}
+@keyframes hysmoke{0%,100%{transform:translateY(0) scaleY(1);opacity:.5}50%{transform:translateY(-6px) scaleY(1.15);opacity:.8}}
+.hywave{animation:hywave 5s ease-in-out infinite}
+@keyframes hywave{0%,100%{transform:translateX(0)}50%{transform:translateX(-9px)}}
+
+.closing{border-top:1px solid var(--deuter);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:#fff;border:1px solid var(--rule);color:var(--ink);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--deuter2);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--deuter);color:#fff;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.88}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--deuter)}
+.signup .msg.err{color:var(--warn)}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--slate);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--deuter);border-color:var(--deuter2)}
+.src{font-family:var(--mono);font-size:11.5px;color:var(--slate);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:14px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+  .arclinks a{flex-wrap:wrap;gap:6px} .arclinks .go{display:none} .arclinks .arch{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #lake{transition:none}
+  .seaw1,.seaw2,.hyship,.hysmoke,.hywave{animation:none}
+  .neut{transition:none}
+  #snow{display:none}
+}
+:focus-visible{outline:2px solid var(--deuter);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="lake"></div>
+<div id="coldlight"></div>
+<canvas id="snow"></canvas>
+<svg id="sea" viewBox="0 0 640 200" preserveAspectRatio="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="rgba(62,134,164,0)"/>
+      <stop offset="1" stop-color="rgba(62,134,164,.34)"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="60" width="640" height="140" fill="url(#seaGrad)"/>
+  <path class="seaw1" d="M-40 74 q 80 -16 160 0 t 160 0 t 160 0 t 160 0 t 80 0 V200 H-40 Z" fill="rgba(62,134,164,.22)"/>
+  <path class="seaw2" d="M-40 96 q 90 14 180 0 t 180 0 t 180 0 t 120 0 V200 H-40 Z" fill="rgba(111,169,194,.20)"/>
+</svg>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Anno</div><div class="rail-num" id="railYear">1944</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Profondità</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1944" data-depth="0">
+  <div class="eyebrow">Traghetto ferroviario · sabotaggio · 1944</div>
+  <h1>SF Hydro</h1>
+  <div class="sub">AFFONDATO PER FERMARE LA BOMBA NAZISTA · LAGO TINNSJØ</div>
+  <div class="coordbox">
+    <div class="coord">Dove giace<b>Lago Tinnsjø, Norvegia · ~430 m</b></div>
+    <div class="coord">Il carico<b>acqua pesante per il programma atomico</b></div>
+    <div class="coord">Affondato<b>20 febbraio 1944, dai sabotatori</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>SITO STORICO · TERZO LAGO PIÙ PROFONDO D'EUROPA (~460 M) · POSIZIONE NOTA, RELITTO PROFONDO E INDISTURBATO</div>
+  <div class="scrollcue">↓ scorri — sull'acqua chiara del lago</div>
+</section>
+
+<section class="reveal" data-year="1944" data-depth="430">
+  <div class="eyebrow">Perché questo relitto</div>
+  <h2>L'unico affondato dai "buoni" — e il più difficile da giudicare</h2>
+  <p class="lede">Quasi tutti i relitti di questo atlante sono vittime del mare o della guerra. Questo no: fu affondato di proposito, da chi combatteva dalla parte giusta. Perché il suo carico valeva, letteralmente, una guerra.</p>
+  <p>A bordo c'era l'<strong>acqua pesante</strong> prodotta a Vemork, l'ingrediente che la Germania nazista cercava per il suo programma atomico. Fermarla era un imperativo assoluto. Ma il traghetto portava anche passeggeri: gente comune. I sabotatori lo sapevano, e affondarono la nave lo stesso. È una scheda su un calcolo terribile — e su un'ironia che solo la storia, dopo, avrebbe rivelato.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">~430</div><div class="k">metri di profondità</div></div>
+    <div class="stat"><div class="v warn">18</div><div class="k">morti, tra cui civili</div></div>
+    <div class="stat"><div class="v deu">~8,5</div><div class="k">kg di esplosivo sulla chiglia</div></div>
+    <div class="stat"><div class="v">0</div><div class="k">litri di acqua pesante arrivati in Germania</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1943" data-depth="0">
+  <div class="eyebrow">Il carico</div>
+  <h2>Che cos'è l'acqua pesante</h2>
+  <p>Sembra acqua normale, ma non lo è: al posto dell'idrogeno contiene <strong>deuterio</strong>, un idrogeno più pesante. In un reattore nucleare serve a rallentare i neutroni — è un "moderatore" — e apre una strada verso la reazione a catena, quindi verso la bomba. Nel 1943-44 c'era un solo grande impianto al mondo capace di produrla in quantità: <strong>Vemork</strong>, a Rjukan, in Norvegia, occupata dai tedeschi.</p>
+  <p class="lede">Chi controllava Vemork, controllava una possibile scorciatoia verso l'arma atomica. Per gli Alleati, quell'acqua non doveva mai raggiungere la Germania.</p>
+  <p>Nel widget qui sotto puoi vedere la differenza tra una goccia d'acqua qualunque e la goccia che, nel 1944, valeva un'operazione militare.</p>
+  <div class="mol">
+    <div class="moltog">
+      <button id="btnH2O" aria-pressed="true">Acqua normale · H₂O</button>
+      <button id="btnD2O" aria-pressed="false">Acqua pesante · D₂O</button>
+    </div>
+    <svg viewBox="0 0 640 300" role="img" aria-label="Diagramma di una molecola d'acqua: normale (H2O) o pesante (D2O)">
+      <title>La molecola dell'acqua pesante</title>
+      <line x1="320" y1="150" x2="196" y2="96" stroke="var(--frost)" stroke-width="8" stroke-linecap="round"/>
+      <line x1="320" y1="150" x2="444" y2="96" stroke="var(--frost)" stroke-width="8" stroke-linecap="round"/>
+      <!-- ossigeno -->
+      <circle cx="320" cy="150" r="46" fill="var(--deuter)"/>
+      <text x="320" y="150" text-anchor="middle" dominant-baseline="central" fill="#fff" font-family="Familjen Grotesk, sans-serif" font-weight="600" font-size="30">O</text>
+      <!-- idrogeno / deuterio sinistro -->
+      <g>
+        <circle cx="176" cy="86" r="30" fill="var(--water2)"/>
+        <circle class="neut nL" cx="168" cy="86" r="7" fill="var(--warn)"/>
+        <circle cx="184" cy="86" r="7" fill="#fff"/>
+        <text class="mlabel lblL" x="176" y="130" text-anchor="middle" fill="var(--ink)" font-size="19">H</text>
+      </g>
+      <!-- idrogeno / deuterio destro -->
+      <g>
+        <circle cx="464" cy="86" r="30" fill="var(--water2)"/>
+        <circle class="neut nR" cx="456" cy="86" r="7" fill="var(--warn)"/>
+        <circle cx="472" cy="86" r="7" fill="#fff"/>
+        <text class="mlabel lblR" x="464" y="130" text-anchor="middle" fill="var(--ink)" font-size="19">H</text>
+      </g>
+      <text class="neut nnote" x="320" y="250" text-anchor="middle" fill="var(--warn)" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="1">＋ 1 NEUTRONE IN OGNI NUCLEO = DEUTERIO</text>
+      <text x="16" y="26" fill="var(--slate)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">MOLECOLA — SCHEMA NON IN SCALA</text>
+    </svg>
+    <div class="molmeter">peso della molecola <div class="molbar"><span id="molbar"></span></div> <span id="molwt">18 u</span></div>
+    <div id="molinfo"><b>Acqua normale (H₂O).</b> Due atomi di idrogeno e uno di ossigeno: la goccia di tutti i giorni. Ogni nucleo di idrogeno è un solo protone (il puntino bianco). Premi "Acqua pesante" per vedere la differenza.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1942" data-depth="0">
+  <div class="eyebrow">1942–1944 · la campagna</div>
+  <h2>Quattro tentativi per una sola acqua</h2>
+  <p>Il traghetto è l'ultimo atto di una delle più celebri campagne di sabotaggio della guerra. Prima di affondare l'acqua nel lago, gli Alleati provarono a colpire Vemork alla fonte — pagando un prezzo altissimo.</p>
+  <div class="tl">
+    <div class="tl-item"><div class="tl-y">OTT 1942 · GROUSE</div><div class="tl-t">La squadra avanzata sull'altopiano</div><div class="tl-d">Quattro norvegesi vengono paracadutati sul gelido altopiano dell'Hardangervidda per preparare l'attacco. Sopravvivranno per mesi in condizioni estreme.</div></div>
+    <div class="tl-item key"><div class="tl-y">NOV 1942 · FRESHMAN</div><div class="tl-t">Il disastro degli alianti</div><div class="tl-d">Un assalto britannico con alianti fallisce tragicamente: gli alianti si schiantano, e i soldati sopravvissuti vengono catturati e uccisi dai nazisti. Nessun danno all'impianto.</div></div>
+    <div class="tl-item key"><div class="tl-y">FEB 1943 · GUNNERSIDE</div><div class="tl-t">Il colpo con gli sci</div><div class="tl-d">Un pugno di sabotatori norvegesi, con gli sci, penetra a Vemork e distrugge le celle di concentrazione — senza sparare un colpo. È l'impresa che ispirerà libri e film.</div></div>
+    <div class="tl-item"><div class="tl-y">FEB 1944 · IL TRAGHETTO</div><div class="tl-t">L'ultima mossa</div><div class="tl-d">I tedeschi decidono di portare in Germania le scorte rimaste. L'unico modo per fermarle è affondare il traghetto che le trasporta sul lago Tinnsjø.</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1944" data-depth="0">
+  <div class="eyebrow">20 febbraio 1944 · il sabotaggio</div>
+  <h2>Otto chili e mezzo sulla chiglia</h2>
+  <p>Fermare le scorte via terra avrebbe significato una battaglia campale contro le scorte tedesche. Restava una sola strada: il lago. <strong>Knut Haukelid</strong>, l'unico commando addestrato nei dintorni, salì a bordo nella notte e fissò alla chiglia del traghetto circa <strong>8,5 kg di esplosivo plastico</strong>, con due sveglie da comodino come detonatori.</p>
+  <div class="moment">
+    <q>Fu una decisione difficile: mettere in conto la morte di connazionali innocenti per impedire qualcosa di molto peggiore.</q>
+    <cite>DAL RESOCONTO DI KNUT HAUKELID, UNO DEI SABOTATORI</cite>
+  </div>
+  <p>Il timing fu calcolato con freddezza: le sveglie erano regolate perché la carica esplodesse <strong>sopra il punto più profondo del lago</strong>, così che nave e carico finissero dove nessuno avrebbe potuto recuperarli. Poco dopo la partenza, la prua si squarciò e la SF Hydro colò a picco in pochi minuti.</p>
+</section>
+
+<section class="reveal" data-year="1944" data-depth="430">
+  <div class="eyebrow">Il prezzo</div>
+  <h2>Chi c'era sul traghetto</h2>
+  <p>La SF Hydro non era una nave da guerra: era il traghetto che collegava le due sponde del lago, e a bordo c'erano passeggeri comuni. Nell'affondamento morirono <strong>diciotto persone</strong> — quattordici norvegesi e quattro soldati tedeschi; ventinove si salvarono, tratte in salvo dalle barche accorse.</p>
+  <p class="lede">La resistenza aveva volutamente sacrificato dei civili del proprio popolo. È il nodo morale che questa scheda non scioglie: lo lascia intero.</p>
+  <p>C'è un dettaglio che rese la scena ancora più amara: alcuni dei fusti, non del tutto pieni, restarono a <strong>galleggiare</strong> sull'acqua. Per un momento parve che parte del carico potesse essere recuperato — ma la gran parte, e la nave, erano già scesi verso i quattrocento metri di fondo.</p>
+</section>
+
+<section class="reveal" data-year="1945" data-depth="0">
+  <div class="eyebrow">L'ironia</div>
+  <h2>Una bomba che non c'era</h2>
+  <p>Ecco la parte che la storia rivelò solo dopo. Il programma atomico tedesco, si scoprì, era <strong>molto lontano</strong> dalla bomba: mal finanziato, non prioritario, e frenato proprio dalla scelta di puntare sull'acqua pesante invece che sulla grafite come moderatore. Gli scienziati di Hitler non erano vicini al traguardo quanto si temeva.</p>
+  <p>Ma — ed è il punto — <strong>nel 1944 nessuno poteva saperlo</strong>. Gli Alleati vedevano l'impianto, vedevano l'acqua pesante, vedevano i camion diretti in Germania. Di fronte alla possibilità, anche remota, di una bomba atomica nazista, l'azzardo di non agire era inaccettabile. La SF Hydro fu affondata per fermare un pericolo che, col senno di poi, era meno concreto del previsto — ma che allora sembrava, ragionevolmente, la fine del mondo.</p>
+</section>
+
+<section class="reveal" data-year="2004" data-depth="430">
+  <div class="eyebrow">2004 · la prova</div>
+  <h2>Sessant'anni dopo, l'acqua parla</h2>
+  <p>Il relitto fu localizzato nel 1993, adagiato nel buio freddo del lago. Ma la conferma più suggestiva arrivò nel 2004, quando una spedizione documentata da <strong>PBS NOVA</strong> raggiunse la SF Hydro e recuperò alcuni dei fusti d'acciaio ancora integri.</p>
+  <p class="lede">L'analisi isotopica confermò concentrazioni elevate di deuterio: dopo sessant'anni sott'acqua, era ancora vera acqua pesante.</p>
+  <p>È la chiusura del cerchio che rende questa storia diversa da una leggenda: non un racconto, ma una prova materiale. Il carico che i sabotatori morirono per fermare — e per il quale morirono dei civili — era davvero ciò che si temeva. La molecola pesante che hai visto nel widget era lì, sul fondo, a testimoniarlo.</p>
+</section>
+
+<section class="reveal" data-year="1944" data-depth="430">
+  <div class="eyebrow">La nave</div>
+  <h2>Un traghetto, non una corazzata</h2>
+  <p>La SF Hydro era un modesto traghetto ferroviario a vapore, in servizio dal 1914: caricava i vagoni ferroviari su un ponte-binario e li trasbordava da una riva all'altra del lungo lago Tinnsjø. Proprio la sua natura civile — utile, quotidiana — è ciò che rende la sua fine così pesante.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 640 220" role="img" aria-label="Illustrazione stilizzata del traghetto ferroviario SF Hydro sul lago innevato">
+      <title>Il traghetto SF Hydro</title>
+      <path d="M-20 176 q 60 -6 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(62,134,164,.4)" stroke-width="1.4" class="hywave"/>
+      <path d="M-20 188 q 60 -5 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(111,169,194,.35)" stroke-width="1.2" class="hywave"/>
+      <g class="hyship">
+        <path d="M120 162 L150 146 L520 146 L556 160 L536 168 L138 168 Z" fill="#2A3B45" stroke="#4A606C" stroke-width="1.2"/>
+        <rect x="188" y="120" width="250" height="26" fill="#3C525E" stroke="#4A606C" stroke-width="1"/>
+        <!-- vagoni sul ponte -->
+        <g fill="#54707E" stroke="#6E8A97" stroke-width="1"><rect x="210" y="126" width="60" height="18"/><rect x="288" y="126" width="60" height="18"/><rect x="366" y="126" width="52" height="18"/></g>
+        <rect x="300" y="96" width="34" height="26" fill="#3C525E" stroke="#4A606C" stroke-width="1"/>
+        <rect x="452" y="104" width="16" height="42" fill="#33474F" stroke="#4A606C" stroke-width="1"/>
+        <ellipse class="hysmoke" cx="460" cy="98" rx="12" ry="9" fill="rgba(120,140,150,.5)"/>
+        <line x1="150" y1="152" x2="536" y2="152" stroke="#6FA9C2" stroke-width="1"/>
+      </g>
+      <text x="20" y="28" fill="var(--slate)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">TRAGHETTO FERROVIARIO SUL LAGO — RICOSTRUZIONE STILIZZATA</text>
+    </svg>
+    <figcaption>Ricostruzione stilizzata. Le foto reali del traghetto, del carico e del relitto sono presso gli archivi qui sotto.</figcaption>
+  </figure>
+  <div class="realimg">
+    <div class="badge">Documenti e immagini reali</div>
+    <p>La vicenda, il relitto e l'impianto di Vemork sono documentati dagli enti e dai progetti che li custodiscono.</p>
+    <div class="arclinks">
+      <a href="https://promare.org/project/hitlers-sunken-secret-lake-tinn/" target="_blank" rel="noopener">
+        <span class="arch">PROMARE</span>
+        <span><span class="ttl">La spedizione sul relitto</span><span class="meta">"Hitler's Sunken Secret": l'immersione sul lago Tinnsjø e il recupero dei fusti d'acqua pesante.</span></span>
+        <span class="go">promare.org ↗</span>
+      </a>
+      <a href="https://www.gov.uk/government/news/sinking-of-df-hydro-70th-anniversary" target="_blank" rel="noopener">
+        <span class="arch">GOV.UK</span>
+        <span><span class="ttl">Il 70° anniversario dell'affondamento</span><span class="meta">La commemorazione ufficiale della sinking della DF Hydro, con la vicenda e le vittime.</span></span>
+        <span class="go">gov.uk ↗</span>
+      </a>
+      <a href="https://www.scientificamerican.com/article/operation-gunnerside-the-norwegian-attack-on-heavy-water-that-deprived-the-nazis-of-the-atomic-bomb/" target="_blank" rel="noopener">
+        <span class="arch">SCIENTIFIC AMERICAN</span>
+        <span><span class="ttl">L'assalto a Vemork</span><span class="meta">Operazione Gunnerside e la campagna dell'acqua pesante che precedette l'affondamento.</span></span>
+        <span class="go">scientificamerican.com ↗</span>
+      </a>
+    </div>
+    <p class="cite">Immagini e documentazione presso Promare, il governo britannico (gov.uk), Scientific American e il Norsk Industriarbeidermuseum (Vemork, Rjukan), riprodotti con attribuzione presso le fonti, non ospitati su questo sito.</p>
+  </div>
+</section>
+
+<section class="reveal" data-year="1944" data-depth="430">
+  <div class="eyebrow">La rotta</div>
+  <h2>Il viaggio interrotto</h2>
+  <p>Il traghetto doveva attraversare il lago e proseguire, in treno e nave, fino alla Germania. Il tratto continuo è quanto navigò davvero — pochi minuti; il tratteggio è tutto ciò che non fu mai percorso.</p>
+  <!--ROUTEMAP-->
+</section>
+
+<section class="reveal" data-year="1944" data-depth="430">
+  <div class="eyebrow">I numeri</div>
+  <h2>La nave, misurata</h2>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Valore</th></tr></thead>
+    <tbody>
+      <tr><td>Tipo</td><td class="n">traghetto ferroviario a vapore (in servizio dal 1914)</td></tr>
+      <tr><td>Dove</td><td class="n">lago Tinnsjø, Telemark, Norvegia</td></tr>
+      <tr><td>Carico decisivo</td><td class="n">acqua pesante da Vemork, diretta in Germania</td></tr>
+      <tr><td>Affondamento</td><td class="n">20 febbraio 1944, sabotaggio della resistenza</td></tr>
+      <tr><td>Esplosivo</td><td class="n">~8,5 kg di plastico sulla chiglia</td></tr>
+      <tr><td>Vittime</td><td class="n">18 morti (14 norvegesi, 4 tedeschi) · 29 salvati</td></tr>
+      <tr><td>Profondità del lago</td><td class="n">fino a ~460 m (3° in Europa)</td></tr>
+      <tr><td>Profondità del relitto</td><td class="n">~430 m (stima)</td></tr>
+      <tr><td>Ritrovato</td><td class="n">1993 · fusti recuperati e analizzati nel 2004 (NOVA)</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Il numero delle vittime varia leggermente tra le fonti (comunemente 18, di cui la maggioranza civili norvegesi). La profondità del relitto è una stima; il lago tocca i ~460 m. Che il carico fosse davvero acqua pesante è confermato dalle analisi isotopiche del 2004.</p>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">Nota metodologica</div>
+  <h2>Cosa questa pagina tiene insieme</h2>
+  <p>Due verità che non si annullano. La prima: affondare la SF Hydro fu, nel contesto del 1944, una decisione difendibile — forse necessaria — di fronte al rischio di una bomba atomica nazista. La seconda: uccise dei civili innocenti, e nessuna necessità strategica cancella quelle morti. La pagina tiene ferme entrambe, senza scegliere una per comodità.</p>
+  <p>E dichiara l'ironia senza usarla come giudizio: il fatto che il programma tedesco fosse lontano dalla bomba lo sappiamo <em>oggi</em>, non allora, e non rende i sabotatori né eroi ingenui né assassini. Le cifre delle vittime sono date come le riportano le fonti, con la loro piccola oscillazione. Il relitto è un luogo di memoria in acque profonde — si studia, non si depreda.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 027 di 20+ · la serie continua</div>
+    <h2 style="margin-bottom:14px">La prossima resta in guerra, in mare aperto: la USS Indianapolis</h2>
+    <p>Dall'acqua pesante alla bomba vera. Nel 1945 l'incrociatore USS Indianapolis consegnò a un'isola del Pacifico i componenti della bomba di Hiroshima — e pochi giorni dopo fu silurato. Gli uomini rimasero in acqua per giorni, tra la sete e gli squali: uno dei naufragi più strazianti della storia navale.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce la prossima scheda</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="queenannesrevenge.html">← Scheda 026: la Queen Anne's Revenge</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">Tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · Wikipedia «SF Hydro» e «Norwegian heavy water sabotage» (traghetto, affondamento 20 feb 1944, K. Haukelid, ~8,5 kg di esplosivo, vittime) · Wikipedia «Lake Tinnsjø» (profondità ~460 m) · PBS NOVA «Hitler's Sunken Secret» / Promare (localizzazione 1993, recupero e analisi dei fusti 2004) · gov.uk «Sinking of DF Hydro 70th anniversary» (commemorazione, vittime) · Scientific American «Operation Gunnerside» e Atomic Heritage Foundation (l'acqua pesante, il programma nucleare tedesco lontano dalla bomba)<br><br>
+      Wreck Atlas · Scheda 027 · Prototipo
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), lake=document.getElementById('lake');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- rivelazione delle sezioni ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- neve nordica leggera ---------- */
+  var cv=document.getElementById('snow'), ctx=cv&&cv.getContext?cv.getContext('2d'):null, flakes=[], W=0,H=0;
+  function size(){ if(!ctx)return; W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    flakes=[]; var n=Math.round(W*H/32000);
+    for(var i=0;i<n;i++) flakes.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.5,vy:.2+Math.random()*.7,drift:Math.random()*.5-.25,o:.14+Math.random()*.24}); }
+  function draw(){ if(!ctx)return; ctx.clearRect(0,0,W,H);
+    for(var i=0;i<flakes.length;i++){ var f=flakes[i];
+      f.y+=f.vy; f.x+=f.drift+Math.sin(f.y*.008)*.2;
+      if(f.y>H+4){ f.y=-4; f.x=Math.random()*W; }
+      ctx.beginPath(); ctx.arc(f.x,f.y,f.r,0,6.2832);
+      ctx.fillStyle='rgba(120,150,168,'+f.o+')'; ctx.fill(); }
+    requestAnimationFrame(draw); }
+  if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  /* ---------- fondo: luce chiara del lago che si raffredda scendendo ---------- */
+  var shades=['#E9F1F5','#E2ECF1','#D8E6EE','#CCDFEA','#BCD5E5','#A9CADE','#95BFD6'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    document.getElementById('railDLab').textContent = (active.dataset.depth==='0') ? 'in superficie' : 'Profondità';
+    if(!reduce){ lake.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)]; }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- la molecola: H2O <-> D2O ---------- */
+  var bH=document.getElementById('btnH2O'), bD=document.getElementById('btnD2O');
+  var neuts=document.querySelectorAll('.neut'), lblL=document.querySelector('.lblL'), lblR=document.querySelector('.lblR');
+  var molbar=document.getElementById('molbar'), molwt=document.getElementById('molwt'), molinfo=document.getElementById('molinfo');
+  function setMol(heavy){
+    bH.setAttribute('aria-pressed',String(!heavy)); bD.setAttribute('aria-pressed',String(heavy));
+    neuts.forEach(function(n){ n.classList.toggle('on',heavy); });
+    if(lblL) lblL.textContent = heavy ? 'D' : 'H';
+    if(lblR) lblR.textContent = heavy ? 'D' : 'H';
+    molbar.style.width = heavy ? '100%' : '50%';
+    molwt.textContent = heavy ? '20 u' : '18 u';
+    molinfo.innerHTML = heavy
+      ? '<b>Acqua pesante (D₂O).</b> Ogni nucleo di idrogeno ha un protone <i>e</i> un neutrone in più (il puntino rosso): è il <b>deuterio</b>. La molecola pesa quasi il 10% in più. In un reattore rallenta i neutroni senza assorbirli — un ottimo moderatore, e per questo un ingrediente-chiave sulla strada verso la bomba.'
+      : '<b>Acqua normale (H₂O).</b> Due atomi di idrogeno e uno di ossigeno: la goccia di tutti i giorni. Ogni nucleo di idrogeno è un solo protone (il puntino bianco). Premi "Acqua pesante" per vedere la differenza.';
+  }
+  if(bH&&bD){
+    bH.addEventListener('click',function(){setMol(false);});
+    bD.addEventListener('click',function(){setMol(true);});
+    setMol(false);
+  }
+
+  /* ---------- metriche di scroll ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'027-sfhydro',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] scheda 027 · '+m+'% a '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] sessione: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- iscrizione ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla — collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>
