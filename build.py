@@ -325,20 +325,26 @@ def render_route(route, wreck_lonlat, pal, lang="it"):
     lats = [p[1] for p in allpts]
     lon0, lon1 = min(lons), max(lons)
     lat0, lat1 = min(lats), max(lats)
-    padx = max((lon1 - lon0) * 0.18, 4.0)
-    pady = max((lat1 - lat0) * 0.18, 3.0)
+    padx = max((lon1 - lon0) * 0.34, 7.0)
+    pady = max((lat1 - lat0) * 0.34, 5.0)
     lon0 -= padx; lon1 += padx; lat0 -= pady; lat1 += pady
     lat0 = max(lat0, -84); lat1 = min(lat1, 84)
     latc = (lat0 + lat1) / 2
     cosc = max(math.cos(math.radians(latc)), 0.2)
 
+    # canvas fisso: la scala si ADATTA per contenere tutta la rotta (mai troncata),
+    # il contenuto è centrato e i margini mostrano le coste adiacenti (= contesto,
+    # così si capisce che parte del mondo è). Aspetto costante fra tutte le schede.
     W = 640.0
-    ppd = W / max((lon1 - lon0) * cosc, 1e-6)
-    H = (lat1 - lat0) * ppd
-    H = max(280.0, min(H, 520.0))
+    H = 440.0
+    lonspan = (lon1 - lon0) * cosc
+    latspan = lat1 - lat0
+    ppd = min(W / max(lonspan, 1e-6), H / max(latspan, 1e-6))
+    offx = (W - lonspan * ppd) / 2.0
+    offy = (H - latspan * ppd) / 2.0
 
     def proj(lon, lat):
-        return ((lon - lon0) * cosc * ppd, (lat1 - lat) * ppd)
+        return (offx + (lon - lon0) * cosc * ppd, offy + (lat1 - lat) * ppd)
 
     # terraferma: ritaglia al riquadro la sola costa visibile, poi decima i punti
     rect = (-6.0, -6.0, W + 6.0, H + 6.0)
@@ -393,7 +399,9 @@ def render_route(route, wreck_lonlat, pal, lang="it"):
                  f'stroke="{pal["bg"]}" stroke-width="1.4"/>')
             tcol = pal["port"] if kind == "from" else pal["label"]
         g += (f'<text x="{tx:.1f}" y="{ty:.1f}" text-anchor="{anchor}" '
-              f'font-family="IBM Plex Mono, monospace" font-size="11" fill="{tcol}">'
+              f'font-family="IBM Plex Mono, monospace" font-size="11.5" '
+              f'paint-order="stroke" stroke="{pal["bg"]}" stroke-width="3.4" '
+              f'stroke-linejoin="round" fill="{tcol}">'
               f'{label}</text></g>')
         return g
 
@@ -411,14 +419,19 @@ def render_route(route, wreck_lonlat, pal, lang="it"):
         f'aria-label="{aria}">'
         f'<rect x="0" y="0" width="{W:.0f}" height="{H:.0f}" fill="{pal["bg"]}"/>'
         f'<path d="{land_d}" fill="{pal["land"]}" fill-rule="evenodd" '
-        f'stroke="{pal["coast"]}" stroke-width="0.8" stroke-linejoin="round"/>'
+        f'stroke="{pal["coast"]}" stroke-width="1.0" stroke-linejoin="round"/>'
+        f'<path d="{plan_d}" fill="none" stroke="#000" stroke-opacity="0.30" '
+        f'stroke-width="4.4" stroke-linecap="round"/>'
+        f'<path d="{done_d}" fill="none" stroke="#000" stroke-opacity="0.42" '
+        f'stroke-width="5.6" stroke-linecap="round"/>'
         f'<path d="{plan_d}" fill="none" stroke="{pal["plan"]}" stroke-width="1.8" '
-        f'stroke-dasharray="3 5" stroke-linecap="round" opacity="0.9"/>'
-        f'<path d="{done_d}" fill="none" stroke="{pal["done"]}" stroke-width="2.4" '
+        f'stroke-dasharray="3 5" stroke-linecap="round" opacity="0.95"/>'
+        f'<path d="{done_d}" fill="none" stroke="{pal["done"]}" stroke-width="2.8" '
         f'stroke-linecap="round"/>'
         + "".join(marks)
         + f'<text x="16" y="24" font-family="IBM Plex Mono, monospace" font-size="9.5" '
-        f'letter-spacing="1" fill="{pal["label"]}" opacity="0.75">{note}</text>'
+        f'letter-spacing="1" paint-order="stroke" stroke="{pal["bg"]}" stroke-width="3" '
+        f'stroke-linejoin="round" fill="{pal["label"]}" opacity="0.9">{note}</text>'
         + "</svg>"
     )
     fig = (

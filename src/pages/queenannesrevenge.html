@@ -16,11 +16,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --smoke:#141210; --deep:#0E0C0A; --panel:#201C18;
-  --bone:#E4DCC8; --bone2:#B6AC94; --fog:#847C70;
-  --ember:#C8632A; --ember2:#E5843F; --bronze:#B08A46; --bronze2:#D0A85C;
-  --inlet:#3E5E52; --blood:#8E3A2E; --blood2:#B0503E;
-  --rule:rgba(228,220,200,.14);
+  --smoke:#1B1712; --deep:#0E0C0A; --panel:#241F18;
+  --bone:#EDE6D3; --bone2:#C2B79C; --fog:#948A7C;
+  --ember:#D06B2E; --ember2:#F0913F; --bronze:#BE9750; --bronze2:#E0B568;
+  --inlet:#4A7263; --inlet2:#6C9A86; --blood:#9E4234; --blood2:#C25A46;
+  --rule:rgba(237,230,211,.16);
   --display:"Bevan",Georgia,serif;
   --body:"IBM Plex Sans",system-ui,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,monospace;
@@ -38,6 +38,13 @@ body{background:var(--smoke);color:var(--bone);font-family:var(--body);font-weig
   animation:fuse 6s ease-in-out infinite alternate}
 @keyframes fuse{0%{opacity:.6}100%{opacity:.95}}
 #smokecv{position:fixed;inset:0;z-index:-1;pointer-events:none}
+#sea{position:fixed;left:0;right:0;bottom:0;width:100%;height:26vh;z-index:-1;pointer-events:none;
+  opacity:.92;filter:drop-shadow(0 -6px 18px rgba(74,114,99,.18))}
+.seaw{transform-box:view-box}
+.seaw1{animation:seaw1 11s ease-in-out infinite}
+.seaw2{animation:seaw2 8s ease-in-out infinite}
+@keyframes seaw1{0%,100%{transform:translateX(0)}50%{transform:translateX(-22px)}}
+@keyframes seaw2{0%,100%{transform:translateX(0)}50%{transform:translateX(18px)}}
 
 #rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
   justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
@@ -56,7 +63,7 @@ section{min-height:78vh;display:flex;flex-direction:column;justify-content:cente
 .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ember2);margin-bottom:20px}
 h1{font-family:var(--display);font-weight:400;font-size:clamp(38px,7.6vw,84px);line-height:1.06;letter-spacing:0}
 h2{font-family:var(--display);font-weight:400;font-size:clamp(24px,3.9vw,40px);line-height:1.2;margin-bottom:22px}
-p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(228,220,200,.84)}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(237,230,211,.90)}
 .lede{font-size:20px;color:var(--bone)}
 em{font-style:italic;color:var(--bone2)}
 strong{font-weight:400;color:var(--bone);border-bottom:1px solid rgba(200,99,42,.35)}
@@ -154,7 +161,7 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
   #air,#fuse{transition:none;animation:none}
-  .qship,.qflag,.qwave{animation:none}
+  .qship,.qflag,.qwave,.seaw1,.seaw2{animation:none}
   #smokecv{display:none}
 }
 :focus-visible{outline:2px solid var(--ember);outline-offset:3px}
@@ -166,6 +173,17 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
 <div id="murk"></div>
 <div id="fuse"></div>
 <canvas id="smokecv"></canvas>
+<svg id="sea" viewBox="0 0 640 200" preserveAspectRatio="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="rgba(74,114,99,0)"/>
+      <stop offset="1" stop-color="rgba(74,114,99,.5)"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="60" width="640" height="140" fill="url(#seaGrad)"/>
+  <path class="seaw seaw1" d="M-40 70 q 80 -16 160 0 t 160 0 t 160 0 t 160 0 t 80 0 V200 H-40 Z" fill="rgba(74,114,99,.30)"/>
+  <path class="seaw seaw2" d="M-40 92 q 90 14 180 0 t 180 0 t 180 0 t 120 0 V200 H-40 Z" fill="rgba(108,154,134,.22)"/>
+</svg>
 
 <div id="rail" aria-hidden="true">
   <div id="railFill"></div>
@@ -399,7 +417,8 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
   if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
 
   /* ---------- fondo: dal fumo al buio del fondo ---------- */
-  var shades=['#141210','#131110','#12100E','#11100E','#100E0C','#0F0D0B','#0E0C0A'];
+  /* arco visibile: fumo di polvere → brace delle micce → l'acqua della baia */
+  var shades=['#1B1712','#1F180F','#281A0C','#2E1C0D','#1E211C','#132420','#0E1A18'];
   function tick(){
     var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
     var p=h>0?Math.min(y/h,1):0;
