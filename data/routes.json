@@ -796,5 +796,41 @@
       "wreck": "#C05A4E",
       "label": "#BEB393"
     }
+  },
+  "queenannesrevenge.html": {
+    "from": {
+      "n": "al largo di San Vincenzo (la cattura)",
+      "lon": -61.2,
+      "lat": 13.2,
+      "n_en": "off St. Vincent (the capture)"
+    },
+    "via": [
+      {
+        "n": "Charleston",
+        "lon": -79.93,
+        "lat": 32.78,
+        "n_en": "Charleston"
+      }
+    ],
+    "to": {
+      "n": "Beaufort Inlet",
+      "lon": -76.68,
+      "lat": 34.69,
+      "n_en": "Beaufort Inlet"
+    },
+    "wreck_label": "l'arenamento",
+    "wreck_label_en": "the grounding",
+    "caption": "Non una rotta di commercio, ma quella di un predatore: catturata da Barbanera al largo di San Vincenzo, la Queen Anne's Revenge risalì i Caraibi e la costa americana fino a bloccare Charleston, per poi arenarsi all'imboccatura di Beaufort Inlet il 10 giugno 1718 — forse di proposito.",
+    "caption_en": "Not a trade route but a predator's: captured by Blackbeard off St. Vincent, the Queen Anne's Revenge worked up the Caribbean and the American coast to blockade Charleston, then ran aground at the mouth of Beaufort Inlet on 10 June 1718 — perhaps deliberately.",
+    "palette": {
+      "bg": "#141210",
+      "land": "#221D18",
+      "coast": "#4A4038",
+      "plan": "#847C70",
+      "done": "#C8632A",
+      "port": "#E4DCC8",
+      "wreck": "#8E3A2E",
+      "label": "#B6AC94"
+    }
   }
 }

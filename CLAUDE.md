@@ -85,10 +85,21 @@ pagina vuota o un solo messaggio d'errore.
 
 ## Stato
 
-Schede pronte: **Atocha** (001), **Vasa** (002).
-Prossima: **Titanic** (3.800 m, caso "irrecuperabile per sempre" — il contrario del Vasa).
-Poi in programma: Endurance, Mary Rose, Anticitera, Uluburun, San José, Andrea Doria,
-USS Arizona, Bismarck, Batavia.
+> Questa sezione invecchia a ogni scheda. La fonte di verità è sempre
+> `data/wrecks.json`; se i numeri qui sotto non tornano, ha ragione il JSON.
+> Contarli: `python3 -c "import json,collections;print(collections.Counter(x['st'] for x in json.load(open('data/wrecks.json'))))"`
+
+Aggiornato al 2026-08-26: **26 schede `ready`**, 15 `planned`, 1 `next`.
+Prossima: **SF Hydro** (l'acqua pesante — Seconda guerra mondiale).
+
+Pagine: 27 in italiano (`src/pages/`), 6 in inglese (`src/pages/en/`).
+
+### i18n — filone attivo
+
+Traduzione inglese in corso, **6 schede su 21** (Titanic, Lusitania, Endurance,
+Mary Celeste, Bismarck, Erebus/Terror-Franklin). La riga "lingua del progetto: italiano" in cima resta
+vera per i **contenuti nuovi**: si scrive prima in italiano, l'inglese segue.
+Una scheda inglese vive in `src/pages/en/` e non sostituisce l'italiana.
 
 Per aggiungere una scheda:
 1. scrivere `src/pages/<nome>.html` con identità visiva propria;

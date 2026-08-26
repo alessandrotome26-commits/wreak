@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Queen Anne's Revenge — 1718</title>
+<meta name="description" content="L'ammiraglia di Barbanera, incagliata in North Carolina nel 1718 e ritrovata nel 1996: la nave pirata più famosa del mondo. Ma, a differenza della Whydah, non è mai stata 'firmata' — la storia di come si identifica un relitto senza un nome inciso.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Queen Anne's Revenge — 1718">
+<meta property="og:description" content="La nave di Barbanera: ex negriera, quaranta cannoni, incagliata forse di proposito. Famosissima e mai 'firmata' — un caso di scuola di prova indiziaria.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#141210">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --smoke:#141210; --deep:#0E0C0A; --panel:#201C18;
+  --bone:#E4DCC8; --bone2:#B6AC94; --fog:#847C70;
+  --ember:#C8632A; --ember2:#E5843F; --bronze:#B08A46; --bronze2:#D0A85C;
+  --inlet:#3E5E52; --blood:#8E3A2E; --blood2:#B0503E;
+  --rule:rgba(228,220,200,.14);
+  --display:"Bevan",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--smoke);color:var(--bone);font-family:var(--body);font-weight:300;line-height:1.66;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#air{position:fixed;inset:0;z-index:-4;background:var(--smoke);transition:background 1.6s ease}
+#murk{position:fixed;inset:-12%;z-index:-3;pointer-events:none;opacity:.6;
+  background:radial-gradient(circle at 26% 20%,rgba(62,94,82,.08),transparent 40%),
+             radial-gradient(circle at 74% 76%,rgba(14,12,10,.85),transparent 46%)}
+#fuse{position:fixed;left:50%;bottom:-6%;transform:translateX(-50%);width:64vw;height:44vh;z-index:-2;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 100%,rgba(200,99,42,.12),transparent 62%);
+  animation:fuse 6s ease-in-out infinite alternate}
+@keyframes fuse{0%{opacity:.6}100%{opacity:.95}}
+#smokecv{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--fog);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--ember)}
+.rail-num{font-size:18px;color:var(--bone);font-weight:400;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.55;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(20,18,16,.82)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ember2);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(38px,7.6vw,84px);line-height:1.06;letter-spacing:0}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(24px,3.9vw,40px);line-height:1.2;margin-bottom:22px}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(228,220,200,.84)}
+.lede{font-size:20px;color:var(--bone)}
+em{font-style:italic;color:var(--bone2)}
+strong{font-weight:400;color:var(--bone);border-bottom:1px solid rgba(200,99,42,.35)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--fog);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--fog)}
+.coord b{display:block;color:var(--bone);font-size:15px;font-weight:400;margin-top:3px}
+.conf{display:inline-flex;align-items:flex-start;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  color:var(--ember2);border:1px solid rgba(200,99,42,.36);padding:6px 11px;margin-top:28px;align-self:flex-start;max-width:66ch;line-height:1.6}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--ember2);flex:none;margin-top:5px}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(132,124,112,.9);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(228,220,200,.08)}
+.stat .v{font-family:var(--display);font-weight:400;font-size:clamp(26px,4.4vw,42px);line-height:1.08;color:var(--ember2);font-variant-numeric:tabular-nums}
+.stat .v.bronze{color:var(--bronze2)}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--ember);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-size:clamp(20px,3.5vw,32px);line-height:1.32;color:var(--bone);quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--fog);margin-top:18px}
+
+.probe{margin-top:14px;border:1px solid var(--rule);background:rgba(32,28,24,.6);padding:22px 20px}
+.clues{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.clue{font-family:var(--mono);font-size:11px;letter-spacing:.04em;background:transparent;color:var(--bone2);
+  border:1px solid var(--rule);padding:9px 13px;cursor:pointer;transition:border-color .2s,color .2s,background .2s}
+.clue:hover{color:var(--bone);border-color:var(--ember2)}
+.clue.on{color:var(--smoke);background:var(--bronze2);border-color:var(--bronze2);font-weight:500}
+.clue.caveat.on{background:var(--blood2);border-color:var(--blood2)}
+.cbar{height:14px;border:1px solid var(--rule);background:rgba(14,12,10,.6);position:relative;overflow:hidden}
+.cbar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--bronze),var(--bronze2));transition:width .5s ease}
+.cbar-lab{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--fog);margin-top:8px;text-transform:uppercase}
+.cbar-lab b{color:var(--bronze2);font-weight:500}
+#qarinfo{font-family:var(--mono);font-size:12px;color:rgba(228,220,200,.82);margin-top:16px;min-height:56px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.75}
+#qarinfo b{color:var(--ember2);font-weight:500}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(228,220,200,.08);vertical-align:top}
+td.n{color:var(--bone);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:rgba(132,124,112,.9);line-height:1.75;margin-top:22px;max-width:60ch}
+
+.realimg{margin-top:22px;border:1px solid rgba(208,168,92,.32);background:rgba(208,168,92,.05);padding:22px}
+.realimg .badge{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bronze2);margin-bottom:14px}
+.realimg p{margin-bottom:14px}
+.arclinks{display:grid;gap:2px;margin-top:6px}
+.arclinks a{display:flex;gap:20px;align-items:baseline;padding:18px 0;text-decoration:none;color:inherit;
+  border-bottom:1px solid rgba(228,220,200,.09);transition:padding-left .3s ease,border-color .3s ease}
+.arclinks a:first-child{border-top:1px solid rgba(228,220,200,.09)}
+.arclinks a:hover,.arclinks a:focus-visible{padding-left:12px;border-bottom-color:var(--bronze)}
+.arclinks .arch{font-family:var(--mono);font-size:11px;color:var(--inlet);min-width:172px}
+.arclinks .ttl{font-size:15.5px;color:var(--bone)}
+.arclinks .meta{font-size:13px;color:rgba(228,220,200,.55);margin-top:3px;max-width:46ch}
+.arclinks .go{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--fog);opacity:0;transition:opacity .3s}
+.arclinks a:hover .go,.arclinks a:focus-visible .go{opacity:1}
+.realimg .cite{font-family:var(--mono);font-size:11px;color:rgba(132,124,112,.9);line-height:1.6;margin-top:14px}
+
+.shipart{margin-top:22px;border:1px solid var(--rule);background:rgba(32,28,24,.6);padding:18px 18px 12px}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:rgba(132,124,112,.9);letter-spacing:.05em;margin-top:10px}
+.qship{transform-box:fill-box;transform-origin:50% 88%;animation:qbob 7.5s ease-in-out infinite}
+@keyframes qbob{0%,100%{transform:rotate(-1.4deg) translateY(0)}50%{transform:rotate(1.4deg) translateY(-2px)}}
+.qflag{transform-box:fill-box;transform-origin:0 50%;animation:qflag 1.9s ease-in-out infinite}
+@keyframes qflag{0%,100%{transform:scaleX(1) skewX(0)}50%{transform:scaleX(.8) skewX(-12deg)}}
+.qwave{animation:qwave 4.6s ease-in-out infinite}
+@keyframes qwave{0%,100%{transform:translateX(0)}50%{transform:translateX(-10px)}}
+
+.closing{border-top:1px solid var(--ember);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--fog);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:rgba(32,28,24,.6);border:1px solid var(--rule);color:var(--bone);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--ember);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--ember);color:#1E0F06;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.88}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--ember2)}
+.signup .msg.err{color:var(--blood2)}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--ember2);border-color:var(--ember)}
+.src{font-family:var(--mono);font-size:11.5px;color:rgba(132,124,112,.85);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:14px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+  .arclinks a{flex-wrap:wrap;gap:6px} .arclinks .go{display:none} .arclinks .arch{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #air,#fuse{transition:none;animation:none}
+  .qship,.qflag,.qwave{animation:none}
+  #smokecv{display:none}
+}
+:focus-visible{outline:2px solid var(--ember);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="air"></div>
+<div id="murk"></div>
+<div id="fuse"></div>
+<canvas id="smokecv"></canvas>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Anno</div><div class="rail-num" id="railYear">1718</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Profondità</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1718" data-depth="0">
+  <div class="eyebrow">Nave pirata · l'ammiraglia di Barbanera · 1718</div>
+  <h1>Queen Anne's Revenge</h1>
+  <div class="sub">LA PIÙ FAMOSA NAVE PIRATA — MA MAI "FIRMATA"</div>
+  <div class="coordbox">
+    <div class="coord">Dove giace<b>Beaufort Inlet, North Carolina · ~8 m</b></div>
+    <div class="coord">Il capitano<b>Edward "Barbanera" Teach</b></div>
+    <div class="coord">Com'era<b>ex negriera La Concorde · ~40 cannoni</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>ACCETTATA DALLA NORTH CAROLINA COME LA QAR (2011) SU BASE INDIZIARIA · NESSUN OGGETTO COL NOME · ~400.000 REPERTI</div>
+  <div class="scrollcue">↓ scorri — nel fumo della polvere</div>
+</section>
+
+<section class="reveal" data-year="1718" data-depth="8">
+  <div class="eyebrow">Perché questo relitto</div>
+  <h2>La nave pirata più famosa — e la più difficile da provare</h2>
+  <p class="lede">La Whydah aveva una campana con il suo nome: una firma. La Queen Anne's Revenge no. È la nave pirata più celebre del mondo — l'ammiraglia di Barbanera — eppure sul suo relitto non c'è un solo oggetto che dica "sono io".</p>
+  <p>È proprio questo a renderla interessante per un atlante. Se la Whydah risponde alla domanda "è davvero una nave pirata?", la QAR risponde a una più sottile: <strong>come si identifica un relitto quando manca la prova definitiva?</strong> Con quasi quattrocentomila reperti, un luogo che coincide con le cronache e la mole di indizi che si sommano, la North Carolina l'ha dichiarata ufficialmente la nave di Barbanera nel 2011. Non con una firma, ma con un caso costruito indizio su indizio — il modo in cui l'archeologia assegna un nome a un relitto quasi sempre.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">~40</div><div class="k">cannoni a bordo</div></div>
+    <div class="stat"><div class="v">~300</div><div class="k">uomini nella ciurma</div></div>
+    <div class="stat"><div class="v bronze">~400.000</div><div class="k">reperti recuperati</div></div>
+    <div class="stat"><div class="v blood" style="color:var(--blood2)">0</div><div class="k">oggetti col nome della nave</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1717" data-depth="0">
+  <div class="eyebrow">La nave</div>
+  <h2>Da negriera a terrore dei mari</h2>
+  <p>Come la Whydah, anche questa nave nasce nell'ombra della schiavitù. Era una nave negriera francese, <strong>La Concorde</strong>, costruita intorno al 1710. Il 28 novembre 1717, al largo dell'isola di San Vincenzo, fu catturata da un pirata destinato a diventare leggenda: Edward Teach, <strong>Barbanera</strong>.</p>
+  <p class="lede">La ribattezzò Queen Anne's Revenge — "la vendetta della regina Anna" — e la armò come una nave da guerra.</p>
+  <p>Con una quarantina di cannoni e trecento uomini, divenne l'ammiraglia della sua flotta e la nave pirata più temuta delle Americhe. Della sua origine restano tracce concrete, riemerse dal relitto: <strong>ceppi di ferro</strong>, granelli d'oro africano, perline di vetro da baratto. Anche la QAR, prima di battere bandiera nera, aveva trasportato esseri umani in catene.</p>
+</section>
+
+<section class="reveal" data-year="1718" data-depth="0">
+  <div class="eyebrow">Il capitano</div>
+  <h2>Il terrore come arma</h2>
+  <p>Barbanera è il pirata per eccellenza dell'immaginario, e in gran parte lo è per una precisa scelta di regia. Curava una messinscena spaventosa: intrecciava nella lunga barba nera dei nastri e, prima della battaglia, vi infilava <strong>micce accese</strong> che, fumando intorno al viso, lo facevano sembrare un demone uscito dall'inferno.</p>
+  <div class="moment">
+    <q>Con le micce accese sotto il cappello, che apparivano ai due lati del volto, offriva una figura tale che l'immaginazione non può concepire una furia infernale più spaventosa.</q>
+    <cite>DALLA DESCRIZIONE DI BARBANERA IN CHARLES JOHNSON, 1724</cite>
+  </div>
+  <p>Era, in buona parte, teatro: Barbanera uccideva di rado, perché la paura era un'arma più economica del sangue — chi si arrende senza combattere non fa vittime e non rovina il bottino. Nel maggio 1718, all'apice della sua fama, con la QAR <strong>bloccò il porto di Charleston</strong>, prese ostaggi e ottenne un riscatto. Ma la fine era vicina.</p>
+</section>
+
+<section class="reveal" data-year="1718" data-depth="8">
+  <div class="eyebrow">10 giugno 1718 · Beaufort Inlet</div>
+  <h2>Un naufragio (forse) voluto</h2>
+  <p>Poche settimane dopo il blocco di Charleston, la Queen Anne's Revenge si incagliò su un banco di sabbia all'imboccatura di Beaufort Inlet, in North Carolina, e andò perduta. Un incidente, in apparenza. Ma la maggior parte degli storici oggi pensa che Barbanera l'abbia arenata <strong>di proposito</strong>.</p>
+  <p>Il motivo è cinico e logico. Barbanera stava trattando un perdono con il governatore della North Carolina; una flotta enorme e trecento uomini rendevano quella trattativa difficile e sospetta. Perdere l'ammiraglia e disperdere gran parte della ciurma lo faceva sembrare meno pericoloso — e, non da ultimo, lasciava il bottino da dividere tra molti meno uomini. Barbanera prese il perdono, poi tornò a fare il pirata. Il 22 novembre 1718 fu ucciso in battaglia a Ocracoke dal tenente Robert Maynard, che gli mozzò la testa e la appese al bompresso.</p>
+</section>
+
+<section class="reveal" data-year="2011" data-depth="8">
+  <div class="eyebrow">Il meccanismo · l'identificazione</div>
+  <h2>Come si prova senza una firma</h2>
+  <p>Nessun oggetto, sul relitto di Beaufort Inlet, porta scritto "Queen Anne's Revenge". Come si fa, allora, ad attribuirlo a Barbanera? Non con una prova sola, ma sommando indizi finché il dubbio diventa ragionevole certezza. Clicca gli indizi e guarda salire la fiducia.</p>
+  <div class="probe">
+    <div class="clues">
+      <button class="clue" data-c="luogo" type="button">Il luogo</button>
+      <button class="clue" data-c="epoca" type="button">L'epoca</button>
+      <button class="clue" data-c="cannoni" type="button">L'armamento</button>
+      <button class="clue" data-c="fonti" type="button">Le fonti</button>
+      <button class="clue caveat" data-c="firma" type="button">La firma mancante</button>
+    </div>
+    <div class="cbar"><div class="cbar-fill" id="cbarFill"></div></div>
+    <div class="cbar-lab">IDENTIFICAZIONE: <b id="cbarState">da costruire</b></div>
+    <div id="qarinfo">Il relitto va identificato senza un nome inciso. Clicca gli indizi: ognuno rafforza (o limita) l'attribuzione a Barbanera.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="2018" data-depth="8">
+  <div class="eyebrow">La curiosità</div>
+  <h2>Un libro dentro un cannone</h2>
+  <p>Tra i quasi quattrocentomila reperti, uno ha spiazzato tutti. Ripulendo la camera di un cannone a retrocarica, i conservatori trovarono nel fango sedici minuscoli frammenti di <strong>carta</strong>. Ricomposti e analizzati, si sono rivelati pagine di un libro a stampa del 1712: <em>A Voyage to the South Sea</em>, il resoconto di viaggio del capitano Edward Cooke.</p>
+  <p class="lede">La carta era stata usata come stoppaccio, per calcare la carica di polvere nel cannone. Ma prima era stata un libro.</p>
+  <p>È un dettaglio che, da solo, corregge un pregiudizio: i pirati non erano soltanto bruti analfabeti. Sull'ammiraglia di Barbanera c'era gente che leggeva libri di viaggi — gli stessi mari che poi depredava. Che quelle pagine siano sopravvissute tre secoli sott'acqua, infilate nella bocca di un cannone, è uno di quei piccoli miracoli che rendono l'archeologia dei relitti così sorprendente.</p>
+</section>
+
+<section class="reveal" data-year="1996" data-depth="8">
+  <div class="eyebrow">La nave</div>
+  <h2>Una fregata sotto la bandiera nera</h2>
+  <p>La QAR era una nave robusta e ben armata, nata per il commercio e convertita alla guerra da corsa: uno scafo capace, tre alberi, decine di cannoni sui fianchi. Ritrovata nel 1996 all'imboccatura di Beaufort Inlet, è oggi scavata anno dopo anno, e i suoi reperti — cannoni, ancore, la campana, gli strumenti — sono esposti a Beaufort, in North Carolina.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 640 220" role="img" aria-label="Illustrazione stilizzata della fregata pirata Queen Anne's Revenge nel fumo">
+      <title>La fregata pirata Queen Anne's Revenge</title>
+      <path d="M-20 188 q 55 -12 110 -2 t 120 4 t 120 -6 t 120 4 t 130 -2" fill="none" stroke="rgba(62,94,82,.5)" stroke-width="1.5" class="qwave"/>
+      <path d="M-20 200 q 55 -8 110 0 t 120 2 t 120 -4 t 120 2 t 130 0" fill="none" stroke="rgba(62,94,82,.3)" stroke-width="1.2" class="qwave"/>
+      <g class="qship">
+        <path d="M150 168 L176 150 L470 150 L500 168 L150 168 Z" fill="#2A211A" stroke="#4A4038" stroke-width="1.2"/>
+        <line x1="170" y1="158" x2="486" y2="158" stroke="var(--bronze)" stroke-width="1"/>
+        <line x1="220" y1="150" x2="220" y2="52" stroke="#3A2C1C" stroke-width="2.6"/>
+        <line x1="310" y1="150" x2="310" y2="40" stroke="#3A2C1C" stroke-width="3"/>
+        <line x1="400" y1="150" x2="400" y2="56" stroke="#3A2C1C" stroke-width="2.6"/>
+        <path d="M196 78 L268 78 L263 120 Q232 130 201 120 Z" fill="#CFC3A6" stroke="#A79A78" stroke-width="1"/>
+        <path d="M282 64 L358 64 L353 116 Q320 126 287 116 Z" fill="#CFC3A6" stroke="#A79A78" stroke-width="1"/>
+        <path d="M374 82 L446 82 L441 122 Q410 132 379 122 Z" fill="#CFC3A6" stroke="#A79A78" stroke-width="1"/>
+        <path class="qflag" d="M310 40 L360 44 L354 52 L360 60 L310 58 Z" fill="#141210" stroke="#4A4038" stroke-width="1"/>
+        <circle cx="330" cy="49" r="3" fill="var(--bone)"/>
+        <!-- cannoni + fumo di una bordata -->
+        <g fill="#3A2C1C"><rect x="200" y="158" width="8" height="4"/><rect x="250" y="158" width="8" height="4"/><rect x="300" y="158" width="8" height="4"/><rect x="350" y="158" width="8" height="4"/><rect x="400" y="158" width="8" height="4"/></g>
+        <ellipse cx="180" cy="160" rx="14" ry="8" fill="rgba(200,99,42,.25)"/>
+      </g>
+      <text x="20" y="26" fill="rgba(132,124,112,.9)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">FREGATA PIRATA A TRE ALBERI — RICOSTRUZIONE STILIZZATA</text>
+    </svg>
+    <figcaption>Ricostruzione stilizzata. I cannoni, la campana e i reperti reali sono al NC Maritime Museum, negli archivi qui sotto.</figcaption>
+  </figure>
+</section>
+
+<section class="reveal" data-year="1718" data-depth="8">
+  <div class="eyebrow">La rotta</div>
+  <h2>Il viaggio interrotto</h2>
+  <p>Non una rotta di commercio, ma quella di un predatore. Il tratto continuo mostra la sua risalita dai Caraibi lungo la costa americana, fino al blocco di Charleston; l'ultimo tratto termina dove la nave si arenò — forse per scelta.</p>
+  <!--ROUTEMAP-->
+</section>
+
+<section class="reveal" data-year="1718" data-depth="8">
+  <div class="eyebrow">I numeri</div>
+  <h2>La nave, misurata</h2>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Valore</th></tr></thead>
+    <tbody>
+      <tr><td>Tipo</td><td class="n">nave pirata (ex negriera francese La Concorde, ~1710)</td></tr>
+      <tr><td>Catturata</td><td class="n">28 nov 1717, da Barbanera (E. Teach)</td></tr>
+      <tr><td>Armamento</td><td class="n">~40 cannoni · ~300 uomini</td></tr>
+      <tr><td>Impresa</td><td class="n">ammiraglia di Barbanera · blocco di Charleston (1718)</td></tr>
+      <tr><td>Affondamento</td><td class="n">10 giugno 1718 · incagliata a Beaufort Inlet, NC</td></tr>
+      <tr><td>Reperti recuperati</td><td class="n">~400.000</td></tr>
+      <tr><td>Identificazione</td><td class="n">accettata dalla NC nel 2011, su base indiziaria (nessuna firma)</td></tr>
+      <tr><td>Profondità</td><td class="n">~8 m</td></tr>
+      <tr><td>Ritrovata</td><td class="n">1996</td></tr>
+      <tr><td>Oggi</td><td class="n">NC Maritime Museum, Beaufort</td></tr>
+    </tbody>
+  </table>
+  <p class="note">L'identificazione è indiziaria e come tale è dichiarata: è la posizione ufficiale della North Carolina (2011), ampiamente accettata ma priva della "firma" che ha invece la Whydah. Anche l'ipotesi dell'arenamento volontario è oggi maggioritaria tra gli storici, ma resta un'interpretazione. Il relitto è un sito protetto.</p>
+</section>
+
+<section class="reveal" data-year="1996" data-depth="8">
+  <div class="eyebrow">Archivio</div>
+  <h2>Vedere i reperti di Barbanera</h2>
+  <p>Nessun file è ospitato qui: si rimanda a chi scava e conserva il relitto. Link specifici, scelti uno per uno.</p>
+  <div class="realimg">
+    <div class="badge">Progetto e archivio</div>
+    <div class="arclinks">
+      <a href="https://www.qaronline.org/" target="_blank" rel="noopener">
+        <span class="arch">QUEEN ANNE'S REVENGE PROJECT</span>
+        <span><span class="ttl">Lo scavo e i reperti, uno per uno</span><span class="meta">Il progetto ufficiale della North Carolina: cannoni, ancore, la campana e le schede di ogni reperto conservato.</span></span>
+        <span class="go">qaronline.org ↗</span>
+      </a>
+      <a href="https://www.nationalgeographic.com/pages/article/blackbeard-pirate-book-cannon-revenge" target="_blank" rel="noopener">
+        <span class="arch">NATIONAL GEOGRAPHIC</span>
+        <span><span class="ttl">Il libro trovato nel cannone</span><span class="meta">Come i frammenti di carta nella camera di un cannone hanno rivelato le letture della ciurma di Barbanera.</span></span>
+        <span class="go">nationalgeographic.com ↗</span>
+      </a>
+      <a href="https://www.dncr.nc.gov/about/divisions/archives-history/nc-maritime-museums" target="_blank" rel="noopener">
+        <span class="arch">NC MARITIME MUSEUM</span>
+        <span><span class="ttl">Dove sono esposti i reperti</span><span class="meta">Il museo di Beaufort, in North Carolina, che espone i reperti recuperati dal relitto.</span></span>
+        <span class="go">dncr.nc.gov ↗</span>
+      </a>
+    </div>
+    <p class="cite">Reperti, fotografie e documentazione presso il Queen Anne's Revenge Project (NC DNCR), il NC Maritime Museum e National Geographic, riprodotti con attribuzione presso le fonti, non ospitati su questo sito.</p>
+  </div>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">Nota metodologica</div>
+  <h2>Cosa questa pagina dichiara</h2>
+  <p>Che l'identificazione è indiziaria. La North Carolina ha ottime ragioni per dire "è la QAR", e questa pagina le espone; ma le espone come un <em>caso</em>, non come una firma, ed è esattamente la differenza con la Whydah che rende interessante il confronto. Allo stesso modo, l'arenamento volontario è l'ipotesi oggi maggioritaria, non un fatto certo: la pagina lo dice.</p>
+  <p>E non ripulisce la leggenda. Barbanera era un predatore, la sua nave nacque per la schiavitù, e il fascino del personaggio non cancella né i ceppi trovati nel relitto né la violenza del mestiere. La "regia del terrore" fu reale e persino efficace, ma resta il volto pubblico di un uomo che viveva di rapina. Il relitto è un sito storico protetto — e anche una vetrina, forse la più straordinaria, su un mondo che il cinema ha raccontato mille volte e l'archeologia una sola.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 026 di 20+ · la serie continua</div>
+    <h2 style="margin-bottom:14px">La prossima lascia i pirati per l'atomica: la SF Hydro</h2>
+    <p>Dal Settecento dei corsari alla Seconda guerra mondiale. Nel 1944 i sabotatori norvegesi affondarono un traghetto su un lago profondo per impedire ai nazisti di portare via l'<strong>acqua pesante</strong>, ingrediente della bomba atomica. Un'impresa da film — con un prezzo tragico: a bordo morirono anche dei civili.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce la prossima scheda</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="whydah.html">← Scheda 025: la Whydah Gally</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">Tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · Encyclopædia Britannica «Queen Anne's Revenge» (nave, Barbanera, relitto) · Wikipedia «Queen Anne's Revenge» e «Battle of Ocracoke» (cattura de La Concorde 1717, arenamento 1718, morte di Barbanera) · Queen Anne's Revenge Project / North Carolina DNCR (ritrovamento 1996, ~400.000 reperti, identificazione 2011, ceppi, campana) · National Geographic e NC DNCR (i frammenti del libro nel cannone, 2018) · Charles Johnson, «A General History of the Pyrates» (1724) per la descrizione di Barbanera<br><br>
+      Wreck Atlas · Scheda 026 · Prototipo
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), air=document.getElementById('air');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- rivelazione delle sezioni ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- fumo di polvere che sale ---------- */
+  var cv=document.getElementById('smokecv'), ctx=cv&&cv.getContext?cv.getContext('2d'):null, parts=[], W=0,H=0;
+  function size(){ if(!ctx)return; W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    parts=[]; var n=Math.round(W*H/30000);
+    for(var i=0;i<n;i++) parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.4,v:.18+Math.random()*.5,drift:Math.random()*.5-.25,o:.04+Math.random()*.1}); }
+  function draw(){ if(!ctx)return; ctx.clearRect(0,0,W,H);
+    for(var i=0;i<parts.length;i++){ var p=parts[i];
+      p.y-=p.v; p.x+=p.drift+Math.sin(p.y*.008)*.1;
+      if(p.y<-4){ p.y=H+4; p.x=Math.random()*W; }
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fillStyle='rgba(160,150,132,'+p.o+')'; ctx.fill(); }
+    requestAnimationFrame(draw); }
+  if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  /* ---------- fondo: dal fumo al buio del fondo ---------- */
+  var shades=['#141210','#131110','#12100E','#11100E','#100E0C','#0F0D0B','#0E0C0A'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    document.getElementById('railDLab').textContent = (active.dataset.depth==='0') ? 'in mare' : 'Profondità';
+    if(!reduce){ air.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)]; }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- come si prova senza una firma (contatore di certezza) ---------- */
+  var fill=document.getElementById('cbarFill'), state=document.getElementById('cbarState'), qinfo=document.getElementById('qarinfo');
+  var counted={}, DATA={
+    luogo:{w:21,txt:'<b>Il luogo.</b> Il relitto giace all’imboccatura di Beaufort Inlet, esattamente dove le cronache dell’epoca collocano l’arenamento della Queen Anne’s Revenge nel giugno 1718. Un indizio forte: il posto giusto.'},
+    epoca:{w:21,txt:'<b>L’epoca.</b> Gli oggetti — ceramiche, bottiglie, armi — sono databili al primo Settecento, coerenti con il 1718. Il relitto non è né troppo antico né troppo recente per essere la QAR.'},
+    cannoni:{w:21,txt:'<b>L’armamento.</b> Sono stati recuperati una trentina di cannoni: un numero enorme per una nave mercantile, coerente invece con una nave da guerra da circa quaranta pezzi come la QAR di Barbanera.'},
+    fonti:{w:21,txt:'<b>Le fonti.</b> I documenti d’archivio — deposizioni, resoconti — raccontano che proprio lì, in quel giugno, l’ammiraglia di Barbanera si perse. Il relitto è l’unico candidato plausibile in quel punto.'},
+    firma:{w:0,txt:'<b>La firma mancante.</b> E qui il limite: nessun oggetto porta il nome della nave (la campana recuperata reca solo un’iscrizione religiosa). Per questo l’identificazione resta <b>accettata</b>, non <b>provata</b> come la Whydah. La somma degli indizi basta alla North Carolina — ma non è una firma.'}
+  };
+  function refresh(){
+    var pct=0; for(var k in counted){ if(counted[k]) pct+=DATA[k].w; }
+    fill.style.width=pct+'%';
+    state.textContent = pct===0 ? 'da costruire' : (pct>=84 ? 'accettata su base indiziaria' : (pct+'% — in costruzione'));
+  }
+  document.querySelectorAll('.clue').forEach(function(b){
+    b.addEventListener('click',function(){
+      var c=b.dataset.c; counted[c]=true; b.classList.add('on');
+      qinfo.innerHTML=DATA[c].txt; refresh();
+    });
+  });
+
+  /* ---------- metriche di scroll ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'026-queenannesrevenge',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] scheda 026 · '+m+'% a '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] sessione: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- iscrizione ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla — collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>
