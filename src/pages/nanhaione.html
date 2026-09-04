@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nanhai One — ~1180</title>
+<meta name="description" content="Un mercantile cinese della dinastia Song affondato otto secoli fa nel Mar Cinese Meridionale con oltre 180.000 oggetti. Nel 2007 fu sollevato tutto intero dentro un gigantesco cassone d'acciaio e portato in un museo: la più straordinaria capsula del tempo della Via della Seta marittima.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nanhai One — ~1180">
+<meta property="og:description" content="Non hanno recuperato la nave: hanno sollevato il mare intorno a lei. Un mercantile Song e le sue decine di migliaia di porcellane, scavati oggi a terra, in una piscina dentro un museo.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F4EFE4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --porcelain:#F4EFE4; --paper:#FBF8F0; --panel:#ECE4D4;
+  --ink:#2A2418; --ink2:#544B39; --fog:#8A8069;
+  --celadon:#4F7D66; --celadon2:#7DA98F; --qingbai:#6F9DB0;
+  --gold:#A9842E; --gold2:#C7A247; --seal:#B23A2E; --seal2:#CC5442;
+  --rule:rgba(42,36,24,.15);
+  --cjk:"Ma Shan Zheng",cursive;
+  --display:"Noto Serif",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--porcelain);color:var(--ink);font-family:var(--body);font-weight:300;line-height:1.66;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#kiln{position:fixed;inset:0;z-index:-4;background:var(--porcelain);transition:background 1.6s ease}
+#glow{position:fixed;left:50%;top:-8%;transform:translateX(-50%);width:70vw;height:64vh;z-index:-3;pointer-events:none;opacity:.5;transition:opacity 1s linear;
+  background:radial-gradient(ellipse at 50% 0%,rgba(201,162,71,.14),transparent 62%)}
+#crackle{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.5;
+  background:radial-gradient(ellipse at 22% 30%,rgba(125,169,143,.08),transparent 44%),
+             radial-gradient(ellipse at 80% 74%,rgba(111,157,176,.07),transparent 46%)}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--fog);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--celadon)}
+.rail-num{font-size:18px;color:var(--ink);font-weight:600;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.7;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(244,239,228,.82)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--celadon);margin-bottom:20px}
+h1{font-family:var(--cjk);font-weight:400;font-size:clamp(64px,14vw,150px);line-height:.94;letter-spacing:.01em;color:var(--ink)}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,4.4vw,46px);line-height:1.12;margin-bottom:22px;color:var(--ink)}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(42,36,24,.86)}
+.lede{font-size:20px;color:var(--ink)}
+em{font-style:italic;color:var(--ink2)}
+strong{font-weight:500;color:var(--ink);border-bottom:1px solid rgba(79,125,102,.4)}
+.hanzi{font-family:var(--cjk);color:var(--celadon)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--fog);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--fog)}
+.coord b{display:block;color:var(--ink);font-size:15px;font-weight:600;margin-top:3px}
+.conf{display:inline-flex;align-items:flex-start;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  color:var(--celadon);border:1px solid rgba(79,125,102,.4);padding:6px 11px;margin-top:28px;align-self:flex-start;max-width:66ch;line-height:1.6;background:rgba(255,255,255,.4)}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--celadon);flex:none;margin-top:5px}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--fog);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(42,36,24,.09)}
+.stat .v{font-family:var(--display);font-weight:600;font-size:clamp(28px,4.6vw,44px);line-height:1.05;color:var(--celadon);font-variant-numeric:tabular-nums}
+.stat .v.gold{color:var(--gold)}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);margin-top:10px;line-height:1.5}
+
+.moment{border-left:3px solid var(--gold);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(24px,4.2vw,38px);line-height:1.22;color:var(--ink);quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--fog);margin-top:18px}
+
+.wares{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;margin-top:20px;border:1px solid var(--rule);background:var(--paper)}
+.ware{padding:18px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.ware svg{width:100%;height:88px;display:block;margin-bottom:12px}
+.ware .wn{font-family:var(--display);font-weight:600;font-size:16px;color:var(--ink)}
+.ware .wd{font-family:var(--mono);font-size:11px;color:var(--ink2);line-height:1.6;margin-top:5px}
+
+.caisson{margin-top:14px;border:1px solid var(--rule);background:var(--paper);padding:22px 20px;box-shadow:0 8px 30px rgba(42,36,24,.06)}
+.castog{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.castog button{font-family:var(--mono);font-size:11px;letter-spacing:.02em;background:transparent;color:var(--ink2);
+  border:1px solid var(--rule);padding:9px 12px;cursor:pointer;transition:border-color .2s,color .2s,background .2s}
+.castog button:hover{color:var(--ink);border-color:var(--celadon)}
+.castog button[aria-pressed="true"]{color:#fff;background:var(--celadon);border-color:var(--celadon);font-weight:500}
+.caisson svg{width:100%;height:auto;display:block;background:linear-gradient(to bottom,#EAF0EC,#DCE7E0)}
+.cplate{display:none}
+.cplate.on{display:block}
+#casinfo{font-family:var(--mono);font-size:12px;color:var(--ink2);margin-top:16px;min-height:58px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.8}
+#casinfo b{color:var(--celadon);font-weight:600}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(42,36,24,.09);vertical-align:top;color:rgba(42,36,24,.8)}
+td.n{color:var(--ink);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:var(--fog);line-height:1.75;margin-top:22px;max-width:60ch}
+
+.realimg{margin-top:22px;border:1px solid rgba(169,132,46,.32);background:rgba(201,162,71,.06);padding:22px}
+.realimg .badge{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.realimg p{margin-bottom:14px}
+.arclinks{display:grid;gap:2px;margin-top:6px}
+.arclinks a{display:flex;gap:20px;align-items:baseline;padding:18px 0;text-decoration:none;color:inherit;
+  border-bottom:1px solid rgba(42,36,24,.09);transition:padding-left .3s ease,border-color .3s ease}
+.arclinks a:first-child{border-top:1px solid rgba(42,36,24,.09)}
+.arclinks a:hover,.arclinks a:focus-visible{padding-left:12px;border-bottom-color:var(--celadon)}
+.arclinks .arch{font-family:var(--mono);font-size:11px;color:var(--qingbai);min-width:150px}
+.arclinks .ttl{font-size:15.5px;color:var(--ink)}
+.arclinks .meta{font-size:13px;color:rgba(42,36,24,.58);margin-top:3px;max-width:46ch}
+.arclinks .go{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--fog);opacity:0;transition:opacity .3s}
+.arclinks a:hover .go,.arclinks a:focus-visible .go{opacity:1}
+.realimg .cite{font-family:var(--mono);font-size:11px;color:var(--fog);line-height:1.6;margin-top:14px}
+
+.shipart{margin-top:22px;border:1px solid var(--rule);background:var(--paper);padding:18px 18px 12px}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:var(--fog);letter-spacing:.05em;margin-top:10px}
+.nhship{transform-box:fill-box;transform-origin:50% 86%;animation:nhbob 9s ease-in-out infinite}
+@keyframes nhbob{0%,100%{transform:rotate(-.7deg) translateY(0)}50%{transform:rotate(.7deg) translateY(-2px)}}
+.nhsail{transform-box:fill-box;transform-origin:50% 100%;animation:nhsail 6s ease-in-out infinite}
+@keyframes nhsail{0%,100%{transform:skewX(0deg)}50%{transform:skewX(-4deg)}}
+.nhwave{animation:nhwave 6s ease-in-out infinite}
+@keyframes nhwave{0%,100%{transform:translateX(0)}50%{transform:translateX(-8px)}}
+
+.closing{border-top:2px solid var(--celadon);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--fog);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:#fff;border:1px solid var(--rule);color:var(--ink);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--celadon);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--celadon);color:#fff;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.88}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--celadon)}
+.signup .msg.err{color:var(--seal)}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--ink2);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--celadon);border-color:var(--celadon)}
+.src{font-family:var(--mono);font-size:11.5px;color:var(--fog);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:15px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+  .ware{border-right:none} .arclinks a{flex-wrap:wrap;gap:6px} .arclinks .go{display:none} .arclinks .arch{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #kiln,#glow{transition:none}
+  .nhship,.nhsail,.nhwave{animation:none}
+}
+:focus-visible{outline:2px solid var(--celadon);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="kiln"></div>
+<div id="glow"></div>
+<div id="crackle"></div>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Anno</div><div class="rail-num" id="railYear">~1180</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Profondità</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1180" data-depth="0">
+  <div class="eyebrow">Mercantile cinese · dinastia Song · ~1180 · <span class="hanzi">南海一号</span></div>
+  <h1>Nanhai One</h1>
+  <div class="sub">SOLLEVATA TUTTA INTERA IN UN CASSONE D'ACCIAIO · VIA DELLA SETA MARITTIMA</div>
+  <div class="coordbox">
+    <div class="coord">Dove giaceva<b>Mar Cinese Meridionale, Guangdong · ~24 m</b></div>
+    <div class="coord">Il carico<b>oltre 180.000 oggetti, soprattutto ceramica</b></div>
+    <div class="coord">Oggi<b>Maritime Silk Road Museum, Hailing</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>SCAVATA A TERRA, IN MUSEO · SCAFO E CARICO CONSERVATI NELLA PISCINA DEL "PALAZZO DI CRISTALLO"</div>
+  <div class="scrollcue">↓ scorri — nella luce calda della porcellana</div>
+</section>
+
+<section class="reveal" data-year="2007" data-depth="24">
+  <div class="eyebrow">Perché questo relitto</div>
+  <h2>Non hanno recuperato la nave. Hanno sollevato il mare.</h2>
+  <p class="lede">Tutti gli altri relitti si scavano dove sono affondati. Con la Nanhai One la Cina ha fatto qualcosa che non era mai stato tentato: ha racchiuso l'intero relitto — nave, fango e mare intorno — in una gigantesca scatola d'acciaio, e ha sollevato tutto insieme, per scavarlo con calma a terra, dentro un museo.</p>
+  <p>È un mercantile della dinastia <strong>Song</strong>, affondato più di ottocento anni fa nel Mar Cinese Meridionale mentre trasportava un carico immenso: oltre centottantamila oggetti, in gran parte porcellane fabbricate per l'esportazione. È la più ricca capsula del tempo della <strong>Via della Seta marittima</strong> — la prova, otto secoli fa, che la Cina produceva in serie per mezzo mondo.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">~1180</div><div class="k">l'epoca (dinastia Song)</div></div>
+    <div class="stat"><div class="v gold">180.000+</div><div class="k">oggetti recuperati</div></div>
+    <div class="stat"><div class="v">~24</div><div class="k">metri di profondità</div></div>
+    <div class="stat"><div class="v">2007</div><div class="k">l'anno del sollevamento</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1180" data-depth="0">
+  <div class="eyebrow">La Via della Seta marittima</div>
+  <h2>Quando la Cina era la fabbrica del mondo</h2>
+  <p>Nel XII secolo la Cina dei Song meridionali è la più grande potenza commerciale del pianeta. Dai suoi porti — Quanzhou, Guangzhou — partono ogni anno flotte di giunche cariche di seta, lacche e soprattutto <strong>ceramica</strong>, dirette verso il Sud-est asiatico, l'India, il mondo islamico. È una rete di scambi che collega la Cina all'Africa: la Via della Seta, ma via mare.</p>
+  <div class="moment">
+    <q>Ottocento anni fa, la Cina produceva già in serie per il mondo.</q>
+    <cite>IL CARICO DELLA NANHAI ONE: DECINE DI MIGLIAIA DI CERAMICHE FABBRICATE PER L'ESPORTAZIONE</cite>
+  </div>
+  <p>La Nanhai One era una di quelle giunche mercantili, partita da un porto cinese con la stiva piena. Non arrivò mai. E proprio perché non arrivò — perché il suo carico non fu venduto e disperso, ma sigillato dal fango del fondale — oggi possiamo aprirla come un catalogo intatto di quel commercio.</p>
+</section>
+
+<section class="reveal" data-year="1180" data-depth="24">
+  <div class="eyebrow">Il carico</div>
+  <h2>Una stiva di porcellana</h2>
+  <p>La maggior parte del carico sono ceramiche delle grandi fornaci Song, impilate a decine di migliaia. Non pezzi unici da corte, ma produzione di serie, di qualità, pensata per i mercati esteri — ognuno con il suo stile e il suo colore.</p>
+  <div class="wares">
+    <div class="ware">
+      <svg viewBox="0 0 120 88" role="img" aria-label="Celadon di Longquan"><ellipse cx="60" cy="70" rx="34" ry="9" fill="rgba(79,125,102,.2)"/><path d="M40 40 Q60 30 80 40 L74 66 Q60 72 46 66 Z" fill="#8FBBA2" stroke="#4F7D66" stroke-width="1.4"/><path d="M46 44 Q60 38 74 44" fill="none" stroke="#4F7D66" stroke-width="1" opacity=".6"/></svg>
+      <div class="wn">Celadon di Longquan</div>
+      <div class="wd">Il verde giada, invidiato in tutta l'Asia. Domina il carico.</div>
+    </div>
+    <div class="ware">
+      <svg viewBox="0 0 120 88" role="img" aria-label="Qingbai di Jingdezhen"><ellipse cx="60" cy="70" rx="34" ry="9" fill="rgba(111,157,176,.18)"/><path d="M44 38 L76 38 L72 64 Q60 70 48 64 Z" fill="#DCEAEF" stroke="#6F9DB0" stroke-width="1.4"/><line x1="52" y1="42" x2="50" y2="62" stroke="#6F9DB0" stroke-width=".8" opacity=".6"/><line x1="60" y1="42" x2="60" y2="64" stroke="#6F9DB0" stroke-width=".8" opacity=".6"/></svg>
+      <div class="wn">Qingbai di Jingdezhen</div>
+      <div class="wd">Bianco-azzurro traslucido, quasi vetro: la porcellana che farà famosa la Cina.</div>
+    </div>
+    <div class="ware">
+      <svg viewBox="0 0 120 88" role="img" aria-label="Ceramiche di Dehua e Cizao"><ellipse cx="60" cy="70" rx="34" ry="9" fill="rgba(169,132,46,.16)"/><path d="M46 42 Q60 34 74 42 L70 66 L50 66 Z" fill="#EDE3CC" stroke="#A9842E" stroke-width="1.4"/><circle cx="60" cy="50" r="5" fill="none" stroke="#A9842E" stroke-width="1" opacity=".7"/></svg>
+      <div class="wn">Dehua e Cizao</div>
+      <div class="wd">Bianco d'avorio e grès robusto: le stoviglie da carico per i mercati popolari.</div>
+    </div>
+    <div class="ware">
+      <svg viewBox="0 0 120 88" role="img" aria-label="Oro e monete"><ellipse cx="60" cy="72" rx="30" ry="8" fill="rgba(169,132,46,.18)"/><circle cx="48" cy="52" r="12" fill="none" stroke="#C7A247" stroke-width="2"/><rect x="44" y="48" width="8" height="8" fill="none" stroke="#C7A247" stroke-width="1.4"/><path d="M66 44 q16 4 12 20 q-16 -4 -12 -20 Z" fill="#E6C877" stroke="#A9842E" stroke-width="1.2"/></svg>
+      <div class="wn">Oro e monete</div>
+      <div class="wd">Un centinaio di oggetti d'oro e migliaia di monete di rame: la valuta del commercio.</div>
+    </div>
+  </div>
+  <p class="note">Delle oltre 180.000 unità recuperate in oltre un decennio di scavo, la grande maggioranza sono ceramiche (fonti: da ~60.000 a ~80.000 i pezzi ceramici finora contati), affiancate da circa un centinaio di manufatti d'oro e da migliaia di monete. Le cifre crescono a ogni campagna di scavo: sono un conteggio in corso, non definitivo.</p>
+</section>
+
+<section class="reveal" data-year="2007" data-depth="24">
+  <div class="eyebrow">Il meccanismo · il sollevamento</div>
+  <h2>Sollevare il mare</h2>
+  <p>Il modo normale di scavare un relitto è mandare giù i sommozzatori. Qui l'acqua era torbida e il carico troppo fragile e disperso. Così gli archeologi cinesi scelsero una via mai tentata prima. Segui i quattro passi.</p>
+  <div class="caisson">
+    <div class="castog">
+      <button data-c="0" aria-pressed="true">1 · 1987 · sul fondo</button>
+      <button data-c="1" aria-pressed="false">2 · Il cassone</button>
+      <button data-c="2" aria-pressed="false">3 · 2007 · su, intera</button>
+      <button data-c="3" aria-pressed="false">4 · Il Palazzo di Cristallo</button>
+    </div>
+    <svg viewBox="0 0 560 300" role="img" aria-label="Il sollevamento della Nanhai One dentro un cassone d'acciaio">
+      <title>Sollevare il mare</title>
+      <!-- 0: sul fondo -->
+      <g class="cplate on" data-c="0">
+        <rect x="0" y="70" width="560" height="230" fill="rgba(111,157,176,.14)"/>
+        <rect x="0" y="240" width="560" height="60" fill="rgba(169,132,46,.14)"/>
+        <line x1="0" y1="240" x2="560" y2="240" stroke="rgba(169,132,46,.5)" stroke-width="1"/>
+        <path d="M210 240 Q220 214 280 212 Q345 214 352 240 Z" fill="rgba(79,125,102,.4)" stroke="#4F7D66" stroke-width="1.4"/>
+        <line x1="252" y1="214" x2="248" y2="176" stroke="#6B5A38" stroke-width="2.4"/>
+        <line x1="308" y1="214" x2="312" y2="182" stroke="#6B5A38" stroke-width="2.4"/>
+        <text x="280" y="266" fill="#6A5F48" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="middle" letter-spacing="1">RELITTO SOTTO IL FANGO · ~24 m</text>
+        <text x="20" y="94" fill="#6F9DB0" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1">MAR CINESE MERIDIONALE</text>
+      </g>
+      <!-- 1: il cassone -->
+      <g class="cplate" data-c="1">
+        <rect x="0" y="70" width="560" height="230" fill="rgba(111,157,176,.14)"/>
+        <rect x="0" y="240" width="560" height="60" fill="rgba(169,132,46,.14)"/>
+        <path d="M210 240 Q220 214 280 212 Q345 214 352 240 Z" fill="rgba(79,125,102,.4)" stroke="#4F7D66" stroke-width="1.2"/>
+        <rect x="176" y="150" width="208" height="132" fill="none" stroke="#8A8069" stroke-width="4"/>
+        <line x1="176" y1="200" x2="384" y2="200" stroke="#B0A588" stroke-width="1"/>
+        <line x1="280" y1="150" x2="280" y2="282" stroke="#B0A588" stroke-width="1"/>
+        <text x="280" y="140" fill="#6A5F48" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="middle" letter-spacing="1">CASSONE D'ACCIAIO CALATO INTORNO</text>
+      </g>
+      <!-- 2: sollevamento -->
+      <g class="cplate" data-c="2">
+        <rect x="0" y="70" width="560" height="230" fill="rgba(111,157,176,.10)"/>
+        <line x1="120" y1="20" x2="200" y2="70" stroke="#8A8069" stroke-width="2"/>
+        <line x1="440" y1="20" x2="360" y2="70" stroke="#8A8069" stroke-width="2"/>
+        <line x1="230" y1="30" x2="230" y2="96" stroke="#8A8069" stroke-width="1.6"/>
+        <line x1="330" y1="30" x2="330" y2="96" stroke="#8A8069" stroke-width="1.6"/>
+        <rect x="176" y="96" width="208" height="132" fill="rgba(138,128,105,.14)" stroke="#6B5A38" stroke-width="4"/>
+        <path d="M210 214 Q220 190 280 188 Q345 190 352 214 Z" fill="rgba(79,125,102,.4)" stroke="#4F7D66" stroke-width="1.2"/>
+        <rect x="0" y="252" width="560" height="48" fill="rgba(111,157,176,.14)"/>
+        <text x="280" y="86" fill="#6A5F48" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="middle" letter-spacing="1">~15.600 t SOLLEVATE TUTTE INSIEME</text>
+      </g>
+      <!-- 3: museo -->
+      <g class="cplate" data-c="3">
+        <rect x="0" y="40" width="560" height="260" fill="rgba(201,162,71,.06)"/>
+        <path d="M40 70 L280 34 L520 70" fill="none" stroke="#A9842E" stroke-width="2"/>
+        <rect x="150" y="150" width="260" height="110" fill="rgba(111,157,176,.2)" stroke="#6F9DB0" stroke-width="2"/>
+        <path d="M188 260 Q200 236 280 234 Q360 236 372 260 Z" fill="rgba(79,125,102,.4)" stroke="#4F7D66" stroke-width="1.2"/>
+        <g fill="#6A5F48"><rect x="70" y="238" width="6" height="22"/><rect x="86" y="240" width="6" height="20"/><rect x="470" y="238" width="6" height="22"/><rect x="486" y="240" width="6" height="20"/></g>
+        <text x="280" y="140" fill="#A9842E" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="middle" letter-spacing="1">IL «PALAZZO DI CRISTALLO» · SCAVO A TERRA</text>
+      </g>
+      <text x="20" y="26" fill="#8A8069" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">SCHEMA · NON IN SCALA · CLICCA I PASSI</text>
+    </svg>
+    <div id="casinfo"><b>1987 · sul fondo.</b> Il relitto viene individuato per caso a circa 24 metri, sepolto dal fango — che paradossalmente lo ha protetto per otto secoli. Ma l'acqua è torbida e il carico troppo disperso per uno scavo subacqueo tradizionale.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1987" data-depth="24">
+  <div class="eyebrow">1987 · il ritrovamento</div>
+  <h2>Cercavano un'altra nave</h2>
+  <p>La scoperta fu, come tante, un colpo di fortuna. Nel 1987 una squadra cinese, insieme a una società di recupero britannica, stava cercando il relitto di una nave della <strong>Compagnia delle Indie Orientali olandese</strong> affondata in quelle acque. Non trovarono l'olandese: trovarono, invece, qualcosa di molto più antico e prezioso — una giunca cinese di otto secoli prima, con la stiva ancora piena.</p>
+  <p class="lede">Ci vollero vent'anni di studi e tecnologia prima di osare toccarla.</p>
+  <p>La Cina scelse di aspettare, di sviluppare il metodo giusto, e persino di tenere per anni la scoperta lontano dai riflettori. Non una caccia al tesoro, ma un'operazione scientifica di Stato, culminata nel sollevamento del 2007.</p>
+</section>
+
+<section class="reveal" data-year="2009" data-depth="0">
+  <div class="eyebrow">La seconda vita</div>
+  <h2>Un museo costruito attorno a un relitto</h2>
+  <p>Il cassone con la Nanhai One dentro fu depositato in una piscina gigantesca — il <strong>"Palazzo di Cristallo"</strong> — dentro il Maritime Silk Road Museum, costruito apposta sull'isola di Hailing. Lunga sessantaquattro metri, la vasca contiene acqua di mare che riproduce le condizioni del fondale, per non far collassare il legno.</p>
+  <p>Qui accade una cosa unica al mondo: gli archeologi scavano il relitto <em>a terra</em>, lentamente, mentre i visitatori li guardano lavorare attraverso i vetri. Lo scavo non è finito — va avanti da più di un decennio. La Nanhai One non è un reperto esposto: è un cantiere archeologico vivo, che ogni anno restituisce qualcosa di nuovo.</p>
+</section>
+
+<section class="reveal" data-year="1180" data-depth="24">
+  <div class="eyebrow">La nave</div>
+  <h2>Una giunca da alto mare</h2>
+  <p>La Nanhai One era una giunca mercantile lunga una trentina di metri, con lo scafo suddiviso in <strong>compartimenti stagni</strong> — un'invenzione cinese che l'Europa avrebbe adottato solo secoli dopo, e che qui aiutò a mantenere insieme lo scafo. Vele di stuoia irrigidite da stecche, prua tondeggiante: una nave robusta, fatta per attraversare i mari carichi del Sud.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 640 220" role="img" aria-label="Illustrazione stilizzata della giunca mercantile Nanhai One">
+      <title>La giunca Nanhai One</title>
+      <path d="M-20 176 q 60 -6 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(111,157,176,.45)" stroke-width="1.4" class="nhwave"/>
+      <path d="M-20 188 q 60 -5 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(79,125,102,.4)" stroke-width="1.2" class="nhwave"/>
+      <g class="nhship">
+        <path d="M150 168 L180 150 L470 150 L512 160 L500 172 Q325 184 162 172 Z" fill="#8A6A3A" stroke="#5A4522" stroke-width="1.3"/>
+        <path d="M470 150 L512 128 L512 160 Z" fill="#6B5230" stroke="#5A4522" stroke-width="1.2"/>
+        <line x1="250" y1="150" x2="250" y2="52" stroke="#5A4522" stroke-width="3"/>
+        <line x1="372" y1="150" x2="372" y2="66" stroke="#5A4522" stroke-width="2.8"/>
+        <path class="nhsail" d="M256 66 L336 62 L336 148 L256 148 Z" fill="#D9CBA6" stroke="#A9842E" stroke-width="1.2"/>
+        <path class="nhsail" d="M378 78 L446 74 L446 148 L378 148 Z" fill="#E3D7B6" stroke="#A9842E" stroke-width="1.2"/>
+        <g stroke="#A9842E" stroke-width=".8" opacity=".7"><line x1="256" y1="86" x2="336" y2="83"/><line x1="256" y1="106" x2="336" y2="103"/><line x1="256" y1="126" x2="336" y2="124"/><line x1="378" y1="98" x2="446" y2="95"/><line x1="378" y1="122" x2="446" y2="120"/></g>
+        <line x1="180" y1="156" x2="500" y2="156" stroke="#C7A247" stroke-width="1"/>
+      </g>
+      <text x="20" y="28" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">GIUNCA MERCANTILE SONG — RICOSTRUZIONE STILIZZATA</text>
+    </svg>
+    <figcaption>Ricostruzione stilizzata. Lo scafo autentico è nella piscina del museo; i reperti reali sono presso gli archivi qui sotto.</figcaption>
+  </figure>
+  <div class="realimg">
+    <div class="badge">Documenti e immagini reali</div>
+    <p>Il relitto, il sollevamento e il carico di porcellane sono documentati dal museo e dai reportage che li hanno raccontati.</p>
+    <div class="arclinks">
+      <a href="https://www.nationalgeographic.com/history/history-magazine/article/china-kept-this-800-year-old-shipwreck-a-secret-for-decades" target="_blank" rel="noopener">
+        <span class="arch">NATIONAL GEOGRAPHIC</span>
+        <span><span class="ttl">La nave tenuta segreta per decenni</span><span class="meta">La scoperta del 1987, l'attesa e il significato della Nanhai One nella storia del commercio.</span></span>
+        <span class="go">nationalgeographic.com ↗</span>
+      </a>
+      <a href="https://macaomagazine.net/the-return-of-nanhai-no-1/" target="_blank" rel="noopener">
+        <span class="arch">MACAO MAGAZINE</span>
+        <span><span class="ttl">Il ritorno della Nanhai No 1</span><span class="meta">Il sollevamento del 2007 nel cassone e il museo costruito attorno al relitto.</span></span>
+        <span class="go">macaomagazine.net ↗</span>
+      </a>
+      <a href="https://www.ancient-origins.net/news-history-archaeology/more-artifacts-song-dynasty-chinese-shipwreck-revealed-005148" target="_blank" rel="noopener">
+        <span class="arch">ANCIENT ORIGINS</span>
+        <span><span class="ttl">I reperti che continuano a emergere</span><span class="meta">Le porcellane, l'oro e le monete via via riportati alla luce dallo scavo a terra.</span></span>
+        <span class="go">ancient-origins.net ↗</span>
+      </a>
+    </div>
+    <p class="cite">Immagini e documentazione presso il Maritime Silk Road Museum of Guangdong e le testate citate, riprodotte con attribuzione presso le fonti, non ospitate su questo sito.</p>
+  </div>
+</section>
+
+<section class="reveal" data-year="1180" data-depth="24">
+  <div class="eyebrow">La rotta</div>
+  <h2>Il viaggio interrotto</h2>
+  <p>Da un porto cinese verso i mercati del Sud, con la stiva di porcellana. Il tratto continuo è quanto navigò lungo la costa; il tratteggio, il mare aperto verso il Sud-est asiatico che non attraversò mai.</p>
+  <!--ROUTEMAP-->
+</section>
+
+<section class="reveal" data-year="2007" data-depth="24">
+  <div class="eyebrow">I numeri</div>
+  <h2>La nave, misurata</h2>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Valore</th></tr></thead>
+    <tbody>
+      <tr><td>Tipo</td><td class="n">giunca mercantile cinese (dinastia Song)</td></tr>
+      <tr><td>Epoca</td><td class="n">~1180 (Song meridionali)</td></tr>
+      <tr><td>Lunghezza</td><td class="n">~30 m, scafo a compartimenti stagni</td></tr>
+      <tr><td>Carico</td><td class="n">oltre 180.000 oggetti, in gran parte ceramica</td></tr>
+      <tr><td>Profondità</td><td class="n">~24 m, sepolta nel fango</td></tr>
+      <tr><td>Ritrovata</td><td class="n">1987 (cercando un relitto olandese)</td></tr>
+      <tr><td>Sollevamento</td><td class="n">2007, in un cassone d'acciaio (~15.600 t)</td></tr>
+      <tr><td>Oggi</td><td class="n">Maritime Silk Road Museum, isola di Hailing</td></tr>
+      <tr><td>Scavo</td><td class="n">in corso, a terra, dal 2007</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Le cifre del carico crescono a ogni campagna (oltre 180.000 unità recuperate in un decennio di scavo). Datazione, lunghezza e peso sollevato provengono dal museo e dalla letteratura; il peso di ~15.600 t comprende cassone, scafo, fango e acqua. Lo scavo non è concluso: i numeri sono provvisori.</p>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">Nota metodologica</div>
+  <h2>Cosa questa pagina tiene onesto</h2>
+  <p>Che i numeri sono in movimento. La Nanhai One si scava ancora, e ogni anno il conteggio cambia: la pagina dà gli ordini di grandezza dichiarandoli provvisori, invece di fissare una cifra come se fosse definitiva. La datazione stessa è una forbice ("dinastia Song, intorno al 1180"), non una data al giorno.</p>
+  <p>E che questa non è una caccia al tesoro, ma archeologia di Stato: il valore della Nanhai One non è nell'oro, ma in ciò che il suo carico insegna sul commercio globale di otto secoli fa — quando le porcellane cinesi arrivavano fino all'Africa. È un relitto che si guarda scavare, non si depreda: forse il modello più avanzato al mondo di come si tratta una nave-capsula del tempo.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 030 di 20+ · la serie continua</div>
+    <h2 style="margin-bottom:14px">La prossima torna nel Nord: la Gribshunden</h2>
+    <p>Dalla Cina Song alla Scandinavia del Rinascimento. La nave ammiraglia di re Hans di Danimarca, bruciata e affondata nel 1495 nel Baltico, è uno dei relitti meglio conservati dell'epoca — e restituisce una polena mostruosa intagliata nel legno, un drago marino sopravvissuto cinque secoli.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce la prossima scheda</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="vrouwmaria.html">← Scheda 029: la Vrouw Maria</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">Tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · National Geographic «China kept this 800-year-old shipwreck a secret for decades» (scoperta 1987, contesto, significato) · Macao Magazine «The Return of Nanhai No 1» (sollevamento 2007, cassone, museo) · Wikipedia «Nanhai One» (dati, dinastia Song, ~180.000 oggetti) · Ancient Origins e reportage sui reperti (porcellane Longquan/Jingdezhen, oro, monete) · Maritime Silk Road Museum of Guangdong, isola di Hailing (il «Palazzo di Cristallo», scavo a terra)<br><br>
+      Wreck Atlas · Scheda 030 · Prototipo
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), kiln=document.getElementById('kiln'), glow=document.getElementById('glow');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- rivelazione delle sezioni ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- fondo caldo: porcellana → celadon → oro del museo ---------- */
+  var shades=['#F4EFE4','#F1ECE0','#ECEFE6','#E8EFE9','#F3ECDA','#F4EEDE','#F5F1E7'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    document.getElementById('railDLab').textContent = (active.dataset.depth==='0') ? 'in superficie' : 'Profondità';
+    if(!reduce){
+      kiln.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)];
+      glow.style.opacity=String(Math.max(.2, 1-Math.abs(p-0.5)/0.4));
+    }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- sollevare il mare ---------- */
+  var casBtns=document.querySelectorAll('.castog button'), cplates=document.querySelectorAll('.cplate'), casinfo=document.getElementById('casinfo');
+  var CAS=[
+    '<b>1987 · sul fondo.</b> Il relitto viene individuato per caso a circa 24 metri, sepolto dal fango — che paradossalmente lo ha protetto per otto secoli. Ma l’acqua è torbida e il carico troppo disperso per uno scavo subacqueo tradizionale.',
+    '<b>Il cassone.</b> Invece di scavare sott’acqua, gli ingegneri costruiscono un enorme cassone d’acciaio e lo calano intorno all’intero relitto, racchiudendo nave, carico e fango del fondale in un’unica scatola sigillata.',
+    '<b>2007 · su, tutta intera.</b> Il cassone viene sollevato in un colpo solo: circa 15.600 tonnellate tra acciaio, scafo, sedimenti e acqua. Nessuno aveva mai recuperato un relitto senza smontarlo — qui si è sollevato anche il mare intorno.',
+    '<b>Il Palazzo di Cristallo.</b> Il cassone finisce in una piscina d’acqua marina dentro un museo costruito apposta. Lì gli archeologi scavano la nave a terra, lentamente, mentre il pubblico li guarda lavorare attraverso i vetri.'
+  ];
+  function setCas(i){
+    casBtns.forEach(function(b){ b.setAttribute('aria-pressed', String(+b.dataset.c===i)); });
+    cplates.forEach(function(pl){ pl.classList.toggle('on', +pl.dataset.c===i); });
+    casinfo.innerHTML=CAS[i];
+  }
+  casBtns.forEach(function(b){ b.addEventListener('click',function(){ setCas(+b.dataset.c); }); });
+
+  /* ---------- metriche di scroll ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'030-nanhaione',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] scheda 030 · '+m+'% a '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] sessione: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- iscrizione ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla — collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>

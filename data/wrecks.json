@@ -303,9 +303,10 @@
     "lat": 21.7,
     "lon": 112.2,
     "d": 20,
-    "st": "next",
+    "st": "ready",
     "f": "Mercantile cinese della dinastia Song affondato nel Mar Cinese Meridionale con oltre 180.000 oggetti. Nel 2007 è stato sollevato intero, dentro un enorme cassone d'acciaio, e portato in un museo costruito attorno a lui.",
-    "f_en": "A Chinese merchant ship of the Song dynasty (~1180), recovered whole off Guangdong with tens of thousands of objects. A landmark of maritime archaeology."
+    "f_en": "A Chinese merchant ship of the Song dynasty (~1180), recovered whole off Guangdong with tens of thousands of objects. A landmark of maritime archaeology.",
+    "href": "nanhaione.html"
   },
   {
     "id": "wilhelm-gustloff",
@@ -404,7 +405,7 @@
     "lat": 56.15,
     "lon": 15.35,
     "d": 10,
-    "st": "planned",
+    "st": "next",
     "f": "Nave ammiraglia di re Hans di Danimarca, affondata per un incendio nel Baltico nel 1495. Conservata benissimo dall'acqua fredda, con una polena a forma di mostro marino: una delle navi medievali meglio superstiti al mondo.",
     "f_en": "Warship of the Danish king Hans, sunk in 1495. One of the oldest and best-preserved carvel-built ships in the world, with a famous carved figurehead."
   },

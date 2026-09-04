@@ -974,5 +974,49 @@
       "wreck": "#B58A3D",
       "label": "#41525C"
     }
+  },
+  "nanhaione.html": {
+    "from": {
+      "n": "Quanzhou (Zayton)",
+      "lon": 118.6,
+      "lat": 24.9,
+      "n_en": "Quanzhou (Zayton)"
+    },
+    "via": [
+      {
+        "n": "Guangzhou",
+        "lon": 113.3,
+        "lat": 23.1,
+        "n_en": "Guangzhou"
+      }
+    ],
+    "via_after": [
+      {
+        "n": "lo stretto di Malacca",
+        "lon": 100.4,
+        "lat": 3.0,
+        "n_en": "the Strait of Malacca"
+      }
+    ],
+    "to": {
+      "n": "il Sud-est asiatico",
+      "lon": 104.7,
+      "lat": -2.9,
+      "n_en": "Southeast Asia"
+    },
+    "wreck_label": "affondata (la porcellana)",
+    "wreck_label_en": "sunk (the porcelain)",
+    "caption": "Da un porto della Cina Song verso i mercati del Sud, con la stiva di porcellana da esportazione. Il tratto continuo è la costa che risalì; il tratteggio, il mare aperto verso il Sud-est asiatico e l'Oceano Indiano che non attraversò mai, affondando al largo del Guangdong.",
+    "caption_en": "From a port of Song China toward the markets of the South, her hold full of export porcelain. The solid line is the coast she followed; the dashed line, the open sea toward Southeast Asia and the Indian Ocean she never crossed, going down off Guangdong.",
+    "palette": {
+      "bg": "#F4EFE4",
+      "land": "#E4DCC9",
+      "coast": "#A69A80",
+      "plan": "#AEA48A",
+      "done": "#4F7D66",
+      "port": "#2A2418",
+      "wreck": "#B23A2E",
+      "label": "#6A5F48"
+    }
   }
 }
