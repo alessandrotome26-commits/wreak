@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Andrea Doria — 1956</title>
+<meta name="description" content="The Italian liner Andrea Doria, rammed in the fog by the Stockholm off Nantucket in 1956. A great rescue (1,660 saved) and, today, the 'Mount Everest' of scuba diving at 76 metres.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Andrea Doria — 1956">
+<meta property="og:description" content="Two ships with radar collide in the fog. 51 dead, but 1,660 saved in eleven hours. Today the wreck is the 'Mount Everest' of diving — and it has killed those who go to visit it.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#DBE1E3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fogbg:#DBE1E3; --fog2:#CFD8DD; --panel:#EEF2F3;
+  --ink:#212A30; --ink2:#4A5860; --mute:#6E7A80;
+  --navy:#26506B; --navy2:#1C3E54; --gold:#8F6C22; --gold2:#A98432; --rosso:#A22E2E; --rosso2:#872020; --teal:#2E7A78;
+  --rule:rgba(33,42,48,.16);
+  --display:"Italiana",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--fogbg);color:var(--ink);font-family:var(--body);font-weight:400;line-height:1.66;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#water{position:fixed;inset:0;z-index:-4;background:var(--fogbg);transition:background 1.6s ease}
+#fog{position:fixed;inset:-14%;z-index:-3;pointer-events:none;opacity:.9;
+  background:radial-gradient(circle at 24% 30%,rgba(255,255,255,.75),transparent 30%),
+             radial-gradient(circle at 66% 22%,rgba(255,255,255,.6),transparent 26%),
+             radial-gradient(circle at 82% 62%,rgba(255,255,255,.66),transparent 28%),
+             radial-gradient(circle at 40% 76%,rgba(255,255,255,.55),transparent 26%);
+  filter:blur(4px);animation:fogdrift 44s ease-in-out infinite alternate}
+@keyframes fogdrift{0%{transform:translate3d(-3%,-1%,0) scale(1.02)}100%{transform:translate3d(3%,2%,0) scale(1.1)}}
+#mist{position:fixed;inset:0;z-index:-2;pointer-events:none}
+#cool{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1s linear;
+  background:radial-gradient(ellipse at 50% 74%,rgba(46,122,120,.10),transparent 62%)}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--mute);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--rosso)}
+.rail-num{font-size:19px;color:var(--ink);font-weight:500;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.6;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(219,225,227,.82)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--navy);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(56px,12vw,124px);line-height:.98;letter-spacing:.01em;color:var(--ink)}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(31px,5vw,52px);line-height:1.1;margin-bottom:22px;color:var(--ink)}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(33,42,48,.82);font-weight:300}
+.lede{font-size:20px;color:var(--ink);font-weight:400}
+em{font-style:italic;color:var(--ink2)}
+strong{font-weight:500;color:var(--ink)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--mute);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--mute)}
+.coord b{display:block;color:var(--ink);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid rgba(143,108,34,.45);padding:5px 10px;margin-top:28px;align-self:flex-start;max-width:64ch;line-height:1.5}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex:none}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(110,122,128,.9);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(33,42,48,.1)}
+.stat .v{font-family:var(--display);font-size:clamp(32px,5vw,50px);line-height:1;color:var(--navy);font-variant-numeric:tabular-nums}
+.stat .v.red{color:var(--rosso)}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);margin-top:10px;line-height:1.5}
+
+.moment{border-left:3px solid var(--gold);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-size:clamp(27px,4.8vw,44px);line-height:1.18;quotes:"\201C" "\201D";color:var(--ink)}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--mute);margin-top:18px}
+
+.tl{border-left:1px solid var(--rule);margin-top:8px}
+.tl-item{padding:0 0 34px 28px;position:relative}
+.tl-item::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--fogbg);border:1px solid var(--mute)}
+.tl-item.key::before{background:var(--rosso);border-color:var(--rosso);box-shadow:0 0 0 5px rgba(162,46,46,.13)}
+.tl-y{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--navy);margin-bottom:5px}
+.tl-item.key .tl-y{color:var(--rosso)}
+.tl-t{font-size:17px;color:var(--ink);margin-bottom:4px}
+.tl-d{font-size:14.5px;color:rgba(33,42,48,.62);max-width:52ch}
+
+.widget,.sitewrap{margin-top:14px;border:1px solid var(--rule);background:var(--panel);padding:20px}
+.widget svg,.sitewrap svg{width:100%;height:auto;display:block}
+.wctrl{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:11px;color:var(--ink2)}
+.wctrl input[type=range]{flex:1;min-width:150px;accent-color:#A22E2E}
+.wctrl button{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;background:transparent;color:var(--ink2);border:1px solid var(--rule);padding:8px 14px;cursor:pointer;transition:border-color .25s,color .25s}
+.wctrl button:hover{border-color:var(--rosso);color:var(--rosso)}
+#listmsg{font-family:var(--mono);font-size:12px;color:var(--ink2);margin-top:16px;min-height:44px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.7}
+#listmsg b{color:var(--rosso);font-weight:600}
+.spot{cursor:pointer}
+.spot rect,.spot ellipse,.spot path,.spot circle,.spot line{transition:opacity .25s}
+.spot .hot{opacity:0}
+.spot:hover .hot,.spot:focus .hot{opacity:.32}
+#collinfo,#wreckinfo{font-family:var(--mono);font-size:12px;color:var(--ink2);margin-top:16px;min-height:56px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.7}
+#collinfo b,#wreckinfo b{color:var(--rosso);font-weight:600}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(33,42,48,.1);vertical-align:top;color:rgba(33,42,48,.78)}
+td.n{color:var(--ink);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:rgba(110,122,128,.95);line-height:1.7;margin-top:22px;max-width:60ch}
+
+.realimg{margin-top:22px;border:1px solid rgba(38,80,107,.32);background:rgba(38,80,107,.06);padding:22px}
+.realimg .badge{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--navy);margin-bottom:14px}
+.realimg p{margin-bottom:14px}
+.arclinks{display:grid;gap:2px;margin-top:6px}
+.arclinks a{display:flex;gap:20px;align-items:baseline;padding:20px 0;text-decoration:none;color:inherit;
+  border-bottom:1px solid rgba(33,42,48,.1);transition:padding-left .3s ease,border-color .3s ease}
+.arclinks a:first-child{border-top:1px solid rgba(33,42,48,.1)}
+.arclinks a:hover,.arclinks a:focus-visible{padding-left:14px;border-bottom-color:var(--rosso)}
+.arclinks .arch{font-family:var(--mono);font-size:11px;color:var(--navy);min-width:170px}
+.arclinks .ttl{font-size:16px;color:var(--ink)}
+.arclinks .meta{font-size:13px;color:rgba(33,42,48,.6);margin-top:3px;max-width:46ch}
+.arclinks .go{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--mute);opacity:0;transition:opacity .3s}
+.arclinks a:hover .go,.arclinks a:focus-visible .go{opacity:1}
+
+.shipart{margin-top:22px;border:1px solid var(--rule);background:var(--panel);padding:18px 18px 12px}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:rgba(110,122,128,.95);letter-spacing:.05em;margin-top:10px}
+.lnship{transform-box:fill-box;transform-origin:50% 92%;animation:lnbob 7s ease-in-out infinite}
+@keyframes lnbob{0%,100%{transform:rotate(-.5deg) translateY(0)}50%{transform:rotate(.5deg) translateY(-2px)}}
+.lnsmoke{transform-box:fill-box;transform-origin:50% 100%;animation:lnsmoke 6s ease-in-out infinite}
+@keyframes lnsmoke{0%,100%{transform:translateX(0) scaleY(1);opacity:.4}50%{transform:translateX(10px) scaleY(1.12);opacity:.65}}
+.lnwave{animation:lnwave 5s ease-in-out infinite}
+@keyframes lnwave{0%,100%{transform:translateX(0)}50%{transform:translateX(-8px)}}
+
+.closing{border-top:2px solid var(--rosso);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:rgba(255,255,255,.5);border:1px solid var(--rule);color:var(--ink);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--navy);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--rosso);color:#F6E9E6;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.88}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--navy)}
+.signup .msg.err{color:#872020}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--ink2);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--rosso);border-color:var(--rosso)}
+.src{font-family:var(--mono);font-size:11.5px;color:rgba(110,122,128,.95);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:15px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+  .arclinks a{flex-wrap:wrap;gap:8px} .arclinks .go{display:none} .arclinks .arch{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #water,#cool{transition:none}
+  #fog,.lnship,.lnsmoke,.lnwave{animation:none}
+  #mist{display:none}
+}
+:focus-visible{outline:2px solid var(--rosso);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="water"></div>
+<div id="fog"></div>
+<canvas id="mist"></canvas>
+<div id="cool"></div>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Year</div><div class="rail-num" id="railYear">1956</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Depth</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metres</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1956" data-depth="0">
+  <div class="eyebrow">Ocean liner · Italian Line</div>
+  <h1>Andrea Doria</h1>
+  <div class="sub">RAMMED IN THE FOG 25 JULY 1956 · SANK ON THE 26TH</div>
+  <div class="coordbox">
+    <div class="coord">Where she lies<b>off Nantucket · ~76 m</b></div>
+    <div class="coord">The rescue<b>~1,660 people saved</b></div>
+    <div class="coord">Today<b>the "Mount Everest" of scuba diving</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>WRECK AT SCUBA DEPTH · AN EXTREME AND DANGEROUS DIVE SITE, SLOWLY COLLAPSING — POSITION KNOWN</div>
+  <div class="scrollcue">↓ scroll — it begins in the fog</div>
+</section>
+
+<section class="reveal" data-year="1956" data-depth="0">
+  <div class="eyebrow">Why this wreck</div>
+  <h2>Two ships with radar, in the white</h2>
+  <p class="lede">The Bismarck was hunted and killed by war. The Andrea Doria was not: it was peace, the fog, and two brand-new instruments read wrongly. The shipwreck that taught the world that radar, on its own, saves no one.</p>
+  <p>She was the pride of an Italy reborn from the war, a luxury liner Italians called a floating museum. One foggy night in 1956, off New York, she was torn open by the bow of another ship. Fifty-one died — almost all in the instant of the impact — but then something extraordinary happened: the ship stayed afloat long enough for <strong>everyone else, more than sixteen hundred people, to be saved</strong>. It is at once a tragedy and one of the greatest rescues in history. And her second life, on the bottom, is even more lethal than the first.</p>
+  <div class="stats">
+    <div class="stat"><div class="v red">51</div><div class="k">dead (46 + 5)</div></div>
+    <div class="stat"><div class="v">~1,660</div><div class="k">people saved</div></div>
+    <div class="stat"><div class="v">11</div><div class="k">hours afloat</div></div>
+    <div class="stat"><div class="v red">~18</div><div class="k">divers dead on the wreck</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1953" data-depth="0">
+  <div class="eyebrow">1953–1956 · the last age of the liners</div>
+  <h2>The golden dusk of the great ships</h2>
+  <p>In the mid-1950s crossing the Atlantic still means boarding an ocean liner: the great liners are at the peak of their splendour, just before the first jet aircraft make them obsolete within a decade. The Andrea Doria, in service from 1953, is the flagship of the Italian fleet: elegance, works of art, and the reputation of one of the safest ships ever built, with a double hull and watertight compartments.</p>
+  <p class="lede">She also had radar — the technology that, it was believed, had made collisions impossible.</p>
+  <p>It is precisely this confidence that is the seed of the disaster. Radar shows where the other ships are, but it does not think in the place of the one watching it. And on a night of thick fog, two crews who trusted their screens read the same scene in opposite ways.</p>
+</section>
+
+<section class="reveal" data-year="1953" data-depth="0">
+  <div class="eyebrow">Genoa, 1951 · how she was built</div>
+  <h2>A museum that crossed the ocean</h2>
+  <p>Before being a shipwreck, the Andrea Doria was a national pride. She was built by the <strong>Ansaldo yard in Genoa</strong>; she cost twenty-nine million dollars and bore the name of Andrea Doria, the great sixteenth-century Genoese admiral who had fought the Ottomans. When she entered service, in 1953, she was the floating calling card of an Italy risen from the war.</p>
+  <p class="lede">They called her "a floating museum" — and it was no figure of speech.</p>
+  <p>Every lounge was decorated with works of art commissioned from the best Italian artists: murals, ceramics, tapestries, and a <strong>life-size bronze statue of the admiral</strong> in the first-class lounge (it would be one of the first things divers tried to recover from the wreck). She was also the first liner with <strong>three open-air swimming pools</strong>, one for each class. She was not the largest or fastest ship on the Atlantic: she staked everything on elegance. And her clientele lived up to it — on that fatal voyage was the actress Betsy Drake, wife of Cary Grant.</p>
+</section>
+
+<section class="reveal" data-year="1956" data-depth="0">
+  <div class="eyebrow">25 July 1956 · 11:10 pm · off Nantucket</div>
+  <h2>The collision in the fog</h2>
+  <p>The Andrea Doria is a few hours from New York, inbound from Genoa; the Swedish <em>Stockholm</em> has just left, bound for Europe. They approach in the fog, each seeing the other on radar. But their calculations of each other's course are wrong and mirror-imaged: both manoeuvre in the way that brings them together, instead of apart. Click to understand how.</p>
+  <div class="sitewrap">
+    <svg viewBox="0 0 640 280" role="img" aria-label="Diagram of the collision between Andrea Doria and Stockholm in the fog" class="fielded">
+      <title>The collision</title>
+      <rect x="0" y="0" width="640" height="280" fill="rgba(255,255,255,.28)"/>
+      <text x="20" y="26" fill="rgba(33,42,48,.5)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">SCHEME — NOT TO SCALE · FOG · CLICK</text>
+
+      <g class="spot" tabindex="0" data-t="The misread radar" data-d="Both ships saw each other on the screen, but each misread the other's course and its own relative position. It is the textbook case of the 'radar-assisted collision': the instrument was right, the human reading was not.">
+        <circle class="hot" cx="150" cy="90" r="40" fill="var(--navy)"/>
+        <circle cx="150" cy="90" r="34" fill="none" stroke="var(--navy)" stroke-width="1.2"/>
+        <circle cx="150" cy="90" r="20" fill="none" stroke="var(--navy)" stroke-width="1" opacity=".6"/>
+        <line x1="150" y1="90" x2="150" y2="56" stroke="var(--navy)" stroke-width="1.2"/>
+        <text x="150" y="146" fill="var(--navy2)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">THE RADAR</text>
+      </g>
+
+      <g class="spot" tabindex="0" data-t="The Stockholm's icebreaker bow" data-d="The Stockholm was built for northern seas: she had a reinforced bow to break ice, hard and pointed like a chisel. It was that bow that drove into the side of the Andrea Doria like a blade.">
+        <path class="hot" d="M420 150 L520 150 L520 190 L420 190 Z"/>
+        <path d="M520 158 L432 168 L520 178 Z" fill="rgba(38,80,107,.3)" stroke="var(--navy)" stroke-width="1.4"/>
+        <text x="500" y="210" fill="var(--navy2)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">STOCKHOLM BOW →</text>
+      </g>
+
+      <g class="spot" tabindex="0" data-t="The gash in the side" data-d="The bow struck the Andrea Doria on her side, on the starboard side, opening an enormous gash deep into the hull. The water flooded the empty tanks on one side: the ship listed at once, so much that half the lifeboats became unusable. Almost all 46 of the Andrea Doria's dead died in this instant.">
+        <path class="hot" d="M150 150 L420 150 L420 200 L150 200 Z"/>
+        <path d="M170 168 L420 168 L400 192 Q280 204 170 192 Z" fill="rgba(162,46,46,.16)" stroke="var(--rosso)" stroke-width="1.2"/>
+        <path d="M408 168 L392 178 L410 182 L396 190" fill="none" stroke="var(--rosso)" stroke-width="1.6"/>
+        <text x="270" y="222" fill="var(--rosso)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">ANDREA DORIA · THE GASH</text>
+      </g>
+    </svg>
+    <div id="collinfo">Select an element to understand the dynamics.</div>
+  </div>
+  <div class="moment">
+    <q>She was thrown from her bed and found herself, alive, on the bow of the ship that had struck her.</q>
+    <cite>THE STORY OF LINDA MORGAN, 14 — THE "MIRACLE GIRL"</cite>
+  </div>
+  <p>Among the many fates of that night, the most incredible: Linda Morgan, fourteen, was asleep in her cabin on the Andrea Doria. The impact literally hurled her onto the smashed bow of the Stockholm, where she was found alive. Her sister and stepfather, in the same cabin, died.</p>
+</section>
+
+<section class="reveal" data-year="1956" data-depth="0">
+  <div class="eyebrow">The fatal flaw</div>
+  <h2>Why she heeled over at once</h2>
+  <p>A ship with a double hull and watertight compartments should not capsize from a single gash. The Andrea Doria did — and the reason is a technical detail the investigators put at the centre of the inquiry. At the end of the voyage her huge fuel tanks were nearly empty. The rules called for filling them with seawater as ballast, to keep the centre of gravity low; but then they had to be cleaned before refuelling — a cost and a nuisance. So, often, it was not done.</p>
+  <p>The result: as soon as the water came in through the gash, there was no weight on the struck side to balance it, and the ship heeled over sharply. Move the slider and watch what happens to the lifeboats.</p>
+  <div class="widget">
+    <svg id="listsim" viewBox="0 0 560 300" role="img" aria-label="Simulator: the Andrea Doria's list and its lifeboats">
+      <title>List simulator</title>
+      <line x1="20" y1="248" x2="540" y2="248" stroke="rgba(38,80,107,.5)" stroke-width="1" stroke-dasharray="4 5"/>
+      <text x="24" y="242" fill="var(--navy)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">SEA LEVEL</text>
+      <g id="shipCross" transform="rotate(0 280 248)">
+        <path d="M186 248 L192 200 L214 150 L346 150 L368 200 L374 248 Q280 270 186 248 Z" fill="rgba(38,80,107,.14)" stroke="var(--navy)" stroke-width="1.6"/>
+        <rect x="224" y="118" width="112" height="32" fill="rgba(38,80,107,.10)" stroke="var(--navy)" stroke-width="1"/>
+        <line x1="214" y1="150" x2="346" y2="150" stroke="var(--navy)" stroke-width="1"/>
+        <line x1="208" y1="150" x2="178" y2="150" stroke="var(--ink2)" stroke-width="1.4"/>
+        <path id="portBoat" d="M162 150 q16 16 32 0 Z" fill="#DCE6EA" stroke="#26506B" stroke-width="1.6"/>
+        <text x="178" y="130" fill="var(--navy)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">PORT</text>
+        <line x1="352" y1="150" x2="382" y2="150" stroke="var(--ink2)" stroke-width="1.4"/>
+        <path d="M366 150 q16 16 32 0 Z" fill="#DCE6EA" stroke="#26506B" stroke-width="1.6"/>
+        <text x="382" y="130" fill="var(--navy)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">STARBOARD</text>
+        <g id="portX" opacity="0" stroke="var(--rosso)" stroke-width="2.4"><path d="M166 142 l24 16 M190 142 l-24 16"/></g>
+      </g>
+      <text id="listDeg" x="536" y="42" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="18" text-anchor="end">0°</text>
+      <text x="536" y="58" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="end" letter-spacing="1">LIST</text>
+    </svg>
+    <div class="wctrl">
+      <span>LIST</span>
+      <input type="range" id="listSlider" min="0" max="30" value="0" aria-label="Angle of list">
+      <button id="listBtn">As that night ↗</button>
+    </div>
+    <div id="listmsg">The ship is upright. Move the slider: it simulates the list after the gash.</div>
+  </div>
+  <p>Past fifteen degrees, the lifeboats on the high side — <strong>half the total</strong> — can no longer be lowered: they dangle against the hull. Within minutes the Andrea Doria had lost the use of half her boats. If the sea, that night, had not sent other ships, there would have been no way to save everyone. And it was not the first warning: on her maiden voyage the ship had already listed a full <em>twenty-eight degrees</em> from a single big wave.</p>
+</section>
+
+<section class="reveal" data-year="1956" data-depth="0">
+  <div class="eyebrow">The eleven hours</div>
+  <h2>The great rescue</h2>
+  <p>Listing on her side, with half the lifeboats jammed, the Andrea Doria sends the SOS. And the sea answers as it rarely does.</p>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-y">night of the 25th</div>
+      <div class="tl-t">The ships arrive</div>
+      <div class="tl-d">The Stockholm, though wounded, stays and lowers her boats. Other ships rush in from across the North Atlantic: freighters, a military ship, the U.S. Coast Guard.</div>
+    </div>
+    <div class="tl-item key">
+      <div class="tl-y">the first hours</div>
+      <div class="tl-t">The Île de France turns back</div>
+      <div class="tl-d">The great French liner, already racing toward Europe, reverses course and returns to the scene of the disaster. She lights up every light in the fog and lowers her boats: it is she who saves the most survivors.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-y">until dawn</div>
+      <div class="tl-t">Everyone else to safety</div>
+      <div class="tl-d">A shuttle of lifeboats ferries the passengers from the listing ship to the rescue ships, for hours. By dawn, of the more than 1,700 aboard, the living are all safe. Only the victims of the impact remain.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-y">26 July · morning</div>
+      <div class="tl-t">She lies down and vanishes</div>
+      <div class="tl-d">Around 10 in the morning the Andrea Doria rolls onto her starboard side and slips beneath the surface, down to seventy-six metres. Her very slow agony is what made it possible to save everyone.</div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1956" data-depth="76">
+  <div class="eyebrow">The second life, on the bottom</div>
+  <h2>The "Mount Everest" of scuba diving</h2>
+  <p>At seventy-six metres, the Andrea Doria is too deep for an ordinary dive and too alluring to be left in peace. She has become the dream and the nightmare of technical divers the world over: strong currents, cold dark water, sharp steel and nets to get tangled in. Click.</p>
+  <div class="widget">
+    <svg viewBox="0 0 640 280" role="img" aria-label="Diagram of the Andrea Doria wreck on the bottom, lying on its side" class="fielded">
+      <title>The Andrea Doria wreck</title>
+      <line x1="20" y1="220" x2="620" y2="220" stroke="rgba(46,122,120,.5)" stroke-width="1"/>
+      <text x="20" y="238" fill="rgba(46,122,120,.9)" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.5">SEABED · ~76 m</text>
+      <path d="M120 220 L150 150 L520 140 L560 176 L556 220 Z" fill="rgba(46,80,107,.12)" stroke="var(--navy)" stroke-width="1.4"/>
+      <line x1="150" y1="150" x2="520" y2="140" stroke="var(--navy)" stroke-width="1"/>
+
+      <g class="spot" tabindex="0" data-t="The depth and the cold" data-d="Seventy-six metres: beyond the limit of recreational diving, in cold water, often dark and with current. It needs technical gear, special gas mixes and long decompression stops. A mistake here does not forgive.">
+        <rect class="hot" x="130" y="150" width="150" height="70" fill="var(--teal)"/>
+        <line x1="180" y1="150" x2="180" y2="216" stroke="var(--teal)" stroke-width="1.2" opacity=".7"/>
+        <text x="200" y="200" fill="var(--teal)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">76 m · COLD</text>
+      </g>
+      <g class="spot" tabindex="0" data-t="The trap" data-d="Inside the wreck, collapsed plating, cables and tangled fishing nets create a maze in which it is easy to lose your bearings or get trapped. At least eighteen divers have lost their lives there: this is why they call it the 'Mount Everest' of diving.">
+        <rect class="hot" x="300" y="140" width="130" height="80" fill="var(--rosso)"/>
+        <path d="M320 168 L360 200 M360 166 L326 198 M380 160 L410 196" stroke="var(--rosso)" stroke-width="1.2" opacity=".7"/>
+        <text x="366" y="212" fill="var(--rosso)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">THE MAZE</text>
+      </g>
+      <g class="spot" tabindex="0" data-t="The treasures recovered" data-d="From the wreck have been brought up the bronze statue of admiral Andrea Doria (1964) and the ship's safe, cut from the hull in 1981 and opened live on TV in 1984: inside, no diamonds — only banknotes and traveller's cheques. The rest is ceramics, silverware, mementoes.">
+        <ellipse class="hot" cx="490" cy="176" rx="34" ry="28" fill="var(--gold)"/>
+        <rect x="474" y="164" width="30" height="24" fill="rgba(143,108,34,.3)" stroke="var(--gold)" stroke-width="1.3"/>
+        <circle cx="489" cy="176" r="4" fill="none" stroke="var(--gold)" stroke-width="1.3"/>
+        <text x="490" y="212" fill="var(--gold2)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">THE SAFE</text>
+      </g>
+      <text x="20" y="28" fill="rgba(33,42,48,.4)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">SCHEME — NOT TO SCALE · CLICK</text>
+    </svg>
+    <div id="wreckinfo">Select an element to learn more.</div>
+  </div>
+  <p class="note">The wreck is slowly collapsing in on itself: the superstructure has largely fallen in, and what the first divers saw in the 1960s hardly exists any more. The Andrea Doria too, like the Titanic, is returning to the sea.</p>
+</section>
+
+<section class="reveal" data-year="1956" data-depth="0">
+  <div class="eyebrow">Archive</div>
+  <h2>Seeing her that night</h2>
+  <p>No image is hosted here: we link to those who hold them, with attribution.</p>
+  <div class="arclinks">
+    <a href="https://www.britannica.com/topic/Andrea-Doria-Italian-ship" target="_blank" rel="noopener">
+      <span class="arch">BRITANNICA</span>
+      <span><span class="ttl">The ship, the collision, the rescue</span><span class="meta">Reference entry with period photographs and the reconstruction of the events of 25–26 July 1956.</span></span>
+      <span class="go">britannica.com ↗</span>
+    </a>
+    <a href="https://picryl.com/topics/andrea+doria+ship+1953" target="_blank" rel="noopener">
+      <span class="arch">PICRYL · PUBLIC DOMAIN</span>
+      <span><span class="ttl">Photographs of the rescue</span><span class="meta">U.S. Coast Guard and archive images, works of the U.S. federal government, in the public domain.</span></span>
+      <span class="go">picryl.com ↗</span>
+    </a>
+    <a href="https://noblemaritime.org/andrea-doria-home" target="_blank" rel="noopener">
+      <span class="arch">NOBLE MARITIME COLLECTION</span>
+      <span><span class="ttl">"Rescue at Sea"</span><span class="meta">The exhibition on the rescue, with testimonies and materials from the rescuers.</span></span>
+      <span class="go">noblemaritime.org ↗</span>
+    </a>
+  </div>
+</section>
+
+<section class="reveal" data-year="1953" data-depth="0">
+  <div class="eyebrow">The ship</div>
+  <h2>An elegance all Italian</h2>
+  <p>About 213 metres long, built in Genoa, the Andrea Doria was a slender, elegant liner: a single great funnel in the colours of Italy, flowing lines, interiors decorated by artists. Not the largest or fastest ship of her time — but, for many, the most beautiful.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 640 220" role="img" aria-label="Stylized illustration of the ocean liner Andrea Doria">
+      <title>The ocean liner Andrea Doria</title>
+      <rect x="0" y="162" width="640" height="58" fill="rgba(38,80,107,.06)"/>
+      <path d="M-20 172 q 60 -8 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(38,80,107,.28)" stroke-width="1.3" class="lnwave"/>
+      <g class="lnship">
+        <path d="M60 162 L92 146 L540 146 L600 156 L582 162 Z" fill="#2A3942" stroke="#4E5C64" stroke-width="1.2"/>
+        <line x1="98" y1="152" x2="560" y2="152" stroke="#A22E2E" stroke-width="1.4"/>
+        <rect x="150" y="120" width="330" height="26" fill="#E7ECEE" stroke="#9BA7AD" stroke-width="1"/>
+        <rect x="180" y="104" width="250" height="16" fill="#EEF2F3" stroke="#9BA7AD" stroke-width="1"/>
+        <g fill="#8FA0A8"><rect x="164" y="126" width="6" height="6"/><rect x="182" y="126" width="6" height="6"/><rect x="200" y="126" width="6" height="6"/><rect x="218" y="126" width="6" height="6"/><rect x="236" y="126" width="6" height="6"/><rect x="254" y="126" width="6" height="6"/><rect x="272" y="126" width="6" height="6"/><rect x="290" y="126" width="6" height="6"/><rect x="308" y="126" width="6" height="6"/><rect x="326" y="126" width="6" height="6"/><rect x="344" y="126" width="6" height="6"/><rect x="362" y="126" width="6" height="6"/><rect x="380" y="126" width="6" height="6"/><rect x="398" y="126" width="6" height="6"/><rect x="416" y="126" width="6" height="6"/><rect x="434" y="126" width="6" height="6"/><rect x="452" y="126" width="6" height="6"/></g>
+        <path d="M300 104 L296 62 L336 62 L340 104 Z" fill="#2E7A5A" stroke="#4E5C64" stroke-width="1"/>
+        <rect x="298" y="74" width="40" height="8" fill="#EEF2F3"/>
+        <rect x="298" y="82" width="41" height="8" fill="#A22E2E"/>
+        <g class="lnsmoke"><path d="M312 62 q6 -22 20 -34 q-2 18 -10 34 Z" fill="rgba(120,132,138,.35)"/></g>
+        <line x1="210" y1="104" x2="210" y2="66" stroke="#4E5C64" stroke-width="1.6"/>
+        <line x1="452" y1="120" x2="452" y2="84" stroke="#4E5C64" stroke-width="1.6"/>
+      </g>
+      <text x="20" y="28" fill="rgba(110,122,128,.9)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">OCEAN LINER — STYLIZED RECONSTRUCTION</text>
+    </svg>
+    <figcaption>Stylized reconstruction. The real photographs of the ship and the rescue are in the archives above.</figcaption>
+  </figure>
+</section>
+
+<section class="reveal" data-year="1956" data-depth="76">
+  <div class="eyebrow">The route</div>
+  <h2>The voyage cut short</h2>
+  <p>Every wreck is, first of all, a voyage that did not arrive. The solid line marks the distance actually covered; the dashed line, the part that was never sailed.</p>
+  <!--ROUTEMAP-->
+</section>
+
+<section class="reveal" data-year="1956" data-depth="76">
+  <div class="eyebrow">The numbers</div>
+  <h2>The ship, measured</h2>
+  <table>
+    <thead><tr><th>Item</th><th class="n">Value</th></tr></thead>
+    <tbody>
+      <tr><td>Type</td><td class="n">ocean liner · Italian Line</td></tr>
+      <tr><td>In service from</td><td class="n">1953</td></tr>
+      <tr><td>Length</td><td class="n">~213 m</td></tr>
+      <tr><td>Collision</td><td class="n">25 July 1956, 11:10 pm</td></tr>
+      <tr><td>Victims</td><td class="n">51 (46 + 5)</td></tr>
+      <tr><td>People saved</td><td class="n">~1,660</td></tr>
+      <tr><td>Hours afloat</td><td class="n">~11</td></tr>
+      <tr><td>Wreck depth</td><td class="n">~76 m</td></tr>
+      <tr><td>Divers dead on the wreck</td><td class="n">~18</td></tr>
+    </tbody>
+  </table>
+  <p class="note">The victim figures vary slightly between sources (46 on the Andrea Doria, 5 on the Stockholm; some sources give 52 in all). Responsibility for the collision was the subject of lawsuits later closed by a settlement, without a final verdict: the exact dynamics remain in part disputed, and here they are stated as such.</p>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">A note on method</div>
+  <h2>What this page does not do</h2>
+  <p>It does not pass judgement on the blame. The inquiries and the lawsuits between the companies closed with a settlement before a verdict, and historians still argue over who manoeuvred worse. The page explains the mechanism — two opposite readings of the same radar — without assigning a blame the courts themselves did not fix.</p>
+  <p>And it does not turn an underwater grave into an invitation. The wreck is fascinating but it has killed eighteen people who went to visit it; here it is told as history and as a warning, not as a destination. The figures remain stated estimates.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Card 012 of 20</div>
+    <h2 style="margin-bottom:14px">The atlas continues</h2>
+    <p>From the modern liner to a legal battle of our own century. The Nuestra Señora de las Mercedes, a Spanish frigate sunk by the British in 1804 off Portugal: in 2007 an American company secretly recovered ~500,000 gold and silver coins from her — and Spain took it to court, and got everything back.</p>
+    <a class="globelink" style="margin-top:6px" href="lusitania.html">Another great liner: the Lusitania →</a>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Notify me when the next card is out</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required>
+        <button type="submit">Notify me</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="bismarck.html">← Card 011: the Bismarck</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">All the wrecks on the globe →</a>
+  </div>
+  <footer>
+    <div class="src">
+      SOURCES · Encyclopædia Britannica (ship, collision, rescue) · History.com / History Cooperative (the dynamics of 25–26 July 1956) · Divers Alert Network and National Geographic (the wreck as an extreme dive site, the deaths among divers) · Noble Maritime Collection (the rescue) · U.S. Coast Guard / PICRYL (public-domain photographs) · accounts of Linda Morgan ("miracle girl") and of the recoveries (the admiral's statue, 1964; the safe, 1981/1984)<br><br>
+      Wreck Atlas · Card 012 · Prototype
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), water=document.getElementById('water');
+  var fog=document.getElementById('fog'), cool=document.getElementById('cool');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- section reveal ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- mist: drifting haze (light on light) ---------- */
+  var cv=document.getElementById('mist'), ctx=cv&&cv.getContext?cv.getContext('2d'):null, parts=[], W=0,H=0;
+  function size(){ if(!ctx)return; W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    parts=[]; var n=Math.round(W*H/26000);
+    for(var i=0;i<n;i++) parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.4,v:.12+Math.random()*.3,o:.14+Math.random()*.3}); }
+  function draw(){ if(!ctx)return; ctx.clearRect(0,0,W,H);
+    for(var i=0;i<parts.length;i++){ var p=parts[i];
+      p.x+=p.v; p.y+=Math.sin(p.x*.008)*.06;
+      if(p.x>W+4){ p.x=-4; p.y=Math.random()*H; }
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fillStyle='rgba(255,255,255,'+p.o+')'; ctx.fill(); }
+    requestAnimationFrame(draw); }
+  if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  /* ---------- background: silver fog; a cooler touch toward the wreck ---------- */
+  var shades=['#DBE1E3','#DAE0E3','#D6DDE0','#D2DADE','#CFD8DD','#CCD6DC','#C9D4DB'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    var deep=active.dataset.depth!=='0';
+    document.getElementById('railDLab').textContent = deep ? 'Depth' : 'at sea';
+    if(!reduce){
+      water.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)];
+      fog.style.opacity = deep ? '.4' : '.9';
+      cool.style.opacity = deep ? '.9' : '0';
+    }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- clickable diagrams (collision + wreck) ---------- */
+  function wire(sel,target){
+    var info=document.getElementById(target); if(!info) return;
+    document.querySelectorAll(sel).forEach(function(z){
+      function show(){ info.innerHTML='<b>'+z.dataset.t+'</b><br>'+z.dataset.d; }
+      z.addEventListener('click',show); z.addEventListener('focus',show);
+      z.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} });
+    });
+  }
+  wire('.sitewrap .spot','collinfo');
+  wire('.widget .spot','wreckinfo');
+
+  /* ---------- list simulator (bespoke) ---------- */
+  var listSlider=document.getElementById('listSlider'), shipCross=document.getElementById('shipCross');
+  var portX=document.getElementById('portX'), listDeg=document.getElementById('listDeg'), listmsg=document.getElementById('listmsg');
+  var portBoat=document.getElementById('portBoat'), listBtn=document.getElementById('listBtn'), listAnim=null;
+  function setList(a){
+    a=Math.max(0,Math.min(30,a));
+    if(shipCross) shipCross.setAttribute('transform','rotate('+a.toFixed(1)+' 280 248)');
+    if(listDeg) listDeg.textContent=Math.round(a)+'°';
+    var lost=a>15;
+    if(portX) portX.setAttribute('opacity',lost?'1':'0');
+    if(portBoat) portBoat.setAttribute('stroke',lost?'#A22E2E':'#26506B');
+    if(listmsg){
+      if(a<3) listmsg.innerHTML='The ship is upright. Move the slider: it simulates the list after the gash.';
+      else if(!lost) listmsg.innerHTML='She lists '+Math.round(a)+' degrees. The lifeboats still hold — but the margin is only fifteen degrees.';
+      else listmsg.innerHTML='<b>Past 15°.</b> The lifeboats on the high side (port) can no longer be lowered: they dangle against the hull. Half the boats are already unusable.';
+    }
+  }
+  if(listSlider){ listSlider.addEventListener('input',function(){ if(listAnim){cancelAnimationFrame(listAnim);listAnim=null;} setList(+listSlider.value); }); setList(0); }
+  if(listBtn){ listBtn.addEventListener('click',function(){
+    if(reduce){ listSlider.value=22; setList(22); return; }
+    if(listAnim) cancelAnimationFrame(listAnim);
+    var start=+listSlider.value,t0=null,dur=1800,target=22;
+    (function step(ts){ if(!t0)t0=ts; var k=Math.min((ts-t0)/dur,1),e=1-Math.pow(1-k,2); var v=start+(target-start)*e; listSlider.value=v; setList(v); if(k<1) listAnim=requestAnimationFrame(step); else listAnim=null; })(performance.now());
+  }); }
+
+  /* ---------- scroll metrics ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'012-andreadoria',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] card 012 · '+m+'% at '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] session: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- sign-up ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Please enter a valid email address.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registered. The prototype does not send anything yet — connect your email service here.';
+      console.log('[wreck-atlas] sign-up:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>
