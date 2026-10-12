@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Antikythera Shipwreck — 70 BC</title>
+<meta name="description" content="The Roman shipwreck lost around 70 BC off the island of Antikythera, found by sponge divers in 1900. In its hold, the oldest known mechanical calculator: the Antikythera mechanism.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Antikythera Shipwreck — 70 BC">
+<meta property="og:description" content="The Titanic is what depth destroys. Antikythera is what the sea, now and then, gives back: a machine that computed the sky, two thousand years ahead of its time.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0A1420">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#0A1420; --sea:#0C1E2E; --deep:#09161F; --dawn:#1A1C20;
+  --bronze:#BE8C3C; --bronze2:#D8A24A; --verdigris:#57A392; --marble:#EAE4D5; --fog:#93A0A3;
+  --rule:rgba(234,228,213,.15);
+  --display:"Cardo",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--marble);font-family:var(--body);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#sky{position:fixed;inset:0;z-index:-4;background:var(--night);transition:background 1.6s ease}
+#orrery{position:fixed;left:50%;top:44%;width:150vmax;height:150vmax;transform:translate(-50%,-50%);z-index:-3;pointer-events:none;opacity:.78}
+#orrery i{position:absolute;inset:0;border:1px solid rgba(190,140,60,.10);border-radius:50%}
+#orrery i:nth-child(1){inset:12%;border-color:rgba(190,140,60,.12)}
+#orrery i:nth-child(2){inset:26%;border-color:rgba(87,163,146,.10);border-style:dashed}
+#orrery i:nth-child(3){inset:38%;border-color:rgba(190,140,60,.09)}
+#orrery i:nth-child(4){inset:47%;border-color:rgba(87,163,146,.08);border-style:dashed}
+#orreryspin{position:absolute;inset:0;animation:spin 240s linear infinite}
+#stars{position:fixed;inset:0;z-index:-2;pointer-events:none}
+#verd{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1s linear;
+  background:radial-gradient(ellipse at 50% 60%,rgba(87,163,146,.12),transparent 62%)}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--fog);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--bronze)}
+.rail-num{font-size:20px;color:var(--marble);font-weight:400;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.5;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(10,20,32,.8)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--verdigris);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(48px,10vw,104px);line-height:1;letter-spacing:.01em}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(28px,4.5vw,46px);line-height:1.12;margin-bottom:22px}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(234,228,213,.85)}
+.lede{font-size:20px;color:var(--marble)}
+em{font-style:italic;color:var(--fog)}
+strong{font-weight:500;color:var(--marble)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--fog);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--fog)}
+.coord b{display:block;color:var(--marble);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  color:var(--bronze2);border:1px solid rgba(190,140,60,.4);padding:5px 10px;margin-top:28px;align-self:flex-start;max-width:60ch;line-height:1.5}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--bronze2);flex:none}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(147,160,163,.55);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(234,228,213,.08)}
+.stat .v{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.8vw,46px);line-height:1;color:var(--bronze2);font-variant-numeric:tabular-nums}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);margin-top:10px;line-height:1.5}
+
+.moment{border-left:2px solid var(--bronze);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-weight:700;font-size:clamp(26px,4.6vw,42px);line-height:1.18;quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--fog);margin-top:18px}
+
+.tl{border-left:1px solid var(--rule);margin-top:8px}
+.tl-item{padding:0 0 34px 28px;position:relative}
+.tl-item::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--night);border:1px solid var(--fog)}
+.tl-item.key::before{background:var(--bronze);border-color:var(--bronze);box-shadow:0 0 0 5px rgba(190,140,60,.15)}
+.tl-y{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--verdigris);margin-bottom:5px}
+.tl-item.key .tl-y{color:var(--bronze2)}
+.tl-t{font-size:17px;color:var(--marble);margin-bottom:4px}
+.tl-d{font-size:14.5px;color:rgba(234,228,213,.6);max-width:52ch}
+
+.widget{border:1px solid var(--rule);background:rgba(12,30,46,.5);padding:20px;margin-top:10px}
+.widget svg{width:100%;height:auto;display:block}
+.wctrl{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);
+  font-family:var(--mono);font-size:11px;color:var(--fog)}
+.wctrl input[type=range]{flex:1;min-width:150px;accent-color:#BE8C3C}
+.wctrl button{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;background:transparent;
+  color:var(--fog);border:1px solid var(--rule);padding:8px 14px;cursor:pointer;transition:border-color .25s,color .25s}
+.wctrl button:hover{border-color:var(--bronze);color:var(--bronze2)}
+#mmsg{font-family:var(--mono);font-size:12px;color:var(--fog);margin-top:14px;min-height:44px;line-height:1.6}
+#mmsg b{color:var(--bronze2);font-weight:500}
+
+.sitewrap{margin-top:14px;border:1px solid var(--rule);background:rgba(12,30,46,.5);padding:20px}
+.sitewrap svg{width:100%;height:auto;display:block}
+.zone{cursor:pointer}
+.zone rect,.zone ellipse,.zone path,.zone circle{transition:opacity .25s}
+.zone .hot{opacity:0}
+.zone:hover .hot,.zone:focus .hot{opacity:.5}
+#dialinfo{font-family:var(--mono);font-size:12px;color:var(--fog);margin-top:16px;min-height:44px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.6}
+#dialinfo b{color:var(--bronze2);font-weight:500}
+
+.relicart{margin-top:22px;border:1px solid var(--rule);background:rgba(12,30,46,.5);padding:18px 18px 12px}
+.relicart svg{width:100%;height:auto;display:block}
+.relicart figcaption{font-family:var(--mono);font-size:11px;color:rgba(147,160,163,.72);letter-spacing:.05em;margin-top:10px}
+.scan{animation:scan 5s ease-in-out infinite}
+@keyframes scan{0%{transform:translateX(-30px);opacity:0}12%{opacity:.85}88%{opacity:.85}100%{transform:translateX(340px);opacity:0}}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(234,228,213,.08);vertical-align:top}
+td.n{color:var(--marble);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:rgba(147,160,163,.7);line-height:1.7;margin-top:22px;max-width:60ch}
+
+.arclinks{display:grid;gap:2px;margin-top:24px;border-top:1px solid var(--rule)}
+.arclinks a{display:flex;gap:20px;align-items:baseline;padding:20px 0;text-decoration:none;color:inherit;
+  border-bottom:1px solid rgba(234,228,213,.08);transition:padding-left .3s ease,border-color .3s ease}
+.arclinks a:hover,.arclinks a:focus-visible{padding-left:14px;border-bottom-color:var(--bronze)}
+.arclinks .arch{font-family:var(--mono);font-size:11px;color:var(--verdigris);min-width:150px}
+.arclinks .ttl{font-size:16px;color:var(--marble)}
+.arclinks .meta{font-size:13px;color:rgba(234,228,213,.5);margin-top:3px;max-width:46ch}
+.arclinks .go{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--fog);opacity:0;transition:opacity .3s}
+.arclinks a:hover .go,.arclinks a:focus-visible .go{opacity:1}
+
+.closing{border-top:1px solid var(--bronze);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--fog);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:transparent;border:1px solid var(--rule);color:var(--marble);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--fog);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--bronze);color:#150E03;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.85}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--verdigris)}
+.signup .msg.err{color:#E0A063}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--bronze2);border-color:var(--bronze)}
+.src{font-family:var(--mono);font-size:11.5px;color:rgba(147,160,163,.62);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:15px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+  .arclinks a{flex-wrap:wrap;gap:8px} .arclinks .go{display:none} .arclinks .arch{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #sky,#verd{transition:none}
+  #orreryspin{animation:none}
+  .scan{animation:none;opacity:0}
+  #stars{display:none}
+}
+:focus-visible{outline:2px solid var(--bronze);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="sky"></div>
+<div id="orrery"><div id="orreryspin"><i></i><i></i><i></i><i></i></div></div>
+<canvas id="stars"></canvas>
+<div id="verd"></div>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Era</div><div class="rail-num" id="railYear">70 BC</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Depth</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metres</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="70 BC" data-depth="0">
+  <div class="eyebrow">Roman shipwreck · Aegean Sea</div>
+  <h1>Antikythera</h1>
+  <div class="sub">SANK c. 70–60 BC · FOUND 1900 · RECOGNISED 1902</div>
+  <div class="coordbox">
+    <div class="coord">The wreck<b>~50 m · island of Antikythera</b></div>
+    <div class="coord">The mechanism, today<b>National Archaeological Museum, Athens</b></div>
+    <div class="coord">Years ahead of its time<b>~1,400</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>WRECK POSITION KNOWN · PROTECTED ARCHAEOLOGICAL SITE, EXCAVATION STILL ONGOING</div>
+  <div class="scrollcue">↓ scroll — here time is a circle</div>
+</section>
+
+<section class="reveal" data-year="1900" data-depth="0">
+  <div class="eyebrow">Why this wreck</div>
+  <h2>What the sea gives back</h2>
+  <p class="lede">The Titanic is the proof of what depth destroys. Antikythera is the proof of the opposite: now and then, the sea gives back — and once it gave back the most improbable object of antiquity.</p>
+  <p>In a Roman hold that sank while Rome was still fighting for the Mediterranean, among bronze statues and amphorae there was a wooden box the size of a dictionary. Inside, dozens of precision gears. It was a machine that calculated the sky: the positions of the Sun and the Moon, the lunar phases, the eclipses, even the calendar of the Olympic Games. Nothing comparable would reappear in the world for <strong>fourteen centuries</strong>. It is not the deepest wreck in this atlas, nor the richest. It is the one that rewrote the history of technology.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">82</div><div class="k">surviving fragments</div></div>
+    <div class="stat"><div class="v">~30</div><div class="k">bronze gears</div></div>
+    <div class="stat"><div class="v">19</div><div class="k">years on a single dial</div></div>
+    <div class="stat"><div class="v">~1,400</div><div class="k">years before anything similar</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1900" data-depth="50">
+  <div class="eyebrow">Spring 1900 · bound for Africa</div>
+  <h2>The divers and the bronze corpses</h2>
+  <p>A crew of sponge fishermen from the island of Symi, caught by a storm, drops anchor in the lee of the islet of Antikythera. Waiting for the sea to calm, the captain Dimitrios Kontos sends down a diver, Elias Stadiatis, in a canvas suit and copper helmet.</p>
+  <p class="lede">Stadiatis comes up terrified: on the bottom, he says, there is a heap of rotting corpses and horses.</p>
+  <p>They were not corpses. They were statues of bronze and marble, green and corroded by twenty centuries of sea, at forty-five to fifty metres down. The divers had found the cargo of a great Roman ship. From it, between 1900 and 1901, came the first great campaign of underwater archaeology in history, carried out with the Greek navy.</p>
+</section>
+
+<section class="reveal" data-year="1901" data-depth="50">
+  <div class="eyebrow">1900–1901 · the price</div>
+  <h2>Salvaging at fifty metres, without knowing</h2>
+  <p>No one, at the time, knew the physiology of decompression. The men went down to fifty metres, filled their nets with statues and came back up all at once. The toll was merciless: one diver died of decompression sickness and two were left paralysed. In the summer of 1901 the work stopped.</p>
+  <p>From the bottom, meanwhile, had emerged masterpieces: the <em>Antikythera Ephebe</em>, a bronze statue of a youth almost two metres tall, cast around 340 BC; heads of philosophers; fragments of horses; glass, jewels, coins. And, almost ignored amid the rest, an encrusted lump of bronze and wood, the size of a book.</p>
+</section>
+
+<section class="reveal" data-year="70 BC" data-depth="0">
+  <div class="eyebrow">1st century BC · Greece and Rome</div>
+  <h2>A cargo bound for Rome</h2>
+  <p>What was such a rich ship doing in that stretch of sea? The first century BC is the age in which Rome, now master of the Mediterranean, absorbs the Greek world — and with it its art. After Sulla's sack of Athens in 86 BC, Greek statues, bronzes and precious objects take the road to Italy en masse, to adorn the villas of a Roman aristocracy hungry for Hellenic culture.</p>
+  <p class="lede">The Antikythera ship was one of these: a merchantman laden with Greek treasures bound, in all likelihood, for wealthy Roman buyers.</p>
+  <p>And it is the detail that makes the mechanism even more extraordinary. Among statues and vases to show off travelled an instrument of pure science — the highest fruit of Greek astronomy, that of Hipparchus and the great schools of Rhodes. Not a drawing-room ornament: a machine for understanding the sky.</p>
+</section>
+
+<section class="reveal" data-year="1902" data-depth="0">
+  <div class="eyebrow">17 May 1902 · Athens</div>
+  <h2>A gear in the stone</h2>
+  <div class="moment">
+    <q>There was a toothed wheel inside the rock.</q>
+    <cite>FROM THE RECONSTRUCTION OF VALERIOS STAIS'S DISCOVERY</cite>
+  </div>
+  <p>The lump, left to dry in a storeroom of the National Archaeological Museum, had split. The archaeologist Valerios Stais, examining it, noticed something that strictly could not exist: set into the corroded bronze was a <strong>toothed wheel</strong>, finely made, with Greek inscriptions all around.</p>
+  <p>It was unthinkable. A precision gear in a wreck of Roman age predated by over a thousand years everything believed about ancient mechanics. For decades it was dismissed as an enigma, perhaps a more recent intruder that had ended up there by chance. It took two more generations of scholars to prove that no: it was indeed from 70 BC, and it was a machine.</p>
+  <figure class="relicart">
+    <svg viewBox="0 0 520 340" role="img" aria-label="Stylized illustration of Fragment A of the mechanism, corroded and calcified">
+      <title>Fragment A, as it really is</title>
+      <defs>
+        <radialGradient id="fragGrad" cx="45%" cy="40%" r="70%">
+          <stop offset="0" stop-color="#5C8A78"/>
+          <stop offset="0.55" stop-color="#3E6E5C"/>
+          <stop offset="1" stop-color="#274A3E"/>
+        </radialGradient>
+        <linearGradient id="scanGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="rgba(216,162,74,0)"/>
+          <stop offset="0.5" stop-color="rgba(216,162,74,.55)"/>
+          <stop offset="1" stop-color="rgba(216,162,74,0)"/>
+        </linearGradient>
+        <clipPath id="fragClip"><path d="M150 92 Q 196 60 262 60 Q 350 62 392 122 Q 424 180 392 246 Q 348 300 262 296 Q 168 294 134 224 Q 112 152 150 92 Z"/></clipPath>
+      </defs>
+
+      <path d="M150 92 Q 196 60 262 60 Q 350 62 392 122 Q 424 180 392 246 Q 348 300 262 296 Q 168 294 134 224 Q 112 152 150 92 Z" fill="url(#fragGrad)" stroke="#20362E" stroke-width="2.4"/>
+      <g clip-path="url(#fragClip)">
+        <circle cx="250" cy="176" r="100" fill="none" stroke="#7FA890" stroke-width="12" stroke-dasharray="7 9" opacity=".9"/>
+        <circle cx="250" cy="176" r="82" fill="none" stroke="#6E9784" stroke-width="3"/>
+        <line x1="250" y1="92" x2="250" y2="260" stroke="#7FA890" stroke-width="7"/>
+        <line x1="166" y1="176" x2="334" y2="176" stroke="#7FA890" stroke-width="7"/>
+        <circle cx="250" cy="176" r="18" fill="#3E6E5C" stroke="#7FA890" stroke-width="4"/>
+        <path d="M172 108 L232 168 L214 262" fill="none" stroke="#1D3128" stroke-width="2.2"/>
+        <path d="M360 130 L300 190 L332 276" fill="none" stroke="#1D3128" stroke-width="1.8"/>
+        <ellipse cx="188" cy="210" rx="34" ry="20" fill="rgba(222,226,206,.16)"/>
+        <ellipse cx="316" cy="120" rx="26" ry="16" fill="rgba(222,226,206,.14)"/>
+        <rect class="scan" x="128" y="50" width="22" height="248" fill="url(#scanGrad)"/>
+      </g>
+      <text x="16" y="28" fill="rgba(147,160,163,.6)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">FRAGMENT A · AS IT REALLY IS — RECONSTRUCTION</text>
+    </svg>
+    <figcaption>The largest of the fragments: corroded and calcified bronze, with the great four-spoke wheel. The real photographs are in the archives at the foot of the page.</figcaption>
+  </figure>
+</section>
+
+<section class="reveal" data-year="70 BC" data-depth="0">
+  <div class="eyebrow">The mechanism · turn it yourself</div>
+  <h2>A crank, and the sky moves</h2>
+  <p>Here is how it worked: you turn a side crank — representing the passing of time — and a train of gears moves the pointers of the Sun and the Moon along the ring of the zodiac, at different speeds. Drag the slider and watch the ratio: the Sun advances calmly through the year, the Moon races and changes phase. The little ball at the top, half light and half dark, is the lunar-phase display.</p>
+  <div class="widget">
+    <svg id="mech" viewBox="0 0 560 470" role="img" aria-label="Interactive model of the mechanism: pointers of the Sun and the Moon on the zodiac">
+      <title>Simplified model of the Antikythera mechanism</title>
+      <g id="gearA" transform="rotate(0 452 342)">
+        <circle cx="452" cy="342" r="54" fill="none" stroke="rgba(190,140,60,.5)" stroke-width="2" stroke-dasharray="5 7"/>
+        <circle cx="452" cy="342" r="42" fill="none" stroke="rgba(190,140,60,.22)" stroke-width="1"/>
+        <circle cx="452" cy="342" r="5" fill="#BE8C3C"/>
+      </g>
+      <g id="gearB" transform="rotate(0 508 268)">
+        <circle cx="508" cy="268" r="34" fill="none" stroke="rgba(87,163,146,.5)" stroke-width="2" stroke-dasharray="4 6"/>
+        <circle cx="508" cy="268" r="4" fill="#57A392"/>
+      </g>
+
+      <circle cx="210" cy="235" r="168" fill="rgba(10,20,32,.6)" stroke="rgba(190,140,60,.35)" stroke-width="1.5"/>
+      <circle cx="210" cy="235" r="150" fill="none" stroke="rgba(234,228,213,.14)" stroke-width="1"/>
+      <g id="zticks" stroke="rgba(190,140,60,.5)" stroke-width="1.2"></g>
+      <text x="210" y="52" fill="rgba(147,160,163,.7)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">ZODIAC · 360°</text>
+
+      <g id="sunHand" transform="rotate(0 210 235)">
+        <line x1="210" y1="235" x2="210" y2="97" stroke="#D8A24A" stroke-width="2.4"/>
+        <circle cx="210" cy="97" r="9" fill="#D8A24A"/>
+        <circle cx="210" cy="97" r="15" fill="none" stroke="rgba(216,162,74,.5)" stroke-width="1"/>
+      </g>
+      <g id="moonHand" transform="rotate(0 210 235)">
+        <line x1="210" y1="235" x2="210" y2="127" stroke="#EAE4D5" stroke-width="1.8"/>
+        <circle cx="210" cy="127" r="6" fill="#EAE4D5"/>
+      </g>
+      <circle cx="210" cy="235" r="7" fill="#BE8C3C"/>
+
+      <text x="470" y="86" fill="rgba(147,160,163,.7)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">PHASE</text>
+      <clipPath id="ballClip"><circle cx="470" cy="128" r="26"/></clipPath>
+      <g clip-path="url(#ballClip)">
+        <circle cx="470" cy="128" r="26" fill="#EAE4D5"/>
+        <circle id="phaseDark" cx="470" cy="128" r="26" fill="#0A1420"/>
+      </g>
+      <circle cx="470" cy="128" r="26" fill="none" stroke="rgba(234,228,213,.3)" stroke-width="1"/>
+    </svg>
+    <div class="wctrl">
+      <span>TIME</span>
+      <input type="range" id="crank" min="0" max="730" value="0" step="1" aria-label="Days elapsed">
+      <button id="yearBtn">+ one year</button>
+      <button id="crankReset">Reset</button>
+    </div>
+    <div id="mmsg">Day 0. Drag the crank: the Sun will set off slowly along the zodiac, the Moon circling it almost thirteen times faster.</div>
+    <p class="note">A deliberately simplified model, for illustration: realistic speed ratios between Sun and Moon, but not the exact gearing of the original nor the irregularity of the lunar motion. It shows the principle, it does not replace the mechanism.</p>
+  </div>
+</section>
+
+<section class="reveal" data-year="70 BC" data-depth="0">
+  <div class="eyebrow">What it computed</div>
+  <h2>Four dials, all the known sky</h2>
+  <p>On the front, a great dial with the zodiac and the Egyptian calendar; on the back, two spiral dials and some auxiliaries. Each part answered a different question a Greek of the first century BC might ask of the sky. Click to read them.</p>
+  <div class="sitewrap">
+    <svg viewBox="0 0 640 300" role="img" aria-label="Diagram of the mechanism's dials: front and back" class="fielded">
+      <title>Diagram of the dials of the Antikythera mechanism</title>
+      <text x="150" y="28" fill="rgba(147,160,163,.7)" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="middle" letter-spacing="1">FRONT</text>
+      <text x="470" y="28" fill="rgba(147,160,163,.7)" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="middle" letter-spacing="1">BACK</text>
+
+      <g class="zone" tabindex="0" data-t="Front dial — the cosmos" data-d="A ring with the zodiac (360°) and a ring with the Egyptian calendar (365 days). On it the pointers of Sun and Moon, the phase ball, and — according to the 2021 model — the five planets then known: Mercury, Venus, Mars, Jupiter, Saturn.">
+        <circle class="hot" cx="150" cy="165" r="82"/>
+        <circle cx="150" cy="165" r="80" fill="rgba(190,140,60,.10)" stroke="#BE8C3C" stroke-width="1.3"/>
+        <circle cx="150" cy="165" r="58" fill="none" stroke="rgba(234,228,213,.2)" stroke-width="1"/>
+        <line x1="150" y1="165" x2="150" y2="95" stroke="#D8A24A" stroke-width="2"/>
+        <line x1="150" y1="165" x2="196" y2="128" stroke="#EAE4D5" stroke-width="1.4"/>
+        <circle cx="150" cy="165" r="4" fill="#BE8C3C"/>
+        <text x="150" y="262" fill="#BE8C3C" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle" letter-spacing="1">SUN · MOON · PLANETS</text>
+      </g>
+
+      <g class="zone" tabindex="0" data-t="Metonic spiral — the calendar" data-d="The upper spiral, five turns: 235 lunar months in exactly 19 solar years. It is the Metonic cycle, after which the Moon's phases fall on the same dates again. An auxiliary marked the Callippic cycle, four Metonic cycles made finer.">
+        <path class="hot" d="M470 70 a58 58 0 1 1 -1 0" fill="none" stroke="#57A392" stroke-width="16" opacity="0"/>
+        <path d="M470 92 a46 46 0 1 1 -1 0 M470 108 a30 30 0 1 1 -1 0" fill="none" stroke="#57A392" stroke-width="1.6"/>
+        <text x="470" y="150" fill="#57A392" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">19 YEARS</text>
+      </g>
+
+      <g class="zone" tabindex="0" data-t="Saros spiral — the eclipses" data-d="The lower spiral, four turns: 223 lunar months, about 18 years and 11 days. It is the Saros: once that interval has passed, solar and lunar eclipses repeat almost identically. In the cells, glyphs showed when to expect one. An auxiliary, the Exeligmos, corrected the hours.">
+        <path class="hot" d="M470 196 a54 54 0 1 1 -1 0" fill="none" stroke="#BE8C3C" stroke-width="16" opacity="0"/>
+        <path d="M470 210 a40 40 0 1 1 -1 0 M470 224 a26 26 0 1 1 -1 0" fill="none" stroke="#BE8C3C" stroke-width="1.6"/>
+        <text x="470" y="262" fill="#BE8C3C" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">ECLIPSES</text>
+      </g>
+
+      <g class="zone" tabindex="0" data-t="The Olympiad dial" data-d="A small auxiliary dial counted the four-year cycle of the panhellenic games, naming each festival: Olympia, Pythia, Isthmia, Nemea — and even the minor ones, the Naa of Dodona and the Halieia of Rhodes. An astronomical machine that also knew when the stadium races were run.">
+        <circle class="hot" cx="322" cy="150" r="30"/>
+        <circle cx="322" cy="150" r="28" fill="rgba(87,163,146,.12)" stroke="#57A392" stroke-width="1.2"/>
+        <line x1="322" y1="150" x2="322" y2="128" stroke="#EAE4D5" stroke-width="1.4"/>
+        <text x="322" y="196" fill="#57A392" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle" letter-spacing="1">OLYMPIADS</text>
+      </g>
+
+      <text x="20" y="290" fill="rgba(234,228,213,.4)" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="1">SCHEME — NOT TO SCALE · CLICK A DIAL</text>
+    </svg>
+    <div id="dialinfo">Select a dial to read its function.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="2021" data-depth="0">
+  <div class="eyebrow">How we know</div>
+  <h2>Reading a two-thousand-year-old machine with X-rays</h2>
+  <p>For half a century the mechanism stayed unreadable: a corroded block that could not be opened without destroying it. The breakthrough came not from the screwdriver but from physics. In the 1970s the historian of science Derek de Solla Price grasped its gearwork; then the engineer Michael Wright built working models.</p>
+  <p>Since 2005 the <em>Antikythera Mechanism Research Project</em>, led by Tony Freeth, has used high-resolution X-ray computed tomography to look <em>inside</em> the fragments: to count the teeth of every wheel and read thousands of Greek letters hidden in the corrosion — a true instruction manual, engraved. In 2021 the team published in <em>Scientific Reports</em> a complete model of the front dial, the "cosmos": Sun, Moon and the five planets on concentric rings. Two thousand years on, we are still learning to read it.</p>
+</section>
+
+<section class="reveal" data-year="70 BC" data-depth="0">
+  <div class="eyebrow">The vertigo</div>
+  <h2>The gap of fourteen centuries</h2>
+  <p class="lede">The problem with the mechanism is not that it is ancient. It is that it is <em>alone</em>: it has neither ancestors nor heirs.</p>
+  <p>An object of this precision does not come from nothing: it presupposes a tradition of workshops, of astronomers, of bronze craftsmen we do not know, because bronze is melted down and wood rots. And after it, the void: nothing comparable in mechanical complexity reappears until the astronomical clocks of medieval Europe, fourteen centuries later. Had the sea not by chance preserved this single example under fifty metres of water, we would not even know such a thing was possible. It is the sharpest reminder of how little of the past has come down to us.</p>
+</section>
+
+<section class="reveal" data-year="1976" data-depth="50">
+  <div class="eyebrow">The wreck that keeps giving</div>
+  <h2>A hundred years of returns</h2>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-y">1953 · 1976</div>
+      <div class="tl-t">Cousteau on the wreck</div>
+      <div class="tl-d">Jacques-Yves Cousteau visits the site with the Calypso, first in 1953 and then in 1976 with Greek permission. He recovers coins that help date the wreck to 70–60 BC, and other finds. Here too, a diver pays with the pains of decompression.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-y">2012 →</div>
+      <div class="tl-t">Return to Antikythera</div>
+      <div class="tl-d">A Greek-international mission returns to the wreck with modern technology — technical divers, robots, even an armoured "exosuit". The seabed is far from exhausted.</div>
+    </div>
+    <div class="tl-item key">
+      <div class="tl-y">2016 · 2022</div>
+      <div class="tl-t">A skeleton, and more statues</div>
+      <div class="tl-d">In 2016 the skeleton of one of the wreck's victims emerges, nicknamed Pamphilos, with potentially analysable DNA. In 2022, new fragments of statues. More than a century after the discovery, the Antikythera ship still gives back.</div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal" data-year="70 BC" data-depth="0">
+  <div class="eyebrow">The route</div>
+  <h2>The voyage cut short</h2>
+  <p>Every wreck is, first of all, a voyage that did not arrive. The solid line marks the distance actually covered; the dashed line, the part that was never sailed.</p>
+  <!--ROUTEMAP-->
+</section>
+
+<section class="reveal" data-year="70 BC" data-depth="0">
+  <div class="eyebrow">The numbers</div>
+  <h2>The mechanism, measured</h2>
+  <table>
+    <thead><tr><th>Item</th><th class="n">Value</th></tr></thead>
+    <tbody>
+      <tr><td>Wreck dating</td><td class="n">c. 70–60 BC</td></tr>
+      <tr><td>Site depth</td><td class="n">~45–50 m</td></tr>
+      <tr><td>Fragments of the mechanism</td><td class="n">82</td></tr>
+      <tr><td>Surviving gears</td><td class="n">~30</td></tr>
+      <tr><td>Gears in Fragment A alone</td><td class="n">27</td></tr>
+      <tr><td>Metonic, on one dial</td><td class="n">235 months · 19 years</td></tr>
+      <tr><td>Saros, for eclipses</td><td class="n">223 months · ~18 years</td></tr>
+      <tr><td>Year of recognition (Stais)</td><td class="n">1902</td></tr>
+      <tr><td>Years before a similar machine</td><td class="n">~1,400</td></tr>
+    </tbody>
+  </table>
+  <p class="note">The number of gears is that of the <em>surviving</em> pieces: the original had more, perhaps around forty, now lost. The dating comes from the cargo's coins and the style of the finds; the functions are reconstructed from X-ray studies, and some remain stated hypotheses — where the sources diverge, the doubt stays written.</p>
+</section>
+
+<section class="reveal" data-year="2024" data-depth="0">
+  <div class="eyebrow">Archive</div>
+  <h2>Seeing it where it is</h2>
+  <p>No image is hosted here: we link to those who hold the object and those who study it. The first archive holds the mechanism and the Ephebe; the second is the team that deciphered it with X-rays; the third is the published model of the cosmos.</p>
+  <div class="arclinks">
+    <a href="https://www.namuseum.gr/en/" target="_blank" rel="noopener">
+      <span class="arch">NATIONAL MUSEUM, ATHENS</span>
+      <span><span class="ttl">The object and its wreck</span><span class="meta">The National Archaeological Museum holds the 82 fragments, the Antikythera Ephebe and the statues of the cargo.</span></span>
+      <span class="go">namuseum.gr ↗</span>
+    </a>
+    <a href="http://www.antikythera-mechanism.gr/" target="_blank" rel="noopener">
+      <span class="arch">RESEARCH PROJECT</span>
+      <span><span class="ttl">How it was deciphered</span><span class="meta">The Antikythera Mechanism Research Project: tomographies, inscriptions read and reconstructions of how it worked.</span></span>
+      <span class="go">antikythera-mechanism.gr ↗</span>
+    </a>
+    <a href="https://www.nature.com/articles/s41598-021-84310-w" target="_blank" rel="noopener">
+      <span class="arch">SCIENTIFIC REPORTS 2021</span>
+      <span><span class="ttl">The model of the cosmos</span><span class="meta">Freeth et al., "A Model of the Cosmos in the ancient Greek Antikythera Mechanism": the front dial with the five planets.</span></span>
+      <span class="go">nature.com ↗</span>
+    </a>
+  </div>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">A note on method</div>
+  <h2>What this page does not do</h2>
+  <p>It does not pass off hypotheses as certainties. That the mechanism showed all five planets is the most accredited reconstruction, but it is a reconstruction: here it is stated as such. The number of gears is the surviving one, not the original. The dating is "about 70–60 BC", and so it stays.</p>
+  <p>It does not treat the mechanism as magic or as proof of alien visits — the nonsense that piles up around it. It is the product, extraordinary but human, of a Greek technical tradition of which we have lost almost everything. And the simulator on this page is avowedly a model of the principle, not a replica of the real clockwork.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Card 004 of 20</div>
+    <h2 style="margin-bottom:14px">Card 005 is ready: the Endurance</h2>
+    <p>From the Aegean that gives back knowledge to the Weddell Sea that hid it for a century. The ship with which Ernest Shackleton attempted Antarctica, crushed by the pack ice in 1915 — and found intact, standing in the dark at 3,008 metres, only in 2022. The shipwreck as an epic of survival.</p>
+    <a class="globelink" style="margin-top:6px" href="endurance.html">Open the Endurance card →</a>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Notify me when the next card is out</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required>
+        <button type="submit">Notify me</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="titanic.html">← Card 003: the Titanic</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">All the wrecks on the globe →</a>
+  </div>
+  <footer>
+    <div class="src">
+      SOURCES · National Archaeological Museum, Athens (fragments, Ephebe, cargo) · Antikythera Mechanism Research Project — T. Freeth et al. (X-ray tomography, gear counts, inscriptions) · Nature, Scientific Reports 2021, "A Model of the Cosmos in the ancient Greek Antikythera Mechanism" (front dial, five planets) · D. de Solla Price, "Gears from the Greeks" (1974) · account of the 1900–1902 discovery (Symi divers, D. Kontos, E. Stadiatis; V. Stais's recognition in 1902) · J.-Y. Cousteau expeditions (1953, 1976) and the "Return to Antikythera" project (since 2012; skeleton 2016, finds 2022)<br><br>
+      Wreck Atlas · Card 004 · Prototype
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), sky=document.getElementById('sky'), verd=document.getElementById('verd');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- zodiac ticks ---------- */
+  var zt=document.getElementById('zticks');
+  if(zt){
+    var cx=210, cy=235, r1=150, r2=168, svgns='http://www.w3.org/2000/svg';
+    for(var t=0;t<12;t++){
+      var a=(t/12)*2*Math.PI - Math.PI/2;
+      var ln=document.createElementNS(svgns,'line');
+      ln.setAttribute('x1',(cx+Math.cos(a)*r1).toFixed(1));
+      ln.setAttribute('y1',(cy+Math.sin(a)*r1).toFixed(1));
+      ln.setAttribute('x2',(cx+Math.cos(a)*r2).toFixed(1));
+      ln.setAttribute('y2',(cy+Math.sin(a)*r2).toFixed(1));
+      zt.appendChild(ln);
+    }
+  }
+
+  /* ---------- section reveal ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- rotating starfield ---------- */
+  var cv=document.getElementById('stars'), ctx=cv&&cv.getContext?cv.getContext('2d'):null, stars=[], W=0,H=0, rot=0;
+  function size(){ if(!ctx)return; W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    stars=[]; var n=Math.round(W*H/6500);
+    for(var i=0;i<n;i++) stars.push({a:Math.random()*6.2832,d:Math.random()*Math.max(W,H)*.62,r:Math.random()*1.2+.2,o:.15+Math.random()*.6,tw:Math.random()*6.28}); }
+  function draw(){ if(!ctx)return; ctx.clearRect(0,0,W,H);
+    var ccx=W*.5, ccy=H*.44;
+    rot+=0.00016;
+    for(var i=0;i<stars.length;i++){ var s=stars[i]; s.tw+=0.03;
+      var a=s.a+rot, x=ccx+Math.cos(a)*s.d, y=ccy+Math.sin(a)*s.d;
+      if(x<-4||x>W+4||y<-4||y>H+4) continue;
+      var o=s.o*(0.6+0.4*Math.sin(s.tw));
+      ctx.beginPath(); ctx.arc(x,y,s.r,0,6.2832);
+      ctx.fillStyle='rgba(234,228,213,'+o.toFixed(3)+')'; ctx.fill(); }
+    requestAnimationFrame(draw); }
+  if(!reduce&&ctx){ size(); window.addEventListener('resize',size); requestAnimationFrame(draw); }
+
+  /* ---------- background: night turning to bronze toward the end ---------- */
+  var shades=['#0E2033','#123048','#163850','#123048','#1C2636','#2A2418','#332813'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    document.getElementById('railDLab').textContent = (active.dataset.depth==='0') ? 'in museum' : 'Depth';
+    if(!reduce){
+      sky.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)];
+      verd.style.opacity=Math.max(0,(p-0.5)/0.5)*0.8;
+    }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- the interactive mechanism ---------- */
+  var crank=document.getElementById('crank'), yearBtn=document.getElementById('yearBtn'), crankReset=document.getElementById('crankReset');
+  var sunHand=document.getElementById('sunHand'), moonHand=document.getElementById('moonHand');
+  var gearA=document.getElementById('gearA'), gearB=document.getElementById('gearB');
+  var phaseDark=document.getElementById('phaseDark'), mmsg=document.getElementById('mmsg');
+  var SIGNS=['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'];
+  var crankAnim=null;
+
+  function phaseName(f,waxing){
+    if(f<0.04) return 'new moon';
+    if(f>0.96) return 'full moon';
+    if(f<0.46) return waxing?'waxing crescent':'waning crescent';
+    if(f<0.54) return waxing?'first quarter':'last quarter';
+    return waxing?'waxing gibbous':'waning gibbous';
+  }
+  function setDay(day){
+    day=Math.max(0,Math.min(730,day));
+    var sun=(day/365.25*360)%360;
+    var moon=(day/27.322*360)%360;
+    var elong=((day/29.531*360)%360);
+    var er=elong*Math.PI/180;
+    var f=(1-Math.cos(er))/2;
+    var waxing=elong<180;
+    sunHand.setAttribute('transform','rotate('+sun.toFixed(2)+' 210 235)');
+    moonHand.setAttribute('transform','rotate('+moon.toFixed(2)+' 210 235)');
+    gearA.setAttribute('transform','rotate('+(day*3.1).toFixed(2)+' 452 342)');
+    gearB.setAttribute('transform','rotate('+(-day*4.7).toFixed(2)+' 508 268)');
+    if(phaseDark){ var dx=(waxing?1:-1)*f*52; phaseDark.setAttribute('cx',(470+dx).toFixed(1)); }
+    var sign=SIGNS[Math.floor(sun/30)%12];
+    mmsg.innerHTML='<b>Day '+day+'.</b> Sun in the sign: '+sign+'. Moon: '+phaseName(f,waxing)+' ('+Math.round(f*100)+'% lit). Note the ratio: in one year the Sun makes one turn, the Moon almost thirteen.';
+  }
+  if(crank){
+    crank.addEventListener('input',function(){ if(crankAnim){cancelAnimationFrame(crankAnim);crankAnim=null;} setDay(+crank.value); });
+    setDay(0);
+  }
+  if(yearBtn){
+    yearBtn.addEventListener('click',function(){
+      var target=Math.min(730,(+crank.value)+365);
+      if(reduce){ crank.value=target; setDay(target); return; }
+      if(crankAnim) cancelAnimationFrame(crankAnim);
+      var start=+crank.value, t0=null, dur=1600;
+      (function step(ts){
+        if(!t0)t0=ts;
+        var k=Math.min((ts-t0)/dur,1), e=1-Math.pow(1-k,2);
+        var d=Math.round(start+(target-start)*e);
+        crank.value=d; setDay(d);
+        if(k<1) crankAnim=requestAnimationFrame(step); else crankAnim=null;
+      })(performance.now());
+    });
+  }
+  if(crankReset){ crankReset.addEventListener('click',function(){ if(crankAnim){cancelAnimationFrame(crankAnim);crankAnim=null;} crank.value=0; setDay(0); }); }
+
+  /* ---------- dials (front/back) ---------- */
+  var dinfo=document.getElementById('dialinfo');
+  if(dinfo){
+    document.querySelectorAll('.zone').forEach(function(z){
+      function show(){ dinfo.innerHTML='<b>'+z.dataset.t+'</b><br>'+z.dataset.d; }
+      z.addEventListener('click',show); z.addEventListener('focus',show);
+      z.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} });
+    });
+  }
+
+  /* ---------- scroll metrics ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'004-anticitera',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] card 004 · '+m+'% at '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] session: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- sign-up ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Please enter a valid email address.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registered. The prototype does not send anything yet — connect your email service here.';
+      console.log('[wreck-atlas] sign-up:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>
