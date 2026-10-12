@@ -1046,5 +1046,41 @@
       "wreck": "#7A2E34",
       "label": "#6A5E44"
     }
+  },
+  "empressofireland.html": {
+    "from": {
+      "n": "Québec",
+      "lon": -71.21,
+      "lat": 46.81,
+      "n_en": "Québec"
+    },
+    "via_after": [
+      {
+        "n": "l'Atlantico",
+        "lon": -40.0,
+        "lat": 50.0,
+        "n_en": "the Atlantic"
+      }
+    ],
+    "to": {
+      "n": "Liverpool",
+      "lon": -3.0,
+      "lat": 53.41,
+      "n_en": "Liverpool"
+    },
+    "wreck_label": "affondata in 14 minuti",
+    "wreck_label_en": "sank in 14 minutes",
+    "caption": "Da Québec verso Liverpool, lungo l'estuario del San Lorenzo. Il tratto continuo è quanto navigò — poche ore di fiume; il tratteggio, tutta la traversata atlantica che non cominciò mai: la nebbia e la prua dello Storstad la fermarono presso Rimouski, la notte del 29 maggio 1914.",
+    "caption_en": "From Québec toward Liverpool, down the St. Lawrence estuary. The solid line is what she sailed — a few hours of river; the dashed line, the whole Atlantic crossing that never began: the fog and the Storstad's bow stopped her off Rimouski, on the night of 29 May 1914.",
+    "palette": {
+      "bg": "#D6DBDA",
+      "land": "#C2CAC8",
+      "coast": "#8FA0A4",
+      "plan": "#8FA0A4",
+      "done": "#2A4A5C",
+      "port": "#232D31",
+      "wreck": "#B6792E",
+      "label": "#556166"
+    }
   }
 }

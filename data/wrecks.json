@@ -393,9 +393,10 @@
     "lat": 48.62,
     "lon": -68.4,
     "d": 40,
-    "st": "next",
+    "st": "ready",
     "f": "Transatlantico affondato in pochi minuti nel fiume San Lorenzo nel 1914 dopo una collisione nella nebbia: oltre mille morti. La 'Titanic del Canada', quasi dimenticata perché la guerra scoppiò poche settimane dopo.",
-    "f_en": "Canadian liner sunk in the St. Lawrence after a collision in fog in 1914: over 1,000 dead, more passengers lost than on the Titanic — yet almost forgotten."
+    "f_en": "Canadian liner sunk in the St. Lawrence after a collision in fog in 1914: over 1,000 dead, more passengers lost than on the Titanic — yet almost forgotten.",
+    "href": "empressofireland.html"
   },
   {
     "id": "gribshunden",
@@ -494,7 +495,7 @@
     "lat": 60.77,
     "lon": 4.72,
     "d": 150,
-    "st": "planned",
+    "st": "next",
     "f": "L'unico sommergibile affondato da un altro sommergibile, entrambi in immersione (1945). Portava mercurio ai giapponesi: oggi è una minaccia ambientale al largo della Norvegia.",
     "f_en": "The only submarine sunk by another submarine while both were submerged (1945). It carried mercury to Japan: today an environmental hazard off Norway."
   },

@@ -89,15 +89,15 @@ pagina vuota o un solo messaggio d'errore.
 > `data/wrecks.json`; se i numeri qui sotto non tornano, ha ragione il JSON.
 > Contarli: `python3 -c "import json,collections;print(collections.Counter(x['st'] for x in json.load(open('data/wrecks.json'))))"`
 
-Aggiornato al 2026-08-26: **30 schede `ready`**, 11 `planned`, 1 `next`.
-Prossima: **Gribshunden** (nave ammiraglia di re Hans 1495, Baltico, polena-drago).
+Aggiornato al 2026-10-12: **31 schede `ready`**, 10 `planned`, 1 `next`.
+Prossima: **RMS Empress of Ireland** (1914, San Lorenzo — la tragedia dimenticata).
 
-Pagine: 31 in italiano (`src/pages/`), 10 in inglese (`src/pages/en/`).
+Pagine: 32 in italiano (`src/pages/`), 11 in inglese (`src/pages/en/`).
 
 ### i18n — filone attivo
 
-Traduzione inglese in corso, **10 schede su 21** (Titanic, Lusitania, Endurance,
-Mary Celeste, Bismarck, Erebus/Terror-Franklin, Atocha, Vasa, Mary Rose, Andrea Doria). La riga "lingua del progetto: italiano" in cima resta
+Traduzione inglese in corso, **11 schede su 21** (Titanic, Lusitania, Endurance,
+Mary Celeste, Bismarck, Erebus/Terror-Franklin, Atocha, Vasa, Mary Rose, Andrea Doria, Belitung). La riga "lingua del progetto: italiano" in cima resta
 vera per i **contenuti nuovi**: si scrive prima in italiano, l'inglese segue.
 Una scheda inglese vive in `src/pages/en/` e non sostituisce l'italiana.
 

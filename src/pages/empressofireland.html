@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RMS Empress of Ireland — 1914</title>
+<meta name="description" content="Il transatlantico canadese Empress of Ireland, speronato nella nebbia sul fiume San Lorenzo nel 1914 e affondato in meno di 14 minuti: 1.012 morti, più passeggeri che sul Titanic. La più grande tragedia marittima del Canada — quasi dimenticata, perché poche settimane dopo scoppiò la Grande Guerra.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RMS Empress of Ireland — 1914">
+<meta property="og:description" content="Morirono più passeggeri che sul Titanic, in appena quattordici minuti. Eppure quasi nessuno la ricorda: la guerra, due mesi dopo, la cancellò dalla memoria.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#D6DBDA">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --stone:#D6DBDA; --paper:#E8EBEA; --panel:#C6CECC;
+  --ink:#232D31; --ink2:#45555B; --slate:#6A7A80;
+  --navy:#2A4A5C; --navy2:#1E3848; --fog:#9FB0B4;
+  --amber:#B6792E; --amber2:#D29A44;
+  --rule:rgba(35,45,49,.15);
+  --display:"Cardo",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--stone);color:var(--ink);font-family:var(--body);font-weight:300;line-height:1.66;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#air{position:fixed;inset:0;z-index:-4;background:var(--stone);transition:background 1.6s ease}
+#fogbank{position:fixed;inset:-14%;z-index:-3;pointer-events:none;opacity:.8;
+  background:radial-gradient(circle at 22% 28%,rgba(255,255,255,.7),transparent 32%),
+             radial-gradient(circle at 70% 24%,rgba(255,255,255,.55),transparent 28%),
+             radial-gradient(circle at 80% 70%,rgba(255,255,255,.6),transparent 30%),
+             radial-gradient(circle at 36% 74%,rgba(255,255,255,.5),transparent 28%);
+  filter:blur(3px);animation:fogdrift 50s ease-in-out infinite alternate}
+@keyframes fogdrift{0%{transform:translate3d(-3%,-1%,0) scale(1.03)}100%{transform:translate3d(3%,2%,0) scale(1.1)}}
+#flame{position:fixed;left:50%;bottom:-6%;transform:translateX(-50%);width:50vw;height:40vh;z-index:-2;pointer-events:none;opacity:0;transition:opacity 1s linear;
+  background:radial-gradient(ellipse at 50% 100%,rgba(210,154,68,.18),transparent 60%)}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--slate);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--amber)}
+.rail-num{font-size:19px;color:var(--ink);font-weight:700;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.65;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(214,219,218,.82)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--navy);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(46px,9vw,100px);line-height:1;letter-spacing:0;color:var(--ink)}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.8vw,50px);line-height:1.08;margin-bottom:22px;color:var(--ink)}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(35,45,49,.84)}
+.lede{font-size:20px;color:var(--ink)}
+em{font-style:italic;color:var(--ink2)}
+strong{font-weight:500;color:var(--ink);border-bottom:1px solid rgba(42,74,92,.3)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--slate);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--slate)}
+.coord b{display:block;color:var(--ink);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:flex-start;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  color:var(--navy);border:1px solid rgba(42,74,92,.4);padding:6px 11px;margin-top:28px;align-self:flex-start;max-width:66ch;line-height:1.6;background:rgba(255,255,255,.35)}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--navy);flex:none;margin-top:5px}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--slate);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(35,45,49,.1)}
+.stat .v{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.8vw,48px);line-height:1;color:var(--navy);font-variant-numeric:tabular-nums}
+.stat .v.amber{color:var(--amber)}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);margin-top:10px;line-height:1.5}
+
+.moment{border-left:3px solid var(--amber);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(26px,4.6vw,42px);line-height:1.18;color:var(--ink);quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--slate);margin-top:18px}
+
+.tl{border-left:1px solid var(--rule);margin-top:8px}
+.tl-item{padding:0 0 34px 28px;position:relative}
+.tl-item::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--stone);border:1px solid var(--slate)}
+.tl-item.key::before{background:var(--amber);border-color:var(--amber);box-shadow:0 0 0 5px rgba(182,121,46,.14)}
+.tl-y{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--navy);margin-bottom:5px}
+.tl-item.key .tl-y{color:var(--amber)}
+.tl-t{font-size:17px;color:var(--ink);margin-bottom:4px}
+.tl-d{font-size:14.5px;color:rgba(35,45,49,.62);max-width:52ch}
+
+.clock{margin-top:14px;border:1px solid var(--rule);background:var(--paper);padding:22px 20px;box-shadow:0 8px 30px rgba(35,45,49,.06)}
+.clock svg{width:100%;height:auto;display:block}
+.bar{cursor:pointer}
+.bar rect,.bar text,.bar line{transition:opacity .2s}
+.bar:hover .hl,.bar:focus .hl{opacity:.5}
+#minfo{font-family:var(--mono);font-size:12px;color:var(--ink2);margin-top:16px;min-height:62px;border-top:1px solid var(--rule);padding-top:14px;line-height:1.8}
+#minfo b{color:var(--amber);font-weight:600}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(35,45,49,.1);vertical-align:top;color:rgba(35,45,49,.8)}
+td.n{color:var(--ink);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:var(--slate);line-height:1.75;margin-top:22px;max-width:60ch}
+
+.realimg{margin-top:22px;border:1px solid rgba(42,74,92,.3);background:rgba(42,74,92,.05);padding:22px}
+.realimg .badge{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--navy);margin-bottom:14px}
+.realimg p{margin-bottom:14px}
+.arclinks{display:grid;gap:2px;margin-top:6px}
+.arclinks a{display:flex;gap:20px;align-items:baseline;padding:18px 0;text-decoration:none;color:inherit;
+  border-bottom:1px solid rgba(35,45,49,.1);transition:padding-left .3s ease,border-color .3s ease}
+.arclinks a:first-child{border-top:1px solid rgba(35,45,49,.1)}
+.arclinks a:hover,.arclinks a:focus-visible{padding-left:12px;border-bottom-color:var(--amber)}
+.arclinks .arch{font-family:var(--mono);font-size:11px;color:var(--navy);min-width:168px}
+.arclinks .ttl{font-size:15.5px;color:var(--ink)}
+.arclinks .meta{font-size:13px;color:rgba(35,45,49,.58);margin-top:3px;max-width:46ch}
+.arclinks .go{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--slate);opacity:0;transition:opacity .3s}
+.arclinks a:hover .go,.arclinks a:focus-visible .go{opacity:1}
+.realimg .cite{font-family:var(--mono);font-size:11px;color:var(--slate);line-height:1.6;margin-top:14px}
+
+.shipart{margin-top:22px;border:1px solid var(--rule);background:var(--paper);padding:18px 18px 12px}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:var(--slate);letter-spacing:.05em;margin-top:10px}
+.eiship{transform-box:fill-box;transform-origin:50% 92%;animation:eibob 8s ease-in-out infinite}
+@keyframes eibob{0%,100%{transform:rotate(-.5deg) translateY(0)}50%{transform:rotate(.5deg) translateY(-2px)}}
+.eismoke{transform-box:fill-box;transform-origin:50% 100%;animation:eismoke 6s ease-in-out infinite}
+@keyframes eismoke{0%,100%{transform:translateX(0) scaleY(1);opacity:.35}50%{transform:translateX(8px) scaleY(1.1);opacity:.55}}
+.eiwave{animation:eiwave 5.5s ease-in-out infinite}
+@keyframes eiwave{0%,100%{transform:translateX(0)}50%{transform:translateX(-8px)}}
+
+.closing{border-top:2px solid var(--amber);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:#fff;border:1px solid var(--rule);color:var(--ink);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--navy);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--navy);color:#EAF0F1;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.88}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--navy)}
+.signup .msg.err{color:#9A3A2E}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--ink2);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--amber);border-color:var(--amber)}
+.src{font-family:var(--mono);font-size:11.5px;color:var(--slate);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:15px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+  .arclinks a{flex-wrap:wrap;gap:6px} .arclinks .go{display:none} .arclinks .arch{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #air,#flame{transition:none}
+  #fogbank,.eiship,.eismoke,.eiwave{animation:none}
+}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="air"></div>
+<div id="fogbank"></div>
+<div id="flame"></div>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Anno</div><div class="rail-num" id="railYear">1914</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Profondità</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1914" data-depth="0">
+  <div class="eyebrow">Transatlantico · Canadian Pacific · 1914</div>
+  <h1>Empress of Ireland</h1>
+  <div class="sub">SPERONATA NELLA NEBBIA · AFFONDATA IN 14 MINUTI · 1.012 MORTI</div>
+  <div class="coordbox">
+    <div class="coord">Dove giace<b>fiume San Lorenzo, presso Rimouski · ~45 m</b></div>
+    <div class="coord">Morti<b>1.012 su 1.477</b></div>
+    <div class="coord">Memoria<b>quasi dimenticata</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>SITO STORICO NAZIONALE DEL CANADA (2009) · RELITTO A PROFONDITÀ SUBACQUEA, SITO D'IMMERSIONE PERICOLOSO · POSIZIONE NOTA</div>
+  <div class="scrollcue">↓ scorri — una tragedia nella nebbia</div>
+</section>
+
+<section class="reveal" data-year="1914" data-depth="45">
+  <div class="eyebrow">Perché questo relitto</div>
+  <h2>Più morti del Titanic. E nessuno la ricorda.</h2>
+  <p class="lede">Il Titanic è ovunque: film, libri, mostre. La Empress of Ireland, nello stesso oceano e appena due anni dopo, uccise più <em>passeggeri</em> del Titanic — in appena quattordici minuti. Eppure è quasi sparita dalla memoria. Perché?</p>
+  <p>Questa scheda racconta due cose insieme: una tragedia spaventosa — un transatlantico pieno di gente comune che affonda in una notte di nebbia sul fiume San Lorenzo, portandosi giù più di mille persone — e il mistero del suo <strong>oblio</strong>. Perché alcune catastrofi diventano leggenda e altre, più grandi, scivolano via? La risposta ha a che fare con due mesi di calendario, e con una guerra.</p>
+  <div class="stats">
+    <div class="stat"><div class="v amber">1.012</div><div class="k">morti su 1.477 a bordo</div></div>
+    <div class="stat"><div class="v">14</div><div class="k">minuti per affondare</div></div>
+    <div class="stat"><div class="v">465</div><div class="k">superstiti</div></div>
+    <div class="stat"><div class="v">~2</div><div class="k">mesi prima della Grande Guerra</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1914" data-depth="0">
+  <div class="eyebrow">29 maggio 1914 · ore 1:50 · il San Lorenzo</div>
+  <h2>La prua nella nebbia</h2>
+  <p>La Empress of Ireland è salpata da Québec la sera prima, diretta a Liverpool, carica di 1.477 persone. Nella notte, mentre scende il largo estuario del San Lorenzo, cala una <strong>nebbia fittissima</strong>. In mezzo a quella nebbia arriva, in senso opposto, un robusto mercantile norvegese da carbone, lo <strong>Storstad</strong>, con la prua rinforzata per i ghiacci.</p>
+  <p class="lede">Le due navi si vedono, poi si perdono nella nebbia, poi si ritrovano troppo vicine. La prua dello Storstad entra nel fianco destro della Empress come un'ascia.</p>
+  <p>Lo squarcio è enorme e basso sulla linea di galleggiamento. L'acqua entra a tonnellate; la nave si inclina quasi subito, e di notte, con molti passeggeri addormentati e i portelli aperti per l'aria, non c'è tempo. In meno di quattordici minuti la Empress of Ireland è sul fondo.</p>
+</section>
+
+<section class="reveal" data-year="1914" data-depth="0">
+  <div class="eyebrow">Il meccanismo · il tempo</div>
+  <h2>Quattordici minuti</h2>
+  <p>In un naufragio, la variabile che decide quanti si salvano non è quasi mai il numero delle scialuppe: è il <strong>tempo</strong>. Confronta quanto impiegarono ad affondare tre grandi transatlantici — e capirai, in un colpo d'occhio, perché la Empress fu una strage.</p>
+  <div class="clock">
+    <svg viewBox="0 0 640 230" role="img" aria-label="Confronto dei minuti impiegati ad affondare da Titanic, Lusitania ed Empress of Ireland">
+      <title>Minuti per affondare</title>
+      <line x1="60" y1="170" x2="610" y2="170" stroke="var(--rule)" stroke-width="1.4"/>
+      <g fill="var(--slate)" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="middle">
+        <line x1="60" y1="166" x2="60" y2="174" stroke="var(--slate)" stroke-width="1"/><text x="60" y="188">0</text>
+        <line x1="251" y1="166" x2="251" y2="174" stroke="var(--slate)" stroke-width="1"/><text x="251" y="188">60'</text>
+        <line x1="441" y1="166" x2="441" y2="174" stroke="var(--slate)" stroke-width="1"/><text x="441" y="188">120'</text>
+      </g>
+      <text x="60" y="206" fill="var(--slate)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">MINUTI PER AFFONDARE · CLICCA UNA NAVE</text>
+
+      <!-- Empress 14' -->
+      <g class="bar" tabindex="0" data-s="empress">
+        <rect class="hl" x="92" y="60" width="24" height="110" fill="var(--amber2)" opacity="0"/>
+        <rect x="98" y="110" width="12" height="60" fill="var(--amber)"/>
+        <text x="104" y="100" fill="var(--amber)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle">14'</text>
+        <text x="104" y="54" fill="var(--ink)" font-family="Cardo, serif" font-size="13" text-anchor="middle" transform="rotate(-90 104 54)" style="transform-box:fill-box">EMPRESS</text>
+      </g>
+      <!-- Lusitania 18' -->
+      <g class="bar" tabindex="0" data-s="lusitania">
+        <rect class="hl" x="105" y="60" width="24" height="110" fill="var(--navy)" opacity="0"/>
+        <rect x="111" y="122" width="12" height="48" fill="var(--navy)"/>
+        <text x="117" y="112" fill="var(--navy)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle">18'</text>
+        <text x="138" y="150" fill="var(--ink2)" font-family="Cardo, serif" font-size="12">Lusitania · 18'</text>
+      </g>
+      <!-- Titanic 160' -->
+      <g class="bar" tabindex="0" data-s="titanic">
+        <rect class="hl" x="556" y="60" width="24" height="110" fill="var(--navy)" opacity="0"/>
+        <rect x="562" y="86" width="12" height="84" fill="var(--navy2)"/>
+        <text x="568" y="76" fill="var(--navy2)" font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle">160'</text>
+        <text x="548" y="118" fill="var(--ink2)" font-family="Cardo, serif" font-size="12" text-anchor="end">Titanic · 2h40 →</text>
+      </g>
+    </svg>
+    <div id="minfo">Quanto tempo ci mise ad affondare ogni nave? Clicca. La barra più corta è la Empress: i quattordici minuti che spiegano la strage — e che quasi nessuno ricorda.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1914" data-depth="0">
+  <div class="eyebrow">I passeggeri</div>
+  <h2>L'Esercito della Salvezza</h2>
+  <p>Tra i passeggeri c'era un gruppo numeroso e compatto: <strong>centosettantuno membri dell'Esercito della Salvezza</strong> canadese, in viaggio verso Londra per un grande congresso internazionale, con la loro banda musicale al completo. Partivano cantando dalla banchina di Québec.</p>
+  <div class="moment">
+    <q>Dei centosettantuno salvationisti a bordo, ne sopravvissero otto.</q>
+    <cite>IL BILANCIO PER L'ESERCITO DELLA SALVEZZA, 29 MAGGIO 1914</cite>
+  </div>
+  <p>Fu una ferita che quella comunità ricorda ancora oggi, mentre il resto del mondo ha dimenticato. È anche questo a rendere la Empress of Ireland diversa dal Titanic: non la nave dei miliardari e del mito, ma la nave della gente comune — emigranti, famiglie, musicisti — su cui la storia ha poi chiuso gli occhi.</p>
+</section>
+
+<section class="reveal" data-year="1914" data-depth="0">
+  <div class="eyebrow">L'oblio</div>
+  <h2>Perché l'abbiamo dimenticata</h2>
+  <p>La Empress affondò il 29 maggio 1914. Poche settimane dopo, il 28 giugno, a Sarajevo partì il colpo di pistola che avrebbe acceso la <strong>Prima guerra mondiale</strong>. Entro l'estate l'Europa era in fiamme, e una tragedia di mille morti su un fiume canadese divenne, di colpo, una notizia piccola in un mondo di milioni di morti.</p>
+  <p class="lede">Finì schiacciata tra due disastri più famosi: il Titanic che la precedette di due anni, la Lusitania che la seguì di uno.</p>
+  <p>Ma c'è anche una ragione più sottile, che gli storici hanno messo a fuoco. Il Titanic aveva una morale rassicurante nel suo orrore: l'arroganza punita, gli errori da correggere, le scialuppe da aumentare. La Empress no: aveva le scialuppe, aveva il radar del suo tempo, aveva fatto tutto giusto — e affondò lo stesso, in quattordici minuti, per una nebbia e una prua. Era una tragedia senza lezione, e senza lezione è più difficile da raccontare. Così il mondo scelse di non raccontarla.</p>
+</section>
+
+<section class="reveal" data-year="2009" data-depth="45">
+  <div class="eyebrow">Il relitto e la memoria</div>
+  <h2>Riportarla alla luce (della memoria)</h2>
+  <p>La Empress of Ireland giace su un fianco a circa quarantacinque metri, nelle acque fredde e correntose del San Lorenzo, a pochi chilometri da Rimouski. È un sito d'immersione affascinante e insidioso — buio, freddo, con poca visibilità — e anche qui alcuni sub hanno perso la vita cercando di visitarla.</p>
+  <p>Nel 2009 il Canada ha dichiarato il relitto <strong>Sito storico nazionale</strong>, e a Pointe-au-Père un museo ne custodisce i reperti e le storie. È una riparazione tardiva ma giusta: dopo un secolo di silenzio, la nave dimenticata sta lentamente tornando dove merita, non in fondo al fiume, ma nella memoria.</p>
+</section>
+
+<section class="reveal" data-year="1906" data-depth="45">
+  <div class="eyebrow">La nave</div>
+  <h2>L'orgoglio del Canada sull'Atlantico</h2>
+  <p>Entrata in servizio nel 1906 per la Canadian Pacific, la Empress of Ireland era un transatlantico di circa 170 metri, con due fumaioli, che faceva la spola tra il Canada e Liverpool portando posta, merci e soprattutto emigranti verso il Nuovo Mondo e ritorno. Non la più grande né la più lussuosa: una solida nave di linea, affidabile, al lavoro.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 640 210" role="img" aria-label="Illustrazione stilizzata del transatlantico Empress of Ireland nella nebbia">
+      <title>Il transatlantico Empress of Ireland</title>
+      <path d="M-20 168 q 60 -7 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(42,74,92,.3)" stroke-width="1.3" class="eiwave"/>
+      <path d="M-20 180 q 60 -6 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(42,74,92,.2)" stroke-width="1.1" class="eiwave"/>
+      <g class="eiship">
+        <path d="M70 160 L100 146 L556 146 L598 156 L582 162 Z" fill="#33454E" stroke="#5B6D74" stroke-width="1.2"/>
+        <line x1="106" y1="152" x2="560" y2="152" stroke="#B6792E" stroke-width="1.2"/>
+        <rect x="170" y="118" width="300" height="28" fill="#E4E8E8" stroke="#9FB0B4" stroke-width="1"/>
+        <g fill="#8FA0A4"><rect x="184" y="124" width="6" height="7"/><rect x="204" y="124" width="6" height="7"/><rect x="224" y="124" width="6" height="7"/><rect x="244" y="124" width="6" height="7"/><rect x="264" y="124" width="6" height="7"/><rect x="284" y="124" width="6" height="7"/><rect x="304" y="124" width="6" height="7"/><rect x="324" y="124" width="6" height="7"/><rect x="344" y="124" width="6" height="7"/><rect x="364" y="124" width="6" height="7"/><rect x="384" y="124" width="6" height="7"/><rect x="404" y="124" width="6" height="7"/><rect x="424" y="124" width="6" height="7"/><rect x="444" y="124" width="6" height="7"/></g>
+        <!-- due fumaioli -->
+        <rect x="268" y="86" width="30" height="34" fill="#39474E" stroke="#5B6D74" stroke-width="1"/>
+        <rect x="320" y="86" width="30" height="34" fill="#39474E" stroke="#5B6D74" stroke-width="1"/>
+        <g class="eismoke"><path d="M283 86 q10 -24 26 -34 q-4 20 -14 34 Z" fill="rgba(120,134,140,.35)"/></g>
+        <line x1="210" y1="118" x2="210" y2="80" stroke="#5B6D74" stroke-width="1.4"/>
+        <line x1="430" y1="118" x2="430" y2="82" stroke="#5B6D74" stroke-width="1.4"/>
+      </g>
+      <text x="20" y="28" fill="var(--slate)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">TRANSATLANTICO A DUE FUMAIOLI — RICOSTRUZIONE STILIZZATA</text>
+    </svg>
+    <figcaption>Ricostruzione stilizzata. Le foto reali della nave e del naufragio sono presso gli archivi qui sotto.</figcaption>
+  </figure>
+  <div class="realimg">
+    <div class="badge">Documenti e immagini reali</div>
+    <p>La nave, il naufragio e la memoria sono custoditi da Parks Canada, dal museo di Pointe-au-Père e dall'Esercito della Salvezza.</p>
+    <div class="arclinks">
+      <a href="https://www.pc.gc.ca/apps/dfhd/page_nhs_eng.aspx?id=12391" target="_blank" rel="noopener">
+        <span class="arch">PARKS CANADA</span>
+        <span><span class="ttl">Il relitto, Sito storico nazionale</span><span class="meta">La scheda ufficiale del relitto dell'Empress of Ireland, dichiarato Sito storico nazionale del Canada nel 2009.</span></span>
+        <span class="go">pc.gc.ca ↗</span>
+      </a>
+      <a href="https://www.salvationarmy.org.uk/about-us/international-heritage-centre/international-heritage-centre-blog/empress-ireland" target="_blank" rel="noopener">
+        <span class="arch">THE SALVATION ARMY</span>
+        <span><span class="ttl">I 171 salvationisti</span><span class="meta">La memoria dei membri dell'Esercito della Salvezza persi nel naufragio, dal loro archivio storico.</span></span>
+        <span class="go">salvationarmy.org.uk ↗</span>
+      </a>
+      <a href="https://www.worldhistory.org/RMS_Empress_of_Ireland/" target="_blank" rel="noopener">
+        <span class="arch">WORLD HISTORY ENCYCLOPEDIA</span>
+        <span><span class="ttl">La storia completa</span><span class="meta">La nave, la collisione con lo Storstad e perché il disastro fu dimenticato.</span></span>
+        <span class="go">worldhistory.org ↗</span>
+      </a>
+    </div>
+    <p class="cite">Fotografie e documentazione presso Parks Canada, il Site historique maritime de la Pointe-au-Père (Musée Empress of Ireland, Rimouski), l'Esercito della Salvezza e World History Encyclopedia, riprodotte con attribuzione presso le fonti, non ospitate su questo sito.</p>
+  </div>
+</section>
+
+<section class="reveal" data-year="1914" data-depth="45">
+  <div class="eyebrow">La rotta</div>
+  <h2>Il viaggio interrotto</h2>
+  <p>Da Québec verso Liverpool. Il tratto continuo è quanto navigò lungo il San Lorenzo — poche ore; il tratteggio, tutta la traversata atlantica che non cominciò mai.</p>
+  <!--ROUTEMAP-->
+</section>
+
+<section class="reveal" data-year="1914" data-depth="45">
+  <div class="eyebrow">I numeri</div>
+  <h2>La nave, misurata</h2>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Valore</th></tr></thead>
+    <tbody>
+      <tr><td>Tipo</td><td class="n">transatlantico · Canadian Pacific</td></tr>
+      <tr><td>In servizio dal</td><td class="n">1906</td></tr>
+      <tr><td>Lunghezza</td><td class="n">~170 m</td></tr>
+      <tr><td>Collisione</td><td class="n">29 maggio 1914, ~1:50 (con la Storstad)</td></tr>
+      <tr><td>Tempo per affondare</td><td class="n">meno di 14 minuti</td></tr>
+      <tr><td>A bordo</td><td class="n">1.477</td></tr>
+      <tr><td>Morti</td><td class="n">1.012 · superstiti 465</td></tr>
+      <tr><td>Salvationisti</td><td class="n">171 a bordo, 8 superstiti</td></tr>
+      <tr><td>Profondità del relitto</td><td class="n">~45 m (fiume San Lorenzo)</td></tr>
+      <tr><td>Oggi</td><td class="n">Sito storico nazionale (2009) · museo a Pointe-au-Père</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Le cifre (1.012 morti su 1.477; 465 superstiti) sono quelle comunemente accettate e variano di poche unità tra le fonti. Le responsabilità della collisione furono oggetto di inchieste con esiti contrastanti (quella canadese incolpò la Storstad, quella norvegese la Empress): la pagina riporta il dubbio invece di una colpa unica.</p>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">Nota metodologica</div>
+  <h2>Cosa questa pagina rimette in luce</h2>
+  <p>Una proporzione. La Empress of Ireland non è meno importante del Titanic perché è meno famosa: la fama non misura il dolore. Questa scheda prova a correggere, nel suo piccolo, uno squilibrio della memoria collettiva — raccontando con la stessa cura una tragedia che il mondo ha lasciato scivolare via.</p>
+  <p>Senza, però, gonfiare i fatti. Non attribuisce una colpa che le inchieste lasciarono in sospeso; dà le cifre come stime concordi ma non identiche; e non trasforma il relitto, che è una tomba e un sito d'immersione pericoloso, in una meta. La lezione, semmai, è proprio che non tutte le tragedie hanno una lezione — e che ricordarle resta comunque un dovere.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 032 di 20+ · la serie continua</div>
+    <h2 style="margin-bottom:14px">La prossima è un caso unico: lo U-864</h2>
+    <p>Dalla tragedia dimenticata a un primato sinistro. Lo U-864 è l'unico sommergibile della storia affondato da un altro sommergibile mentre <strong>entrambi erano in immersione</strong>. Trasportava mercurio verso il Giappone nel 1945 — e oggi quel carico velenoso, sul fondo della Norvegia, è un problema ambientale ancora aperto.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce la prossima scheda</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="gribshunden.html">← Scheda 031: la Gribshunden</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">Tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · World History Encyclopedia «RMS Empress of Ireland» (nave, collisione, perché fu dimenticata) · Wikipedia «Sinking of the RMS Empress of Ireland» (29 mag 1914, Storstad, &lt;14 min, 1.012 morti su 1.477) · The Salvation Army, International Heritage Centre (i 171 salvationisti, 8 superstiti) · Parks Canada, «Wreck of RMS Empress of Ireland National Historic Site» (relitto ~45 m, sito storico 2009) · Site historique maritime de la Pointe-au-Père (museo, Rimouski)<br><br>
+      Wreck Atlas · Scheda 032 · Prototipo
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), air=document.getElementById('air'), flame=document.getElementById('flame');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- rivelazione delle sezioni ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- fondo: nebbia fredda → fiamma d'ambra della memoria → pietra chiara ---------- */
+  var shades=['#D6DBDA','#CDD5D5','#C4CFD0','#BECBCE','#C8CDC8','#DAD6C8','#E4E1D4'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    document.getElementById('railDLab').textContent = (active.dataset.depth==='0') ? 'in superficie' : 'Profondità';
+    if(!reduce){
+      air.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)];
+      /* la fiamma della memoria si accende nella seconda metà (l'oblio e il ricordo) */
+      flame.style.opacity=String(Math.max(0,(p-0.5)/0.5)*0.9);
+    }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- quattordici minuti ---------- */
+  var minfo=document.getElementById('minfo');
+  var MIN={
+    empress:'<b>Empress of Ireland — 14 minuti.</b> 1.477 a bordo, 1.012 morti, 465 salvati. Di notte, coi portelli aperti e la nave inclinata quasi subito, quattordici minuti non bastarono quasi a nessuno: morì oltre i due terzi di chi era a bordo.',
+    lusitania:'<b>Lusitania — 18 minuti.</b> Circa 1.198 morti su ~1.960. Silurata nel 1915, affondò in diciotto minuti: anche qui la rapidità rese le scialuppe quasi inutili.',
+    titanic:'<b>Titanic — 2 ore e 40 minuti.</b> Circa 1.500 morti su ~2.220. Affondò lentamente: il tempo permise di calare le (troppo poche) scialuppe e salvò circa 700 persone. In mare il tempo è tutto — ed è ciò che la Empress non ebbe.'
+  };
+  if(minfo){
+    document.querySelectorAll('.bar').forEach(function(b){
+      function show(){ minfo.innerHTML=MIN[b.dataset.s]; }
+      b.addEventListener('click',show); b.addEventListener('focus',show);
+      b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} });
+    });
+  }
+
+  /* ---------- metriche di scroll ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'032-empressofireland',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] scheda 032 · '+m+'% a '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] sessione: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- iscrizione ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla — collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>
