@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gribshunden — 1495</title>
+<meta name="description" content="La nave ammiraglia di re Hans di Danimarca, bruciata e affondata nel Baltico nel 1495 mentre il re andava a un summit. È la nave da guerra meglio conservata dell'alba delle esplorazioni, con una polena a forma di mostro marino recuperata nel 2015.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gribshunden — 1495">
+<meta property="og:description" content="Coeva di Colombo. Una nave da guerra reale intatta dal 1495, con una polena-mostro e un barile che custodiva uno storione: una capsula del tempo del Rinascimento, nel fango freddo del Baltico.">
+<meta property="og:site_name" content="Wreck Atlas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#EDE7D6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --parch:#EDE7D6; --paper:#F6F1E3; --panel:#E6DEC9;
+  --ink:#2A2213; --ink2:#564A33; --fog:#8A7E64;
+  --oak:#7A5A2E; --oak2:#9A763C;
+  --sea:#3E6E74; --sea2:#5E9299;
+  --royal:#7A2E34; --royal2:#9A3A40;
+  --gold:#A9842E; --gold2:#C9A24A;
+  --rule:rgba(42,34,19,.17);
+  --display:"Grenze Gotisch",Georgia,serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--parch);color:var(--ink);font-family:var(--body);font-weight:300;line-height:1.66;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#vellum{position:fixed;inset:0;z-index:-4;background:var(--parch);transition:background 1.6s ease}
+#light{position:fixed;left:50%;top:-10%;transform:translateX(-50%);width:70vw;height:60vh;z-index:-3;pointer-events:none;opacity:.5;
+  background:radial-gradient(ellipse at 50% 0%,rgba(201,162,74,.12),transparent 62%)}
+#tint{position:fixed;inset:-10%;z-index:-1;pointer-events:none;opacity:.5;
+  background:radial-gradient(ellipse at 24% 32%,rgba(62,110,116,.08),transparent 44%),
+             radial-gradient(ellipse at 80% 74%,rgba(122,46,52,.06),transparent 46%)}
+
+#rail{position:fixed;left:0;top:0;bottom:0;width:92px;z-index:20;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--fog);pointer-events:none}
+#rail::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:var(--rule)}
+#railFill{position:absolute;left:46px;top:0;width:1px;height:0;background:var(--royal)}
+.rail-num{font-size:18px;color:var(--ink);font-weight:600;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-lab{font-size:9px;opacity:.7;text-transform:uppercase;letter-spacing:.18em}
+.rail-block{padding:10px 0;z-index:1;text-align:center;width:92px;background:rgba(237,231,214,.82)}
+
+main{max-width:760px;margin:0 auto;padding:0 32px 0 132px;position:relative;z-index:2}
+section{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--sea);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(58px,13vw,140px);line-height:.92;letter-spacing:.01em;color:var(--ink)}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(32px,5vw,54px);line-height:1.04;margin-bottom:22px;color:var(--ink)}
+p{font-size:17px;max-width:56ch;margin-bottom:18px;color:rgba(42,34,19,.86)}
+.lede{font-size:20px;color:var(--ink)}
+em{font-style:italic;color:var(--ink2)}
+strong{font-weight:500;color:var(--ink);border-bottom:1px solid rgba(122,46,52,.32)}
+
+#hero{min-height:100vh;justify-content:flex-end;padding-bottom:12vh}
+#hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--fog);margin-top:24px}
+.coordbox{margin-top:34px;border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-wrap:wrap;gap:36px}
+.coord{font-family:var(--mono);font-size:12px;color:var(--fog)}
+.coord b{display:block;color:var(--ink);font-size:15px;font-weight:500;margin-top:3px}
+.conf{display:inline-flex;align-items:flex-start;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  color:var(--sea);border:1px solid rgba(62,110,116,.42);padding:6px 11px;margin-top:28px;align-self:flex-start;max-width:66ch;line-height:1.6;background:rgba(255,255,255,.35)}
+.conf .dot{width:6px;height:6px;border-radius:50%;background:var(--sea);flex:none;margin-top:5px}
+.scrollcue{margin-top:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--fog);text-transform:uppercase}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:30px;border-top:1px solid var(--rule)}
+.stat{padding:22px 18px 22px 0;border-bottom:1px solid rgba(42,34,19,.1)}
+.stat .v{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.8vw,48px);line-height:1;color:var(--sea);font-variant-numeric:tabular-nums}
+.stat .v.gold{color:var(--gold)}
+.stat .v.royal{color:var(--royal)}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);margin-top:10px;line-height:1.5}
+
+.moment{border-left:3px solid var(--royal);padding:8px 0 8px 28px;margin:8px 0 26px}
+.moment q{font-family:var(--display);font-weight:500;font-size:clamp(28px,5vw,46px);line-height:1.08;color:var(--ink);quotes:"\201C" "\201D"}
+.moment cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--fog);margin-top:18px}
+
+.tl{border-left:1px solid var(--rule);margin-top:8px}
+.tl-item{padding:0 0 34px 28px;position:relative}
+.tl-item::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--parch);border:1px solid var(--fog)}
+.tl-item.key::before{background:var(--royal);border-color:var(--royal);box-shadow:0 0 0 5px rgba(122,46,52,.13)}
+.tl-y{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--sea);margin-bottom:5px}
+.tl-item.key .tl-y{color:var(--royal)}
+.tl-t{font-size:17px;color:var(--ink);margin-bottom:4px}
+.tl-d{font-size:14.5px;color:rgba(42,34,19,.62);max-width:52ch}
+
+.creature{margin-top:14px;border:1px solid var(--rule);background:var(--paper);padding:22px 20px;box-shadow:0 8px 30px rgba(42,34,19,.07)}
+.creature svg{width:100%;height:auto;display:block;border:1px solid var(--rule)}
+.wctrl{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:11px;color:var(--ink2)}
+.wctrl input[type=range]{flex:1;min-width:150px;accent-color:#7A2E34}
+.wctrl .lab{letter-spacing:.08em}
+#creatmsg{font-family:var(--mono);font-size:12px;color:var(--ink2);margin-top:14px;min-height:40px;line-height:1.7}
+#creatmsg b{color:var(--royal);font-weight:600}
+
+.wares{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;margin-top:20px;border:1px solid var(--rule);background:var(--paper)}
+.ware{padding:18px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.ware svg{width:100%;height:76px;display:block;margin-bottom:10px}
+.ware .wn{font-family:var(--display);font-weight:600;font-size:18px;color:var(--ink)}
+.ware .wd{font-family:var(--mono);font-size:11px;color:var(--ink2);line-height:1.6;margin-top:4px}
+
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);font-weight:400;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--rule)}
+th.n,td.n{text-align:right;font-family:var(--mono)}
+td{padding:13px 12px 13px 0;border-bottom:1px solid rgba(42,34,19,.1);vertical-align:top;color:rgba(42,34,19,.8)}
+td.n{color:var(--ink);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11.5px;color:var(--fog);line-height:1.75;margin-top:22px;max-width:60ch}
+
+.realimg{margin-top:22px;border:1px solid rgba(122,46,52,.3);background:rgba(122,46,52,.05);padding:22px}
+.realimg .badge{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--royal);margin-bottom:14px}
+.realimg p{margin-bottom:14px}
+.arclinks{display:grid;gap:2px;margin-top:6px}
+.arclinks a{display:flex;gap:20px;align-items:baseline;padding:18px 0;text-decoration:none;color:inherit;
+  border-bottom:1px solid rgba(42,34,19,.1);transition:padding-left .3s ease,border-color .3s ease}
+.arclinks a:first-child{border-top:1px solid rgba(42,34,19,.1)}
+.arclinks a:hover,.arclinks a:focus-visible{padding-left:12px;border-bottom-color:var(--royal)}
+.arclinks .arch{font-family:var(--mono);font-size:11px;color:var(--sea);min-width:150px}
+.arclinks .ttl{font-size:15.5px;color:var(--ink)}
+.arclinks .meta{font-size:13px;color:rgba(42,34,19,.58);margin-top:3px;max-width:46ch}
+.arclinks .go{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--fog);opacity:0;transition:opacity .3s}
+.arclinks a:hover .go,.arclinks a:focus-visible .go{opacity:1}
+.realimg .cite{font-family:var(--mono);font-size:11px;color:var(--fog);line-height:1.6;margin-top:14px}
+
+.shipart{margin-top:22px;border:1px solid var(--rule);background:var(--paper);padding:18px 18px 12px}
+.shipart svg{width:100%;height:auto;display:block}
+.shipart figcaption{font-family:var(--mono);font-size:11px;color:var(--fog);letter-spacing:.05em;margin-top:10px}
+.gbship{transform-box:fill-box;transform-origin:50% 90%;animation:gbbob 8s ease-in-out infinite}
+@keyframes gbbob{0%,100%{transform:rotate(-.7deg) translateY(0)}50%{transform:rotate(.7deg) translateY(-2px)}}
+.gbflag{transform-box:fill-box;transform-origin:0 50%;animation:gbflag 1.9s ease-in-out infinite}
+@keyframes gbflag{0%,100%{transform:scaleX(1) skewX(0)}50%{transform:scaleX(.82) skewX(-12deg)}}
+.gbwave{animation:gbwave 6s ease-in-out infinite}
+@keyframes gbwave{0%,100%{transform:translateX(0)}50%{transform:translateX(-8px)}}
+
+.closing{border-top:2px solid var(--royal);padding-top:34px;margin-top:20px}
+.signup{margin-top:30px;max-width:460px}
+.signup label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--fog);margin-bottom:12px}
+.signup .row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:#fff;border:1px solid var(--rule);color:var(--ink);
+  font-family:var(--body);font-size:15px;padding:12px 14px}
+.signup input:focus{border-color:var(--royal);outline:none}
+.signup button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--royal);color:#F6ECE6;border:none;padding:12px 22px;cursor:pointer;transition:opacity .25s}
+.signup button:hover{opacity:.88}
+.signup .msg{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:20px;color:var(--sea)}
+.signup .msg.err{color:var(--royal2)}
+.globelink{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--ink2);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:5px;transition:color .25s,border-color .25s}
+.globelink:hover{color:var(--royal);border-color:var(--royal)}
+.src{font-family:var(--mono);font-size:11.5px;color:var(--fog);line-height:1.9}
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:40px 0 90px}
+
+@media (max-width:760px){
+  #rail{width:56px} #rail::before,#railFill{left:28px} .rail-block{width:56px} .rail-num{font-size:15px}
+  main{padding:0 22px 0 74px} p{font-size:16px}
+  .ware{border-right:none} .arclinks a{flex-wrap:wrap;gap:6px} .arclinks .go{display:none} .arclinks .arch{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  #vellum,#light{transition:none}
+  .gbship,.gbflag,.gbwave{animation:none}
+}
+:focus-visible{outline:2px solid var(--royal);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="vellum"></div>
+<div id="light"></div>
+<div id="tint"></div>
+
+<div id="rail" aria-hidden="true">
+  <div id="railFill"></div>
+  <div class="rail-block"><div class="rail-lab">Anno</div><div class="rail-num" id="railYear">1495</div></div>
+  <div class="rail-block"><div class="rail-lab" id="railDLab">Profondità</div><div class="rail-num" id="railDepth">0</div><div class="rail-lab">metri</div></div>
+</div>
+
+<main>
+
+<section id="hero" data-year="1495" data-depth="0">
+  <div class="eyebrow">Ammiraglia reale · re Hans di Danimarca · 1495</div>
+  <h1>Gribshunden</h1>
+  <div class="sub">BRUCIÒ NEL BALTICO · LA NAVE DA GUERRA INTATTA PIÙ ANTICA DEL SUO TIPO</div>
+  <div class="coordbox">
+    <div class="coord">Dove giace<b>presso Ronneby, Svezia · ~10 m</b></div>
+    <div class="coord">L'epoca<b>1495 — gli anni di Colombo</b></div>
+    <div class="coord">Il simbolo<b>una polena a forma di mostro</b></div>
+  </div>
+  <div class="conf"><span class="dot"></span>RELITTO ECCEZIONALMENTE CONSERVATO DAL BALTICO FREDDO · ANCORA SUL FONDO, SITO PROTETTO · SCAVO IN CORSO</div>
+  <div class="scrollcue">↓ scorri — nella luce di pergamena</div>
+</section>
+
+<section class="reveal" data-year="2015" data-depth="10">
+  <div class="eyebrow">Perché questo relitto</div>
+  <h2>La nave dell'anno di Colombo</h2>
+  <p class="lede">Pensiamo al Rinascimento come a quadri e cattedrali. Ma com'era fatta una nave da guerra, nell'esatto momento in cui l'Europa si lanciava a conquistare gli oceani? Per secoli non lo abbiamo saputo: nessuna era sopravvissuta. Poi è riemersa la Gribshunden.</p>
+  <p>Affondò nel <strong>1495</strong> — tre anni dopo il primo viaggio di Colombo — ed è la nave da guerra meglio conservata al mondo dell'alba delle esplorazioni. Non portava un tesoro: portava un re, la sua corte e il suo potere. Il gelo del Baltico ha custodito tutto, perfino una <strong>polena a forma di mostro marino</strong> e il cibo nei barili. È una fotografia tridimensionale di un mondo scomparso, scattata nell'anno in cui il mondo stesso stava cambiando per sempre.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">1495</div><div class="k">l'anno dell'incendio</div></div>
+    <div class="stat"><div class="v gold">~10</div><div class="k">metri di profondità</div></div>
+    <div class="stat"><div class="v royal">2015</div><div class="k">anno del recupero della polena</div></div>
+    <div class="stat"><div class="v">~3</div><div class="k">anni dopo Colombo (1492)</div></div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1486" data-depth="0">
+  <div class="eyebrow">Il re e la nave</div>
+  <h2>L'ammiraglia di re Hans</h2>
+  <p>La Gribshunden — il nome significa all'incirca "il grifone-cane" — era costruita vicino a Rotterdam intorno al 1483 e divenne la nave ammiraglia di <strong>Hans, re di Danimarca e Norvegia</strong>. Non era solo un'arma: era uno strumento di diplomazia, un castello galleggiante con cui il re si presentava ai rivali in tutto il suo sfarzo.</p>
+  <p class="lede">Nell'estate del 1495 Hans salpò con essa verso Kalmar, in Svezia, per un vertice decisivo: voleva convincere i nobili svedesi a riconoscerlo re anche di Svezia, sotto l'Unione di Kalmar.</p>
+  <p>La nave doveva impressionare. Per questo era carica non solo di armi, ma di argenteria, spezie, cibi di lusso e simboli di potere. Non arrivò mai all'appuntamento — e proprio questo l'ha resa immortale.</p>
+</section>
+
+<section class="reveal" data-year="1495" data-depth="0">
+  <div class="eyebrow">Il momento esatto</div>
+  <h2>La nave al bivio della storia</h2>
+  <p>La Gribshunden è preziosa perché cade su una linea di confine. È una <strong>carvel</strong>: costruita col fasciame liscio, tavola contro tavola, la tecnica che permetteva scafi più grandi e robusti — quelli con cui gli europei avrebbero attraversato gli oceani. E montava le prime artiglierie pesanti di bordo, all'alba del cannone navale.</p>
+  <div class="moment">
+    <q>Mentre Colombo tornava dalle Americhe, questa nave bruciava nel Baltico.</q>
+    <cite>GRIBSHUNDEN, 1495 — L'UNICA NAVE DA GUERRA INTATTA DELL'ALBA DELLE ESPLORAZIONI</cite>
+  </div>
+  <p>Caravelle come quelle di Colombo, o le navi di Vasco da Gama, non ne è sopravvissuta nessuna. La Gribshunden è la loro cugina del Nord — la testimone materiale di come fosse fatta una grande nave europea proprio nel decennio in cui cominciava l'età delle scoperte. Studiarla è come leggere l'unica pagina rimasta di un libro andato perduto.</p>
+</section>
+
+<section class="reveal" data-year="2015" data-depth="10">
+  <div class="eyebrow">Il meccanismo · la polena</div>
+  <h2>La creatura</h2>
+  <p>Dallo scafo, nel 2015, è riemerso l'oggetto più impressionante: la polena, una testa di mostro intagliata nel legno — fauci spalancate, orecchie da predatore, una figura umana tra i denti. Riemerse come un ceppo annerito. Trascina il cursore per ricostruirla com'era: una macchina del terrore, dipinta, montata a prua per spaventare i nemici.</p>
+  <div class="creature">
+    <svg viewBox="0 0 600 340" role="img" aria-label="La polena-mostro della Gribshunden: da come fu ritrovata a come doveva apparire">
+      <title>La polena della Gribshunden</title>
+      <defs>
+        <clipPath id="revclip"><rect id="revrect" x="0" y="0" width="300" height="340"/></clipPath>
+      </defs>
+      <!-- STRATO A: come ritrovata (legno annerito) -->
+      <g>
+        <rect x="0" y="0" width="600" height="340" fill="#DCD3BC"/>
+        <path d="M120 300 Q90 230 130 180 Q150 150 150 120 Q150 92 180 80 Q176 60 196 54 Q208 40 226 50 Q236 40 250 50 Q300 56 320 96 Q372 100 410 130 Q372 136 350 128 Q372 158 360 196 Q336 180 322 186 Q336 220 312 252 Q300 232 290 232 Q286 268 262 288 Q258 262 246 260 Q232 300 196 306 Q200 280 188 276 Q160 308 120 300 Z"
+          fill="#4E4330" stroke="#2A2213" stroke-width="2"/>
+        <circle cx="300" cy="120" r="7" fill="#2A2213"/>
+        <path d="M330 150 Q360 150 384 140" fill="none" stroke="#2A2213" stroke-width="3"/>
+        <text x="20" y="328" fill="#6A5E44" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1">COME FU RITROVATA · QUERCIA ANNERITA</text>
+      </g>
+      <!-- STRATO B: ricostruzione (clipped) -->
+      <g clip-path="url(#revclip)">
+        <rect x="0" y="0" width="600" height="340" fill="#E9DFC4"/>
+        <path d="M120 300 Q90 230 130 180 Q150 150 150 120 Q150 92 180 80 Q176 60 196 54 Q208 40 226 50 Q236 40 250 50 Q300 56 320 96 Q372 100 410 130 Q372 136 350 128 Q372 158 360 196 Q336 180 322 186 Q336 220 312 252 Q300 232 290 232 Q286 268 262 288 Q258 262 246 260 Q232 300 196 306 Q200 280 188 276 Q160 308 120 300 Z"
+          fill="#6E5A34" stroke="#3A2E18" stroke-width="2"/>
+        <!-- orecchie / cresta -->
+        <path d="M196 54 Q188 28 210 22 Q206 44 226 50 Z" fill="#7A5A2E" stroke="#3A2E18" stroke-width="1.6"/>
+        <path d="M250 50 Q262 26 280 34 Q262 44 266 60 Z" fill="#7A5A2E" stroke="#3A2E18" stroke-width="1.6"/>
+        <!-- occhio -->
+        <circle cx="300" cy="116" r="12" fill="#C9A24A" stroke="#3A2E18" stroke-width="2"/>
+        <circle cx="300" cy="116" r="4.5" fill="#2A2213"/>
+        <!-- fauci con denti -->
+        <path d="M322 150 Q372 150 410 130 L408 150 Q372 170 330 170 Z" fill="#3A2E18"/>
+        <g fill="#EDE7D6"><path d="M338 150 l6 14 l6 -14 Z"/><path d="M356 150 l6 14 l6 -14 Z"/><path d="M374 150 l6 13 l6 -13 Z"/><path d="M392 148 l5 12 l6 -12 Z"/></g>
+        <!-- la figura umana tra i denti -->
+        <g stroke="#7A2E34" stroke-width="3" fill="none" stroke-linecap="round"><circle cx="372" cy="150" r="5" fill="#7A2E34" stroke="none"/><path d="M372 156 l0 14 M372 162 l-8 6 M372 162 l8 6 M372 170 l-6 10 M372 170 l6 10"/></g>
+        <text x="20" y="328" fill="#7A2E34" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1">COME DOVEVA APPARIRE · IL GRIFONE-CANE</text>
+      </g>
+      <line id="revline" x1="300" y1="0" x2="300" y2="340" stroke="#7A2E34" stroke-width="2"/>
+      <circle id="revknob" cx="300" cy="24" r="8" fill="#7A2E34"/>
+    </svg>
+    <div class="wctrl">
+      <span class="lab">RITROVATA ◄──► RICOSTRUITA</span>
+      <input type="range" id="revSlider" min="0" max="100" value="50" aria-label="Svela la ricostruzione della polena">
+    </div>
+    <div id="creatmsg"><b>Trascina il cursore.</b> A sinistra, la polena come fu recuperata: un blocco di quercia annerita dal tempo. A destra, com'era in origine: un mostro — mezzo cane, mezzo grifone — che stringe tra le fauci una figura umana. Una minaccia scolpita, messa a prua.</div>
+  </div>
+</section>
+
+<section class="reveal" data-year="1495" data-depth="10">
+  <div class="eyebrow">Estate 1495 · Stora Ekön</div>
+  <h2>Il fuoco, non la battaglia</h2>
+  <p>Non fu un nemico ad affondare la Gribshunden. Mentre era all'ancora in un'insenatura presso l'isola di Stora Ekön, a nord di Ronneby, <strong>scoppiò un incendio a bordo</strong> — forse nella polvere da sparo, forse in cucina. Il fuoco corse per la nave, che esplose o bruciò fino alla linea di galleggiamento e colò a picco in acqua bassa.</p>
+  <p class="lede">Re Hans, per sua fortuna, non era a bordo: era sceso a terra. Molti dei suoi uomini, invece, morirono.</p>
+  <p>Il re proseguì verso Kalmar senza la sua nave ammiraglia. Il relitto rimase sul fondo, a una decina di metri — dimenticato per quasi cinque secoli, finché il fango freddo del Baltico non lo restituì quasi intatto.</p>
+</section>
+
+<section class="reveal" data-year="2019" data-depth="10">
+  <div class="eyebrow">La capsula del tempo</div>
+  <h2>Cosa c'era a bordo di un re</h2>
+  <p>Gli scavi (guidati dall'Università di Lund) hanno riportato alla luce non armi d'oro, ma qualcosa di più raro: la vita materiale di una corte del Quattrocento, conservata come in nessun museo.</p>
+  <div class="wares">
+    <div class="ware">
+      <svg viewBox="0 0 120 76" role="img" aria-label="Lo storione nel barile"><ellipse cx="60" cy="60" rx="40" ry="8" fill="rgba(62,110,116,.18)"/><rect x="40" y="26" width="40" height="30" rx="3" fill="#C9B88A" stroke="#7A5A2E" stroke-width="1.4"/><path d="M30 42 Q52 34 70 42 l-6 6 q-16 6 -30 0 Z" fill="#6E8A8E" stroke="#3E6E74" stroke-width="1.2"/><circle cx="36" cy="43" r="1.4" fill="#2A2213"/></svg>
+      <div class="wn">Lo storione nel barile</div>
+      <div class="wd">Un intero storione, pesce "regale", conservato in salamoia: un lusso da mensa del re, trovato ancora nel suo barile.</div>
+    </div>
+    <div class="ware">
+      <svg viewBox="0 0 120 76" role="img" aria-label="Balestre e cotta di maglia"><path d="M40 30 L80 30 L60 58 Z" fill="none" stroke="#7A5A2E" stroke-width="2"/><line x1="40" y1="30" x2="80" y2="30" stroke="#3A2E18" stroke-width="1.6"/><line x1="60" y1="30" x2="60" y2="58" stroke="#3A2E18" stroke-width="2"/></svg>
+      <div class="wn">Armi e armature</div>
+      <div class="wd">Balestre, cotte di maglia, bocche da fuoco: l'arsenale di una nave da guerra al passaggio tra Medioevo e Rinascimento.</div>
+    </div>
+    <div class="ware">
+      <svg viewBox="0 0 120 76" role="img" aria-label="Zafferano e spezie"><g fill="#C9A24A"><path d="M50 50 q4 -20 10 -26 q6 6 10 26 q-10 6 -20 0 Z"/></g><path d="M60 24 l0 -8 M60 24 l-6 -5 M60 24 l6 -5" stroke="#9A763C" stroke-width="1.4" fill="none"/></svg>
+      <div class="wn">Zafferano e spezie</div>
+      <div class="wd">La spezia più costosa d'Europa, a bordo come status e come moneta: il re viaggiava con il suo lusso addosso.</div>
+    </div>
+    <div class="ware">
+      <svg viewBox="0 0 120 76" role="img" aria-label="Boccale e stoviglie"><ellipse cx="58" cy="60" rx="28" ry="6" fill="rgba(122,46,52,.14)"/><path d="M44 30 L74 30 L70 56 L48 56 Z" fill="#CBBE98" stroke="#7A5A2E" stroke-width="1.4"/><path d="M74 36 q12 2 10 14 q-2 6 -12 4" fill="none" stroke="#7A5A2E" stroke-width="1.6"/></svg>
+      <div class="wn">Il boccale e la tavola</div>
+      <div class="wd">Un boccale da birra, stoviglie, botti: gli oggetti di tutti i giorni di chi viveva a bordo, intatti.</div>
+    </div>
+  </div>
+  <p class="note">I reperti provengono dagli scavi condotti dall'Università di Lund (Brendan Foley, Johan Rönnby) e dal Blekinge Museum; l'identificazione della polena come "grifone-cane" e la datazione al 1495 sono frutto di dendrocronologia e studi pubblicati. Lo scavo è in corso: l'elenco dei reperti cresce.</p>
+</section>
+
+<section class="reveal" data-year="1970" data-depth="10">
+  <div class="eyebrow">Perché è ancora qui</div>
+  <h2>Il mare che non divora il legno</h2>
+  <p class="lede">Come il Vasa e la Vrouw Maria, anche la Gribshunden deve la sopravvivenza al Baltico: acqua fredda e poco salata, dove la <em>Teredo navalis</em> — il verme che altrove mangia i relitti di legno — non vive.</p>
+  <p>Fu ritrovata da sommozzatori locali già negli anni Settanta, ma solo decenni dopo si capì cosa fosse davvero. Oggi è un cantiere archeologico tra i più importanti del Nord Europa: ogni campagna riporta su qualcosa che non ci aspettavamo di poter toccare. La nave resta sul fondo, protetta; solo alcuni pezzi — la polena su tutti — sono stati portati in superficie per essere conservati e studiati.</p>
+</section>
+
+<section class="reveal" data-year="1495" data-depth="10">
+  <div class="eyebrow">La nave</div>
+  <h2>Un castello galleggiante</h2>
+  <p>La Gribshunden era una nave alta e imponente, con castelli a prua e a poppa come una fortezza sull'acqua, scafo carvel e la polena-mostro a fare da muso. Non la conosciamo da un dipinto, ma dal suo stesso scafo superstite: è lei a dirci com'era fatta.</p>
+  <figure class="shipart">
+    <svg viewBox="0 0 640 230" role="img" aria-label="Illustrazione stilizzata della nave da guerra Gribshunden col mostro a prua">
+      <title>La Gribshunden</title>
+      <path d="M-20 182 q 60 -6 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(62,110,116,.4)" stroke-width="1.4" class="gbwave"/>
+      <path d="M-20 194 q 60 -5 120 0 t 120 0 t 120 0 t 120 0 t 120 0" fill="none" stroke="rgba(94,146,153,.38)" stroke-width="1.2" class="gbwave"/>
+      <g class="gbship">
+        <path d="M120 176 L150 150 L500 150 L540 164 L524 178 Q320 190 134 178 Z" fill="#6E5A34" stroke="#3A2E18" stroke-width="1.3"/>
+        <!-- castelli -->
+        <path d="M120 176 L120 120 L178 120 L186 150 L150 150 Z" fill="#7A5A2E" stroke="#3A2E18" stroke-width="1.2"/>
+        <path d="M470 150 L476 118 L536 118 L540 164 Z" fill="#7A5A2E" stroke="#3A2E18" stroke-width="1.2"/>
+        <!-- mostro a prua (muso a sinistra) -->
+        <path d="M120 128 q-22 -2 -34 10 q10 2 12 8 q-14 2 -18 12 q16 0 22 -2 q-4 10 2 16 q10 -8 12 -16 Z" fill="#5A4A2A" stroke="#2A2213" stroke-width="1.4"/>
+        <circle cx="104" cy="134" r="3" fill="#C9A24A"/>
+        <!-- alberi + vele -->
+        <line x1="250" y1="150" x2="250" y2="52" stroke="#3A2E18" stroke-width="3"/>
+        <line x1="372" y1="150" x2="372" y2="66" stroke="#3A2E18" stroke-width="2.8"/>
+        <path d="M206 72 L298 72 L292 130 Q250 140 210 130 Z" fill="#E6DCC2" stroke="#9A763C" stroke-width="1.2"/>
+        <path d="M336 84 L414 84 L408 132 Q372 142 340 132 Z" fill="#E6DCC2" stroke="#9A763C" stroke-width="1.2"/>
+        <!-- croce araldica sulla vela -->
+        <path d="M252 86 L252 120 M238 100 L266 100" stroke="#7A2E34" stroke-width="3"/>
+        <!-- stendardo -->
+        <line x1="250" y1="52" x2="250" y2="42" stroke="#3A2E18" stroke-width="1.4"/>
+        <g class="gbflag" transform="translate(250 42)"><path d="M0 0 L40 3 L30 7 L40 11 L0 9 Z" fill="#7A2E34"/></g>
+      </g>
+      <text x="20" y="28" fill="var(--fog)" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1">NAVE DA GUERRA DEL 1495 — RICOSTRUZIONE STILIZZATA</text>
+    </svg>
+    <figcaption>Ricostruzione stilizzata. Lo scafo autentico è sul fondo; la polena recuperata e i reperti sono presso gli enti qui sotto.</figcaption>
+  </figure>
+  <div class="realimg">
+    <div class="badge">Documenti e immagini reali</div>
+    <p>La polena, i reperti e gli studi sul relitto sono documentati dai ricercatori e dal museo che li custodiscono.</p>
+    <div class="arclinks">
+      <a href="https://www.cbsnews.com/news/sturgeon-fish-found-denmark-royal-1495-shipwreck/" target="_blank" rel="noopener">
+        <span class="arch">CBS NEWS</span>
+        <span><span class="ttl">Lo storione di cinque secoli</span><span class="meta">Il pesce regale ritrovato nel suo barile a bordo del relitto: una finestra sulla mensa del re.</span></span>
+        <span class="go">cbsnews.com ↗</span>
+      </a>
+      <a href="https://www.sciencedaily.com/releases/2025/09/250919085232.htm" target="_blank" rel="noopener">
+        <span class="arch">SCIENCEDAILY</span>
+        <span><span class="ttl">I segreti della nave dimenticata</span><span class="meta">Le ultime scoperte dello scavo: boccale, balestre, zafferano e la vita di bordo del 1495.</span></span>
+        <span class="go">sciencedaily.com ↗</span>
+      </a>
+      <a href="https://www.blekingemuseum.se/" target="_blank" rel="noopener">
+        <span class="arch">BLEKINGE MUSEUM</span>
+        <span><span class="ttl">Chi custodisce la Gribshunden</span><span class="meta">Il museo regionale di Blekinge, in Svezia, che studia ed espone i reperti del relitto.</span></span>
+        <span class="go">blekingemuseum.se ↗</span>
+      </a>
+    </div>
+    <p class="cite">Ricerca a cura dell'Università di Lund (B. Foley, J. Rönnby) e del Blekinge Museum; immagini e studi riprodotti con attribuzione presso le fonti, non ospitati su questo sito.</p>
+  </div>
+</section>
+
+<section class="reveal" data-year="1495" data-depth="10">
+  <div class="eyebrow">La rotta</div>
+  <h2>Il viaggio interrotto</h2>
+  <p>Dalla Danimarca verso il vertice di Kalmar, per farsi re anche di Svezia. Il tratto continuo è quanto navigò; il tratteggio, l'ultimo tratto verso Kalmar che l'incendio le impedì di completare.</p>
+  <!--ROUTEMAP-->
+</section>
+
+<section class="reveal" data-year="1495" data-depth="10">
+  <div class="eyebrow">I numeri</div>
+  <h2>La nave, misurata</h2>
+  <table>
+    <thead><tr><th>Voce</th><th class="n">Valore</th></tr></thead>
+    <tbody>
+      <tr><td>Tipo</td><td class="n">nave da guerra reale (carvel)</td></tr>
+      <tr><td>Costruita</td><td class="n">~1483, vicino a Rotterdam</td></tr>
+      <tr><td>Ammiraglia di</td><td class="n">Hans, re di Danimarca e Norvegia</td></tr>
+      <tr><td>Affondamento</td><td class="n">estate 1495, per un incendio</td></tr>
+      <tr><td>Dove</td><td class="n">presso Stora Ekön, Ronneby (Svezia)</td></tr>
+      <tr><td>Profondità</td><td class="n">~10 m</td></tr>
+      <tr><td>Ritrovata</td><td class="n">anni '70; identificata negli anni 2000</td></tr>
+      <tr><td>Polena recuperata</td><td class="n">2015</td></tr>
+      <tr><td>Scavo</td><td class="n">Università di Lund · Blekinge Museum (in corso)</td></tr>
+    </tbody>
+  </table>
+  <p class="note">La datazione al 1495 è confermata dalla dendrocronologia e dalle fonti storiche sul viaggio di re Hans. Il numero esatto dei morti nell'incendio non è noto con precisione. Lo scavo è in corso: i reperti e le interpretazioni possono aggiornarsi.</p>
+</section>
+
+<section class="reveal" data-year="2026" data-depth="0">
+  <div class="eyebrow">Nota metodologica</div>
+  <h2>Cosa questa pagina dichiara</h2>
+  <p>Che il valore della Gribshunden non è nell'oro ma nel tempo: è una delle pochissime finestre materiali sul mondo del 1495, e per questo la trattiamo come un documento, non come un tesoro. La ricostruzione della polena nel widget è dichiaratamente un'interpretazione — del colore e dei dettagli originali sappiamo poco; la forma, invece, è quella del reperto reale.</p>
+  <p>E che lo scavo non è finito. Molto di ciò che sappiamo è recente, alcune cose cambieranno, e la posizione precisa resta riservata perché il relitto è ancora sul fondo e va protetto. Dove un dato è incerto — il numero dei morti, i dettagli dell'incendio — lo diciamo, invece di riempire il vuoto con una certezza inventata.</p>
+  <div class="closing">
+    <div class="eyebrow" style="margin-bottom:14px">Scheda 031 di 20+ · la serie continua</div>
+    <h2 style="margin-bottom:14px">La prossima è la tragedia dimenticata: la Empress of Ireland</h2>
+    <p>Dal Rinascimento al Novecento. Nel 1914, nel fiume San Lorenzo, il transatlantico canadese Empress of Ireland fu speronato nella nebbia e affondò in appena quattordici minuti: oltre mille morti, più passeggeri che sul Titanic. Eppure quasi nessuno la ricorda — perché poche settimane dopo scoppiò la Prima guerra mondiale.</p>
+    <form class="signup" id="signup" novalidate>
+      <label for="em">Avvisami quando esce la prossima scheda</label>
+      <div class="row">
+        <input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@esempio.it" required>
+        <button type="submit">Avvisami</button>
+      </div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+    <a class="globelink" href="nanhaione.html">← Scheda 030: la Nanhai One</a> &nbsp;·&nbsp; <a class="globelink" href="globo.html">Tutti i relitti sul globo →</a>
+  </div>
+  <footer>
+    <div class="src">
+      FONTI · Wikipedia «Gribshunden» (nave, re Hans, affondamento 1495, polena) · «The Danish Griffin: The Wreck of an Early Modern Royal Carvel from 1495» (Taylor &amp; Francis; dendrocronologia, carvel) · CBS News (lo storione nel barile) · ScienceDaily 2025 (gli ultimi reperti: boccale, balestre, zafferano) · Blekinge Museum e Università di Lund (B. Foley, J. Rönnby; scavo e custodia) · Combat Archaeology (fonte storica sul viaggio di re Hans)<br><br>
+      Wreck Atlas · Scheda 031 · Prototipo
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var railYear=document.getElementById('railYear'), railDepth=document.getElementById('railDepth');
+  var railFill=document.getElementById('railFill'), vellum=document.getElementById('vellum'), light=document.getElementById('light');
+  var reduce=(window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false);
+
+  /* ---------- rivelazione delle sezioni ---------- */
+  if(typeof IntersectionObserver!=='undefined'){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    },{threshold:.18});
+    sections.forEach(function(s){ if(s.classList.contains('reveal')) io.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- fondo chiaro: pergamena → Baltico freddo → quercia/oro → pergamena ---------- */
+  var shades=['#EDE7D6','#E8E3D3','#E2E6DE','#DCE4E2','#EFE6CE','#F0E8D4','#EFE9D9'];
+  function tick(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(y/h,1):0;
+    railFill.style.height=(p*100)+'%';
+    var active=sections[0];
+    sections.forEach(function(s){ if(s.getBoundingClientRect().top<=window.innerHeight*0.55) active=s; });
+    railYear.textContent=active.dataset.year;
+    railDepth.textContent=active.dataset.depth;
+    document.getElementById('railDLab').textContent = (active.dataset.depth==='0') ? 'in superficie' : 'Profondità';
+    if(!reduce){
+      vellum.style.background=shades[Math.min(Math.floor(p*shades.length),shades.length-1)];
+      light.style.opacity=String(Math.max(.2, 1-Math.abs(p-0.45)/0.4));
+    }
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(function(){tick();ticking=false;}); ticking=true; } },{passive:true});
+  tick();
+
+  /* ---------- la creatura: cursore che svela la ricostruzione ---------- */
+  var slider=document.getElementById('revSlider'), rect=document.getElementById('revrect');
+  var line=document.getElementById('revline'), knob=document.getElementById('revknob'), cmsg=document.getElementById('creatmsg');
+  function setRev(v){
+    v=Math.max(0,Math.min(100,v));
+    var x=v/100*600;
+    if(rect) rect.setAttribute('width',x.toFixed(1));
+    if(line){ line.setAttribute('x1',x.toFixed(1)); line.setAttribute('x2',x.toFixed(1)); }
+    if(knob) knob.setAttribute('cx',x.toFixed(1));
+    if(cmsg){
+      if(v<=4) cmsg.innerHTML='<b>Come fu ritrovata.</b> Un blocco di quercia annerita, informe a prima vista: così la polena è riemersa dal fango del Baltico. Trascina il cursore verso destra.';
+      else if(v>=96) cmsg.innerHTML='<b>Come doveva apparire.</b> Un mostro mezzo cane e mezzo grifone che stringe una figura umana tra le fauci: una minaccia scolpita, montata a prua per terrorizzare chi la vedeva avvicinarsi.';
+      else cmsg.innerHTML='<b>Trascina il cursore.</b> A sinistra il legno come fu recuperato; a destra la ricostruzione del "grifone-cane" che dà il nome alla nave.';
+    }
+  }
+  if(slider){ slider.addEventListener('input',function(){ setRev(+slider.value); }); setRev(50); }
+
+  /* ---------- metriche di scroll ---------- */
+  var marks={25:0,50:0,75:0,100:0}, t0=Date.now();
+  window.WRECK_METRICS={scheda:'031-gribshunden',depth:0,seconds:0,events:[]};
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY, h=document.body.scrollHeight-window.innerHeight;
+    var pct=h>0?Math.round(Math.min(y/h,1)*100):0;
+    if(pct>WRECK_METRICS.depth) WRECK_METRICS.depth=pct;
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m && !marks[m]){ marks[m]=1;
+        WRECK_METRICS.events.push({mark:m,sec:Math.round((Date.now()-t0)/1000)});
+        console.log('[wreck-atlas] scheda 031 · '+m+'% a '+Math.round((Date.now()-t0)/1000)+'s'); }
+    });
+    WRECK_METRICS.seconds=Math.round((Date.now()-t0)/1000);
+  },{passive:true});
+  window.addEventListener('beforeunload',function(){
+    console.log('[wreck-atlas] sessione: '+WRECK_METRICS.depth+'% · '+WRECK_METRICS.seconds+'s');
+  });
+
+  /* ---------- iscrizione ---------- */
+  var form=document.getElementById('signup');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=document.getElementById('em'), msg=document.getElementById('msg');
+      var v=input.value.trim();
+      if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        msg.className='msg err'; msg.textContent='Inserisci un indirizzo email valido.'; input.focus(); return;
+      }
+      msg.className='msg';
+      msg.textContent='Registrato. Il prototipo non invia ancora nulla — collega qui il tuo servizio email.';
+      console.log('[wreck-atlas] iscrizione:',v,'· scroll '+WRECK_METRICS.depth+'%');
+      input.value='';
+    });
+    document.getElementById('em').addEventListener('input',function(){
+      var msg=document.getElementById('msg');
+      if(msg.classList.contains('err')){ msg.className='msg'; msg.textContent=''; }
+    });
+  }
+})();
+</script>
+</body>
+</html>

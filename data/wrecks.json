@@ -393,7 +393,7 @@
     "lat": 48.62,
     "lon": -68.4,
     "d": 40,
-    "st": "planned",
+    "st": "next",
     "f": "Transatlantico affondato in pochi minuti nel fiume San Lorenzo nel 1914 dopo una collisione nella nebbia: oltre mille morti. La 'Titanic del Canada', quasi dimenticata perché la guerra scoppiò poche settimane dopo.",
     "f_en": "Canadian liner sunk in the St. Lawrence after a collision in fog in 1914: over 1,000 dead, more passengers lost than on the Titanic — yet almost forgotten."
   },
@@ -405,9 +405,10 @@
     "lat": 56.15,
     "lon": 15.35,
     "d": 10,
-    "st": "next",
+    "st": "ready",
     "f": "Nave ammiraglia di re Hans di Danimarca, affondata per un incendio nel Baltico nel 1495. Conservata benissimo dall'acqua fredda, con una polena a forma di mostro marino: una delle navi medievali meglio superstiti al mondo.",
-    "f_en": "Warship of the Danish king Hans, sunk in 1495. One of the oldest and best-preserved carvel-built ships in the world, with a famous carved figurehead."
+    "f_en": "Warship of the Danish king Hans, sunk in 1495. One of the oldest and best-preserved carvel-built ships in the world, with a famous carved figurehead.",
+    "href": "gribshunden.html"
   },
   {
     "id": "merchant-royal",

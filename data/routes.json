@@ -1018,5 +1018,33 @@
       "wreck": "#B23A2E",
       "label": "#6A5F48"
     }
+  },
+  "gribshunden.html": {
+    "from": {
+      "n": "Copenaghen",
+      "lon": 12.57,
+      "lat": 55.68,
+      "n_en": "Copenhagen"
+    },
+    "to": {
+      "n": "Kalmar (il vertice)",
+      "lon": 16.36,
+      "lat": 56.66,
+      "n_en": "Kalmar (the summit)"
+    },
+    "wreck_label": "bruciata (1495)",
+    "wreck_label_en": "burned (1495)",
+    "caption": "Da Copenaghen verso Kalmar, dove re Hans voleva farsi riconoscere re anche di Svezia. Il tratto continuo è quanto navigò lungo il Baltico meridionale; il tratteggio, l'ultimo tratto verso Kalmar che un incendio, all'ancora presso Stora Ekön, le impedì di completare nell'estate del 1495.",
+    "caption_en": "From Copenhagen toward Kalmar, where King Hans sought to be recognised king of Sweden too. The solid line is what she sailed along the southern Baltic; the dashed line, the last leg to Kalmar that a fire, at anchor off Stora Ekön, stopped her from completing in the summer of 1495.",
+    "palette": {
+      "bg": "#EDE7D6",
+      "land": "#DDD3BC",
+      "coast": "#A89A78",
+      "plan": "#A89A7E",
+      "done": "#3E6E74",
+      "port": "#2A2213",
+      "wreck": "#7A2E34",
+      "label": "#6A5E44"
+    }
   }
 }
